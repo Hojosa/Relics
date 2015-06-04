@@ -1,0 +1,7 @@
+{
+	"variants": {
+		"half=bottom,variant=false": { "model": "mysticwater:half_stainedGlassSlab2" },
+		"half=top,variant=false" : { "model": "mysticwater:upper_stainedGlassSlab2" }
+	}	
+}
+			

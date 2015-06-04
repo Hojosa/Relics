@@ -1,0 +1,16 @@
+[
+{
+  "modid": "ancientwater",
+  "name": "Ancient Water",
+  "description": "In develpment",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Fox-McCloud"],
+  "credits": "The Forge and FML guys, for Forge",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

@@ -1,0 +1,7 @@
+{
+	"variants": {
+		"variant=false": { "model": "glass_silver" },
+		"variant=true" : { "model": "glass_silver" }
+	}	
+}
+		

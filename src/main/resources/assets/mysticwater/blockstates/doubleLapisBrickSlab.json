@@ -1,0 +1,7 @@
+{
+	"variants": {
+		"variant=false": { "model": "mysticwater:lapisBrickModel" },
+		"variant=true" : { "model": "mysticwater:lapisBrickModel" }
+	}	
+}
+		
