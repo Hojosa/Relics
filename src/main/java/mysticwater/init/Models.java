@@ -35,7 +35,7 @@ public class Models
 		registerModelBlock(ModBlocks.glassSlab, 0, Strings.GlassSlabName);
 		registerModelBlock(ModBlocks.lapisBrickSlab, 0, Strings.LapisBrickSlabName);
 		registerModelBlock(ModBlocks.stainedGlassSlab, 0, Strings.StainedGlassSlabName);
-		registerModelBlock(ModBlocks.stainedGlassSlab2, 0, Strings.StainedGlassSlabName + "2");
+		//registerModelBlock(ModBlocks.stainedGlassSlab2, 0, Strings.StainedGlassSlabName + "2");
 		
 		
 		registerModelItem(ModItems.firePlate, 0, Strings.FirePlateName);
@@ -43,7 +43,7 @@ public class Models
 		registerModelItem(ModItems.leafSword, 0, Strings.LeafSwordName);
 		registerModelItem(ModItems.iceCrystal, 0, Strings.IceCrystalName);
 		
-		registerMetaVariantBlock(ModBlocks.stainedGlassSlab, Strings.StainedGlassSlabName, "white");
+		//registerMetaVariantBlock(ModBlocks.stainedGlassSlab, Strings.StainedGlassSlabName, "white");
 	
 	}
 	

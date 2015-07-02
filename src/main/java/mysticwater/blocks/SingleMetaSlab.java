@@ -2,6 +2,7 @@ package mysticwater.blocks;
 
 import java.util.List;
 
+import mysticwater.base.BaseMetaSlab;
 import mysticwater.base.BaseSlab;
 import mysticwater.core.handler.EnumHandler;
 import mysticwater.core.handler.EnumHandler.Category;
@@ -12,7 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class SingleMetaSlab extends BaseSlab
+public class SingleMetaSlab extends BaseMetaSlab
 {
 
 	public SingleMetaSlab(Material material, Category typ)
@@ -26,8 +27,12 @@ public class SingleMetaSlab extends BaseSlab
 	{
 		return false;
 	}
+
 	
-	@SideOnly(Side.CLIENT)
+
+	
+	
+	/*@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item item, CreativeTabs tab, List par3list)
 	{
 		if (blockTyp == Category.COLOR1)
@@ -45,6 +50,6 @@ public class SingleMetaSlab extends BaseSlab
 		}
 	}
 
-	
+	*/
 
 }

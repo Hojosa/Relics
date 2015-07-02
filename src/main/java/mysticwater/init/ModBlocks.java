@@ -47,6 +47,7 @@ public class ModBlocks
 
 		stainedGlassSlab2 = new SingleMetaSlab(Material.glass, EnumHandler.Category.COLOR2);
 		doubleStainedGlassSlab2 = new DoubleMetaSlab(Material.glass, EnumHandler.Category.COLOR2);
+		
 		lapisBrickSlab = new SingleSlab(Material.rock, Category.LAPIS);//, Category.LAPIS);
 		doubleLapisBrickSlab = new DoubleSlab(Material.rock, Category.LAPIS);//, Category.LAPIS);
 	

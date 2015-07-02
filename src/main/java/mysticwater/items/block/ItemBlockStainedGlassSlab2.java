@@ -1,6 +1,7 @@
 package mysticwater.items.block;
 
-import mysticwater.base.BaseSlab;
+import mysticwater.blocks.DoubleMetaSlab;
+import mysticwater.blocks.SingleMetaSlab;
 import mysticwater.blocks.StainedGlassSlab;
 import mysticwater.init.ModBlocks;
 import net.minecraft.block.Block;
@@ -12,7 +13,7 @@ public class ItemBlockStainedGlassSlab2 extends ItemSlab
 {
 	public ItemBlockStainedGlassSlab2(Block block)
 	{
-		super(block, (BaseSlab)ModBlocks.stainedGlassSlab2, (BaseSlab)ModBlocks.doubleStainedGlassSlab2);
+		super(block, (SingleMetaSlab)ModBlocks.stainedGlassSlab2, (DoubleMetaSlab)ModBlocks.doubleStainedGlassSlab2);
 		this.setMaxDamage(0);
 		this.setHasSubtypes(true);
 	}

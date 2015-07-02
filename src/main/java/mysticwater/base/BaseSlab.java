@@ -145,18 +145,18 @@ public abstract class BaseSlab extends BlockSlab
 	{
 		if(!slab)
 		{
-		if(blockTyp == Category.GLASS)
-		{
-			return Strings.GlassSlabName;
-		}
-		if(blockTyp == Category.LAPIS)
-		{
-			return Strings.LapisBrickSlabName;
-		}
-		if(blockTyp == Category.COLOR1 | blockTyp == Category.COLOR2);
-		{
-			return Strings.StainedGlassSlabName;
-		}
+			if(blockTyp == Category.GLASS)
+			{
+				return Strings.GlassSlabName;
+			}
+			if(blockTyp == Category.LAPIS)
+			{
+				return Strings.LapisBrickSlabName;
+			}
+			if(blockTyp == Category.COLOR1 | blockTyp == Category.COLOR2);
+			{
+				return Strings.StainedGlassSlabName;
+			}
 		}
 		else
 		{

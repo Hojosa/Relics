@@ -1,6 +1,6 @@
 {
 	"variants": {
-		"variant=false": { "model": "glass_silver" },
+		"variant=white": { "model": "glass_white" },
 		"variant=true" : { "model": "glass_silver" }
 	}	
 }

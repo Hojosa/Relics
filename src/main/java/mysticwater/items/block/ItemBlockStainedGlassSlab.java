@@ -3,6 +3,7 @@ package mysticwater.items.block;
 import mysticwater.blocks.DoubleMetaSlab;
 import mysticwater.blocks.SingleMetaSlab;
 import mysticwater.blocks.StainedGlassSlab;
+import mysticwater.core.handler.EnumHandler;
 import mysticwater.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemSlab;
@@ -21,8 +22,8 @@ public class ItemBlockStainedGlassSlab extends ItemSlab
 	
 	public String getUnlocalizedName(ItemStack itemStack)
     { 
-			int i = MathHelper.clamp_int(itemStack.getItemDamage(), 0, 7);
-			return super.getUnlocalizedName() + "." + StainedGlassSlab.Color1[i];
+			int i = MathHelper.clamp_int(itemStack.getItemDamage(), 0, 15);
+			return super.getUnlocalizedName() + "." + EnumHandler.Color1[i];
 		}
 	
     }
