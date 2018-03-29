@@ -16,14 +16,16 @@ public class CraftingHandler
 	public static void registerRecipes()
 	{
 		//ShapedRecipes
-		CraftingManager.getInstance().addRecipe(new ItemStack(ModBlocks.lapisBrick, 4),"## ","## ", '#', Blocks.lapis_block);
-		CraftingManager.getInstance().addRecipe(new ItemStack(ModItems.iceCrystal, 2), " # ","###"," # ", '#', Blocks.ice);
-		CraftingManager.getInstance().addRecipe(new ItemStack(ModBlocks.swordPedestal, 1), "###", '#', Blocks.stone_slab);
-		CraftingManager.getInstance().addRecipe(new ItemStack(ModBlocks.glassSlab, 6), "###", '#', Blocks.glass);
+		CraftingManager.getInstance().addRecipe(new ItemStack(ModBlocks.lapisBrick, 4),"## ","## ", '#', Blocks.LAPIS_BLOCK);
+		CraftingManager.getInstance().addRecipe(new ItemStack(ModItems.iceCrystal, 2), " # ","###"," # ", '#', Blocks.ICE);
+		CraftingManager.getInstance().addRecipe(new ItemStack(ModBlocks.swordPedestal, 1), "###", '#', Blocks.STONE_SLAB);
+		CraftingManager.getInstance().addRecipe(new ItemStack(ModBlocks.glassSlab, 6), "###", '#', Blocks.GLASS);
+		CraftingManager.getInstance().addRecipe(new ItemStack(ModBlocks.otherSlabs, 6), "###", '#', ModBlocks.lapisBrick);
 		
-		for(int i = 0; i < 16; i++)
+		for(int i = 0; i < 8; i++)
 		{
-			CraftingManager.getInstance().addRecipe(new ItemStack(ModBlocks.stainedGlassSlab, 6, i), "###", '#', new ItemStack(Blocks.stained_glass, 1, i));
+			CraftingManager.getInstance().addRecipe(new ItemStack(ModBlocks.stainedGlassSlab, 6, i), "###", '#', new ItemStack(Blocks.STAINED_GLASS, 1, i));
+			CraftingManager.getInstance().addRecipe(new ItemStack(ModBlocks.stainedGlassSlab2, 6, i), "###", '#', new ItemStack(Blocks.STAINED_GLASS, 1, 8 + i));
 		}
 		/*Shapedless Recipe*/
 		

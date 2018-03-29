@@ -1,7 +1,6 @@
 {
 	"variants": {
-		"variant=false": { "model": "glass" },
-		"variant=true" : { "model": "glass" }
+		"variant=glass": { "model": "glass" }
 	}	
 }
 		

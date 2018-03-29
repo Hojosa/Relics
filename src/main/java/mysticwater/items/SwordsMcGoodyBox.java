@@ -2,11 +2,10 @@ package mysticwater.items;
 
 
 import mysticwater.lib.References;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class SwordsMcGoodyBox extends ItemSword
 {
@@ -35,10 +34,10 @@ public class SwordsMcGoodyBox extends ItemSword
 		return String.format("sword.%s%s",  References.RESOURCESPREFIX, getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
 	}
 	
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister iconRegister)
-	{
-		//this.itemIcon = iconRegister.registerIcon(References.RESOURCESPREFIX + getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
-	}
+//	@SideOnly(Side.CLIENT)
+//	public void registerIcons(IIconRegister iconRegister)
+//	{
+//		//this.itemIcon = iconRegister.registerIcon(References.RESOURCESPREFIX + getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+//	}
 
 }

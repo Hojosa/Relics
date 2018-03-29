@@ -40,7 +40,8 @@ public class ModItems
 
 	public static void registerItem(Item item, String name)
 	{
-		GameRegistry.registerItem(item, name);
+		GameRegistry.register(item.setRegistryName(name));
+		//GameRegistry.registerItem(item, name);
 	}
 	
 	

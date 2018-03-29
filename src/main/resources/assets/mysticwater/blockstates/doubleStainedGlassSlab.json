@@ -1,7 +1,13 @@
 {
 	"variants": {
 		"variant=white": { "model": "glass_white" },
-		"variant=true" : { "model": "glass_silver" }
+		"variant=orange": { "model": "glass_orange" },
+		"variant=magenta": { "model": "glass_magenta" },
+		"variant=light_blue": { "model": "glass_light_blue" },
+		"variant=yellow": { "model": "glass_yellow" },
+		"variant=lime": { "model": "glass_lime" },
+		"variant=pink": { "model": "glass_pink" },
+		"variant=gray": { "model": "glass_gray" }
 	}	
 }
 		

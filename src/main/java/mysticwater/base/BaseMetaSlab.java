@@ -4,183 +4,112 @@ import java.util.List;
 import java.util.Random;
 
 import mysticwater.MysticWater;
-import mysticwater.core.handler.EnumHandler;
 import mysticwater.core.handler.EnumHandler.Category;
-import mysticwater.core.handler.EnumHandler.EnumColor1;
-import mysticwater.core.handler.EnumHandler.EnumColor2;
+import mysticwater.core.handler.EnumHandler.ColorSet;
+import mysticwater.lib.BlockPropertyHelper;
 import mysticwater.lib.References;
-import mysticwater.lib.Strings;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.BlockSlab.EnumBlockHalf;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyEnum;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumWorldBlockLayer;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public abstract class BaseMetaSlab extends BlockSlab
-{
-	
-	private static final PropertyEnum VARIANT_PROPERTY = PropertyEnum.create("variant", EnumHandler.EnumColor1.class);
-	//private static final PropertyEnum VARIANT_PROPERTY2 = PropertyEnum.create("variant", EnumHandler.EnumColor2.class);
+{	
+	private IProperty actualVariantProperty;
+	static IProperty property;
+	public Category blockTyp;
+	public boolean isDouble;
 	private static final int HALF_META_BIT = 8;
-	public final Category blockTyp;
 	
 
-	public BaseMetaSlab(Material material, Category typ)
+	public static Category createProperty(Category cat)
+	{
+		System.out.println("WHY" + cat);
+		System.out.println("WHY" + PropertyEnum.<ColorSet>create("variant", ColorSet.class, ColorSet.getStateList(cat, false)));
+		property = PropertyEnum.<ColorSet>create("variant", ColorSet.class, ColorSet.getStateList(cat, false));
+		return cat;
+	}
+	
+	public BaseMetaSlab(Material material, Category typ, String name, boolean fullBock)
 	{
 		super(material);
-		if (!isDouble()) this.setCreativeTab(MysticWater.getCreativTab());
-		//this.doubleSlab = isDouble;
+		if (!this.isDouble()) this.setCreativeTab(MysticWater.getCreativTab());
 		this.setLightOpacity(0);
 		this.useNeighborBrightness = !this.isDouble();
-		this.blockTyp = typ;
-		this.setUnlocalizedName(getName(isDouble()));
-		
-		IBlockState blockState = this.blockState.getBaseState();
-		//if(blockTyp == Category.COLOR1)
-			//{
-		blockState = blockState.withProperty(VARIANT_PROPERTY, EnumColor1.WHITE);
-			//}
-		//else
-			//{
-			//blockState = blockState.withProperty(VARIANT_PROPERTY2, EnumColor2.SILVER);
-			//}
-		if(!this.isDouble())
-		{
-			blockState = blockState.withProperty(HALF, EnumBlockHalf.BOTTOM);
-		}
-		setDefaultState(blockState);
-		
+		blockTyp = typ;
+		this.setUnlocalizedName(this.getRegistryName().toString());
+		this.setDefaultState(this.blockState.getBaseState().withProperty(HALF, EnumBlockHalf.BOTTOM));
 	}
 	
 	@Override 
 	public final IBlockState getStateFromMeta (int meta)
 	{
-		IBlockState blockState = this.getDefaultState();
-		blockState = blockState.withProperty(VARIANT_PROPERTY, EnumColor1.WHITE);
-		if (!this.isDouble()){
-			EnumBlockHalf value = EnumBlockHalf.BOTTOM;
-			if ((meta & HALF_META_BIT) !=0)
-			{
-				value = EnumBlockHalf.TOP;
-			}
+		ColorSet.getStateList(blockTyp, false);
+
+		Object[] blockProperties = BlockPropertyHelper.setBlockPropertyPerState(this, ColorSet.getStateList(blockTyp, false).get(meta & 7).toString(), blockTyp);
+
+		this.setHardness((Float)blockProperties[0]);
+		this.setResistance((Float)blockProperties[1]);
+		this.setSoundType((SoundType)blockProperties[2]);
 			
-			blockState = blockState.withProperty(HALF, value);
-		}
-		return blockState;
+		//return this.getDefaultState().withProperty(actualVariantProperty, ColorSet.getStateList(blockTyp, false).get(meta & 7)).withProperty(HALF, (meta & HALF_META_BIT) == 0 ? EnumBlockHalf.BOTTOM : EnumBlockHalf.TOP);
+		return getDefaultState().withProperty(actualVariantProperty, actualVariantProperty.getAllowedValues().toArray()[meta]).withProperty(HALF, meta == 8 ? EnumBlockHalf.TOP : EnumBlockHalf.BOTTOM);
+
 	}
 	
 	@Override
-	public final int getMetaFromState(final IBlockState state)
+	public final int getMetaFromState(IBlockState state)
 	{
-		if(this.isDouble())
-		{
-			return 0;
-		}
+		Object[] blockProperties = BlockPropertyHelper.setBlockPropertyPerState(this, state.getValue(actualVariantProperty).toString(), blockTyp);
 		
-		if ((EnumBlockHalf) state.getValue(HALF) == EnumBlockHalf.TOP)
-		{
-			return HALF_META_BIT;
-		}
-		else
-		{
-			return 0;
-		}
+		this.setHardness((Float)blockProperties[0]);
+		this.setResistance((Float)blockProperties[1]);
+		this.setSoundType((SoundType)blockProperties[2]);
+		
+		//ColorSet color = (ColorSet) state.getValue(actualVariantProperty);
+		ColorSet.getStateList(blockTyp, false).indexOf(actualVariantProperty);
+			
+		return (state.getValue(HALF) == EnumBlockHalf.TOP ? HALF_META_BIT : 0) + ColorSet.getStateList(blockTyp, false).indexOf(state.getValue(actualVariantProperty));
 	}
 	
 	@Override
 	public IProperty getVariantProperty()
 	{
-		
-		return VARIANT_PROPERTY;
+		return actualVariantProperty;
 	}
 	
-	@Override
 	public Object getVariant(ItemStack stack)
 	{
-		// TODO Automatisch generierter Methodenstub
-		return null;
-	}
-	
-	public String getVariantName()
-	{
-		if (blockTyp == Category.COLOR1)
-			for (int meta = 0; meta < 6; ++meta)
-			{
-				return EnumHandler.Color1[meta];
-
-			}
-			if(blockTyp == Category.COLOR2)
-			{
-				for (int meta = 7; meta < 15; ++meta)
-				{
-					return EnumHandler.Color1[meta];
-				}
-			}
-		/*if(category == Category.GLASS)
-		{
-			return "glass";
-		}
-		else if(category == Category.LAPIS)
-		{
-			return "lapis";
-		}
-		else if(category == Category.COLOR1)
-		{
-			return Category.COLOR1;
-					
-		}*/
-		return null;
+		return ColorSet.getStateList(blockTyp, false).get(stack.getMetadata() & 7);
 	}
 	
 	@Override
-	protected final BlockState createBlockState()
+	public final BlockStateContainer createBlockState()
 	{
-		
-		if(this.isDouble())
-		{
-			return new BlockState(this, new IProperty[] {VARIANT_PROPERTY});
-		}
-		else
-		{
-			return new BlockState(this, new IProperty[] {VARIANT_PROPERTY, HALF});
-		}
-		/*if(this.isDouble())
-		{
-			if(blockTyp == Category.COLOR1)
-			{
-				return new BlockState(this, new IProperty[] {VARIANT_PROPERTY});
-			}
-			if(blockTyp == Category.COLOR2)
-			{
-				return new BlockState(this, new IProperty[] {VARIANT_PROPERTY2});
-			}
-		}
-		else
-		{
-			if(blockTyp == Category.COLOR1)
-			{
-				return new BlockState(this, new IProperty[] {VARIANT_PROPERTY, HALF});
-			}
-			if(blockTyp == Category.COLOR2)
-			{
-				return new BlockState(this, new IProperty[] {VARIANT_PROPERTY2, HALF});
-			}
-		}*/
-
+		actualVariantProperty = property;
+	
+		return new BlockStateContainer(this, new IProperty[] {HALF, actualVariantProperty});
 	}
 
 	public String getUnwrappedUnlocalizedName(String unlocalizedName)
 	{
 		return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
-
 	}
 
 	@Override
@@ -192,136 +121,127 @@ public abstract class BaseMetaSlab extends BlockSlab
 	@Override
 	public String getUnlocalizedName(int meta)
 	{
-		return this.getUnlocalizedName();
+		System.out.println(this.getUnlocalizedName() + ColorSet.getStateList(blockTyp, false).get(meta) + " NAME");
+		return this.getUnlocalizedName() + ColorSet.getStateList(blockTyp, false).get(meta);
 	}
 	
-	public String getName(boolean slab)
-	{
-		if(!slab)
-		{
-		if(blockTyp == Category.GLASS)
-		{
-			return Strings.GlassSlabName;
-		}
-		if(blockTyp == Category.LAPIS)
-		{
-			return Strings.LapisBrickSlabName;
-		}
-		if(blockTyp == Category.COLOR1 | blockTyp == Category.COLOR2);
-		{
-			return Strings.StainedGlassSlabName;
-		}
-		}
-		else
-		{
-			if(blockTyp == Category.GLASS)
-			{
-				return Strings.DoubleGlassName;
-			}
-			if(blockTyp == Category.LAPIS)
-			{
-				return Strings.DoubleLapisBrickSlabName;
-			}
-			if(blockTyp == Category.COLOR1 | blockTyp == Category.COLOR2);
-			{
-				return Strings.StainedDoubleGlassSlabName;
-			}
-		}
-	}
-	
-	@Override
-	public boolean isOpaqueCube()
+	public boolean isOpaqueCube(IBlockState state)
 	{
 		return false;
 	}
 
+	public boolean isFullCube(IBlockState state)
+    { 
+		return false;
+    }
 	
-	public int getSlabDrops (int number)
+	@SideOnly(Side.CLIENT)
+	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess worldIn, BlockPos pos, EnumFacing side)
 	{
-		if(blockTyp == Category.GLASS)
+		
+		IBlockState iblockstate = worldIn.getBlockState(pos);
+        Block block = iblockstate.getBlock();
+        
+		if(worldIn.getBlockState(pos.offset(side.getOpposite())) != iblockstate)
+		{
+			return true;
+		}
+		
+		if(block == this || iblockstate.getMaterial().equals(Material.GLASS))
+		{
+			return false;
+		}
+		
+		return block == this ? false :  super.shouldSideBeRendered(blockState, worldIn, pos, side);
+	}	
+	
+	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face)
+	{
+        // face is on the block being rendered, not this block.
+        EnumBlockHalf side = world.getBlockState(pos).getValue(HALF);
+        return (side == EnumBlockHalf.TOP && face == EnumFacing.DOWN);
+ 	}
+	
+	public int quantityDropped(Random random) 
+	{
+		if(blockTyp == Category.GLASS || blockTyp == Category.GLASSCOLOR_0 || blockTyp == Category.GLASSCOLOR_1)
 		{
 			return 0;
 		}
 		else
-		{
-			if (!this.isDouble()) 
-			{
-				number = 1;
-			}
-			else
-			{
-				number = 2;
-			}
-			return number;
-		}
+			return this.isDouble() ? 2 : 1;
 	}
 	
+	@Override
 	@SideOnly(Side.CLIENT)
-    public EnumWorldBlockLayer getBlockLayer()
+    public BlockRenderLayer getBlockLayer()
     {
-		if (blockTyp == Category.GLASS)
-        return EnumWorldBlockLayer.CUTOUT;
-		
+		if(blockTyp == Category.GLASSCOLOR_0 || blockTyp == Category.GLASSCOLOR_1)
+		{
+			return BlockRenderLayer.TRANSLUCENT;
+		}
+		else if(blockTyp == Category.GLASS)
+		{
+			return BlockRenderLayer.CUTOUT;
+		}
 		else
 		{
-			return EnumWorldBlockLayer.SOLID;
+			return BlockRenderLayer.SOLID;
 		}
     }	
 	
-	protected boolean canSilkHarvest()
+	public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player)
 	{
-		if(blockTyp == Category.GLASS | blockTyp == Category.COLOR1 | blockTyp == Category.COLOR2)
+		if(blockTyp == Category.GLASSCOLOR_0 || blockTyp == Category.GLASSCOLOR_1 || blockTyp == Category.GLASS)
+		{
 			return true;
+		}
 		else
+		{
 			return false;
+		}
 	}
 
 	@Override
 	public boolean isDouble()
 	{
-		return false;
+		return isDouble;
 	}
 	
 	@Override
-	public final int damageDropped(final IBlockState state)
+	public int damageDropped(IBlockState state)
 	{
-		return 0;
+		return this.getMetaFromState(state.withProperty(HALF, EnumBlockHalf.BOTTOM));
+	}
+
+	@Override
+	public Item getItemDropped(IBlockState blockState, Random random, int fortune)
+	{
+		return this.isDouble() ? this.getSingleSlab(this) : Item.getItemFromBlock(this);
 	}
 	
-	@Override
-	public final Item getItemDropped(final IBlockState blockState, final Random random, final int unused)
+	protected ItemStack createStackedBlock(IBlockState state)
+	{		
+		return new ItemStack(this.isDouble() ? this.getSingleSlab(this) : Item.getItemFromBlock(this), this.isDouble() ? 2 : 1,  ColorSet.getStateList(blockTyp, false).indexOf(state.getValue(actualVariantProperty)));	
+	}
+	
+	private Item getSingleSlab(Block block)
 	{
-		if(this.isDouble())
-		{
-			return Item.getByNameOrId(References.MODID + ":" + getName(false));
-		}
-		else 
-		{
-			return Item.getItemFromBlock(this);
-		}	
+		
+		StringBuilder changeName = new StringBuilder(this.getUnlocalizedName());
+		changeName.delete(12, 18);
+		changeName.replace(12, 13, changeName.substring(12, 13).toLowerCase());
+		
+		return Item.getByNameOrId(changeName.toString());	
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item item, CreativeTabs tab, List par3list)
+	public void getSubBlocks(Item item, CreativeTabs tab, List list)
 	{
-		/*for (int meta = 0; meta < 15; ++meta)
+		for(int meta = 0; meta < this.actualVariantProperty.getAllowedValues().size(); ++meta)
 		{
-			par3list.add(new ItemStack(item, 1, meta));
-
-		}*/
-		if (blockTyp == Category.COLOR1)
-		for (int meta = 0; meta < 6; ++meta)
-		{
-			par3list.add(new ItemStack(item, 1, meta));
-
-		}
-		else
-		{
-			for (int meta = 7; meta < 15; ++meta)
-			{
-				par3list.add(new ItemStack(item, 1, meta));
-			}
+			list.add(new ItemStack(item, 1, meta));
 		}
 	}
 	

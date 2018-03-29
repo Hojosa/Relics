@@ -11,7 +11,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
     }
 }
 
@@ -41,6 +41,9 @@ version = "${config.minecraft_version}-${config.mod_version}-${config.release_ty
 jar {
         appendix = 'universal'
 }
+
+srcCompat = JavaVersion.VERSION_1_8
+targetCompat = JavaVersion.VERSION_1_8
 
 dependencies {
     // you may put jars on which you depend on in ./libs

@@ -2,7 +2,7 @@ package mysticwater.blocks;
 
 import mysticwater.base.BaseBlock;
 import mysticwater.lib.Strings;
-import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 
 public class LapisBrick extends BaseBlock
 {
@@ -12,8 +12,8 @@ public class LapisBrick extends BaseBlock
 		this.setUnlocalizedName(Strings.LapisBrickName);
 		this.setHardness(1.5f);
 		this.setResistance(10.0f);
-		this.setStepSound(Block.soundTypeStone);
-		
+		this.setSoundType(SoundType.STONE);
+	
 		
 	}
 }

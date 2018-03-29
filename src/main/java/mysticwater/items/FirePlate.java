@@ -5,6 +5,7 @@ import mysticwater.base.BaseItem;
 import mysticwater.lib.Strings;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.PotionTypes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -22,9 +23,10 @@ public class FirePlate extends BaseItem
 	{
 		EntityPlayer player = (EntityPlayer) entity;
 		
-		if(player.inventory.hasItem(this))
+		if(player.inventory.hasItemStack(new ItemStack(this)));
 		{
-			player.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 40, 1));
+			player.addPotionEffect(new PotionEffect(Potion.getPotionFromResourceLocation(PotionTypes.FIRE_RESISTANCE.getRegistryName().toString()), 10, 1));
+			
 		}
 	}
 	
