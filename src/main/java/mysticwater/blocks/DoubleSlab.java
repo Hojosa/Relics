@@ -14,6 +14,7 @@ public class DoubleSlab extends BaseSlab
 	public DoubleSlab(Material material, Category typ, String name, boolean fullBlock)
 	{
 		super(material, setEnumTyp(typ), name, fullBlock);
+		
 	}
 
 	@Override
