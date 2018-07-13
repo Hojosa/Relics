@@ -1,16 +1,14 @@
 [
 {
-  "modid": "ancientwater",
-  "name": "Ancient Water",
+  "modid": "relics",
+  "name": "Relics",
   "description": "In develpment",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
+  "version": "${mod_version}",
+  "mcversion": "${minecraft_version}",
   "url": "",
-  "updateUrl": "",
   "authorList": ["Fox-McCloud"],
   "credits": "The Forge and FML guys, for Forge",
   "logoFile": "",
-  "screenshots": [],
   "dependencies": []
 }
 ]
