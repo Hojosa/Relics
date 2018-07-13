@@ -3,7 +3,6 @@ package mysticwater.base;
 import java.util.List;
 import java.util.Random;
 
-import mysticwater.MysticWater;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBeacon;
 import net.minecraft.block.BlockSlab;
@@ -28,6 +27,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import relics.Relics;
 
 public abstract class BaseSlab extends BlockSlab implements IEnumTypes
 {
@@ -81,7 +81,7 @@ public abstract class BaseSlab extends BlockSlab implements IEnumTypes
 		//System.out.println("FUUU " + TYPE);
 		this.isDouble = fullBlock;
 		this.blockTyp = type;
-		/*if (!this.isDouble())*/ this.setCreativeTab(MysticWater.getCreativTab());
+		/*if (!this.isDouble())*/ this.setCreativeTab(Relics.getCreativTab());
 		this.useNeighborBrightness = true;
 		this.setPropertiesOnState(null, type);
 		this.translucent = true;
@@ -151,7 +151,8 @@ public abstract class BaseSlab extends BlockSlab implements IEnumTypes
 			//System.out.println("HO3 " + this.getRegistryName());
 		}
 		this.setPropertiesOnState(null, blockTyp);
-		return getDefaultState().withProperty(actualVariantProperty, actualVariantProperty.getAllowedValues().toArray()[meta]).withProperty(HALF, meta == 8 ? EnumBlockHalf.TOP : EnumBlockHalf.BOTTOM);
+		//return getDefaultState().withProperty(actualVariantProperty, actualVariantProperty.getAllowedValues().toArray()[meta]).withProperty(HALF, meta == 8 ? EnumBlockHalf.TOP : EnumBlockHalf.BOTTOM);
+	return null;
 	}
 	
 	public int getMetaFromState(IBlockState state)

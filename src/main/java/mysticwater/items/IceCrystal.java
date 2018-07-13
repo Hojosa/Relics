@@ -1,16 +1,16 @@
 package mysticwater.items;
 
 
-import mysticwater.MysticWater;
-import mysticwater.base.BaseItem;
 import mysticwater.lib.Strings;
+import relics.Relics;
+import relics.common.item.ItemRelics;
 
-public class IceCrystal extends BaseItem
+public class IceCrystal extends ItemRelics
 {
 	public IceCrystal()
 	{
 		this.setUnlocalizedName(Strings.IceCrystalName);
-		this.setCreativeTab(MysticWater.getCreativTab());
+		this.setCreativeTab(Relics.getCreativTab());
 		
 	}
 

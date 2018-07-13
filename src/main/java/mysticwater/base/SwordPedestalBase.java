@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import mysticwater.MysticWater;
-import mysticwater.tileentity.TileEntitySwordPedestal;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
@@ -30,6 +28,8 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
+import relics.Relics;
+import relics.common.tileentity.TileEntitySwordPedestal;
 
 public abstract class SwordPedestalBase extends BlockContainer
 {
@@ -41,7 +41,7 @@ public abstract class SwordPedestalBase extends BlockContainer
 		this.setUnlocalizedName(name);
 		this.setHardness(0.8F);
 		this.setHarvestLevel("pickaxe", 0);
-		this.setCreativeTab(MysticWater.getCreativTab());
+		this.setCreativeTab(Relics.getCreativTab());
 		//this.setLightOpacity(0);
 		//this.setLightLevel(1);
 		// TODO Auto-generated constructor stub
@@ -50,7 +50,7 @@ public abstract class SwordPedestalBase extends BlockContainer
 	@Override
 	public abstract AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess access, BlockPos pos);
 	
-	@Override
+
 	public abstract void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, @Nullable Entity entityIn);
 	
 	@Override
@@ -64,7 +64,7 @@ public abstract class SwordPedestalBase extends BlockContainer
 	    ItemStack stack = itemHandler.getStackInSlot(0);
 	    if(stack != null) {
 	    	EntityItem item = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stack);
-	    	world.spawnEntityInWorld(item);
+	    	world.spawnEntity(item);
 	    }
 		//InventoryHelper.dropInventoryItems(world, pos, te.inventory.);
 		//InventoryHelper.dropInventoryItems(worldIn, pos, inventory);
@@ -95,7 +95,7 @@ public abstract class SwordPedestalBase extends BlockContainer
 			}
 			if(!worldIn.isRemote)
 			{
-				playerIn.addChatMessage((new TextComponentString("Make some room in your Inventory!")));
+				playerIn.sendMessage((new TextComponentString("Make some room in your Inventory!")));
 			}
 			return true;
 		}
@@ -169,7 +169,6 @@ public abstract class SwordPedestalBase extends BlockContainer
 	{
 		return ((EnumFacing) state.getValue(FACING)).getIndex();
 	}
-	@Override
 	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
 	{
 		

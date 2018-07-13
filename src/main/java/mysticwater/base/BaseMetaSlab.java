@@ -3,7 +3,7 @@ package mysticwater.base;
 import java.util.List;
 import java.util.Random;
 
-import mysticwater.MysticWater;
+
 import mysticwater.core.handler.EnumHandler.Category;
 import mysticwater.core.handler.EnumHandler.ColorSet;
 import mysticwater.lib.BlockPropertyHelper;
@@ -49,7 +49,7 @@ public abstract class BaseMetaSlab extends BlockSlab
 	public BaseMetaSlab(Material material, Category typ, String name, boolean fullBock)
 	{
 		super(material);
-		if (!this.isDouble()) this.setCreativeTab(MysticWater.getCreativTab());
+		//if (!this.isDouble()) this.setCreativeTab(MysticWater.getCreativTab());
 		this.setLightOpacity(0);
 		this.useNeighborBrightness = !this.isDouble();
 		blockTyp = typ;
@@ -67,10 +67,11 @@ public abstract class BaseMetaSlab extends BlockSlab
 		this.setHardness((Float)blockProperties[0]);
 		this.setResistance((Float)blockProperties[1]);
 		this.setSoundType((SoundType)blockProperties[2]);
-			
+		actualVariantProperty.getAllowedValues();
+			//getDefaultState().withProperty(actualVariantProperty, actualVariantProperty.getAllowedValues());
 		//return this.getDefaultState().withProperty(actualVariantProperty, ColorSet.getStateList(blockTyp, false).get(meta & 7)).withProperty(HALF, (meta & HALF_META_BIT) == 0 ? EnumBlockHalf.BOTTOM : EnumBlockHalf.TOP);
-		return getDefaultState().withProperty(actualVariantProperty, actualVariantProperty.getAllowedValues().toArray()[meta]).withProperty(HALF, meta == 8 ? EnumBlockHalf.TOP : EnumBlockHalf.BOTTOM);
-
+	//	return getDefaultState().withProperty(actualVariantProperty, actualVariantProperty.getAllowedValues().toArray()[meta]).withProperty(HALF, meta == 8 ? EnumBlockHalf.TOP : EnumBlockHalf.BOTTOM);
+return null;
 	}
 	
 	@Override

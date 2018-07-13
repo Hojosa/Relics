@@ -1,14 +1,15 @@
 package mysticwater.items;
 
-import mysticwater.MysticWater;
 import mysticwater.lib.Strings;
+import relics.Relics;
+import relics.common.item.SwordRelic;
 
-public class LeafSword extends SwordsMcGoodyBox
+public class LeafSword extends SwordRelic
 {
 	public LeafSword(ToolMaterial material, String type)
 	{
 		super(material, type);
-		this.setCreativeTab(MysticWater.getCreativTab());
+		this.setCreativeTab(Relics.getCreativTab());
 		this.setUnlocalizedName(Strings.LeafSwordName);
 	}
 

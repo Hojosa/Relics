@@ -4,15 +4,12 @@ import mysticwater.init.ModWorld;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldProvider;
-import net.minecraft.world.biome.BiomeProvider;
-import net.minecraft.world.chunk.IChunkGenerator;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class WorldProviderMysticLands extends WorldProvider
 {
 	
-	@Override
 	public void createBiomeProvider()
 	{
 		//this.biomeProvider = new BiomeProvider(ModWorld.MYSTIC_CAVE)

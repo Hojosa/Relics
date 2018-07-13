@@ -16,10 +16,9 @@ import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.Biome.SpawnListEntry;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
-import net.minecraft.world.chunk.IChunkGenerator;
+import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.MapGenBase;
 import net.minecraft.world.gen.MapGenCavesHell;
 import net.minecraft.world.gen.NoiseGeneratorOctaves;
@@ -370,7 +369,7 @@ public class MysticLandsChunkProvider implements IChunkGenerator
                     if ((double)k < 0.0D)
                     {
                         double d10 = (0.0D - (double)k) / 4.0D;
-                        d10 = MathHelper.clamp_double(d10, 0.0D, 1.0D);
+                        //d10 = MathHelper.clamp_double(d10, 0.0D, 1.0D);
                         d8 = d8 * (1.0D - d10) + -10.0D * d10;
                     }
 
@@ -496,5 +495,24 @@ public class MysticLandsChunkProvider implements IChunkGenerator
     {
         this.genNetherBridge.generate(this.world, x, z, (ChunkPrimer)null);
     }
+
+	@Override
+	public Chunk generateChunk(int x, int z) {
+		// TODO Automatisch generierter Methodenstub
+		return null;
+	}
+
+	@Override
+	public BlockPos getNearestStructurePos(World worldIn, String structureName, BlockPos position,
+			boolean findUnexplored) {
+		// TODO Automatisch generierter Methodenstub
+		return null;
+	}
+
+	@Override
+	public boolean isInsideStructure(World worldIn, String structureName, BlockPos pos) {
+		// TODO Automatisch generierter Methodenstub
+		return false;
+	}
 
 }

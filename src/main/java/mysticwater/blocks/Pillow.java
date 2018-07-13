@@ -1,11 +1,11 @@
 package mysticwater.blocks;
 
-import mysticwater.base.BaseBlock;
 import mysticwater.core.handler.EnumHandler.Category;
 import mysticwater.lib.Strings;
 import net.minecraft.block.material.Material;
+import relics.common.block.BlockRelics;
 
-public class Pillow extends BaseBlock
+public class Pillow extends BlockRelics
 {
 	public Pillow(Material material, Category typ)
 	{

@@ -2,33 +2,20 @@ package mysticwater.client.render;
 
 import org.lwjgl.opengl.GL11;
 
-import mysticwater.tileentity.TileEntitySwordPedestal;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.OpenGlHelper;
-import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
-import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
-import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.client.renderer.entity.RenderSnowball;
-import net.minecraft.client.renderer.tileentity.RenderItemFrame;
-import net.minecraft.client.renderer.tileentity.TileEntityBannerRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.entity.Entity;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Enchantments;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.client.model.animation.FastTESR;
-import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
+import relics.common.tileentity.TileEntitySwordPedestal;
 
 public class TESwordPedestalSpecialRenderer extends TileEntitySpecialRenderer<TileEntitySwordPedestal>
 {
@@ -110,7 +97,6 @@ public class TESwordPedestalSpecialRenderer extends TileEntitySpecialRenderer<Ti
 //		  //Tessellator.getInstance().draw();
 //		   GL11.glPopMatrix();
 //	}
-	@Override
 	public void renderTileEntityAt(TileEntitySwordPedestal tileEntity, double x, double y, double z, float partialTick, int destryStage)
 	{	
 		//if(tileEntity.getStackInSlot(0) != null)
@@ -210,7 +196,7 @@ public class TESwordPedestalSpecialRenderer extends TileEntitySpecialRenderer<Ti
 		GL11.glPopMatrix();
 		
 		double factor = 0.35D;
-		VertexBuffer vertexBuffer = Tessellator.getInstance().getBuffer();
+		BufferBuilder vertexBuffer = Tessellator.getInstance().getBuffer();
 		int height = 20;
 		int depth = 0;
 		
