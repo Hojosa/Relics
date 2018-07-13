@@ -1,0 +1,22 @@
+{
+	"variants": {
+		"half=bottom,variant=white": { "model": "mysticwater:half_whiteSlab" },
+		"half=top,variant=white" : { "model": "mysticwater:upper_whiteSlab" },
+		"half=bottom,variant=orange": { "model": "mysticwater:half_orangeSlab" },
+		"half=top,variant=orange" : { "model": "mysticwater:upper_orangeSlab" },
+		"half=bottom,variant=magenta": { "model": "mysticwater:half_magentaSlab" },
+		"half=top,variant=magenta" : { "model": "mysticwater:upper_magentaSlab" },
+		"half=bottom,variant=light_blue": { "model": "mysticwater:half_light_blueSlab" },
+		"half=top,variant=light_blue" : { "model": "mysticwater:upper_light_blueSlab" },
+		"half=bottom,variant=yellow": { "model": "mysticwater:half_yellowSlab" },
+		"half=top,variant=yellow" : { "model": "mysticwater:upper_yellowSlab" },
+		"half=bottom,variant=lime": { "model": "mysticwater:half_limeSlab" },
+		"half=top,variant=lime" : { "model": "mysticwater:upper_limeSlab" },
+		"half=bottom,variant=pink": { "model": "mysticwater:half_pinkSlab" },
+		"half=top,variant=pink" : { "model": "mysticwater:upper_pinkSlab" },
+		"half=bottom,variant=gray": { "model": "mysticwater:half_graySlab" },
+		"half=top,variant=gray" : { "model": "mysticwater:upper_graySlab" }
+		
+	}	
+}
+			
