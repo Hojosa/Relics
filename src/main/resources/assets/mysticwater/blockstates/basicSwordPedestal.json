@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "facing=north": {"model": "mysticwater:basic_pedestal"},
-        "facing=south": { "model": "mysticwater:basic_pedestal"},
-        "facing=east": { "model": "mysticwater:basic_pedestal", "y":90},
-        "facing=west": { "model": "mysticwater:basic_pedestal", "y": 90}
-    }
-}

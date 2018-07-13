@@ -1,8 +1,0 @@
-{
-	"parent": "block/half_slab",
-	"textures": {
-		"bottom":  "mysticwater:blocks/lapisBrick", 
-		"top": "mysticwater:blocks/lapisBrick",
-		"side": "mysticwater:blocks/lapisBrick"
-	}
-}
