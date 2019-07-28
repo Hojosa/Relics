@@ -1,4 +1,4 @@
-package relics.common.item;
+package com.hojosa.relics.common.item;
 
 import mysticwater.lib.Strings;
 import net.minecraft.entity.Entity;
@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
-import relics.Relics;
+
 
 public class FirePlate extends ItemRelics
 {

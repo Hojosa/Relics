@@ -1,11 +1,11 @@
-package relics.common.block;
+package com.hojosa.relics.common.block;
+
+import com.hojosa.relics.Relics;
+import com.hojosa.relics.common.init.ModBlocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
-import relics.Relics;
-import relics.common.init.ModBlocks;
-import relics.common.util.CreativeTabRelics;
+
 
 public class BlockRelics extends Block
 {

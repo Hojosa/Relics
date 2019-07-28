@@ -1,4 +1,6 @@
-package relics.proxy;
+package com.hojosa.relics.proxy;
+
+import com.hojosa.relics.common.tileentity.TileEntitySwordPedestal;
 
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -7,8 +9,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import relics.common.init.ModBlocks;
-import relics.common.tileentity.TileEntitySwordPedestal;
+
 
 public class CommonProxy
 {

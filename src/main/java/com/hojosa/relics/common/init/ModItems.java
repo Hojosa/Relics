@@ -1,4 +1,4 @@
-package relics.common.init;
+package com.hojosa.relics.common.init;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,10 +15,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import relics.Relics;
-import relics.common.item.FirePlate;
-import relics.common.item.SwordRelic;
-import relics.common.util.CreativeTabRelics;
+import com.hojosa.relics.Relics;
+import com.hojosa.relics.common.item.FirePlate;
+import com.hojosa.relics.common.item.SwordRelic;
+import com.hojosa.relics.common.util.CreativeTabRelics;
 
 @GameRegistry.ObjectHolder(Relics.MOD_ID)
 @Mod.EventBusSubscriber

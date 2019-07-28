@@ -1,9 +1,14 @@
-package relics.common.init;
+package com.hojosa.relics.common.init;
 
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
+import com.hojosa.relics.Relics;
+import com.hojosa.relics.common.block.LapisBrick;
+import com.hojosa.relics.common.block.SwordPedestalBlock;
+import com.hojosa.relics.common.util.CreativeTabRelics;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -19,11 +24,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import relics.Relics;
-import relics.common.block.BlockRelics;
-import relics.common.block.LapisBrick;
-import relics.common.block.SwordPedestalBlock;
-import relics.common.util.CreativeTabRelics;
 
 
 @GameRegistry.ObjectHolder(Relics.MOD_ID)

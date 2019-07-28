@@ -1,7 +1,7 @@
-package relics.common.item;
+package com.hojosa.relics.common.item;
 
 import mysticwater.lib.Strings;
-import relics.Relics;
+
 
 public class FlameSword extends SwordRelic
 {

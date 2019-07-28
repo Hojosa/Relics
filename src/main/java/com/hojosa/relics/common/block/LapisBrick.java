@@ -1,4 +1,4 @@
-package relics.common.block;
+package com.hojosa.relics.common.block;
 
 import mysticwater.lib.Strings;
 import net.minecraft.block.SoundType;

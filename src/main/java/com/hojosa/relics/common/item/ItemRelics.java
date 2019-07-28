@@ -1,8 +1,9 @@
-package relics.common.item;
+package com.hojosa.relics.common.item;
+
+import com.hojosa.relics.Relics;
+import com.hojosa.relics.common.init.ModItems;
 
 import net.minecraft.item.Item;
-import relics.Relics;
-import relics.common.init.ModItems;
 
 public class ItemRelics extends Item
 {

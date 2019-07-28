@@ -1,4 +1,4 @@
-package relics;
+package com.hojosa.relics;
 
 
 import org.apache.logging.log4j.LogManager;
@@ -14,8 +14,8 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
-import relics.common.util.CreativeTabRelics;
-import relics.proxy.CommonProxy;
+import com.hojosa.relics.common.util.CreativeTabRelics;
+import com.hojosa.relics.proxy.CommonProxy;
 
 
 @Mod(modid = Relics.MOD_ID, name = "Relics", version = "@MOD_VERSION@")
@@ -28,7 +28,7 @@ public class Relics
 	@Mod.Instance(Relics.MOD_ID)
 	public static Relics instance;
 	
-	@SidedProxy(clientSide = "relics.proxy.ClientProxy", serverSide = "relics.proxy.CommonProxy")
+	@SidedProxy(clientSide = "com.hojosa.relics.proxy.ClientProxy", serverSide = "com.hojosa.relics.proxy.CommonProxy")
 	public static CommonProxy proxy;
 
 	@EventHandler

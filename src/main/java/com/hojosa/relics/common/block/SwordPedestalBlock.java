@@ -1,10 +1,13 @@
-package relics.common.block;
+package com.hojosa.relics.common.block;
 
 import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.hojosa.relics.common.tileentity.TileEntitySwordPedestal;
+
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -23,13 +26,16 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.config.Property;
+import net.minecraftforge.common.property.Properties;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
-import relics.common.tileentity.TileEntitySwordPedestal;
+
 
 public class SwordPedestalBlock extends BlockRelics//Container
 {
 	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
+	public static final PropertyBool SWORD = PropertyBool.create("sword");
 
 	public SwordPedestalBlock(Material materialIn, String name)
 	{

@@ -1,7 +1,8 @@
-package relics.common.tileentity;
+package com.hojosa.relics.common.tileentity;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -18,8 +19,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import relics.common.block.SwordPedestalBlock;
-import relics.common.init.ModBlocks;
+
 
 public class TileEntitySwordPedestal extends TileEntity
 {
@@ -160,6 +160,8 @@ public class TileEntitySwordPedestal extends TileEntity
 	@SideOnly(Side.CLIENT)
 	public void renderItemStack()
 	{
+		RenderItem item;
+		//item.getItemModelWithOverrides(stack, worldIn, entitylivingbaseIn)
 //		this.inventory.getStackInSlot(0).getItem().getTileEntityItemStackRenderer().renderByItem(itemStackIn);
 		this.inventory.getStackInSlot(0).getItem().getTileEntityItemStackRenderer().renderByItem(this.inventory.getStackInSlot(0));
 	}

@@ -1,4 +1,4 @@
-package relics.common.util;
+package com.hojosa.relics.common.util;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
