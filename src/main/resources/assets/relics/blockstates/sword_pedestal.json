@@ -1,10 +1,18 @@
 {
-    "variants": {
-        "facing=north": {"model": "relics:basic_pedestal"},
-        "facing=south": { "model": "relics:basic_pedestal"},
-        "facing=east": { "model": "relics:basic_pedestal", "y":90},
-        "facing=west": { "model": "relics:basic_pedestal", "y": 90},
-        "facing=down": {"model": "relics:basic_pedestal"},
-        "facing=up": {"model": "relics:basic_pedestal"}
+	"forge_maker": 1,
+	"defaults": {
+		"model": "relics:basic_pedestal",
+		"textures": {
+			"particle": "relics:blocks/pedestaltex"
+		}
+	},
+	"variants": {
+	"inventory": [{}],
+	"facing": {
+            "north": {"model": "relics:basic_pedestal", "y": 0},
+            "east": {"y": 90},
+            "south": {"y": 180},
+            "west": {"y": 270}
+        }
     }
 }
