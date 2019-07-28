@@ -5,6 +5,11 @@ bin
 .metadata
 .classpath
 .project
+config/
+/logs/
+options.txt
+/saves/
+/out
 
 # idea
 out
