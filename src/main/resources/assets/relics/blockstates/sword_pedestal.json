@@ -1,18 +1,28 @@
 {
-	"forge_maker": 1,
+	"forge_marker": 1,
 	"defaults": {
 		"model": "relics:basic_pedestal",
+		"transform": "forge:default-block",
 		"textures": {
-			"particle": "relics:blocks/pedestaltex"
+			"particle": "blocks/stone"
 		}
 	},
 	"variants": {
+		"normal": [{}],
 		"inventory": [{}],
 		"facing": {
-			"north": {"model": "relics:basic_pedestal","y": 0},
+			"north": {"y": 0},
 			"east": {"y": 90},
 			"south": {"y": 180},
 			"west": {"y": 270}
+		},
+		"sword": {
+			"true": {
+				"submodel": {
+         			 "pillar1": { "model": "white_tulip" }
+				}
+			},
+			"false": {}
 		}
 	}
 }

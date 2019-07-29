@@ -1,6 +1,23 @@
 {
-	"variants": {
-		"normal": { "model": "relics:lapis_brick" }
-	}	
+    "forge_marker": 1,
+    "defaults": {
+        "textures": {
+            "all": "relics:blocks/lapis_brick"
+        },
+        "model": "cube_all",
+        "transform": "forge:default-block",
+        "uvlock": true
+    },
+    "variants": {
+    "normal": [{}],
+    "inventory": [{}],
+    "facing": {
+			"north": {"model": "relics:basic_pedestal", "y": 0},
+			"east": {"y": 90},
+			"south": {"y": 180},
+			"west": {"y": 270}
+		}
+  } 
 }
+
 			

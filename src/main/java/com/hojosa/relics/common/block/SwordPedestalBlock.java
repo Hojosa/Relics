@@ -49,7 +49,6 @@ public class SwordPedestalBlock extends BlockRelics//Container
 		//this.setLightLevel(1);
 		// TODO Auto-generated constructor stub
 //		ModBlocks.register(this)
-		
 	}
 	
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess access, BlockPos pos)
@@ -160,7 +159,9 @@ public class SwordPedestalBlock extends BlockRelics//Container
 						player.replaceItemInInventory(player.inventory.getFirstEmptyStack(), player.getHeldItemMainhand());
 						player.setHeldItem(hand, itemHandler.extractItem(0, 1, false));
 					}
-					worldIn.notifyBlockUpdate(pos, state, state, 3);
+					System.out.println("remove sword " + state.withProperty(FACING, state.getValue(FACING)).withProperty(SWORD, false));
+					//worldIn.setBlockState(pos,state.withProperty(FACING, state.getValue(FACING)).withProperty(SWORD, false) , 3);	
+					worldIn.notifyBlockUpdate(pos, state, state.withProperty(FACING, state.getValue(FACING)).withProperty(SWORD, false), 3);
 					
 				}
 				else //full inventroy
@@ -174,10 +175,19 @@ public class SwordPedestalBlock extends BlockRelics//Container
 			else if(player.getHeldItemMainhand() != null && player.getHeldItemMainhand().getItem() instanceof ItemSword) //place sword in pedestal
 			{
 				player.setHeldItem(hand, itemHandler.insertItem(0, player.getHeldItemMainhand(), false));
-				te.renderItemStack();
-				worldIn.notifyBlockUpdate(pos, state, state, 3);
+				//te.renderItemStack();
+				System.out.println("place sword " + state.withProperty(FACING, state.getValue(FACING)).withProperty(SWORD, true));
+				//this.getActualState(state, worldIn, pos);
+				//worldIn.setBlockState(pos ,state.withProperty(FACING, state.getValue(FACING)).withProperty(SWORD, true) , 3);	
+				worldIn.notifyBlockUpdate(pos, state, state.withProperty(FACING, state.getValue(FACING)).withProperty(SWORD, true), 3);
+				System.out.println("actualstate " + this.getActualState(state, worldIn, pos));
 			}
+			System.out.println("should call after placement logic");
 		}
+		//this.getActualState(state, worldIn , pos);
+		//worldIn.setBlockState(pos, s, 3);		
+		//worldIn.notifyBlockUpdate(pos, state, this.getActualState(state, worldIn, pos), 3);
+		//System.out.println("at the end " + this.getActualState(state, worldIn, pos));
 		return true;
     }
 	
@@ -201,18 +211,20 @@ public class SwordPedestalBlock extends BlockRelics//Container
 	@Override
 	protected BlockStateContainer createBlockState()
 	{
-		return new BlockStateContainer(this, FACING);
+		return new BlockStateContainer(this, FACING, SWORD);
 	}
 	
 	@Override
 	public IBlockState getStateFromMeta(int meta)
 	{
+		System.out.println("biatch " + meta);
 		return this.getDefaultState().withProperty(FACING, EnumFacing.getFront(meta));
 	}
 	
 	@Override
 	public int getMetaFromState(IBlockState state)
 	{
+		System.out.println("biatch22 " + state);
 		return ((EnumFacing) state.getValue(FACING)).getIndex();
 	}
 	
@@ -224,6 +236,21 @@ public class SwordPedestalBlock extends BlockRelics//Container
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand)
 	{
 		EnumFacing enumfacing = (placer == null) ? EnumFacing.NORTH : EnumFacing.fromAngle(placer.rotationYaw);
-		return this.getDefaultState().withProperty(FACING, enumfacing); 
+		return this.getDefaultState().withProperty(FACING, enumfacing).withProperty(SWORD, false); 
+	}
+	@Override
+	public IBlockState getActualState(IBlockState state, IBlockAccess access, BlockPos pos)
+	{
+		final TileEntity entity = access.getTileEntity(pos);
+		System.out.println("WHAT IS THIS " + state);
+		//System.out.println("item slot " + ((TileEntitySwordPedestal)entity).getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, state.getValue(FACING)).getStackInSlot(0).isEmpty());
+		System.out.println("The state that is set " + state.withProperty(FACING, state.getValue(FACING)).withProperty(SWORD, this.isSwordinPedestal(state, access, pos)));
+		return state;// = state.withProperty(FACING, state.getValue(FACING)).withProperty(SWORD, this.isSwordinPedestal(state, access, pos));
+	}
+	
+	private boolean isSwordinPedestal(IBlockState state, IBlockAccess access, BlockPos pos) 
+	{
+		final TileEntity entity = access.getTileEntity(pos);
+		return !((TileEntitySwordPedestal)entity).getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, state.getValue(FACING)).getStackInSlot(0).isEmpty();	
 	}
 }
