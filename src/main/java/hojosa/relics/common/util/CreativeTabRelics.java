@@ -1,4 +1,4 @@
-package com.hojosa.relics.common.util;
+package hojosa.relics.common.util;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;

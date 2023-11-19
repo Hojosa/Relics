@@ -1,47 +1,76 @@
-package com.hojosa.relics;
-
+package hojosa.relics;
 
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.core.Logger;
+import org.apache.logging.log4j.Logger;
 
-import mysticwater.lib.References;
-import net.minecraft.creativetab.CreativeTabs;
+import hojosa.relics.client.init.RelicsBlockEntityRenderers;
+import hojosa.relics.common.block.RelicsBlock;
+import hojosa.relics.common.init.RelicsBlocks;
+import hojosa.relics.common.init.RelicsBlockEntities;
+import hojosa.relics.common.init.RelicsItems;
+import hojosa.relics.lib.References;
+import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.server.ServerStartingEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
-import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
-import com.hojosa.relics.common.util.CreativeTabRelics;
-import com.hojosa.relics.proxy.CommonProxy;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
+@Mod(References.MODID)
+@Mod.EventBusSubscriber(modid = References.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+public class Relics {
+    public static final Logger LOGGER = LogManager.getLogger(References.MODID);
+	
+    public Relics() {
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        modEventBus.addListener(this::setup);
+        modEventBus.addListener(this::clientSetupEvent);
+        modEventBus.addListener(this::onRegisterRenderers);
+        
+        RelicsBlocks.BLOCKS.register(modEventBus);
+        RelicsItems.ITEMS.register(modEventBus);
+        RelicsBlockEntities.BLOCK_ENTITIES.register(modEventBus);
+        
+        MinecraftForge.EVENT_BUS.register(this);
+    }
+    
+    private void clientSetupEvent(final FMLClientSetupEvent event) {
+        // Do nothing
+    }
 
-@Mod(modid = Relics.MOD_ID, name = "Relics", version = "@MOD_VERSION@")
-public class Relics
-{
-	public final String FINGERPRINT = "@FINGERPRINT@";
-	public static final String MOD_ID = "relics";
-	public static final Logger LOGGER = (Logger) LogManager.getLogger(Relics.MOD_ID);
-	
-	@Mod.Instance(Relics.MOD_ID)
-	public static Relics instance;
-	
-	@SidedProxy(clientSide = "com.hojosa.relics.proxy.ClientProxy", serverSide = "com.hojosa.relics.proxy.CommonProxy")
-	public static CommonProxy proxy;
+    private void setup(final FMLCommonSetupEvent event) {
+        // Do nothing
+    }
 
-	@EventHandler
-	public void onServerStarting(FMLServerStartingEvent event) 
-	{
-		proxy.onServerStarting(event);
-	}
-	
-	@EventHandler
-	public void onPreInit(FMLPreInitializationEvent event)
-	{
-		System.out.println("CALL?");
-		proxy.onPreInit(event);
+    @SubscribeEvent
+    public void onServerStarting(ServerStartingEvent event) {
+        // Do nothing
+    }
+    
+    public void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
+    	RelicsBlockEntityRenderers.register(event);
+    }
+    
+//	@Mod.Instance(Relics.MOD_ID)
+//	public static Relics instance;
+//	
+//	@SidedProxy(clientSide = "com.hojosa.relics.proxy.ClientProxy", serverSide = "com.hojosa.relics.proxy.CommonProxy")
+//	public static CommonProxy proxy;
+//
+//	@EventHandler
+//	public void onServerStarting(FMLServerStartingEvent event) 
+//	{
+//		proxy.onServerStarting(event);
+//	}
+//	
+//	@EventHandler
+//	public void onPreInit(FMLPreInitializationEvent event)
+//	{
+//		System.out.println("CALL?");
+//		proxy.onPreInit(event);
 //		BlockPropertyHelper.init();
 //		ModBlocks.init();
 //		ModBlocks.register();
@@ -70,12 +99,12 @@ public class Relics
 		//PacketHandler.init();
 		
 		//SwordPedestalUtil.preinit();
-	}
-
-	@EventHandler
-	public void onInit(FMLInitializationEvent event)
-	{	
-		proxy.onInit(event);
+//	}
+//
+//	@EventHandler
+//	public void onInit(FMLInitializationEvent event)
+//	{	
+//		proxy.onInit(event);
 		//NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GUIHandler());
 //		if(event.getSide() == Side.CLIENT)
 //			{
@@ -87,19 +116,19 @@ public class Relics
 //		proxy1.registerRendering();
 //		
 		//ModWorld.init();
-	}
-
-	@EventHandler
-	public void onPostInit(FMLPostInitializationEvent event)
-	{
-		proxy.onPostInit(event);
-	}
-	
-	@EventHandler
-	public void onServerStopping(FMLServerStoppingEvent event)
-	{
-		proxy.onServerStopping(event);
-	}
+//	}
+//
+//	@EventHandler
+//	public void onPostInit(FMLPostInitializationEvent event)
+//	{
+//		proxy.onPostInit(event);
+//	}
+//	
+//	@EventHandler
+//	public void onServerStopping(FMLServerStoppingEvent event)
+//	{
+//		proxy.onServerStopping(event);
+//	}
 
 //	@SidedProxy(clientSide = References.CLIENTPROXYLOCATION, serverSide = References.COMMONPROXYLOCATION)
 //	public static CommonProxy proxy;

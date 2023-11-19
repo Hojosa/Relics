@@ -1,0 +1,28 @@
+modLoader="javafml" #mandatory
+loaderVersion="[40,)"
+license = "GPL-2.0"
+issueTrackerURL = "https://github.com/Hojosa/Relics/issues"
+
+[[mods]]
+modId = "relics"
+version = "0.3.0"
+displayName = "Relics"
+logoFile = ""
+credits = ""
+authors = "Hojosa"
+description = '''
+'''
+
+[[dependencies.relics]] #optional
+modId = "forge"
+mandatory = true
+versionRange = "[40,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.reclis]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.18.2,1.19)"
+ordering = "NONE"
+side = "BOTH"

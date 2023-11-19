@@ -1,77 +1,117 @@
-package com.hojosa.relics.common.init;
-
+package hojosa.relics.common.init;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.function.Supplier;
 
-import com.hojosa.relics.Relics;
-import com.hojosa.relics.common.block.LapisBrick;
-import com.hojosa.relics.common.block.SwordPedestalBlock;
-import com.hojosa.relics.common.util.CreativeTabRelics;
+import hojosa.relics.common.block.RelicsBlock;
+import hojosa.relics.common.block.SwordPedestalBlock;
+import hojosa.relics.lib.References;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+public class RelicsBlocks{
+	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, References.MODID);
 
+	public static final RegistryObject<Block>LAPIS_BRICK = registerBlock(
+			References.UnlocalizedName.LAPIS_BRICK, () -> new RelicsBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS))
+	);
+	
+	public static final RegistryObject<Block>SWORD_PEDESTAL = registerBlock(
+			References.UnlocalizedName.SWORD_PEDESTAL, SwordPedestalBlock::new
+			);
+	
+	public static final RegistryObject<Block>SWORD_PEDESTAL_OOT = registerBlock(
+			References.UnlocalizedName.SWORD_PEDESTAL_OOT, SwordPedestalBlock::new
+			);
+	
+	
+	
+    private static RegistryObject<Block> registerBlock(String name, Supplier<Block> block) {
+        return registerBlock(name, block, false);
+    }
 
-@GameRegistry.ObjectHolder(Relics.MOD_ID)
-@Mod.EventBusSubscriber
-public class ModBlocks
-{
-	private static final List <Block> BLOCKS = new ArrayList<>();
-	
-	public static final Block lapis_brick = new LapisBrick(Material.ROCK, "lapis_brick");
-	public static final Block sword_pedestal = new SwordPedestalBlock(Material.ROCK, "sword_pedestal");
+    private static RegistryObject<Block> registerBlock(String name, Supplier<Block> block, boolean excludeBlockItemRegistry) {
+        RegistryObject<Block> registryObject = BLOCKS.register(name, block);
+        if (!excludeBlockItemRegistry) {
+            registerBlockItem(name, registryObject);
+        }
+        return registryObject;
+    }
 
-	public static Collection<Block> getBlocks()
-	{
-		return BLOCKS;
-	}
+    private static void registerBlockItem(String name, RegistryObject<Block> blockRegistryObject) {
+        RelicsItems.ITEMS.register(
+                name,
+                () -> new BlockItem(blockRegistryObject.get(), getDefaultItemProperties())
+        );
+    }
+
+    private static Item.Properties getDefaultItemProperties() {
+        Item.Properties properties = new Item.Properties().tab(References.ITEM_GROUP);
+        return properties;
+    }
+
+    private static boolean excludeBlockItemRegistry(ResourceLocation registryName) {
+        ArrayList<String> excludeBlocks = new ArrayList<>();
+        //excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.APPLE_TREE_FRUIT);
+        return excludeBlocks.contains(registryName.toString());
+    }
+
+    public RelicsBlocks() {
+        /* Disable automatic default public constructor */
+    }
 	
-	public static void register(Block block) 
-	{
-		BLOCKS.add(block);
-	}
 	
-	@SubscribeEvent
-	public static void registerBlocks(RegistryEvent.Register<Block> event)
-	{
-		for(Block blockRelics : BLOCKS)
-		{
-			event.getRegistry().register(blockRelics.setCreativeTab(CreativeTabRelics.instance));
-		}
-	}
 	
-	@SubscribeEvent
-	public static void registerItemBlocks(RegistryEvent.Register<Item> event)
-	{
-		for(Block itemBlockRelics : BLOCKS)
-		{
-			event.getRegistry().register(new ItemBlock(itemBlockRelics).setRegistryName(itemBlockRelics.getRegistryName()));
-		}
-	}
 	
-	@SideOnly(Side.CLIENT)
-	@SubscribeEvent
-	public static void registerModels(ModelRegistryEvent event)
-	{
-		for(Block modelBlock : BLOCKS)
-		{
-			ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(modelBlock), 0, new ModelResourceLocation(modelBlock.getRegistryName(), "inventory"));
-		}
-	}
+	
+	
+	//	public static final List <Block> BLOCKS = new ArrayList<>();
+//	
+//	public static final Block lapis_brick = new LapisBrick(Material.ROCK, "lapis_brick");
+//	public static final Block sword_pedestal = new SwordPedestalBlock(Material.ROCK, "sword_pedestal");
+//
+//	public static Collection<Block> getBlocks()
+//	{
+//		return BLOCKS;
+//	}
+//	
+//	public static void register(Block block) 
+//	{
+//		BLOCKS.add(block);
+//	}
+//	
+////	@SubscribeEvent
+//	public static void registerBlocks(RegistryEvent.Register<Block> event)
+//	{
+//		for(Block blockRelics : BLOCKS)
+//		{
+//			event.getRegistry().register(blockRelics.setCreativeTab(CreativeTabRelics.instance));
+//		}
+//	}
+//	
+////	@SubscribeEvent
+//	public static void registerItemBlocks(RegistryEvent.Register<Item> event)
+//	{
+//		for(Block itemBlockRelics : BLOCKS)
+//		{
+//			event.getRegistry().register(new ItemBlock(itemBlockRelics).setRegistryName(itemBlockRelics.getRegistryName()));
+//		}
+//	}
+//	
+//	public static void registerModels(ModelRegistryEvent event)
+//	{
+//		for(Block modelBlock : BLOCKS)
+//		{
+//			ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(modelBlock), 0, new ModelResourceLocation(modelBlock.getRegistryName(), "inventory"));
+//		}
+//	}
 	
 	
 	
