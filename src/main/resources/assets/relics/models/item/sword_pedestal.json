@@ -1,21 +1,3 @@
 {
-    "forge_marker": 1,
-    "defaults": {
-        "textures": "relics:textures/pedestal/ootpedestal",
-        "model": "relics:basic_pedestal"
-     },
-    "variants": {
-        "normal": [{}],
-        "inventory": [{
-            "transform": "forge:default-block"
-        }],
-        "facing": {
-            "down": {"x": 90},
-            "up": {"x": 270},
-            "north": {"y": 180},
-            "south": {},
-            "west": {"y": 90},
-            "east": {"y": 270}
-        }
-    }
+	"parent": "relics:block/basic_pedestal"
 }

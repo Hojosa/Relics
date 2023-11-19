@@ -1,4 +1,4 @@
-# Blender MTL File: 'OoTPedestal.blend'
+# Blender MTL File: 'pedestal_oot.blend'
 # Material Count: 1
 
 newmtl texture
@@ -10,4 +10,4 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd mysticwater:ootpedestal
+map_Kd relics:block/pedestal_oot

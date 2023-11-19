@@ -1,0 +1,9 @@
+{
+	"loader": "forge:obj",
+	"flip-v": true,
+	"model": "relics:models/block/pedestal_oot.obj",
+	"textures": {
+		"texture0": "relics:block/pedestal_oot",
+		"particle": "relics:block/pedestal_oot"
+	}
+}
