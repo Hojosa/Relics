@@ -1,4 +1,4 @@
-package com.hojosa.relics.common.block;
+package hojosa.relics.common.block;
 
 import mysticwater.lib.Strings;
 import net.minecraft.block.SoundType;
@@ -10,7 +10,8 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class LapisBrick extends BlockRelics
+@Deprecated
+public class LapisBrick extends RelicsBlock
 {
 
 	public LapisBrick(Material material, String name)
