@@ -1,8 +1,8 @@
-package com.hojosa.relics.common.item;
+package hojosa.relics.common.item;
 
 
-import com.hojosa.relics.Relics;
-import com.hojosa.relics.common.init.ModItems;
+import hojosa.relics.Relics;
+import hojosa.relics.common.init.RelicsItems;
 import net.minecraft.item.ItemSword;
 
 
@@ -16,7 +16,7 @@ public class SwordRelic extends ItemSword
 		super(material);
 		setUnlocalizedName(Relics.MOD_ID + "." + name);
 		setRegistryName(name);
-		ModItems.register(this);
+		RelicsItems.register(this);
 		
 	}
 //	public String getUnwrappedUnlocalizedName(String unlocalizedName)

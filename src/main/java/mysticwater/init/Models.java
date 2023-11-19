@@ -1,10 +1,10 @@
 package mysticwater.init;
 
+import hojosa.relics.lib.References;
 import mysticwater.blocks.DoubleSlab;
 import mysticwater.core.handler.EnumHandler;
 import mysticwater.core.handler.EnumHandler.Category;
 import mysticwater.core.handler.EnumHandler.ColorSet;
-import mysticwater.lib.References;
 import mysticwater.lib.Strings;
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;

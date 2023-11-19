@@ -1,6 +1,6 @@
 package mysticwater.init;
 
-import mysticwater.lib.References;
+import hojosa.relics.lib.References;
 import mysticwater.world.dimension.WorldProviderMysticLands;
 import net.minecraft.world.DimensionType;
 import net.minecraftforge.common.DimensionManager;

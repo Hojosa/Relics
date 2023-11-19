@@ -1,6 +1,6 @@
 package mysticwater.world;
 
-import mysticwater.lib.References;
+import hojosa.relics.lib.References;
 import mysticwater.lib.Strings;
 import net.minecraft.block.BlockPortal;
 import net.minecraft.entity.player.EntityPlayerMP;

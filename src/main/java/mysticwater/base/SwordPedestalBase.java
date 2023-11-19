@@ -59,7 +59,7 @@ public abstract class SwordPedestalBase extends BlockContainer
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState blockstate)
 	{
-		TileEntitySwordPedestal te = ((TileEntitySwordPedestal) world.getTileEntity(pos));
+		SwordPedestalBlockEntity te = ((SwordPedestalBlockEntity) world.getTileEntity(pos));
 		IItemHandler itemHandler = te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.NORTH);
 	    ItemStack stack = itemHandler.getStackInSlot(0);
 	    if(stack != null) {
@@ -73,7 +73,7 @@ public abstract class SwordPedestalBase extends BlockContainer
 	
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
     {
-		TileEntitySwordPedestal te = ((TileEntitySwordPedestal) worldIn.getTileEntity(pos));
+		SwordPedestalBlockEntity te = ((SwordPedestalBlockEntity) worldIn.getTileEntity(pos));
 		
 		if(te.inventory.getStackInSlot(0) != null)//sword in pedestal
 		{
@@ -104,7 +104,7 @@ public abstract class SwordPedestalBase extends BlockContainer
 			//te.sword = heldItem;
 			playerIn.inventory.setInventorySlotContents(playerIn.inventory.currentItem, (ItemStack)null);
 			if(side == EnumFacing.EAST || side == EnumFacing.WEST)
-				((TileEntitySwordPedestal)worldIn.getTileEntity(pos)).baseRotation = 90;
+				((SwordPedestalBlockEntity)worldIn.getTileEntity(pos)).baseRotation = 90;
 			te.getUpdatePacket();
 			worldIn.notifyBlockUpdate(pos, state, state, 3);
 			te.markDirty();
@@ -130,7 +130,7 @@ public abstract class SwordPedestalBase extends BlockContainer
         return true;
     }
 	
-	private float getHeightForBounds(TileEntitySwordPedestal entity)
+	private float getHeightForBounds(SwordPedestalBlockEntity entity)
 	{
 		float height;// = 0.375F;
 		height = 0.375F;

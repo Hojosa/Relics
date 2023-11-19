@@ -5,7 +5,7 @@ import mysticwater.lib.Strings;
 import net.minecraft.block.material.Material;
 import relics.common.block.BlockRelics;
 
-public class Pillow extends BlockRelics
+public class Pillow extends RelicsBlock
 {
 	public Pillow(Material material, Category typ)
 	{

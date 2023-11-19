@@ -1,6 +1,6 @@
 package mysticwater.client.render;
 
-import mysticwater.lib.References;
+import hojosa.relics.lib.References;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;

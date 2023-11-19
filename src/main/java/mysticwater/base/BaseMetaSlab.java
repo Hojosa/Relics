@@ -3,11 +3,10 @@ package mysticwater.base;
 import java.util.List;
 import java.util.Random;
 
-
+import hojosa.relics.lib.References;
 import mysticwater.core.handler.EnumHandler.Category;
 import mysticwater.core.handler.EnumHandler.ColorSet;
 import mysticwater.lib.BlockPropertyHelper;
-import mysticwater.lib.References;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.SoundType;

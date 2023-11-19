@@ -1,4 +1,4 @@
-package com.hojosa.relics.common.item;
+package hojosa.relics.common.item;
 
 import mysticwater.lib.Strings;
 import net.minecraft.entity.Entity;

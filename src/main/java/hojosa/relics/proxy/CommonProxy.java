@@ -1,7 +1,6 @@
-package com.hojosa.relics.proxy;
+package hojosa.relics.proxy;
 
-import com.hojosa.relics.common.tileentity.TileEntitySwordPedestal;
-
+import hojosa.relics.common.block.entity.SwordPedestalBlockEntity;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -20,7 +19,7 @@ public class CommonProxy
 	
 	public void onPreInit(FMLPreInitializationEvent event)
 	{
-		GameRegistry.registerTileEntity(TileEntitySwordPedestal.class, "sword_pedestal");
+		GameRegistry.registerTileEntity(SwordPedestalBlockEntity.class, "sword_pedestal");
 		//MinecraftForge.EVENT_BUS.register(new ModBlocks());
 	}
 	
@@ -46,7 +45,7 @@ public class CommonProxy
 	
 	public void registerTileEntities()
 	{
-		GameRegistry.registerTileEntity(TileEntitySwordPedestal.class, "SwordPedestalTE");
+		GameRegistry.registerTileEntity(SwordPedestalBlockEntity.class, "SwordPedestalTE");
 	}
 	public void registerRendering(){}
 

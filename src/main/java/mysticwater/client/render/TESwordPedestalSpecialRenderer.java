@@ -17,7 +17,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.items.CapabilityItemHandler;
 import relics.common.tileentity.TileEntitySwordPedestal;
 
-public class TESwordPedestalSpecialRenderer extends TileEntitySpecialRenderer<TileEntitySwordPedestal>
+public class TESwordPedestalSpecialRenderer extends TileEntitySpecialRenderer<SwordPedestalBlockEntity>
 {
 	private ModelBase pedestal;
 	private RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
@@ -97,7 +97,7 @@ public class TESwordPedestalSpecialRenderer extends TileEntitySpecialRenderer<Ti
 //		  //Tessellator.getInstance().draw();
 //		   GL11.glPopMatrix();
 //	}
-	public void renderTileEntityAt(TileEntitySwordPedestal tileEntity, double x, double y, double z, float partialTick, int destryStage)
+	public void renderTileEntityAt(SwordPedestalBlockEntity tileEntity, double x, double y, double z, float partialTick, int destryStage)
 	{	
 		//if(tileEntity.getStackInSlot(0) != null)
 		if(tileEntity.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null) ? tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).getStackInSlot(0) != null? true: false : false)
@@ -123,7 +123,7 @@ public class TESwordPedestalSpecialRenderer extends TileEntitySpecialRenderer<Ti
 		}
 	}
 	
-	public void renderSword(TileEntitySwordPedestal tileEntity)
+	public void renderSword(SwordPedestalBlockEntity tileEntity)
 	{
 		ItemStack tmp = tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).getStackInSlot(0);
 		if(tileEntity.enchantmentGlimmer)
@@ -159,7 +159,7 @@ public class TESwordPedestalSpecialRenderer extends TileEntitySpecialRenderer<Ti
 		
 	}
 	
-	private void swordAnimation(TileEntitySwordPedestal tileEntity)
+	private void swordAnimation(SwordPedestalBlockEntity tileEntity)
 	{
 		GlStateManager.translate(0.0D, 0.45D, -1.0D);
 		GlStateManager.translate(0.0D, Math.sin(Math.toRadians((double)(tileEntity.sinShift * 2))) / 32.0D, 1.0D);

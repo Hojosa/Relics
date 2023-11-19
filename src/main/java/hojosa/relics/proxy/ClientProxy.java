@@ -1,4 +1,4 @@
-package com.hojosa.relics.proxy;
+package hojosa.relics.proxy;
 
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
