@@ -1,7 +1,7 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "relics:items/flame_sword"
+        "layer0": "relics:item/flame_sword"
     },
     "display": {
         "thirdperson": {

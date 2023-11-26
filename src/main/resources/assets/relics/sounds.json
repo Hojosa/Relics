@@ -1,0 +1,6 @@
+{
+  "place_sword": {
+    "subtitle": "reclis.subtitle.place_sword",
+    "sounds": [ "relics:place_sword" ]
+  }
+}

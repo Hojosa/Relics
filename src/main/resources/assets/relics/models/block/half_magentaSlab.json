@@ -1,8 +1,0 @@
-{
-	"parent": "block/half_slab",
-	"textures": {
-		"bottom":  "blocks/glass_magenta", 
-		"top": "blocks/glass_magenta",
-		"side": "blocks/glass_magenta"
-	}
-}

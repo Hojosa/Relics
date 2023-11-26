@@ -1,7 +1,0 @@
-{
-	"variants": {
-		"axis=z": { "model": "mysticwater:portal_ew" }
-		"axis=x": { "model": "mysticwater:portal_ns" }
-	}	
-}
-		

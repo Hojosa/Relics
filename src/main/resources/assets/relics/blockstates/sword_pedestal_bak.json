@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "relics:block/basic_pedestal"
+    },
+    "facing=south": {
+      "model": "relics:block/basic_pedestal",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "relics:block/basic_pedestal",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "relics:block/basic_pedestal",
+      "y": 270
+  	}
+  }
+}

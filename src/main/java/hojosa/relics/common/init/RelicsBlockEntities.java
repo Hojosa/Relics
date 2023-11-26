@@ -15,8 +15,4 @@ public class RelicsBlockEntities {
 	public static final RegistryObject<BlockEntityType<SwordPedestalBlockEntity>> SWORD_PEDESTAL_BLOCK_ENTITY = BLOCK_ENTITIES.register(
 			References.UnlocalizedName.SWORD_PEDESTAL, () -> BlockEntityType.Builder.of(SwordPedestalBlockEntity::new, RelicsBlocks.SWORD_PEDESTAL.get(), RelicsBlocks.SWORD_PEDESTAL_OOT.get()
 					).build(null));
-	
-//	public static final RegistryObject<BlockEntityType<SwordPedestalBlockEntity>> SWORD_PEDESTAL_OOT_BLOCK_ENTITY = BLOCK_ENTITIES.register(
-//			References.UnlocalizedName.SWORD_PEDESTAL_OOT, () -> BlockEntityType.Builder.of(SwordPedestalBlockEntity::new, RelicsBlocks.SWORD_PEDESTAL_OOT.get()
-//					).build(null));
 }

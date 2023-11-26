@@ -1,17 +1,21 @@
 buildscript {
     repositories {
         maven { url = 'https://maven.minecraftforge.net' }
+        maven { url = 'https://maven.parchmentmc.org' }
         mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        classpath 'org.parchmentmc:librarian:1.+'
     }
 }
 plugins {
     id 'eclipse'
     id 'maven-publish'
 }
+
 apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
 version = "${minecraft_version}-${relics_version}"
 group = 'com.hojosa.relics'
@@ -22,13 +26,17 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 
 minecraft {
-    mappings channel: 'official', version: '1.18.2'
-runs {
+    mappings channel: 'parchment', version: '2022.08.07-1.18.2'
+	accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+	
+	runs {
         client {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
             property 'forge.enabledGameTestNamespaces', 'relics'
+            property 'mixin.env.remapRefMap', 'true'
+			property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
 
             mods {
                 relics {
@@ -42,6 +50,8 @@ runs {
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
             property 'forge.enabledGameTestNamespaces', 'relics'
+            property 'mixin.env.remapRefMap', 'true'
+			property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
 
             mods {
                 relics {
@@ -87,6 +97,8 @@ repositories {
 		name = "Jared's maven"
 		url = "https://maven.blamejared.com/"
  	}
+ 	//Curios
+ 	maven { url = "https://maven.theillusivec4.top/" }
 }
 
 dependencies {
@@ -95,10 +107,12 @@ dependencies {
     // compile against the JEI API but do not include it at runtime
     compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"))
   	compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
+  	compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}:api")
   	
   	    // Runtime mods for testing
     runtimeOnly fg.deobf("curse.maven:theoneprobe-${curseforge_theoneprobe}")
     runtimeOnly fg.deobf("curse.maven:jei-${curseforge_jei}")
+    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
 }
 
 jar {

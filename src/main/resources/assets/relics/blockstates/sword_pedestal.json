@@ -1,19 +1,22 @@
 {
-  "variants": {
-    "facing=north": {
-      "model": "relics:block/basic_pedestal"
+  "multipart": [
+	{ "when": { "facing":"north" },
+      "apply": { "model": "relics:block/basic_pedestal" }
     },
-    "facing=south": {
-      "model": "relics:block/basic_pedestal",
-      "y": 180
+	{ "when": { "facing":"east" },
+      "apply": { "model": "relics:block/basic_pedestal", "y": 90 }
     },
-    "facing=east": {
-      "model": "relics:block/basic_pedestal",
-      "y": 90
+	{ "when": { "facing":"south" },
+      "apply": { "model": "relics:block/basic_pedestal", "y": 180 }
     },
-    "facing=west": {
-      "model": "relics:block/basic_pedestal",
-      "y": 270
-  	}
-  }
+    { "when": { "facing":"west" },
+      "apply": { "model": "relics:block/basic_pedestal", "y": 270 }
+    }, 
+    { "when": { "OR": [ {"sword":"true", "facing":"north" }, {"sword":"true", "facing":"south" }]},
+      "apply": { "model": "relics:block/pedestal_glow" }
+    },
+    { "when": { "OR": [ {"sword":"true", "facing":"east" }, {"sword":"true", "facing":"west" }]},
+      "apply": { "model": "relics:block/pedestal_glow", "y": 90 }
+    } 
+  ]
 }

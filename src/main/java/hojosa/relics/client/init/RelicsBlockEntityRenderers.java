@@ -12,8 +12,7 @@ public class RelicsBlockEntityRenderers {
 	
 	@SubscribeEvent
 	public static void register(EntityRenderersEvent.RegisterRenderers event) {
-		event.registerBlockEntityRenderer(RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), context -> new SwordPedestalBlockRenderer());
-//		event.registerBlockEntityRenderer(RelicsBlockEntities.SWORD_PEDESTAL_OOT_BLOCK_ENTITY.get(), context -> new SwordPedestalBlockRenderer());
+		event.registerBlockEntityRenderer(RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), context -> new SwordPedestalBlockRenderer(context));
 	}
 
 }

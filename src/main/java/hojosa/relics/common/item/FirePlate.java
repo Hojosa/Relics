@@ -1,30 +1,25 @@
 package hojosa.relics.common.item;
 
-import mysticwater.lib.Strings;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.PotionTypes;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.world.World;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.level.Level;
 
 
-public class FirePlate extends ItemRelics
+public class FirePlate extends RelicsItem
 {
-	public FirePlate(String name)
+	public FirePlate(int stackSize, Rarity raity)
 	{
-		super(name);
+		super(stackSize, raity);
 	}
 	
-	public void onUpdate(ItemStack itemStack, World world, Entity entity, int i, boolean b)
+	@Override
+	public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected)
 	{
-		EntityPlayer player = (EntityPlayer) entity;
-		
-		if(player.inventory.hasItemStack(new ItemStack(this)));
-		{
-			player.addPotionEffect(new PotionEffect(Potion.getPotionFromResourceLocation(PotionTypes.FIRE_RESISTANCE.getRegistryName().toString()), 10, 1));
-			
-		}
+		Player player = (Player) pEntity;
+		player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 1));
 	}
 }
