@@ -1,12 +1,14 @@
 package hojosa.relics.common.block;
 
 import java.util.Map;
+import java.util.Random;
 
 import hojosa.relics.Relics;
 import hojosa.relics.common.block.entity.SwordPedestalBlockEntity;
 import hojosa.relics.common.init.RelicsSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -39,6 +41,7 @@ public class SwordPedestalBlock extends RelicsBlock implements EntityBlock//Cont
 {
 	public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 	public static final BooleanProperty SWORD = BooleanProperty.create("sword");
+	public static final BooleanProperty REPAIR = BooleanProperty.create("repair");
 	private Map<Direction, VoxelShape> SWORD_SHAPE;
 	private Map<Direction, VoxelShape> SIDES_SHAPE;
 	
@@ -71,14 +74,17 @@ public class SwordPedestalBlock extends RelicsBlock implements EntityBlock//Cont
 	
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> blockStateBuilder) {
-	   super.createBlockStateDefinition(blockStateBuilder.add(FACING).add(SWORD));
+	   super.createBlockStateDefinition(blockStateBuilder.add(FACING).add(SWORD).add(REPAIR));
 	}
 	
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context)
 	{
+		
 		return this.defaultBlockState()
-				.setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(SWORD, Boolean.FALSE); 
+				.setValue(FACING, context.getHorizontalDirection().getOpposite())
+				.setValue(SWORD, Boolean.FALSE)
+				.setValue(REPAIR, false); 
 	}
 	
 	@Override
@@ -93,9 +99,16 @@ public class SwordPedestalBlock extends RelicsBlock implements EntityBlock//Cont
 			ItemStack itemInHand = player.getItemInHand(hand);
 			//check if the inventory is empty and the player item is a sword. yes -> place sword in inventory
 			if(!blockEntity.isStackInSlot() && blockEntity.canPlaceSword(itemInHand)) {
-				player.setItemInHand(hand, blockEntity.placeSword(itemInHand, level.getGameTime()));
+				player.setItemInHand(hand, blockEntity.placeSword(itemInHand));
 				level.playSound(null, pos, RelicsSounds.SWORD_PLACE_SOUND.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
-				level.setBlock(pos, state.setValue(SWORD, Boolean.TRUE), UPDATE_ALL);
+				state = state.setValue(SWORD, true);
+
+				if(blockEntity.isSwordDamaged()) {
+					System.out.println("need repairs");
+					state = state.setValue(REPAIR, true);
+					level.scheduleTick(pos, this, 600);
+				}
+				System.out.println("getvalues " + state.getValue(SWORD) + " " + state.getValue(REPAIR));
 			}
 			//item in the slot, we try to give the item to the player
 			else if (blockEntity.isStackInSlot())
@@ -103,13 +116,13 @@ public class SwordPedestalBlock extends RelicsBlock implements EntityBlock//Cont
 				//if hand is empty, get item
 				if(itemInHand.isEmpty()) {
 					player.setItemInHand(hand, blockEntity.returnSword(level.getGameTime()));
-					level.setBlock(pos, state.setValue(SWORD, Boolean.FALSE), UPDATE_ALL);
+					state = state.setValue(SWORD, false).setValue(REPAIR, false);
 				}
 				//when there is a free slot, we move the item to the free slot and get the item
 				else if (!(player.getInventory().getFreeSlot() == -1)) {
 					player.setItemInHand(hand, blockEntity.returnSword(level.getGameTime()));
 					player.getInventory().add(itemInHand);
-					level.setBlock(pos, state.setValue(SWORD, Boolean.FALSE), UPDATE_ALL);
+					state = state.setValue(SWORD, false).setValue(REPAIR, false);
 				}
 				else return InteractionResult.FAIL;
 			}
@@ -117,7 +130,9 @@ public class SwordPedestalBlock extends RelicsBlock implements EntityBlock//Cont
 				player.getItemInHand(hand).setCount(itemInHand.getCount() - 1);
 				level.playSound(null, pos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
 				blockEntity.upgradePedestal();
+				blockEntity.setChanged();
 			}
+			level.setBlock(pos, state, UPDATE_ALL);
 			return InteractionResult.SUCCESS;
 		}
 		return InteractionResult.SUCCESS;
@@ -149,5 +164,17 @@ public class SwordPedestalBlock extends RelicsBlock implements EntityBlock//Cont
             }
         }
         super.onRemove(blockState, level, blockPos, newBlockState, isMoving);
+    }
+    
+    @Override
+    public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, Random pRandom) {
+    	SwordPedestalBlockEntity blockEntity = (SwordPedestalBlockEntity) pLevel.getBlockEntity(pPos);
+    	if(blockEntity.isSwordDamaged()) {
+    		blockEntity.repairSword();
+    		if(blockEntity.isSwordDamaged()) {
+    			pLevel.scheduleTick(pPos, this, 600);
+    		}
+    		else pLevel.setBlock(pPos, pState.setValue(REPAIR, false), UPDATE_ALL);
+    	}
     }
 }

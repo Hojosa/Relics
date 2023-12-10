@@ -12,10 +12,10 @@
     { "when": { "facing":"west" },
       "apply": { "model": "relics:block/basic_pedestal", "y": 270 }
     }, 
-    { "when": { "OR": [ {"sword":"true", "facing":"north" }, {"sword":"true", "facing":"south" }]},
+    { "when": { "OR": [ {"repair":"true", "facing":"north" }, {"repair":"true", "facing":"south" }]},
       "apply": { "model": "relics:block/pedestal_glow" }
     },
-    { "when": { "OR": [ {"sword":"true", "facing":"east" }, {"sword":"true", "facing":"west" }]},
+    { "when": { "OR": [ {"repair":"true", "facing":"east" }, {"repair":"true", "facing":"west" }]},
       "apply": { "model": "relics:block/pedestal_glow", "y": 90 }
     } 
   ]

@@ -33,7 +33,6 @@ import net.minecraftforge.items.ItemStackHandler;
 public class SwordPedestalBlockEntity extends BlockEntity
 {
 	public boolean repairUpgrade = false;
-	private long swordPlacedTime;
 	
 	private ItemStackHandler itemHandler = new ItemStackHandler(1) {
 		@Override
@@ -59,11 +58,8 @@ public class SwordPedestalBlockEntity extends BlockEntity
 		handler.invalidate();
 	}
 	
-	public ItemStack placeSword(ItemStack sword, long currentWorldTime) {
+	public ItemStack placeSword(ItemStack sword) {
 		if (this.itemHandler.isItemValid(0, sword)) {
-			if(repairUpgrade) {
-				this.swordPlacedTime = level.getGameTime();
-			}
 			this.itemHandler.setStackInSlot(0, sword);
 			this.setChanged();
 			level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_ALL);
@@ -78,11 +74,8 @@ public class SwordPedestalBlockEntity extends BlockEntity
 	
 	//returns the sword to the player
 	public ItemStack returnSword(long currentGameTime) {
-		System.out.println("repair? " + repairUpgrade);
 		ItemStack item = this.itemHandler.getStackInSlot(0);
-		if(repairUpgrade) {
-			repairSword(item, currentGameTime);
-		}
+
 		this.itemHandler.setStackInSlot(0, new ItemStack(Items.AIR));
 		level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_ALL);
 		return item;
@@ -149,20 +142,28 @@ public class SwordPedestalBlockEntity extends BlockEntity
         handler.invalidate();
     }
     
-    private ItemStack repairSword(ItemStack sword, long worldTime) {
-    	if(repairUpgrade && sword.getDamageValue() > 0) {
-    		long repairValue = (worldTime-this.swordPlacedTime)/20/1000;
-    		sword.setDamageValue(sword.getDamageValue()-(int)repairValue);
-    		return sword;
+    public void repairSword() {
+    	if(isStackInSlot()){
+    		ItemStack sword = this.itemHandler.extractItem(0, 1, false);
+    		System.out.println("reparing value: " + sword.getDamageValue());
+    		sword.setDamageValue(sword.getDamageValue() - 1);
+    		this.itemHandler.insertItem(0, sword, false);
     	}
-    	else return sword;
     }
+    
+    public boolean isSwordDamaged() {
+    	return this.itemHandler.getStackInSlot(0).getDamageValue() > 0;
+    }
+    
     
     public void upgradePedestal() {
     	this.repairUpgrade = true;
 		level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_ALL);
     }
- 
+    
+    public boolean hasUpgrade(){
+    	return repairUpgrade;
+    }
     
     @Nullable
     @Override
