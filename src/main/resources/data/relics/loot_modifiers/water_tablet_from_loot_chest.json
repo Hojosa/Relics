@@ -1,0 +1,31 @@
+{
+  "conditions": [
+    {
+      "condition": "minecraft:random_chance",
+      "chance": 0.01
+    },
+     {
+        "condition": "minecraft:alternative",
+          "terms": [
+	    {	
+	      "condition": "forge:loot_table_id",
+	      "loot_table_id": "minecraft:chests/end_city_treasure"
+	    },
+	    {	
+	      "condition": "forge:loot_table_id",
+	      "loot_table_id": "minecraft:chests/shipwreck_treasure"
+	    },
+	    {	
+	      "condition": "forge:loot_table_id",
+	      "loot_table_id": "minecraft:chests/ruined_portal"
+	    },
+	       {	
+	      "condition": "forge:loot_table_id",
+	      "loot_table_id": "minecraft:chests/stronghold_library"
+	    }
+    ]
+    }
+  ],
+  "item": "relics:fire_tablet",
+  "type": "relics:global_block_loot_modifier"
+}

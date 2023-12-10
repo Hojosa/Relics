@@ -9,24 +9,19 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class References 
 
 {
 	public static final String MODID = "relics";
-//	public static final String MODNAME = "Mystic Water";
 	public static final String VERSION = "0.3";
 	public static String CREATIVE_TAB = "relics";
-//	public static final String CLIENTPROXYLOCATION = MODID + ".core.proxy.ClientProxy";
-//	public static final String COMMONPROXYLOCATION = MODID + ".core.proxy.CommonProxy";
-//	public static final String RESOURCESPREFIX = MODID.toLowerCase() + ":";
 	
     public static final CreativeModeTab ITEM_GROUP = new CreativeModeTab(CREATIVE_TAB) {
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(RelicsItems.FIRE_PLATE.get());
+            return new ItemStack(RelicsItems.FIRE_TABLET.get());
         }
     };
 
@@ -42,6 +37,7 @@ public class References
 		public static final String WATER_PLATE = "water_plate";
 		public static final String CLAY_BLUE = "clay_blue";
 		public static final String BRICK_BLUE = "brick_blue";
+		public static final String MASTER_SWORD = "master_sword";
     	
     }
     
