@@ -28,3 +28,5 @@ build
 /run/
 eclipse
 run
+.cache
+/src/generated/resources/.cache/cache

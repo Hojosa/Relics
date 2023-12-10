@@ -10,27 +10,25 @@ import hojosa.relics.common.init.RelicsBlocks;
 import hojosa.relics.common.init.RelicsItems;
 import hojosa.relics.common.init.RelicsLootModifiers;
 import hojosa.relics.common.init.RelicsSounds;
+import hojosa.relics.integration.RelicsIntegration;
 import hojosa.relics.lib.References;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import top.theillusivec4.curios.api.SlotTypeMessage;
-import top.theillusivec4.curios.api.SlotTypePreset;
 
 @Mod(References.MODID)
 @Mod.EventBusSubscriber(modid = References.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Relics {
     public static final Logger LOGGER = LogManager.getLogger(References.MODID);
-    private static boolean curiosPresent;// = false;
+    public static boolean curiosPresent = false;
 	
     public Relics() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -46,7 +44,6 @@ public class Relics {
         RelicsLootModifiers.register(modEventBus);
         
         MinecraftForge.EVENT_BUS.register(this);
-        curiosPresent = ModList.get().isLoaded("curios");
     }
     
     private void clientSetupEvent(final FMLClientSetupEvent event) {
@@ -67,91 +64,6 @@ public class Relics {
     }
     
     private void enqueueIMC(final InterModEnqueueEvent event) {
-    	if (curiosPresent) {
-    		InterModComms.sendTo("curios",  SlotTypeMessage.REGISTER_TYPE, 
-    				() -> SlotTypePreset.CHARM.getMessageBuilder().build());
-    	}
+        RelicsIntegration.load();
     }
-    
-    
-    
-//	@Mod.Instance(Relics.MOD_ID)
-//	public static Relics instance;
-//	
-//	@SidedProxy(clientSide = "com.hojosa.relics.proxy.ClientProxy", serverSide = "com.hojosa.relics.proxy.CommonProxy")
-//	public static CommonProxy proxy;
-//
-//	@EventHandler
-//	public void onServerStarting(FMLServerStartingEvent event) 
-//	{
-//		proxy.onServerStarting(event);
-//	}
-//	
-//	@EventHandler
-//	public void onPreInit(FMLPreInitializationEvent event)
-//	{
-//		System.out.println("CALL?");
-//		proxy.onPreInit(event);
-//		BlockPropertyHelper.init();
-//		ModBlocks.init();
-//		ModBlocks.register();
-//		
-//		ModItems.init();
-//		ModItems.register();
-//
-//		CraftingHandler.init();
-//		
-//		
-//		if(event.getSide() == Side.CLIENT)
-//		{
-//			OBJLoader.INSTANCE.addDomain(References.MODID);
-//			B3DLoader.INSTANCE.addDomain(References.MODID);
-//			ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(ModBlocks.swordPedestal), 0, new ModelResourceLocation(References.MODID + ":" + Strings.SwordPedestalName, "inventory"));
-//		
-//			
-//			
-//			Models.init();
-//		}
-		
-		
-		
-		//proxy.registerRendering();
-		
-		//PacketHandler.init();
-		
-		//SwordPedestalUtil.preinit();
-//	}
-//
-//	@EventHandler
-//	public void onInit(FMLInitializationEvent event)
-//	{	
-//		proxy.onInit(event);
-		//NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GUIHandler());
-//		if(event.getSide() == Side.CLIENT)
-//			{
-//				Models.init();
-//				//Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(ModItems.firePlate, 0, new ModelResourceLocation("mysticwater:firePlate", "inventory"));
-//				//Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(ModBlocks.lapisBrick), 0, new ModelResourceLocation(References.MODID + ":" + Strings.LapisBrickName , "inventory"));
-//			}
-//		proxy1.registerTileEntities();
-//		proxy1.registerRendering();
-//		
-		//ModWorld.init();
-//	}
-//
-//	@EventHandler
-//	public void onPostInit(FMLPostInitializationEvent event)
-//	{
-//		proxy.onPostInit(event);
-//	}
-//	
-//	@EventHandler
-//	public void onServerStopping(FMLServerStoppingEvent event)
-//	{
-//		proxy.onServerStopping(event);
-//	}
-
-//	@SidedProxy(clientSide = References.CLIENTPROXYLOCATION, serverSide = References.COMMONPROXYLOCATION)
-//	public static CommonProxy proxy;
-
 }
