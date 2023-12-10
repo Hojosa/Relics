@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "relics:fire_plate"
+    "relics:fire_plate",
+    "relics:water_plate"
   ]
 }
