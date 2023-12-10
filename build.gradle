@@ -1,7 +1,7 @@
 buildscript {
     repositories {
         maven { url = 'https://maven.minecraftforge.net' }
-        maven { url = 'https://maven.parchmentmc.org' }
+        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
         mavenCentral()
     }
     dependencies {
@@ -12,13 +12,12 @@ buildscript {
 plugins {
     id 'eclipse'
     id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '5.1.+'
+    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
 
-apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'org.parchmentmc.librarian.forgegradle'
-
 version = "${minecraft_version}-${relics_version}"
-group = 'com.hojosa.relics'
+group = 'hojosa.relics'
 archivesBaseName = 'relics'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -77,6 +76,8 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
+            property 'mixin.env.remapRefMap', 'true'
+			property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
             args '--mod', 'relics', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
@@ -99,11 +100,15 @@ repositories {
  	}
  	//Curios
  	maven { url = "https://maven.theillusivec4.top/" }
+ 	//ExpandAbility
+ 	maven { url = "https://maven.florens.be/releases" }
 }
 
 dependencies {
     minecraft "net.minecraftforge:forge:${forge_version}"
     
+   // annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    compileOnly fg.deobf("be.florens:expandability-forge:${expandability_version}")
     // compile against the JEI API but do not include it at runtime
     compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"))
   	compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
@@ -113,7 +118,19 @@ dependencies {
     runtimeOnly fg.deobf("curse.maven:theoneprobe-${curseforge_theoneprobe}")
     runtimeOnly fg.deobf("curse.maven:jei-${curseforge_jei}")
     runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
+    
 }
+
+//mixin {
+//    add sourceSets.main, "relics.refmap.json"
+//    config "relics.mixins.json"
+    
+        // Specify options for dev run configs
+//    debug.verbose = true
+//    debug.export = true
+//    dumpTargetOnFailure = true
+//}
+
 
 jar {
     manifest {
