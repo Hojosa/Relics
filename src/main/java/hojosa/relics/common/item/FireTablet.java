@@ -1,25 +1,36 @@
 package hojosa.relics.common.item;
 
+import org.jetbrains.annotations.Nullable;
+
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.level.Level;
+import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 
-public class FirePlate extends RelicsItem
+public class FireTablet extends RelicsItem implements ICurioItem
 {
-	public FirePlate(int stackSize, Rarity raity)
+	public FireTablet(int stackSize, Rarity raity)
 	{
 		super(stackSize, raity);
 	}
 	
 	@Override
-	public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected)
-	{
-		Player player = (Player) pEntity;
-		player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 1));
+	public void curioTick(SlotContext slotContext, ItemStack stack) {
+		slotContext.entity().addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 20));
+	}
+	
+	@Override
+	public boolean canEquipFromUse(SlotContext slotContext, ItemStack stack) {
+		return true;
+	}
+	
+	public boolean isEquipped(@Nullable LivingEntity entity) {
+		return entity != null && CuriosApi.getCuriosHelper().findFirstCurio(entity, this).isPresent();
 	}
 }
+

@@ -26,6 +26,6 @@
     ]
     }
   ],
-  "item": "relics:fire_plate",
+  "item": "relics:fire_tablet",
   "type": "relics:global_block_loot_modifier"
 }
