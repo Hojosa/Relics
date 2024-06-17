@@ -1,0 +1,9 @@
+{
+	"loader": "forge:obj",
+	"flip-v": true,
+	"model": "relics:models/block/sword_pedestal_twilight.obj",
+	"textures": {
+		"texture0": "relics:block/sword_pedestal_twilight",
+		"particle": "relics:block/sword_pedestal_twilight"
+	}
+}

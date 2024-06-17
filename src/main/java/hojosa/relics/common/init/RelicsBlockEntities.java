@@ -13,6 +13,6 @@ public class RelicsBlockEntities {
 			ForgeRegistries.BLOCK_ENTITIES, References.MODID);
 
 	public static final RegistryObject<BlockEntityType<SwordPedestalBlockEntity>> SWORD_PEDESTAL_BLOCK_ENTITY = BLOCK_ENTITIES.register(
-			References.UnlocalizedName.SWORD_PEDESTAL, () -> BlockEntityType.Builder.of(SwordPedestalBlockEntity::new, RelicsBlocks.SWORD_PEDESTAL.get(), RelicsBlocks.SWORD_PEDESTAL_OOT.get()
+			References.UnlocalizedName.SWORD_PEDESTAL, () -> BlockEntityType.Builder.of(SwordPedestalBlockEntity::new, RelicsBlocks.SWORD_PEDESTAL.get(), RelicsBlocks.SWORD_PEDESTAL_OOT.get(), RelicsBlocks.SWORD_PEDESTAL_TWILIGHT.get()
 					).build(null));
 }

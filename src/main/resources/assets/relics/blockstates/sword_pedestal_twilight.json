@@ -1,0 +1,16 @@
+{
+  "multipart": [
+	{ "when": { "facing":"north" },
+      "apply": { "model": "relics:block/sword_pedestal_twilight" }
+    },
+	{ "when": { "facing":"east" },
+      "apply": { "model": "relics:block/sword_pedestal_twilight", "y": 90 }
+    },
+	{ "when": { "facing":"south" },
+      "apply": { "model": "relics:block/sword_pedestal_twilight", "y": 180 }
+    },
+    { "when": { "facing":"west" },
+      "apply": { "model": "relics:block/sword_pedestal_twilight", "y": 270 }
+    }
+  ]
+}

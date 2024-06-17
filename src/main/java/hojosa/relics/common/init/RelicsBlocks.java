@@ -25,14 +25,16 @@ public class RelicsBlocks{
 	
 	public static final RegistryObject<Block>SWORD_PEDESTAL = registerBlock(
 			References.UnlocalizedName.SWORD_PEDESTAL, () -> new SwordPedestalBlock(References.PedestalShapes.BASE_SIDES_SHAPE, References.PedestalShapes.BASE_SWORD_SHAPE)
-			);
+	);
 	
 	public static final RegistryObject<Block>SWORD_PEDESTAL_OOT = registerBlock(
 			References.UnlocalizedName.SWORD_PEDESTAL_OOT, () -> new SwordPedestalBlock(References.PedestalShapes.OOT_SIDES_SHAPE, References.PedestalShapes.OOT_SWORD_SHAPE)
-			);
+	);
 	
-	
-	
+	public static final RegistryObject<Block>SWORD_PEDESTAL_TWILIGHT = registerBlock(
+			References.UnlocalizedName.SWORD_PEDESTAL_TWILIGHT, () -> new SwordPedestalBlock(References.PedestalShapes.TWILIGHT_SIDES_SHAPE, References.PedestalShapes.TWILIGHT_SWORD_SHAPE)
+	);
+
     private static RegistryObject<Block> registerBlock(String name, Supplier<Block> block) {
         return registerBlock(name, block, false);
     }

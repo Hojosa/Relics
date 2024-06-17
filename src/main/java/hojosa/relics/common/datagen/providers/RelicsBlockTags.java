@@ -2,14 +2,11 @@ package hojosa.relics.common.datagen.providers;
 
 import org.jetbrains.annotations.Nullable;
 
-import hojosa.relics.common.block.RelicsBlock;
 import hojosa.relics.common.init.RelicsBlocks;
 import hojosa.relics.lib.References;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
-import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.BlockTags;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class RelicsBlockTags extends BlockTagsProvider {

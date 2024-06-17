@@ -1,6 +1,7 @@
 package hojosa.relics.common.datagen;
 
 import hojosa.relics.common.datagen.providers.RelicsBlockTags;
+import hojosa.relics.common.datagen.providers.RelicsGlobalLootModifiersProvider;
 import hojosa.relics.common.datagen.providers.RelicsItemTags;
 import hojosa.relics.common.datagen.providers.RelicsLootTables;
 import hojosa.relics.common.datagen.providers.RelicsRecipes;
@@ -26,6 +27,7 @@ public class RelicsDataGenerators {
 			generator.addProvider(new RelicsItemTags(generator, blockTags, existingFileHelper));
 			generator.addProvider(new RelicsRecipes(generator));
 			generator.addProvider(new RelicsLootTables(generator));
+			generator.addProvider(new RelicsGlobalLootModifiersProvider(generator));
 		}
 		if(event.includeClient()) {
 			

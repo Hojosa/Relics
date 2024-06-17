@@ -12,5 +12,6 @@ public class RelicsBlockRenders {
     private static void setBlockRenderLayers() {
     	ItemBlockRenderTypes.setRenderLayer(RelicsBlocks.SWORD_PEDESTAL.get(), RenderType.translucent());
     	ItemBlockRenderTypes.setRenderLayer(RelicsBlocks.SWORD_PEDESTAL_OOT.get(), RenderType.translucent());
+    	ItemBlockRenderTypes.setRenderLayer(RelicsBlocks.SWORD_PEDESTAL_TWILIGHT.get(), RenderType.cutout());
     }
 }

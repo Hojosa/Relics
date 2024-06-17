@@ -64,6 +64,13 @@ public class SwordPedestalBlock extends RelicsBlock implements EntityBlock//Cont
 	
 	@Override
 	public VoxelShape getShape(BlockState blockState, BlockGetter level, BlockPos pos, CollisionContext context) {
+//		SIDES_SHAPE = Util.make(new EnumMap<>(Direction.class), map -> {
+//    		map.put(Direction.NORTH, Block.box(1.0D, 0.0D, 4.5D, 15.0D, 4.1D, 11.5D));
+//    		map.put(Direction.EAST, Block.box(4.5D, 0.0D, 1.0D, 11.5D, 4.1D, 15.0D));
+//    		map.put(Direction.SOUTH, Block.box(1.0D, 0.0D, 4.5D, 15.0D, 4.1D, 11.5D));
+//    		map.put(Direction.WEST, Block.box(4.5D, 0.0D, 1.0D, 11.5D, 4.1D, 15.0D));
+//    	});
+//		return Block.box(2,3.9,7.5,14,24.5,8.5);
 		return blockState.getValue(SWORD) ? Shapes.or(SIDES_SHAPE.get(blockState.getValue(FACING)),SWORD_SHAPE.get(blockState.getValue(FACING))) : SIDES_SHAPE.get(blockState.getValue(FACING));
 	}
 	
@@ -160,7 +167,7 @@ public class SwordPedestalBlock extends RelicsBlock implements EntityBlock//Cont
             	SwordPedestalBlockEntity blockEntity = (SwordPedestalBlockEntity) level.getBlockEntity(blockPos);
                 blockEntity.dropItems();
             } catch (Exception ex) {
-                Relics.LOGGER.error(String.format("Invalid blockEntity type at %s, expected RoasterBlockEntity", blockPos));
+                Relics.LOGGER.error(String.format("Invalid blockEntity type at %s, expected SwordPedestalBlockEntity", blockPos));
             }
         }
         super.onRemove(blockState, level, blockPos, newBlockState, isMoving);

@@ -16,11 +16,11 @@ import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public class GlobalLootModifier extends LootModifier {
+public class RelicsGlobalLootModifier extends LootModifier {
 
     private final Item item;
 
-    protected GlobalLootModifier(LootItemCondition[] conditionsIn, Item item) {
+    public RelicsGlobalLootModifier(LootItemCondition[] conditionsIn, Item item) {
         super(conditionsIn);
         this.item = item;
     }
@@ -32,15 +32,18 @@ public class GlobalLootModifier extends LootModifier {
         return generatedLoot;
     }
 
-    public static class Serializer extends GlobalLootModifierSerializer<GlobalLootModifier> {
+    public static class Serializer extends GlobalLootModifierSerializer<RelicsGlobalLootModifier> {
+    	
+    	public static final Serializer INSTANCE = new Serializer();
+
         @Override
-        public GlobalLootModifier read(ResourceLocation location, JsonObject object, LootItemCondition[] lootConditions) {
+        public RelicsGlobalLootModifier read(ResourceLocation location, JsonObject object, LootItemCondition[] lootConditions) {
             Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation((GsonHelper.getAsString(object, "item"))));
-            return new GlobalLootModifier(lootConditions, item);
+            return new RelicsGlobalLootModifier(lootConditions, item);
         }
 
         @Override
-        public JsonObject write(GlobalLootModifier instance) {
+        public JsonObject write(RelicsGlobalLootModifier instance) {
             JsonObject json = makeConditions(instance.conditions);
             json.addProperty("item", ForgeRegistries.ITEMS.getKey(instance.item).toString());
             return json;
