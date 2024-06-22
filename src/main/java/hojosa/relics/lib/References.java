@@ -3,11 +3,8 @@ package hojosa.relics.lib;
 import java.util.EnumMap;
 import java.util.Map;
 
-import hojosa.relics.common.init.RelicsItems;
 import net.minecraft.Util;
 import net.minecraft.core.Direction;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -17,13 +14,6 @@ public class References
 	public static final String MODID = "relics";
 	public static final String VERSION = "0.3";
 	public static String CREATIVE_TAB = "relics";
-	
-    public static final CreativeModeTab ITEM_GROUP = new CreativeModeTab(CREATIVE_TAB) {
-        @Override
-        public ItemStack makeIcon() {
-            return new ItemStack(RelicsItems.FIRE_TABLET.get());
-        }
-    };
 
     public static class UnlocalizedName {
     	public static final String LAPIS_BRICK = "lapis_brick";

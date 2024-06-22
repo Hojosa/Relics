@@ -22,7 +22,7 @@ public class RelicsEvents {
 
 	@SubscribeEvent
 	public static void fluidWalker(LivingFluidCollisionEvent event) {
-		if(event.getFluidState().is(FluidTags.WATER) && RelicsItems.WATER_TABLET.get().isEquipped(event.getEntityLiving())) {
+		if(event.getFluidState().is(FluidTags.WATER) && RelicsItems.WATER_TABLET.get().isEquipped(event.getEntity())) {
 			event.setResult(Event.Result.ALLOW);
 		}
 	}

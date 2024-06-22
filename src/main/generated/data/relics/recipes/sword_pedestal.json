@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "relics",
+  "key": {
+    "#": {
+      "item": "minecraft:stone"
+    },
+    "x": {
+      "item": "minecraft:stone_slab"
+    }
+  },
+  "pattern": [
+    " x ",
+    "x#x"
+  ],
+  "result": {
+    "item": "relics:sword_pedestal"
+  },
+  "show_notification": true
+}

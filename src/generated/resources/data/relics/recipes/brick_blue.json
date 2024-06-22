@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "relics:clay_blue"
-  },
-  "result": "relics:brick_blue",
-  "experience": 1.0,
-  "cookingtime": 100
-}

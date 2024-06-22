@@ -1,6 +1,6 @@
 {
-  "replace": false,
   "entries": [
     "relics:fire_tablet_from_loot_chest"
-  ]
+  ],
+  "replace": false
 }

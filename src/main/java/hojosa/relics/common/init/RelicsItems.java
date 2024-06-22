@@ -33,10 +33,10 @@ public class RelicsItems{
     );
 	
     public static final RegistryObject<SwordItem> FIRE_SWORD = ITEMS.register(
-            References.UnlocalizedName.FIRE_SWORD, () -> new SwordItem(Tiers.IRON, 3, -2.4F, (new Item.Properties().tab(References.ITEM_GROUP)))
+            References.UnlocalizedName.FIRE_SWORD, () -> new SwordItem(Tiers.IRON, 3, -2.4F, new Item.Properties())
     );
     
     public static final RegistryObject<SwordItem> MASTER_SWORD = ITEMS.register(
-            References.UnlocalizedName.MASTER_SWORD, () -> new SwordItem(Tiers.DIAMOND, 5, -2.4F, (new Item.Properties().tab(References.ITEM_GROUP)))
+            References.UnlocalizedName.MASTER_SWORD, () -> new SwordItem(Tiers.DIAMOND, 5, -2.4F, new Item.Properties())
     );
 }

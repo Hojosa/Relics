@@ -1,7 +1,6 @@
 package hojosa.relics.common.block;
 
 import java.util.Map;
-import java.util.Random;
 
 import hojosa.relics.Relics;
 import hojosa.relics.common.block.entity.SwordPedestalBlockEntity;
@@ -11,6 +10,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -58,6 +58,7 @@ public class SwordPedestalBlock extends RelicsBlock implements EntityBlock//Cont
 	private static Properties getInitProperties() {
 		Properties properties = Properties.copy(Blocks.STONECUTTER);
 		properties.sound(SoundType.STONE);
+		properties.randomTicks();
 		properties.noOcclusion();
 		return properties;
 	}
@@ -174,14 +175,10 @@ public class SwordPedestalBlock extends RelicsBlock implements EntityBlock//Cont
     }
     
     @Override
-    public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, Random pRandom) {
+    public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
     	SwordPedestalBlockEntity blockEntity = (SwordPedestalBlockEntity) pLevel.getBlockEntity(pPos);
     	if(blockEntity.isSwordDamaged()) {
     		blockEntity.repairSword();
-    		if(blockEntity.isSwordDamaged()) {
-    			pLevel.scheduleTick(pPos, this, 600);
-    		}
-    		else pLevel.setBlock(pPos, pState.setValue(REPAIR, false), UPDATE_ALL);
     	}
     }
 }

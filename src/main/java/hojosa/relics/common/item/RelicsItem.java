@@ -1,6 +1,5 @@
 package hojosa.relics.common.item;
 
-import hojosa.relics.lib.References;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 
@@ -21,7 +20,6 @@ public class RelicsItem extends Item
     private static Properties getInitProperties(int maxStackSize) {
         Properties properties = new Properties();
         properties.stacksTo(maxStackSize);
-        properties.tab(References.ITEM_GROUP);
         return properties;
     }
 }

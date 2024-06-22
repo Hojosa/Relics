@@ -1,53 +1,23 @@
 package hojosa.relics.common.loot;
 
-import java.util.List;
+import com.mojang.serialization.Codec;
 
-import javax.annotation.Nonnull;
-
-import com.google.gson.JsonObject;
-
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
-import net.minecraftforge.common.loot.LootModifier;
+import hojosa.relics.lib.References;
+import net.minecraftforge.common.loot.IGlobalLootModifier;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
-public class RelicsGlobalLootModifier extends LootModifier {
+public class RelicsGlobalLootModifier{
 
-    private final Item item;
+    public static final DeferredRegister<Codec<? extends IGlobalLootModifier>> LOOT_MODIFIER_SERIALIZERS =
+            DeferredRegister.create(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, References.MODID);
 
-    public RelicsGlobalLootModifier(LootItemCondition[] conditionsIn, Item item) {
-        super(conditionsIn);
-        this.item = item;
+    public static final RegistryObject<Codec<? extends IGlobalLootModifier>> ADD_ITEM =
+            LOOT_MODIFIER_SERIALIZERS.register("add_item", AddItemModifier.CODEC);
+
+    public static void register(IEventBus eventBus) {
+        LOOT_MODIFIER_SERIALIZERS.register(eventBus);
     }
-
-    @Nonnull
-    @Override
-    protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
-        generatedLoot.add(new ItemStack(item, 1));
-        return generatedLoot;
-    }
-
-    public static class Serializer extends GlobalLootModifierSerializer<RelicsGlobalLootModifier> {
-    	
-    	public static final Serializer INSTANCE = new Serializer();
-
-        @Override
-        public RelicsGlobalLootModifier read(ResourceLocation location, JsonObject object, LootItemCondition[] lootConditions) {
-            Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation((GsonHelper.getAsString(object, "item"))));
-            return new RelicsGlobalLootModifier(lootConditions, item);
-        }
-
-        @Override
-        public JsonObject write(RelicsGlobalLootModifier instance) {
-            JsonObject json = makeConditions(instance.conditions);
-            json.addProperty("item", ForgeRegistries.ITEMS.getKey(instance.item).toString());
-            return json;
-        }
-    }
-	
 }

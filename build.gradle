@@ -1,95 +1,49 @@
-buildscript {
-    repositories {
-        maven { url = 'https://maven.minecraftforge.net' }
-        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
-        mavenCentral()
-    }
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
-        classpath 'org.parchmentmc:librarian:1.+'
-    }
-}
 plugins {
+    id 'java'
     id 'eclipse'
     id 'maven-publish'
-    id 'net.minecraftforge.gradle' version '5.1.+'
+    id 'net.neoforged.gradle' version '[6.0.18,6.2)'
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
 
-version = "${minecraft_version}-${relics_version}"
-group = 'hojosa.relics'
-archivesBaseName = 'relics'
+version = mod_version
+group = mod_group_id
+archivesBaseName  = mod_id
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+    withSourcesJar()
+}
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 
 minecraft {
-    mappings channel: 'parchment', version: '2022.08.07-1.18.2'
-	accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
-	
-	runs {
+    mappings channel: mapping_channel, version: mapping_version
+
+    runs {
         client {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'relics'
+            workingDirectory file('run')
             property 'mixin.env.remapRefMap', 'true'
-			property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
-
-            mods {
-                relics {
-                    source sourceSets.main
-                }
-            }
+			property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+            mods { mod_id { source sourceSets.main } }
         }
-
         server {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'relics'
-            property 'mixin.env.remapRefMap', 'true'
-			property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
-
-            mods {
-                relics {
-                    source sourceSets.main
-                }
-            }
+            workingDirectory file('run')
+            mods { mod_id { source sourceSets.main } }
         }
-
-        gameTestServer {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'relics'
-
-            mods {
-                relics {
-                    source sourceSets.main
-                }
-            }
-        }
-
         data {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
+            workingDirectory file('run')
             property 'mixin.env.remapRefMap', 'true'
-			property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
-            args '--mod', 'relics', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-
-            mods {
-                relics {
-                    source sourceSets.main
-                }
-            }
+			property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+            args '--mod', mod_id, '--all', '--output', file("src/main/generated"), '--existing', file("src/main/resources")
+            mods { mod_id { source sourceSets.main } }
         }
     }
 }
 
-sourceSets.main.resources { srcDir 'src/generated/resources' }
+sourceSets.main.resources { srcDir 'src/main/generated' }
 
 repositories {
     // Curse Forge
@@ -101,38 +55,46 @@ repositories {
  	//Curios
  	maven { url = "https://maven.theillusivec4.top/" }
  	//ExpandAbility
- 	maven { url = "https://maven.florens.be/releases" }
+    maven {
+        url "https://maven.florens.be/releases"
+        content {
+            includeGroup "be.florens"
+        }
+    }
+    maven { url = "https://jitpack.io" }
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${forge_version}"
-    
-   // annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-    compileOnly fg.deobf("be.florens:expandability-forge:${expandability_version}")
-    // compile against the JEI API but do not include it at runtime
-    compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"))
-  	compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
+    minecraft "net.neoforged:forge:${minecraft_version}-${neo_version}"
+
+    implementation fg.deobf("be.florens:expandability-forge:9.0.4")
+    compileOnly(annotationProcessor("com.github.LlamaLad7:MixinExtras:0.1.1"))
+//    implementation(jarJar("com.github.LlamaLad7:MixinExtras:0.1.1"))
+    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
+  	compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
+    runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
+
   	compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}:api")
-  	
-  	    // Runtime mods for testing
+
     runtimeOnly fg.deobf("curse.maven:theoneprobe-${curseforge_theoneprobe}")
-    runtimeOnly fg.deobf("curse.maven:jei-${curseforge_jei}")
+
     runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
     
 }
 
-//mixin {
-//    add sourceSets.main, "relics.refmap.json"
-//    config "relics.mixins.json"
-    
-        // Specify options for dev run configs
-//    debug.verbose = true
-//    debug.export = true
-//    dumpTargetOnFailure = true
-//}
+processResources {
+    inputs.property 'mod_version', mod_version
+    inputs.property 'minecraft_version', minecraft_version
 
+    filesMatching('META-INF/mods.toml') {
+        expand 'file': ['jarVersion': mod_version],
+                'minecraft_version': minecraft_version,
+                'neo_version': neo_version,
+                'lang_version': neo_version.split('\\.')[0]
+    }
+}
 
-jar {
+tasks.named('jar', Jar).configure {
     manifest {
         attributes([
                 "Specification-Title"     : "relics",
@@ -144,13 +106,12 @@ jar {
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
+    finalizedBy 'reobfJar'
 }
-
-jar.finalizedBy('reobfJar')
 
 publishing {
     publications {
-        mavenJava(MavenPublication) {
+        register('mavenJava', MavenPublication) {
             artifact jar
         }
     }

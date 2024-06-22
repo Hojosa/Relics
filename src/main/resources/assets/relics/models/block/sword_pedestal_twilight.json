@@ -1,4 +1,5 @@
 {
+	"render_type": "minecraft:cutout",
 	"loader": "forge:obj",
 	"flip-v": true,
 	"model": "relics:models/block/sword_pedestal_twilight.obj",

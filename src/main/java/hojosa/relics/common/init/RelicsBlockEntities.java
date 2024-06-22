@@ -10,7 +10,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class RelicsBlockEntities {
 	
 	public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(
-			ForgeRegistries.BLOCK_ENTITIES, References.MODID);
+			ForgeRegistries.BLOCK_ENTITY_TYPES, References.MODID);
 
 	public static final RegistryObject<BlockEntityType<SwordPedestalBlockEntity>> SWORD_PEDESTAL_BLOCK_ENTITY = BLOCK_ENTITIES.register(
 			References.UnlocalizedName.SWORD_PEDESTAL, () -> BlockEntityType.Builder.of(SwordPedestalBlockEntity::new, RelicsBlocks.SWORD_PEDESTAL.get(), RelicsBlocks.SWORD_PEDESTAL_OOT.get(), RelicsBlocks.SWORD_PEDESTAL_TWILIGHT.get()

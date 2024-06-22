@@ -24,14 +24,15 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
 
 public class SwordPedestalBlockEntity extends BlockEntity
 {
+	public static final String ITEMS_TAG = "Inventory";
 	public boolean repairUpgrade = false;
 	
 	private ItemStackHandler itemHandler = new ItemStackHandler(1) {
@@ -89,8 +90,8 @@ public class SwordPedestalBlockEntity extends BlockEntity
 	
 	@Override
 	public void load(CompoundTag tag) {
-		if(tag.contains("Inventory")) {
-			itemHandler.deserializeNBT(tag.getCompound("Inventory"));
+		if(tag.contains(ITEMS_TAG)) {
+			itemHandler.deserializeNBT(tag.getCompound(ITEMS_TAG));
 		}
 		if(tag.contains("Info")) {
 			repairUpgrade = tag.getCompound("Info").getBoolean("Upgrade");
@@ -100,7 +101,7 @@ public class SwordPedestalBlockEntity extends BlockEntity
 	
 	@Override
 	public void saveAdditional(CompoundTag tag) {
-		tag.put("Inventory", itemHandler.serializeNBT());
+		tag.put(ITEMS_TAG, itemHandler.serializeNBT());
 		
 		CompoundTag upgradeTag = new CompoundTag();
 		upgradeTag.putBoolean("Upgrade", repairUpgrade);
@@ -168,7 +169,7 @@ public class SwordPedestalBlockEntity extends BlockEntity
     @Nullable
     @Override
     public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> capability, @Nullable Direction facing) {
-    	return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? handler.cast() : super.getCapability(capability, facing);
+    	return capability == ForgeCapabilities.ITEM_HANDLER ? handler.cast() : super.getCapability(capability, facing);
     }
 	
 	public boolean isStackInSlot() {

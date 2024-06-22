@@ -1,12 +1,10 @@
 package hojosa.relics.common.init;
 
-import java.util.ArrayList;
 import java.util.function.Supplier;
 
 import hojosa.relics.common.block.RelicsBlock;
 import hojosa.relics.common.block.SwordPedestalBlock;
 import hojosa.relics.lib.References;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -55,14 +53,14 @@ public class RelicsBlocks{
     }
 
     private static Item.Properties getDefaultItemProperties() {
-        Item.Properties properties = new Item.Properties().tab(References.ITEM_GROUP);
+        Item.Properties properties = new Item.Properties();//.tab(References.ITEM_GROUP);
         return properties;
     }
 
-    private static boolean excludeBlockItemRegistry(ResourceLocation registryName) {
-        ArrayList<String> excludeBlocks = new ArrayList<>();
-        return excludeBlocks.contains(registryName.toString());
-    }
+//    public static boolean excludeBlockItemRegistry(ResourceLocation registryName) {
+//        ArrayList<String> excludeBlocks = new ArrayList<>();
+//        return excludeBlocks.contains(registryName.toString());
+//    }
 
     public RelicsBlocks() {
         /* Disable automatic default public constructor */

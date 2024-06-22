@@ -16,8 +16,7 @@ public class RelicsSounds {
 	);
 	
     private static RegistryObject<SoundEvent> registerSound(String name) {
-        RegistryObject<SoundEvent> registryObject = SOUNDS.register(name, () -> new SoundEvent(new ResourceLocation(References.MODID, name)));
-        return registryObject;
+        return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(References.MODID, name)));
     }
 	
 }
