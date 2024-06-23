@@ -48,6 +48,15 @@ public class RelicsRecipes extends RecipeProvider {
 		.pattern(" x ")
 		.pattern("x#x")
 		.define('x', Blocks.STONE_SLAB)
+		.define('#', Items.GOLD_INGOT)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT))
+		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsBlocks.SWORD_PEDESTAL_TWILIGHT.get())
+		.pattern(" x ")
+		.pattern("x#x")
+		.define('x', Blocks.STONE_SLAB)
 		.define('#', Items.IRON_INGOT)
 		.group(References.CREATIVE_TAB)
 		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT))
@@ -65,8 +74,4 @@ public class RelicsRecipes extends RecipeProvider {
 		.save(consumer);
 	}
 	
-//    @Override
-//    public String getName() {
-//        return "Relics Recipes";
-//    }
 }

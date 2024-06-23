@@ -4,7 +4,6 @@ import hojosa.relics.common.init.RelicsItems;
 import hojosa.relics.common.loot.AddItemModifier;
 import hojosa.relics.lib.References;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
@@ -16,19 +15,15 @@ public class RelicsGlobalLootModifiersProvider extends GlobalLootModifierProvide
 	public RelicsGlobalLootModifiersProvider(PackOutput output) {
 		super(output, References.MODID);
 	}
+	
 	@Override
 	protected void start() {
-        ResourceLocation[] chests = new ResourceLocation[]{
-                BuiltInLootTables.END_CITY_TREASURE,
-                BuiltInLootTables.SHIPWRECK_TREASURE,
-                BuiltInLootTables.RUINED_PORTAL,
-                BuiltInLootTables.STRONGHOLD_LIBRARY,
-        };
-		
-		for (ResourceLocation chest : chests) {
-			add("fire_tablet_from_loot_chest", new AddItemModifier(new LootItemCondition[] {		
-			LootItemRandomChanceCondition.randomChance(0.01f).build(),
-			LootTableIdCondition.builder(chest).build()}, RelicsItems.FIRE_TABLET.get()));
-		}
+		add("fire_tablet_from_loot_chest", new AddItemModifier(new LootItemCondition[]{
+				LootItemRandomChanceCondition.randomChance(0.03f).build(),
+				LootTableIdCondition.builder(BuiltInLootTables.END_CITY_TREASURE)
+				.or(LootTableIdCondition.builder(BuiltInLootTables.RUINED_PORTAL))
+				.or(LootTableIdCondition.builder(BuiltInLootTables.STRONGHOLD_LIBRARY))
+				.or(LootTableIdCondition.builder(BuiltInLootTables.SHIPWRECK_TREASURE)).build()}, 
+				RelicsItems.FIRE_TABLET.get()));
 	}
 }

@@ -14,7 +14,7 @@ public class RelicsCreativeModeTabs {
 
     public static final RegistryObject<CreativeModeTab> CREATIVE_TAB = CREATIVE_MODE_TABS.register(References.CREATIVE_TAB, () -> CreativeModeTab.builder()
             .title(Component.translatable("item_group." + References.MODID + ".tab"))
-            .withTabsBefore(CreativeModeTabs.COMBAT)
+            .withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
             .icon(() -> new ItemStack(RelicsItems.FIRE_TABLET.get()))
             .displayItems((parameters, output) -> {
                 //Add blocks

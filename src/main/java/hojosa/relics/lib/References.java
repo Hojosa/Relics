@@ -70,9 +70,9 @@ public class References
     	
     	public static final Map<Direction, VoxelShape> TWILIGHT_SIDES_SHAPE = Util.make(new EnumMap<>(Direction.class), map -> {
     		map.put(Direction.NORTH, Block.box(0.15D, 0.0D, 2.4D, 15.9D, 4D, 13.5D));
-    		map.put(Direction.EAST, Block.box(2.4D, 0.0D, 0.15D, 13.5D, 3.9D, 115.9D));
+    		map.put(Direction.EAST, Block.box(2.4D, 0.0D, 0.15D, 13.5D, 3.9D, 15.9D));
     		map.put(Direction.SOUTH, Block.box(0.15D, 0.0D, 2.4D, 15.9D, 3.9D, 13.5D));
-    		map.put(Direction.WEST, Block.box(2.4D, 0.0D, 0.15D, 13.5D, 3.9D, 115.9D));
+    		map.put(Direction.WEST, Block.box(2.4D, 0.0D, 0.15D, 13.5D, 3.9D, 15.9D));
     	});
     }
 }
