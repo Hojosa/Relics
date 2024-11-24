@@ -5,11 +5,15 @@ import java.util.concurrent.CompletableFuture;
 
 import org.jetbrains.annotations.Nullable;
 
+import hojosa.relics.common.init.RelicsItems;
+import hojosa.relics.common.init.RelicsTags;
 import hojosa.relics.integration.curios.CuriosIntegration;
 import hojosa.relics.lib.References;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.fml.ModList;
@@ -22,10 +26,14 @@ public class RelicsItemTags extends ItemTagsProvider {
 
 	@Override 
 	protected void addTags(HolderLookup.Provider provider) {
-		System.out.println(ModList.get().isLoaded("curios"));
 		if(ModList.get().isLoaded("curios")){
 			CuriosIntegration.generateItemTags(this::tag);
 		}
+		tag(ItemTags.SWORDS)
+		.add(RelicsItems.FIRE_SWORD.get())
+		.add(RelicsItems.MASTER_SWORD.get());
+		tag(RelicsTags.Items.SWORD_PEDESTAL_INFUSEABLE)
+		.add(Items.NETHER_STAR);
 	}
 
     @Override

@@ -1,5 +1,5 @@
 {
-	"parent": "relics:block/sword_pedestal_oot",
+	"parent": "relics:block/sword_pedestal_time",
 	"display": {
 		"thirdperson_righthand": {
 			"rotation": [69, 3, 4],

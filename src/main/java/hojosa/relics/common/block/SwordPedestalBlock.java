@@ -5,6 +5,7 @@ import java.util.Map;
 import hojosa.relics.Relics;
 import hojosa.relics.common.block.entity.SwordPedestalBlockEntity;
 import hojosa.relics.common.init.RelicsSounds;
+import hojosa.relics.lib.block.RelicsBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -36,7 +37,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-
+@Deprecated
 public class SwordPedestalBlock extends RelicsBlock implements EntityBlock//Container
 {
 	public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;

@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "relics:sword_pedestal_oot"
+        "recipe": "relics:sword_pedestal_time"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "relics:sword_pedestal_oot"
+      "relics:sword_pedestal_time"
     ]
   },
   "sends_telemetry_event": false

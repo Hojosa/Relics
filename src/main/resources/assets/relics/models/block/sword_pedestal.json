@@ -2,8 +2,8 @@
 	"render_type": "minecraft:translucent",
 	"credit": "Made with Blockbench, a free, modern block model editor by JannisX11",
 	"textures": {
-		"0": "relics:block/pedestaltex",
-		"particle": "relics:block/pedestaltex"
+		"0": "relics:block/sword_pedestal",
+		"particle": "relics:block/sword_pedestal"
 	},
 	"elements": [
 		{

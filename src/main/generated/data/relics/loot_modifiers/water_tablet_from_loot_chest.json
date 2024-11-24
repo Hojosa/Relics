@@ -10,19 +10,19 @@
       "terms": [
         {
           "condition": "forge:loot_table_id",
-          "loot_table_id": "minecraft:chests/end_city_treasure"
+          "loot_table_id": "minecraft:archaeology/ocean_ruin_warm"
         },
         {
           "condition": "forge:loot_table_id",
-          "loot_table_id": "minecraft:chests/ruined_portal"
+          "loot_table_id": "minecraft:archaeology/ocean_ruin_cold"
         },
         {
           "condition": "forge:loot_table_id",
-          "loot_table_id": "minecraft:gameplay/piglin_bartering"
+          "loot_table_id": "minecraft:chests/ancient_city_ice_box"
         },
         {
           "condition": "forge:loot_table_id",
-          "loot_table_id": "minecraft:chests/stronghold_library"
+          "loot_table_id": "minecraft:chests/underwater_ruin_big"
         },
         {
           "condition": "forge:loot_table_id",
@@ -31,5 +31,5 @@
       ]
     }
   ],
-  "item": "relics:fire_tablet"
+  "item": "relics:water_tablet"
 }

@@ -33,11 +33,11 @@
               "function": "minecraft:set_contents"
             }
           ],
-          "name": "relics:sword_pedestal_oot"
+          "name": "relics:sword_pedestal_time"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "relics:blocks/sword_pedestal_oot"
+  "random_sequence": "relics:blocks/sword_pedestal_time"
 }

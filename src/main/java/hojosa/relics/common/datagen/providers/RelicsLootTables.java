@@ -29,7 +29,7 @@ public class RelicsLootTables extends VanillaBlockLoot {
 	protected void generate() {
 		dropSelf(RelicsBlocks.LAPIS_BRICK.get());
 		createStandardTable(RelicsBlocks.SWORD_PEDESTAL.get(), RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), SwordPedestalBlockEntity.ITEMS_TAG);
-		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_OOT.get(), RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), SwordPedestalBlockEntity.ITEMS_TAG);
+		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_TIME.get(), RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), SwordPedestalBlockEntity.ITEMS_TAG);
 		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_TWILIGHT.get(), RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), SwordPedestalBlockEntity.ITEMS_TAG);
 	}
 	

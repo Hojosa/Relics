@@ -23,12 +23,12 @@ public class RelicsBlockTags extends BlockTagsProvider {
 		tag(BlockTags.MINEABLE_WITH_PICKAXE)
 		.add(RelicsBlocks.LAPIS_BRICK.get())
 		.add(RelicsBlocks.SWORD_PEDESTAL.get())
-		.add(RelicsBlocks.SWORD_PEDESTAL_OOT.get())
+		.add(RelicsBlocks.SWORD_PEDESTAL_TIME.get())
 		.add(RelicsBlocks.SWORD_PEDESTAL_TWILIGHT.get());
 		tag(BlockTags.NEEDS_STONE_TOOL)
 		.add(RelicsBlocks.LAPIS_BRICK.get())
 		.add(RelicsBlocks.SWORD_PEDESTAL.get())
-		.add(RelicsBlocks.SWORD_PEDESTAL_OOT.get())
+		.add(RelicsBlocks.SWORD_PEDESTAL_TIME.get())
 		.add(RelicsBlocks.SWORD_PEDESTAL_TWILIGHT.get());
 	}
 

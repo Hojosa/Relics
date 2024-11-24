@@ -29,7 +29,7 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
-
+@Deprecated
 public class SwordPedestalBlockEntity extends BlockEntity
 {
 	public static final String ITEMS_TAG = "Inventory";

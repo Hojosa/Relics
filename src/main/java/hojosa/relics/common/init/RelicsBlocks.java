@@ -2,9 +2,9 @@ package hojosa.relics.common.init;
 
 import java.util.function.Supplier;
 
-import hojosa.relics.common.block.RelicsBlock;
-import hojosa.relics.common.block.SwordPedestalBlock;
 import hojosa.relics.lib.References;
+import hojosa.relics.lib.block.RelicsNormalBlock;
+import hojosa.relics.lib.block.SwordPedestalBaseBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -18,19 +18,19 @@ public class RelicsBlocks{
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, References.MODID);
 
 	public static final RegistryObject<Block>LAPIS_BRICK = registerBlock(
-			References.UnlocalizedName.LAPIS_BRICK, () -> new RelicsBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS))
+			References.UnlocalizedName.LAPIS_BRICK, () -> new RelicsNormalBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS))
 	);
 	
 	public static final RegistryObject<Block>SWORD_PEDESTAL = registerBlock(
-			References.UnlocalizedName.SWORD_PEDESTAL, () -> new SwordPedestalBlock(References.PedestalShapes.BASE_SIDES_SHAPE, References.PedestalShapes.BASE_SWORD_SHAPE)
+			References.UnlocalizedName.SWORD_PEDESTAL, () -> new SwordPedestalBaseBlock(Blocks.STONECUTTER, References.PedestalShapes.BASIC_SHAPE, References.PedestalShapes.BASIC_SWORD_SHAPE)
 	);
 	
-	public static final RegistryObject<Block>SWORD_PEDESTAL_OOT = registerBlock(
-			References.UnlocalizedName.SWORD_PEDESTAL_OOT, () -> new SwordPedestalBlock(References.PedestalShapes.OOT_SIDES_SHAPE, References.PedestalShapes.OOT_SWORD_SHAPE)
+	public static final RegistryObject<Block>SWORD_PEDESTAL_TIME = registerBlock(
+			References.UnlocalizedName.SWORD_PEDESTAL_TIME, () -> new SwordPedestalBaseBlock(Blocks.STONECUTTER, References.PedestalShapes.TIME_SHAPE, References.PedestalShapes.TIME_SWORD_SHAPE)
 	);
 	
 	public static final RegistryObject<Block>SWORD_PEDESTAL_TWILIGHT = registerBlock(
-			References.UnlocalizedName.SWORD_PEDESTAL_TWILIGHT, () -> new SwordPedestalBlock(References.PedestalShapes.TWILIGHT_SIDES_SHAPE, References.PedestalShapes.TWILIGHT_SWORD_SHAPE)
+			References.UnlocalizedName.SWORD_PEDESTAL_TWILIGHT, () -> new SwordPedestalBaseBlock(Blocks.STONECUTTER, References.PedestalShapes.TWILIGHT_SHAPE, References.PedestalShapes.TWILIGHT_SWORD_SHAPE)
 	);
 
     private static RegistryObject<Block> registerBlock(String name, Supplier<Block> block) {

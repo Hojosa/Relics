@@ -12,7 +12,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-
+@Deprecated
 public class SwordPedestalBlockRenderer implements BlockEntityRenderer<SwordPedestalBlockEntity>{
 	private final BlockEntityRendererProvider.Context context;
 	

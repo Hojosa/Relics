@@ -44,7 +44,7 @@ public class RelicsRecipes extends RecipeProvider {
 		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.STONE))
 		.save(consumer);
 		
-		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsBlocks.SWORD_PEDESTAL_OOT.get())
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsBlocks.SWORD_PEDESTAL_TIME.get())
 		.pattern(" x ")
 		.pattern("x#x")
 		.define('x', Blocks.STONE_SLAB)
