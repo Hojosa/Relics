@@ -1,11 +1,11 @@
-modLoader="javafml" #mandatory
-loaderVersion="[40,)"
+modLoader="javafml"
+loaderVersion="[45,)"
 license = "GPL-2.0"
 issueTrackerURL = "https://github.com/Hojosa/Relics/issues"
 
 [[mods]]
 modId = "relics"
-version = "0.3.0"
+version = "${mod_version}"
 displayName = "Relics"
 logoFile = ""
 credits = ""
@@ -14,15 +14,43 @@ description = '''
 '''
 
 [[dependencies.relics]] #optional
-modId = "forge"
-mandatory = true
-versionRange = "[40,)"
-ordering = "NONE"
-side = "BOTH"
+	modId = "forge"
+	mandatory = true
+	versionRange = "[45,)"
+	ordering = "NONE"
+	side = "BOTH"
 
-[[dependencies.reclis]]
-modId = "minecraft"
-mandatory = true
-versionRange = "[1.18.2,1.19)"
-ordering = "NONE"
-side = "BOTH"
+[[dependencies.relics]]
+	modId = "minecraft"
+	mandatory = true
+	versionRange = "${minecraft_version_range}"
+	ordering = "NONE"
+	side = "BOTH"
+
+[[dependencies.relics]]
+    modId="mantle"
+    mandatory=true
+    versionRange="${mantle_range}"
+    ordering="NONE"
+    side="BOTH"
+
+ [[dependencies.relics]]
+    modId="jei"
+    mandatory=false
+    versionRange="${jei_range}"
+    ordering="NONE"
+    side="BOTH"
+    
+ [[dependencies.relics]]
+    modId="expandability"
+    mandatory=true
+    versionRange="${expandability_range}"
+    ordering="NONE"
+    side="BOTH"
+    
+ [[dependencies.relics]]
+    modId="curios"
+    mandatory=false
+    versionRange="${curios_range}"
+    ordering="NONE"
+    side="BOTH"
