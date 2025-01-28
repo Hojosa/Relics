@@ -35,6 +35,7 @@ public class WaterTablet extends RelicsItem implements ICurioItem
 	    });
 	}
 	
+	@SuppressWarnings({ "deprecation", "removal" })
 	public boolean isEquipped(@Nullable LivingEntity entity) {
 		return entity != null && CuriosApi.getCuriosHelper().findFirstCurio(entity, this).isPresent();
 	}

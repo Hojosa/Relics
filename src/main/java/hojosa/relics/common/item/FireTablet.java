@@ -15,7 +15,7 @@ import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio;
 
 
-public class FireTablet extends RelicsItem //implements ICurioItem
+public class FireTablet extends RelicsItem
 {
 	public FireTablet(int stackSize, Rarity raity){
 		super(stackSize, raity);

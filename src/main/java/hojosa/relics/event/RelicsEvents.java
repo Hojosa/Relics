@@ -17,7 +17,7 @@ import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = References.MODID)
+@Mod.EventBusSubscriber(modid = References.MOD_ID)
 public class RelicsEvents {
 
 	@SubscribeEvent

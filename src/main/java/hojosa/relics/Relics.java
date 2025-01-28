@@ -1,9 +1,10 @@
 package hojosa.relics;
 
+import java.util.Objects;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import hojosa.relics.client.init.RelicsBlockEntityRenderers;
 import hojosa.relics.common.init.RelicsBlockEntities;
 import hojosa.relics.common.init.RelicsBlocks;
 import hojosa.relics.common.init.RelicsCreativeModeTabs;
@@ -12,6 +13,10 @@ import hojosa.relics.common.init.RelicsSounds;
 import hojosa.relics.common.loot.RelicsGlobalLootModifier;
 import hojosa.relics.integration.RelicsIntegration;
 import hojosa.relics.lib.References;
+import hojosa.relics.lib.recipe.StonecutterRetexturedRecipe;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -22,23 +27,27 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.RegisterEvent;
+import slimeknights.mantle.registration.adapter.RegistryAdapter;
 
-@Mod(References.MODID)
-@Mod.EventBusSubscriber(modid = References.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod(References.MOD_ID)
+@Mod.EventBusSubscriber(modid = References.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Relics {
-    public static final Logger LOGGER = LogManager.getLogger(References.MODID);
+    public static final Logger LOGGER = LogManager.getLogger(References.MOD_ID);
 	
     public Relics() {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        @SuppressWarnings("removal")
+		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::clientSetupEvent);
         modEventBus.addListener(this::onRegisterRenderers);
         modEventBus.addListener(this::enqueueIMC);
+        modEventBus.addListener(this::register);
         
         RelicsBlocks.BLOCKS.register(modEventBus);
         RelicsItems.ITEMS.register(modEventBus);
         RelicsBlockEntities.BLOCK_ENTITIES.register(modEventBus);
-        RelicsCreativeModeTabs.CREATIVE_MODE_TABS.register(modEventBus);
+        RelicsCreativeModeTabs.CREATIVE_TABS.register(modEventBus);
         RelicsSounds.SOUNDS.register(modEventBus);
         RelicsGlobalLootModifier.register(modEventBus);
         
@@ -46,11 +55,18 @@ public class Relics {
     }
     
     private void clientSetupEvent(final FMLClientSetupEvent event) {
-//        RelicsBlockRenders.setRenderLayers();
     }
 
     private void setup(final FMLCommonSetupEvent event) {
         // Do nothing
+    }
+    
+    private void register(RegisterEvent event) {
+    	ResourceKey<?> key = event.getRegistryKey();
+    	if (key == Registries.RECIPE_SERIALIZER) {
+	    	RegistryAdapter<RecipeSerializer<?>> adapter = new RegistryAdapter<>(Objects.requireNonNull(event.getForgeRegistry()));
+	    	adapter.register(new StonecutterRetexturedRecipe.Serializer(), "crafting_stonecutter_retextured");
+    	}
     }
 
     @SubscribeEvent
@@ -59,7 +75,7 @@ public class Relics {
     }
     
     public void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
-    	RelicsBlockEntityRenderers.register(event);
+//    	RelicsBlockEntityRenderers.register(event);
     }
     
     private void enqueueIMC(final InterModEnqueueEvent event) {

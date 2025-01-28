@@ -41,12 +41,14 @@ public abstract class RelicsFacingEntityBlock extends RelicsWaterloggedBlock imp
         return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
     }
 
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     public BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
     
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean flag) {
         if (!state.is(newState.getBlock())) {
             BlockEntity blockentity = level.getBlockEntity(pos);

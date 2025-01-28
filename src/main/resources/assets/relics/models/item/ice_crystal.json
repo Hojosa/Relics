@@ -1,7 +1,7 @@
 {
     "parent": "builtin/generated",
     "textures": {
-        "layer0": "mysticwater:items/iceCrystal"
+        "layer0": "relics:item/ice_crystal"
     },
     "display": {
         "thirdperson": {

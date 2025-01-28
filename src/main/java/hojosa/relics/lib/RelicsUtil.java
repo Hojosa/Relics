@@ -13,7 +13,6 @@ public class RelicsUtil {
     }
 
     public static ResourceLocation modLoc(String path) {
-        return new ResourceLocation(References.MODID, path);
+        return new ResourceLocation(References.MOD_ID, path);
     }
-
 }
