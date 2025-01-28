@@ -24,36 +24,31 @@ import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class RelicsLootTables extends VanillaBlockLoot {
-	
+
 	@Override
 	protected void generate() {
 		dropSelf(RelicsBlocks.LAPIS_BRICK.get());
-		createStandardTable(RelicsBlocks.SWORD_PEDESTAL.get(), RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), SwordPedestalBlockEntity.ITEMS_TAG);
+		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_NORMAL.get(), RelicsBlockEntities.REXTURED_SWORD_PEDESTAL_BLOCK_ENTITY.get(), SwordPedestalBlockEntity.ITEMS_TAG);
+		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_RELIC_VARIANTS.get(), RelicsBlockEntities.REXTURED_SWORD_PEDESTAL_BLOCK_ENTITY.get(), SwordPedestalBlockEntity.ITEMS_TAG);
+		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_RELIC.get(), RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), SwordPedestalBlockEntity.ITEMS_TAG);
 		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_TIME.get(), RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), SwordPedestalBlockEntity.ITEMS_TAG);
 		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_TWILIGHT.get(), RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), SwordPedestalBlockEntity.ITEMS_TAG);
 	}
-	
 
-    @Override
-    protected Iterable<Block> getKnownBlocks() {
-        return ForgeRegistries.BLOCKS.getEntries().stream()
-                .filter(e -> e.getKey().location().getNamespace().equals(References.MODID))
-                .map(Map.Entry::getValue)
-                .collect(Collectors.toList());
-    }
-	
-    private void createStandardTable(Block block, BlockEntityType<?> type, String... tags) {
-        LootPoolSingletonContainer.Builder<?> lti = LootItem.lootTableItem(block);
-        lti.apply(CopyNameFunction.copyName(CopyNameFunction.NameSource.BLOCK_ENTITY));
-        for (String tag : tags) {
-            lti.apply(CopyNbtFunction.copyData(ContextNbtProvider.BLOCK_ENTITY).copy(tag, "BlockEntityTag." + tag, CopyNbtFunction.MergeStrategy.REPLACE));
-        }
-        lti.apply(SetContainerContents.setContents(type).withEntry(DynamicLoot.dynamicEntry(new ResourceLocation("minecraft", "contents"))));
+	@Override
+	protected Iterable<Block> getKnownBlocks() {
+		return ForgeRegistries.BLOCKS.getEntries().stream().filter(e -> e.getKey().location().getNamespace().equals(References.MOD_ID)).map(Map.Entry::getValue).collect(Collectors.toList());
+	}
 
-        LootPool.Builder builder = LootPool.lootPool()
-                .setRolls(ConstantValue.exactly(1))
-                .add(lti);
-        add(block, LootTable.lootTable().withPool(builder));
-    }
+	private void createStandardTable(Block block, BlockEntityType<?> type, String... tags) {
+		LootPoolSingletonContainer.Builder<?> lti = LootItem.lootTableItem(block);
+		lti.apply(CopyNameFunction.copyName(CopyNameFunction.NameSource.BLOCK_ENTITY));
+		for (String tag : tags) {
+			lti.apply(CopyNbtFunction.copyData(ContextNbtProvider.BLOCK_ENTITY).copy(tag, "BlockEntityTag." + tag, CopyNbtFunction.MergeStrategy.REPLACE));
+		}
+		lti.apply(SetContainerContents.setContents(type).withEntry(DynamicLoot.dynamicEntry(new ResourceLocation("minecraft", "contents"))));
 
+		LootPool.Builder builder = LootPool.lootPool().setRolls(ConstantValue.exactly(1)).add(lti);
+		add(block, LootTable.lootTable().withPool(builder));
+	}
 }

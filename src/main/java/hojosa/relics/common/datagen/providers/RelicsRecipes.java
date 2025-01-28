@@ -5,7 +5,9 @@ import java.util.function.Consumer;
 
 import hojosa.relics.common.init.RelicsBlocks;
 import hojosa.relics.common.init.RelicsItems;
+import hojosa.relics.common.init.RelicsTags;
 import hojosa.relics.lib.References;
+import hojosa.relics.lib.recipe.StonecutterRetexturedRecipeBuilder;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -14,6 +16,7 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
+import net.minecraft.data.recipes.SingleItemRecipeBuilder;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
@@ -35,33 +38,6 @@ public class RelicsRecipes extends RecipeProvider {
 		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.LAPIS_BLOCK))
 		.save(consumer);
 		
-		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsBlocks.SWORD_PEDESTAL.get())
-		.pattern(" x ")
-		.pattern("x#x")
-		.define('x', Blocks.STONE_SLAB)
-		.define('#', Blocks.STONE)
-		.group(References.CREATIVE_TAB)
-		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.STONE))
-		.save(consumer);
-		
-		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsBlocks.SWORD_PEDESTAL_TIME.get())
-		.pattern(" x ")
-		.pattern("x#x")
-		.define('x', Blocks.STONE_SLAB)
-		.define('#', Items.GOLD_INGOT)
-		.group(References.CREATIVE_TAB)
-		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT))
-		.save(consumer);
-		
-		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsBlocks.SWORD_PEDESTAL_TWILIGHT.get())
-		.pattern(" x ")
-		.pattern("x#x")
-		.define('x', Blocks.STONE_SLAB)
-		.define('#', Items.IRON_INGOT)
-		.group(References.CREATIVE_TAB)
-		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT))
-		.save(consumer);
-		
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.CLAY_BLUE.get())
 		.requires(Items.CLAY_BALL)
 		.requires(Items.LAPIS_LAZULI)
@@ -72,6 +48,27 @@ public class RelicsRecipes extends RecipeProvider {
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(RelicsItems.CLAY_BLUE.get()), RecipeCategory.MISC, RelicsItems.BRICK_BLUE.get(), 1.0f, 100)
 		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.CLAY_BLUE.get()))
 		.save(consumer);
+
+		StonecutterRetexturedRecipeBuilder.fromStonecutter(
+				SingleItemRecipeBuilder.stonecutting(Ingredient.of(RelicsTags.Items.SWORD_PEDESTAL_VARIANTS), RecipeCategory.DECORATIONS, RelicsBlocks.SWORD_PEDESTAL_NORMAL)
+				.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.CLAY_BLUE.get())))
+		.setSource(RelicsTags.Items.SWORD_PEDESTAL_VARIANTS)
+		.setMatchAll()
+		.build(consumer);
+		
+		StonecutterRetexturedRecipeBuilder.fromStonecutter(
+				SingleItemRecipeBuilder.stonecutting(Ingredient.of(RelicsTags.Items.SWORD_PEDESTAL_VARIANTS), RecipeCategory.DECORATIONS, RelicsBlocks.SWORD_PEDESTAL_RELIC)
+				.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.CLAY_BLUE.get())))
+		.setSource(RelicsTags.Items.SWORD_PEDESTAL_VARIANTS)
+		.setMatchAll()
+		.build(consumer);
+		
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(Blocks.CHISELED_STONE_BRICKS), RecipeCategory.DECORATIONS, RelicsBlocks.SWORD_PEDESTAL_TIME)
+		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.CHISELED_STONE_BRICKS))
+		.save(consumer);
+		
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(Blocks.CHISELED_STONE_BRICKS), RecipeCategory.DECORATIONS, RelicsBlocks.SWORD_PEDESTAL_TWILIGHT)
+		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.CHISELED_STONE_BRICKS))
+		.save(consumer);
 	}
-	
 }

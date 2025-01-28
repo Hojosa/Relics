@@ -13,7 +13,7 @@ import net.minecraftforge.common.loot.LootTableIdCondition;
 public class RelicsGlobalLootModifiersProvider extends GlobalLootModifierProvider {
 
 	public RelicsGlobalLootModifiersProvider(PackOutput output) {
-		super(output, References.MODID);
+		super(output, References.MOD_ID);
 	}
 	
 	@Override

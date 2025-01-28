@@ -1,0 +1,9 @@
+{
+  "values": [
+    "minecraft:sponge",
+    {
+      "id": "supplementaries:soap",
+      "required": false
+    }
+  ]
+}
