@@ -2,8 +2,9 @@
 	"credit": "Made with Blockbench, a free, modern block model editor by JannisX11",
 	"render_type": "minecraft:solid",
 	"textures": {
-		"particle": "relics:block/sword_pedestal",
-		"base": "relics:block/sword_pedestal"
+		"particle": "block/stone",
+		"base": "block/stone",
+		"overlay": "relics:block/sword_pedestal_relic_overlay"
 	},
 	"elements": [
 		{
@@ -11,12 +12,20 @@
 			"from": [2, 2, 5],
 			"to": [14, 6, 11],
 			"faces": {
-				"north": {"uv": [8, 0, 16, 2.66667], "texture": "#base"},
-				"east": {"uv": [12, 5.33333, 16, 8], "texture": "#base"},
-				"south": {"uv": [8, 2.66667, 16, 5.33333], "texture": "#base"},
-				"west": {"uv": [8, 5.33333, 12, 8], "texture": "#base"},
-				"up": {"uv": [0, 0, 8, 4], "rotation": 180, "texture": "#base"},
+				"north": {"uv": [0, 0, 16, 8], "texture": "#base"},
+				"east": {"uv": [8, 0, 16, 8], "texture": "#base"},
+				"south": {"uv": [0, 0, 16, 8], "texture": "#base"},
+				"west": {"uv": [0, 0, 8, 8], "texture": "#base"},
+				"up": {"uv": [0, 0, 16, 8], "rotation": 180, "texture": "#base"},
 				"down": {"uv": [0, 4, 8, 8], "texture": "#base"}
+			}
+		},
+		{
+			"name": "Pedestal_upper_part_overlay",
+			"from": [2, 2, 5],
+			"to": [14, 6, 11],
+			"faces": {
+				"up": {"uv": [0, 0, 16, 16], "rotation": 180, "texture": "#overlay"}
 			}
 		},
 		{
@@ -24,11 +33,11 @@
 			"from": [2.5, 0, 5.5],
 			"to": [13.5, 2, 10.5],
 			"faces": {
-				"north": {"uv": [7.33333, 8, 14.66667, 10], "texture": "#base"},
-				"east": {"uv": [10.66667, 12, 14, 14], "texture": "#base"},
-				"south": {"uv": [14.66667, 10, 7.33333, 12], "texture": "#base"},
-				"west": {"uv": [7.33333, 12, 10.66667, 14], "rotation": 180, "texture": "#base"},
-				"down": {"uv": [0, 11.33333, 7.33333, 14.66667], "texture": "#base"}
+				"north": {"uv": [0, 8, 16, 12], "texture": "#base"},
+				"east": {"uv": [0, 8, 8, 12], "texture": "#base"},
+				"south": {"uv": [16, 12, 0, 16], "texture": "#base"},
+				"west": {"uv": [8, 8, 16, 12], "rotation": 180, "texture": "#base"},
+				"down": {"uv": [0, 8, 16, 16], "texture": "#base"}
 			}
 		}
 	],

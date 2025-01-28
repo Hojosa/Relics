@@ -1,0 +1,9 @@
+{
+	"loader": "mantle:retextured",
+	"parent": "relics:block/pedestal/sword_pedestal_base",
+	"render_type": "minecraft:cutout",
+	"textures": {
+		"base": "block/stone"
+	},
+    "retextured": [ "particle", "base" ]
+}

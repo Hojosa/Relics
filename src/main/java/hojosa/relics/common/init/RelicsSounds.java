@@ -9,14 +9,21 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class RelicsSounds {
 	
-	public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, References.MODID);
+	public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, References.MOD_ID);
 
 	public static final RegistryObject<SoundEvent>SWORD_PLACE_SOUND = registerSound(
 			References.UnlocalizedName.SWORD_PLACE_SOUND
 	);
 	
-    private static RegistryObject<SoundEvent> registerSound(String name) {
-        return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(References.MODID, name)));
-    }
+	public static final RegistryObject<SoundEvent>SWORD_DRAW_SOUND = registerSound(
+			References.UnlocalizedName.SWORD_DRAW_SOUND
+	);
 	
+	public static final RegistryObject<SoundEvent>FANCY_SWORD_PLACE_SOUND = registerSound(
+			References.UnlocalizedName.FANCY_SWORD_PLACE_SOUND
+	);
+	
+    private static RegistryObject<SoundEvent> registerSound(String name) {
+        return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(References.MOD_ID, name)));
+    }
 }

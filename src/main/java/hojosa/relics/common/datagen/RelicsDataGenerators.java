@@ -9,6 +9,7 @@ import hojosa.relics.common.datagen.providers.RelicsGlobalLootModifiersProvider;
 import hojosa.relics.common.datagen.providers.RelicsItemTags;
 import hojosa.relics.common.datagen.providers.RelicsLootTables;
 import hojosa.relics.common.datagen.providers.RelicsRecipes;
+import hojosa.relics.common.datagen.providers.RelicsSoundsProvider;
 import hojosa.relics.lib.References;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
@@ -21,7 +22,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 
-@Mod.EventBusSubscriber(modid = References.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = References.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class RelicsDataGenerators {
 	
 	@SubscribeEvent
@@ -38,6 +39,8 @@ public class RelicsDataGenerators {
 		generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Collections.emptySet(),
                 List.of(new LootTableProvider.SubProviderEntry(RelicsLootTables::new, LootContextParamSets.BLOCK))));
 		generator.addProvider(event.includeServer(), new RelicsGlobalLootModifiersProvider(packOutput));
+//		generator.addProvider(event.includeClient(), new RelicsBlockStateProvider(packOutput, existingFileHelper));
+		generator.addProvider(event.includeClient(), new RelicsSoundsProvider(packOutput, existingFileHelper));
 	}
 
 }

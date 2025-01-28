@@ -2,8 +2,6 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "name": "sword_pedestal",
-      "rolls": 1.0,
       "bonus_rolls": 0.0,
       "entries": [
         {
@@ -15,34 +13,31 @@
             },
             {
               "function": "minecraft:copy_nbt",
-              "source": "block_entity",
               "ops": [
                 {
-                  "source": "Info",
-                  "target": "BlockEntityTag.Info",
-                  "op": "replace"
-                },
-                {
+                  "op": "replace",
                   "source": "Inventory",
-                  "target": "BlockEntityTag.Inventory",
-                  "op": "replace"
+                  "target": "BlockEntityTag.Inventory"
                 }
-              ]
+              ],
+              "source": "block_entity"
             },
             {
-              "function": "minecraft:set_contents",
               "type": "relics:sword_pedestal",
               "entries": [
                 {
                   "type": "minecraft:dynamic",
                   "name": "minecraft:contents"
                 }
-              ]
+              ],
+              "function": "minecraft:set_contents"
             }
           ],
-          "name": "relics:sword_pedestal"
+          "name": "relics:sword_pedestal_normal"
         }
-      ]
+      ],
+      "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "relics:blocks/sword_pedestal_normal"
 }

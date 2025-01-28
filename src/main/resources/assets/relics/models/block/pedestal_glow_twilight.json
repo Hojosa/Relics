@@ -1,6 +1,6 @@
 {
 	"parent": "relics:block/pedestal_glow",
 	"transform": {
-		"translation": [ 0, -0.12, 0 ]
+		"translation": [ 0, -0.13, 0 ]
     }
 }

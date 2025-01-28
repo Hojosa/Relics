@@ -1,8 +1,8 @@
 {
-	"render_type": "minecraft:translucent",
+	"render_type": "minecraft:solid",
 	"loader": "forge:obj",
 	"flip_v": true,
-	"model": "relics:models/block/sword_pedestal_time.obj",
+	"model": "relics:models/block/pedestal/sword_pedestal_time.obj",
 	"textures": {
 		"texture0": "relics:block/sword_pedestal_time",
 		"particle": "relics:block/sword_pedestal_time"

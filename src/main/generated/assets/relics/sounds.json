@@ -1,0 +1,20 @@
+{
+  "fancy_sword_place": {
+    "sounds": [
+      "relics:fancy_sword_place"
+    ],
+    "subtitle": "relics.subtitle.fancy_sword_place"
+  },
+  "sword_draw": {
+    "sounds": [
+      "relics:sword_draw"
+    ],
+    "subtitle": "relics.subtitle.sword_draw"
+  },
+  "sword_place": {
+    "sounds": [
+      "relics:sword_place"
+    ],
+    "subtitle": "relics.subtitle.sword_place"
+  }
+}

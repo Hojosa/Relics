@@ -23,7 +23,7 @@
               "source": "block_entity"
             },
             {
-              "type": "relics:sword_pedestal",
+              "type": "relics:sword_pedestal_fancy",
               "entries": [
                 {
                   "type": "minecraft:dynamic",

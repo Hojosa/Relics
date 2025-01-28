@@ -1,21 +1,8 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "misc",
-  "group": "relics",
-  "key": {
-    "#": {
-      "item": "minecraft:gold_ingot"
-    },
-    "x": {
-      "item": "minecraft:stone_slab"
-    }
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "minecraft:chiseled_stone_bricks"
   },
-  "pattern": [
-    " x ",
-    "x#x"
-  ],
-  "result": {
-    "item": "relics:sword_pedestal_time"
-  },
-  "show_notification": true
+  "result": "relics:sword_pedestal_time"
 }

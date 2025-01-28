@@ -2,19 +2,23 @@
 	"render_type": "minecraft:translucent",
 	"credit": "Made with Blockbench",
 	"textures": {
-		"2": "relics:block/pedestal_glow",
+		"texture": "relics:block/pedestal_glow",
 		"particle": "relics:block/pedestal_glow"
 	},
-	"elements": [
-		{
+	"elements": [{
+		"forge_data": {
+		        "block_light": 15,
+		        "sky_light": 15,
+		        "ambient_occlusion": true
+		 },
 			"name": "Pedestal_glow",
 			"from": [5.75, 6, 7.25],
 			"to": [10.25, 15, 8.75],
 			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#2"},
-				"east": {"uv": [16, 0, 0, 16], "texture": "#2"},
-				"south": {"uv": [0, 0, 16, 16], "texture": "#2"},
-				"west": {"uv": [0, 0, 16, 16], "texture": "#2"}
+				"north": {"uv": [0, 0, 16, 16], "texture": "#texture", "tintindex": 1},
+				"east": {"uv": [16, 0, 0, 16], "texture": "#texture", "tintindex": 1},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#texture", "tintindex": 1},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#texture", "tintindex": 1}
 			}
 		}
 	],

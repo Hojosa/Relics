@@ -2,7 +2,7 @@
 	"render_type": "minecraft:cutout",
 	"loader": "forge:obj",
 	"flip_v": true,
-	"model": "relics:models/block/sword_pedestal_twilight.obj",
+	"model": "relics:models/block/pedestal/sword_pedestal_twilight.obj",
 	"textures": {
 		"texture0": "relics:block/sword_pedestal_twilight",
 		"particle": "relics:block/sword_pedestal_twilight"

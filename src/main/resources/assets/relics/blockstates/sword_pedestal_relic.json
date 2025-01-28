@@ -1,28 +1,28 @@
 {
   "multipart": [
 	{ "when": { "facing":"north" },
-      "apply": { "model": "relics:block/sword_pedestal_twilight" }
+      "apply": { "model": "relics:block/sword_pedestal_relic" }
     },
 	{ "when": { "facing":"east" },
-      "apply": { "model": "relics:block/sword_pedestal_twilight", "y": 90 }
+      "apply": { "model": "relics:block/sword_pedestal_relic", "y": 90 }
     },
 	{ "when": { "facing":"south" },
-      "apply": { "model": "relics:block/sword_pedestal_twilight", "y": 180 }
+      "apply": { "model": "relics:block/sword_pedestal_relic", "y": 180 }
     },
     { "when": { "facing":"west" },
-      "apply": { "model": "relics:block/sword_pedestal_twilight", "y": 270 }
-    },
+      "apply": { "model": "relics:block/sword_pedestal_relic", "y": 270 }
+    }, 
     { "when": { "OR": [ {"repair":"true", "facing":"north", "glow":"false" }, {"repair":"true", "facing":"south", "glow":"false" }]},
-      "apply": { "model": "relics:block/pedestal_glow_twilight" }
+      "apply": { "model": "relics:block/pedestal_glow" }
     },
     { "when": { "OR": [ {"repair":"true", "facing":"east", "glow":"false" }, {"repair":"true", "facing":"west", "glow":"false" }]},
-      "apply": { "model": "relics:block/pedestal_glow_twilight", "y": 90 }
+      "apply": { "model": "relics:block/pedestal_glow", "y": 90 }
     },
     { "when": { "OR": [ {"glow":"true", "facing":"north", "sword":"true" }, {"glow":"true", "facing":"south", "sword":"true" }]},
-      "apply": { "model": "relics:block/pedestal_glow_twilight" }
+      "apply": { "model": "relics:block/pedestal_glow" }
     },
     { "when": { "OR": [ {"glow":"true", "facing":"east", "sword":"true" }, {"glow":"true", "facing":"west", "sword":"true" }]},
-      "apply": { "model": "relics:block/pedestal_glow_twilight", "y": 90 }
+      "apply": { "model": "relics:block/pedestal_glow", "y": 90 }
     }
   ]
 }

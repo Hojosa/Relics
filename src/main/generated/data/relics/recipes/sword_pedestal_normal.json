@@ -5,7 +5,7 @@
     "tag": "relics:sword_pedestal_variants"
   },
   "match_all": true,
-  "result": "relics:sword_pedestal",
+  "result": "relics:sword_pedestal_normal",
   "texture": {
     "tag": "relics:sword_pedestal_variants"
   }
