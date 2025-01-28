@@ -6,28 +6,17 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
+import slimeknights.mantle.registration.deferred.SynchronizedDeferredRegister;
 
 public class RelicsCreativeModeTabs {
-    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, References.MODID);
+	public static final SynchronizedDeferredRegister<CreativeModeTab> CREATIVE_TABS = SynchronizedDeferredRegister.create(Registries.CREATIVE_MODE_TAB, References.MOD_ID);
 
-    public static final RegistryObject<CreativeModeTab> CREATIVE_TAB = CREATIVE_MODE_TABS.register(References.CREATIVE_TAB, () -> CreativeModeTab.builder()
-            .title(Component.translatable("item_group." + References.MODID + ".tab"))
-            .withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
-            .icon(() -> new ItemStack(RelicsItems.FIRE_TABLET.get()))
-            .displayItems((parameters, output) -> {
-                //Add blocks
-                RelicsBlocks.BLOCKS.getEntries().forEach(
-                        blockRegistryObject -> {
-                               try { 
-                            	   output.accept(new ItemStack(blockRegistryObject.get())); } 
-                               catch (Exception e) {}
-                        }
-                );
-                // Add items
-                RelicsItems.ITEMS.getEntries().forEach(itemRegistryObject -> {
-                        output.accept(new ItemStack(itemRegistryObject.get()));
-            });
-            }).build());
+	public static final RegistryObject<CreativeModeTab> CREATIVE_TAB = CREATIVE_TABS.register(References.CREATIVE_TAB,
+			() -> CreativeModeTab.builder().title(Component.translatable("item_group." + References.MOD_ID + ".tab")).withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
+					.icon(() -> new ItemStack(RelicsItems.FIRE_TABLET.get()))
+					.displayItems((parameters, output) -> {
+						RelicsBlocks.addTabItems(parameters, output);
+						RelicsItems.addTabItems(parameters, output);
+					}).build());
 }
