@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "relics",
+  "key": {
+    "g": {
+      "item": "minecraft:grass"
+    },
+    "p": {
+      "item": "minecraft:flower_pot"
+    }
+  },
+  "pattern": [
+    "g",
+    "p"
+  ],
+  "result": {
+    "item": "relics:oddish_pot"
+  },
+  "show_notification": true
+}

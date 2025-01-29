@@ -7,6 +7,7 @@ import hojosa.relics.common.block.FancySwordPedestal;
 import hojosa.relics.common.block.NormalSwordPedestal;
 import hojosa.relics.common.block.RelicSwordPedestal;
 import hojosa.relics.lib.References;
+import hojosa.relics.lib.block.RelicsFacingBlock;
 import hojosa.relics.lib.block.RelicsNormalBlock;
 import hojosa.relics.lib.block.SwordPedestalBaseBlock;
 import net.minecraft.world.item.BlockItem;
@@ -32,6 +33,9 @@ public class RelicsBlocks {
 
 	public static final ItemObject<Block> LAPIS_BRICK = BLOCKS.register(References.UnlocalizedName.LAPIS_BRICK,
 			() -> new RelicsNormalBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS)), BLOCK_ITEM);
+	
+	public static final ItemObject<Block> ODDISH_POT = BLOCKS.register(References.UnlocalizedName.ODDISH_POT,
+			() -> new RelicsFacingBlock(BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)), BLOCK_ITEM);
 
 	public static final ItemObject<SwordPedestalBaseBlock> SWORD_PEDESTAL_NORMAL, SWORD_PEDESTAL_RELIC, SWORD_PEDESTAL_RELIC_VARIANTS, SWORD_PEDESTAL_TIME, SWORD_PEDESTAL_TWILIGHT;
 	static {
@@ -67,6 +71,7 @@ public class RelicsBlocks {
 		output.accept(SWORD_PEDESTAL_RELIC.get().asItem());
 		output.accept(SWORD_PEDESTAL_TIME.get().asItem());
 		output.accept(SWORD_PEDESTAL_TWILIGHT.get().asItem());
+		output.accept(ODDISH_POT.get().asItem());
 		Predicate<ItemStack> variants = stack -> {
 			output.accept(stack);
 			return false;

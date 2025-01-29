@@ -28,8 +28,7 @@ public class References
 		public static final String CLAY_BLUE = "clay_blue";
 		public static final String BRICK_BLUE = "brick_blue";
 		public static final String MASTER_SWORD = "master_sword";
-
-		public static final String SWORD_PEDESTAL_STONE = "sword_pedestal_stone";
+		public static final String ODDISH_POT = "oddish_pot";
     }
     
     public static class PedestalShapes {

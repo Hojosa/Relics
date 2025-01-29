@@ -70,5 +70,14 @@ public class RelicsRecipes extends RecipeProvider {
 		SingleItemRecipeBuilder.stonecutting(Ingredient.of(Blocks.CHISELED_STONE_BRICKS), RecipeCategory.DECORATIONS, RelicsBlocks.SWORD_PEDESTAL_TWILIGHT)
 		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.CHISELED_STONE_BRICKS))
 		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsBlocks.ODDISH_POT.get())
+		.pattern("g")
+		.pattern("p")
+		.define('g', Items.GRASS)
+		.define('p', Items.FLOWER_POT)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.FLOWER_POT))
+		.save(consumer);
 	}
 }
