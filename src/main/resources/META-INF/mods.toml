@@ -5,7 +5,7 @@ issueTrackerURL = "https://github.com/Hojosa/Relics/issues"
 
 [[mods]]
 	modId = "relics"
-	version = "${mod_version}"
+	version = "0.4"
 	displayName = "Relics"
 	logoFile = ""
 	credits = ""
@@ -23,7 +23,7 @@ issueTrackerURL = "https://github.com/Hojosa/Relics/issues"
 [[dependencies.relics]]
 	modId = "minecraft"
 	mandatory = true
-	versionRange = "${minecraft_version_range}"
+	versionRange = "[1.20.1,1.20.2)"
 	ordering = "NONE"
 	side = "BOTH"
 
