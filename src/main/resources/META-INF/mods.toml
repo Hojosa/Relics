@@ -4,14 +4,14 @@ license = "GPL-2.0"
 issueTrackerURL = "https://github.com/Hojosa/Relics/issues"
 
 [[mods]]
-modId = "relics"
-version = "${mod_version}"
-displayName = "Relics"
-logoFile = ""
-credits = ""
-authors = "Hojosa"
-description = '''
-'''
+	modId = "relics"
+	version = "${mod_version}"
+	displayName = "Relics"
+	logoFile = ""
+	credits = ""
+	authors = "Hojosa"
+	description = '''
+	'''
 
 [[dependencies.relics]] #optional
 	modId = "forge"

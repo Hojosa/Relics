@@ -96,8 +96,13 @@ processResources {
 
     filesMatching('META-INF/mods.toml') {
         expand 'file': ['jarVersion': mod_version],
-                'minecraft_version': minecraft_version,
+       			'mod_version': mod_version,
+                'minecraft_version_range': minecraft_version_range,
                 'forge_version': forge_version,
+                'mantle_range': mantle_range,
+                'expandability_range': mantle_range,
+                'curios_range': mantle_range,
+                'jei_range': jei_range,
                 'lang_version': forge_version.split('\\.')[0]
     }
 }
