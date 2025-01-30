@@ -22,8 +22,6 @@ public class SwordPedestalBlockEntity extends RelicsBlockEntity {
 	@Getter
 	private boolean isGlowing = false;
 
-//	private double renderOffset = 0;
-
 	public SwordPedestalBlockEntity(BlockPos blockPos, BlockState blockState) {
 		super(RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), 1, blockPos, blockState);
 	}
@@ -81,14 +79,6 @@ public class SwordPedestalBlockEntity extends RelicsBlockEntity {
 		setChanged();
 
 	}
-
-//	public void setRenderOffSet(double offset) {
-//		this.renderOffset = offset - 0.375;
-//	}
-
-//	public double getRenderOffSet() {
-//		return this.renderOffset;
-//	}
 
 	public void setGlowColor(int color) {
 		this.glowColor = color;

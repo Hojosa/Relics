@@ -1,8 +1,7 @@
-package hojosa.relics.lib.block.entity;
+package hojosa.relics.common.block.entity;
 
 import javax.annotation.Nonnull;
 
-import hojosa.relics.common.block.entity.SwordPedestalBlockEntity;
 import hojosa.relics.common.init.RelicsBlockEntities;
 import lombok.Getter;
 import net.minecraft.core.BlockPos;

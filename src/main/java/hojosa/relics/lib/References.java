@@ -19,6 +19,7 @@ public class References
 		public static final String SWORD_PEDESTAL_FANCY = "sword_pedestal_fancy";
 		public static final String SWORD_PEDESTAL_TIME = "sword_pedestal_time";
 		public static final String SWORD_PEDESTAL_TWILIGHT = "sword_pedestal_twilight";
+		public static final String SWORD_PEDESTAL_STONE = "sword_pedestal_stone";
 		public static final String SWORD_PLACE_SOUND = "sword_place";
 		public static final String SWORD_DRAW_SOUND = "sword_draw";
 		public static final String FANCY_SWORD_PLACE_SOUND = "fancy_sword_place";

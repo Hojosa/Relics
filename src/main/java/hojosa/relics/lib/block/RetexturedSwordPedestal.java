@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import hojosa.relics.lib.block.entity.RetexturedSwordPedestalEntity;
+import hojosa.relics.common.block.entity.RetexturedSwordPedestalEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;

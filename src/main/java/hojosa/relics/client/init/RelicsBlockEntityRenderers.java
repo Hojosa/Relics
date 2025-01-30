@@ -1,6 +1,7 @@
 package hojosa.relics.client.init;
 
 import hojosa.relics.client.render.SwordPedestalBlockRenderer;
+import hojosa.relics.client.render.SwordPedestalStoneBlockRenderer;
 import hojosa.relics.common.init.RelicsBlockEntities;
 import hojosa.relics.lib.References;
 import net.minecraftforge.api.distmarker.Dist;
@@ -15,5 +16,6 @@ public class RelicsBlockEntityRenderers {
 	public static void register(EntityRenderersEvent.RegisterRenderers event) {
 		event.registerBlockEntityRenderer(RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), context -> new SwordPedestalBlockRenderer());
 		event.registerBlockEntityRenderer(RelicsBlockEntities.REXTURED_SWORD_PEDESTAL_BLOCK_ENTITY.get(), context -> new SwordPedestalBlockRenderer());
+		event.registerBlockEntityRenderer(RelicsBlockEntities.SWORD_PEDESTAL_STONE_BLOCK_ENTITY.get(), context -> new SwordPedestalStoneBlockRenderer());
 	}	
 }

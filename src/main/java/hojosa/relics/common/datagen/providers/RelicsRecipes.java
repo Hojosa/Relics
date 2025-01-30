@@ -79,5 +79,9 @@ public class RelicsRecipes extends RecipeProvider {
 		.group(References.CREATIVE_TAB)
 		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.FLOWER_POT))
 		.save(consumer);
+		
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(Blocks.STONE), RecipeCategory.DECORATIONS, RelicsBlocks.SWORD_PEDESTAL_STONE)
+		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.STONE))
+		.save(consumer);
 	}
 }

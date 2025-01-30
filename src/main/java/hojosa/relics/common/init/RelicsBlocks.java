@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import hojosa.relics.common.block.FancySwordPedestal;
 import hojosa.relics.common.block.NormalSwordPedestal;
 import hojosa.relics.common.block.RelicSwordPedestal;
+import hojosa.relics.common.block.StoneSwordPedestal;
 import hojosa.relics.lib.References;
 import hojosa.relics.lib.block.RelicsFacingBlock;
 import hojosa.relics.lib.block.RelicsNormalBlock;
@@ -37,7 +38,7 @@ public class RelicsBlocks {
 	public static final ItemObject<Block> ODDISH_POT = BLOCKS.register(References.UnlocalizedName.ODDISH_POT,
 			() -> new RelicsFacingBlock(BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)), BLOCK_ITEM);
 
-	public static final ItemObject<SwordPedestalBaseBlock> SWORD_PEDESTAL_NORMAL, SWORD_PEDESTAL_RELIC, SWORD_PEDESTAL_RELIC_VARIANTS, SWORD_PEDESTAL_TIME, SWORD_PEDESTAL_TWILIGHT;
+	public static final ItemObject<SwordPedestalBaseBlock> SWORD_PEDESTAL_NORMAL, SWORD_PEDESTAL_RELIC, SWORD_PEDESTAL_RELIC_VARIANTS, SWORD_PEDESTAL_TIME, SWORD_PEDESTAL_TWILIGHT, SWORD_PEDESTAL_STONE;
 	static {
 		Block.Properties STONE_TABLE = builder(MapColor.COLOR_GRAY, SoundType.METAL)
 				.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 9.0F)
@@ -47,6 +48,7 @@ public class RelicsBlocks {
 		SWORD_PEDESTAL_RELIC_VARIANTS = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_RELIC, () -> new RelicSwordPedestal(STONE_TABLE), BLOCK_ITEM);
 		SWORD_PEDESTAL_TIME = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_TIME, () -> new FancySwordPedestal(STONE_TABLE, 0.1, References.PedestalShapes.TIME_SHAPE, References.PedestalShapes.TIME_SWORD_SHAPE, true), BLOCK_ITEM);
 		SWORD_PEDESTAL_TWILIGHT = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_TWILIGHT, () -> new FancySwordPedestal(STONE_TABLE, 0.13, References.PedestalShapes.TWILIGHT_SHAPE, References.PedestalShapes.TWILIGHT_SWORD_SHAPE, true), BLOCK_ITEM);
+		SWORD_PEDESTAL_STONE = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_STONE, () -> new StoneSwordPedestal(STONE_TABLE), BLOCK_ITEM);
 
 	}
 
@@ -71,7 +73,9 @@ public class RelicsBlocks {
 		output.accept(SWORD_PEDESTAL_RELIC.get().asItem());
 		output.accept(SWORD_PEDESTAL_TIME.get().asItem());
 		output.accept(SWORD_PEDESTAL_TWILIGHT.get().asItem());
+		output.accept(SWORD_PEDESTAL_STONE.get().asItem());
 		output.accept(ODDISH_POT.get().asItem());
+		
 		Predicate<ItemStack> variants = stack -> {
 			output.accept(stack);
 			return false;
