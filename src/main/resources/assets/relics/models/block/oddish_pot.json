@@ -6,5 +6,8 @@
 	"textures": {
 		"texture0": "relics:block/oddish",
 		"particle": "relics:block/oddish"
-	}
+	},
+	"transform": {
+		"translation": [ 0.5, 0, 0.5 ]
+    }
 }
