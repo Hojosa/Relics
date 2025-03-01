@@ -7,6 +7,7 @@ import hojosa.relics.common.init.RelicsBlocks;
 import hojosa.relics.common.init.RelicsItems;
 import hojosa.relics.common.init.RelicsTags;
 import hojosa.relics.lib.References;
+import hojosa.relics.lib.RelicsUtil;
 import hojosa.relics.lib.recipe.StonecutterRetexturedRecipeBuilder;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.PackOutput;
@@ -22,9 +23,9 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 
 
-public class RelicsRecipes extends RecipeProvider {
+public class RelicsRecipesProvider extends RecipeProvider {
 
-	public RelicsRecipes(PackOutput packOutput) {
+	public RelicsRecipesProvider(PackOutput packOutput) {
 		super(packOutput);
 	}
 
@@ -83,5 +84,82 @@ public class RelicsRecipes extends RecipeProvider {
 		SingleItemRecipeBuilder.stonecutting(Ingredient.of(Blocks.STONE), RecipeCategory.DECORATIONS, RelicsBlocks.SWORD_PEDESTAL_STONE)
 		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.STONE))
 		.save(consumer);
+		
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.STAR_DUST.get(), 3)
+		.requires(RelicsItems.STAR_PIECE.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.STAR_PIECE.get()))
+		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.STAR_PIECE.get())
+		.pattern("dd")
+		.pattern("dd")
+		.define('d', RelicsItems.STAR_DUST.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.STAR_DUST.get()))
+		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.STAR_STONE.get())
+		.pattern("ppp")
+		.pattern("ppp")
+		.pattern("ppp")
+		.define('p', RelicsItems.STAR_PIECE.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.STAR_PIECE.get()))
+		.save(consumer);
+		
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.INFUSED_STAR_DUST.get(), 3)
+		.requires(RelicsItems.INFUSED_STAR_PIECE.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.INFUSED_STAR_PIECE.get()))
+		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.INFUSED_STAR_PIECE.get())
+		.pattern("dd")
+		.pattern("dd")
+		.define('d', RelicsItems.INFUSED_STAR_DUST.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.INFUSED_STAR_DUST.get()))
+		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.INFUSED_STAR_STONE.get())
+		.pattern("ppp")
+		.pattern("ppp")
+		.pattern("ppp")
+		.define('p', RelicsItems.INFUSED_STAR_PIECE.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.INFUSED_STAR_PIECE.get()))
+		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.EMERALD_PIECE.get())
+		.pattern("eee")
+		.pattern("e e")
+		.pattern("eee")
+		.define('e', RelicsItems.EMERALD_SHARD.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.EMERALD_SHARD.get()))
+		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Items.EMERALD)
+		.pattern("eee")
+		.pattern("e e")
+		.pattern("eee")
+		.define('e', RelicsItems.EMERALD_PIECE.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.EMERALD_PIECE.get()))
+		.save(consumer);
+		
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.EMERALD_PIECE.get(), 8)
+		.requires(Items.EMERALD)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.EMERALD_PIECE.get()))
+		.save(consumer, RelicsUtil.modLoc("emerald_piece_reverse"));
+		
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.EMERALD_SHARD.get(), 8)
+		.requires(RelicsItems.EMERALD_PIECE.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.EMERALD_PIECE.get()))
+		.save(consumer);
+		
 	}
 }
