@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "relics",
+  "key": {
+    "p": {
+      "item": "relics:infused_star_piece"
+    }
+  },
+  "pattern": [
+    "ppp",
+    "ppp",
+    "ppp"
+  ],
+  "result": {
+    "item": "relics:infused_star_stone"
+  },
+  "show_notification": true
+}

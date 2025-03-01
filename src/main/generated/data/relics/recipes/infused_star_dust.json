@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "relics",
+  "ingredients": [
+    {
+      "item": "relics:infused_star_piece"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "item": "relics:infused_star_dust"
+  }
+}

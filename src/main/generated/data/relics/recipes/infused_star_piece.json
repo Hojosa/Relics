@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "relics",
+  "key": {
+    "d": {
+      "item": "relics:infused_star_dust"
+    }
+  },
+  "pattern": [
+    "dd",
+    "dd"
+  ],
+  "result": {
+    "item": "relics:infused_star_piece"
+  },
+  "show_notification": true
+}

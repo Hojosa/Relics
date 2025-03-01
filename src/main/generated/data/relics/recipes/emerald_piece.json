@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "relics",
+  "key": {
+    "e": {
+      "item": "relics:emerald_shard"
+    }
+  },
+  "pattern": [
+    "eee",
+    "e e",
+    "eee"
+  ],
+  "result": {
+    "item": "relics:emerald_piece"
+  },
+  "show_notification": true
+}
