@@ -5,7 +5,9 @@ import java.util.function.Predicate;
 
 import hojosa.relics.common.block.FancySwordPedestal;
 import hojosa.relics.common.block.NormalSwordPedestal;
+import hojosa.relics.common.block.GlintBlock;
 import hojosa.relics.common.block.RelicSwordPedestal;
+import hojosa.relics.common.block.SkybeamBlock;
 import hojosa.relics.common.block.StoneSwordPedestal;
 import hojosa.relics.lib.References;
 import hojosa.relics.lib.block.RelicsFacingBlock;
@@ -51,6 +53,15 @@ public class RelicsBlocks {
 		SWORD_PEDESTAL_STONE = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_STONE, () -> new StoneSwordPedestal(STONE_TABLE), BLOCK_ITEM);
 
 	}
+	
+	public static final ItemObject<Block> STARSTONE_BLOCK = BLOCKS.register(References.UnlocalizedName.STARSTONE_BLOCK,
+			() -> new RelicsNormalBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS)), BLOCK_ITEM);
+	
+	public static final ItemObject<Block> INFUSED_STARSTONE_BLOCK = BLOCKS.register(References.UnlocalizedName.INFUSED_STARSTONE_BLOCK,
+			() -> new GlintBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS), true), BLOCK_ITEM);
+	
+	public static final ItemObject<Block> SKYBEAM_BLOCK = BLOCKS.register(References.UnlocalizedName.SKYBEAM_BLOCK,
+			() -> new SkybeamBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS)), BLOCK_ITEM);
 
 	/**
 	 * We use this builder to ensure that our blocks all have the most important
@@ -74,7 +85,10 @@ public class RelicsBlocks {
 		output.accept(SWORD_PEDESTAL_TIME.get().asItem());
 		output.accept(SWORD_PEDESTAL_TWILIGHT.get().asItem());
 		output.accept(SWORD_PEDESTAL_STONE.get().asItem());
-		output.accept(ODDISH_POT.get().asItem());
+		output.accept(SKYBEAM_BLOCK.get().asItem());
+		output.accept(STARSTONE_BLOCK.get().asItem());
+		output.accept(INFUSED_STARSTONE_BLOCK.get().asItem());
+		
 		
 		Predicate<ItemStack> variants = stack -> {
 			output.accept(stack);

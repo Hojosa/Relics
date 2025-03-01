@@ -42,6 +42,9 @@ public class RelicsItemTags extends ItemTagsProvider {
 		tag(RelicsTags.Items.CLEANER)
 		.add(Items.SPONGE)
 		.add(TagEntry.optionalElement(new ResourceLocation("supplementaries", "soap")));
+		tag(RelicsTags.Items.HEART)
+		.add(RelicsItems.HEART.get());
+		
 	}
 
     @Override

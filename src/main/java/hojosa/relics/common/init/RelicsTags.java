@@ -27,6 +27,7 @@ public interface RelicsTags {
 		TagKey<Item> SWORD_PEDESTAL_GLOW = tag("sword_pedestal_coloring");
 		TagKey<Item> SWORD_PEDESTAL_COLORING = tag("sword_pedestal_coloring");
 		TagKey<Item> CLEANER = tag("cleaner");
+		TagKey<Item> HEART = tag("heart");
 		TagKey<Item> CHARM_TAG = ItemTags.create(new ResourceLocation(CuriosApi.MODID, SlotTypePreset.CHARM.getIdentifier()));
 
 

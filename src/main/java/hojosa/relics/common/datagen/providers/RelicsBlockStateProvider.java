@@ -9,10 +9,13 @@ import hojosa.relics.lib.block.SwordPedestalBaseBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.server.packs.PackType;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.client.model.generators.MultiPartBlockStateBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 import slimeknights.mantle.registration.object.ItemObject;
 
 public class RelicsBlockStateProvider extends BlockStateProvider{
@@ -28,10 +31,17 @@ public class RelicsBlockStateProvider extends BlockStateProvider{
 	@Override
 	protected void registerStatesAndModels() {
 		simpleBlock(RelicsBlocks.LAPIS_BRICK.get());
-//		registerPedestal(RelicsBlocks.SWORD_PEDESTAL_BASIC.get());
-		registerPedestal();
-	}
+		simpleBlockInfused(RelicsBlocks.INFUSED_STARSTONE_BLOCK.get(), RelicsBlocks.STARSTONE_BLOCK.get());
+		simpleBlock(RelicsBlocks.STARSTONE_BLOCK.get());
+		simpleBlock(RelicsBlocks.SKYBEAM_BLOCK.get());
 
+//		registerPedestal(RelicsBlocks.SWORD_PEDESTAL_BASIC.get());
+//		registerPedestal();
+	}
+	
+    private void simpleBlockInfused(Block block, Block parent) {
+        simpleBlock(block, models().cubeAll(ForgeRegistries.BLOCKS.getKey(block).getPath(), blockTexture(parent)));
+    }
 	
 	private void registerPedestal() {
 		ItemObject<SwordPedestalBaseBlock> block = RelicsBlocks.SWORD_PEDESTAL_NORMAL;

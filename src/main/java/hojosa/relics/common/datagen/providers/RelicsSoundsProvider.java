@@ -25,6 +25,15 @@ public class RelicsSoundsProvider extends SoundDefinitionsProvider {
 		add(RelicsSounds.FANCY_SWORD_PLACE_SOUND, definition()
 				.subtitle(getSubtitle(RelicsSounds.FANCY_SWORD_PLACE_SOUND))
 				.with(sound(RelicsSounds.FANCY_SWORD_PLACE_SOUND.getId())));
+		add(RelicsSounds.STAR_FALL_SOUND, definition()
+				.subtitle(getSubtitle(RelicsSounds.STAR_FALL_SOUND))
+				.with(sound(RelicsSounds.STAR_FALL_SOUND.getId())));
+		add(RelicsSounds.STAR_TWINKLE_SOUND, definition()
+				.subtitle(getSubtitle(RelicsSounds.STAR_TWINKLE_SOUND))
+				.with(sound(RelicsSounds.STAR_TWINKLE_SOUND.getId())));
+		add(RelicsSounds.STAR_CAUGHT_SOUND, definition()
+				.subtitle(getSubtitle(RelicsSounds.STAR_CAUGHT_SOUND))
+				.with(sound(RelicsSounds.STAR_CAUGHT_SOUND.getId())));
 	}
 	
 	private String getSubtitle(RegistryObject<SoundEvent> sound) {

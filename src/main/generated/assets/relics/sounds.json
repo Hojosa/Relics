@@ -5,6 +5,24 @@
     ],
     "subtitle": "relics.subtitle.fancy_sword_place"
   },
+  "star_caught": {
+    "sounds": [
+      "relics:star_caught"
+    ],
+    "subtitle": "relics.subtitle.star_caught"
+  },
+  "star_fall": {
+    "sounds": [
+      "relics:star_fall"
+    ],
+    "subtitle": "relics.subtitle.star_fall"
+  },
+  "star_twinkle": {
+    "sounds": [
+      "relics:star_twinkle"
+    ],
+    "subtitle": "relics.subtitle.star_twinkle"
+  },
   "sword_draw": {
     "sounds": [
       "relics:sword_draw"

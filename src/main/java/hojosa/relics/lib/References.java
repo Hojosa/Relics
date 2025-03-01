@@ -30,6 +30,25 @@ public class References
 		public static final String BRICK_BLUE = "brick_blue";
 		public static final String MASTER_SWORD = "master_sword";
 		public static final String ODDISH_POT = "oddish_pot";
+		public static final String FALLING_STAR = "falling_star";
+		public static final String STAR_PIECE = "star_piece";
+		public static final String STAR_FALL_SOUND = "star_fall";
+		public static final String STAR_TWINKLE_SOUND = "star_twinkle";
+		public static final String STAR_CAUGHT_SOUND = "star_caught";
+		public static final String STAR_PARTICLE = "star_particles";
+		public static final String STAR_DUST = "star_dust";
+		public static final String STAR_STONE = "star_stone";
+		public static final String INFUSED_STAR_PIECE = "infused_" + STAR_PIECE;
+		public static final String INFUSED_STAR_DUST = "infused_" + STAR_DUST;
+		public static final String INFUSED_STAR_STONE = "infused_" + STAR_STONE;
+		public static final String PHOENIX_FEATHER = "phoenix_feather";
+		public static final String EMERALD_SHARD = "emerald_shard";
+		public static final String HEART = "heart";
+		public static final String EMERALD_PIECE = "emerald_piece";
+		public static final String STARSTONE_BLOCK = "starstone_block";
+		public static final String SKYBEAM_BLOCK = "skybeam_block";
+		public static final String INFUSED_STARSTONE_BLOCK = "infused_starstone_block";
+		public static final String GLINT_BLOCK = "glint_block";
     }
     
     public static class PedestalShapes {

@@ -1,6 +1,8 @@
 package hojosa.relics.common.init;
 
+import hojosa.relics.common.block.entity.GlintBlockEntity;
 import hojosa.relics.common.block.entity.RetexturedSwordPedestalEntity;
+import hojosa.relics.common.block.entity.SkybeamBlockEntity;
 import hojosa.relics.common.block.entity.SwordPedestalBlockEntity;
 import hojosa.relics.common.block.entity.SwordPedestalStoneBlockEntity;
 import hojosa.relics.lib.References;
@@ -20,4 +22,10 @@ public class RelicsBlockEntities {
 	
 	public static final RegistryObject<BlockEntityType<SwordPedestalStoneBlockEntity>> SWORD_PEDESTAL_STONE_BLOCK_ENTITY = BLOCK_ENTITIES.register(References.UnlocalizedName.SWORD_PEDESTAL_STONE,
 			SwordPedestalStoneBlockEntity::new, builder -> builder.add(RelicsBlocks.SWORD_PEDESTAL_STONE.get()));
+	
+	public static final RegistryObject<BlockEntityType<GlintBlockEntity>> GLINT_BLOCK = BLOCK_ENTITIES.register(References.UnlocalizedName.GLINT_BLOCK,
+			GlintBlockEntity::new, builder -> builder.add(RelicsBlocks.INFUSED_STARSTONE_BLOCK.get()));
+	
+	public static final RegistryObject<BlockEntityType<SkybeamBlockEntity>> SKYBEAM_BLOCK = BLOCK_ENTITIES.register(References.UnlocalizedName.SKYBEAM_BLOCK,
+			SkybeamBlockEntity::new, builder -> builder.add(RelicsBlocks.SKYBEAM_BLOCK.get()));
 }

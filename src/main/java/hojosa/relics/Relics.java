@@ -5,9 +5,11 @@ import java.util.Objects;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import hojosa.relics.client.particle.RelicsParticles;
 import hojosa.relics.common.init.RelicsBlockEntities;
 import hojosa.relics.common.init.RelicsBlocks;
 import hojosa.relics.common.init.RelicsCreativeModeTabs;
+import hojosa.relics.common.init.RelicsEntities;
 import hojosa.relics.common.init.RelicsItems;
 import hojosa.relics.common.init.RelicsSounds;
 import hojosa.relics.common.loot.RelicsGlobalLootModifier;
@@ -48,8 +50,10 @@ public class Relics {
         RelicsItems.ITEMS.register(modEventBus);
         RelicsBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         RelicsCreativeModeTabs.CREATIVE_TABS.register(modEventBus);
+        RelicsEntities.ENTITY_TYPES.register(modEventBus);
         RelicsSounds.SOUNDS.register(modEventBus);
         RelicsGlobalLootModifier.register(modEventBus);
+        RelicsParticles.PARTICLE_TYPES.register(modEventBus);
         
         MinecraftForge.EVENT_BUS.register(this);
     }

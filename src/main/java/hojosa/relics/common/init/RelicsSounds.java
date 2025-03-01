@@ -23,6 +23,18 @@ public class RelicsSounds {
 			References.UnlocalizedName.FANCY_SWORD_PLACE_SOUND
 	);
 	
+	public static final RegistryObject<SoundEvent>STAR_FALL_SOUND = registerSound(
+			References.UnlocalizedName.STAR_FALL_SOUND
+	);
+	
+	public static final RegistryObject<SoundEvent>STAR_TWINKLE_SOUND = registerSound(
+			References.UnlocalizedName.STAR_TWINKLE_SOUND
+	);
+	
+	public static final RegistryObject<SoundEvent>STAR_CAUGHT_SOUND = registerSound(
+			References.UnlocalizedName.STAR_CAUGHT_SOUND
+	);
+	
     private static RegistryObject<SoundEvent> registerSound(String name) {
         return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(References.MOD_ID, name)));
     }
