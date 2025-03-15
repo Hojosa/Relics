@@ -1,7 +1,6 @@
-package hojosa.relics.common.block;
+package hojosa.relics.lib.block;
 
-import hojosa.relics.common.block.entity.GlintBlockEntity;
-import hojosa.relics.lib.block.RelicsNormalBlock;
+import hojosa.relics.lib.block.entity.GlintBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;

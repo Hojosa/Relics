@@ -1,4 +1,4 @@
-package hojosa.relics.common.block.entity;
+package hojosa.relics.lib.block.entity;
 
 import hojosa.relics.common.init.RelicsBlockEntities;
 import net.minecraft.core.BlockPos;
@@ -13,7 +13,6 @@ public class GlintBlockEntity extends MantleBlockEntity{
 	}
 
 	public GlintBlockEntity(BlockPos pos, BlockState state) {
-		super(RelicsBlockEntities.GLINT_BLOCK.get(), pos, state);
+		super(RelicsBlockEntities.GLINT_BLOCK_ENTITY.get(), pos, state);
 	}
-	
 }
