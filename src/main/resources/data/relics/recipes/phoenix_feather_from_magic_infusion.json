@@ -1,0 +1,21 @@
+{
+  "type": "relics:magic_infusion",
+  "ingredients": [
+    {	
+      "item": "relics:infused_star_dust"
+    },
+    {
+      "item": "relics:totem_dust"
+    },
+    {
+      "item": "minecraft:blaze_powder"
+    },
+	{
+      "item": "minecraft:feather"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "relics:phoenix_feather"
+  }
+}
