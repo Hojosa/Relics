@@ -1,0 +1,14 @@
+{
+  "type": "relics:add_item",
+  "conditions": [
+    {
+      "chance": 0.5,
+      "condition": "minecraft:random_chance"
+    },
+    {
+      "block": "minecraft:tall_grass",
+      "condition": "minecraft:block_state_property"
+    }
+  ],
+  "item": "relics:heart"
+}

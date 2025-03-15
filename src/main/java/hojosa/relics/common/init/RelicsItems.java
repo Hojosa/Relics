@@ -84,8 +84,9 @@ public class RelicsItems{
     		References.UnlocalizedName.HEART, () -> new RelicsItem(64)
     );
     
-
-
+    public static final RegistryObject<RelicsItem> TOTEM_DUST = ITEMS.register(
+    		References.UnlocalizedName.TOTEM_DUST, () -> new RelicsItem(64, Rarity.UNCOMMON)
+    );
     
     public static void addTabItems(ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
     	RelicsItems.ITEMS.getEntries().forEach(itemRegistryObject -> {

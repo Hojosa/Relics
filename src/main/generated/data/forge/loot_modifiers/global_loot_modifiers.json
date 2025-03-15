@@ -1,7 +1,9 @@
 {
   "entries": [
     "relics:water_tablet_from_loot_chest",
-    "relics:fire_tablet_from_loot_chest"
+    "relics:emerald_shard_from_grass",
+    "relics:fire_tablet_from_loot_chest",
+    "relics:heart_from_grass"
   ],
   "replace": false
 }

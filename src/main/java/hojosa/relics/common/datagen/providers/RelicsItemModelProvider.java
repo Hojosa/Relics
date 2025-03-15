@@ -41,6 +41,7 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItem(RelicsItems.WATER_TABLET);
 		basicItem(RelicsItems.PHOENIX_FEATHER);
 		basicItem(RelicsItems.HEART);
+		basicItem(RelicsItems.TOTEM_DUST);
 		infusedItem(RelicsItems.INFUSED_STAR_PIECE, RelicsItems.STAR_PIECE);
 		infusedItem(RelicsItems.INFUSED_STAR_DUST, RelicsItems.STAR_DUST);
 		infusedItem(RelicsItems.INFUSED_STAR_STONE, RelicsItems.STAR_STONE);
