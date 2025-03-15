@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 60,
+  "experience": 0.2,
+  "ingredient": {
+    "item": "minecraft:totem_of_undying"
+  },
+  "result": "relics:totem_dust"
+}
