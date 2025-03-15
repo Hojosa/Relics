@@ -58,7 +58,7 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.build(consumer);
 		
 		StonecutterRetexturedRecipeBuilder.fromStonecutter(
-				SingleItemRecipeBuilder.stonecutting(Ingredient.of(RelicsTags.Items.SWORD_PEDESTAL_VARIANTS), RecipeCategory.DECORATIONS, RelicsBlocks.SWORD_PEDESTAL_RELIC)
+				SingleItemRecipeBuilder.stonecutting(Ingredient.of(RelicsTags.Items.SWORD_PEDESTAL_VARIANTS), RecipeCategory.DECORATIONS, RelicsBlocks.SWORD_PEDESTAL_RELIC_VARIANTS)
 				.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.CLAY_BLUE.get())))
 		.setSource(RelicsTags.Items.SWORD_PEDESTAL_VARIANTS)
 		.setMatchAll()
@@ -69,6 +69,10 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.save(consumer);
 		
 		SingleItemRecipeBuilder.stonecutting(Ingredient.of(Blocks.CHISELED_STONE_BRICKS), RecipeCategory.DECORATIONS, RelicsBlocks.SWORD_PEDESTAL_TWILIGHT)
+		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.CHISELED_STONE_BRICKS))
+		.save(consumer);
+		
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(Blocks.STONE_BRICKS), RecipeCategory.DECORATIONS, RelicsBlocks.SWORD_PEDESTAL_RELIC)
 		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.CHISELED_STONE_BRICKS))
 		.save(consumer);
 		
@@ -161,5 +165,36 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.EMERALD_PIECE.get()))
 		.save(consumer);
 		
+		SimpleCookingRecipeBuilder.blasting(Ingredient.of(Items.TOTEM_OF_UNDYING), RecipeCategory.MISC, RelicsItems.TOTEM_DUST.get().asItem(), 0.2f, 60)
+		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(Items.TOTEM_OF_UNDYING))
+		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsBlocks.STARSTONE_BLOCK.get())
+		.pattern("sss")
+		.pattern("sss")
+		.pattern("sss")
+		.define('s', RelicsItems.STAR_STONE.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.STAR_STONE.get()))
+		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsBlocks.INFUSED_STARSTONE_BLOCK.get())
+		.pattern("sss")
+		.pattern("sss")
+		.pattern("sss")
+		.define('s', RelicsItems.INFUSED_STAR_STONE.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.STAR_STONE.get()))
+		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsBlocks.SKYBEAM_BLOCK.get())
+		.pattern("ooo")
+		.pattern("oso")
+		.pattern("ooo")
+		.define('s', RelicsItems.STAR_STONE.get())
+		.define('o', Blocks.OBSIDIAN)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.STAR_STONE.get()))
+		.save(consumer);
 	}
 }

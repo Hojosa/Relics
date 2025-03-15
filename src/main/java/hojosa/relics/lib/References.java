@@ -49,6 +49,7 @@ public class References
 		public static final String SKYBEAM_BLOCK = "skybeam_block";
 		public static final String INFUSED_STARSTONE_BLOCK = "infused_starstone_block";
 		public static final String GLINT_BLOCK = "glint_block";
+		public static final String TOTEM_DUST = "totem_dust";
     }
     
     public static class PedestalShapes {

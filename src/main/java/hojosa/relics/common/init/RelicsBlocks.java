@@ -4,11 +4,12 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 import hojosa.relics.common.block.FancySwordPedestal;
+import hojosa.relics.common.block.InfusedStarstoneBlock;
 import hojosa.relics.common.block.NormalSwordPedestal;
-import hojosa.relics.common.block.GlintBlock;
 import hojosa.relics.common.block.RelicSwordPedestal;
 import hojosa.relics.common.block.SkybeamBlock;
 import hojosa.relics.common.block.StoneSwordPedestal;
+import hojosa.relics.common.item.InfusedItem;
 import hojosa.relics.lib.References;
 import hojosa.relics.lib.block.RelicsFacingBlock;
 import hojosa.relics.lib.block.RelicsNormalBlock;
@@ -18,6 +19,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTab.ItemDisplayParameters;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
@@ -32,7 +34,11 @@ public class RelicsBlocks {
 	public static final BlockDeferredRegister BLOCKS = new BlockDeferredRegister(References.MOD_ID);
 
 	protected static final Item.Properties ITEM_PROPS = new Item.Properties();
+	protected static final Item.Properties ITEM_PROPS_GLINT = new InfusedItem.Properties();
 	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM = (b) -> new BlockItem(b, ITEM_PROPS);
+	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM_UNCOMMON = (b) -> new BlockItem(b, ITEM_PROPS.rarity(Rarity.UNCOMMON));
+	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM_EPIC = (b) -> new BlockItem(b, ITEM_PROPS.rarity(Rarity.EPIC));
+	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM_GLINT = (b) -> new BlockItem(b, ITEM_PROPS_GLINT);
 
 	public static final ItemObject<Block> LAPIS_BRICK = BLOCKS.register(References.UnlocalizedName.LAPIS_BRICK,
 			() -> new RelicsNormalBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS)), BLOCK_ITEM);
@@ -53,12 +59,12 @@ public class RelicsBlocks {
 		SWORD_PEDESTAL_STONE = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_STONE, () -> new StoneSwordPedestal(STONE_TABLE), BLOCK_ITEM);
 
 	}
-	
+
 	public static final ItemObject<Block> STARSTONE_BLOCK = BLOCKS.register(References.UnlocalizedName.STARSTONE_BLOCK,
-			() -> new RelicsNormalBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS)), BLOCK_ITEM);
+			() -> new RelicsNormalBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).lightLevel(value -> 15)), BLOCK_ITEM_UNCOMMON);
 	
 	public static final ItemObject<Block> INFUSED_STARSTONE_BLOCK = BLOCKS.register(References.UnlocalizedName.INFUSED_STARSTONE_BLOCK,
-			() -> new GlintBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS), true), BLOCK_ITEM);
+			() -> new InfusedStarstoneBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).lightLevel(value -> 15), true), BLOCK_ITEM_EPIC);
 	
 	public static final ItemObject<Block> SKYBEAM_BLOCK = BLOCKS.register(References.UnlocalizedName.SKYBEAM_BLOCK,
 			() -> new SkybeamBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS)), BLOCK_ITEM);
@@ -81,6 +87,7 @@ public class RelicsBlocks {
 
 	public static void addTabItems(ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
 		output.accept(LAPIS_BRICK.get().asItem());
+		output.accept(ODDISH_POT.get().asItem());
 		output.accept(SWORD_PEDESTAL_RELIC.get().asItem());
 		output.accept(SWORD_PEDESTAL_TIME.get().asItem());
 		output.accept(SWORD_PEDESTAL_TWILIGHT.get().asItem());

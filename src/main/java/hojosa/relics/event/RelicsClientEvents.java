@@ -4,6 +4,7 @@ import hojosa.relics.client.particle.RelicsParticles;
 import hojosa.relics.client.particle.StarParticles;
 import hojosa.relics.client.render.FallingStarRenderer;
 import hojosa.relics.client.render.GlintBlockRenderer;
+import hojosa.relics.client.render.InfusedStarstoneBlockRenderer;
 import hojosa.relics.client.render.SkybeamBlockRenderer;
 import hojosa.relics.client.render.SwordPedestalBlockRenderer;
 import hojosa.relics.client.render.SwordPedestalStoneBlockRenderer;
@@ -33,8 +34,9 @@ public class RelicsClientEvents {
 		event.registerBlockEntityRenderer(RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), context -> new SwordPedestalBlockRenderer());
 		event.registerBlockEntityRenderer(RelicsBlockEntities.REXTURED_SWORD_PEDESTAL_BLOCK_ENTITY.get(), context -> new SwordPedestalBlockRenderer());
 		event.registerBlockEntityRenderer(RelicsBlockEntities.SWORD_PEDESTAL_STONE_BLOCK_ENTITY.get(), context -> new SwordPedestalStoneBlockRenderer());
-		event.registerBlockEntityRenderer(RelicsBlockEntities.GLINT_BLOCK.get(), context -> new GlintBlockRenderer(context));
-		event.registerBlockEntityRenderer(RelicsBlockEntities.SKYBEAM_BLOCK.get(), context -> new SkybeamBlockRenderer());
+		event.registerBlockEntityRenderer(RelicsBlockEntities.GLINT_BLOCK_ENTITY.get(), context -> new GlintBlockRenderer(context));
+		event.registerBlockEntityRenderer(RelicsBlockEntities.INFUSED_STARSTONE_BLOCK_ENTITY.get(), context -> new InfusedStarstoneBlockRenderer(context));
+		event.registerBlockEntityRenderer(RelicsBlockEntities.SKYBEAM_BLOCK_ENTITY.get(), context -> new SkybeamBlockRenderer());
 		event.registerEntityRenderer(RelicsEntities.FALLING_STAR.get(), context -> new FallingStarRenderer(context));
 	}
 	

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "relics",
+  "key": {
+    "s": {
+      "item": "relics:star_stone"
+    }
+  },
+  "pattern": [
+    "sss",
+    "sss",
+    "sss"
+  ],
+  "result": {
+    "item": "relics:starstone_block"
+  },
+  "show_notification": true
+}

@@ -102,6 +102,15 @@ public class RelicsBlockEntity extends MantleBlockEntity implements Container {
 		}
 		return true;
 	}
+	
+	public int emptySlots() {
+		int count = 0;
+		for (int i = 0; i < getContainerSize(); i++) {
+			if (itemHandler.getStackInSlot(i).isEmpty())
+				count++;
+		}
+		return count;
+	}
 
 	@Override
 	public ItemStack getItem(int pSlot) {
@@ -129,6 +138,10 @@ public class RelicsBlockEntity extends MantleBlockEntity implements Container {
 			itemHandler.setStackInSlot(pSlot, pStack);
 		}
 	}
+	
+  public boolean isStackInSlot(int slot) {
+	    return !this.getItem(slot).isEmpty();
+	  }
 
 	@Override
 	public boolean stillValid(Player pPlayer) {

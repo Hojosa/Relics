@@ -13,6 +13,7 @@ import hojosa.relics.common.init.RelicsEntities;
 import hojosa.relics.common.init.RelicsItems;
 import hojosa.relics.common.init.RelicsSounds;
 import hojosa.relics.common.loot.RelicsGlobalLootModifier;
+import hojosa.relics.common.recipes.RelicsRecipes;
 import hojosa.relics.integration.RelicsIntegration;
 import hojosa.relics.lib.References;
 import hojosa.relics.lib.recipe.StonecutterRetexturedRecipe;
@@ -54,6 +55,7 @@ public class Relics {
         RelicsSounds.SOUNDS.register(modEventBus);
         RelicsGlobalLootModifier.register(modEventBus);
         RelicsParticles.PARTICLE_TYPES.register(modEventBus);
+        RelicsRecipes.SERIALIZERS.register(modEventBus);
         
         MinecraftForge.EVENT_BUS.register(this);
     }
