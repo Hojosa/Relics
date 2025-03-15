@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "minecraft:chiseled_stone_bricks"
+              "relics:clay_blue"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "relics:sword_pedestal"
+        "recipe": "relics:sword_pedestal_relic"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "relics:sword_pedestal"
+      "relics:sword_pedestal_relic"
     ]
   },
   "sends_telemetry_event": false

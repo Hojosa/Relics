@@ -1,12 +1,8 @@
 {
-  "type": "relics:crafting_stonecutter_retextured",
+  "type": "minecraft:stonecutting",
   "count": 1,
   "ingredient": {
-    "tag": "relics:sword_pedestal_variants"
+    "item": "minecraft:stone_bricks"
   },
-  "match_all": true,
-  "result": "relics:sword_pedestal",
-  "texture": {
-    "tag": "relics:sword_pedestal_variants"
-  }
+  "result": "relics:sword_pedestal"
 }
