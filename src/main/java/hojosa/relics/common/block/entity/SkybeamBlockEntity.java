@@ -1,7 +1,5 @@
 package hojosa.relics.common.block.entity;
 
-import javax.annotation.Nullable;
-
 import org.jetbrains.annotations.NotNull;
 
 import hojosa.relics.common.init.RelicsBlockEntities;
@@ -12,6 +10,7 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.phys.AABB;
 import slimeknights.mantle.block.entity.MantleBlockEntity;
 
 public class SkybeamBlockEntity extends MantleBlockEntity {
@@ -26,22 +25,18 @@ public class SkybeamBlockEntity extends MantleBlockEntity {
 	}
 
 	public SkybeamBlockEntity(BlockPos pos, BlockState state) {
-		super(RelicsBlockEntities.SKYBEAM_BLOCK.get(), pos, state);
+		super(RelicsBlockEntities.SKYBEAM_BLOCK_ENTITY.get(), pos, state);
 	}
 
 	public void tick() {
-		if (this.getBlockState().getValue(BlockStateProperties.LIT)) {
-//			System.out.println(beam_strenght);
+		if (this.getBlockState().getValue(BlockStateProperties.LIT) && this.beam_strenght < 10) {
 			this.beam_strenght = Math.min(this.beam_strenght + 1, MAX_BEAM_STRENGHT);
 			this.signal = true;
 			this.level.markAndNotifyBlock(worldPosition, level.getChunkAt(worldPosition), getBlockState(), getBlockState(), 2, 1);
-//			this.setChangedFast();
-		} else {
-//			System.out.println(beam_strenght);
+		} else if(!this.getBlockState().getValue(BlockStateProperties.LIT) && this.beam_strenght > 0){
 			this.beam_strenght = Math.max(this.beam_strenght - 1, 0);
 			this.signal = false;
 			this.level.markAndNotifyBlock(worldPosition, level.getChunkAt(worldPosition), getBlockState(), getBlockState(), 2, 1);
-//			this.setChangedFast();
 		}
 	}
 
@@ -82,5 +77,9 @@ public class SkybeamBlockEntity extends MantleBlockEntity {
 	public void handleUpdateTag(CompoundTag tag) {
 		this.load(tag);
 	}
-
+	
+    @Override
+    public AABB getRenderBoundingBox() {
+        return INFINITE_EXTENT_AABB;
+    }
 }

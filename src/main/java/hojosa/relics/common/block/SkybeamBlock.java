@@ -7,7 +7,6 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
-import net.minecraft.world.level.block.RedstoneTorchBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -31,7 +30,6 @@ public class SkybeamBlock extends RelicsNormalBlock implements EntityBlock{
 	
 	@Override
 	protected void createBlockStateDefinition(Builder<Block, BlockState> pBuilder) {
-		// TODO Auto-generated method stub
 		super.createBlockStateDefinition(pBuilder.add(LIT));
 	}
 	
@@ -59,7 +57,6 @@ public class SkybeamBlock extends RelicsNormalBlock implements EntityBlock{
             // Server side we delegate ticking to our block entity
             return (lvl, pos, st, blockEntity) -> {
                 if (blockEntity instanceof SkybeamBlockEntity be) {
-//                	pLevel.markAndNotifyBlock(pos, pLevel.getChunkAt(pos), pState, pState, UPDATE_CLIENTS, 1);
                     be.tick();
                 }
             };
