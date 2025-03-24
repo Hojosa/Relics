@@ -35,6 +35,18 @@ public class RelicsSounds {
 			References.UnlocalizedName.STAR_CAUGHT_SOUND
 	);
 	
+	public static final RegistryObject<SoundEvent>HEART = registerSound(
+			References.UnlocalizedName.HEART
+	);
+	
+	public static final RegistryObject<SoundEvent>REVIVE = registerSound(
+			References.UnlocalizedName.REVIVE
+	);
+	
+	public static final RegistryObject<SoundEvent>EMERALD_PICKUP = registerSound(
+			References.UnlocalizedName.EMERALD_PICKUP
+	);
+	
     private static RegistryObject<SoundEvent> registerSound(String name) {
         return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(References.MOD_ID, name)));
     }

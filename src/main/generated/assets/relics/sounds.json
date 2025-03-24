@@ -1,9 +1,27 @@
 {
+  "emerald_pickup": {
+    "sounds": [
+      "relics:emerald_pickup"
+    ],
+    "subtitle": "relics.subtitle.emerald_pickup"
+  },
   "fancy_sword_place": {
     "sounds": [
       "relics:fancy_sword_place"
     ],
     "subtitle": "relics.subtitle.fancy_sword_place"
+  },
+  "heart": {
+    "sounds": [
+      "relics:heart"
+    ],
+    "subtitle": "relics.subtitle.heart"
+  },
+  "revive": {
+    "sounds": [
+      "relics:revive"
+    ],
+    "subtitle": "relics.subtitle.revive"
   },
   "star_caught": {
     "sounds": [

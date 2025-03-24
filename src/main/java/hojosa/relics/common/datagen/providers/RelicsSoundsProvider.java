@@ -34,6 +34,15 @@ public class RelicsSoundsProvider extends SoundDefinitionsProvider {
 		add(RelicsSounds.STAR_CAUGHT_SOUND, definition()
 				.subtitle(getSubtitle(RelicsSounds.STAR_CAUGHT_SOUND))
 				.with(sound(RelicsSounds.STAR_CAUGHT_SOUND.getId())));
+		add(RelicsSounds.HEART, definition()
+				.subtitle(getSubtitle(RelicsSounds.HEART))
+				.with(sound(RelicsSounds.HEART.getId())));
+		add(RelicsSounds.REVIVE, definition()
+				.subtitle(getSubtitle(RelicsSounds.REVIVE))
+				.with(sound(RelicsSounds.REVIVE.getId())));
+		add(RelicsSounds.EMERALD_PICKUP, definition()
+				.subtitle(getSubtitle(RelicsSounds.EMERALD_PICKUP))
+				.with(sound(RelicsSounds.EMERALD_PICKUP.getId())));
 	}
 	
 	private String getSubtitle(RegistryObject<SoundEvent> sound) {
@@ -42,7 +51,6 @@ public class RelicsSoundsProvider extends SoundDefinitionsProvider {
 	
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return "Relics Sounds";
 	}
 }

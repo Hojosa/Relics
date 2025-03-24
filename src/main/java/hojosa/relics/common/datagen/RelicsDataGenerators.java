@@ -10,6 +10,7 @@ import hojosa.relics.common.datagen.providers.RelicsGlobalLootModifiersProvider;
 import hojosa.relics.common.datagen.providers.RelicsItemModelProvider;
 import hojosa.relics.common.datagen.providers.RelicsItemTags;
 import hojosa.relics.common.datagen.providers.RelicsLootTables;
+import hojosa.relics.common.datagen.providers.RelicsParticleDescriptionProvider;
 import hojosa.relics.common.datagen.providers.RelicsRecipesProvider;
 import hojosa.relics.common.datagen.providers.RelicsSoundsProvider;
 import hojosa.relics.lib.References;
@@ -43,7 +44,7 @@ public class RelicsDataGenerators {
 		generator.addProvider(event.includeServer(), new RelicsGlobalLootModifiersProvider(packOutput));
 		generator.addProvider(event.includeClient(), new RelicsBlockStateProvider(packOutput, existingFileHelper));
 		generator.addProvider(event.includeClient(), new RelicsSoundsProvider(packOutput, existingFileHelper));
-//		generator.addProvider(event.includeClient(), new RelicsParticleDescriptionProvider(packOutput, existingFileHelper));
+		generator.addProvider(event.includeClient(), new RelicsParticleDescriptionProvider(packOutput, existingFileHelper));
 		generator.addProvider(event.includeClient(), new RelicsItemModelProvider(packOutput, existingFileHelper));
 	}
 
