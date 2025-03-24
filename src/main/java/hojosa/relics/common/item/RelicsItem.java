@@ -12,6 +12,10 @@ public class RelicsItem extends Item {
 		super(getInitProperties(stackSize));
 	}
 
+	public RelicsItem(Properties properties) {
+		super(properties);
+	}
+
 	private static Properties getInitProperties(int maxStackSize) {
 		Properties properties = new Properties();
 		properties.stacksTo(maxStackSize);

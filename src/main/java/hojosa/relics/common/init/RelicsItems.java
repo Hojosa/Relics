@@ -67,9 +67,9 @@ public class RelicsItems{
     public static final RegistryObject<RelicsItem> INFUSED_STAR_STONE = ITEMS.register(
     		References.UnlocalizedName.INFUSED_STAR_STONE, () -> new InfusedItem(64, Rarity.EPIC)
     );
-    
+    //Make fire resistant
     public static final RegistryObject<RelicsItem> PHOENIX_FEATHER = ITEMS.register(
-    		References.UnlocalizedName.PHOENIX_FEATHER, () -> new InfusedItem(64, Rarity.RARE)
+    		References.UnlocalizedName.PHOENIX_FEATHER, () -> new InfusedItem(new Item.Properties().stacksTo(64).rarity(Rarity.RARE).fireResistant())
     );
     
     public static final RegistryObject<RelicsItem> EMERALD_SHARD = ITEMS.register(
