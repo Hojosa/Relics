@@ -76,7 +76,6 @@ public class FallingStarEntity extends Entity {
 			if(this.tickCount == 6 && this.level().isClientSide()) {
 				this.level().playLocalSound(this.blockPosition(), RelicsSounds.STAR_FALL_SOUND.get(), getSoundSource(), 0.5f, 1.0f, false);
 			}
-			
 			this.movementY -= 0.03;
 			this.move(MoverType.SELF, new Vec3(0, this.movementY, 0));
 
