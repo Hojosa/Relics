@@ -6,19 +6,22 @@ import java.util.Random;
 import be.florens.expandability.api.forge.LivingFluidCollisionEvent;
 import hojosa.relics.common.entity.FallingStarEntity;
 import hojosa.relics.common.init.RelicsItems;
-import hojosa.relics.common.init.RelicsTags;
+import hojosa.relics.common.init.RelicsSounds;
+import hojosa.relics.common.item.entity.EmeraldShardEntity;
+import hojosa.relics.common.item.entity.HeartItemEntity;
 import hojosa.relics.common.player.StarFallChance;
 import hojosa.relics.common.player.StarFallChanceProvider;
 import hojosa.relics.lib.References;
+import hojosa.relics.network.PhoenixParticlePacket;
+import hojosa.relics.network.RelicsNetwork;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.Entity.RemovalReason;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades.ItemListing;
@@ -31,7 +34,6 @@ import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.Event;
@@ -82,36 +84,33 @@ public class RelicsEvents {
     
     @SubscribeEvent
     public static void onPlayerDeath(LivingDeathEvent event) {
+    	System.out.println(event.getEntity());
         if(event.getEntity() instanceof ServerPlayer targetPlayer) {
         	if(targetPlayer.getInventory().contains(new ItemStack(RelicsItems.PHOENIX_FEATHER.get()))){
         		targetPlayer.getInventory().getItem(targetPlayer.getInventory().findSlotMatchingItem(new ItemStack(RelicsItems.PHOENIX_FEATHER.get()))).shrink(1);
         		targetPlayer.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 220));
         		targetPlayer.setHealth(10);
-        		//play music
-        		//particles
+        		event.getEntity().level().playSound(targetPlayer, event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), RelicsSounds.REVIVE.get(), SoundSource.BLOCKS, 1f, 1f);
+        		RelicsNetwork.getInstance().sendToTrackingAndSelf(new PhoenixParticlePacket(targetPlayer.getX(), targetPlayer.getY(), targetPlayer.getZ()), targetPlayer);
         		event.setCanceled(true);
         	}
         }
     }
     
-    @SubscribeEvent
-    public static void onEntityItemPickup(EntityItemPickupEvent event) {
-    	if(event.getItem().getItem().is(RelicsTags.Items.HEART)) {
-    		event.getEntity().heal(6);
-    		event.getItem().remove(RemovalReason.DISCARDED);
-    		event.setCanceled(true);
-    		//sound?
-    	}
-    }
+//    @SubscribeEvent
+//    public static void onEntityItemPickup(EntityItemPickupEvent event) {
+//    }
     
     //we drop the heart via event, because there is no loottable for hostile mobs, only 1 per each mob and mod compat would be a nightmare otherwise
+    //also, we use our own ItemEntity when dropping this way. the heart "should" be unobtainable outside of this, and the emerald shard sound is only needed when dropped this way. 
+    //this also saves us the onEntityItemPickup event for the heart
     @SubscribeEvent
     public static void onLivingDropsEvent(LivingDropsEvent event) {
     	if(event.getEntity() instanceof Enemy) {
-    		if(new Random().nextInt(0, 17) == 4)
-    			event.getDrops().add(new ItemEntity(event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), new ItemStack(RelicsItems.HEART.get().asItem())));
+    		if(new Random().nextInt(0, 14) == 4)
+    			event.getDrops().add(new HeartItemEntity(event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), new ItemStack(RelicsItems.HEART.get().asItem())));
     		if(new Random().nextInt(0, 10) == 4)
-    			event.getDrops().add(new ItemEntity(event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), new ItemStack(RelicsItems.EMERALD_SHARD.get().asItem())));
+    			event.getDrops().add(new EmeraldShardEntity(event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), new ItemStack(RelicsItems.EMERALD_SHARD.get().asItem())));
 
     	}
     }

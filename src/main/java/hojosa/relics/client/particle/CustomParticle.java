@@ -10,17 +10,15 @@ import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class StarParticles extends TextureSheetParticle {
-//	private final SpriteSet spriteSet;
+public class CustomParticle extends TextureSheetParticle {
 
-	protected StarParticles(ClientLevel pLevel, double pX, double pY, double pZ, SpriteSet spriteSet, double pXSpeed, double pYSpeed, double pZSpeed) {
+	protected CustomParticle(ClientLevel pLevel, double pX, double pY, double pZ, SpriteSet spriteSet, double pXSpeed, double pYSpeed, double pZSpeed) {
 		super(pLevel, pX, pY, pZ, pXSpeed, pYSpeed, pZSpeed);
 		this.friction = 0.8F;
 		this.xd = pXSpeed;
 		this.yd = pYSpeed;
 		this.zd = pZSpeed;
-//		this.spriteSet = spriteSet;
-		this.quadSize *= 0.85F;
+		this.quadSize *= 2.5F;
 		this.lifetime = 20;
 		this.setSpriteFromAge(spriteSet);
 
@@ -41,7 +39,6 @@ public class StarParticles extends TextureSheetParticle {
 
 	@Override
 	public ParticleRenderType getRenderType() {
-		// TODO Auto-generated method stub
 		return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
 	}
 
@@ -54,8 +51,7 @@ public class StarParticles extends TextureSheetParticle {
 		}
 
 		public Particle createParticle(SimpleParticleType particleType, ClientLevel level, double x, double y, double z, double dx, double dy, double dz) {
-			return new StarParticles(level, x, y, z, this.sprites, dx, dy, dz);
+			return new CustomParticle(level, x, y, z, this.sprites, dx, dy, dz);
 		}
 	}
-
 }

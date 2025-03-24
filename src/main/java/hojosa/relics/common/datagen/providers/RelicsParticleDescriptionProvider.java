@@ -14,7 +14,8 @@ public class RelicsParticleDescriptionProvider extends ParticleDescriptionProvid
 
 	@Override
 	protected void addDescriptions() {
-		sprite(RelicsParticles.STAR_PATTICLES.get(), RelicsUtil.modLoc("star_particle"));
+		sprite(RelicsParticles.FLAME_PATTICLES.get(), RelicsUtil.modLoc("fire_0"));
+//		sprite(RelicsParticles.STAR_PATTICLES.get(), RelicsUtil.mcLoc("star_particle"));
 	}
 	
 	@Override

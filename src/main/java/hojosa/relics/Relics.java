@@ -17,6 +17,7 @@ import hojosa.relics.common.recipes.RelicsRecipes;
 import hojosa.relics.integration.RelicsIntegration;
 import hojosa.relics.lib.References;
 import hojosa.relics.lib.recipe.StonecutterRetexturedRecipe;
+import hojosa.relics.network.RelicsNetwork;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -64,7 +65,7 @@ public class Relics {
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-        // Do nothing
+    	RelicsNetwork.register();
     }
     
     private void register(RegisterEvent event) {

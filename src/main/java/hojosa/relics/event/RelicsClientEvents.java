@@ -1,7 +1,7 @@
 package hojosa.relics.event;
 
+import hojosa.relics.client.particle.CustomParticle;
 import hojosa.relics.client.particle.RelicsParticles;
-import hojosa.relics.client.particle.StarParticles;
 import hojosa.relics.client.render.FallingStarRenderer;
 import hojosa.relics.client.render.GlintBlockRenderer;
 import hojosa.relics.client.render.InfusedStarstoneBlockRenderer;
@@ -42,6 +42,6 @@ public class RelicsClientEvents {
 	
     @SubscribeEvent
     public static void registerParticleFactories(RegisterParticleProvidersEvent  event) {
-    	event.registerSpriteSet(RelicsParticles.STAR_PATTICLES.get(), StarParticles.Provider::new);
+    	event.registerSpriteSet(RelicsParticles.FLAME_PATTICLES.get(), CustomParticle.Provider::new);
     }
 }

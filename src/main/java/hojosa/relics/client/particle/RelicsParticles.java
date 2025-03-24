@@ -11,7 +11,7 @@ public class RelicsParticles {
 	public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = 
 			DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, References.MOD_ID);
 	
-	public static final RegistryObject<SimpleParticleType> STAR_PATTICLES = 
-			PARTICLE_TYPES.register(References.UnlocalizedName.STAR_PARTICLE, () -> new SimpleParticleType(true));
+	public static final RegistryObject<SimpleParticleType> FLAME_PATTICLES = 
+			PARTICLE_TYPES.register(References.UnlocalizedName.FLAME_PARTICLE, () -> new SimpleParticleType(true));
 
 }
