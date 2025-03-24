@@ -50,6 +50,9 @@ public class References
 		public static final String INFUSED_STARSTONE_BLOCK = "infused_starstone_block";
 		public static final String GLINT_BLOCK = "glint_block";
 		public static final String TOTEM_DUST = "totem_dust";
+		public static final String FLAME_PARTICLE = "flame_particle";
+		public static final String REVIVE = "revive";
+		public static final String EMERALD_PICKUP = "emerald_pickup";
     }
     
     public static class PedestalShapes {
