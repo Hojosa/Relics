@@ -47,6 +47,22 @@ public class RelicsSounds {
 			References.UnlocalizedName.EMERALD_PICKUP
 	);
 	
+	public static final RegistryObject<SoundEvent>INFUSE_CHARGE = registerSound(
+			References.UnlocalizedName.INFUSE_CHARGE
+	);
+	
+	public static final RegistryObject<SoundEvent>INFUSE_SUCCESS = registerSound(
+			References.UnlocalizedName.INFUSE_SUCCESS
+	);
+	
+	public static final RegistryObject<SoundEvent>OOT_SWORD_DRAW = registerSound(
+			References.UnlocalizedName.OOT_SWORD_DRAW
+	);
+	
+	public static final RegistryObject<SoundEvent>TP_SWORD_DRAW = registerSound(
+			References.UnlocalizedName.TP_SWORD_DRAW
+	);
+	
     private static RegistryObject<SoundEvent> registerSound(String name) {
         return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(References.MOD_ID, name)));
     }

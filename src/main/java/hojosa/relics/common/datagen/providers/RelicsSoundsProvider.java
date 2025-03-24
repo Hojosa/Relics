@@ -43,6 +43,18 @@ public class RelicsSoundsProvider extends SoundDefinitionsProvider {
 		add(RelicsSounds.EMERALD_PICKUP, definition()
 				.subtitle(getSubtitle(RelicsSounds.EMERALD_PICKUP))
 				.with(sound(RelicsSounds.EMERALD_PICKUP.getId())));
+		add(RelicsSounds.INFUSE_CHARGE, definition()
+				.subtitle(getSubtitle(RelicsSounds.INFUSE_CHARGE))
+				.with(sound(RelicsSounds.INFUSE_CHARGE.getId())));
+		add(RelicsSounds.INFUSE_SUCCESS, definition()
+				.subtitle(getSubtitle(RelicsSounds.INFUSE_SUCCESS))
+				.with(sound(RelicsSounds.INFUSE_SUCCESS.getId())));
+		add(RelicsSounds.OOT_SWORD_DRAW, definition()
+				.subtitle(getSubtitle(RelicsSounds.OOT_SWORD_DRAW))
+				.with(sound(RelicsSounds.OOT_SWORD_DRAW.getId())));
+		add(RelicsSounds.TP_SWORD_DRAW, definition()
+				.subtitle(getSubtitle(RelicsSounds.TP_SWORD_DRAW))
+				.with(sound(RelicsSounds.TP_SWORD_DRAW.getId())));
 	}
 	
 	private String getSubtitle(RegistryObject<SoundEvent> sound) {

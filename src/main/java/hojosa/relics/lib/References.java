@@ -53,6 +53,10 @@ public class References
 		public static final String FLAME_PARTICLE = "flame_particle";
 		public static final String REVIVE = "revive";
 		public static final String EMERALD_PICKUP = "emerald_pickup";
+		public static final String INFUSE_CHARGE = "infuse_charge";
+		public static final String INFUSE_SUCCESS = "infuse_success";
+		public static final String OOT_SWORD_DRAW = "oot_sword_draw";
+		public static final String TP_SWORD_DRAW = "tp_sword_draw";
     }
     
     public static class PedestalShapes {

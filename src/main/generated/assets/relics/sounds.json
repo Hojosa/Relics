@@ -17,6 +17,24 @@
     ],
     "subtitle": "relics.subtitle.heart"
   },
+  "infuse_charge": {
+    "sounds": [
+      "relics:infuse_charge"
+    ],
+    "subtitle": "relics.subtitle.infuse_charge"
+  },
+  "infuse_success": {
+    "sounds": [
+      "relics:infuse_success"
+    ],
+    "subtitle": "relics.subtitle.infuse_success"
+  },
+  "oot_sword_draw": {
+    "sounds": [
+      "relics:oot_sword_draw"
+    ],
+    "subtitle": "relics.subtitle.oot_sword_draw"
+  },
   "revive": {
     "sounds": [
       "relics:revive"
@@ -52,5 +70,11 @@
       "relics:sword_place"
     ],
     "subtitle": "relics.subtitle.sword_place"
+  },
+  "tp_sword_draw": {
+    "sounds": [
+      "relics:tp_sword_draw"
+    ],
+    "subtitle": "relics.subtitle.tp_sword_draw"
   }
 }
