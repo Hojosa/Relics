@@ -2,7 +2,9 @@ package hojosa.relics.common.item;
 
 import java.util.List;
 
+import hojosa.relics.common.init.RelicsSounds;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
@@ -30,10 +32,9 @@ public class InfuseableItem extends RelicsItem{
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
 		ItemStack itemstack = pPlayer.getItemInHand(pUsedHand);
-		System.out.println(pPlayer.experienceLevel);
 		if(pPlayer.experienceLevel >= 3) {
             pPlayer.startUsingItem(pUsedHand);
-            //sound
+            pLevel.playSound(pPlayer, pPlayer.blockPosition(), RelicsSounds.INFUSE_CHARGE.get(), SoundSource.BLOCKS);
             return InteractionResultHolder.consume(itemstack);
 		}
 		return super.use(pLevel, pPlayer, pUsedHand);
@@ -41,9 +42,9 @@ public class InfuseableItem extends RelicsItem{
 	
 	@Override
 	public ItemStack finishUsingItem(ItemStack pStack, Level pLevel, LivingEntity pLivingEntity) {
-		System.out.println(((Player)pLivingEntity).experienceLevel);
 		if(((Player)pLivingEntity).experienceLevel >= 3) {
 			((Player)pLivingEntity).giveExperienceLevels(-3);
+			pLevel.playSound((Player)pLivingEntity, pLivingEntity.blockPosition(), RelicsSounds.INFUSE_SUCCESS.get(), SoundSource.BLOCKS);
 			pStack.shrink(1);
 			((Player)pLivingEntity).addItem(new ItemStack(this.getInfusedItem().get()));
 			return pStack;
