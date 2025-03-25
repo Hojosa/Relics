@@ -17,13 +17,13 @@ public class SkybeamBlockRenderer implements BlockEntityRenderer<SkybeamBlockEnt
 
 	@Override
 	public void render(SkybeamBlockEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, int pPackedOverlay) {
-		float power = pBlockEntity.beam_strenght * 1.0f / SkybeamBlockEntity.MAX_BEAM_STRENGHT;
-		if (pBlockEntity.beam_strenght > 0) {
-			float phase = (float) (System.currentTimeMillis() % 2000L) / 2000.0f;
+		float power = pBlockEntity.beamStrenght * 1.0f / SkybeamBlockEntity.MAX_BEAM_STRENGHT;
+		if (pBlockEntity.beamStrenght > 0) {
+			float phase = (System.currentTimeMillis() % 2000L) / 2000.0f;
 
 			for (int num = 0; num < 8; ++num) {
-				renderLightBeam(pPoseStack, pBuffer.getBuffer(RelicsRenderTypes.BEAM), 1.0f, num, phase, power);
-				phase = (float)((double)phase + 0.125);
+				renderLightBeam(pPoseStack, pBuffer.getBuffer(RelicsRenderTypes.BEAM), num, phase, power);
+				phase = phase + 0.125f;
                 if (phase > 1.0f) {
                     phase -= 1.0f;
                 }
@@ -31,7 +31,7 @@ public class SkybeamBlockRenderer implements BlockEntityRenderer<SkybeamBlockEnt
 		}
 	}
 
-	private static void renderLightBeam(PoseStack matrixStack, VertexConsumer builder, float scale, float num, float phase, float power) {
+	private static void renderLightBeam(PoseStack matrixStack, VertexConsumer builder, float num, float phase, float power) {
 		float r = RelicsUtil.r(phase*1.2f);
 		float g = RelicsUtil.g(phase*1.2f);
 		float b = RelicsUtil.b(phase*1.2f);
@@ -51,7 +51,7 @@ public class SkybeamBlockRenderer implements BlockEntityRenderer<SkybeamBlockEnt
 	
 	@Override
 	public boolean shouldRender(SkybeamBlockEntity pBlockEntity, Vec3 pCameraPos) {
-		return Vec3.atCenterOf(pBlockEntity.getBlockPos()).multiply(1.0D, 0.0D, 1.0D).closerThan(pCameraPos.multiply(1.0D, 0.0D, 1.0D), (double)this.getViewDistance());
+		return Vec3.atCenterOf(pBlockEntity.getBlockPos()).multiply(1.0D, 0.0D, 1.0D).closerThan(pCameraPos.multiply(1.0D, 0.0D, 1.0D), this.getViewDistance());
 	}
 	
 	@Override

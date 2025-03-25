@@ -8,7 +8,7 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 public abstract class RelicsFacingEntityBlock extends RelicsFacingBlock implements EntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
-    public RelicsFacingEntityBlock(Properties properties) {
+    protected RelicsFacingEntityBlock(Properties properties) {
         super(properties);
         registerDefaultState(getStateDefinition().any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, false));
     }

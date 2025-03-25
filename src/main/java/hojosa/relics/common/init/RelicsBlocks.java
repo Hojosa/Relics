@@ -50,7 +50,7 @@ public class RelicsBlocks {
 
 	public static final ItemObject<SwordPedestalBaseBlock> SWORD_PEDESTAL_NORMAL, SWORD_PEDESTAL_RELIC, SWORD_PEDESTAL_RELIC_VARIANTS, SWORD_PEDESTAL_TIME, SWORD_PEDESTAL_TWILIGHT, SWORD_PEDESTAL_STONE;
 	static {
-		Block.Properties STONE_TABLE = builder(MapColor.COLOR_GRAY, SoundType.METAL)
+		BlockBehaviour.Properties STONE_TABLE = builder(MapColor.COLOR_GRAY, SoundType.METAL)
 				.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 9.0F).noOcclusion();
 		SWORD_PEDESTAL_NORMAL = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_NORMAL, () -> new NormalSwordPedestal(STONE_TABLE), BLOCK_ITEM);
 		SWORD_PEDESTAL_STONE = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_STONE, () -> new StoneSwordPedestal(STONE_TABLE), BLOCK_ITEM);
@@ -77,7 +77,7 @@ public class RelicsBlocks {
 	 * enums it should be just as readable.
 	 */
 	protected static BlockBehaviour.Properties builder(SoundType soundType) {
-		return Block.Properties.of().sound(soundType);
+		return BlockBehaviour.Properties.of().sound(soundType);
 	}
 
 	/** Same as above, but with a color */
@@ -106,7 +106,7 @@ public class RelicsBlocks {
 
 	}
 
-	public RelicsBlocks() {
+	private RelicsBlocks() {
 		/* Disable automatic default public constructor */
 	}
 }

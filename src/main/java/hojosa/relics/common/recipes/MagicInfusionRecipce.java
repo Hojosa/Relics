@@ -82,11 +82,17 @@ public class MagicInfusionRecipce implements Recipe<Container> {
 	}
 	
 	public static class Type implements RecipeType<MagicInfusionRecipce> {
+		private Type() {
+			// Private constructor to hide the implicit public one.
+		}
 		public static final Type INSTANCE = new Type();
 		public static final String ID = "magic_infusion";
 	}
 	
 	public static class Serializer implements RecipeSerializer<MagicInfusionRecipce> {
+		private Serializer() {
+			// Private constructor to hide the implicit public one.
+		}
 		public static final Serializer INSTANCE = new Serializer();
 		public static final ResourceLocation ID = RelicsUtil.modLoc("magic_infusion");
 		

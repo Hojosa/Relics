@@ -10,6 +10,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class RelicsGlobalLootModifier{
+	private RelicsGlobalLootModifier() {
+		// Private constructor to hide the implicit public one.
+	}
 
     public static final DeferredRegister<Codec<? extends IGlobalLootModifier>> LOOT_MODIFIER_SERIALIZERS =
             DeferredRegister.create(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, References.MOD_ID);

@@ -11,6 +11,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class RelicsRecipes {
+	private RelicsRecipes() {
+		// Private constructor to hide the implicit public one.
+	}
     public static final DeferredRegister<RecipeSerializer<?>> SERIALIZERS  = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, References.MOD_ID);
     
     public static final RegistryObject<RecipeSerializer<MagicInfusionRecipce>> MAGIC_INFUSION_SERIALIZER = registerSerializer("magic_infusion", () -> MagicInfusionRecipce.Serializer.INSTANCE);

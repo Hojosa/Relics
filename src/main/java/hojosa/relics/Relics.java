@@ -21,7 +21,6 @@ import hojosa.relics.network.RelicsNetwork;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -44,7 +43,6 @@ public class Relics {
 		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::clientSetupEvent);
-        modEventBus.addListener(this::onRegisterRenderers);
         modEventBus.addListener(this::enqueueIMC);
         modEventBus.addListener(this::register);
         
@@ -62,6 +60,7 @@ public class Relics {
     }
     
     private void clientSetupEvent(final FMLClientSetupEvent event) {
+    	//clent setup event
     }
 
     private void setup(final FMLCommonSetupEvent event) {
@@ -79,10 +78,6 @@ public class Relics {
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
         // Do nothing
-    }
-    
-    public void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
-//    	RelicsBlockEntityRenderers.register(event);
     }
     
     private void enqueueIMC(final InterModEnqueueEvent event) {

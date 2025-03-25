@@ -40,7 +40,7 @@ public abstract class SwordPedestalBaseBlock extends RelicsFacingEntityBlock {
 	@Getter
 	private double renderOffSet;
 
-	public SwordPedestalBaseBlock(Properties builder, double renderOffSet) {
+	protected SwordPedestalBaseBlock(Properties builder, double renderOffSet) {
 		super(builder);
 		this.renderOffSet = renderOffSet;
 	}

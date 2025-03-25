@@ -17,11 +17,11 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class InfuseableItem extends RelicsItem{
 	
-	private RegistryObject<RelicsItem> infused_item;
+	private RegistryObject<RelicsItem> infusedItem;
 	
 	public InfuseableItem(int stackSize, Rarity raity, RegistryObject<RelicsItem> infusedStarPiece) {
 		super(stackSize, raity);
-		this.infused_item=infusedStarPiece;
+		this.infusedItem=infusedStarPiece;
 	}
 	
 	@Override
@@ -58,6 +58,6 @@ public class InfuseableItem extends RelicsItem{
 	}
 	
 	private RegistryObject<RelicsItem> getInfusedItem() {
-		return this.infused_item;
+		return this.infusedItem;
 	}
 }

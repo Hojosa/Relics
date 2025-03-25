@@ -19,7 +19,6 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 
 	public RelicsItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
 		super(output, References.MOD_ID, existingFileHelper);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

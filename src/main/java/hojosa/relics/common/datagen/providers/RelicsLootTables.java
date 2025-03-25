@@ -29,7 +29,6 @@ public class RelicsLootTables extends VanillaBlockLoot {
 	protected void generate() {
 		dropSelf(RelicsBlocks.LAPIS_BRICK.get());
 		dropSelf(RelicsBlocks.ODDISH_POT.get());
-//		dropSelf(RelicsBlocks.INFUSED_STARSTONE_BLOCK.get());
 		dropSelf(RelicsBlocks.STARSTONE_BLOCK.get());
 		dropSelf(RelicsBlocks.SKYBEAM_BLOCK.get());
 		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_NORMAL.get(), RelicsBlockEntities.REXTURED_SWORD_PEDESTAL_BLOCK_ENTITY.get(), SwordPedestalBlockEntity.ITEMS_TAG);

@@ -8,6 +8,10 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class RelicsParticles {
+	private RelicsParticles() {
+		// Private constructor to hide the implicit public one.
+	}
+	
 	public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = 
 			DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, References.MOD_ID);
 	

@@ -12,6 +12,9 @@ import net.minecraftforge.registries.RegistryObject;
 import slimeknights.mantle.registration.deferred.BlockEntityTypeDeferredRegister;
 
 public class RelicsBlockEntities {
+	private RelicsBlockEntities() {
+		// Private constructor to hide the implicit public one.
+	}
 
 	public static final BlockEntityTypeDeferredRegister BLOCK_ENTITIES = new BlockEntityTypeDeferredRegister(References.MOD_ID);
 

@@ -1,14 +1,19 @@
 package hojosa.relics.lib;
 
-public class References 
-
-{
+public class References {
+	private References() {
+		// Private constructor to hide the implicit public one.
+	}
 	public static final String MOD_ID = "relics";
 	public static final String VERSION = "0.3";
-	public static String CREATIVE_TAB = "relics";
+	public static final String CREATIVE_TAB = "relics";
 
-    public static class UnlocalizedName {
-    	public static final String LAPIS_BRICK = "lapis_brick";
+	public static class UnlocalizedName {
+		private UnlocalizedName() {
+			// Private constructor to hide the implicit public one.
+		}
+
+		public static final String LAPIS_BRICK = "lapis_brick";
 		public static final String SWORD_PEDESTAL_NORMAL = "sword_pedestal_normal";
 		public static final String SWORD_PEDESTAL = "sword_pedestal";
 		public static final String SWORD_PEDESTAL_RELIC = "sword_pedestal_relic";

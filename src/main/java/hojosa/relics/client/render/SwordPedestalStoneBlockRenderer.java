@@ -26,8 +26,8 @@ public class SwordPedestalStoneBlockRenderer implements BlockEntityRenderer<Swor
 			poseStack.mulPose(Axis.YP.rotationDegrees(switch (blockEntity.getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING)) {
 			case SOUTH -> 0;
 			case EAST -> 90;
-			default -> 180;
 			case WEST -> 270;
+			default -> 180;
 			}));
 
 			poseStack.mulPose(Axis.ZP.rotationDegrees(110));

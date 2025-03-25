@@ -22,7 +22,7 @@ public class InfusedStarstoneBlockEntity extends RelicsBlockEntity{
 	}
 
 	public void tick() {
-        if (!(this.emptySlots() == 0)) {
+        if (this.emptySlots() != 0) {
             this.reset();
             this.setChangedFast();
             return;

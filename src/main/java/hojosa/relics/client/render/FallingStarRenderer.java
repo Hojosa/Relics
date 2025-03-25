@@ -34,13 +34,13 @@ public class FallingStarRenderer extends EntityRenderer<FallingStarEntity> {
 
 	@Override
 	public void render(FallingStarEntity pEntity, float pEntityYaw, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight) {
-        float scale = (float)pEntity.getAliveState() * 0.9f / (float)FallingStarEntity.DWINDLE_TIME;
+        float scale = (float)pEntity.getAliveState() * 0.9f / FallingStarEntity.DWINDLE_TIME;
 
 		pPoseStack.pushPose();
         pPoseStack.scale(scale, scale, scale);
         
         if(pEntity.getAirState())
-        	renderStarTail(pPoseStack, pBuffer.getBuffer(RenderType.entityNoOutline(BEAM)), scale);
+        	renderStarTail(pPoseStack, pBuffer.getBuffer(RenderType.entityNoOutline(BEAM)));
 
         float rotationAngle = (System.currentTimeMillis() % 3600) / 10f;
         pPoseStack.translate(0, 0.42, 0);
@@ -57,8 +57,8 @@ public class FallingStarRenderer extends EntityRenderer<FallingStarEntity> {
         pPoseStack.popPose();
 	}
     
-    private static void renderStarTail(PoseStack matrixStack, VertexConsumer builder, float scale) {
-        float phase = (float)(System.currentTimeMillis() % 1000L) / 1000.0f;
+    private static void renderStarTail(PoseStack matrixStack, VertexConsumer builder) {
+        float phase = (System.currentTimeMillis() % 1000L) / 1000.0f;
         float r = RelicsUtil.r(phase);
         float g = RelicsUtil.g(phase);
         float b = RelicsUtil.b(phase);

@@ -20,11 +20,12 @@ public class RelicsRenderTypes extends RenderType {
 		super(pName, pFormat, pMode, pBufferSize, pAffectsCrumbling, pSortOnUpload, pSetupState, pClearState);
 	}
 	
-	public static final ResourceLocation BEAM_TEX = new ResourceLocation(References.MOD_ID, "textures/entity/beam.png");
+	private static final ResourceLocation BEAM_TEX = RelicsUtil.modLoc("textures/entity/beam.png");
+	private static final ResourceLocation GLINT_TEX = RelicsUtil.modLoc("textures/glint/glint_rainbow.png");
 		
 	public static final RenderType ENTITY_GLINT_RAINBOW = RenderType.create(References.MOD_ID + ":entity_glint_rainbow", DefaultVertexFormat.POSITION_TEX, VertexFormat.Mode.QUADS, 256, false, false, CompositeState.builder()
 		.setShaderState(RenderStateShard.RENDERTYPE_ENTITY_GLINT_SHADER)
-		.setTextureState(new TextureStateShard(RelicsUtil.modLoc("textures/glint/glint_rainbow.png"), true, false))
+		.setTextureState(new TextureStateShard(GLINT_TEX, true, false))
 		.setWriteMaskState(RenderStateShard.COLOR_WRITE)
 		.setCullState(RenderStateShard.NO_CULL)
 		.setDepthTestState(RenderStateShard.EQUAL_DEPTH_TEST)
@@ -36,7 +37,7 @@ public class RelicsRenderTypes extends RenderType {
 	
 	public static final RenderType ENTITY_GLINT_DIRECT_RAINBOW = RenderType.create(References.MOD_ID + ":entity_glint_direct_rainbow", DefaultVertexFormat.POSITION_TEX, VertexFormat.Mode.QUADS, 256, false, false, CompositeState.builder()
 		.setShaderState(RenderStateShard.RENDERTYPE_ENTITY_GLINT_DIRECT_SHADER)
-		.setTextureState(new TextureStateShard(RelicsUtil.modLoc("textures/glint/glint_rainbow.png"), true, false))
+		.setTextureState(new TextureStateShard(GLINT_TEX, true, false))
 		.setWriteMaskState(RenderStateShard.COLOR_WRITE)
 		.setCullState(RenderStateShard.NO_CULL)
 		.setDepthTestState(RenderStateShard.EQUAL_DEPTH_TEST)
@@ -57,7 +58,7 @@ public class RelicsRenderTypes extends RenderType {
 	
 	public static final RenderType BLOCK_GLINT_RAINBOW = RenderType.create(References.MOD_ID + ":entity_glint_rainbow", DefaultVertexFormat.POSITION_TEX, VertexFormat.Mode.QUADS, 1536, false, false, CompositeState.builder()
 		.setShaderState(RenderStateShard.RENDERTYPE_GLINT_SHADER)
-		.setTextureState(new TextureStateShard(RelicsUtil.modLoc("textures/glint/glint_rainbow.png"), true, false))
+		.setTextureState(new TextureStateShard(GLINT_TEX, true, false))
 		.setWriteMaskState(RenderStateShard.COLOR_WRITE)
 		.setCullState(RenderStateShard.NO_CULL)
 		.setDepthTestState(RenderStateShard.LEQUAL_DEPTH_TEST)

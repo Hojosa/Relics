@@ -9,6 +9,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class RelicsEntities {
+	private RelicsEntities() {
+		// Private constructor to hide the implicit public one.
+	}
 
 	public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, References.MOD_ID);
 

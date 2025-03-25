@@ -30,14 +30,13 @@ public class ModelHandle {
 			var g = ((color >> 8) & 0xFF) / 255.0f;
 			var b = ((color >> 0) & 0xFF) / 255.0f;
 			var a = ((color >> 24) & 0xFF) / 255.0f;
-//			System.out.println(r);
 			bufferIn = new ColoringBufferSource(r, g, b, a, bufferIn);
 		}
 		renderable.render(poseStack, bufferIn, t -> rt, packedLightIn, OverlayTexture.NO_OVERLAY, 0, CompositeRenderable.Transforms.EMPTY);
 	}
 	
 	public void renderRainbow(PoseStack poseStack, MultiBufferSource bufferIn, RenderType rt, int packedLightIn) {
-        float phase = (float)(System.currentTimeMillis() % 1000L) / 1000.0f;
+        float phase = (System.currentTimeMillis() % 1000L) / 1000.0f;
         float r = RelicsUtil.r(phase);
         float g = RelicsUtil.g(phase);
         float b = RelicsUtil.b(phase);

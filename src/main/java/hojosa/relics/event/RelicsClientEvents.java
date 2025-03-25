@@ -22,6 +22,10 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = References.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class RelicsClientEvents {
+	
+	private RelicsClientEvents() {
+		// Private constructor to hide the implicit public one.
+	}
 
 	@SubscribeEvent
 	public static void registerBlockColorHandlers(RegisterColorHandlersEvent.Block event) {
@@ -34,10 +38,10 @@ public class RelicsClientEvents {
 		event.registerBlockEntityRenderer(RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), context -> new SwordPedestalBlockRenderer());
 		event.registerBlockEntityRenderer(RelicsBlockEntities.REXTURED_SWORD_PEDESTAL_BLOCK_ENTITY.get(), context -> new SwordPedestalBlockRenderer());
 		event.registerBlockEntityRenderer(RelicsBlockEntities.SWORD_PEDESTAL_STONE_BLOCK_ENTITY.get(), context -> new SwordPedestalStoneBlockRenderer());
-		event.registerBlockEntityRenderer(RelicsBlockEntities.GLINT_BLOCK_ENTITY.get(), context -> new GlintBlockRenderer(context));
-		event.registerBlockEntityRenderer(RelicsBlockEntities.INFUSED_STARSTONE_BLOCK_ENTITY.get(), context -> new InfusedStarstoneBlockRenderer(context));
+		event.registerBlockEntityRenderer(RelicsBlockEntities.GLINT_BLOCK_ENTITY.get(), GlintBlockRenderer::new);
+		event.registerBlockEntityRenderer(RelicsBlockEntities.INFUSED_STARSTONE_BLOCK_ENTITY.get(), InfusedStarstoneBlockRenderer::new);
 		event.registerBlockEntityRenderer(RelicsBlockEntities.SKYBEAM_BLOCK_ENTITY.get(), context -> new SkybeamBlockRenderer());
-		event.registerEntityRenderer(RelicsEntities.FALLING_STAR.get(), context -> new FallingStarRenderer(context));
+		event.registerEntityRenderer(RelicsEntities.FALLING_STAR.get(), FallingStarRenderer::new);
 	}
 	
     @SubscribeEvent

@@ -3,6 +3,9 @@ package hojosa.relics.lib;
 import net.minecraft.resources.ResourceLocation;
 
 public class RelicsUtil {
+	private RelicsUtil() {
+		// Private constructor to hide the implicit public one.
+	}
 	
     public static ResourceLocation mcLoc(String path) {
         return new ResourceLocation(ResourceLocation.DEFAULT_NAMESPACE, path);
@@ -28,9 +31,9 @@ public class RelicsUtil {
 
     public static float g(float phase) {
         phase = (float) (phase * (Math.PI * 2));
-        double r = (Math.sin((float)(phase + 0.0f)) + 1.0f) * 0.5f;
-        double g = (Math.sin((float)(phase + 2.0943952f)) + 1.0f) * 0.5f;
-        double b = (Math.sin((float)(phase + 4.1887903f)) + 1.0f) * 0.5f;
+        double r = (Math.sin((phase + 0.0f)) + 1.0f) * 0.5f;
+        double g = (Math.sin((phase + 2.0943952f)) + 1.0f) * 0.5f;
+        double b = (Math.sin((phase + 4.1887903f)) + 1.0f) * 0.5f;
         double resat = Math.min(r, Math.min(g, b));
         double scaler = 1.0f / Math.max(r -= resat, Math.max(g -= resat, b -= resat));
         g = Math.min(scaler * g * 0.5f + 0.5f, 1.0f);
@@ -39,9 +42,9 @@ public class RelicsUtil {
 
     public static float b(float phase) {
         phase = (float) (phase * (Math.PI * 2));
-        double r = (Math.sin((float)(phase + 0.0f)) + 1.0f) * 0.5f;
-        double g = (Math.sin((float)(phase + 2.0943952f)) + 1.0f) * 0.5f;
-        double b = (Math.sin((float)(phase + 4.1887903f)) + 1.0f) * 0.5f;
+        double r = (Math.sin((phase + 0.0f)) + 1.0f) * 0.5f;
+        double g = (Math.sin((phase + 2.0943952f)) + 1.0f) * 0.5f;
+        double b = (Math.sin((phase + 4.1887903f)) + 1.0f) * 0.5f;
         double resat = Math.min(r, Math.min(g, b));
         double scaler = 1.0f / Math.max(r -= resat, Math.max(g -= resat, b -= resat));
         b = Math.min(scaler * b * 0.5f + 0.5f, 1.0f);

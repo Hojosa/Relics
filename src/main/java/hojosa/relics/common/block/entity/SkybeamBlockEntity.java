@@ -16,9 +16,9 @@ import slimeknights.mantle.block.entity.MantleBlockEntity;
 public class SkybeamBlockEntity extends MantleBlockEntity {
 	public static final String BEAM_STRENGHT_TAG = "beam_strenght";
 	public static final String SIGNAL_TAG = "signal";
-	public int beam_strenght;
-	public static int MAX_BEAM_STRENGHT = 10;
-	public boolean signal;
+	public int beamStrenght;
+	public static final int MAX_BEAM_STRENGHT = 10;
+	private boolean signal;
 
 	public SkybeamBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
 		super(type, pos, state);
@@ -29,12 +29,12 @@ public class SkybeamBlockEntity extends MantleBlockEntity {
 	}
 
 	public void tick() {
-		if (this.getBlockState().getValue(BlockStateProperties.LIT) && this.beam_strenght < 10) {
-			this.beam_strenght = Math.min(this.beam_strenght + 1, MAX_BEAM_STRENGHT);
+		if (this.getBlockState().getValue(BlockStateProperties.LIT) && this.beamStrenght < 10) {
+			this.beamStrenght = Math.min(this.beamStrenght + 1, MAX_BEAM_STRENGHT);
 			this.signal = true;
 			this.level.markAndNotifyBlock(worldPosition, level.getChunkAt(worldPosition), getBlockState(), getBlockState(), 2, 1);
-		} else if(!this.getBlockState().getValue(BlockStateProperties.LIT) && this.beam_strenght > 0){
-			this.beam_strenght = Math.max(this.beam_strenght - 1, 0);
+		} else if(!this.getBlockState().getValue(BlockStateProperties.LIT) && this.beamStrenght > 0){
+			this.beamStrenght = Math.max(this.beamStrenght - 1, 0);
 			this.signal = false;
 			this.level.markAndNotifyBlock(worldPosition, level.getChunkAt(worldPosition), getBlockState(), getBlockState(), 2, 1);
 		}
@@ -44,7 +44,7 @@ public class SkybeamBlockEntity extends MantleBlockEntity {
 	public void load(CompoundTag pTag) {
 		super.load(pTag);
 		if (pTag.contains(BEAM_STRENGHT_TAG)) {
-			this.beam_strenght = pTag.getInt(BEAM_STRENGHT_TAG);
+			this.beamStrenght = pTag.getInt(BEAM_STRENGHT_TAG);
 		}
 		if (pTag.contains(SIGNAL_TAG)) {
 			this.signal = pTag.getBoolean(SIGNAL_TAG);
@@ -53,7 +53,7 @@ public class SkybeamBlockEntity extends MantleBlockEntity {
 
 	@Override
 	public void saveAdditional(CompoundTag pTag) {
-		pTag.putInt(BEAM_STRENGHT_TAG, this.beam_strenght);
+		pTag.putInt(BEAM_STRENGHT_TAG, this.beamStrenght);
 		pTag.putBoolean(SIGNAL_TAG, this.signal);
 		super.saveAdditional(pTag);
 	}

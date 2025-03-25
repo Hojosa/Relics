@@ -18,6 +18,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class RelicsItems{
+	private RelicsItems() {
+		// Private constructor to hide the implicit public one.
+	}
 	
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, References.MOD_ID);
 	
@@ -89,8 +92,6 @@ public class RelicsItems{
     );
     
     public static void addTabItems(ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
-    	RelicsItems.ITEMS.getEntries().forEach(itemRegistryObject -> {
-          output.accept(new ItemStack(itemRegistryObject.get()));
-          });
+    	RelicsItems.ITEMS.getEntries().forEach(itemRegistryObject -> output.accept(new ItemStack(itemRegistryObject.get())));
     }
 }

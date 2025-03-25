@@ -8,7 +8,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class GlintBlock extends RelicsNormalBlock implements EntityBlock{
 	
-	public boolean rainbowGlint;
+	private boolean rainbowGlint;
 
 	public GlintBlock(Properties properties, boolean raindbow) {
 		super(properties);

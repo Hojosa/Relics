@@ -27,6 +27,9 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = References.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class RelicsDataGenerators {
+	private RelicsDataGenerators() {
+		// Private constructor to hide the implicit public one.
+	}
 	
 	@SubscribeEvent
 	public static void gatherData(GatherDataEvent event) {
