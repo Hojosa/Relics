@@ -20,18 +20,34 @@ public class SwordPedestalStoneBlockRenderer implements BlockEntityRenderer<Swor
 			ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
 			ItemStack itemSword = blockEntity.getItem(0);
 			poseStack.pushPose();
-
-			poseStack.translate(0.32F, 1.1F, 0.12F);
-
-			poseStack.mulPose(Axis.YP.rotationDegrees(switch (blockEntity.getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING)) {
-			case SOUTH -> 0;
-			case EAST -> 90;
-			case WEST -> 270;
-			default -> 180;
-			}));
-
+			
+			switch (blockEntity.getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING)) {
+				case NORTH:{
+					poseStack.translate(0.32F, 1.1F, 0.12F);
+					poseStack.mulPose(Axis.YP.rotationDegrees(180));
+					break;
+				}
+				case EAST:{
+					poseStack.translate(0.88F, 1.1F, 0.32F);
+					poseStack.mulPose(Axis.YP.rotationDegrees(90));
+					break;
+				}
+				case SOUTH:{
+					poseStack.translate(0.68F, 1.1F, 0.88F);
+					poseStack.mulPose(Axis.YP.rotationDegrees(0));
+					break;
+				}
+				case WEST:{
+					poseStack.translate(0.12F, 1.1F, 0.68F);
+					poseStack.mulPose(Axis.YP.rotationDegrees(270));;
+					break;
+				}
+				default:
+			}
+			
 			poseStack.mulPose(Axis.ZP.rotationDegrees(110));
 			poseStack.mulPose(Axis.XP.rotationDegrees(-35));
+
 			itemRenderer.renderStatic(itemSword, ItemDisplayContext.FIXED, light, overlay, poseStack, multiBufferSource, blockEntity.getLevel(), 1);
 			poseStack.popPose();
 		}
