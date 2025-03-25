@@ -11,7 +11,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class StoneSwordPedestal extends SwordPedestalBaseBlock {
-
 	private final VoxelShape PEDESTAL_SHAPE = Block.box(1.3, 0, 1.6, 14.7, 16, 13.7).optimize();
 
 	public StoneSwordPedestal(Properties builder) {

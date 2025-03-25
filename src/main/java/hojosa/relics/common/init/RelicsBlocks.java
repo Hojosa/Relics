@@ -3,12 +3,14 @@ package hojosa.relics.common.init;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-import hojosa.relics.common.block.FancySwordPedestal;
 import hojosa.relics.common.block.InfusedStarstoneBlock;
 import hojosa.relics.common.block.NormalSwordPedestal;
+import hojosa.relics.common.block.RelicRetexturedSwordPedestal;
 import hojosa.relics.common.block.RelicSwordPedestal;
 import hojosa.relics.common.block.SkybeamBlock;
 import hojosa.relics.common.block.StoneSwordPedestal;
+import hojosa.relics.common.block.TimeSwordPedestal;
+import hojosa.relics.common.block.TwilightSwordPedestal;
 import hojosa.relics.common.item.InfusedItem;
 import hojosa.relics.lib.References;
 import hojosa.relics.lib.block.RelicsFacingBlock;
@@ -49,15 +51,13 @@ public class RelicsBlocks {
 	public static final ItemObject<SwordPedestalBaseBlock> SWORD_PEDESTAL_NORMAL, SWORD_PEDESTAL_RELIC, SWORD_PEDESTAL_RELIC_VARIANTS, SWORD_PEDESTAL_TIME, SWORD_PEDESTAL_TWILIGHT, SWORD_PEDESTAL_STONE;
 	static {
 		Block.Properties STONE_TABLE = builder(MapColor.COLOR_GRAY, SoundType.METAL)
-				.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 9.0F)
-				.noOcclusion();
+				.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 9.0F).noOcclusion();
 		SWORD_PEDESTAL_NORMAL = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_NORMAL, () -> new NormalSwordPedestal(STONE_TABLE), BLOCK_ITEM);
-		SWORD_PEDESTAL_RELIC = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL, () -> new FancySwordPedestal(STONE_TABLE, 0, References.PedestalShapes.BASIC_SHAPE, References.PedestalShapes.BASIC_SWORD_SHAPE, false), BLOCK_ITEM);
-		SWORD_PEDESTAL_RELIC_VARIANTS = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_RELIC, () -> new RelicSwordPedestal(STONE_TABLE), BLOCK_ITEM);
-		SWORD_PEDESTAL_TIME = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_TIME, () -> new FancySwordPedestal(STONE_TABLE, 0.1, References.PedestalShapes.TIME_SHAPE, References.PedestalShapes.TIME_SWORD_SHAPE, true), BLOCK_ITEM);
-		SWORD_PEDESTAL_TWILIGHT = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_TWILIGHT, () -> new FancySwordPedestal(STONE_TABLE, 0.13, References.PedestalShapes.TWILIGHT_SHAPE, References.PedestalShapes.TWILIGHT_SWORD_SHAPE, true), BLOCK_ITEM);
 		SWORD_PEDESTAL_STONE = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_STONE, () -> new StoneSwordPedestal(STONE_TABLE), BLOCK_ITEM);
-
+		SWORD_PEDESTAL_RELIC = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL, () -> new RelicSwordPedestal(STONE_TABLE, 0), BLOCK_ITEM);
+		SWORD_PEDESTAL_RELIC_VARIANTS = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_RELIC, () -> new RelicRetexturedSwordPedestal(STONE_TABLE), BLOCK_ITEM);
+		SWORD_PEDESTAL_TIME = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_TIME, () -> new TimeSwordPedestal(STONE_TABLE, 0.1), BLOCK_ITEM);
+		SWORD_PEDESTAL_TWILIGHT = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_TWILIGHT, () -> new TwilightSwordPedestal(STONE_TABLE, 0.13), BLOCK_ITEM);
 	}
 
 	public static final ItemObject<Block> STARSTONE_BLOCK = BLOCKS.register(References.UnlocalizedName.STARSTONE_BLOCK,
@@ -95,8 +95,7 @@ public class RelicsBlocks {
 		output.accept(SKYBEAM_BLOCK.get().asItem());
 		output.accept(STARSTONE_BLOCK.get().asItem());
 		output.accept(INFUSED_STARSTONE_BLOCK.get().asItem());
-		
-		
+
 		Predicate<ItemStack> variants = stack -> {
 			output.accept(stack);
 			return false;

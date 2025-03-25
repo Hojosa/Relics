@@ -26,14 +26,17 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.Tags;
 
 public abstract class SwordPedestalBaseBlock extends RelicsFacingEntityBlock {
 	public static final BooleanProperty SWORD = BooleanProperty.create("sword");
 	public static final BooleanProperty REPAIR = BooleanProperty.create("repair");
 	public static final BooleanProperty GLOW = BooleanProperty.create("glow");
-	public SoundEvent placeSound = RelicsSounds.SWORD_PLACE_SOUND.get();
-	public SoundEvent drawSound = RelicsSounds.SWORD_DRAW_SOUND.get();
+	protected SoundEvent placeSound = RelicsSounds.SWORD_PLACE_SOUND.get();
+	protected SoundEvent drawSound = RelicsSounds.SWORD_DRAW_SOUND.get();
+
 	@Getter
 	private double renderOffSet;
 
@@ -58,6 +61,9 @@ public abstract class SwordPedestalBaseBlock extends RelicsFacingEntityBlock {
 	}
 
 	@Override
+	public abstract VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context);
+
+	@Override
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
 		SwordPedestalBlockEntity blockEntity = (SwordPedestalBlockEntity) level.getBlockEntity(pos);
 		ItemStack itemInHand = player.getItemInHand(hand);
@@ -69,7 +75,7 @@ public abstract class SwordPedestalBaseBlock extends RelicsFacingEntityBlock {
 			if ((!itemInHand.isEmpty() && blockEntity.canPlaceItem(slot, itemInHand)) || !slotStack.isEmpty() && (itemInHand.isEmpty() || blockEntity.canPlaceItem(slot, itemInHand))) {
 				blockEntity.setItem(slot, itemInHand);
 				player.setItemInHand(hand, slotStack);
-				level.playSound(null, pos, blockEntity.isEmpty() ? this.drawSound : this.placeSound, SoundSource.BLOCKS, 1.0F, 1.0F);
+				level.playSound(null, pos, blockEntity.isEmpty() ? drawSound : placeSound, SoundSource.BLOCKS, 1.0F, 1.0F);
 				state = state.setValue(SWORD, !blockEntity.isEmpty()).setValue(REPAIR, blockEntity.isSwordDamaged() && blockEntity.isInfused());
 				level.setBlock(pos, state, UPDATE_ALL);
 				return InteractionResult.SUCCESS;
@@ -102,8 +108,7 @@ public abstract class SwordPedestalBaseBlock extends RelicsFacingEntityBlock {
 				return InteractionResult.SUCCESS;
 			}
 			return InteractionResult.FAIL;
-		}
-		else if(itemInHand.is(RelicsTags.Items.CLEANER) && blockEntity.getGlowColor() != 0x6699cc) {
+		} else if (itemInHand.is(RelicsTags.Items.CLEANER) && blockEntity.getGlowColor() != 0x6699cc) {
 			blockEntity.setGlowColor(0x6699cc);
 			level.markAndNotifyBlock(pos, level.getChunkAt(pos), state, state, UPDATE_CLIENTS, 1);
 			return InteractionResult.SUCCESS;

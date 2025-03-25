@@ -1,5 +1,6 @@
 package hojosa.relics.common.block;
 
+import hojosa.relics.common.init.RelicsSounds;
 import hojosa.relics.lib.ShapeUtil;
 import hojosa.relics.lib.block.SwordPedestalBaseBlock;
 import net.minecraft.core.BlockPos;
@@ -12,12 +13,13 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class RelicSwordPedestal extends SwordPedestalBaseBlock {
-	private static final VoxelShape PEDESTAL_SHAPE = Block.box(2.0D, 0.0D, 5.0D, 14.0D, 6.0D, 11.0D).optimize();
-	private static final VoxelShape SWORD_SHAPE = Shapes.or(Block.box(2, 6, 7.5, 14, 25.2, 8.5), PEDESTAL_SHAPE).optimize();
+public class TimeSwordPedestal extends SwordPedestalBaseBlock {
+	private static final VoxelShape PEDESTAL_SHAPE = Block.box(1.0D, 0.0D, 4.5D, 15.0D, 4.1D, 11.5D).optimize();
+	private static final VoxelShape SWORD_SHAPE = Shapes.or(Block.box(2, 4, 7.5, 14, 23.5, 8.5), PEDESTAL_SHAPE).optimize();
 
-	public RelicSwordPedestal(Properties builder, double renderOffSet) {
+	public TimeSwordPedestal(Properties builder, double renderOffSet) {
 		super(builder, renderOffSet);
+		this.drawSound = RelicsSounds.OOT_SWORD_DRAW.get();
 	}
 
 	@Override

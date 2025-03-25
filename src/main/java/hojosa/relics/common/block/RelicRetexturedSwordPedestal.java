@@ -1,28 +1,23 @@
 package hojosa.relics.common.block;
 
-import hojosa.relics.common.init.RelicsSounds;
 import hojosa.relics.lib.ShapeUtil;
-import hojosa.relics.lib.block.SwordPedestalBaseBlock;
+import hojosa.relics.lib.block.RetexturedSwordPedestal;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class FancySwordPedestal extends SwordPedestalBaseBlock {
+public class RelicRetexturedSwordPedestal extends RetexturedSwordPedestal {
+	private static final VoxelShape PEDESTAL_SHAPE = Block.box(2.0D, 0.0D, 5.0D, 14.0D, 6.0D, 11.0D).optimize();
+	private static final VoxelShape SWORD_SHAPE = Shapes.or(Block.box(2, 6, 7.5, 14, 25.2, 8.5), PEDESTAL_SHAPE).optimize();
 
-	private final VoxelShape PEDESTAL_SHAPE;
-	private final VoxelShape SWORD_SHAPE;
-
-	public FancySwordPedestal(Properties builder, double renderOffSet, VoxelShape pedestalShape, VoxelShape swordShape, boolean fancySound) {
-		super(builder, renderOffSet);
-		this.PEDESTAL_SHAPE = pedestalShape;
-		this.SWORD_SHAPE = swordShape;
-		if(fancySound) {
-			this.placeSound = RelicsSounds.FANCY_SWORD_PLACE_SOUND.get();
-		}
+	public RelicRetexturedSwordPedestal(Properties builder) {
+		super(builder, 0);
 	}
 
 	@Override
