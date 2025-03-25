@@ -9,12 +9,13 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public class EmeraldShardEntity extends ItemEntity{
+public class EmeraldShardItemEntity extends ItemEntity{
 
-	public EmeraldShardEntity(Level pLevel, double pPosX, double pPosY, double pPosZ, ItemStack pItemStack) {
+	public EmeraldShardItemEntity(Level pLevel, double pPosX, double pPosY, double pPosZ, ItemStack pItemStack) {
 		super(pLevel, pPosX, pPosY, pPosZ, pItemStack);
 	}
 
+	@SuppressWarnings("resource")
 	@Override
 	public void playerTouch(Player player) {
 		 if (!this.level().isClientSide) {

@@ -15,6 +15,7 @@ public class HeartItemEntity extends ItemEntity{
 		super(pLevel, pPosX, pPosY, pPosZ, pItemStack);
 	}
 
+	@SuppressWarnings("resource")
 	@Override
 	public void playerTouch(Player player) {
 		 if (!this.level().isClientSide) {

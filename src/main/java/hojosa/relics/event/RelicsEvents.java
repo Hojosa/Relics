@@ -7,7 +7,7 @@ import be.florens.expandability.api.forge.LivingFluidCollisionEvent;
 import hojosa.relics.common.entity.FallingStarEntity;
 import hojosa.relics.common.init.RelicsItems;
 import hojosa.relics.common.init.RelicsSounds;
-import hojosa.relics.common.item.entity.EmeraldShardEntity;
+import hojosa.relics.common.item.entity.EmeraldShardItemEntity;
 import hojosa.relics.common.item.entity.HeartItemEntity;
 import hojosa.relics.common.player.StarFallChance;
 import hojosa.relics.common.player.StarFallChanceProvider;
@@ -110,7 +110,7 @@ public class RelicsEvents {
     		if(new Random().nextInt(0, 14) == 4)
     			event.getDrops().add(new HeartItemEntity(event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), new ItemStack(RelicsItems.HEART.get().asItem())));
     		if(new Random().nextInt(0, 10) == 4)
-    			event.getDrops().add(new EmeraldShardEntity(event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), new ItemStack(RelicsItems.EMERALD_SHARD.get().asItem())));
+    			event.getDrops().add(new EmeraldShardItemEntity(event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), new ItemStack(RelicsItems.EMERALD_SHARD.get().asItem())));
 
     	}
     }
