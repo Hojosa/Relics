@@ -11,6 +11,7 @@ public class StarFallChance {
 	private int starChance = 0;
 	@Getter @Setter
     private int starsCollected = 0;
+	private Random random = new Random();
 
     public void copyFrom(StarFallChance source) {
         this.starChance = source.starChance;
@@ -28,6 +29,6 @@ public class StarFallChance {
     }
     
     public void rollNewChance() {
-    	this.starChance = new Random().nextInt(0, 100);
+    	this.starChance = random.nextInt(0, 100);
     }
 }

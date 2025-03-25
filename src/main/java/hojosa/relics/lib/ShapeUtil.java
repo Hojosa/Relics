@@ -16,8 +16,12 @@ import java.util.function.UnaryOperator;
 /**
  * Reduced and simplified version of <a href="https://github.com/mekanism/Mekanism/blob/1.20.x/src/main/java/mekanism/common/util/VoxelShapeUtils.java">Mekanism's VoxelShapeUtils</a>.
  */
-@SuppressWarnings("unused")
 public final class ShapeUtil {
+	
+	private ShapeUtil() {
+		// Private constructor to hide the implicit public one.
+	}
+	
     private static final Vec3 FROM_ORIGIN = new Vec3(-0.5, -0.5, -0.5);
 
     /**

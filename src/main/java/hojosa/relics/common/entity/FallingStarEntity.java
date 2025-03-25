@@ -1,6 +1,6 @@
 package hojosa.relics.common.entity;
 
-import java.util.Random;
+import org.jetbrains.annotations.NotNull;
 
 import hojosa.relics.common.init.RelicsEntities;
 import hojosa.relics.common.init.RelicsItems;
@@ -30,7 +30,7 @@ public class FallingStarEntity extends Entity {
 	public static final String ALIVE_TAG = "Alive";
 	private static final EntityDataAccessor<Boolean> DATA_ID_AIR = SynchedEntityData.defineId(FallingStarEntity.class, EntityDataSerializers.BOOLEAN);
 	private static final EntityDataAccessor<Integer> DATA_ID_ALIVE = SynchedEntityData.defineId(FallingStarEntity.class, EntityDataSerializers.INT);
-	public static int DWINDLE_TIME = 440;
+	public static final int DWINDLE_TIME = 440;
 	private double movementY;
 
 
@@ -79,10 +79,9 @@ public class FallingStarEntity extends Entity {
 			this.movementY -= 0.03;
 			this.move(MoverType.SELF, new Vec3(0, this.movementY, 0));
 
-			if (!this.level().isClientSide()) {
-				if ((this.horizontalCollision || this.verticalCollision)) {
+			if (!this.level().isClientSide() && (this.horizontalCollision || this.verticalCollision)) {
 
-					this.level().explode((Entity) this, this.getX(), this.getY(), this.getZ(), 0.3F, Level.ExplosionInteraction.NONE);
+					this.level().explode(this, this.getX(), this.getY(), this.getZ(), 0.3F, Level.ExplosionInteraction.NONE);
 
 					if (this.isInWater()) {
 						this.playSound(this.getSwimSplashSound(), 2F, 2.0F);
@@ -90,13 +89,13 @@ public class FallingStarEntity extends Entity {
 					this.setAirState(false);
 					this.level().setBlockAndUpdate(this.blockPosition(), Blocks.LIGHT.defaultBlockState());
 				}
-			}
+			
 		}
 		// landed
 		else {
 			if (this.getAliveState() == 0) {
 				if (!this.level().isClientSide()) {
-					this.spawnAtLocation(new ItemStack(RelicsItems.STAR_PIECE.get(), new Random().nextInt(2)));
+					this.spawnAtLocation(new ItemStack(RelicsItems.STAR_PIECE.get(), random.nextInt(2)));
 					ExperienceOrb.award((ServerLevel) this.level(), this.position(), 1);
 					this.remove(RemovalReason.DISCARDED);
 				} else {
@@ -105,7 +104,7 @@ public class FallingStarEntity extends Entity {
 			} else {
 				if (!this.level().isClientSide()) {
 					if (this.getAliveState() % 25 == 0)
-						this.playSound(RelicsSounds.STAR_TWINKLE_SOUND.get(), 0.1f, 0.5f);
+							this.playSound(RelicsSounds.STAR_TWINKLE_SOUND.get(), 0.1f, 0.5f);
 					
 					this.setAliveState(this.getAliveState() -1);
 				}
@@ -122,21 +121,15 @@ public class FallingStarEntity extends Entity {
 
 	@Override
 	protected void readAdditionalSaveData(CompoundTag pCompound) {
-//		pCompound.putBoolean(AIR_TAG, isInAir);
-//		pCompound.putInt(ALIVE_TAG, aliveTimer);
-
+		//not needed?
 	}
 
 	@Override
 	protected void addAdditionalSaveData(CompoundTag pCompound) {
-//		if (pCompound.contains(AIR_TAG)) {
-//			this.isInAir = pCompound.getBoolean(AIR_TAG);
-//		}
-//		if (pCompound.contains(ALIVE_TAG)) {
-//			this.aliveTimer = pCompound.getInt(ALIVE_TAG);
-//		}
+		//not needed?
 	}
 
+	@NotNull
 	public Boolean getAirState() {
 		return this.entityData.get(DATA_ID_AIR);
 	}

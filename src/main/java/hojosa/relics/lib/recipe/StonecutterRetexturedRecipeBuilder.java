@@ -15,7 +15,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 
-@SuppressWarnings("unused")
 @RequiredArgsConstructor(staticName = "fromStonecutter")
 public class StonecutterRetexturedRecipeBuilder {
 	private final SingleItemRecipeBuilder parent;
@@ -40,12 +39,7 @@ public class StonecutterRetexturedRecipeBuilder {
 	 * @return Builder instance
 	 */
 	public StonecutterRetexturedRecipeBuilder setSource(TagKey<Item> tag) {
-		System.out.println("from setsCOurce");
-		System.out.println(tag);
-		System.out.println(Ingredient.of(tag).getItems()[0]);
-		
 		this.texture = Ingredient.of(tag);
-		System.out.println(this.texture);
 		return this;
 	}
 
@@ -68,8 +62,7 @@ public class StonecutterRetexturedRecipeBuilder {
 	 */
 	public void build(Consumer<FinishedRecipe> consumer) {
 		this.validate();
-		parent.save(base -> {System.out.println(base); 
-		consumer.accept(new Result(base, texture, matchAll));});
+		parent.save(base -> consumer.accept(new Result(base, texture, matchAll)));
 	}
 
 	/**

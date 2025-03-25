@@ -43,6 +43,11 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = References.MOD_ID)
 public class RelicsEvents {
+	private static Random random = new Random();
+	
+	private RelicsEvents() {
+		// Private constructor to hide the implicit public one.
+	}
 
 	@SubscribeEvent
 	public static void fluidWalker(LivingFluidCollisionEvent event) {
@@ -64,29 +69,24 @@ public class RelicsEvents {
 	
     @SubscribeEvent
     public static void onAttachCapabilitiesPlayer(AttachCapabilitiesEvent<Entity> event) {
-        if(event.getObject() instanceof Player) {
-            if(!event.getObject().getCapability(StarFallChanceProvider.PLAYER_STAR_FALL).isPresent()) {
+        if(event.getObject() instanceof Player && !event.getObject().getCapability(StarFallChanceProvider.PLAYER_STAR_FALL).isPresent()) {
                 event.addCapability(new ResourceLocation(References.MOD_ID, "properties"), new StarFallChanceProvider());
             }
-        }
+        
     }
 
     @SubscribeEvent
     public static void onPlayerCloned(PlayerEvent.Clone event) {
         if(event.isWasDeath()) {
-            event.getOriginal().getCapability(StarFallChanceProvider.PLAYER_STAR_FALL).ifPresent(oldStore -> {
-                event.getOriginal().getCapability(StarFallChanceProvider.PLAYER_STAR_FALL).ifPresent(newStore -> {
-                    newStore.copyFrom(oldStore);
-                });
-            });
+            event.getOriginal().getCapability(StarFallChanceProvider.PLAYER_STAR_FALL).ifPresent(
+            		oldStore -> event.getOriginal().getCapability(StarFallChanceProvider.PLAYER_STAR_FALL).ifPresent(
+							newStore -> newStore.copyFrom(oldStore)));
         }
     }
     
     @SubscribeEvent
     public static void onPlayerDeath(LivingDeathEvent event) {
-    	System.out.println(event.getEntity());
-        if(event.getEntity() instanceof ServerPlayer targetPlayer) {
-        	if(targetPlayer.getInventory().contains(new ItemStack(RelicsItems.PHOENIX_FEATHER.get()))){
+        if(event.getEntity() instanceof ServerPlayer targetPlayer && targetPlayer.getInventory().contains(new ItemStack(RelicsItems.PHOENIX_FEATHER.get()))){
         		targetPlayer.getInventory().getItem(targetPlayer.getInventory().findSlotMatchingItem(new ItemStack(RelicsItems.PHOENIX_FEATHER.get()))).shrink(1);
         		targetPlayer.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 220));
         		targetPlayer.setHealth(10);
@@ -94,12 +94,8 @@ public class RelicsEvents {
         		RelicsNetwork.getInstance().sendToTrackingAndSelf(new PhoenixParticlePacket(targetPlayer.getX(), targetPlayer.getY(), targetPlayer.getZ()), targetPlayer);
         		event.setCanceled(true);
         	}
-        }
+        
     }
-    
-//    @SubscribeEvent
-//    public static void onEntityItemPickup(EntityItemPickupEvent event) {
-//    }
     
     //we drop the heart via event, because there is no loottable for hostile mobs, only 1 per each mob and mod compat would be a nightmare otherwise
     //also, we use our own ItemEntity when dropping this way. the heart "should" be unobtainable outside of this, and the emerald shard sound is only needed when dropped this way. 
@@ -107,9 +103,9 @@ public class RelicsEvents {
     @SubscribeEvent
     public static void onLivingDropsEvent(LivingDropsEvent event) {
     	if(event.getEntity() instanceof Enemy) {
-    		if(new Random().nextInt(0, 14) == 4)
+    		if(random.nextInt(0, 14) == 4)
     			event.getDrops().add(new HeartItemEntity(event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), new ItemStack(RelicsItems.HEART.get().asItem())));
-    		if(new Random().nextInt(0, 10) == 4)
+    		if(random.nextInt(0, 10) == 4)
     			event.getDrops().add(new EmeraldShardItemEntity(event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), new ItemStack(RelicsItems.EMERALD_SHARD.get().asItem())));
 
     	}
@@ -125,7 +121,7 @@ public class RelicsEvents {
         if(event.side == LogicalSide.SERVER) {
             event.player.getCapability(StarFallChanceProvider.PLAYER_STAR_FALL).ifPresent(star -> {
             	//1200 ticks, 100 chance
-                if(event.player.level().isNight() && event.player.tickCount % 1200 == 0 && star.getStarChance() == new Random().nextInt(0, 100)) { // Once Every 10 Seconds on Avg
+                if(event.player.level().isNight() && event.player.tickCount % 1200 == 0 && star.getStarChance() == random.nextInt(0, 100)) { // Once Every 10 Seconds on Avg
                 	star.rollNewChance();
                 	event.player.level().addFreshEntity(new FallingStarEntity(event.player));
                 }
