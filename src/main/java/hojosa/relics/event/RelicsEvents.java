@@ -15,6 +15,8 @@ import hojosa.relics.lib.References;
 import hojosa.relics.network.PhoenixParticlePacket;
 import hojosa.relics.network.RelicsNetwork;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
@@ -41,13 +43,10 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Mod.EventBusSubscriber(modid = References.MOD_ID)
 public class RelicsEvents {
 	private static Random random = new Random();
-	
-	private RelicsEvents() {
-		// Private constructor to hide the implicit public one.
-	}
 
 	@SubscribeEvent
 	public static void fluidWalker(LivingFluidCollisionEvent event) {

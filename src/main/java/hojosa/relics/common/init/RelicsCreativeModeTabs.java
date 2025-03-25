@@ -1,6 +1,8 @@
 package hojosa.relics.common.init;
 
 import hojosa.relics.lib.References;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -9,10 +11,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.registries.RegistryObject;
 import slimeknights.mantle.registration.deferred.SynchronizedDeferredRegister;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RelicsCreativeModeTabs {
-	private RelicsCreativeModeTabs() {
-		// Private constructor to hide the implicit public one.
-	}
+
 	public static final SynchronizedDeferredRegister<CreativeModeTab> CREATIVE_TABS = SynchronizedDeferredRegister.create(Registries.CREATIVE_MODE_TAB, References.MOD_ID);
 
 	public static final RegistryObject<CreativeModeTab> CREATIVE_TAB = CREATIVE_TABS.register(References.CREATIVE_TAB,

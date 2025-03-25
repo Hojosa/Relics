@@ -17,8 +17,8 @@ public class TwilightSwordPedestal extends SwordPedestalBaseBlock {
 	private static final VoxelShape PEDESTAL_SHAPE = Block.box(0.15D, 0.0D, 2.4D, 15.9D, 4D, 13.5D).optimize();
 	private static final VoxelShape SWORD_SHAPE = Shapes.or(Block.box(2, 3.9, 7.5, 14, 23.2, 8.5), PEDESTAL_SHAPE).optimize();
 
-	public TwilightSwordPedestal(Properties builder, double renderOffSet) {
-		super(builder, renderOffSet);
+	public TwilightSwordPedestal(Properties builder) {
+		super(builder, 0.13);
 		this.drawSound = RelicsSounds.TP_SWORD_DRAW.get();
 	}
 

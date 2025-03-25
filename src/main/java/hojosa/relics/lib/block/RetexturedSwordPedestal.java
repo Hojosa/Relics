@@ -22,7 +22,7 @@ import slimeknights.mantle.util.RetexturedHelper;
 //to be used with retextured pedestal TE
 public abstract class RetexturedSwordPedestal extends SwordPedestalBaseBlock {
 
-	public RetexturedSwordPedestal(Properties builder, double renderOffSet) {
+	protected RetexturedSwordPedestal(Properties builder, double renderOffSet) {
 		super(builder, renderOffSet);
 	}
 

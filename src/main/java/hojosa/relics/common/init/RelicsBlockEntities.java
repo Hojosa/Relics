@@ -7,14 +7,14 @@ import hojosa.relics.common.block.entity.SwordPedestalBlockEntity;
 import hojosa.relics.common.block.entity.SwordPedestalStoneBlockEntity;
 import hojosa.relics.lib.References;
 import hojosa.relics.lib.block.entity.GlintBlockEntity;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.registries.RegistryObject;
 import slimeknights.mantle.registration.deferred.BlockEntityTypeDeferredRegister;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RelicsBlockEntities {
-	private RelicsBlockEntities() {
-		// Private constructor to hide the implicit public one.
-	}
 
 	public static final BlockEntityTypeDeferredRegister BLOCK_ENTITIES = new BlockEntityTypeDeferredRegister(References.MOD_ID);
 

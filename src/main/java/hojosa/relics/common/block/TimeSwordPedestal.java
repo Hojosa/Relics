@@ -17,8 +17,8 @@ public class TimeSwordPedestal extends SwordPedestalBaseBlock {
 	private static final VoxelShape PEDESTAL_SHAPE = Block.box(1.0D, 0.0D, 4.5D, 15.0D, 4.1D, 11.5D).optimize();
 	private static final VoxelShape SWORD_SHAPE = Shapes.or(Block.box(2, 4, 7.5, 14, 23.5, 8.5), PEDESTAL_SHAPE).optimize();
 
-	public TimeSwordPedestal(Properties builder, double renderOffSet) {
-		super(builder, renderOffSet);
+	public TimeSwordPedestal(Properties builder) {
+		super(builder, 0.1);
 		this.drawSound = RelicsSounds.OOT_SWORD_DRAW.get();
 	}
 

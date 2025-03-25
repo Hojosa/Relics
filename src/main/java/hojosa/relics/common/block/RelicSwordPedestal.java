@@ -16,8 +16,8 @@ public class RelicSwordPedestal extends SwordPedestalBaseBlock {
 	private static final VoxelShape PEDESTAL_SHAPE = Block.box(2.0D, 0.0D, 5.0D, 14.0D, 6.0D, 11.0D).optimize();
 	private static final VoxelShape SWORD_SHAPE = Shapes.or(Block.box(2, 6, 7.5, 14, 25.2, 8.5), PEDESTAL_SHAPE).optimize();
 
-	public RelicSwordPedestal(Properties builder, double renderOffSet) {
-		super(builder, renderOffSet);
+	public RelicSwordPedestal(Properties builder) {
+		super(builder, 0);
 	}
 
 	@Override

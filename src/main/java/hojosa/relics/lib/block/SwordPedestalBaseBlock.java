@@ -97,7 +97,7 @@ public abstract class SwordPedestalBaseBlock extends RelicsFacingEntityBlock {
 				return InteractionResult.SUCCESS;
 			}
 		}
-		if (itemInHand.is(Tags.Items.DYES) && ((blockEntity.isGlowing() || blockEntity.isInfused()))) {
+		if (itemInHand.is(Tags.Items.DYES) && (blockEntity.isGlowing() || blockEntity.isInfused())) {
 			DyeItem dye = (DyeItem) itemInHand.getItem();
 
 			if (dye.getDyeColor().getTextColor() != blockEntity.getGlowColor()) {

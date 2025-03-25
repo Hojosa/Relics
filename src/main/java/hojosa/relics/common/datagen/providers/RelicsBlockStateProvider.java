@@ -25,7 +25,6 @@ public class RelicsBlockStateProvider extends BlockStateProvider{
 
 	public RelicsBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
 		super(output, References.MOD_ID, exFileHelper);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

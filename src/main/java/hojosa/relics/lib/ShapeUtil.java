@@ -1,5 +1,12 @@
 package hojosa.relics.lib;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.UnaryOperator;
+
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.phys.AABB;
@@ -8,19 +15,11 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.UnaryOperator;
-
 /**
  * Reduced and simplified version of <a href="https://github.com/mekanism/Mekanism/blob/1.20.x/src/main/java/mekanism/common/util/VoxelShapeUtils.java">Mekanism's VoxelShapeUtils</a>.
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ShapeUtil {
-	
-	private ShapeUtil() {
-		// Private constructor to hide the implicit public one.
-	}
 	
     private static final Vec3 FROM_ORIGIN = new Vec3(-0.5, -0.5, -0.5);
 

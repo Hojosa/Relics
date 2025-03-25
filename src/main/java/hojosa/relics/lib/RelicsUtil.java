@@ -1,11 +1,11 @@
 package hojosa.relics.lib;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import net.minecraft.resources.ResourceLocation;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RelicsUtil {
-	private RelicsUtil() {
-		// Private constructor to hide the implicit public one.
-	}
 	
     public static ResourceLocation mcLoc(String path) {
         return new ResourceLocation(ResourceLocation.DEFAULT_NAMESPACE, path);

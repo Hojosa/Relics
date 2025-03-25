@@ -16,6 +16,8 @@ import hojosa.relics.lib.References;
 import hojosa.relics.lib.block.RelicsFacingBlock;
 import hojosa.relics.lib.block.RelicsNormalBlock;
 import hojosa.relics.lib.block.SwordPedestalBaseBlock;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTab.ItemDisplayParameters;
@@ -32,6 +34,7 @@ import slimeknights.mantle.registration.deferred.BlockDeferredRegister;
 import slimeknights.mantle.registration.object.ItemObject;
 import slimeknights.mantle.util.RetexturedHelper;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RelicsBlocks {
 	public static final BlockDeferredRegister BLOCKS = new BlockDeferredRegister(References.MOD_ID);
 
@@ -50,14 +53,14 @@ public class RelicsBlocks {
 
 	public static final ItemObject<SwordPedestalBaseBlock> SWORD_PEDESTAL_NORMAL, SWORD_PEDESTAL_RELIC, SWORD_PEDESTAL_RELIC_VARIANTS, SWORD_PEDESTAL_TIME, SWORD_PEDESTAL_TWILIGHT, SWORD_PEDESTAL_STONE;
 	static {
-		BlockBehaviour.Properties STONE_TABLE = builder(MapColor.COLOR_GRAY, SoundType.METAL)
+		BlockBehaviour.Properties STONE = builder(MapColor.COLOR_GRAY, SoundType.METAL)
 				.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 9.0F).noOcclusion();
-		SWORD_PEDESTAL_NORMAL = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_NORMAL, () -> new NormalSwordPedestal(STONE_TABLE), BLOCK_ITEM);
-		SWORD_PEDESTAL_STONE = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_STONE, () -> new StoneSwordPedestal(STONE_TABLE), BLOCK_ITEM);
-		SWORD_PEDESTAL_RELIC = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL, () -> new RelicSwordPedestal(STONE_TABLE, 0), BLOCK_ITEM);
-		SWORD_PEDESTAL_RELIC_VARIANTS = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_RELIC, () -> new RelicRetexturedSwordPedestal(STONE_TABLE), BLOCK_ITEM);
-		SWORD_PEDESTAL_TIME = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_TIME, () -> new TimeSwordPedestal(STONE_TABLE, 0.1), BLOCK_ITEM);
-		SWORD_PEDESTAL_TWILIGHT = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_TWILIGHT, () -> new TwilightSwordPedestal(STONE_TABLE, 0.13), BLOCK_ITEM);
+		SWORD_PEDESTAL_NORMAL = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_NORMAL, () -> new NormalSwordPedestal(STONE), BLOCK_ITEM);
+		SWORD_PEDESTAL_STONE = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_STONE, () -> new StoneSwordPedestal(STONE), BLOCK_ITEM);
+		SWORD_PEDESTAL_RELIC = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL, () -> new RelicSwordPedestal(STONE), BLOCK_ITEM);
+		SWORD_PEDESTAL_RELIC_VARIANTS = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_RELIC, () -> new RelicRetexturedSwordPedestal(STONE), BLOCK_ITEM);
+		SWORD_PEDESTAL_TIME = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_TIME, () -> new TimeSwordPedestal(STONE), BLOCK_ITEM);
+		SWORD_PEDESTAL_TWILIGHT = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_TWILIGHT, () -> new TwilightSwordPedestal(STONE), BLOCK_ITEM);
 	}
 
 	public static final ItemObject<Block> STARSTONE_BLOCK = BLOCKS.register(References.UnlocalizedName.STARSTONE_BLOCK,
@@ -104,9 +107,5 @@ public class RelicsBlocks {
 		RetexturedHelper.addTagVariants(variants, SWORD_PEDESTAL_NORMAL, RelicsTags.Items.SWORD_PEDESTAL_VARIANTS);
 		RetexturedHelper.addTagVariants(variants, SWORD_PEDESTAL_RELIC_VARIANTS, RelicsTags.Items.SWORD_PEDESTAL_VARIANTS);
 
-	}
-
-	private RelicsBlocks() {
-		/* Disable automatic default public constructor */
 	}
 }

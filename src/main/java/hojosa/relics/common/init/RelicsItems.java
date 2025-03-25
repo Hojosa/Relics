@@ -6,6 +6,8 @@ import hojosa.relics.common.item.InfusedItem;
 import hojosa.relics.common.item.RelicsItem;
 import hojosa.relics.common.item.WaterTablet;
 import hojosa.relics.lib.References;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTab.ItemDisplayParameters;
 import net.minecraft.world.item.Item;
@@ -17,10 +19,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RelicsItems{
-	private RelicsItems() {
-		// Private constructor to hide the implicit public one.
-	}
 	
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, References.MOD_ID);
 	

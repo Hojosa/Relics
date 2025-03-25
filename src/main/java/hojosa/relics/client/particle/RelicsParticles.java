@@ -1,16 +1,16 @@
 package hojosa.relics.client.particle;
 
 import hojosa.relics.lib.References;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RelicsParticles {
-	private RelicsParticles() {
-		// Private constructor to hide the implicit public one.
-	}
 	
 	public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = 
 			DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, References.MOD_ID);

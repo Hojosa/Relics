@@ -1,18 +1,17 @@
 package hojosa.relics.lib;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class References {
-	private References() {
-		// Private constructor to hide the implicit public one.
-	}
+
 	public static final String MOD_ID = "relics";
 	public static final String VERSION = "0.3";
 	public static final String CREATIVE_TAB = "relics";
 
+	@NoArgsConstructor(access = AccessLevel.PRIVATE)
 	public static class UnlocalizedName {
-		private UnlocalizedName() {
-			// Private constructor to hide the implicit public one.
-		}
-
 		public static final String LAPIS_BRICK = "lapis_brick";
 		public static final String SWORD_PEDESTAL_NORMAL = "sword_pedestal_normal";
 		public static final String SWORD_PEDESTAL = "sword_pedestal";

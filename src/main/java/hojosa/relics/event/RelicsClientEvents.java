@@ -13,6 +13,8 @@ import hojosa.relics.common.init.RelicsBlocks;
 import hojosa.relics.common.init.RelicsEntities;
 import hojosa.relics.lib.References;
 import hojosa.relics.lib.RelicsBlockColor;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
@@ -20,12 +22,9 @@ import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Mod.EventBusSubscriber(modid = References.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class RelicsClientEvents {
-	
-	private RelicsClientEvents() {
-		// Private constructor to hide the implicit public one.
-	}
 
 	@SubscribeEvent
 	public static void registerBlockColorHandlers(RegisterColorHandlersEvent.Block event) {

@@ -2,16 +2,16 @@ package hojosa.relics.common.init;
 
 import hojosa.relics.common.entity.FallingStarEntity;
 import hojosa.relics.lib.References;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RelicsEntities {
-	private RelicsEntities() {
-		// Private constructor to hide the implicit public one.
-	}
 
 	public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, References.MOD_ID);
 

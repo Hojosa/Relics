@@ -7,6 +7,7 @@ import hojosa.relics.common.block.entity.SwordPedestalBlockEntity;
 import hojosa.relics.common.init.RelicsBlockEntities;
 import hojosa.relics.common.init.RelicsBlocks;
 import hojosa.relics.lib.References;
+import hojosa.relics.lib.block.entity.RelicsBlockEntity;
 import net.minecraft.data.loot.packs.VanillaBlockLoot;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -31,11 +32,11 @@ public class RelicsLootTables extends VanillaBlockLoot {
 		dropSelf(RelicsBlocks.ODDISH_POT.get());
 		dropSelf(RelicsBlocks.STARSTONE_BLOCK.get());
 		dropSelf(RelicsBlocks.SKYBEAM_BLOCK.get());
-		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_NORMAL.get(), RelicsBlockEntities.REXTURED_SWORD_PEDESTAL_BLOCK_ENTITY.get(), SwordPedestalBlockEntity.ITEMS_TAG);
-		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_RELIC_VARIANTS.get(), RelicsBlockEntities.REXTURED_SWORD_PEDESTAL_BLOCK_ENTITY.get(), SwordPedestalBlockEntity.ITEMS_TAG);
-		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_RELIC.get(), RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), SwordPedestalBlockEntity.ITEMS_TAG);
-		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_TIME.get(), RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), SwordPedestalBlockEntity.ITEMS_TAG);
-		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_TWILIGHT.get(), RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), SwordPedestalBlockEntity.ITEMS_TAG);
+		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_NORMAL.get(), RelicsBlockEntities.REXTURED_SWORD_PEDESTAL_BLOCK_ENTITY.get(), RelicsBlockEntity.ITEMS_TAG);
+		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_RELIC_VARIANTS.get(), RelicsBlockEntities.REXTURED_SWORD_PEDESTAL_BLOCK_ENTITY.get(), RelicsBlockEntity.ITEMS_TAG);
+		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_RELIC.get(), RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), RelicsBlockEntity.ITEMS_TAG);
+		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_TIME.get(), RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), RelicsBlockEntity.ITEMS_TAG);
+		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_TWILIGHT.get(), RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), RelicsBlockEntity.ITEMS_TAG);
 		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_STONE.get(), RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), "bla");
 		createStandardTable(RelicsBlocks.INFUSED_STARSTONE_BLOCK.get(), RelicsBlockEntities.INFUSED_STARSTONE_BLOCK_ENTITY.get(), "Items");
 	}

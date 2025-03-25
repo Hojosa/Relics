@@ -14,6 +14,8 @@ import hojosa.relics.common.datagen.providers.RelicsParticleDescriptionProvider;
 import hojosa.relics.common.datagen.providers.RelicsRecipesProvider;
 import hojosa.relics.common.datagen.providers.RelicsSoundsProvider;
 import hojosa.relics.lib.References;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -24,12 +26,9 @@ import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Mod.EventBusSubscriber(modid = References.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class RelicsDataGenerators {
-	private RelicsDataGenerators() {
-		// Private constructor to hide the implicit public one.
-	}
 	
 	@SubscribeEvent
 	public static void gatherData(GatherDataEvent event) {
