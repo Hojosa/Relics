@@ -40,10 +40,10 @@ public class RelicsBlocks {
 
 	protected static final Item.Properties ITEM_PROPS = new Item.Properties();
 	protected static final Item.Properties ITEM_PROPS_GLINT = new InfusedItem.Properties();
-	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM = (b) -> new BlockItem(b, ITEM_PROPS);
-	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM_UNCOMMON = (b) -> new BlockItem(b, ITEM_PROPS.rarity(Rarity.UNCOMMON));
-	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM_EPIC = (b) -> new BlockItem(b, ITEM_PROPS.rarity(Rarity.EPIC));
-	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM_GLINT = (b) -> new BlockItem(b, ITEM_PROPS_GLINT);
+	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM = b -> new BlockItem(b, ITEM_PROPS);
+	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM_UNCOMMON = b -> new BlockItem(b, ITEM_PROPS.rarity(Rarity.UNCOMMON));
+	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM_EPIC = b -> new BlockItem(b, ITEM_PROPS.rarity(Rarity.EPIC));
+	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM_GLINT = b -> new BlockItem(b, ITEM_PROPS_GLINT);
 
 	public static final ItemObject<Block> LAPIS_BRICK = BLOCKS.register(References.UnlocalizedName.LAPIS_BRICK,
 			() -> new RelicsNormalBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS)), BLOCK_ITEM);
@@ -53,14 +53,14 @@ public class RelicsBlocks {
 
 	public static final ItemObject<SwordPedestalBaseBlock> SWORD_PEDESTAL_NORMAL, SWORD_PEDESTAL_RELIC, SWORD_PEDESTAL_RELIC_VARIANTS, SWORD_PEDESTAL_TIME, SWORD_PEDESTAL_TWILIGHT, SWORD_PEDESTAL_STONE;
 	static {
-		BlockBehaviour.Properties STONE = builder(MapColor.COLOR_GRAY, SoundType.METAL)
+		BlockBehaviour.Properties stone = builder(MapColor.COLOR_GRAY, SoundType.METAL)
 				.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 9.0F).noOcclusion();
-		SWORD_PEDESTAL_NORMAL = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_NORMAL, () -> new NormalSwordPedestal(STONE), BLOCK_ITEM);
-		SWORD_PEDESTAL_STONE = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_STONE, () -> new StoneSwordPedestal(STONE), BLOCK_ITEM);
-		SWORD_PEDESTAL_RELIC = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL, () -> new RelicSwordPedestal(STONE), BLOCK_ITEM);
-		SWORD_PEDESTAL_RELIC_VARIANTS = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_RELIC, () -> new RelicRetexturedSwordPedestal(STONE), BLOCK_ITEM);
-		SWORD_PEDESTAL_TIME = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_TIME, () -> new TimeSwordPedestal(STONE), BLOCK_ITEM);
-		SWORD_PEDESTAL_TWILIGHT = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_TWILIGHT, () -> new TwilightSwordPedestal(STONE), BLOCK_ITEM);
+		SWORD_PEDESTAL_NORMAL = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_NORMAL, () -> new NormalSwordPedestal(stone), BLOCK_ITEM);
+		SWORD_PEDESTAL_STONE = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_STONE, () -> new StoneSwordPedestal(stone), BLOCK_ITEM);
+		SWORD_PEDESTAL_RELIC = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL, () -> new RelicSwordPedestal(stone), BLOCK_ITEM);
+		SWORD_PEDESTAL_RELIC_VARIANTS = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_RELIC, () -> new RelicRetexturedSwordPedestal(stone), BLOCK_ITEM);
+		SWORD_PEDESTAL_TIME = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_TIME, () -> new TimeSwordPedestal(stone), BLOCK_ITEM);
+		SWORD_PEDESTAL_TWILIGHT = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_TWILIGHT, () -> new TwilightSwordPedestal(stone), BLOCK_ITEM);
 	}
 
 	public static final ItemObject<Block> STARSTONE_BLOCK = BLOCKS.register(References.UnlocalizedName.STARSTONE_BLOCK,

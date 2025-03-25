@@ -37,7 +37,7 @@ public class InfusedStarstoneBlockEntity extends RelicsBlockEntity{
             		 for(int i = 0; i < this.getContainerSize(); i++) {
             			 this.removeItem(i, 1);
             		 }
-                   this.level.addFreshEntity(new ItemEntity(this.level, this.getBlockPos().getX()+0.5, this.getBlockPos().getY()+1, this.getBlockPos().getZ()+0.5, recipe.getResultItem(null)));
+                   this.level.addFreshEntity(new ItemEntity(this.level, this.getBlockPos().getX()+0.5d, this.getBlockPos().getY()+1d, this.getBlockPos().getZ()+0.5d, recipe.getResultItem(null)));
                    level.markAndNotifyBlock(this.getBlockPos(), level.getChunkAt(getBlockPos()), getBlockState(), getBlockState(), 2, 1);
                    this.lastRecipe = recipe;
             	 }
