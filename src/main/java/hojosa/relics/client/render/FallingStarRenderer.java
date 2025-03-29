@@ -35,11 +35,10 @@ public class FallingStarRenderer extends EntityRenderer<FallingStarEntity> {
 	@Override
 	public void render(FallingStarEntity pEntity, float pEntityYaw, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight) {
         float scale = (float)pEntity.getAliveState() * 0.9f / FallingStarEntity.DWINDLE_TIME;
-
 		pPoseStack.pushPose();
         pPoseStack.scale(scale, scale, scale);
-        
-        if(pEntity.getAirState())
+
+        if(!pEntity.onGround())
         	renderStarTail(pPoseStack, pBuffer.getBuffer(RenderType.entityNoOutline(BEAM)));
 
         float rotationAngle = (System.currentTimeMillis() % 3600) / 10f;
@@ -78,7 +77,7 @@ public class FallingStarRenderer extends EntityRenderer<FallingStarEntity> {
     
     @Override
     public boolean shouldRender(FallingStarEntity pLivingEntity, Frustum pCamera, double pCamX, double pCamY, double pCamZ) {
-    	if(pLivingEntity.getAirState()) {
+    	if(!pLivingEntity.onGround()) {
     		return true;
     	}
     	else return super.shouldRender(pLivingEntity, pCamera, pCamX, pCamY, pCamZ);

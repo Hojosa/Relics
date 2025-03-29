@@ -1,7 +1,5 @@
 package hojosa.relics.common.entity;
 
-import org.jetbrains.annotations.NotNull;
-
 import hojosa.relics.common.init.RelicsEntities;
 import hojosa.relics.common.init.RelicsItems;
 import hojosa.relics.common.init.RelicsSounds;
@@ -26,9 +24,7 @@ import net.minecraftforge.common.ForgeMod;
 
 public class FallingStarEntity extends Entity {
 
-	public static final String AIR_TAG = "Air";
 	public static final String ALIVE_TAG = "Alive";
-	private static final EntityDataAccessor<Boolean> DATA_ID_AIR = SynchedEntityData.defineId(FallingStarEntity.class, EntityDataSerializers.BOOLEAN);
 	private static final EntityDataAccessor<Integer> DATA_ID_ALIVE = SynchedEntityData.defineId(FallingStarEntity.class, EntityDataSerializers.INT);
 	public static final int DWINDLE_TIME = 440;
 	private double movementY;
@@ -72,7 +68,7 @@ public class FallingStarEntity extends Entity {
 	@Override
 	public void tick() {
 		// star is flying
-		if (this.getAirState()) {
+		if (!this.onGround()) {
 			if(this.tickCount == 6 && this.level().isClientSide()) {
 				this.level().playLocalSound(this.blockPosition(), RelicsSounds.STAR_FALL_SOUND.get(), getSoundSource(), 0.5f, 1.0f, false);
 			}
@@ -86,7 +82,6 @@ public class FallingStarEntity extends Entity {
 					if (this.isInWater()) {
 						this.playSound(this.getSwimSplashSound(), 2F, 2.0F);
 					}
-					this.setAirState(false);
 					this.level().setBlockAndUpdate(this.blockPosition(), Blocks.LIGHT.defaultBlockState());
 				}
 			
@@ -115,7 +110,6 @@ public class FallingStarEntity extends Entity {
 
 	@Override
 	protected void defineSynchedData() {
-		this.entityData.define(DATA_ID_AIR, true);
 		this.entityData.define(DATA_ID_ALIVE, 380);
 	}
 
@@ -127,15 +121,6 @@ public class FallingStarEntity extends Entity {
 	@Override
 	protected void addAdditionalSaveData(CompoundTag pCompound) {
 		//not needed?
-	}
-
-	@NotNull
-	public Boolean getAirState() {
-		return this.entityData.get(DATA_ID_AIR);
-	}
-
-	public void setAirState(boolean state) {
-		this.entityData.set(DATA_ID_AIR, state);
 	}
 
 	public Integer getAliveState() {
