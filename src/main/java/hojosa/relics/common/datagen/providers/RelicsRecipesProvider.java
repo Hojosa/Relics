@@ -153,7 +153,7 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.define('e', RelicsItems.EMERALD_PIECE.get())
 		.group(References.CREATIVE_TAB)
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.EMERALD_PIECE.get()))
-		.save(consumer);
+		.save(consumer, RelicsUtil.modLoc("emerald_from_emerald_piece"));
 		
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.EMERALD_PIECE.get(), 8)
 		.requires(Items.EMERALD)
