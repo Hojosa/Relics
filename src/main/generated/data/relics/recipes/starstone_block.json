@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "relics",
+  "group": "tab",
   "key": {
     "s": {
       "item": "relics:star_stone"

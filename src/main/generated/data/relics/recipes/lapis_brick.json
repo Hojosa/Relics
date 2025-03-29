@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "building",
-  "group": "relics",
+  "group": "tab",
   "key": {
     "x": {
       "item": "relics:brick_blue"

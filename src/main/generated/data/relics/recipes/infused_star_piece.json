@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "relics",
+  "group": "tab",
   "key": {
     "d": {
       "item": "relics:infused_star_dust"
