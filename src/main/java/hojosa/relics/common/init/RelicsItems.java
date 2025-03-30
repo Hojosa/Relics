@@ -1,9 +1,11 @@
 package hojosa.relics.common.init;
 
 import hojosa.relics.common.item.FireTablet;
+import hojosa.relics.common.item.FlameSword;
 import hojosa.relics.common.item.InfuseableItem;
 import hojosa.relics.common.item.InfusedItem;
 import hojosa.relics.common.item.LostPage;
+import hojosa.relics.common.item.MasterSword;
 import hojosa.relics.common.item.RelicsItem;
 import hojosa.relics.common.item.WaterTablet;
 import hojosa.relics.lib.References;
@@ -15,7 +17,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.Tiers;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -42,11 +43,11 @@ public class RelicsItems{
     );
 	
     public static final RegistryObject<SwordItem> FIRE_SWORD = ITEMS.register(
-            References.UnlocalizedName.FIRE_SWORD, () -> new SwordItem(Tiers.IRON, 3, -2.4F, new Item.Properties())
+            References.UnlocalizedName.FIRE_SWORD, FlameSword::new
     );
     
     public static final RegistryObject<SwordItem> MASTER_SWORD = ITEMS.register(
-            References.UnlocalizedName.MASTER_SWORD, () -> new SwordItem(Tiers.DIAMOND, 5, -2.4F, new Item.Properties())
+            References.UnlocalizedName.MASTER_SWORD, MasterSword::new
     );
     
     public static final RegistryObject<RelicsItem> INFUSED_STAR_PIECE = ITEMS.register(
