@@ -33,7 +33,7 @@ public class RelicsItemTags extends ItemTagsProvider {
 		.add(RelicsItems.FIRE_SWORD.get())
 		.add(RelicsItems.MASTER_SWORD.get());
 		tag(RelicsTags.Items.SWORD_PEDESTAL_INFUSEABLE)
-		.add(Items.NETHER_STAR);
+		.add(RelicsItems.INFUSED_STAR_STONE.get());
 		tag(RelicsTags.Items.SWORD_PEDESTAL_GLOW)
 		.add(Items.GLOWSTONE)
 		.add(Items.GLOW_INK_SAC)
