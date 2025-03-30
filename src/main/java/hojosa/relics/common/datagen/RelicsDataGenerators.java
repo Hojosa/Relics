@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+import hojosa.relics.common.datagen.providers.RelicAdvancementProvider;
 import hojosa.relics.common.datagen.providers.RelicsBlockStateProvider;
 import hojosa.relics.common.datagen.providers.RelicsBlockTags;
 import hojosa.relics.common.datagen.providers.RelicsGlobalLootModifiersProvider;
@@ -22,6 +23,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.common.data.ForgeAdvancementProvider;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -48,6 +50,6 @@ public class RelicsDataGenerators {
 		generator.addProvider(event.includeClient(), new RelicsSoundsProvider(packOutput, existingFileHelper));
 		generator.addProvider(event.includeClient(), new RelicsParticleDescriptionProvider(packOutput, existingFileHelper));
 		generator.addProvider(event.includeClient(), new RelicsItemModelProvider(packOutput, existingFileHelper));
+		generator.addProvider(event.includeServer(), new ForgeAdvancementProvider(packOutput, lookupProvider, existingFileHelper, List.of(new RelicAdvancementProvider())));
 	}
-
 }
