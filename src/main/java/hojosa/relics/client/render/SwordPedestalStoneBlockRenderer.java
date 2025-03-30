@@ -39,7 +39,7 @@ public class SwordPedestalStoneBlockRenderer implements BlockEntityRenderer<Swor
 				}
 				case WEST:{
 					poseStack.translate(0.12F, 1.1F, 0.68F);
-					poseStack.mulPose(Axis.YP.rotationDegrees(270));;
+					poseStack.mulPose(Axis.YP.rotationDegrees(270));
 					break;
 				}
 				default:
