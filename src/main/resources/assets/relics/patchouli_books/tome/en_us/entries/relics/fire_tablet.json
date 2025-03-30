@@ -1,0 +1,16 @@
+{
+    "name": "Fire Tablet",
+    "icon": "relics:fire_tablet",
+    "category": "relics:relics",
+    "pages": [
+		{
+			"type": "patchouli:spotlight",
+			"item": "relics:fire_tablet",
+			"text": "The $(item)Fire Tablet$(0), a $(thing)legendary item, $(0)said to grant it's wearer the power to swim in lava and withstand any heat. $(br2)While any records of its creation have been lost, there may still be one, somewhere in the world"
+		},
+		{
+		    "type": "patchouli:text",
+		    "text": "Records speak of the transport of this relic via $(thing)ship$(0), others indicate sighting in $(thing)underground libaries$(0) or an $(thing)otherwordly city$(0). $(br2)Maybe $(thing)someone$(0), or something in an fiery, $(thing)hellish$(0) hot place, may posses one and would be willig to part with it, for the right $(thing)price$(0) of course."
+		}
+    ]
+}

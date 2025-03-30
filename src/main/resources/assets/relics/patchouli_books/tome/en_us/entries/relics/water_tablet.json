@@ -1,0 +1,16 @@
+{
+    "name": "Water Tablet",
+    "icon": "relics:water_tablet",
+    "category": "relics:relics",
+    "pages": [
+		{
+			"type": "patchouli:spotlight",
+			"item": "relics:water_tablet",
+			"text": "The $(item)Water Tablet$(0), a $(thing)legendary item, $(0)said to grant it's wearer the power to run over water. $(br2)While any records of its creation have been lost, there may still be one, somewhere in the world"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "Records speak of the transport of this relic via $(thing)ship$(0), others indicate sighting in $(thing)underwater ruins$(0).$(br2)The occational $(thing)master libarian$(0) has been spotted, running over water with one.$(br)But that will surely $(thing)cost$(0) a hefty sum, if one hopes to get one for themself"
+		}
+    ]
+}

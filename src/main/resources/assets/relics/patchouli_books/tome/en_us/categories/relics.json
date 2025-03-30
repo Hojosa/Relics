@@ -1,0 +1,6 @@
+{
+    "name": "Relics",
+    "description": "Relics are old, mysterious objects. While the knowledge of how to create certain relics has been perseved, for some it was lost forever. $(br2)Some of them even have powerfull magical properties. ",
+    "icon": "relics:fire_tablet",
+	"sortnum": 0
+}

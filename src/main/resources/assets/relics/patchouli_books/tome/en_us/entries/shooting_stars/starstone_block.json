@@ -1,0 +1,16 @@
+{
+    "name": "Starstone Block",
+    "icon": "relics:starstone_block",
+    "category": "relics:shooting_stars",
+	"sortnum": 3,
+    "pages": [
+		{
+		    "type": "patchouli:text",
+		    "text": "Having too many star stones? Whith this fancy block you can store them easily away, or make fancy buildings with it"
+		},
+		{
+		    "type": "patchouli:crafting",
+		    "recipe": "relics:starstone_block"
+		}
+    ]
+}

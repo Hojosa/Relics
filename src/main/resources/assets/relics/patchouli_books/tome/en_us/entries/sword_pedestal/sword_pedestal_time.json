@@ -1,0 +1,16 @@
+{
+    "name": "Sword Pedestal of Time",
+    "icon": "relics:sword_pedestal_time",
+    "category": "relics:pedestals",
+	"sortnum": 4,
+    "pages": [
+		{
+		    "type": "patchouli:text",
+		    "text": "This pedestal is moddeled after one, that is said to house the $(thing)blade of evil's bane$(). $(br2)While it doesnt have any special features or a gateway to another realm, it still looks awesome."
+		},
+		{
+		    "type": "patchouli:stonecutting",
+		    "recipe": "relics:sword_pedestal_time"
+		}
+    ]
+}

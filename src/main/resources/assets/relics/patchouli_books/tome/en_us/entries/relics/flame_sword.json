@@ -1,0 +1,19 @@
+{
+    "name": "Flame Sword",
+    "icon": "relics:flame_sword",
+    "category": "relics:relics",
+	"sortnum": 6,
+    "pages": [
+		{
+		    "type": "patchouli:text",
+		    "text": "A Sword, with a Blade made out of Fire, that will burn anything and everything that comes into contact with it.$(br2)Created using $(l:misc/magic_infusion)$(item)Maigc Infusion$()."
+		},
+		{
+		    "type": "relics:magic_infusion_template",
+		    "item1": "minecraft:blaze_powder",
+			"item2": "minecraft:blaze_rod",
+			"item3": "relics:infused_star_dust",
+			"item4": "minecraft:iron_ingot"
+		}
+    ]
+}

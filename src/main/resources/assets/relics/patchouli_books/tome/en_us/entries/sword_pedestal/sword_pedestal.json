@@ -1,0 +1,18 @@
+{
+    "name": "Sword Pedestal",
+    "icon": "relics:sword_pedestal",
+    "category": "relics:pedestals",
+	"sortnum": 1,
+    "pages": [
+		{
+		    "type": "patchouli:text",
+		    "text": "A more fancy sword pedestal, compared to the normal one.$(br2)While a $(item)Stone Brick$() will result in the default color, any other $(item)stone$() or $(item)storage block$() may be used, to get an pedestal of that kind."
+		},
+		{
+		    "type": "patchouli:stonecutting",
+		    "recipe": "relics:sword_pedestal",
+			"recipe2": "relics:sword_pedestal_relic",
+			"text": "$(br)please note that you will recive the corret pedestal, based on the used block, even if this page, JEI and the stonecutter show otherwise"
+		}
+    ]
+}

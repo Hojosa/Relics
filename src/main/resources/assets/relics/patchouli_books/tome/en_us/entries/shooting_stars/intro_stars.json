@@ -1,0 +1,17 @@
+{
+    "name": "Introduction to Shooting Stars",
+    "icon": "relics:textures/item/quest_key.png",
+    "category": "relics:shooting_stars",
+	"sortnum": -1,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Sometimes when it's night, you may see and hear a Shooting Star in the night sky. Should you be able to get to the place where it landed, you will be rewarded with a $(l:shooting_stars/star_piece)$(item)Star Piece$()."
+        },
+		{
+		  "type": "patchouli:entity",
+		  "entity": "relics:falling_star{OnGround:1b}",
+		  "name": "A Shooting Star"
+		}
+    ]
+}

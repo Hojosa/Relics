@@ -1,0 +1,15 @@
+{
+    "name": "A Planted Weed?",
+    "icon": "relics:oddish_pot",
+    "category": "relics:relics",
+    "pages": [
+		{
+		    "type": "patchouli:text",
+		    "text": "There a stories of farmers and gardeners that you may be greeted with a smile, when you put grass into a pot. $(br) While most people would dismiss something like that as a silly story, it seems there is more to it."
+		},
+		{
+		    "type": "patchouli:crafting",
+		    "recipe": "relics:oddish_pot"
+		}
+    ]
+}

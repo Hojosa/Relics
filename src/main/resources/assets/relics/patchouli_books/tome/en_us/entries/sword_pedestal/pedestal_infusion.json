@@ -1,0 +1,12 @@
+{
+    "name": "Pedestal Infusion",
+    "icon": "relics:infused_star_stone",
+    "category": "relics:pedestals",
+	"sortnum": 10,
+    "pages": [
+		{
+		    "type": "patchouli:text",
+		    "text": "Using a $(item)$(l:shooting_stars/infused_star_piece)infused starstone$() on an pedestal, will empower it, granting it the ability to $(thing)repair$() the placed sword slowly, should it be damaged.$(br2)Thanks to the magical power of the starstone, it will also display a $(thing)glow$() aorund the sword, as long as its beeing repaired."
+		}
+    ]
+}

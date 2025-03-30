@@ -1,0 +1,17 @@
+{
+    "name": "Normal Sword Pedestal",
+    "icon": "relics:sword_pedestal_normal",
+    "category": "relics:pedestals",
+	"sortnum": 2,
+    "pages": [
+		{
+		    "type": "patchouli:text",
+		    "text": "A normal sword pedestal, used to place a sword in it.$(br2)Using any $(item)stone$() or $(item)storage block$() for crafting, will give to the respective pedestal."
+		},
+		{
+		    "type": "patchouli:stonecutting",
+		    "recipe": "relics:sword_pedestal_normal",
+			"text": "$(br)please note that you will recive the corret pedestal, based on the used block, even if this page, JEI and the stonecutter show otherwise"
+		}
+    ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Ancient Tome of Relics",
+  "landing_text": "Relics is a mod about discovering old relics and anchient knowledge.$(br2)But some pages have gone missing over the ages.$(br)Who knows, maybe some of them are still out there?",
+  "version": 1,
+  "model": "relics:tome",
+  "creative_tab": "relics:tab",
+  "show_progress": false,
+  "use_resource_pack": true
+}

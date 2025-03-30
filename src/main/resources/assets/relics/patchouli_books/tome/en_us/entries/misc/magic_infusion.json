@@ -1,0 +1,12 @@
+{
+    "name": "Magic Infusion",
+    "icon": "relics:infused_star_dust",
+    "category": "relics:misc",
+	"sortnum": 6,
+    "pages": [
+		{
+		    "type": "patchouli:text",
+		    "text": "Magic Infusion is the Art of creating Items with the help of an $(l:falling_stars/infused_starstone_block)$(item)Infused Starstone Block$().$(br2)Up to 4 items, including a magic catalyst, are placed on top of the Block, followed by a power input. Then the Infused Starstone Block will channel the energy of the placed items into a single point, in order to create something new, that would be impossible to achieve otherwise"
+		}
+    ]
+}

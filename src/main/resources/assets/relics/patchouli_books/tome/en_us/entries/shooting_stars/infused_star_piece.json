@@ -1,0 +1,17 @@
+{
+    "name": "Infused Star Piece",
+    "icon": "relics:infused_star_piece",
+    "category": "relics:shooting_stars",
+	"sortnum": 2,
+    "pages": [
+		{
+		    "type": "patchouli:text",
+		    "text": "The infused version of a $(l:shooting_stars/star_piece)star piece$().$(br)It's used to make $(item)infused star dust$() and $(item)infused star stones$()."
+		},
+		{
+		    "type": "patchouli:crafting",
+		    "recipe": "relics:infused_star_dust",
+			"recipe2": "relics:infused_star_stone"
+		}
+    ]
+}

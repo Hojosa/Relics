@@ -1,0 +1,6 @@
+{
+    "name": "Lost Pages",
+    "description": "By closer examination of this book, you notice that some pages have become unreadable over the years and some seen to have been torn out.$(br2)Perhaps there are still copies of those, $(thing)somewhere?",
+    "icon": "relics:textures/item/lost_page.png",
+	"sortnum": 10
+}

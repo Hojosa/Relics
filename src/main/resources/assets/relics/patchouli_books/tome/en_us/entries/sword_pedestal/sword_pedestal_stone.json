@@ -1,0 +1,16 @@
+{
+    "name": "Stone Sword Pedestal",
+    "icon": "relics:sword_pedestal_stone",
+    "category": "relics:pedestals",
+	"sortnum": 3,
+    "pages": [
+		{
+		    "type": "patchouli:text",
+		    "text": "A more unconventional way of placing a sword, or perhaps to decide who will be the next king?"
+		},
+		{
+		    "type": "patchouli:stonecutting",
+		    "recipe": "relics:sword_pedestal_stone"
+		}
+    ]
+}

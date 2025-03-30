@@ -1,0 +1,6 @@
+{
+    "name": "Sword Pedestals",
+    "description": "Sword Pedestals are a fancy way to display your Swords.$(br2)Using a $(item)glowstone$() on any pedestal, will grant it the ability to have a glow effect, when a sword is placed in it.$(br)The color of the glow can be changed with any $(item)dye$().",
+    "icon": "relics:sword_pedestal",
+	"sortnum": 1
+}

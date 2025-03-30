@@ -1,0 +1,16 @@
+{
+    "name": "Emerald Shards",
+    "icon": "relics:emerald_shard",
+    "category": "relics:world",
+    "pages": [
+		{
+		    "type": "patchouli:text",
+		    "text": "When cutting grass, or slaying your enemies, you will sometimes come across a tiny $(item)emerald shard$().$(br)Collecting enough of these, will let you make a $(item)emerald piece$() and finally an $(item)emerald$()."
+		},
+		{
+		    "type": "patchouli:crafting",
+		    "recipe": "relics:emerald_piece",
+			"recipe2": "relics:emerald_from_emerald_piece"
+		}
+    ]
+}

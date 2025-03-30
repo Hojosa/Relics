@@ -1,0 +1,23 @@
+{
+    "name": "Introduction to Relics",
+    "icon": "relics:textures/item/quest_key.png",
+    "category": "relics:relics",
+	"sortnum": -1,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Some Relics are more akin to Trinkets, Curios, Charms etc.$(br2)Others may be weapons, tools or just simple blocks. $(br2)These powerfull accessories have gone by many names over the years$(br2)To equip one, press [G]"
+        },
+		{
+		  "type": "image",
+		  "text": "The Curios Screen",
+		  "images": [
+		    "relics:textures/gui/entries/relics.png"
+		  ]
+		},
+		{
+		  "type": "text",
+		  "text": "Be aware, that the Curios slots are shared with any other mod that also uses the same equipment slots"
+		}
+    ]
+}
