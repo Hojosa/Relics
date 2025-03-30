@@ -1,0 +1,39 @@
+{
+  "criteria": {
+    "has_book": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "patchouli:guide_book"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "relics:textures/block/starstone_block.png",
+    "description": {
+      "text": "Find an Ancient Tome of Relics"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "patchouli:guide_book",
+      "nbt": "{\"patchouli:book\":\"relics:tome\"}"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Relics"
+    }
+  },
+  "requirements": [
+    [
+      "has_book"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
