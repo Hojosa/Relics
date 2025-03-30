@@ -19,7 +19,6 @@ public class MasterSword extends SwordItem{
 	@Override
 	public boolean hurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
 		 if (pTarget.getMobType() == MobType.UNDEAD) {
-			 System.out.println("hello");
 			 pTarget.hurt(pAttacker.damageSources().playerAttack((Player) pAttacker), 15);
 		 }
 		return super.hurtEnemy(pStack, pTarget, pAttacker);
