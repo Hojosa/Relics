@@ -57,5 +57,18 @@ public class References {
 		public static final String INFUSE_SUCCESS = "infuse_success";
 		public static final String OOT_SWORD_DRAW = "oot_sword_draw";
 		public static final String TP_SWORD_DRAW = "tp_sword_draw";
+		public static final String LOST_PAGE_1 = "lost_page_1";
+		public static final String LOST_PAGE_2 = "lost_page_2";
+		public static final String LOST_PAGE_3 = "lost_page_3";
+		public static final String LOST_PAGE_4 = "lost_page_4";
+		public static final String LOST_PAGE_5 = "lost_page_5";
+	}
+	@NoArgsConstructor(access = AccessLevel.PRIVATE)
+	public static class LostPagesText {
+		public static final String LOST_PAGE_1 = "A Page that details Information about a legendary sword that banishes evil";
+		public static final String LOST_PAGE_2 = "A Page that details Information about a sword made out of fire";
+		public static final String LOST_PAGE_3 = "A Page that details Information about a feather from a legendary bird";
+		public static final String LOST_PAGE_4 = "A Page that details Information how to infuse a sword pedestal";
+		public static final String LOST_PAGE_5 = "A Page that details Information about the art of Magic Infusion";
 	}
 }

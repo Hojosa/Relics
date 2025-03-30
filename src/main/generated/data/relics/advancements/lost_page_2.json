@@ -1,0 +1,36 @@
+{
+  "parent": "relics:lost_pages",
+  "criteria": {
+    "has_book": {
+      "conditions": {
+        "item": {
+          "items": [
+            "relics:lost_page_2"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Find Lost Page 2 and aquire its knowledge"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "relics:lost_page_2"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Lost Pages 2"
+    }
+  },
+  "requirements": [
+    [
+      "has_book"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

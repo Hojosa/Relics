@@ -44,7 +44,11 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		infusedItem(RelicsItems.INFUSED_STAR_PIECE, RelicsItems.STAR_PIECE);
 		infusedItem(RelicsItems.INFUSED_STAR_DUST, RelicsItems.STAR_DUST);
 		infusedItem(RelicsItems.INFUSED_STAR_STONE, RelicsItems.STAR_STONE);
-
+		basicItem(RelicsItems.LOST_PAGE_1);
+		basicItem(RelicsItems.LOST_PAGE_2);
+		basicItem(RelicsItems.LOST_PAGE_3);
+		basicItem(RelicsItems.LOST_PAGE_4);
+		basicItem(RelicsItems.LOST_PAGE_5);
 	}
 
 	private ItemModelBuilder infusedItem(RegistryObject<RelicsItem> item, RegistryObject<RelicsItem> parent) {
