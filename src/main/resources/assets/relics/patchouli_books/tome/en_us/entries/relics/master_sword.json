@@ -3,6 +3,7 @@
     "icon": "relics:master_sword",
     "category": "relics:relics",
 	"sortnum": 5,
+	"advancement": "relics:lost_page_1",
     "pages": [
 		{
 			"type": "patchouli:spotlight",
@@ -11,7 +12,7 @@
 		},
 		{
 			"type": "patchouli:text",
-			"text": "The Legends of this sword speaks of a $(thing)forest$(0) spriit, that watches over the sword in its $(thing)resting place"
+			"text": "The Legends of this sword speaks of a $(thing)forest$(0) spirit, that watches over the sword in its $(thing)resting place"
 		}
     ]
 }

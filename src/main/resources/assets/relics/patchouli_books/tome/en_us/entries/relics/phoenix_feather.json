@@ -3,6 +3,7 @@
     "icon": "relics:phoenix_feather",
     "category": "relics:relics",
 	"sortnum": 7,
+	"advancement": "relics:lost_page_3",
     "pages": [
 		{
 		    "type": "patchouli:text",

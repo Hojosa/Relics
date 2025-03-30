@@ -3,6 +3,7 @@
     "icon": "relics:infused_star_dust",
     "category": "relics:misc",
 	"sortnum": 6,
+	"advancement": "relics:lost_page_5",
     "pages": [
 		{
 		    "type": "patchouli:text",

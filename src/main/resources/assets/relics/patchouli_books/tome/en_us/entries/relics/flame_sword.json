@@ -3,6 +3,7 @@
     "icon": "relics:flame_sword",
     "category": "relics:relics",
 	"sortnum": 6,
+	"advancement": "relics:lost_page_2",
     "pages": [
 		{
 		    "type": "patchouli:text",

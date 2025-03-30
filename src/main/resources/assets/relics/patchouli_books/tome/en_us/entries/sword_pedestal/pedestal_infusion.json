@@ -3,6 +3,7 @@
     "icon": "relics:infused_star_stone",
     "category": "relics:pedestals",
 	"sortnum": 10,
+	"advancement": "relics:lost_page_4",
     "pages": [
 		{
 		    "type": "patchouli:text",
