@@ -30,8 +30,8 @@
   "item.relics.heart": "Heart",
   "item.relics.totem_dust": "Totem Dust",
   "item.relics.lost_page_1": "Lost Page 1",
-  "item.relics.lost_page_1": "Lost Page 2",
-  "item.relics.lost_page_1": "Lost Page 3",
-  "item.relics.lost_page_1": "Lost Page 4",
-  "item.relics.lost_page_1": "Lost Page 5"
+  "item.relics.lost_page_2": "Lost Page 2",
+  "item.relics.lost_page_3": "Lost Page 3",
+  "item.relics.lost_page_4": "Lost Page 4",
+  "item.relics.lost_page_5": "Lost Page 5"
 }
