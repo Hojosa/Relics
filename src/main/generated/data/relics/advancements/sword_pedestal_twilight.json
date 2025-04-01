@@ -1,0 +1,38 @@
+{
+  "parent": "relics:sword_pedestals",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "relics:sword_pedestal_twilight"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Hero of Twilight"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "relics:sword_pedestal_twilight"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Sword Pedestal of Twilight"
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

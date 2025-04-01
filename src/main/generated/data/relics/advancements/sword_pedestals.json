@@ -1,32 +1,37 @@
 {
   "parent": "relics:root",
   "criteria": {
-    "found_any_page": {
+    "has_item": {
       "conditions": {
         "items": [
           {
             "items": [
-              "relics:lost_page_1"
+              "relics:sword_pedestal_normal"
             ]
           },
           {
             "items": [
-              "relics:lost_page_2"
+              "relics:sword_pedestal"
             ]
           },
           {
             "items": [
-              "relics:lost_page_3"
+              "relics:sword_pedestal_relic"
             ]
           },
           {
             "items": [
-              "relics:lost_page_4"
+              "relics:sword_pedestal_stone"
             ]
           },
           {
             "items": [
-              "relics:lost_page_5"
+              "relics:sword_pedestal_time"
+            ]
+          },
+          {
+            "items": [
+              "relics:sword_pedestal_twilight"
             ]
           }
         ]
@@ -37,21 +42,21 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Find a Lost Page"
+      "text": "Make your first sword pedestal"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "relics:lost_page_1"
+      "item": "relics:sword_pedestal"
     },
     "show_toast": true,
     "title": {
-      "text": "Lost Pages"
+      "text": "Sword Pedestals"
     }
   },
   "requirements": [
     [
-      "found_any_page"
+      "has_item"
     ]
   ],
   "sends_telemetry_event": true

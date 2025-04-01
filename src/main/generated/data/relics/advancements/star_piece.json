@@ -1,0 +1,38 @@
+{
+  "parent": "relics:shooting_stars",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "relics:infused_star_piece"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "successfully infuse a star piece"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "relics:infused_star_piece"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Infused Star Piece"
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

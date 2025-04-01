@@ -1,0 +1,38 @@
+{
+  "parent": "relics:root",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "relics:star_piece"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Find a shooting star and collect a star piece"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "relics:star_piece"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Shooting Star"
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

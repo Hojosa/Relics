@@ -1,0 +1,38 @@
+{
+  "parent": "relics:shooting_stars",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "relics:infused_starstone_block"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "This seems to be more than just a fancy block"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "relics:infused_starstone_block"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Infused Star Stone Block"
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

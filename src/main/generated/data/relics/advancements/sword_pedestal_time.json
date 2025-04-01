@@ -1,0 +1,38 @@
+{
+  "parent": "relics:sword_pedestals",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "relics:sword_pedestal_time"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Hero of Time"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "relics:sword_pedestal_time"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Sword Pedestal of Time"
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

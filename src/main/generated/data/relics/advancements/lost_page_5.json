@@ -1,7 +1,7 @@
 {
   "parent": "relics:lost_pages",
   "criteria": {
-    "has_book": {
+    "page4": {
       "conditions": {
         "item": {
           "items": [
@@ -15,7 +15,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Find Lost Page 1 and aquire its knowledge"
+      "text": "Find Lost Page 5 and aquire its knowledge"
     },
     "frame": "task",
     "hidden": false,
@@ -29,7 +29,7 @@
   },
   "requirements": [
     [
-      "has_book"
+      "page4"
     ]
   ],
   "sends_telemetry_event": true

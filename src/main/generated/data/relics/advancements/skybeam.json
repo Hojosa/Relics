@@ -1,0 +1,38 @@
+{
+  "parent": "relics:shooting_stars",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "relics:skybeam_block"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Skybeams, yey"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "relics:skybeam_block"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Skybeam Block"
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

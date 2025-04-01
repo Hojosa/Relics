@@ -1,0 +1,38 @@
+{
+  "parent": "relics:infused_star_piece",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "relics:oddish_pot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Odd, it seems to be a plant???"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "relics:oddish_pot"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Is that a relic?"
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,32 +1,37 @@
 {
   "parent": "relics:root",
   "criteria": {
-    "found_any_page": {
+    "has_item": {
       "conditions": {
         "items": [
           {
             "items": [
-              "relics:lost_page_1"
+              "relics:phoenix_feather"
             ]
           },
           {
             "items": [
-              "relics:lost_page_2"
+              "relics:fire_tablet"
             ]
           },
           {
             "items": [
-              "relics:lost_page_3"
+              "relics:water_tablet"
             ]
           },
           {
             "items": [
-              "relics:lost_page_4"
+              "relics:flame_sword"
             ]
           },
           {
             "items": [
-              "relics:lost_page_5"
+              "relics:master_sword"
+            ]
+          },
+          {
+            "items": [
+              "relics:oddish_pot"
             ]
           }
         ]
@@ -37,21 +42,22 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Find a Lost Page"
+      "text": "Obtain your first relic"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "relics:lost_page_1"
+      "item": "patchouli:guide_book",
+      "nbt": "{\"patchouli:book\":\"relics:tome\"}"
     },
     "show_toast": true,
     "title": {
-      "text": "Lost Pages"
+      "text": "Obtain a Relic"
     }
   },
   "requirements": [
     [
-      "found_any_page"
+      "has_item"
     ]
   ],
   "sends_telemetry_event": true
