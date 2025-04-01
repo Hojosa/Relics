@@ -72,7 +72,7 @@ public class RelicAdvancementProvider implements AdvancementGenerator{
 		
 		Advancement.Builder.advancement()
 		.display(new DisplayInfo(new ItemStack(RelicsItems.LOST_PAGE_5.get()), 
-				Component.literal("Lost Pages 5"), Component.literal("Find Lost Page 1 and aquire its knowledge"), null, 
+				Component.literal("Lost Pages 5"), Component.literal("Find Lost Page 5 and aquire its knowledge"), null, 
 				FrameType.TASK, true, false, false))
 		.parent(lostPages)
 		.addCriterion("has_book", ConsumeItemTrigger.TriggerInstance.usedItem(RelicsItems.LOST_PAGE_5.get()))
