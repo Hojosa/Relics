@@ -2,6 +2,8 @@ package hojosa.relics.common.item;
 
 import java.util.List;
 
+import hojosa.relics.lib.RelicsUtil;
+import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -38,9 +40,13 @@ public class LostPage extends RelicsItem{
 	@Override
 	public ItemStack finishUsingItem(ItemStack pStack, Level pLevel, LivingEntity pLivingEntity) {
 	    if (pLivingEntity instanceof ServerPlayer serverPlayer) {
-	        CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, pStack);
+	    	ServerPlayer player = serverPlayer;
+	    	Advancement adv = player.getServer().getAdvancements().getAdvancement(RelicsUtil.modLoc((pStack.getItem().toString())));
+	    	if(!player.getAdvancements().getOrStartProgress(adv).isDone()) {
+	    		CriteriaTriggers.CONSUME_ITEM.trigger(player, pStack);
+				pStack.shrink(1);
+	    	}
 	      }
-		pStack.shrink(1);
 		return pStack;
 	}
 	
