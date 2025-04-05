@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import hojosa.relics.common.datagen.providers.RelicAdvancementProvider;
+import hojosa.relics.common.datagen.providers.RelicsBiomeTagsProvider;
 import hojosa.relics.common.datagen.providers.RelicsBlockStateProvider;
 import hojosa.relics.common.datagen.providers.RelicsBlockTags;
 import hojosa.relics.common.datagen.providers.RelicsGlobalLootModifiersProvider;
@@ -51,5 +52,6 @@ public class RelicsDataGenerators {
 		generator.addProvider(event.includeClient(), new RelicsParticleDescriptionProvider(packOutput, existingFileHelper));
 		generator.addProvider(event.includeClient(), new RelicsItemModelProvider(packOutput, existingFileHelper));
 		generator.addProvider(event.includeServer(), new ForgeAdvancementProvider(packOutput, lookupProvider, existingFileHelper, List.of(new RelicAdvancementProvider())));
+		generator.addProvider(event.includeServer(), new RelicsBiomeTagsProvider(packOutput, lookupProvider, existingFileHelper));
 	}
 }

@@ -2,10 +2,12 @@ package hojosa.relics.common.init;
 
 import hojosa.relics.lib.RelicsUtil;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotTypePreset;
@@ -30,9 +32,19 @@ public interface RelicsTags {
 		TagKey<Item> HEART = tag("heart");
 		TagKey<Item> CHARM_TAG = ItemTags.create(new ResourceLocation(CuriosApi.MODID, SlotTypePreset.CHARM.getIdentifier()));
 
-
 		static TagKey<Item> tag(String name) {
 			return TagKey.create(BuiltInRegistries.ITEM.key(), RelicsUtil.modLoc(name));
+		}
+	}
+
+	interface Biomes {
+		interface HasStructure {
+			TagKey<Biome> PEDESTAL_TIME = tag("pedestal_of_time");
+			TagKey<Biome> PEDESTAL_TWILIGHT = tag("pedestal_of_twilight");
+					
+			static TagKey<Biome> tag(String name) {
+				return TagKey.create(Registries.BIOME, RelicsUtil.modLoc("has_structure/" + name));
+			}
 		}
 	}
 }
