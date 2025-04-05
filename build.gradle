@@ -101,6 +101,7 @@ dependencies {
     runtimeOnly fg.deobf("curse.maven:theoneprobe-${curseforge_theoneprobe}")
         // Nice thing that shows the nbt in scrollable manner
     runtimeOnly fg.deobf("curse.maven:item-nbt-viewer-514135:4578522")
+    runtimeOnly fg.deobf("curse.maven:explorers-compass-${explorers_compass}")
 }
 
 processResources {
