@@ -38,12 +38,11 @@ public class InfusedStarstoneBlockRenderer implements BlockEntityRenderer<Infuse
 				
 				if (pBlockEntity.isStackInSlot(i)) {
 					pPoseStack.pushPose();
-					switch (i) {
-					case 0 -> pPoseStack.translate(0.5, 1.015F, 0.2);
-					case 1 -> pPoseStack.translate(0.8, 1.015F, 0.5);
-					case 2 -> pPoseStack.translate(0.5, 1.015F, 0.8);
-					case 3 -> pPoseStack.translate(0.2, 1.015F, 0.5);
-					}
+					
+				    double angle = Math.toRadians(270 + i * 90);
+				    double xOffset = 0.3 * Math.cos(angle) + 0.5;
+				    double zOffset = 0.3 * Math.sin(angle) + 0.5;
+				    pPoseStack.translate(xOffset, 1.015F, zOffset);
 					pPoseStack.scale(0.4f, 0.4f, 0.4f);
 					pPoseStack.mulPose(Axis.XP.rotationDegrees(90));
 					itemRenderer.renderStatic(pBlockEntity.getItem(i), ItemDisplayContext.FIXED, 200, pPackedOverlay, pPoseStack, pBuffer, pBlockEntity.getLevel(), 1);

@@ -29,6 +29,18 @@
     ],
     "subtitle": "relics.subtitle.infuse_success"
   },
+  "item_get": {
+    "sounds": [
+      "relics:item_get"
+    ],
+    "subtitle": "relics.subtitle.item_get"
+  },
+  "magic_crafting": {
+    "sounds": [
+      "relics:magic_crafting"
+    ],
+    "subtitle": "relics.subtitle.magic_crafting"
+  },
   "oot_sword_draw": {
     "sounds": [
       "relics:oot_sword_draw"

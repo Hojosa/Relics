@@ -55,6 +55,12 @@ public class RelicsSoundsProvider extends SoundDefinitionsProvider {
 		add(RelicsSounds.TP_SWORD_DRAW, definition()
 				.subtitle(getSubtitle(RelicsSounds.TP_SWORD_DRAW))
 				.with(sound(RelicsSounds.TP_SWORD_DRAW.getId())));
+		add(RelicsSounds.MAGIC_CRAFTING, definition()
+				.subtitle(getSubtitle(RelicsSounds.MAGIC_CRAFTING))
+				.with(sound(RelicsSounds.MAGIC_CRAFTING.getId())));
+		add(RelicsSounds.ITEM_GET, definition()
+				.subtitle(getSubtitle(RelicsSounds.ITEM_GET))
+				.with(sound(RelicsSounds.ITEM_GET.getId())));
 	}
 	
 	private String getSubtitle(RegistryObject<SoundEvent> sound) {

@@ -65,11 +65,11 @@ public class InfusedStarstoneBlock extends GlintBlock {
 						pLevel.playSound(null, pPos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1.0F, 1.0F);
 						return InteractionResult.SUCCESS;
 					}
-					return InteractionResult.PASS;
+					return InteractionResult.SUCCESS;
 				}
-				return InteractionResult.PASS;
+				return InteractionResult.SUCCESS;
 			}
-		return InteractionResult.FAIL;
+		return InteractionResult.SUCCESS;
 	}
 	
 	private int lookingAtSlot(BlockHitResult pHit) {
