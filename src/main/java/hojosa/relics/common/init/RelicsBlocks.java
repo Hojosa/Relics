@@ -12,7 +12,7 @@ import hojosa.relics.common.block.SkybeamBlock;
 import hojosa.relics.common.block.StoneSwordPedestal;
 import hojosa.relics.common.block.TimeSwordPedestal;
 import hojosa.relics.common.block.TwilightSwordPedestal;
-import hojosa.relics.common.item.InfusedItem;
+import hojosa.relics.common.item.ItemBlockGlint;
 import hojosa.relics.lib.References;
 import hojosa.relics.lib.block.RelicsFacingBlock;
 import hojosa.relics.lib.block.RelicsNormalBlock;
@@ -42,11 +42,10 @@ public class RelicsBlocks {
 	public static final BlockDeferredRegister BLOCKS = new BlockDeferredRegister(References.MOD_ID);
 
 	protected static final Item.Properties ITEM_PROPS = new Item.Properties();
-	protected static final Item.Properties ITEM_PROPS_GLINT = new InfusedItem.Properties();
 	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM = b -> new BlockItem(b, ITEM_PROPS);
 	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM_UNCOMMON = b -> new BlockItem(b, ITEM_PROPS.rarity(Rarity.UNCOMMON));
 	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM_EPIC = b -> new BlockItem(b, ITEM_PROPS.rarity(Rarity.EPIC));
-	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM_GLINT = b -> new BlockItem(b, ITEM_PROPS_GLINT);
+	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM_GLINT = b -> new ItemBlockGlint(b, ITEM_PROPS.rarity(Rarity.EPIC));
 
 	public static final ItemObject<Block> LAPIS_BRICK = BLOCKS.register(References.UnlocalizedName.LAPIS_BRICK,
 			() -> new RelicsNormalBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS)), BLOCK_ITEM);
@@ -70,7 +69,7 @@ public class RelicsBlocks {
 			() -> new RelicsNormalBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).lightLevel(value -> 15)), BLOCK_ITEM_UNCOMMON);
 	
 	public static final ItemObject<Block> INFUSED_STARSTONE_BLOCK = BLOCKS.register(References.UnlocalizedName.INFUSED_STARSTONE_BLOCK,
-			() -> new InfusedStarstoneBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).lightLevel(value -> 15), true), BLOCK_ITEM_EPIC);
+			() -> new InfusedStarstoneBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).lightLevel(value -> 15), true), BLOCK_ITEM_GLINT);
 	
 	public static final ItemObject<Block> SKYBEAM_BLOCK = BLOCKS.register(References.UnlocalizedName.SKYBEAM_BLOCK,
 			() -> new SkybeamBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).lightLevel(litBlockEmission(10))), BLOCK_ITEM);
