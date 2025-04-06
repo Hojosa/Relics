@@ -2,6 +2,7 @@ package hojosa.relics.common.init;
 
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.ToIntFunction;
 
 import hojosa.relics.common.block.InfusedStarstoneBlock;
 import hojosa.relics.common.block.NormalSwordPedestal;
@@ -28,6 +29,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import slimeknights.mantle.registration.deferred.BlockDeferredRegister;
@@ -54,7 +57,7 @@ public class RelicsBlocks {
 	public static final ItemObject<SwordPedestalBaseBlock> SWORD_PEDESTAL_NORMAL, SWORD_PEDESTAL_RELIC, SWORD_PEDESTAL_RELIC_VARIANTS, SWORD_PEDESTAL_TIME, SWORD_PEDESTAL_TWILIGHT, SWORD_PEDESTAL_STONE;
 	static {
 		BlockBehaviour.Properties stone = builder(MapColor.COLOR_GRAY, SoundType.METAL)
-				.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 9.0F).noOcclusion();
+				.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 9.0F).noOcclusion().lightLevel(litBlockEmission(8));
 		SWORD_PEDESTAL_NORMAL = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_NORMAL, () -> new NormalSwordPedestal(stone), BLOCK_ITEM);
 		SWORD_PEDESTAL_STONE = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL_STONE, () -> new StoneSwordPedestal(stone), BLOCK_ITEM);
 		SWORD_PEDESTAL_RELIC = BLOCKS.register(References.UnlocalizedName.SWORD_PEDESTAL, () -> new RelicSwordPedestal(stone), BLOCK_ITEM);
@@ -70,7 +73,7 @@ public class RelicsBlocks {
 			() -> new InfusedStarstoneBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).lightLevel(value -> 15), true), BLOCK_ITEM_EPIC);
 	
 	public static final ItemObject<Block> SKYBEAM_BLOCK = BLOCKS.register(References.UnlocalizedName.SKYBEAM_BLOCK,
-			() -> new SkybeamBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS)), BLOCK_ITEM);
+			() -> new SkybeamBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).lightLevel(litBlockEmission(10))), BLOCK_ITEM);
 
 	/**
 	 * We use this builder to ensure that our blocks all have the most important
@@ -106,6 +109,9 @@ public class RelicsBlocks {
 
 		RetexturedHelper.addTagVariants(variants, SWORD_PEDESTAL_NORMAL, RelicsTags.Items.SWORD_PEDESTAL_VARIANTS);
 		RetexturedHelper.addTagVariants(variants, SWORD_PEDESTAL_RELIC_VARIANTS, RelicsTags.Items.SWORD_PEDESTAL_VARIANTS);
-
+	}
+	
+	private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
+		return (state) -> state.getValue(BlockStateProperties.LIT) ? lightValue : 0;
 	}
 }

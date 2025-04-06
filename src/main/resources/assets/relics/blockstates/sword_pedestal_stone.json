@@ -12,16 +12,16 @@
     { "when": { "facing":"west" },
       "apply": { "model": "relics:block/sword_pedestal_stone", "y": 270 }
     }, 
-    { "when": { "OR": [ {"repair":"true", "facing":"north", "glow":"false" }, {"repair":"true", "facing":"south", "glow":"false" }]},
+    { "when": { "OR": [ {"repair":"true", "facing":"north", "lit":"false" }, {"repair":"true", "facing":"south", "lit":"false" }]},
       "apply": { "model": "relics:block/pedestal_glow" }
     },
-    { "when": { "OR": [ {"repair":"true", "facing":"east", "glow":"false" }, {"repair":"true", "facing":"west", "glow":"false" }]},
+    { "when": { "OR": [ {"repair":"true", "facing":"east", "lit":"false" }, {"repair":"true", "facing":"west", "lit":"false" }]},
       "apply": { "model": "relics:block/pedestal_glow", "y": 90 }
     },
-    { "when": { "OR": [ {"glow":"true", "facing":"north", "sword":"true" }, {"glow":"true", "facing":"south", "sword":"true" }]},
+    { "when": { "OR": [ {"lit":"true", "facing":"north", "sword":"true" }, {"lit":"true", "facing":"south", "sword":"true" }]},
       "apply": { "model": "relics:block/pedestal_glow" }
     },
-    { "when": { "OR": [ {"glow":"true", "facing":"east", "sword":"true" }, {"glow":"true", "facing":"west", "sword":"true" }]},
+    { "when": { "OR": [ {"lit":"true", "facing":"east", "sword":"true" }, {"lit":"true", "facing":"west", "sword":"true" }]},
       "apply": { "model": "relics:block/pedestal_glow", "y": 90 }
     }
   ]

@@ -24,6 +24,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -33,7 +34,7 @@ import net.minecraftforge.common.Tags;
 public abstract class SwordPedestalBaseBlock extends RelicsFacingEntityBlock {
 	public static final BooleanProperty SWORD = BooleanProperty.create("sword");
 	public static final BooleanProperty REPAIR = BooleanProperty.create("repair");
-	public static final BooleanProperty GLOW = BooleanProperty.create("glow");
+	public static final BooleanProperty LIT = BlockStateProperties.LIT;
 	protected SoundEvent placeSound = RelicsSounds.SWORD_PLACE_SOUND.get();
 	protected SoundEvent drawSound = RelicsSounds.SWORD_DRAW_SOUND.get();
 
@@ -47,12 +48,12 @@ public abstract class SwordPedestalBaseBlock extends RelicsFacingEntityBlock {
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> blockStateBuilder) {
-		super.createBlockStateDefinition(blockStateBuilder.add(SWORD).add(REPAIR).add(GLOW));
+		super.createBlockStateDefinition(blockStateBuilder.add(SWORD).add(REPAIR).add(LIT));
 	}
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(SWORD, Boolean.FALSE).setValue(REPAIR, false).setValue(GLOW, false);
+		return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(SWORD, Boolean.FALSE).setValue(REPAIR, false).setValue(LIT, false);
 	}
 
 	@Override
@@ -91,7 +92,7 @@ public abstract class SwordPedestalBaseBlock extends RelicsFacingEntityBlock {
 			else if (itemInHand.is(RelicsTags.Items.SWORD_PEDESTAL_GLOW) && !blockEntity.isGlowing()) {
 				level.playSound(null, pos, SoundEvents.GLOW_INK_SAC_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
 				player.getItemInHand(hand).setCount(itemInHand.getCount() - 1);
-				state = state.setValue(GLOW, true);
+				state = state.setValue(LIT, true);
 				blockEntity.glowPedestal();
 				level.setBlock(pos, state, UPDATE_ALL);
 				return InteractionResult.SUCCESS;
