@@ -6,7 +6,8 @@
 	"advancement": "relics:lost_page_2",
     "pages": [
 		{
-		    "type": "patchouli:text",
+			"type": "patchouli:spotlight",
+			"item": "relics:flame_sword",
 		    "text": "A Sword, with a Blade made out of Fire, that will burn anything and everything that comes into contact with it.$(br2)Created using $(l:misc/magic_infusion)$(item)Maigc Infusion$()."
 		},
 		{
