@@ -70,7 +70,7 @@ public class InfusedStarstoneBlockEntity extends RelicsBlockEntity {
 
 		ServerLevel level = (ServerLevel) this.level;
 
-		double angle = Math.toRadians(270 + i * 90);
+		double angle = Math.toRadians(270D + i * 90);
 		double xOffset = 0.3 * Math.cos(angle);
 		double zOffset = 0.3 * Math.sin(angle);
 

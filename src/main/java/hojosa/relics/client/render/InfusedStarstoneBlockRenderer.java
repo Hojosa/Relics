@@ -39,7 +39,7 @@ public class InfusedStarstoneBlockRenderer implements BlockEntityRenderer<Infuse
 				if (pBlockEntity.isStackInSlot(i)) {
 					pPoseStack.pushPose();
 					
-				    double angle = Math.toRadians(270 + i * 90);
+				    double angle = Math.toRadians(270D + i * 90);
 				    double xOffset = 0.3 * Math.cos(angle) + 0.5;
 				    double zOffset = 0.3 * Math.sin(angle) + 0.5;
 				    pPoseStack.translate(xOffset, 1.015F, zOffset);

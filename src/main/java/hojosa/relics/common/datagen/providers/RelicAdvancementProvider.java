@@ -22,13 +22,14 @@ public class RelicAdvancementProvider implements AdvancementGenerator{
 
 	@Override
 	public void generate(Provider registries, Consumer<Advancement> saver, ExistingFileHelper existingFileHelper) {
+		String hasItem = "hasItem";
 		
 		Advancement root = Advancement.Builder.advancement()
 				.display(new DisplayInfo(PatchouliAPI.get().getBookStack(RelicsUtil.modLoc("tome")), 
 						Component.literal("Relics"), Component.literal("Find an Ancient Tome of Relics"), 
 						RelicsUtil.modLoc("textures/block/starstone_block.png"), 
 						FrameType.TASK, true, false, false))
-				.addCriterion("has_book", InventoryChangeTrigger.TriggerInstance.hasItems(PatchouliAPI.get().getBookStack(RelicsUtil.modLoc("tome")).getItem()))
+				.addCriterion(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(PatchouliAPI.get().getBookStack(RelicsUtil.modLoc("tome")).getItem()))
 				.save(saver, RelicsUtil.modLoc("root"), existingFileHelper);
 		
 		//lost pages
@@ -87,7 +88,7 @@ public class RelicAdvancementProvider implements AdvancementGenerator{
 				Component.literal("Sword Pedestals"), Component.literal("Make your first sword pedestal"), null, 
 				FrameType.TASK, true, false, false))
 		.parent(root)
-		.addCriterion("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(RelicsBlocks.SWORD_PEDESTAL_NORMAL.get(), RelicsBlocks.SWORD_PEDESTAL_RELIC.get(), RelicsBlocks.SWORD_PEDESTAL_RELIC_VARIANTS.get(), RelicsBlocks.SWORD_PEDESTAL_STONE.get(), RelicsBlocks.SWORD_PEDESTAL_TIME.get(), RelicsBlocks.SWORD_PEDESTAL_TWILIGHT.get()))
+		.addCriterion(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsBlocks.SWORD_PEDESTAL_NORMAL.get(), RelicsBlocks.SWORD_PEDESTAL_RELIC.get(), RelicsBlocks.SWORD_PEDESTAL_RELIC_VARIANTS.get(), RelicsBlocks.SWORD_PEDESTAL_STONE.get(), RelicsBlocks.SWORD_PEDESTAL_TIME.get(), RelicsBlocks.SWORD_PEDESTAL_TWILIGHT.get()))
 		.save(saver, RelicsUtil.modLoc("sword_pedestals"), existingFileHelper);
 		
 		Advancement.Builder.advancement()
@@ -95,7 +96,7 @@ public class RelicAdvancementProvider implements AdvancementGenerator{
 				Component.literal("Sword Pedestal of Time"), Component.literal("Hero of Time"), null, 
 				FrameType.TASK, true, false, false))
 		.parent(pedestals)
-		.addCriterion("has_item",  InventoryChangeTrigger.TriggerInstance.hasItems(RelicsBlocks.SWORD_PEDESTAL_TIME.get()))
+		.addCriterion(hasItem,  InventoryChangeTrigger.TriggerInstance.hasItems(RelicsBlocks.SWORD_PEDESTAL_TIME.get()))
 		.save(saver, RelicsUtil.modLoc("sword_pedestal_time"), existingFileHelper);
 		
 		Advancement.Builder.advancement()
@@ -103,40 +104,40 @@ public class RelicAdvancementProvider implements AdvancementGenerator{
 				Component.literal("Sword Pedestal of Twilight"), Component.literal("Hero of Twilight"), null, 
 				FrameType.TASK, true, false, false))
 		.parent(pedestals)
-		.addCriterion("has_item",  InventoryChangeTrigger.TriggerInstance.hasItems(RelicsBlocks.SWORD_PEDESTAL_TWILIGHT.get()))
+		.addCriterion(hasItem,  InventoryChangeTrigger.TriggerInstance.hasItems(RelicsBlocks.SWORD_PEDESTAL_TWILIGHT.get()))
 		.save(saver, RelicsUtil.modLoc("sword_pedestal_twilight"), existingFileHelper);
 		
 		//shooting stars
-		Advancement shooting_star = Advancement.Builder.advancement()
+		Advancement shootingStar = Advancement.Builder.advancement()
 		.display(new DisplayInfo(new ItemStack(RelicsItems.STAR_PIECE.get()), 
 				Component.literal("Shooting Star"), Component.literal("Find a shooting star and collect a star piece"), null, 
 				FrameType.TASK, true, false, false))
 		.parent(root)
-		.addCriterion("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.STAR_PIECE.get()))
+		.addCriterion(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.STAR_PIECE.get()))
 		.save(saver, RelicsUtil.modLoc("shooting_stars"), existingFileHelper);
 		
 		Advancement.Builder.advancement()
 		.display(new DisplayInfo(new ItemStack(RelicsItems.INFUSED_STAR_PIECE.get()), 
 				Component.literal("Infused Star Piece"), Component.literal("successfully infuse a star piece"), null, 
 				FrameType.TASK, true, false, false))
-		.parent(shooting_star)
-		.addCriterion("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.INFUSED_STAR_PIECE.get()))
+		.parent(shootingStar)
+		.addCriterion(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.INFUSED_STAR_PIECE.get()))
 		.save(saver, RelicsUtil.modLoc("star_piece"), existingFileHelper);
 		
 		Advancement.Builder.advancement()
 		.display(new DisplayInfo(new ItemStack(RelicsBlocks.INFUSED_STARSTONE_BLOCK.get()), 
 				Component.literal("Infused Star Stone Block"), Component.literal("This seems to be more than just a fancy block"), null, 
 				FrameType.TASK, true, false, false))
-		.parent(shooting_star)
-		.addCriterion("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(RelicsBlocks.INFUSED_STARSTONE_BLOCK.get()))
+		.parent(shootingStar)
+		.addCriterion(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsBlocks.INFUSED_STARSTONE_BLOCK.get()))
 		.save(saver, RelicsUtil.modLoc("infused_star_stone_block"), existingFileHelper);
 		
 		Advancement.Builder.advancement()
 		.display(new DisplayInfo(new ItemStack(RelicsBlocks.SKYBEAM_BLOCK.get()), 
 				Component.literal("Skybeam Block"), Component.literal("Skybeams, yey"), null, 
 				FrameType.TASK, true, false, false))
-		.parent(shooting_star)
-		.addCriterion("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(RelicsBlocks.SKYBEAM_BLOCK.get()))
+		.parent(shootingStar)
+		.addCriterion(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsBlocks.SKYBEAM_BLOCK.get()))
 		.save(saver, RelicsUtil.modLoc("skybeam"), existingFileHelper);
 		
 		//relics
@@ -145,7 +146,7 @@ public class RelicAdvancementProvider implements AdvancementGenerator{
 						Component.literal("Obtain a Relic"), Component.literal("Obtain your first relic"), null, 
 						FrameType.TASK, true, false, false))
 				.parent(root)
-				.addCriterion("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.PHOENIX_FEATHER.get(), RelicsItems.FIRE_TABLET.get(), RelicsItems.WATER_TABLET.get(), RelicsItems.FIRE_SWORD.get(), RelicsItems.MASTER_SWORD.get(), RelicsBlocks.ODDISH_POT.get()))
+				.addCriterion(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.PHOENIX_FEATHER.get(), RelicsItems.FIRE_TABLET.get(), RelicsItems.WATER_TABLET.get(), RelicsItems.FIRE_SWORD.get(), RelicsItems.MASTER_SWORD.get(), RelicsBlocks.ODDISH_POT.get()))
 				.save(saver, RelicsUtil.modLoc("infused_star_piece"), existingFileHelper);
 		
 		Advancement.Builder.advancement()
@@ -153,7 +154,7 @@ public class RelicAdvancementProvider implements AdvancementGenerator{
 				Component.literal("Is that a relic?"), Component.literal("Odd, it seems to be a plant???"), null, 
 				FrameType.TASK, true, false, false))
 		.parent(relics)
-		.addCriterion("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(RelicsBlocks.ODDISH_POT.get()))
+		.addCriterion(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsBlocks.ODDISH_POT.get()))
 		.save(saver, RelicsUtil.modLoc("oddish"), existingFileHelper);
 	}
 }
