@@ -90,7 +90,7 @@ public class FallingStarEntity extends Entity {
 		else {
 			if (this.getAliveState() == 0) {
 				if (!this.level().isClientSide()) {
-					this.spawnAtLocation(new ItemStack(RelicsItems.STAR_PIECE.get(), random.nextInt(2)));
+					this.spawnAtLocation(new ItemStack(RelicsItems.STAR_DUST.get(), random.nextInt(2)));
 					ExperienceOrb.award((ServerLevel) this.level(), this.position(), 1);
 					this.remove(RemovalReason.DISCARDED);
 				} else {
