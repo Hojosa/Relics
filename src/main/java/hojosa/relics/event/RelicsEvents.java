@@ -12,6 +12,7 @@ import hojosa.relics.common.item.entity.HeartItemEntity;
 import hojosa.relics.common.player.StarFallChance;
 import hojosa.relics.common.player.StarFallChanceProvider;
 import hojosa.relics.lib.References;
+import hojosa.relics.lib.RelicsUtil;
 import hojosa.relics.network.PhoenixParticlePacket;
 import hojosa.relics.network.RelicsNetwork;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
@@ -38,10 +39,12 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
+import net.minecraftforge.event.village.WandererTradesEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
+import vazkii.patchouli.api.PatchouliAPI;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Mod.EventBusSubscriber(modid = References.MOD_ID)
@@ -56,14 +59,26 @@ public class RelicsEvents {
 	}
 	
 	@SubscribeEvent
-	public static void addVillagerTrages(VillagerTradesEvent event) {
-		if(event.getType() == VillagerProfession.LIBRARIAN) {
+	public static void addVillagerTrades(VillagerTradesEvent event) {
+		if(event.getType() == VillagerProfession.CLERIC) {
 			Int2ObjectMap<List<ItemListing>> trades = event.getTrades();
 			ItemStack tablet = new ItemStack(RelicsItems.WATER_TABLET.get(), 1);
 			int villagerLevel = 3;
 			
 			trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 64), tablet, 1, 8, 0));
 		}
+		if(event.getType() == VillagerProfession.LIBRARIAN) {
+			Int2ObjectMap<List<ItemListing>> trades = event.getTrades();
+			ItemStack book = PatchouliAPI.get().getBookStack(RelicsUtil.modLoc("tome"));
+			int villagerLevel = 2;
+			
+			trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), book, 12, 1, 0));
+		}
+	}
+	
+	@SubscribeEvent
+	public static void addWandererTrades(WandererTradesEvent event) {
+		event.getGenericTrades().add((trader, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), PatchouliAPI.get().getBookStack(RelicsUtil.modLoc("tome")), 12, 1, 0));
 	}
 	
     @SubscribeEvent
@@ -71,7 +86,6 @@ public class RelicsEvents {
         if(event.getObject() instanceof Player && !event.getObject().getCapability(StarFallChanceProvider.PLAYER_STAR_FALL).isPresent()) {
                 event.addCapability(new ResourceLocation(References.MOD_ID, "properties"), new StarFallChanceProvider());
             }
-        
     }
 
     @SubscribeEvent
