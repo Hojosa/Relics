@@ -93,23 +93,23 @@ public class RelicsItems{
     		References.UnlocalizedName.TOTEM_DUST, () -> new RelicsItem(64, Rarity.UNCOMMON)
     );
     
-    public static final RegistryObject<RelicsItem> LOST_PAGE_1 = ITEMS.register(
+    public static final RegistryObject<LostPage> LOST_PAGE_1 = ITEMS.register(
     		References.UnlocalizedName.LOST_PAGE_1, () -> new LostPage(1, References.LostPagesText.LOST_PAGE_1)
     );
     
-    public static final RegistryObject<RelicsItem> LOST_PAGE_2 = ITEMS.register(
+    public static final RegistryObject<LostPage> LOST_PAGE_2 = ITEMS.register(
     		References.UnlocalizedName.LOST_PAGE_2, () -> new LostPage(1, References.LostPagesText.LOST_PAGE_2)
     );
     
-    public static final RegistryObject<RelicsItem> LOST_PAGE_3 = ITEMS.register(
+    public static final RegistryObject<LostPage> LOST_PAGE_3 = ITEMS.register(
     		References.UnlocalizedName.LOST_PAGE_3, () -> new LostPage(1, References.LostPagesText.LOST_PAGE_3)
     );
     
-    public static final RegistryObject<RelicsItem> LOST_PAGE_4 = ITEMS.register(
+    public static final RegistryObject<LostPage> LOST_PAGE_4 = ITEMS.register(
     		References.UnlocalizedName.LOST_PAGE_4, () -> new LostPage(1, References.LostPagesText.LOST_PAGE_4)
     );
     
-    public static final RegistryObject<RelicsItem> LOST_PAGE_5 = ITEMS.register(
+    public static final RegistryObject<LostPage> LOST_PAGE_5 = ITEMS.register(
     		References.UnlocalizedName.LOST_PAGE_5, () -> new LostPage(1, References.LostPagesText.LOST_PAGE_5)
     );
     
