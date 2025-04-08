@@ -65,6 +65,7 @@ public class References {
 		public static final String HAVY_IRON_BOOTS = "heavy_iron_boots";
 		public static final String MAGIC_CRAFTING = "magic_crafting";
 		public static final String ITEM_GET = "item_get";
+		public static final String MAGIC_POWDER = "magic_powder";
 	}
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)
 	public static class LostPagesText {

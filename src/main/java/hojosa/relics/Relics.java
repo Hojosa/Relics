@@ -16,6 +16,7 @@ import hojosa.relics.common.loot.RelicsGlobalLootModifier;
 import hojosa.relics.common.recipes.RelicsRecipes;
 import hojosa.relics.integration.RelicsIntegration;
 import hojosa.relics.lib.References;
+import hojosa.relics.lib.RelicsUtil;
 import hojosa.relics.lib.recipe.StonecutterRetexturedRecipe;
 import hojosa.relics.network.RelicsNetwork;
 import net.minecraft.core.registries.Registries;
@@ -36,51 +37,52 @@ import slimeknights.mantle.registration.adapter.RegistryAdapter;
 @Mod(References.MOD_ID)
 @Mod.EventBusSubscriber(modid = References.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Relics {
-    public static final Logger LOGGER = LogManager.getLogger(References.MOD_ID);
-	
-    public Relics() {
-        @SuppressWarnings("removal")
+	public static final Logger LOGGER = LogManager.getLogger(References.MOD_ID);
+
+	public Relics() {
+		@SuppressWarnings("removal")
 		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        modEventBus.addListener(this::setup);
-        modEventBus.addListener(this::clientSetupEvent);
-        modEventBus.addListener(this::enqueueIMC);
-        modEventBus.addListener(this::register);
-        
-        RelicsBlocks.BLOCKS.register(modEventBus);
-        RelicsItems.ITEMS.register(modEventBus);
-        RelicsBlockEntities.BLOCK_ENTITIES.register(modEventBus);
-        RelicsCreativeModeTabs.CREATIVE_TABS.register(modEventBus);
-        RelicsEntities.ENTITY_TYPES.register(modEventBus);
-        RelicsSounds.SOUNDS.register(modEventBus);
-        RelicsGlobalLootModifier.register(modEventBus);
-        RelicsParticles.PARTICLE_TYPES.register(modEventBus);
-        RelicsRecipes.SERIALIZERS.register(modEventBus);
-        
-        MinecraftForge.EVENT_BUS.register(this);
-    }
-    
-    private void clientSetupEvent(final FMLClientSetupEvent event) {
-    	//clent setup event
-    }
+		modEventBus.addListener(this::setup);
+		modEventBus.addListener(this::clientSetupEvent);
+		modEventBus.addListener(this::enqueueIMC);
+		modEventBus.addListener(this::register);
 
-    private void setup(final FMLCommonSetupEvent event) {
-    	RelicsNetwork.register();
-    }
-    
-    private void register(RegisterEvent event) {
-    	ResourceKey<?> key = event.getRegistryKey();
-    	if (key == Registries.RECIPE_SERIALIZER) {
-	    	RegistryAdapter<RecipeSerializer<?>> adapter = new RegistryAdapter<>(Objects.requireNonNull(event.getForgeRegistry()));
-	    	adapter.register(new StonecutterRetexturedRecipe.Serializer(), "crafting_stonecutter_retextured");
-    	}
-    }
+		RelicsBlocks.BLOCKS.register(modEventBus);
+		RelicsItems.ITEMS.register(modEventBus);
+		RelicsBlockEntities.BLOCK_ENTITIES.register(modEventBus);
+		RelicsCreativeModeTabs.CREATIVE_TABS.register(modEventBus);
+		RelicsEntities.ENTITY_TYPES.register(modEventBus);
+		RelicsSounds.SOUNDS.register(modEventBus);
+		RelicsGlobalLootModifier.register(modEventBus);
+		RelicsParticles.PARTICLE_TYPES.register(modEventBus);
+		RelicsRecipes.SERIALIZERS.register(modEventBus);
 
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
-        // Do nothing
-    }
-    
-    private void enqueueIMC(final InterModEnqueueEvent event) {
-        RelicsIntegration.load();
-    }
+		MinecraftForge.EVENT_BUS.register(this);
+	}
+
+	private void clientSetupEvent(final FMLClientSetupEvent event) {
+		// clent setup event
+	}
+
+	private void setup(final FMLCommonSetupEvent event) {
+		RelicsNetwork.register();
+		event.enqueueWork(RelicsUtil::setupBlockCycleMap);
+	}
+
+	private void register(RegisterEvent event) {
+		ResourceKey<?> key = event.getRegistryKey();
+		if (key == Registries.RECIPE_SERIALIZER) {
+			RegistryAdapter<RecipeSerializer<?>> adapter = new RegistryAdapter<>(Objects.requireNonNull(event.getForgeRegistry()));
+			adapter.register(new StonecutterRetexturedRecipe.Serializer(), "crafting_stonecutter_retextured");
+		}
+	}
+
+	@SubscribeEvent
+	public void onServerStarting(ServerStartingEvent event) {
+		// Do nothing
+	}
+
+	private void enqueueIMC(final InterModEnqueueEvent event) {
+		RelicsIntegration.load();
+	}
 }
