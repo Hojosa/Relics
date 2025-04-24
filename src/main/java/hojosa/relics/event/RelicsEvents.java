@@ -5,6 +5,7 @@ import java.util.Random;
 
 import be.florens.expandability.api.forge.LivingFluidCollisionEvent;
 import hojosa.relics.common.entity.FallingStarEntity;
+import hojosa.relics.common.entity.StarBeamEntity;
 import hojosa.relics.common.init.RelicsItems;
 import hojosa.relics.common.init.RelicsSounds;
 import hojosa.relics.common.item.entity.EmeraldShardItemEntity;
@@ -35,6 +36,7 @@ import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.EntityMountEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -107,7 +109,6 @@ public class RelicsEvents {
         		RelicsNetwork.getInstance().sendToTrackingAndSelf(new PhoenixParticlePacket(targetPlayer.getX(), targetPlayer.getY(), targetPlayer.getZ()), targetPlayer);
         		event.setCanceled(true);
         	}
-        
     }
     
     //we drop the heart via event, because there is no loottable for hostile mobs, only 1 per each mob and mod compat would be a nightmare otherwise
@@ -138,6 +139,14 @@ public class RelicsEvents {
                 	event.player.level().addFreshEntity(new FallingStarEntity(event.player));
                 }
             });
+        }
+    }
+    
+    @SubscribeEvent
+    public static void onEntityDismount(EntityMountEvent event) {
+    	//cancel dismount on shift for our star beam entity
+        if (event.isDismounting() && event.getEntityMounting().isShiftKeyDown() && event.getEntityBeingMounted() instanceof StarBeamEntity) {
+            event.setCanceled(true);
         }
     }
 }

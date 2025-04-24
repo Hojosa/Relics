@@ -28,7 +28,7 @@ public class FallingStarEntity extends Entity {
 	private static final EntityDataAccessor<Integer> DATA_ID_ALIVE = SynchedEntityData.defineId(FallingStarEntity.class, EntityDataSerializers.INT);
 	public static final int DWINDLE_TIME = 440;
 	private double movementY;
-
+	private Player player;
 
 	public FallingStarEntity(EntityType<?> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
@@ -39,13 +39,14 @@ public class FallingStarEntity extends Entity {
 		double theta = this.random.nextDouble() * Math.PI * 2.0;
 		double radius = 42.0;
 		this.setPos(player.position().x + Math.cos(theta) * radius, player.position().y + 100, player.position().z + Math.sin(theta) * radius);
+		this.player = player;
 	}
 	
-    public static AttributeSupplier.Builder createAttributes() {
-        return AttributeSupplier.builder()
-                .add(ForgeMod.ENTITY_GRAVITY.get(), 1D)
-                .add(Attributes.FLYING_SPEED, 2D);
-    }
+//    public static AttributeSupplier.Builder createAttributes() {
+//        return AttributeSupplier.builder()
+//                .add(ForgeMod.ENTITY_GRAVITY.get(), 1D)
+//                .add(Attributes.FLYING_SPEED, 2D);
+//    }
 
 	@Override
 	public void playerTouch(Player pPlayer) {
@@ -67,6 +68,9 @@ public class FallingStarEntity extends Entity {
 
 	@Override
 	public void tick() {
+//		System.out.println(this.level());
+//		System.out.println(this.player);
+//		System.out.println(this.getAliveState());
 		// star is flying
 		if (!this.onGround()) {
 			if(this.tickCount == 6 && this.level().isClientSide()) {

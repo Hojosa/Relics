@@ -33,6 +33,7 @@ public class RelicsBlockStateProvider extends BlockStateProvider{
 		simpleBlockInfused(RelicsBlocks.INFUSED_STARSTONE_BLOCK.get(), RelicsBlocks.STARSTONE_BLOCK.get());
 		simpleBlock(RelicsBlocks.STARSTONE_BLOCK.get());
 		simpleBlock(RelicsBlocks.SKYBEAM_BLOCK.get());
+		simpleBlock(RelicsBlocks.STARBEAM_TORCH.get());
 
 //		registerPedestal(RelicsBlocks.SWORD_PEDESTAL_BASIC.get());
 //		registerPedestal();

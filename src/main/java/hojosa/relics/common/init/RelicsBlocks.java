@@ -16,9 +16,11 @@ import hojosa.relics.common.item.ItemBlockGlint;
 import hojosa.relics.lib.References;
 import hojosa.relics.lib.block.RelicsFacingBlock;
 import hojosa.relics.lib.block.RelicsNormalBlock;
+import hojosa.relics.lib.block.StarBeamTorch;
 import hojosa.relics.lib.block.SwordPedestalBaseBlock;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTab.ItemDisplayParameters;
@@ -74,6 +76,10 @@ public class RelicsBlocks {
 	public static final ItemObject<Block> SKYBEAM_BLOCK = BLOCKS.register(References.UnlocalizedName.SKYBEAM_BLOCK,
 			() -> new SkybeamBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).lightLevel(litBlockEmission(10))), BLOCK_ITEM);
 
+	public static final ItemObject<Block> STARBEAM_TORCH = BLOCKS.register(References.UnlocalizedName.STARBEAM_TORCH,
+			() -> new StarBeamTorch(BlockBehaviour.Properties.copy(Blocks.TORCH).lightLevel(value -> 15), ParticleTypes.FLAME), BLOCK_ITEM);
+
+
 	/**
 	 * We use this builder to ensure that our blocks all have the most important
 	 * properties set. This way it'll stick out if a block doesn't have a sound set.
@@ -90,7 +96,7 @@ public class RelicsBlocks {
 		return builder(soundType).mapColor(color);
 	}
 
-	public static void addTabItems(ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
+	public static void addTabItems(ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {		
 		output.accept(LAPIS_BRICK.get().asItem());
 		output.accept(ODDISH_POT.get().asItem());
 		output.accept(SWORD_PEDESTAL_RELIC.get().asItem());
@@ -100,6 +106,7 @@ public class RelicsBlocks {
 		output.accept(SKYBEAM_BLOCK.get().asItem());
 		output.accept(STARSTONE_BLOCK.get().asItem());
 		output.accept(INFUSED_STARSTONE_BLOCK.get().asItem());
+		output.accept(STARBEAM_TORCH.get().asItem());
 
 		Predicate<ItemStack> variants = stack -> {
 			output.accept(stack);
