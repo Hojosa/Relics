@@ -1,7 +1,7 @@
 {
   "parent": "relics:root",
   "criteria": {
-    "has_item": {
+    "hasItem": {
       "conditions": {
         "items": [
           {
@@ -56,7 +56,7 @@
   },
   "requirements": [
     [
-      "has_item"
+      "hasItem"
     ]
   ],
   "sends_telemetry_event": true

@@ -1,6 +1,6 @@
 {
   "criteria": {
-    "has_book": {
+    "hasItem": {
       "conditions": {
         "items": [
           {
@@ -32,7 +32,7 @@
   },
   "requirements": [
     [
-      "has_book"
+      "hasItem"
     ]
   ],
   "sends_telemetry_event": true
