@@ -1,0 +1,21 @@
+{
+  "type": "relics:magic_infusion",
+  "ingredients": [
+    {	
+      "item": "relics:star_dust"
+    },
+    {
+      "item": "relics:star_dust"
+    },
+    {
+      "item": "relics:star_dust"
+    },
+	{
+      "item": "relics:star_dust"
+    }
+  ],
+  "output": {
+    "count": 4,
+    "item": "relics:magic_powder"
+  }
+}
