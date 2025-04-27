@@ -2,8 +2,10 @@ package hojosa.relics.common.item;
 
 import java.util.Random;
 
+import hojosa.relics.common.init.RelicsSounds;
 import hojosa.relics.lib.RelicsUtil;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.AgeableMob;
@@ -36,10 +38,10 @@ public class MagicPowder extends RelicsItem {
 				ageable.setBaby(!ageable.isBaby());
 				if(pInteractionTarget instanceof Animal animal) {
 					RelicsUtil.cycleMobVariant(animal);
-					return finishInteractionEntity(pPlayer, pUsedHand, pStack);
+					return finishInteractionEntity(pPlayer, pUsedHand);
 				}
-				return finishInteractionEntity(pPlayer, pUsedHand, pStack);
-			}
+				return finishInteractionEntity(pPlayer, pUsedHand);
+			}//todo, doesn work yet
 			if (pInteractionTarget instanceof Creeper crepper) {
 				crepper.getEntityData().set(Creeper.DATA_IS_POWERED, crepper.isPowered());
 				pPlayer.getItemInHand(pUsedHand).shrink(1);
@@ -54,11 +56,11 @@ public class MagicPowder extends RelicsItem {
 				} else
 					zombie.setItemSlot(EquipmentSlot.HEAD, new ItemStack(Items.AIR));
 				pPlayer.getItemInHand(pUsedHand).shrink(1);
-				return finishInteractionEntity(pPlayer, pUsedHand, pStack);
+				return finishInteractionEntity(pPlayer, pUsedHand);
 			}
 		}
 		if(pInteractionTarget instanceof AgeableMob || pInteractionTarget instanceof Zombie || pInteractionTarget instanceof Creeper) {
-			//todo, maybe sound and sparkel?
+			pPlayer.level().playSound(pPlayer, pInteractionTarget.blockPosition(), RelicsSounds.INFUSE_SUCCESS.get(), SoundSource.BLOCKS);
 			pPlayer.level().addParticle(ParticleTypes.EXPLOSION, pInteractionTarget.getX(), pInteractionTarget.getY() + pInteractionTarget.getBbHeight() / 2, pInteractionTarget.getZ(), 0.0, 0.0, 0.0);
 			return InteractionResult.SUCCESS;
 		}
@@ -82,7 +84,7 @@ public class MagicPowder extends RelicsItem {
 	    		return super.onItemUseFirst(stack, context);
 	        }
 	        else {
-	        	//todo, maybe sound and sparkel?
+	        	level.playSound(context.getPlayer(), context.getClickedPos(), RelicsSounds.MAGIC_POWDER.get(), SoundSource.PLAYERS);
 	        	level.addParticle(ParticleTypes.EXPLOSION, context.getPlayer().getX(), context.getPlayer().getY() + context.getPlayer().getBbHeight() / 2, context.getPlayer().getZ(), 0.0, 0.0, 0.0);
 	        	return InteractionResult.SUCCESS;
 	        }
@@ -90,9 +92,10 @@ public class MagicPowder extends RelicsItem {
 		return super.onItemUseFirst(stack, context);
 	}
 
-	private static InteractionResult finishInteractionEntity(Player player, InteractionHand usedHand, ItemStack pStack) {
+	private static InteractionResult finishInteractionEntity(Player player, InteractionHand usedHand) {
 		if(!player.isCreative())
 			player.getItemInHand(usedHand).shrink(1);
+		player.level().playSound(player, player.blockPosition(), RelicsSounds.INFUSE_SUCCESS.get(), SoundSource.BLOCKS);
 		return InteractionResult.SUCCESS;
 	}
 }

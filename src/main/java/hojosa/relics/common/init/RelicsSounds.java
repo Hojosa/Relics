@@ -1,7 +1,5 @@
 package hojosa.relics.common.init;
 
-import java.util.function.Supplier;
-
 import hojosa.relics.lib.References;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -45,6 +43,8 @@ public class RelicsSounds {
 	public static final RegistryObject<SoundEvent> MAGIC_CRAFTING = registerSound(References.UnlocalizedName.MAGIC_CRAFTING);
 
 	public static final RegistryObject<SoundEvent> ITEM_GET = registerSound(References.UnlocalizedName.ITEM_GET);
+
+	public static final RegistryObject<SoundEvent> MAGIC_POWDER = registerSound(References.UnlocalizedName.MAGIC_POWDER);;
 
 	private static RegistryObject<SoundEvent> registerSound(String name) {
 		return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(References.MOD_ID, name)));

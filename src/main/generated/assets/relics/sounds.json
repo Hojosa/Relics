@@ -41,6 +41,12 @@
     ],
     "subtitle": "relics.subtitle.magic_crafting"
   },
+  "magic_powder": {
+    "sounds": [
+      "relics:magic_powder"
+    ],
+    "subtitle": "relics.subtitle.magic_powder"
+  },
   "oot_sword_draw": {
     "sounds": [
       "relics:oot_sword_draw"
