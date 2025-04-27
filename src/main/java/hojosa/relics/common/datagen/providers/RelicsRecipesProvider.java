@@ -198,5 +198,16 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.group(References.CREATIVE_TAB)
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.STAR_STONE.get()))
 		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsBlocks.STARBEAM_TORCH.get(), 8)
+		.pattern(" s ")
+		.pattern("sds")
+		.pattern(" g ")
+		.define('s', RelicsItems.STAR_DUST.get())
+		.define('d', Items.DIAMOND)
+		.define('g', Items.GOLD_INGOT)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.STAR_DUST.get()))
+		.save(consumer);
 	}
 }
