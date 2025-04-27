@@ -61,6 +61,9 @@ public class RelicsSoundsProvider extends SoundDefinitionsProvider {
 		add(RelicsSounds.ITEM_GET, definition()
 				.subtitle(getSubtitle(RelicsSounds.ITEM_GET))
 				.with(sound(RelicsSounds.ITEM_GET.getId())));
+		add(RelicsSounds.MAGIC_POWDER, definition()
+				.subtitle(getSubtitle(RelicsSounds.MAGIC_POWDER))
+				.with(sound(RelicsSounds.MAGIC_POWDER.getId())));
 	}
 	
 	private String getSubtitle(RegistryObject<SoundEvent> sound) {
