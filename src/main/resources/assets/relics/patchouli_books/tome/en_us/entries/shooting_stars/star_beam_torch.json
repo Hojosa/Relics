@@ -1,0 +1,16 @@
+{
+    "name": "Star Beam Torch",
+    "icon": "relics:star_beam_torch",
+    "category": "relics:shooting_stars",
+	"sortnum": 6,
+    "pages": [
+		{
+		    "type": "patchouli:text",
+		    "text": "Using $(item)star dust$(), its possible to create a $(item)star beam torch$().$(br2)While those torches are a little bit brighter than normal ones, thier real power lies in thier ability to connect to any each other in a $(thing)6 block radius$(). Pressing $(thing)shift$() while $(thing)jumping$() lets you travel between these torches.$(br)Some even call this $(thing)flow motion$()"
+		},
+		{
+		    "type": "patchouli:crafting",
+		    "recipe": "relics:star_beam_torch"
+		}
+    ]
+}

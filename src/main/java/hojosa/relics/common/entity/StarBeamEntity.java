@@ -4,8 +4,9 @@ import java.util.Optional;
 
 import org.joml.Vector3f;
 
+import hojosa.relics.client.particle.RelicsParticles;
+import hojosa.relics.common.block.StarBeamTorch;
 import hojosa.relics.common.init.RelicsEntities;
-import hojosa.relics.lib.block.StarBeamTorch;
 import lombok.Getter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -23,13 +24,13 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
 public class StarBeamEntity extends Entity {
+	
 	@Getter
 	private static final EntityDataAccessor<BlockPos> DATA_ID_TARGET_POS = SynchedEntityData.defineId(FallingStarEntity.class, EntityDataSerializers.BLOCK_POS);
 	private static final EntityDataAccessor<BlockPos> DATA_ID_START_POS = SynchedEntityData.defineId(FallingStarEntity.class, EntityDataSerializers.BLOCK_POS);
 	private static final EntityDataAccessor<Vector3f> DATA_ID_MOTION = SynchedEntityData.defineId(FallingStarEntity.class, EntityDataSerializers.VECTOR3);
 
     private Player player;
-
     public Vec3 motion = Vec3.ZERO;
 	    
 	    public StarBeamEntity(EntityType<?> pEntityType, Level pLevel) {
@@ -41,13 +42,20 @@ public class StarBeamEntity extends Entity {
 	        this.setStartPos(start.immutable());
 	        this.setTargetPos(target.immutable());
 
-	        this.setPos(start.getX() + 0.5, start.getY()+0.7, start.getZ() + 0.5);
+	        this.setPos(start.getX() + 0.5, start.getY()+0.8, start.getZ() + 0.5);
 	        this.player = player;
 	        this.calcMotionVec();
 	        this.player.startRiding(this);
 	    }
 	    
 	    @Override
+	    public void load(CompoundTag pCompound) {
+	    	super.load(pCompound);
+	    	this.calcMotionVec();
+	    }
+	    
+	    @SuppressWarnings("resource")
+		@Override
 	    public void tick() {
 	        if(!this.level().isClientSide && this.getPassengers().isEmpty()) {
 	        		if(this.player == null)
@@ -58,7 +66,13 @@ public class StarBeamEntity extends Entity {
     			this.move(MoverType.SELF, new Vec3(this.getMotion()).scale(0.5));
     		}
     		else this.move(MoverType.SELF, new Vec3(this.getMotion()));
-
+    		
+    		if(this.level().isClientSide) {
+    	        double offsetX = random.nextGaussian() * 0.08;
+    	        double offsetZ = random.nextGaussian() * 0.08;
+    		
+    			this.level().addParticle(RelicsParticles.STAR_BEAM_GRIND_PATTICLES.get(), this.xo + offsetX, this.yo - 0.3, this.zo + offsetZ, 0.0D, 0.0D, 0.0D);
+    		}
 	        if(!this.level().isClientSide && this.position().distanceToSqr(this.entityData.get(DATA_ID_TARGET_POS).getCenter()) < 0.15 && !getNextTarget(this.entityData.get(DATA_ID_TARGET_POS))) {
 		        	this.discard();
 	        }   
@@ -85,12 +99,13 @@ public class StarBeamEntity extends Entity {
 	    	else return false;
 	    }
 	    
+	    //calc the motion vector to travel from startPos to targetPos
 	    private void calcMotionVec() {
 	    	this.setMotion(new Vector3f(
 		    	this.getTargetPos().getX() - this.getStartPos().getX(),
 		    	this.getTargetPos().getY() - this.getStartPos().getY(),
 		    	this.getTargetPos().getZ() - this.getStartPos().getZ()
-	    	).normalize().mul(0.3f));
+	    	).normalize().mul(0.25f));
 	    }
 	    
 	    private boolean hasClearPath(Level level, Vec3 start, Vec3 end) {
@@ -110,14 +125,20 @@ public class StarBeamEntity extends Entity {
 	    }
 	    
 	    //we have to read/add our pos + motion, so a player is not stuck on rejoin
-	    @Override protected void readAdditionalSaveData(CompoundTag tag) {}
-	    @Override protected void addAdditionalSaveData(CompoundTag tag) {}
+	    @Override protected void readAdditionalSaveData(CompoundTag tag) {
+	    	this.setStartPos(BlockPos.of(tag.getLong("StartPos")));
+	        this.setTargetPos(BlockPos.of(tag.getLong("TargetPos")));
+	    }
+	    @Override protected void addAdditionalSaveData(CompoundTag tag) {
+	    	tag.putLong("StartPos", getStartPos().asLong());
+	        tag.putLong("TargetPos", getTargetPos().asLong());
+	    }
 	    
-	    private BlockPos getStartPos() {
+	    public BlockPos getStartPos() {
 	    	return this.entityData.get(DATA_ID_START_POS);
 	    }
 	    
-	    private BlockPos getTargetPos() {
+	    public BlockPos getTargetPos() {
 	    	return this.entityData.get(DATA_ID_TARGET_POS);
 	    }
 	    

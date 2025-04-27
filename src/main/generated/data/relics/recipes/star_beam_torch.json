@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "d": {
+      "item": "minecraft:diamond"
+    },
+    "g": {
+      "item": "minecraft:gold_ingot"
+    },
+    "s": {
+      "item": "relics:star_dust"
+    }
+  },
+  "pattern": [
+    " s ",
+    "sds",
+    " g "
+  ],
+  "result": {
+    "count": 8,
+    "item": "relics:star_beam_torch"
+  },
+  "show_notification": true
+}

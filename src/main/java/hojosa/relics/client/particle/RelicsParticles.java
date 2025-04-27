@@ -17,5 +17,9 @@ public class RelicsParticles {
 	
 	public static final RegistryObject<SimpleParticleType> FLAME_PATTICLES = 
 			PARTICLE_TYPES.register(References.UnlocalizedName.FLAME_PARTICLE, () -> new SimpleParticleType(true));
+	public static final RegistryObject<SimpleParticleType> STAR_BEAM_TORCH_PATTICLES = 
+			PARTICLE_TYPES.register(References.UnlocalizedName.STAR_BEAM_TORCH_PARTICLES, () -> new SimpleParticleType(true));
 
+	public static final RegistryObject<SimpleParticleType> STAR_BEAM_GRIND_PATTICLES = 
+			PARTICLE_TYPES.register(References.UnlocalizedName.STAR_BEAM_GRIND_PARTICLES, () -> new SimpleParticleType(true));
 }

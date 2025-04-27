@@ -12,7 +12,6 @@ import net.minecraft.server.packs.PackType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.client.model.generators.MultiPartBlockStateBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -33,7 +32,7 @@ public class RelicsBlockStateProvider extends BlockStateProvider{
 		simpleBlockInfused(RelicsBlocks.INFUSED_STARSTONE_BLOCK.get(), RelicsBlocks.STARSTONE_BLOCK.get());
 		simpleBlock(RelicsBlocks.STARSTONE_BLOCK.get());
 		simpleBlock(RelicsBlocks.SKYBEAM_BLOCK.get());
-		simpleBlock(RelicsBlocks.STARBEAM_TORCH.get());
+//		simpleBlock(RelicsBlocks.STARBEAM_TORCH.get());
 
 //		registerPedestal(RelicsBlocks.SWORD_PEDESTAL_BASIC.get());
 //		registerPedestal();

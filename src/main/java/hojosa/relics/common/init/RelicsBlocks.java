@@ -9,6 +9,7 @@ import hojosa.relics.common.block.NormalSwordPedestal;
 import hojosa.relics.common.block.RelicRetexturedSwordPedestal;
 import hojosa.relics.common.block.RelicSwordPedestal;
 import hojosa.relics.common.block.SkybeamBlock;
+import hojosa.relics.common.block.StarBeamTorch;
 import hojosa.relics.common.block.StoneSwordPedestal;
 import hojosa.relics.common.block.TimeSwordPedestal;
 import hojosa.relics.common.block.TwilightSwordPedestal;
@@ -16,11 +17,9 @@ import hojosa.relics.common.item.ItemBlockGlint;
 import hojosa.relics.lib.References;
 import hojosa.relics.lib.block.RelicsFacingBlock;
 import hojosa.relics.lib.block.RelicsNormalBlock;
-import hojosa.relics.lib.block.StarBeamTorch;
 import hojosa.relics.lib.block.SwordPedestalBaseBlock;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTab.ItemDisplayParameters;
@@ -77,7 +76,7 @@ public class RelicsBlocks {
 			() -> new SkybeamBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).lightLevel(litBlockEmission(10))), BLOCK_ITEM);
 
 	public static final ItemObject<Block> STARBEAM_TORCH = BLOCKS.register(References.UnlocalizedName.STARBEAM_TORCH,
-			() -> new StarBeamTorch(BlockBehaviour.Properties.copy(Blocks.TORCH).lightLevel(value -> 15), ParticleTypes.FLAME), BLOCK_ITEM);
+			() -> new StarBeamTorch(BlockBehaviour.Properties.copy(Blocks.TORCH).lightLevel(value -> 15)), BLOCK_ITEM);
 
 
 	/**
