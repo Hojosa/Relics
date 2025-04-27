@@ -75,7 +75,7 @@ public class MagicPowder extends RelicsItem {
         if(RelicsUtil.hasBlockToCycle(clickedBlock.getBlock())) {
 	        if(!level.isClientSide) {
 	        	Block newBlock = RelicsUtil.getNextBlock(clickedBlock.getBlock());
-	        	if(!(newBlock == Blocks.AIR)) {
+	        	if(newBlock != Blocks.AIR) {
 	        		level.setBlockAndUpdate(context.getClickedPos(), newBlock.defaultBlockState());
 	        		if(!context.getPlayer().isCreative())
 	        			stack.shrink(1);

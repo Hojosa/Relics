@@ -128,7 +128,6 @@ public class RelicsUtil {
 			Method setVariantMethod = animal.getClass().getMethod("setVariant", variant.getClass());
 			setVariantMethod.invoke(animal, randomVariant);
 		} catch (Exception e) {
-			System.out.println("nope");
 			// todo: implement logger to inform we have an unsupported mob
 		}
 	}

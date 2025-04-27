@@ -13,14 +13,11 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.MoverType;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.ForgeMod;
 
 public class FallingStarEntity extends Entity {
 
@@ -28,7 +25,6 @@ public class FallingStarEntity extends Entity {
 	private static final EntityDataAccessor<Integer> DATA_ID_ALIVE = SynchedEntityData.defineId(FallingStarEntity.class, EntityDataSerializers.INT);
 	public static final int DWINDLE_TIME = 440;
 	private double movementY;
-	private Player player;
 
 	public FallingStarEntity(EntityType<?> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
@@ -39,14 +35,7 @@ public class FallingStarEntity extends Entity {
 		double theta = this.random.nextDouble() * Math.PI * 2.0;
 		double radius = 42.0;
 		this.setPos(player.position().x + Math.cos(theta) * radius, player.position().y + 100, player.position().z + Math.sin(theta) * radius);
-		this.player = player;
 	}
-	
-//    public static AttributeSupplier.Builder createAttributes() {
-//        return AttributeSupplier.builder()
-//                .add(ForgeMod.ENTITY_GRAVITY.get(), 1D)
-//                .add(Attributes.FLYING_SPEED, 2D);
-//    }
 
 	@Override
 	public void playerTouch(Player pPlayer) {
@@ -54,12 +43,13 @@ public class FallingStarEntity extends Entity {
 			this.playSound(RelicsSounds.STAR_CAUGHT_SOUND.get(), 1f, 1f);
 			pPlayer.addItem(new ItemStack(RelicsItems.STAR_PIECE.get(), 1));
 			ExperienceOrb.award((ServerLevel) this.level(), this.position(), 3);
+			pPlayer.getCapability(StarFallChanceProvider.PLAYER_STAR_FALL).ifPresent(star -> star.setStarsCollected(star.getStarsCollected()+1));
 			// add achivement maybe?
 			this.remove(RemovalReason.DISCARDED);
-			
+
 			//a little bonus for star collectors:
 			pPlayer.getCapability(StarFallChanceProvider.PLAYER_STAR_FALL).ifPresent(star -> {
-				if(star.getStarsCollected() % 7 == 0 ) {
+				if(star.getStarsCollected() != 0 && star.getStarsCollected() % 7 == 0 ) {
 					pPlayer.level().addFreshEntity(new FallingStarEntity(pPlayer));
 				}
 			});
@@ -68,9 +58,6 @@ public class FallingStarEntity extends Entity {
 
 	@Override
 	public void tick() {
-//		System.out.println(this.level());
-//		System.out.println(this.player);
-//		System.out.println(this.getAliveState());
 		// star is flying
 		if (!this.onGround()) {
 			if(this.tickCount == 6 && this.level().isClientSide()) {
@@ -88,7 +75,6 @@ public class FallingStarEntity extends Entity {
 					}
 					this.level().setBlockAndUpdate(this.blockPosition(), Blocks.LIGHT.defaultBlockState());
 				}
-			
 		}
 		// landed
 		else {
@@ -109,7 +95,6 @@ public class FallingStarEntity extends Entity {
 				}
 			}
 		}
-		
 	}
 
 	@Override

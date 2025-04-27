@@ -14,6 +14,7 @@ public class DismoutStarBeamPacket implements IThreadsafePacket{
 
 	@Override
 	public void encode(FriendlyByteBuf buffer) {
+		//we dont need to encode anything, but we are forced to overwrite, since we use the threadsafe packet from mantel
 	}
 
 	@Override

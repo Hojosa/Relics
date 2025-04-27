@@ -40,7 +40,7 @@ public class StarBeamTorch extends TorchBlock {
 	public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
 		if (!pLevel.isClientSide && pEntity instanceof Player player  && !player.isPassenger() && player.isShiftKeyDown() && isOnTopOfBlock(player, pPos)) {
 			// Find target torch and initiate riding
-			BlockPos target = findNextTorch(pLevel, pPos, player.getDirection());
+			BlockPos target = findNextTorch(pLevel, pPos);
 			if (target != null) {
 				StarBeamEntity rider = new StarBeamEntity(pLevel, pPos, target, player);
 				pLevel.addFreshEntity(rider);
@@ -87,7 +87,7 @@ public class StarBeamTorch extends TorchBlock {
     }
     
     //used to check initially if any torch is within 6 block radius, if not we dont even spawn the entity for travel. subsequent checks are done via the entity
-    private BlockPos findNextTorch(Level level, BlockPos origin, Direction facing) {
+    private BlockPos findNextTorch(Level level, BlockPos origin) {
     	int radius = 6;
 
     	Optional<BlockPos> matchingPos = BlockPos.withinManhattanStream(origin, radius, radius, radius).filter(pos -> level.getBlockState(pos).getBlock() instanceof StarBeamTorch && !pos.equals(origin)).findFirst();
