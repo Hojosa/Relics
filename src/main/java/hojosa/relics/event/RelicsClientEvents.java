@@ -2,6 +2,8 @@ package hojosa.relics.event;
 
 import hojosa.relics.client.particle.CustomParticle;
 import hojosa.relics.client.particle.RelicsParticles;
+import hojosa.relics.client.particle.StarBeamGrindParticle;
+import hojosa.relics.client.particle.StarBeamTorchParticle;
 import hojosa.relics.client.render.FallingStarRenderer;
 import hojosa.relics.client.render.GlintBlockRenderer;
 import hojosa.relics.client.render.InfusedStarstoneBlockRenderer;
@@ -9,7 +11,6 @@ import hojosa.relics.client.render.SkybeamBlockRenderer;
 import hojosa.relics.client.render.StarBeamRenderer;
 import hojosa.relics.client.render.SwordPedestalBlockRenderer;
 import hojosa.relics.client.render.SwordPedestalStoneBlockRenderer;
-import hojosa.relics.common.entity.StarBeamEntity;
 import hojosa.relics.common.init.RelicsBlockEntities;
 import hojosa.relics.common.init.RelicsBlocks;
 import hojosa.relics.common.init.RelicsEntities;
@@ -17,10 +18,8 @@ import hojosa.relics.lib.References;
 import hojosa.relics.lib.RelicsBlockColor;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -51,5 +50,7 @@ public class RelicsClientEvents {
     @SubscribeEvent
     public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
     	event.registerSpriteSet(RelicsParticles.FLAME_PATTICLES.get(), CustomParticle.Provider::new);
+    	event.registerSpriteSet(RelicsParticles.STAR_BEAM_TORCH_PATTICLES.get(), StarBeamTorchParticle.Provider::new);
+    	event.registerSpriteSet(RelicsParticles.STAR_BEAM_GRIND_PATTICLES.get(), StarBeamGrindParticle.Provider::new);
     }
 }
