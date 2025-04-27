@@ -31,7 +31,6 @@ public class StarBeamEntity extends Entity {
 	private static final EntityDataAccessor<Vector3f> DATA_ID_MOTION = SynchedEntityData.defineId(FallingStarEntity.class, EntityDataSerializers.VECTOR3);
 
     private Player player;
-    public Vec3 motion = Vec3.ZERO;
 	    
 	    public StarBeamEntity(EntityType<?> pEntityType, Level pLevel) {
 			super(pEntityType, pLevel);
