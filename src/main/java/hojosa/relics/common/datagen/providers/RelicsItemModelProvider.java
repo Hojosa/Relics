@@ -50,6 +50,7 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItem(RelicsItems.LOST_PAGE_3);
 		basicItem(RelicsItems.LOST_PAGE_4);
 		basicItem(RelicsItems.LOST_PAGE_5);
+		basicItem(RelicsItems.LOST_PAGE_6);
 		basicItem(RelicsItems.MAGIC_POWDER);
 	}
 
