@@ -35,7 +35,8 @@ public class RelicsGlobalLootModifiersProvider extends GlobalLootModifierProvide
 						LootItemRandomChanceCondition.randomChance(0.1f).build(),
 						LootTableIdCondition.builder(BuiltInLootTables.OCEAN_RUIN_WARM_ARCHAEOLOGY)
 						.or(LootTableIdCondition.builder(BuiltInLootTables.OCEAN_RUIN_COLD_ARCHAEOLOGY))
-						.or(LootTableIdCondition.builder(BuiltInLootTables.ANCIENT_CITY_ICE_BOX)).or(LootTableIdCondition.builder(BuiltInLootTables.UNDERWATER_RUIN_BIG))
+						.or(LootTableIdCondition.builder(BuiltInLootTables.ANCIENT_CITY_ICE_BOX))
+						.or(LootTableIdCondition.builder(BuiltInLootTables.UNDERWATER_RUIN_BIG))
 						.or(LootTableIdCondition.builder(BuiltInLootTables.SHIPWRECK_TREASURE)).build() },
 						RelicsItems.WATER_TABLET.get()));
 		//todo, add supplemtaries urn
@@ -100,5 +101,15 @@ public class RelicsGlobalLootModifiersProvider extends GlobalLootModifierProvide
 						.or(LootTableIdCondition.builder(BuiltInLootTables.SNIFFER_DIGGING))
 						.or(LootTableIdCondition.builder(BuiltInLootTables.ANCIENT_CITY)).build() },
 						RelicsItems.LOST_PAGE_5.get()));
+		
+		add("lost_page_6_from_loot_chest",
+				new AddItemModifier(new LootItemCondition[] { 
+						LootItemRandomChanceCondition.randomChance(0.20f).build(),
+						LootTableIdCondition.builder(BuiltInLootTables.BURIED_TREASURE)
+						.or(LootTableIdCondition.builder(BuiltInLootTables.VILLAGE_TEMPLE))
+						.or(LootTableIdCondition.builder(BuiltInLootTables.DESERT_PYRAMID))
+						.or(LootTableIdCondition.builder(BuiltInLootTables.SIMPLE_DUNGEON))
+						.or(LootTableIdCondition.builder(BuiltInLootTables.UNDERWATER_RUIN_SMALL)).build() },
+						RelicsItems.LOST_PAGE_6.get()));
 	}
 }
