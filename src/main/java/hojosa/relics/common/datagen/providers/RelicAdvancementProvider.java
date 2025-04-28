@@ -46,7 +46,7 @@ public class RelicAdvancementProvider implements AdvancementGenerator{
 				Component.literal("Lost Pages 1"), Component.literal("Find Lost Page 1 and aquire its knowledge"), null, 
 				FrameType.TASK, true, false, false))
 		.parent(lostPages)
-		.addCriterion("page1", ConsumeItemTrigger.TriggerInstance.usedItem(RelicsItems.LOST_PAGE_1.get()))
+		.addCriterion("page", ConsumeItemTrigger.TriggerInstance.usedItem(RelicsItems.LOST_PAGE_1.get()))
 		.save(saver, RelicsUtil.modLoc("lost_page_1"), existingFileHelper);
 		
 		Advancement.Builder.advancement()
@@ -54,7 +54,7 @@ public class RelicAdvancementProvider implements AdvancementGenerator{
 				Component.literal("Lost Pages 2"), Component.literal("Find Lost Page 2 and aquire its knowledge"), null, 
 				FrameType.TASK, true, false, false))
 		.parent(lostPages)
-		.addCriterion("page1", ConsumeItemTrigger.TriggerInstance.usedItem(RelicsItems.LOST_PAGE_2.get()))
+		.addCriterion("page", ConsumeItemTrigger.TriggerInstance.usedItem(RelicsItems.LOST_PAGE_2.get()))
 		.save(saver, RelicsUtil.modLoc("lost_page_2"), existingFileHelper);
 		
 		Advancement.Builder.advancement()
@@ -62,7 +62,7 @@ public class RelicAdvancementProvider implements AdvancementGenerator{
 				Component.literal("Lost Pages 3"), Component.literal("Find Lost Page 3 and aquire its knowledge"), null, 
 				FrameType.TASK, true, false, false))
 		.parent(lostPages)
-		.addCriterion("page2", ConsumeItemTrigger.TriggerInstance.usedItem(RelicsItems.LOST_PAGE_3.get()))
+		.addCriterion("page", ConsumeItemTrigger.TriggerInstance.usedItem(RelicsItems.LOST_PAGE_3.get()))
 		.save(saver, RelicsUtil.modLoc("lost_page_3"), existingFileHelper);
 		
 		Advancement.Builder.advancement()
@@ -70,7 +70,7 @@ public class RelicAdvancementProvider implements AdvancementGenerator{
 				Component.literal("Lost Pages 4"), Component.literal("Find Lost Page 4 and aquire its knowledge"), null, 
 				FrameType.TASK, true, false, false))
 		.parent(lostPages)
-		.addCriterion("page3", ConsumeItemTrigger.TriggerInstance.usedItem(RelicsItems.LOST_PAGE_4.get()))
+		.addCriterion("page", ConsumeItemTrigger.TriggerInstance.usedItem(RelicsItems.LOST_PAGE_4.get()))
 		.save(saver, RelicsUtil.modLoc("lost_page_4"), existingFileHelper);
 		
 		Advancement.Builder.advancement()
@@ -78,8 +78,16 @@ public class RelicAdvancementProvider implements AdvancementGenerator{
 				Component.literal("Lost Pages 5"), Component.literal("Find Lost Page 5 and aquire its knowledge"), null, 
 				FrameType.TASK, true, false, false))
 		.parent(lostPages)
-		.addCriterion("page4", ConsumeItemTrigger.TriggerInstance.usedItem(RelicsItems.LOST_PAGE_5.get()))
+		.addCriterion("page6", ConsumeItemTrigger.TriggerInstance.usedItem(RelicsItems.LOST_PAGE_5.get()))
 		.save(saver, RelicsUtil.modLoc("lost_page_5"), existingFileHelper);
+		
+		Advancement.Builder.advancement()
+		.display(new DisplayInfo(new ItemStack(RelicsItems.LOST_PAGE_6.get()), 
+				Component.literal("Lost Pages 6"), Component.literal("Find Lost Page 6 and aquire its knowledge"), null, 
+				FrameType.TASK, true, false, false))
+		.parent(lostPages)
+		.addCriterion("page", ConsumeItemTrigger.TriggerInstance.usedItem(RelicsItems.LOST_PAGE_6.get()))
+		.save(saver, RelicsUtil.modLoc("lost_page_6"), existingFileHelper);
 		
 		
 		//pedestals

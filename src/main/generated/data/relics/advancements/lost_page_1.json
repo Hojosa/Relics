@@ -1,7 +1,7 @@
 {
   "parent": "relics:lost_pages",
   "criteria": {
-    "page1": {
+    "page": {
       "conditions": {
         "item": {
           "items": [
@@ -29,7 +29,7 @@
   },
   "requirements": [
     [
-      "page1"
+      "page"
     ]
   ],
   "sends_telemetry_event": true

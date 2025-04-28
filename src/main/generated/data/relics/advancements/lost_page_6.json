@@ -1,11 +1,11 @@
 {
   "parent": "relics:lost_pages",
   "criteria": {
-    "page6": {
+    "page": {
       "conditions": {
         "item": {
           "items": [
-            "relics:lost_page_5"
+            "relics:lost_page_6"
           ]
         }
       },
@@ -15,21 +15,21 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "text": "Find Lost Page 5 and aquire its knowledge"
+      "text": "Find Lost Page 6 and aquire its knowledge"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "relics:lost_page_5"
+      "item": "relics:lost_page_6"
     },
     "show_toast": true,
     "title": {
-      "text": "Lost Pages 5"
+      "text": "Lost Pages 6"
     }
   },
   "requirements": [
     [
-      "page6"
+      "page"
     ]
   ],
   "sends_telemetry_event": true
