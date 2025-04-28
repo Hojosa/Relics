@@ -123,7 +123,6 @@ public class StarBeamEntity extends Entity {
 	    	this.entityData.define(DATA_ID_MOTION, new Vector3f(0));
 	    }
 	    
-	    //we have to read/add our pos + motion, so a player is not stuck on rejoin
 	    @Override protected void readAdditionalSaveData(CompoundTag tag) {
 	    	this.setStartPos(BlockPos.of(tag.getLong("StartPos")));
 	        this.setTargetPos(BlockPos.of(tag.getLong("TargetPos")));
