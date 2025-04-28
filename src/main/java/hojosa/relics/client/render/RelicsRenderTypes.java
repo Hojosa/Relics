@@ -79,6 +79,17 @@ public class RelicsRenderTypes extends RenderType {
         .setDepthTestState(LEQUAL_DEPTH_TEST)
         .setLayeringState(VIEW_OFFSET_Z_LAYERING)
         .createCompositeState(false));
+    
+    public static final RenderType BEAM2 = RenderType.create(References.MOD_ID + ":beam", DefaultVertexFormat.POSITION_COLOR_TEX_LIGHTMAP, VertexFormat.Mode.QUADS, 256, false, false, CompositeState.builder()
+            .setShaderState(RENDERTYPE_BEACON_BEAM_SHADER)
+            .setTextureState(new TextureStateShard(BEAM_TEX, false, false))
+            .setTransparencyState(TRANSLUCENT_TRANSPARENCY)
+            .setDepthTestState(LEQUAL_DEPTH_TEST)
+            .setWriteMaskState(COLOR_WRITE)
+            .setCullState(CULL)
+            .setLightmapState(LIGHTMAP)
+//            .setLayeringState(POLYGON_OFFSET_LAYERING)
+            .createCompositeState(false));
 
     private static final BiFunction<ResourceLocation, Boolean, RenderType> TEXTURE_RENDER_COLORED = Util.memoize((rl, disableDepthTest) -> {
         RenderType.CompositeState state = RenderType.CompositeState.builder()

@@ -37,7 +37,6 @@ public class SkybeamBlockRenderer implements BlockEntityRenderer<SkybeamBlockEnt
 		float b = RelicsUtil.b(phase*1.2f);
 		matrixStack.pushPose();
 		Matrix4f matrix4f = matrixStack.last().pose();
-
 		matrixStack.translate(0.5f, 0.5f, 0.5f);
 		matrixStack.translate(Math.cos(2.356194490192345 * num) * 0.5f * power, 1, Math.sin(2.356194490192345 * num) * 0.5f * power);
 		matrixStack.mulPose(Axis.YN.rotationDegrees(Minecraft.getInstance().gameRenderer.getMainCamera().getYRot()));

@@ -39,7 +39,7 @@ public class FallingStarRenderer extends EntityRenderer<FallingStarEntity> {
         pPoseStack.scale(scale, scale, scale);
 
         if(!pEntity.onGround())
-        	renderStarTail(pPoseStack, pBuffer.getBuffer(RenderType.entityNoOutline(BEAM)));
+        	renderStarTail(pPoseStack, pBuffer.getBuffer(RelicsRenderTypes.BEAM));
 
         float rotationAngle = (System.currentTimeMillis() % 3600) / 10f;
         pPoseStack.translate(0, 0.42, 0);
