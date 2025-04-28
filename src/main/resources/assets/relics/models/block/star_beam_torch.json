@@ -1,7 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "relics:block/star_beam_torch"
+		"0": "relics:block/star_beam_torch",
+		"particle": "relics:block/star_beam_torch"
 	},
 	"elements": [
 		{
