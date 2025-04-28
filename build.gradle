@@ -104,32 +104,57 @@ dependencies {
     runtimeOnly fg.deobf("curse.maven:explorers-compass-${explorers_compass}")
 }
 
-processResources {
-    inputs.property 'mod_version', mod_version
-    inputs.property 'minecraft_version', minecraft_version
+//processResources {
+//    inputs.property 'mod_version', mod_version
+//    inputs.property 'minecraft_version', minecraft_version
 
-    filesMatching('META-INF/mods.toml') {
-        expand 'file': ['jarVersion': mod_version],
-       			'mod_version': mod_version,
-                'minecraft_version_range': minecraft_version_range,
-                'forge_version': forge_version,
-                'mantle_range': mantle_range,
-                'expandability_range': mantle_range,
-                'curios_range': mantle_range,
-                'jei_range': jei_range,
-                'lang_version': forge_version.split('\\.')[0]
+//    filesMatching('META-INF/mods.toml') {
+//        expand 'file': ['jarVersion': mod_version],
+//       			'mod_version': mod_version,
+//                'minecraft_version_range': minecraft_version_range,
+//                'forge_version': forge_version,
+//                'mantle_range': mantle_range,
+//                'expandability_range': mantle_range,
+//                'curios_range': mantle_range,
+//                'jei_range': jei_range,
+//                'lang_version': forge_version.split('\\.')[0]
+//   }
+//}
+
+tasks.named('processResources', ProcessResources).configure {
+    var replaceProperties = [
+            minecraft_version      : minecraft_version,
+            minecraft_version_range: minecraft_version_range,
+            forge_version          : forge_version,
+            forge_version_range    : forge_version_range,
+            loader_version_range   : loader_version_range,
+            mod_id                 : mod_id,
+            mod_name               : mod_name,
+            mod_license            : mod_license,
+            mod_version            : mod_version,
+            mod_authors            : mod_authors,
+            mod_description        : mod_description,
+            mantle_range		   : mantle_range,
+            expandability_range    : expandability_range,
+            curios_range           : curios_range,
+            jei_range              : jei_range
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties + [project: project]
     }
 }
 
 tasks.named('jar', Jar).configure {
     manifest {
         attributes([
-                "Specification-Title"     : "relics",
-                "Specification-Vendor"    : "relics",
-                "Specification-Version"   : "0.3", // We are version 1 of ourselves
+                "Specification-Title"     : mod_id,
+                "Specification-Vendor"    : mod_authors,
+                "Specification-Version"   : "1",
                 "Implementation-Title"    : project.name,
-                "Implementation-Version"  : "${mod_version}",
-                "Implementation-Vendor"   : "relics",
+                "Implementation-Version"  : project.jar.archiveVersion,
+                "Implementation-Vendor"   : mod_authors,
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
