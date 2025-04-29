@@ -1,10 +1,12 @@
 package hojosa.relics.common.recipes;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import hojosa.relics.Relics;
 import hojosa.relics.lib.RelicsUtil;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
@@ -50,6 +52,11 @@ public class MagicInfusionRecipce implements Recipe<Container> {
         }
 		return RecipeMatcher.findMatches(inventory, this.inputItems) != null;
 	}
+	
+    @Override
+    public @NotNull NonNullList<Ingredient> getIngredients() {
+        return this.inputItems;
+    }
 
 	@Override
 	public ItemStack assemble(Container pContainer, RegistryAccess pRegistryAccess) {
@@ -112,14 +119,20 @@ public class MagicInfusionRecipce implements Recipe<Container> {
 		
 		@Override
 		public @Nullable MagicInfusionRecipce fromNetwork(ResourceLocation pRecipeId, FriendlyByteBuf pBuffer) {
-            NonNullList<Ingredient> inputs = NonNullList.withSize(pBuffer.readInt(), Ingredient.EMPTY);
-
-            for(int i = 0; i < inputs.size(); i++) {
-                inputs.set(i, Ingredient.fromNetwork(pBuffer));
-            }
-
-            ItemStack output = pBuffer.readItem();
-            return new MagicInfusionRecipce(inputs, output, pRecipeId);
+			 try {
+				 NonNullList<Ingredient> inputs = NonNullList.withSize(pBuffer.readInt(), Ingredient.EMPTY);
+			 
+	            for(int i = 0; i < inputs.size(); i++) {
+	                inputs.set(i, Ingredient.fromNetwork(pBuffer));
+	            }
+	
+	            ItemStack output = pBuffer.readItem();
+	            return new MagicInfusionRecipce(inputs, output, pRecipeId);
+			 } catch (Exception ex) {
+	            String message = String.format("Unable to read recipe (%s) from network buffer.", pRecipeId);
+	            Relics.LOGGER.error(message);
+	            throw ex;
+			 }
 		}
 		
 		@Override
