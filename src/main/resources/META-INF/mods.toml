@@ -49,7 +49,7 @@ issueTrackerURL = "https://github.com/Hojosa/Relics/issues"
     
  [[dependencies.${mod_id}]]
     modId="curios"
-    mandatory=false
+    mandatory=true
     versionRange="${curios_range}"
     ordering="NONE"
     side="BOTH"
