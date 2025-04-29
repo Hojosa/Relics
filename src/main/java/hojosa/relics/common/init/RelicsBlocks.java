@@ -52,7 +52,7 @@ public class RelicsBlocks {
 			() -> new RelicsNormalBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS)), BLOCK_ITEM);
 	
 	public static final ItemObject<Block> ODDISH_POT = BLOCKS.register(References.UnlocalizedName.ODDISH_POT,
-			() -> new RelicsFacingBlock(BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)), BLOCK_ITEM);
+			() -> new RelicsFacingBlock(BlockBehaviour.Properties.copy(Blocks.FLOWER_POT).noOcclusion()), BLOCK_ITEM);
 
 	public static final ItemObject<SwordPedestalBaseBlock> SWORD_PEDESTAL_NORMAL, SWORD_PEDESTAL_RELIC, SWORD_PEDESTAL_RELIC_VARIANTS, SWORD_PEDESTAL_TIME, SWORD_PEDESTAL_TWILIGHT, SWORD_PEDESTAL_STONE;
 	static {
