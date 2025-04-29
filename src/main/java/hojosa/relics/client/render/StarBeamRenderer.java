@@ -12,6 +12,7 @@ import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.core.BlockPos;
@@ -47,7 +48,7 @@ public class StarBeamRenderer extends EntityRenderer<StarBeamEntity> {
 	    // 2. setup start and end position
 	    Vec3 start = Vec3.atCenterOf(startPos).subtract(cameraPos);
 	    Vec3 end = Vec3.atCenterOf(endPos).subtract(cameraPos);
-	    
+
 	    // 3. Draw line
 	    builder.vertex(matrix4f, (float)start.x, (float)start.y, (float)start.z)
 	        .color(r, g, b, 255)
@@ -65,5 +66,10 @@ public class StarBeamRenderer extends EntityRenderer<StarBeamEntity> {
 	@Override
 	public ResourceLocation getTextureLocation(StarBeamEntity pEntity) {
 		return new ResourceLocation(References.MOD_ID, "textures/entity/beam.png");
+	}
+	
+	@Override
+	public boolean shouldRender(StarBeamEntity pLivingEntity, Frustum pCamera, double pCamX, double pCamY, double pCamZ) {
+		return true;
 	}
 }
