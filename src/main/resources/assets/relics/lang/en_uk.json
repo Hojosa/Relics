@@ -12,6 +12,7 @@
 	"block.relics.infused_starstone_block": "Infused Starstone Block",
 	"block.relics.skybeam_block": "Skybeam Block",
 	"block.relics.oddish_pot": "Planted Weed?",
+	"block.relics.star_beam_torch": "Star Beam Torch",
 	"item.relics.flame_sword": "Flame Sword",
 	"item.relics.master_sword": "Master Sword",
 	"item.relics.clay_blue": "Blue Clay",
@@ -24,6 +25,7 @@
 	"item.relics.infused_star_stone": "Infused Star Stone",
 	"item.relics.infused_star_dust": "Infused Star Dust",
 	"item.relics.infused_star_piece": "Infused Star Piece",
+	"item.relics.magic_powder": "Magic Powder",
 	"item.relics.phoenix_feather": "Phoenix Feather",
 	"item.relics.emerald_piece": "Emerald Piece",
 	"item.relics.emerald_shard": "Emerald Shard",
@@ -33,5 +35,6 @@
 	"item.relics.lost_page_2": "Lost Page 2",
 	"item.relics.lost_page_3": "Lost Page 3",
 	"item.relics.lost_page_4": "Lost Page 4",
-	"item.relics.lost_page_5": "Lost Page 5"
+	"item.relics.lost_page_5": "Lost Page 5",
+	"item.relics.lost_page_6": "Lost Page 6"
 }
