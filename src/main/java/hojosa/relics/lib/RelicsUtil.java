@@ -7,16 +7,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import hojosa.relics.Relics;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.Cat;
+import net.minecraft.world.entity.animal.Rabbit;
 import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RelicsUtil {
@@ -112,23 +115,26 @@ public class RelicsUtil {
 
 		try {
 			// Get the `getVariant` method from the subclass
-			Method getVariantMethod = animal.getClass().getMethod("getVariant");
+//			Method getVariantMethod = animal.getClass().getMethod("getVariant");
+			Method getVariantMethod = ObfuscationReflectionHelper.findMethod(animal.getClass(), "m_28554_");
 
 			// Invoke the method to get the current variant
 			Object variant = getVariantMethod.invoke(animal);
 
 			// Get the enum values of the Variant class
-			Method valuesMethod = variant.getClass().getMethod("values");
+//			Method valuesMethod = variant.getClass().getMethod("values");
+			Method valuesMethod = ObfuscationReflectionHelper.findMethod(variant.getClass(), "values");
 			Object[] variants = (Object[]) valuesMethod.invoke(null);
 
 			// Pick a random variant
 			Object randomVariant = variants[random.nextInt(variants.length)];
 
 			// Get the `setVariant` method and set the new variant
-			Method setVariantMethod = animal.getClass().getMethod("setVariant", variant.getClass());
+//			Method setVariantMethod = animal.getClass().getMethod("setVariant", variant.getClass());
+			Method setVariantMethod = ObfuscationReflectionHelper.findMethod(animal.getClass(), "m_28464_", variant.getClass());
 			setVariantMethod.invoke(animal, randomVariant);
 		} catch (Exception e) {
-			// todo: implement logger to inform we have an unsupported mob
+			Relics.LOGGER.error("error or mob without variant when trying to get method for " + animal + ": " + e);
 		}
 	}
 }
