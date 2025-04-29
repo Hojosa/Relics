@@ -17,6 +17,7 @@ import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -26,7 +27,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class MagicPowder extends RelicsItem {
 	Random random = new Random();
 	public MagicPowder() {
-		super(64);
+		super(64, Rarity.UNCOMMON);
 	}
 
 	@Override
@@ -60,7 +61,7 @@ public class MagicPowder extends RelicsItem {
 			}
 		}
 		if(pInteractionTarget instanceof AgeableMob || pInteractionTarget instanceof Zombie || pInteractionTarget instanceof Creeper) {
-			pPlayer.level().playSound(pPlayer, pInteractionTarget.blockPosition(), RelicsSounds.INFUSE_SUCCESS.get(), SoundSource.BLOCKS);
+			pPlayer.level().playSound(pPlayer, pInteractionTarget.blockPosition(), RelicsSounds.MAGIC_POWDER.get(), SoundSource.BLOCKS);
 			pPlayer.level().addParticle(ParticleTypes.EXPLOSION, pInteractionTarget.getX(), pInteractionTarget.getY() + pInteractionTarget.getBbHeight() / 2, pInteractionTarget.getZ(), 0.0, 0.0, 0.0);
 			return InteractionResult.SUCCESS;
 		}
