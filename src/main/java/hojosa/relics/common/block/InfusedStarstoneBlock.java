@@ -26,12 +26,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class InfusedStarstoneBlock extends GlintBlock {
 	
-    private static final double[][] SLOTS = {
-            {0.37, 0.62, 0.00, 0.37}, // Slot 1
-            {0.62, 0.99, 0.37, 0.61}, // Slot 2
-            {0.38, 0.62, 0.62, 0.99}, // Slot 3
-            {0.00, 0.37, 0.38, 0.62}  // Slot 4
-        };
+	private static double slotSize = 0.25;
+	private static double[] slotXs = {slotSize, slotSize, 1.0 - slotSize, 1.0 - slotSize};
+	private static double[] slotZs = {slotSize, 1.0 - slotSize, slotSize, 1.0 - slotSize};
 
 	public InfusedStarstoneBlock(Properties properties, boolean raindbow) {
 		super(properties, raindbow);
@@ -75,13 +72,17 @@ public class InfusedStarstoneBlock extends GlintBlock {
 	private int lookingAtSlot(BlockHitResult pHit) {
         double hitX = pHit.getLocation().x - pHit.getBlockPos().getX();
         double hitZ = pHit.getLocation().z - pHit.getBlockPos().getZ();
+        double halfItem = slotSize / 2.0;
         
-	    for (int i = 0; i < SLOTS.length; i++) {
-	    	if(hitX >= SLOTS[i][0] && hitX <= SLOTS[i][1] && hitZ >= SLOTS[i][2] && hitZ <= SLOTS[i][3]) {
-	            return i;
-	        }
-	    }
-	    return -1;
+        for (int slot = 0; slot < 4; slot++) {
+            double slotX = slotXs[slot];
+            double slotZ = slotZs[slot];
+            if (Math.abs(hitX - slotX) <= halfItem && Math.abs(hitZ - slotZ) <= halfItem) {
+                // The player clicked in slot 'slot'
+                return slot; // or return the slot number as needed
+            }
+        }
+        return -1;
 	}
 	
 	@Override

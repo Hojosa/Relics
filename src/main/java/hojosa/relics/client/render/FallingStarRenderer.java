@@ -46,8 +46,7 @@ public class FallingStarRenderer extends EntityRenderer<FallingStarEntity> {
         pPoseStack.mulPose(Axis.XP.rotationDegrees(rotationAngle));
         
         pPoseStack.pushPose();
-        pPoseStack.scale(scale/1.3f, scale/1.3f, scale/1.3f);
-        modelStarBit.get().render(pPoseStack, pBuffer, RenderType.entitySolid(getTextureLocation(pEntity)), 200, 0xFFe6a000);
+        modelStarBit.get().render(pPoseStack, pBuffer, RenderType.entitySolid(getTextureLocation(pEntity)), 200, 0xFF96a2e1);
         pPoseStack.popPose();
         
         modelStarBit.get().render(pPoseStack, pBuffer, RenderType.entityTranslucent(getTextureLocation(pEntity)), 200, 0xFF767676);

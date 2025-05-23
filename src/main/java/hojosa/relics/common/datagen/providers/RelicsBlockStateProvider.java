@@ -5,11 +5,13 @@ import org.jetbrains.annotations.NotNull;
 import hojosa.relics.common.block.NormalSwordPedestal;
 import hojosa.relics.common.init.RelicsBlocks;
 import hojosa.relics.lib.References;
+import hojosa.relics.lib.RelicsUtil;
 import hojosa.relics.lib.block.SwordPedestalBaseBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.MultiPartBlockStateBuilder;
@@ -31,7 +33,9 @@ public class RelicsBlockStateProvider extends BlockStateProvider{
 		simpleBlock(RelicsBlocks.LAPIS_BRICK.get());
 		simpleBlockInfused(RelicsBlocks.INFUSED_STARSTONE_BLOCK.get(), RelicsBlocks.STARSTONE_BLOCK.get());
 		simpleBlock(RelicsBlocks.STARSTONE_BLOCK.get());
-		simpleBlock(RelicsBlocks.SKYBEAM_BLOCK.get());
+		simpleBlock(RelicsBlocks.SKYBEAM_BLOCK.get(), models().cubeBottomTop(RelicsBlocks.SKYBEAM_BLOCK.getId().getPath(), 
+				modLoc("block/" + References.UnlocalizedName.SKYBEAM_BLOCK + "_side"), mcLoc("block/obsidian"), modLoc("block/" + References.UnlocalizedName.SKYBEAM_BLOCK + "_top")));
+		
 	}
 	
     private void simpleBlockInfused(Block block, Block parent) {

@@ -19,6 +19,14 @@ import net.minecraftforge.client.model.data.ModelData;
 public class InfusedStarstoneBlockRenderer implements BlockEntityRenderer<InfusedStarstoneBlockEntity> {
 	private static final RandomSource RANDOM = RandomSource.create();
 	private final BlockRenderDispatcher blockRenderDispatcher;
+	
+	private static double slotSize = 0.25;
+	double[][] slots = {
+		    {slotSize, slotSize},             // NW
+		    {slotSize, 1.0 - slotSize},       // SW
+		    {1.0 - slotSize, slotSize},       // NE
+		    {1.0 - slotSize, 1.0 - slotSize}  // SE
+		};
 
 	public InfusedStarstoneBlockRenderer(Context context) {
 		this.blockRenderDispatcher = context.getBlockRenderDispatcher();
@@ -38,10 +46,10 @@ public class InfusedStarstoneBlockRenderer implements BlockEntityRenderer<Infuse
 				
 				if (pBlockEntity.isStackInSlot(i)) {
 					pPoseStack.pushPose();
+
+				    double xOffset = slots[i][0];
+				    double zOffset = slots[i][1];
 					
-				    double angle = Math.toRadians(270D + i * 90);
-				    double xOffset = 0.3 * Math.cos(angle) + 0.5;
-				    double zOffset = 0.3 * Math.sin(angle) + 0.5;
 				    pPoseStack.translate(xOffset, 1.015F, zOffset);
 					pPoseStack.scale(0.4f, 0.4f, 0.4f);
 					pPoseStack.mulPose(Axis.XP.rotationDegrees(90));
