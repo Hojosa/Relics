@@ -3,7 +3,6 @@ package hojosa.relics.common.datagen.providers;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import hojosa.relics.common.block.entity.SwordPedestalBlockEntity;
 import hojosa.relics.common.init.RelicsBlockEntities;
 import hojosa.relics.common.init.RelicsBlocks;
 import hojosa.relics.lib.References;
@@ -28,7 +27,6 @@ public class RelicsLootTables extends VanillaBlockLoot {
 
 	@Override
 	protected void generate() {
-//		dropSelf(RelicsBlocks.LAPIS_BRICK.get());
 		dropSelf(RelicsBlocks.ODDISH_POT.get());
 		dropSelf(RelicsBlocks.STARSTONE_BLOCK.get());
 		dropSelf(RelicsBlocks.SKYBEAM_BLOCK.get());

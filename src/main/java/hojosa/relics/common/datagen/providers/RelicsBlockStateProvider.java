@@ -30,7 +30,6 @@ public class RelicsBlockStateProvider extends BlockStateProvider{
 
 	@Override
 	protected void registerStatesAndModels() {
-//		simpleBlock(RelicsBlocks.LAPIS_BRICK.get());
 		simpleBlockInfused(RelicsBlocks.INFUSED_STARSTONE_BLOCK.get(), RelicsBlocks.STARSTONE_BLOCK.get());
 		simpleBlock(RelicsBlocks.STARSTONE_BLOCK.get());
 		simpleBlock(RelicsBlocks.SKYBEAM_BLOCK.get(), models().cubeBottomTop(RelicsBlocks.SKYBEAM_BLOCK.getId().getPath(), 
