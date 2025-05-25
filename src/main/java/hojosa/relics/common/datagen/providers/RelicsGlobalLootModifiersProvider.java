@@ -20,25 +20,19 @@ public class RelicsGlobalLootModifiersProvider extends GlobalLootModifierProvide
 
 	@Override
 	protected void start() {
-		add("fire_tablet_from_loot_chest",
+		add("blank_tablet_from_loot_chest",
 				new AddItemModifier(new LootItemCondition[] { 
-						LootItemRandomChanceCondition.randomChance(0.1f).build(),
+						LootItemRandomChanceCondition.randomChance(0.10f).build(),
 						LootTableIdCondition.builder(BuiltInLootTables.END_CITY_TREASURE)
 						.or(LootTableIdCondition.builder(BuiltInLootTables.RUINED_PORTAL))
 						.or(LootTableIdCondition.builder(BuiltInLootTables.PIGLIN_BARTERING))
 						.or(LootTableIdCondition.builder(BuiltInLootTables.STRONGHOLD_LIBRARY))
-						.or(LootTableIdCondition.builder(BuiltInLootTables.SHIPWRECK_TREASURE)).build() },
-						RelicsItems.FIRE_TABLET.get()));
+						.or(LootTableIdCondition.builder(BuiltInLootTables.SHIPWRECK_TREASURE))
+						.or(LootTableIdCondition.builder(BuiltInLootTables.OCEAN_RUIN_WARM_ARCHAEOLOGY))
+						.or(LootTableIdCondition.builder(BuiltInLootTables.SNIFFER_DIGGING))
+						.build()},
+						RelicsItems.BLANK_TABLET.get()));
 
-		add("water_tablet_from_loot_chest",
-				new AddItemModifier(new LootItemCondition[] { 
-						LootItemRandomChanceCondition.randomChance(0.1f).build(),
-						LootTableIdCondition.builder(BuiltInLootTables.OCEAN_RUIN_WARM_ARCHAEOLOGY)
-						.or(LootTableIdCondition.builder(BuiltInLootTables.OCEAN_RUIN_COLD_ARCHAEOLOGY))
-						.or(LootTableIdCondition.builder(BuiltInLootTables.ANCIENT_CITY_ICE_BOX))
-						.or(LootTableIdCondition.builder(BuiltInLootTables.UNDERWATER_RUIN_BIG))
-						.or(LootTableIdCondition.builder(BuiltInLootTables.SHIPWRECK_TREASURE)).build() },
-						RelicsItems.WATER_TABLET.get()));
 		//todo, add supplemtaries urn
 		add("emerald_shard_from_grass",
 				new AddItemModifier(new LootItemCondition[] { 

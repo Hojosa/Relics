@@ -10,26 +10,34 @@
       "terms": [
         {
           "condition": "forge:loot_table_id",
-          "loot_table_id": "minecraft:archaeology/ocean_ruin_warm"
+          "loot_table_id": "minecraft:chests/end_city_treasure"
         },
         {
           "condition": "forge:loot_table_id",
-          "loot_table_id": "minecraft:archaeology/ocean_ruin_cold"
+          "loot_table_id": "minecraft:chests/ruined_portal"
         },
         {
           "condition": "forge:loot_table_id",
-          "loot_table_id": "minecraft:chests/ancient_city_ice_box"
+          "loot_table_id": "minecraft:gameplay/piglin_bartering"
         },
         {
           "condition": "forge:loot_table_id",
-          "loot_table_id": "minecraft:chests/underwater_ruin_big"
+          "loot_table_id": "minecraft:chests/stronghold_library"
         },
         {
           "condition": "forge:loot_table_id",
           "loot_table_id": "minecraft:chests/shipwreck_treasure"
+        },
+        {
+          "condition": "forge:loot_table_id",
+          "loot_table_id": "minecraft:archaeology/ocean_ruin_warm"
+        },
+        {
+          "condition": "forge:loot_table_id",
+          "loot_table_id": "minecraft:gameplay/sniffer_digging"
         }
       ]
     }
   ],
-  "item": "relics:water_tablet"
+  "item": "relics:blank_tablet"
 }

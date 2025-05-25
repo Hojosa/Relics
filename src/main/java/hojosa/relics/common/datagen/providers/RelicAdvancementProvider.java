@@ -89,6 +89,14 @@ public class RelicAdvancementProvider implements AdvancementGenerator{
 		.addCriterion("page", ConsumeItemTrigger.TriggerInstance.usedItem(RelicsItems.LOST_PAGE_6.get()))
 		.save(saver, RelicsUtil.modLoc("lost_page_6"), existingFileHelper);
 		
+		Advancement.Builder.advancement()
+		.display(new DisplayInfo(new ItemStack(RelicsItems.LOST_PAGE_7.get()), 
+				Component.literal("Lost Pages 6"), Component.literal("Find Lost Page 7 and aquire its knowledge"), null, 
+				FrameType.TASK, true, false, false))
+		.parent(lostPages)
+		.addCriterion("page", ConsumeItemTrigger.TriggerInstance.usedItem(RelicsItems.LOST_PAGE_7.get()))
+		.save(saver, RelicsUtil.modLoc("lost_page_7"), existingFileHelper);
+		
 		
 		//pedestals
 		Advancement pedestals = Advancement.Builder.advancement()

@@ -1,0 +1,21 @@
+{
+  "type": "relics:magic_infusion",
+  "ingredients": [
+    {	
+      "item": "relics:blank_tablet"
+    },
+    {
+      "item": "relics:infused_star_stone"
+    },
+    {
+      "item": "minecraft:blaze_powder"
+    },
+	{
+      "item": "minecraft:netherite_ingot"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "relics:fire_tablet"
+  }
+}

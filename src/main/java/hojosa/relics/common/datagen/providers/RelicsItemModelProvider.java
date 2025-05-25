@@ -23,13 +23,10 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 
 	@Override
 	protected void registerModels() {
-//		withExistingParent(RelicsBlocks.LAPIS_BRICK);
 		withExistingParent(RelicsBlocks.SKYBEAM_BLOCK);
 		withExistingParent(RelicsBlocks.STARSTONE_BLOCK);
 		withExistingParent(RelicsBlocks.INFUSED_STARSTONE_BLOCK);
 		withExistingParent(RelicsBlocks.STARBEAM_TORCH);
-//		basicItem(RelicsItems.BRICK_BLUE);
-//		basicItem(RelicsItems.CLAY_BLUE);
 		basicItem(RelicsItems.STAR_PIECE);
 		basicItem(RelicsItems.STAR_DUST);
 		basicItem(RelicsItems.STAR_STONE);
@@ -51,7 +48,9 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItem(RelicsItems.LOST_PAGE_4);
 		basicItem(RelicsItems.LOST_PAGE_5);
 		basicItem(RelicsItems.LOST_PAGE_6);
+		basicItem(RelicsItems.LOST_PAGE_7);
 		basicItem(RelicsItems.MAGIC_POWDER);
+		basicItem(RelicsItems.BLANK_TABLET);
 	}
 
 	private ItemModelBuilder infusedItem(RegistryObject<RelicsItem> item, RegistryObject<RelicsItem> parent) {

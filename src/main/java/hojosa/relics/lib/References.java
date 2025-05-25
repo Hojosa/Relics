@@ -71,6 +71,8 @@ public class References {
 		public static final String STAR_BEAM_GRIND_PARTICLES = "star_beam_grind_particle";
 		public static final String STAR_BEAM_TORCH_PARTICLES = "star_beam_torch_particle";
 		public static final String LOST_PAGE_6 = "lost_page_6";
+		public static final String BLANK_TABLET = "blank_tablet";
+		public static final String LOST_PAGE_7 = "lost_page_7";
 	}
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)
 	public static class LostPagesText {
@@ -80,5 +82,6 @@ public class References {
 		public static final String LOST_PAGE_4 = "A Page that details Information how to infuse a sword pedestal";
 		public static final String LOST_PAGE_5 = "A Page that details Information about the art of Magic Infusion";
 		public static final String LOST_PAGE_6 = "A Page that details Information on a magical powder";
+		public static final String LOST_PAGE_7 = "A Page that details Information on a torch made out of dust";
 	}
 }
