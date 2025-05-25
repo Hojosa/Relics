@@ -2,7 +2,7 @@
     "name": "Star Beam Torch",
     "icon": "relics:star_beam_torch",
     "category": "relics:shooting_stars",
-	"advancement": "relics:lost_page_6",
+	"advancement": "relics:lost_page_7",
 	"sortnum": 6,
     "pages": [
 		{
