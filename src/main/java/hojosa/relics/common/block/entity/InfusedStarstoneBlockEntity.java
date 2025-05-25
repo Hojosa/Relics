@@ -20,6 +20,14 @@ public class InfusedStarstoneBlockEntity extends RelicsBlockEntity {
 	private int progress;
 	private boolean active;
 
+	private static double slotSize = 0.25;
+	double[][] slots = {
+		    {slotSize, slotSize},             // NW
+		    {slotSize, 1.0 - slotSize},       // SW
+		    {1.0 - slotSize, slotSize},       // NE
+		    {1.0 - slotSize, 1.0 - slotSize}  // SE
+		};
+	
 	@Nullable
 	private MagicInfusionRecipce lastRecipe;
 
@@ -70,13 +78,9 @@ public class InfusedStarstoneBlockEntity extends RelicsBlockEntity {
 
 		ServerLevel level = (ServerLevel) this.level;
 
-		double angle = Math.toRadians(270D + i * 90);
-		double xOffset = 0.3 * Math.cos(angle);
-		double zOffset = 0.3 * Math.sin(angle);
-
-		double x = blockPos.getX() + 0.5 + xOffset;
+		double x = blockPos.getX() + slots[i][0];
 		double y = blockPos.getY() + 1.1;
-		double z = blockPos.getZ() + 0.5 + zOffset;
+		double z = blockPos.getZ() + slots[i][1];
 		level.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, stack), x, y, z, 0, blockPos.getX() + 0.5 - x, 1, blockPos.getZ() + 0.5 - z, 0.18D);
 
 	}
