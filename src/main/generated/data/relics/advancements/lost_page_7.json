@@ -1,0 +1,36 @@
+{
+  "parent": "relics:lost_pages",
+  "criteria": {
+    "page": {
+      "conditions": {
+        "item": {
+          "items": [
+            "relics:lost_page_7"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Find Lost Page 7 and aquire its knowledge"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "relics:lost_page_7"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Lost Pages 6"
+    }
+  },
+  "requirements": [
+    [
+      "page"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
