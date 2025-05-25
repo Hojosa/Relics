@@ -48,8 +48,8 @@ public class RelicsBlocks {
 	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM_EPIC = b -> new BlockItem(b, ITEM_PROPS.rarity(Rarity.EPIC));
 	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM_GLINT = b -> new ItemBlockGlint(b, ITEM_PROPS.rarity(Rarity.EPIC));
 
-	public static final ItemObject<Block> LAPIS_BRICK = BLOCKS.register(References.UnlocalizedName.LAPIS_BRICK,
-			() -> new RelicsNormalBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS)), BLOCK_ITEM);
+//	public static final ItemObject<Block> LAPIS_BRICK = BLOCKS.register(References.UnlocalizedName.LAPIS_BRICK,
+//			() -> new RelicsNormalBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS)), BLOCK_ITEM);
 	
 	public static final ItemObject<Block> ODDISH_POT = BLOCKS.register(References.UnlocalizedName.ODDISH_POT,
 			() -> new RelicsFacingBlock(BlockBehaviour.Properties.copy(Blocks.FLOWER_POT).noOcclusion()), BLOCK_ITEM);
@@ -96,7 +96,7 @@ public class RelicsBlocks {
 	}
 
 	public static void addTabItems(ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {		
-		output.accept(LAPIS_BRICK.get().asItem());
+//		output.accept(LAPIS_BRICK.get().asItem());
 		output.accept(ODDISH_POT.get().asItem());
 		output.accept(SWORD_PEDESTAL_RELIC.get().asItem());
 		output.accept(SWORD_PEDESTAL_TIME.get().asItem());

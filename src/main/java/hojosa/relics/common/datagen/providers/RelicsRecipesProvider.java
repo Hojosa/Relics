@@ -33,38 +33,38 @@ public class RelicsRecipesProvider extends RecipeProvider {
 
 	@Override
 	protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
-		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, RelicsBlocks.LAPIS_BRICK.get())
-		.pattern("xx")
-		.pattern("xx")
-		.define('x', RelicsItems.BRICK_BLUE.get())
-		.group(References.CREATIVE_TAB)
-		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.LAPIS_BLOCK))
-		.save(consumer);
-		
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.CLAY_BLUE.get())
-		.requires(Items.CLAY_BALL)
-		.requires(Items.LAPIS_LAZULI)
-		.group(References.CREATIVE_TAB)
-		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.CLAY_BALL))
-		.save(consumer);
-		
-		SimpleCookingRecipeBuilder.smelting(Ingredient.of(RelicsItems.CLAY_BLUE.get()), RecipeCategory.MISC, RelicsItems.BRICK_BLUE.get(), 1.0f, 100)
-		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.CLAY_BLUE.get()))
-		.save(consumer);
-
-		StonecutterRetexturedRecipeBuilder.fromStonecutter(
-				SingleItemRecipeBuilder.stonecutting(Ingredient.of(RelicsTags.Items.SWORD_PEDESTAL_VARIANTS), RecipeCategory.DECORATIONS, RelicsBlocks.SWORD_PEDESTAL_NORMAL)
-				.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.CLAY_BLUE.get())))
-		.setSource(RelicsTags.Items.SWORD_PEDESTAL_VARIANTS)
-		.setMatchAll()
-		.build(consumer);
-		
-		StonecutterRetexturedRecipeBuilder.fromStonecutter(
-				SingleItemRecipeBuilder.stonecutting(Ingredient.of(RelicsTags.Items.SWORD_PEDESTAL_VARIANTS), RecipeCategory.DECORATIONS, RelicsBlocks.SWORD_PEDESTAL_RELIC_VARIANTS)
-				.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.CLAY_BLUE.get())))
-		.setSource(RelicsTags.Items.SWORD_PEDESTAL_VARIANTS)
-		.setMatchAll()
-		.build(consumer);
+//		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, RelicsBlocks.LAPIS_BRICK.get())
+//		.pattern("xx")
+//		.pattern("xx")
+//		.define('x', RelicsItems.BRICK_BLUE.get())
+//		.group(References.CREATIVE_TAB)
+//		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.LAPIS_BLOCK))
+//		.save(consumer);
+//		
+//		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.CLAY_BLUE.get())
+//		.requires(Items.CLAY_BALL)
+//		.requires(Items.LAPIS_LAZULI)
+//		.group(References.CREATIVE_TAB)
+//		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.CLAY_BALL))
+//		.save(consumer);
+//		
+//		SimpleCookingRecipeBuilder.smelting(Ingredient.of(RelicsItems.CLAY_BLUE.get()), RecipeCategory.MISC, RelicsItems.BRICK_BLUE.get(), 1.0f, 100)
+//		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.CLAY_BLUE.get()))
+//		.save(consumer);
+//
+//		StonecutterRetexturedRecipeBuilder.fromStonecutter(
+//				SingleItemRecipeBuilder.stonecutting(Ingredient.of(RelicsTags.Items.SWORD_PEDESTAL_VARIANTS), RecipeCategory.DECORATIONS, RelicsBlocks.SWORD_PEDESTAL_NORMAL)
+//				.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.CLAY_BLUE.get())))
+//		.setSource(RelicsTags.Items.SWORD_PEDESTAL_VARIANTS)
+//		.setMatchAll()
+//		.build(consumer);
+//		
+//		StonecutterRetexturedRecipeBuilder.fromStonecutter(
+//				SingleItemRecipeBuilder.stonecutting(Ingredient.of(RelicsTags.Items.SWORD_PEDESTAL_VARIANTS), RecipeCategory.DECORATIONS, RelicsBlocks.SWORD_PEDESTAL_RELIC_VARIANTS)
+//				.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.CLAY_BLUE.get())))
+//		.setSource(RelicsTags.Items.SWORD_PEDESTAL_VARIANTS)
+//		.setMatchAll()
+//		.build(consumer);
 		
 		SingleItemRecipeBuilder.stonecutting(Ingredient.of(Blocks.CHISELED_STONE_BRICKS), RecipeCategory.DECORATIONS, RelicsBlocks.SWORD_PEDESTAL_TIME)
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.CHISELED_STONE_BRICKS))

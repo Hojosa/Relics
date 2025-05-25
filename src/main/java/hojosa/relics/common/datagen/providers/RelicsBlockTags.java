@@ -24,7 +24,7 @@ public class RelicsBlockTags extends BlockTagsProvider {
 	@Override 
 	protected void addTags(HolderLookup.Provider provider) {
 		tag(BlockTags.MINEABLE_WITH_PICKAXE)
-		.add(RelicsBlocks.LAPIS_BRICK.get())
+//		.add(RelicsBlocks.LAPIS_BRICK.get())
 		.add(RelicsBlocks.SWORD_PEDESTAL_NORMAL.get())
 		.add(RelicsBlocks.SWORD_PEDESTAL_STONE.get())
 		.add(RelicsBlocks.SWORD_PEDESTAL_RELIC.get())
@@ -32,7 +32,7 @@ public class RelicsBlockTags extends BlockTagsProvider {
 		.add(RelicsBlocks.SWORD_PEDESTAL_TIME.get())
 		.add(RelicsBlocks.SWORD_PEDESTAL_TWILIGHT.get());
 		tag(BlockTags.NEEDS_STONE_TOOL)
-		.add(RelicsBlocks.LAPIS_BRICK.get())
+//		.add(RelicsBlocks.LAPIS_BRICK.get())
 		.add(RelicsBlocks.SWORD_PEDESTAL_NORMAL.get())
 		.add(RelicsBlocks.SWORD_PEDESTAL_STONE.get())
 		.add(RelicsBlocks.SWORD_PEDESTAL_RELIC.get())

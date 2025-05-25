@@ -29,8 +29,8 @@ public class RelicsItems {
 
 	public static final RegistryObject<FireTablet> FIRE_TABLET = ITEMS.register(References.UnlocalizedName.FIRE_PLATE, () -> new FireTablet(1, Rarity.EPIC));
 	public static final RegistryObject<WaterTablet> WATER_TABLET = ITEMS.register(References.UnlocalizedName.WATER_PLATE, () -> new WaterTablet(1, Rarity.EPIC));
-	public static final RegistryObject<RelicsItem> CLAY_BLUE = ITEMS.register(References.UnlocalizedName.CLAY_BLUE, () -> new RelicsItem(64));
-	public static final RegistryObject<RelicsItem> BRICK_BLUE = ITEMS.register(References.UnlocalizedName.BRICK_BLUE, () -> new RelicsItem(64));
+//	public static final RegistryObject<RelicsItem> CLAY_BLUE = ITEMS.register(References.UnlocalizedName.CLAY_BLUE, () -> new RelicsItem(64));
+//	public static final RegistryObject<RelicsItem> BRICK_BLUE = ITEMS.register(References.UnlocalizedName.BRICK_BLUE, () -> new RelicsItem(64));
 	public static final RegistryObject<SwordItem> FIRE_SWORD = ITEMS.register(References.UnlocalizedName.FIRE_SWORD, FlameSword::new);
 	public static final RegistryObject<SwordItem> MASTER_SWORD = ITEMS.register(References.UnlocalizedName.MASTER_SWORD, MasterSword::new);
 	public static final RegistryObject<RelicsItem> INFUSED_STAR_PIECE = ITEMS.register(References.UnlocalizedName.INFUSED_STAR_PIECE, () -> new InfusedItem(64, Rarity.EPIC));

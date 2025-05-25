@@ -28,7 +28,7 @@ public class RelicsLootTables extends VanillaBlockLoot {
 
 	@Override
 	protected void generate() {
-		dropSelf(RelicsBlocks.LAPIS_BRICK.get());
+//		dropSelf(RelicsBlocks.LAPIS_BRICK.get());
 		dropSelf(RelicsBlocks.ODDISH_POT.get());
 		dropSelf(RelicsBlocks.STARSTONE_BLOCK.get());
 		dropSelf(RelicsBlocks.SKYBEAM_BLOCK.get());

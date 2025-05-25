@@ -23,13 +23,13 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 
 	@Override
 	protected void registerModels() {
-		withExistingParent(RelicsBlocks.LAPIS_BRICK);
+//		withExistingParent(RelicsBlocks.LAPIS_BRICK);
 		withExistingParent(RelicsBlocks.SKYBEAM_BLOCK);
 		withExistingParent(RelicsBlocks.STARSTONE_BLOCK);
 		withExistingParent(RelicsBlocks.INFUSED_STARSTONE_BLOCK);
 		withExistingParent(RelicsBlocks.STARBEAM_TORCH);
-		basicItem(RelicsItems.BRICK_BLUE);
-		basicItem(RelicsItems.CLAY_BLUE);
+//		basicItem(RelicsItems.BRICK_BLUE);
+//		basicItem(RelicsItems.CLAY_BLUE);
 		basicItem(RelicsItems.STAR_PIECE);
 		basicItem(RelicsItems.STAR_DUST);
 		basicItem(RelicsItems.STAR_STONE);
