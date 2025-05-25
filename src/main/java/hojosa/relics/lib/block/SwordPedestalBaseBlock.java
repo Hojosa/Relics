@@ -20,6 +20,7 @@ import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -63,6 +64,11 @@ public abstract class SwordPedestalBaseBlock extends RelicsFacingEntityBlock {
 
 	@Override
 	public abstract VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context);
+	
+	@Override
+	public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+		return pLevel.getBlockState(pPos.below()).isFaceSturdy(pLevel, pPos, Direction.UP);
+	}
 
 	@Override
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
