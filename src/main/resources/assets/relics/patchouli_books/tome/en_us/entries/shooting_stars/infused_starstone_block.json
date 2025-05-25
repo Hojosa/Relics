@@ -6,7 +6,7 @@
     "pages": [
 		{
 		    "type": "patchouli:text",
-		    "text": "Compated to the normal $(item)$(l:shooting_stars/starstone_block)starstone block$(), the infused version has a destinct rainbow glow and seems to have $(thing)4 slots$() on top of it, alomst as if you could $(thing)place something there?$()"
+		    "text": "Compared to the normal $(item)$(l:shooting_stars/starstone_block)starstone block$(), the infused version has a distinct rainbow glow and seems to have $(thing)4 slots$() on top of it, almost as if you could $(thing)place something there?$()"
 		},
 		{
 		    "type": "patchouli:crafting",

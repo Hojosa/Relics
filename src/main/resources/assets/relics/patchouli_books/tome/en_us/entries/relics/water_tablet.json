@@ -10,7 +10,7 @@
 		},
 		{
 			"type": "patchouli:text",
-			"text": "Records speak of the transport of this relic via $(thing)ship$(0), others indicate sighting in $(thing)underwater ruins$(0).$(br2)The occational $(thing)master libarian$(0) has been spotted, running over water with one.$(br)But that will surely $(thing)cost$(0) a hefty sum, if one hopes to get one for themself"
+			"text": "Records speak of the transport of this relic via $(thing)ship$(0), others indicate sighting in $(thing)underwater ruins$(0).$(br2)The occasional $(thing)master liberian$(0) has been spotted, running over water with one.$(br)But that will surely $(thing)cost$(0) a hefty sum, if one hopes to get one for themselves"
 		}
     ]
 }

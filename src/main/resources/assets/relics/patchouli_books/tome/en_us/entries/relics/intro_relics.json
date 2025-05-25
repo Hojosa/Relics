@@ -6,7 +6,7 @@
     "pages": [
         {
             "type": "patchouli:text",
-            "text": "Some Relics are more akin to Trinkets, Curios, Charms etc.$(br2)Others may be weapons, tools or just simple blocks. $(br2)These powerfull accessories have gone by many names over the years$(br2)To equip one, press [G]"
+            "text": "Some Relics are more akin to Trinkets, Curios, Charms etc.$(br2)Others may be weapons, tools or just simple blocks. $(br2)These powerful accessories have gone by many names over the years$(br2)To equip one, press [G]"
         },
 		{
 		  "type": "image",

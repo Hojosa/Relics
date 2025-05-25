@@ -8,7 +8,7 @@
 		{
 			"type": "patchouli:spotlight",
 			"item": "relics:master_sword",
-			"text": "The $(item)Master Sword$(0), also known as the blade of evil's bane.$(br) A $(thing) legendary sword$(0) that seals the darkness, that hasen't been seen for ages, some even questining, if it really exists."
+			"text": "The $(item)Master Sword$(0), also known as the blade of evil's bane.$(br) A $(thing) legendary sword$(0) that seals the darkness, that hasn't been seen for ages, some even questioning, if it really exists."
 		},
 		{
 			"type": "patchouli:text",

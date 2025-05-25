@@ -6,7 +6,7 @@
 		{
 		"type": "patchouli:spotlight",
 		"item": "relics:heart",
-		"text": "When defeating an enemey, you may be grazed with an heart.$(br)This mysterious item will revitalize you on contact, restoring $(thing)2 live points$().$(br2)One of these may be enough to tip the scales in battle when facing multible enemies. "
+		"text": "When defeating an enemy, you may be grazed with an heart.$(br)This mysterious item will revitalize you on contact, restoring $(thing)2 live points$().$(br2)One of these may be enough to tip the scales in battle when facing multiple enemies. "
 		}
     ]
 }

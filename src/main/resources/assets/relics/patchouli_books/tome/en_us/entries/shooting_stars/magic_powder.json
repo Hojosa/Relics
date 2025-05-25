@@ -7,7 +7,7 @@
     "pages": [
 		{
 		    "type": "patchouli:text",
-		    "text": "$(item)Star dust$() can also be transformed into $(item)magic powder$(), using $(thing)magic infusion$(). This powder has the ability to transform mobs between thier $(thing)adult/child form, change patterns, color and variant$().$(br2)It even works on some blocks, like turning stone bricks into mossy bricks "
+		    "text": "$(item)Star dust$() can also be transformed into $(item)magic powder$(), using $(thing)magic infusion$(). This powder has the ability to transform mobs between their $(thing)adult/child form, change patterns, color and variant$().$(br2)It even works on some blocks, like turning stone bricks into mossy bricks "
 		},
 		{
 			"type": "relics:magic_infusion_template",

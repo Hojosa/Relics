@@ -7,7 +7,7 @@
     "pages": [
 		{
 		    "type": "patchouli:text",
-		    "text": "The feather of the legendary fire bird, said to revive someone from the dead.$(br2)While no phoenix has been spotted in ages, thanks to $(l:misc/magic_infusion)$(item)Maigc Infusion$(), it's still possible to acquire one of these feathers."
+		    "text": "The feather of the legendary fire bird, said to revive someone from the dead.$(br2)While no phoenix has been spotted in ages, thanks to $(l:misc/magic_infusion)$(item)Magic Infusion$(), it's still possible to acquire one of these feathers."
 		},
 		{
 		    "type": "relics:magic_infusion_template",

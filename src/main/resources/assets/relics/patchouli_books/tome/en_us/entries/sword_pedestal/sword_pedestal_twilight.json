@@ -6,7 +6,7 @@
     "pages": [
 		{
 		    "type": "patchouli:text",
-		    "text": "Another pedestal that is said to house the $(thing)blade of evil's bane$(). $(br2)While it doesnt let you travel back in time or create magic stairs, it still looks awesome."
+		    "text": "Another pedestal that is said to house the $(thing)blade of evil's bane$(). $(br2)While it doesn't let you travel back in time or create magic stairs, it still looks awesome."
 		},
 		{
 		    "type": "patchouli:stonecutting",

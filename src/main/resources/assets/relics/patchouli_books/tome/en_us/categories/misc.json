@@ -1,6 +1,6 @@
 {
     "name": "Misc",
-    "description": "A collcetion of various knowledge, not fitting any specific category",
+    "description": "A collection of various knowledge, not fitting any specific category",
     "icon": "relics:textures/item/misc.png",
 	"sortnum": 5
 }

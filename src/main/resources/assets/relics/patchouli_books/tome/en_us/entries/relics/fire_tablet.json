@@ -10,7 +10,7 @@
 		},
 		{
 		    "type": "patchouli:text",
-		    "text": "Records speak of the transport of this relic via $(thing)ship$(0), others indicate sighting in $(thing)underground libaries$(0) or an $(thing)otherwordly city$(0). $(br2)Maybe $(thing)someone$(0), or something in an fiery, $(thing)hellish$(0) hot place, may posses one and would be willig to part with it, for the right $(thing)price$(0) of course."
+		    "text": "Records speak of the transport of this relic via $(thing)ship$(0), others indicate sighting in $(thing)underground libraries$(0) or an $(thing)otherworldly city$(0). $(br2)Maybe $(thing)someone$(0), or something in an fiery, $(thing)hellish$(0) hot place, may posses one and would be willing to part with it, for the right $(thing)price$(0) of course."
 		}
     ]
 }

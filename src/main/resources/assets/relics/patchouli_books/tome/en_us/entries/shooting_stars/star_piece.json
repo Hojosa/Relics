@@ -6,7 +6,7 @@
     "pages": [
 		{
 		    "type": "patchouli:text",
-		    "text": "After recieving a $(item)star piece$() by collecting a $(l:shooting_stars/intro_stars)shooting star$() in time, it has multible uses. You can make $(item)star dust$() and $(item)star stones$() out of it.$(br2)Another use for star pieces is, the possiblity to $(thing)infuse$() them. Simply hold the left mouse button for some seconds. This will cost you $(thing)3 XP levels$(), to be mindfull."
+		    "text": "After receiving a $(item)star piece$() by collecting a $(l:shooting_stars/intro_stars)shooting star$() in time, it has multiple uses. You can make $(item)star dust$() and $(item)star stones$() out of it.$(br2)Another use for star pieces is, the possibility to $(thing)infuse$() them. Simply hold the left mouse button for some seconds. This will cost you $(thing)3 XP levels$(), to be mindful."
 		},
 		{
 		    "type": "patchouli:crafting",

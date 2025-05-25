@@ -6,7 +6,7 @@
 		{
 		    "type": "patchouli:smelting",
 			"recipe": "relics:brick_blue",
-		    "text": "The notes of an old stoneworks master depic a method, of dyeing clay, in order to make bricks in different colors.$(br2)But it seems he only managed to make it work with blue dye. Odd..."
+		    "text": "The notes of an old stoneworks master depict a method, of dyeing clay, in order to make bricks in different colors.$(br2)But it seems he only managed to make it work with blue dye. Odd..."
 		},
 		{
 		    "type": "patchouli:crafting",

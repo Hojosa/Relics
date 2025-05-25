@@ -11,7 +11,7 @@
 		{
 		    "type": "patchouli:stonecutting",
 		    "recipe": "relics:sword_pedestal_normal",
-			"text": "$(br)please note that you will recive the corret pedestal, based on the used block, even if this page, JEI and the stonecutter show otherwise"
+			"text": "$(br)please note that you will receive the correct pedestal, based on the used block, even if this page, JEI and the stonecutter show otherwise"
 		}
     ]
 }
