@@ -39,7 +39,7 @@ jobs:
         uses: Kir-Antipov/mc-publish@v3.3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          #files: build/libs/!(*-@(dev|sources|javadoc)).jar
+          files: build/libs/!(*-@(dev|sources|javadoc)).jar
 
           modrinth-id: nIS3DCHl
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
