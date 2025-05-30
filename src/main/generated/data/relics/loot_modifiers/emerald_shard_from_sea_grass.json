@@ -6,7 +6,7 @@
       "condition": "minecraft:random_chance"
     },
     {
-      "block": "minecraft:grass",
+      "block": "minecraft:tall_seagrass",
       "condition": "minecraft:block_state_property"
     }
   ],

@@ -34,16 +34,52 @@ public class RelicsGlobalLootModifiersProvider extends GlobalLootModifierProvide
 						RelicsItems.BLANK_TABLET.get()));
 
 		//todo, add supplemtaries urn
+		add("emerald_shard_from_tall_grass",
+				new AddItemModifier(new LootItemCondition[] { 
+						LootItemRandomChanceCondition.randomChance(0.20f).build(), 
+						LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.TALL_GRASS).build() },
+						RelicsItems.EMERALD_SHARD.get()));
+
+		add("heart_from_tall_grass",
+				new AddItemModifier(new LootItemCondition[] { 
+						LootItemRandomChanceCondition.randomChance(0.10f).build(), 
+						LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.TALL_GRASS).build() },
+						RelicsItems.HEART.get()));
+		
 		add("emerald_shard_from_grass",
 				new AddItemModifier(new LootItemCondition[] { 
-						LootItemRandomChanceCondition.randomChance(0.5f).build(), 
-						LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.TALL_GRASS).build() },
+						LootItemRandomChanceCondition.randomChance(0.20f).build(), 
+						LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.GRASS).build() },
 						RelicsItems.EMERALD_SHARD.get()));
 
 		add("heart_from_grass",
 				new AddItemModifier(new LootItemCondition[] { 
-						LootItemRandomChanceCondition.randomChance(0.5f).build(), 
-						LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.TALL_GRASS).build() },
+						LootItemRandomChanceCondition.randomChance(0.10f).build(), 
+						LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.GRASS).build() },
+						RelicsItems.HEART.get()));
+		
+		add("emerald_shard_from_sea_grass",
+				new AddItemModifier(new LootItemCondition[] { 
+						LootItemRandomChanceCondition.randomChance(0.20f).build(), 
+						LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.SEAGRASS).build() },
+						RelicsItems.EMERALD_SHARD.get()));
+
+		add("heart_from_sea_grass",
+				new AddItemModifier(new LootItemCondition[] { 
+						LootItemRandomChanceCondition.randomChance(0.10f).build(), 
+						LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.SEAGRASS).build() },
+						RelicsItems.HEART.get()));
+		
+		add("emerald_shard_from_sea_grass",
+				new AddItemModifier(new LootItemCondition[] { 
+						LootItemRandomChanceCondition.randomChance(0.20f).build(), 
+						LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.TALL_SEAGRASS).build() },
+						RelicsItems.EMERALD_SHARD.get()));
+
+		add("heart_from_sea_grass",
+				new AddItemModifier(new LootItemCondition[] { 
+						LootItemRandomChanceCondition.randomChance(0.10f).build(), 
+						LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.TALL_SEAGRASS).build() },
 						RelicsItems.HEART.get()));
 		
 		add("lost_page_1_from_loot_chest",

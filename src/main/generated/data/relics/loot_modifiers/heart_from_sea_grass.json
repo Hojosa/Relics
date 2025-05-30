@@ -2,13 +2,13 @@
   "type": "relics:add_item",
   "conditions": [
     {
-      "chance": 0.2,
+      "chance": 0.1,
       "condition": "minecraft:random_chance"
     },
     {
-      "block": "minecraft:grass",
+      "block": "minecraft:tall_seagrass",
       "condition": "minecraft:block_state_property"
     }
   ],
-  "item": "relics:emerald_shard"
+  "item": "relics:heart"
 }
