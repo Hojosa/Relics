@@ -48,7 +48,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           files: build/libs/!(*-@(dev|sources|javadoc)).jar
           name: "${{ steps.props.outputs.mod_name }} ${{ steps.props.outputs.mod_version }} for ${{ steps.props.outputs.mc_version }}"
-          version: "${{ steps.props.outputs.vermod_versionsion }}"
+          version: "${{ steps.props.outputs.mod_version }}"
           #modrinth-id: nIS3DCHl
           #modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
 
