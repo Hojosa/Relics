@@ -1,4 +1,4 @@
-name: Build & Publish Mod
+name: Test Workflow to Build Mod
 
 on:
   push:
