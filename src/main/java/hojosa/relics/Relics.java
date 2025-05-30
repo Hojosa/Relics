@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import hojosa.relics.client.particle.RelicsParticles;
 import hojosa.relics.common.init.RelicsBlockEntities;
 import hojosa.relics.common.init.RelicsBlocks;
+import hojosa.relics.common.init.RelicsConfig;
 import hojosa.relics.common.init.RelicsCreativeModeTabs;
 import hojosa.relics.common.init.RelicsEntities;
 import hojosa.relics.common.init.RelicsItems;
@@ -47,6 +48,8 @@ public class Relics {
 		modEventBus.addListener(this::enqueueIMC);
 		modEventBus.addListener(this::register);
 
+		RelicsConfig.init();
+		
 		RelicsBlocks.BLOCKS.register(modEventBus);
 		RelicsItems.ITEMS.register(modEventBus);
 		RelicsBlockEntities.BLOCK_ENTITIES.register(modEventBus);

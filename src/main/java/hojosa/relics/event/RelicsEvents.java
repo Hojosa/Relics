@@ -6,6 +6,7 @@ import java.util.Random;
 import be.florens.expandability.api.forge.LivingFluidCollisionEvent;
 import hojosa.relics.common.entity.FallingStarEntity;
 import hojosa.relics.common.entity.StarBeamEntity;
+import hojosa.relics.common.init.RelicsConfig;
 import hojosa.relics.common.init.RelicsItems;
 import hojosa.relics.common.init.RelicsSounds;
 import hojosa.relics.common.item.entity.EmeraldShardItemEntity;
@@ -117,9 +118,9 @@ public class RelicsEvents {
     @SubscribeEvent
     public static void onLivingDropsEvent(LivingDropsEvent event) {
     	if(event.getEntity() instanceof Enemy) {
-    		if(random.nextInt(0, 10) == 4)
+    		if(RelicsConfig.COMMON.doEmeraldShardsDropFromMobs.get()  && random.nextInt(0, RelicsConfig.COMMON.heartChance.get()) == RelicsConfig.COMMON.heartChance.get()/2)
     			event.getDrops().add(new HeartItemEntity(event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), new ItemStack(RelicsItems.HEART.get().asItem())));
-    		if(random.nextInt(0, 5) == 2)
+    		if(RelicsConfig.COMMON.doHeartsDropFromMobs.get()  && random.nextInt(0, RelicsConfig.COMMON.emeraldChance.get()) == RelicsConfig.COMMON.emeraldChance.get()/2)
     			event.getDrops().add(new EmeraldShardItemEntity(event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), new ItemStack(RelicsItems.EMERALD_SHARD.get().asItem())));
     	}
     }
