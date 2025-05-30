@@ -111,15 +111,15 @@ public class RelicsEvents {
         	}
     }
     
-    //we drop the heart via event, because there is no loottable for hostile mobs, only 1 per each mob and mod compat would be a nightmare otherwise
+    //we drop hearts and emerald shards via event, because there is no loot table for hostile mobs, only 1 per each mob and mod compat would be a nightmare otherwise
     //also, we use our own ItemEntity when dropping this way. the heart "should" be unobtainable outside of this, and the emerald shard sound is only needed when dropped this way. 
     //this also saves us the onEntityItemPickup event for the heart
     @SubscribeEvent
     public static void onLivingDropsEvent(LivingDropsEvent event) {
     	if(event.getEntity() instanceof Enemy) {
-    		if(random.nextInt(0, 14) == 4)
-    			event.getDrops().add(new HeartItemEntity(event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), new ItemStack(RelicsItems.HEART.get().asItem())));
     		if(random.nextInt(0, 10) == 4)
+    			event.getDrops().add(new HeartItemEntity(event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), new ItemStack(RelicsItems.HEART.get().asItem())));
+    		if(random.nextInt(0, 5) == 2)
     			event.getDrops().add(new EmeraldShardItemEntity(event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), new ItemStack(RelicsItems.EMERALD_SHARD.get().asItem())));
     	}
     }
