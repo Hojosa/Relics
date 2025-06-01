@@ -1,14 +1,20 @@
 package hojosa.relics.common.datagen.providers;
 
+import java.util.List;
+
 import hojosa.relics.common.init.RelicsItems;
 import hojosa.relics.common.loot.AddItemModifier;
+import hojosa.relics.lib.OptionalLootItem;
 import hojosa.relics.lib.References;
+import hojosa.relics.lib.RelicsUtil;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
+import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
 import net.minecraftforge.common.loot.LootTableIdCondition;
 
@@ -32,8 +38,11 @@ public class RelicsGlobalLootModifiersProvider extends GlobalLootModifierProvide
 						.or(LootTableIdCondition.builder(BuiltInLootTables.SNIFFER_DIGGING))
 						.build()},
 						RelicsItems.BLANK_TABLET.get()));
+		
 
 		//todo, add supplemtaries urn
+		//forge doesnt support data conditional loading outside of recipes and advancements. so this has to wait. (or write a custom one)
+		
 		add("emerald_shard_from_tall_grass",
 				new AddItemModifier(new LootItemCondition[] { 
 						LootItemRandomChanceCondition.randomChance(0.20f).build(), 
@@ -141,5 +150,15 @@ public class RelicsGlobalLootModifiersProvider extends GlobalLootModifierProvide
 						.or(LootTableIdCondition.builder(BuiltInLootTables.SIMPLE_DUNGEON))
 						.or(LootTableIdCondition.builder(BuiltInLootTables.UNDERWATER_RUIN_SMALL)).build() },
 						RelicsItems.LOST_PAGE_6.get()));
+		
+		add("lost_page_7_from_loot_chest",
+				new AddItemModifier(new LootItemCondition[] { 
+						LootItemRandomChanceCondition.randomChance(0.20f).build(),
+						LootTableIdCondition.builder(BuiltInLootTables.JUNGLE_TEMPLE)
+						.or(LootTableIdCondition.builder(BuiltInLootTables.NETHER_BRIDGE))
+						.or(LootTableIdCondition.builder(BuiltInLootTables.PILLAGER_OUTPOST))
+						.or(LootTableIdCondition.builder(BuiltInLootTables.SIMPLE_DUNGEON))
+						.or(LootTableIdCondition.builder(BuiltInLootTables.ABANDONED_MINESHAFT)).build() },
+						RelicsItems.LOST_PAGE_7.get()));
 	}
 }
