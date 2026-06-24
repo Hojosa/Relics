@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "s": {
+      "item": "relics_of_old:infused_star_stone"
+    }
+  },
+  "pattern": [
+    "sss",
+    "sss",
+    "sss"
+  ],
+  "result": {
+    "item": "relics_of_old:infused_starstone_block"
+  },
+  "show_notification": true
+}

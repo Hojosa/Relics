@@ -1,0 +1,13 @@
+{
+	"render_type": "minecraft:solid",
+	"loader": "forge:obj",
+	"flip_v": true,
+	"model": "relics_of_old:models/block/oddish.obj",
+	"textures": {
+		"texture0": "relics_of_old:block/oddish",
+		"particle": "relics_of_old:block/oddish"
+	},
+	"transform": {
+		"translation": [ 0.5, 0, 0.5 ]
+    }
+}

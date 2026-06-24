@@ -1,0 +1,21 @@
+{
+  "type": "relics_of_old:magic_infusion",
+  "ingredients": [
+    {	
+      "item": "relics_of_old:star_dust"
+    },
+    {
+      "item": "relics_of_old:star_dust"
+    },
+    {
+      "item": "relics_of_old:star_dust"
+    },
+	{
+      "item": "relics_of_old:star_dust"
+    }
+  ],
+  "output": {
+    "count": 4,
+    "item": "relics_of_old:magic_powder"
+  }
+}

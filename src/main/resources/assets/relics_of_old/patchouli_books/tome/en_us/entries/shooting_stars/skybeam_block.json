@@ -1,0 +1,16 @@
+{
+    "name": "Skybeam Block",
+    "icon": "relics_of_old:skybeam_block",
+    "category": "relics_of_old:shooting_stars",
+	"sortnum": 5,
+    "pages": [
+		{
+		    "type": "patchouli:text",
+		    "text": "Made out of Obsidian, this sleek block retains the magic properties of the embedded $(item)$(l:shooting_stars/star_stone)star stone$().$(br)When receiving a $(thing)power signal$(), it will channel the power of the $(item)star stone$() skywards, resulting in a beautiful and colorful sky beam"
+		},
+		{
+		    "type": "patchouli:crafting",
+		    "recipe": "relics_of_old:skybeam_block"
+		}
+    ]
+}

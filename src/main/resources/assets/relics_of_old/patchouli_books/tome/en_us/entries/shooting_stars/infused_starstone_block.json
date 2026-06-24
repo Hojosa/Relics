@@ -1,0 +1,16 @@
+{
+    "name": "Infused Star Stone Block",
+    "icon": "relics_of_old:infused_starstone_block",
+    "category": "relics_of_old:shooting_stars",
+	"sortnum": 4,
+    "pages": [
+		{
+		    "type": "patchouli:text",
+		    "text": "Compared to the normal $(item)$(l:shooting_stars/starstone_block)starstone block$(), the infused version has a distinct rainbow glow and seems to have $(thing)4 slots$() on top of it, almost as if you could $(thing)place something there?$()"
+		},
+		{
+		    "type": "patchouli:crafting",
+		    "recipe": "relics_of_old:infused_starstone_block"
+		}
+    ]
+}

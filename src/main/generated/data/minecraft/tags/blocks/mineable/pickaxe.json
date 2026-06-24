@@ -1,10 +1,10 @@
 {
   "values": [
-    "relics:sword_pedestal_normal",
-    "relics:sword_pedestal_stone",
-    "relics:sword_pedestal",
-    "relics:sword_pedestal_relic",
-    "relics:sword_pedestal_time",
-    "relics:sword_pedestal_twilight"
+    "relics_of_old:sword_pedestal_normal",
+    "relics_of_old:sword_pedestal_stone",
+    "relics_of_old:sword_pedestal",
+    "relics_of_old:sword_pedestal_relic",
+    "relics_of_old:sword_pedestal_time",
+    "relics_of_old:sword_pedestal_twilight"
   ]
 }

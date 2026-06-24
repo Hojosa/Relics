@@ -1,0 +1,10 @@
+{
+	"render_type": "minecraft:cutout",
+	"loader": "forge:obj",
+	"flip_v": true,
+	"model": "relics_of_old:models/block/pedestal/sword_pedestal_twilight.obj",
+	"textures": {
+		"texture0": "relics_of_old:block/sword_pedestal_twilight",
+		"particle": "relics_of_old:block/sword_pedestal_twilight"
+	}
+}

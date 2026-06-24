@@ -1,0 +1,12 @@
+{
+  "type": "relics_of_old:crafting_stonecutter_retextured",
+  "count": 1,
+  "ingredient": {
+    "tag": "relics_of_old:sword_pedestal_variants"
+  },
+  "match_all": true,
+  "result": "relics_of_old:sword_pedestal_normal",
+  "texture": {
+    "tag": "relics_of_old:sword_pedestal_variants"
+  }
+}

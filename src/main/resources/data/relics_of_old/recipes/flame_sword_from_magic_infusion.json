@@ -1,0 +1,21 @@
+{
+  "type": "relics_of_old:magic_infusion",
+  "ingredients": [
+    {	
+      "item": "relics_of_old:infused_star_dust"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "minecraft:blaze_powder"
+    },
+	{
+      "item": "minecraft:blaze_rod"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "relics_of_old:flame_sword"
+  }
+}

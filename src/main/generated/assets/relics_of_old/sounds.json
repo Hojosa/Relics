@@ -1,0 +1,98 @@
+{
+  "emerald_pickup": {
+    "sounds": [
+      "relics_of_old:emerald_pickup"
+    ],
+    "subtitle": "relics_of_old.subtitle.emerald_pickup"
+  },
+  "fancy_sword_place": {
+    "sounds": [
+      "relics_of_old:fancy_sword_place"
+    ],
+    "subtitle": "relics_of_old.subtitle.fancy_sword_place"
+  },
+  "heart": {
+    "sounds": [
+      "relics_of_old:heart"
+    ],
+    "subtitle": "relics_of_old.subtitle.heart"
+  },
+  "infuse_charge": {
+    "sounds": [
+      "relics_of_old:infuse_charge"
+    ],
+    "subtitle": "relics_of_old.subtitle.infuse_charge"
+  },
+  "infuse_success": {
+    "sounds": [
+      "relics_of_old:infuse_success"
+    ],
+    "subtitle": "relics_of_old.subtitle.infuse_success"
+  },
+  "item_get": {
+    "sounds": [
+      "relics_of_old:item_get"
+    ],
+    "subtitle": "relics_of_old.subtitle.item_get"
+  },
+  "magic_crafting": {
+    "sounds": [
+      "relics_of_old:magic_crafting"
+    ],
+    "subtitle": "relics_of_old.subtitle.magic_crafting"
+  },
+  "magic_powder": {
+    "sounds": [
+      "relics_of_old:magic_powder"
+    ],
+    "subtitle": "relics_of_old.subtitle.magic_powder"
+  },
+  "oot_sword_draw": {
+    "sounds": [
+      "relics_of_old:oot_sword_draw"
+    ],
+    "subtitle": "relics_of_old.subtitle.oot_sword_draw"
+  },
+  "revive": {
+    "sounds": [
+      "relics_of_old:revive"
+    ],
+    "subtitle": "relics_of_old.subtitle.revive"
+  },
+  "star_caught": {
+    "sounds": [
+      "relics_of_old:star_caught"
+    ],
+    "subtitle": "relics_of_old.subtitle.star_caught"
+  },
+  "star_fall": {
+    "sounds": [
+      "relics_of_old:star_fall"
+    ],
+    "subtitle": "relics_of_old.subtitle.star_fall"
+  },
+  "star_twinkle": {
+    "sounds": [
+      "relics_of_old:star_twinkle"
+    ],
+    "subtitle": "relics_of_old.subtitle.star_twinkle"
+  },
+  "sword_draw": {
+    "sounds": [
+      "relics_of_old:sword_draw"
+    ],
+    "subtitle": "relics_of_old.subtitle.sword_draw"
+  },
+  "sword_place": {
+    "sounds": [
+      "relics_of_old:sword_place"
+    ],
+    "subtitle": "relics_of_old.subtitle.sword_place"
+  },
+  "tp_sword_draw": {
+    "sounds": [
+      "relics_of_old:tp_sword_draw"
+    ],
+    "subtitle": "relics_of_old.subtitle.tp_sword_draw"
+  }
+}

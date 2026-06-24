@@ -1,0 +1,58 @@
+{
+  "parent": "relics_of_old:root",
+  "criteria": {
+    "found_any_page": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "relics_of_old:lost_page_1"
+            ]
+          },
+          {
+            "items": [
+              "relics_of_old:lost_page_2"
+            ]
+          },
+          {
+            "items": [
+              "relics_of_old:lost_page_3"
+            ]
+          },
+          {
+            "items": [
+              "relics_of_old:lost_page_4"
+            ]
+          },
+          {
+            "items": [
+              "relics_of_old:lost_page_5"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Find a Lost Page"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "relics_of_old:lost_page_1"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Lost Pages"
+    }
+  },
+  "requirements": [
+    [
+      "found_any_page"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

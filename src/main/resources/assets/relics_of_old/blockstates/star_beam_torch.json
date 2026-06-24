@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "facing=down":  { "model": "relics_of_old:block/star_beam_torch", "x": 180 },
+    "facing=up":    { "model": "relics_of_old:block/star_beam_torch" },
+    "facing=north": { "model": "relics_of_old:block/star_beam_torch", "x": 90 },
+    "facing=south": { "model": "relics_of_old:block/star_beam_torch", "x": 90, "y": 180 },
+    "facing=west":  { "model": "relics_of_old:block/star_beam_torch", "x": 90, "y": 270 },
+    "facing=east":  { "model": "relics_of_old:block/star_beam_torch", "x": 90, "y": 90 }
+  }
+}

@@ -1,0 +1,16 @@
+{
+    "name": "Sword Pedestal of Time",
+    "icon": "relics_of_old:sword_pedestal_time",
+    "category": "relics_of_old:pedestals",
+	"sortnum": 4,
+    "pages": [
+		{
+		    "type": "patchouli:text",
+		    "text": "This pedestal is modeled after one, that is said to house the $(thing)blade of evil's bane$(). $(br2)While it doesn't have any special features or a gateway to another realm, it still looks awesome."
+		},
+		{
+		    "type": "patchouli:stonecutting",
+		    "recipe": "relics_of_old:sword_pedestal_time"
+		}
+    ]
+}

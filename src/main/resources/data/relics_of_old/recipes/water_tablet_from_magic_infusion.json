@@ -1,0 +1,21 @@
+{
+  "type": "relics_of_old:magic_infusion",
+  "ingredients": [
+    {	
+      "item": "relics_of_old:blank_tablet"
+    },
+    {
+      "item": "relics_of_old:infused_star_stone"
+    },
+    {
+      "item": "minecraft:prismarine_shard"
+    },
+	{
+      "item": "minecraft:heart_of_the_sea"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "relics_of_old:water_tablet"
+  }
+}

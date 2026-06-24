@@ -1,0 +1,19 @@
+{
+    "name": "Fire Tablet",
+    "icon": "relics_of_old:fire_tablet",
+    "category": "relics_of_old:relics_of_old",
+    "pages": [
+		{
+			"type": "patchouli:spotlight",
+			"item": "relics_of_old:fire_tablet",
+			"text": "The $(item)Fire Tablet$(0), a $(thing)legendary item, $(0)said to grant it's wearer the power to swim in lava and withstand any heat. $(br2)Created via $(thing)magic infusion, using items that represent hell itself."
+		},
+		{
+		    "type": "relics_of_old:magic_infusion_template",
+		    "item1": "relics_of_old:blank_tablet",
+			"item2": "relics_of_old:infused_star_dust",
+			"item3": "minecraft:blaze_powder",
+			"item4": "minecraft:netherite_ingot"
+		}
+    ]
+}

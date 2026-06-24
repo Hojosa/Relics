@@ -1,0 +1,19 @@
+{
+    "name": "Water Tablet",
+    "icon": "relics_of_old:water_tablet",
+    "category": "relics_of_old:relics_of_old",
+    "pages": [
+		{
+			"type": "patchouli:spotlight",
+			"item": "relics_of_old:water_tablet",
+			"text": "The $(item)Water Tablet$(0), a $(thing)legendary item, $(0)said to grant it's wearer the power to run over water. $(br2)Created via $(thing) magic infusion, using items that represent the ocean itself."
+		},
+		{
+		    "type": "relics_of_old:magic_infusion_template",
+		    "item1": "relics_of_old:blank_tablet",
+			"item2": "relics_of_old:infused_star_stone",
+			"item3": "minecraft:prismarine_shard",
+			"item4": "minecraft:heart_of_the_sea"
+		}
+    ]
+}

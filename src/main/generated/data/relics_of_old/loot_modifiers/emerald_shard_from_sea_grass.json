@@ -1,0 +1,14 @@
+{
+  "type": "relics_of_old:add_item",
+  "conditions": [
+    {
+      "chance": 0.2,
+      "condition": "minecraft:random_chance"
+    },
+    {
+      "block": "minecraft:tall_seagrass",
+      "condition": "minecraft:block_state_property"
+    }
+  ],
+  "item": "relics_of_old:emerald_shard"
+}

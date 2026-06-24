@@ -1,0 +1,20 @@
+{
+    "name": "Magic Powder",
+    "icon": "relics_of_old:magic_powder",
+    "category": "relics_of_old:shooting_stars",
+	"sortnum": 6,
+	"advancement": "relics_of_old:lost_page_6",
+    "pages": [
+		{
+		    "type": "patchouli:text",
+		    "text": "$(item)Star dust$() can also be transformed into $(item)magic powder$(), using $(thing)magic infusion$(). This powder has the ability to transform mobs between their $(thing)adult/child form, change patterns, color and variant$().$(br2)It even works on some blocks, like turning stone bricks into mossy bricks "
+		},
+		{
+			"type": "relics_of_old:magic_infusion_template",
+			"item1": "relics_of_old:star_dust",
+			"item2": "relics_of_old:star_dust",
+			"item3": "relics_of_old:star_dust",
+			"item4": "relics_of_old:star_dust"
+		}
+    ]
+}

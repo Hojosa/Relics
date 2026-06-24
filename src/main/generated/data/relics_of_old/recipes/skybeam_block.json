@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "o": {
+      "item": "minecraft:obsidian"
+    },
+    "s": {
+      "item": "relics_of_old:star_stone"
+    }
+  },
+  "pattern": [
+    "ooo",
+    "oso",
+    "ooo"
+  ],
+  "result": {
+    "item": "relics_of_old:skybeam_block"
+  },
+  "show_notification": true
+}

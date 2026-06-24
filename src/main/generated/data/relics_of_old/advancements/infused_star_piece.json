@@ -1,0 +1,64 @@
+{
+  "parent": "relics_of_old:root",
+  "criteria": {
+    "hasItem": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "relics_of_old:phoenix_feather"
+            ]
+          },
+          {
+            "items": [
+              "relics_of_old:fire_tablet"
+            ]
+          },
+          {
+            "items": [
+              "relics_of_old:water_tablet"
+            ]
+          },
+          {
+            "items": [
+              "relics_of_old:flame_sword"
+            ]
+          },
+          {
+            "items": [
+              "relics_of_old:master_sword"
+            ]
+          },
+          {
+            "items": [
+              "relics_of_old:oddish_pot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "text": "Obtain your first relic"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "patchouli:guide_book",
+      "nbt": "{\"patchouli:book\":\"relics_of_old:tome\"}"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Obtain a Relic"
+    }
+  },
+  "requirements": [
+    [
+      "hasItem"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

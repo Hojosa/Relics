@@ -1,0 +1,23 @@
+{
+    "name": "Introduction to relics_of_old",
+    "icon": "relics_of_old:textures/item/quest_key.png",
+    "category": "relics_of_old:relics_of_old",
+	"sortnum": -1,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Some relics_of_old are more akin to Trinkets, Curios, Charms etc.$(br2)Others may be weapons, tools or just simple blocks. $(br2)These powerful accessories have gone by many names over the years$(br2)To equip one, press [G]"
+        },
+		{
+		  "type": "image",
+		  "text": "The Curios Screen",
+		  "images": [
+		    "relics_of_old:textures/gui/entries/relics_of_old.png"
+		  ]
+		},
+		{
+		  "type": "text",
+		  "text": "Be aware, that the Curios slots are shared with any other mod that also uses the same equipment slots"
+		}
+    ]
+}

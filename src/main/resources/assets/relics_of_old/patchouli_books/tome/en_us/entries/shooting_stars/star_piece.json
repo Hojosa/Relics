@@ -1,0 +1,17 @@
+{
+    "name": "Star Piece",
+    "icon": "relics_of_old:star_piece",
+    "category": "relics_of_old:shooting_stars",
+	"sortnum": 1,
+    "pages": [
+		{
+		    "type": "patchouli:text",
+		    "text": "After receiving a $(item)star piece$() by collecting a $(l:shooting_stars/intro_stars)shooting star$() in time, it has multiple uses. You can make $(item)star dust$() and $(item)star stones$() out of it.$(br2)Another use for star pieces is, the possibility to $(thing)infuse$() them. Simply hold the left mouse button for some seconds. This will cost you $(thing)3 XP levels$(), to be mindful."
+		},
+		{
+		    "type": "patchouli:crafting",
+		    "recipe": "relics_of_old:star_dust",
+			"recipe2": "relics_of_old:star_stone"
+		}
+    ]
+}

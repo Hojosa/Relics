@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "e": {
+      "item": "relics_of_old:emerald_piece"
+    }
+  },
+  "pattern": [
+    "eee",
+    "e e",
+    "eee"
+  ],
+  "result": {
+    "item": "minecraft:emerald"
+  },
+  "show_notification": true
+}

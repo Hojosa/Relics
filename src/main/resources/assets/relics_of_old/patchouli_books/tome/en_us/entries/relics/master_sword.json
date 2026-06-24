@@ -1,0 +1,18 @@
+{
+    "name": "Master Sword",
+    "icon": "relics_of_old:master_sword",
+    "category": "relics_of_old:relics_of_old",
+	"sortnum": 5,
+	"advancement": "relics_of_old:lost_page_1",
+    "pages": [
+		{
+			"type": "patchouli:spotlight",
+			"item": "relics_of_old:master_sword",
+			"text": "The $(item)Master Sword$(0), also known as the blade of evil's bane.$(br) A $(thing) legendary sword$(0) that seals the darkness, that hasn't been seen for ages, some even questioning, if it really exists."
+		},
+		{
+			"type": "patchouli:text",
+			"text": "The Legends of this sword speaks of a $(thing)forest$(0) spirit, that watches over the sword in its $(thing)resting place"
+		}
+    ]
+}

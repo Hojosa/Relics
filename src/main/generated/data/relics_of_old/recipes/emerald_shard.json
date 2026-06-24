@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "tab",
+  "ingredients": [
+    {
+      "item": "relics_of_old:emerald_piece"
+    }
+  ],
+  "result": {
+    "count": 8,
+    "item": "relics_of_old:emerald_shard"
+  }
+}

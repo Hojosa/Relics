@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "minecraft:block/obsidian",
+    "side": "relics_of_old:block/skybeam_block_side",
+    "top": "relics_of_old:block/skybeam_block_top"
+  }
+}

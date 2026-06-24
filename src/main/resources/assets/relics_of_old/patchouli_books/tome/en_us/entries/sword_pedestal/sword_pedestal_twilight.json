@@ -1,0 +1,16 @@
+{
+    "name": "Sword Pedestal of Twiligth",
+    "icon": "relics_of_old:sword_pedestal_twilight",
+    "category": "relics_of_old:pedestals",
+	"sortnum": 5,
+    "pages": [
+		{
+		    "type": "patchouli:text",
+		    "text": "Another pedestal that is said to house the $(thing)blade of evil's bane$(). $(br2)While it doesn't let you travel back in time or create magic stairs, it still looks awesome."
+		},
+		{
+		    "type": "patchouli:stonecutting",
+		    "recipe": "relics_of_old:sword_pedestal_twilight"
+		}
+    ]
+}

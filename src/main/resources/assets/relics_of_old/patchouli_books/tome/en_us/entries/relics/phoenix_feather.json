@@ -1,0 +1,20 @@
+{
+    "name": "Phoenix Feather",
+    "icon": "relics_of_old:phoenix_feather",
+    "category": "relics_of_old:relics_of_old",
+	"sortnum": 7,
+	"advancement": "relics_of_old:lost_page_3",
+    "pages": [
+		{
+		    "type": "patchouli:text",
+		    "text": "The feather of the legendary fire bird, said to revive someone from the dead.$(br2)While no phoenix has been spotted in ages, thanks to $(l:misc/magic_infusion)$(item)Magic Infusion$(), it's still possible to acquire one of these feathers."
+		},
+		{
+		    "type": "relics_of_old:magic_infusion_template",
+		    "item1": "relics_of_old:blank_tablet",
+			"item2": "relics_of_old:infused_star_stone",
+			"item3": "minecraft:blaze_powder",
+			"item4": "minecraft:netherite_ingot"
+		}
+    ]
+}
