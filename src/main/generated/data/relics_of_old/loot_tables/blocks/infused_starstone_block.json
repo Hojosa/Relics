@@ -12,17 +12,6 @@
               "source": "block_entity"
             },
             {
-              "function": "minecraft:copy_nbt",
-              "ops": [
-                {
-                  "op": "replace",
-                  "source": "Items",
-                  "target": "BlockEntityTag.Items"
-                }
-              ],
-              "source": "block_entity"
-            },
-            {
               "type": "relics_of_old:infused_starstone_block",
               "entries": [
                 {

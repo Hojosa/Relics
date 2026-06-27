@@ -3,6 +3,7 @@ package hojosa.relics_of_old.common.datagen.providers;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import hojosa.relics_of_old.common.block.entity.SwordPedestalBlockEntity;
 import hojosa.relics_of_old.common.init.RelicsBlockEntities;
 import hojosa.relics_of_old.common.init.RelicsBlocks;
 import hojosa.relics_of_old.lib.References;
@@ -31,13 +32,13 @@ public class RelicsLootTables extends VanillaBlockLoot {
 		dropSelf(RelicsBlocks.STARSTONE_BLOCK.get());
 		dropSelf(RelicsBlocks.SKYBEAM_BLOCK.get());
 		dropSelf(RelicsBlocks.STARBEAM_TORCH.get());
-		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_NORMAL.get(), RelicsBlockEntities.REXTURED_SWORD_PEDESTAL_BLOCK_ENTITY.get(), RelicsBlockEntity.ITEMS_TAG);
-		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_RELIC_VARIANTS.get(), RelicsBlockEntities.REXTURED_SWORD_PEDESTAL_BLOCK_ENTITY.get(), RelicsBlockEntity.ITEMS_TAG);
-		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_RELIC.get(), RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), RelicsBlockEntity.ITEMS_TAG);
-		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_TIME.get(), RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), RelicsBlockEntity.ITEMS_TAG);
-		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_TWILIGHT.get(), RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), RelicsBlockEntity.ITEMS_TAG);
-		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_STONE.get(), RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), "bla");
-		createStandardTable(RelicsBlocks.INFUSED_STARSTONE_BLOCK.get(), RelicsBlockEntities.INFUSED_STARSTONE_BLOCK_ENTITY.get(), "Items");
+		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_NORMAL.get(), RelicsBlockEntities.REXTURED_SWORD_PEDESTAL_BLOCK_ENTITY.get(), SwordPedestalBlockEntity.COLOR_TAG, SwordPedestalBlockEntity.GLOW_TAG, SwordPedestalBlockEntity.INFUSED_TAG);
+		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_RELIC_VARIANTS.get(), RelicsBlockEntities.REXTURED_SWORD_PEDESTAL_BLOCK_ENTITY.get(), SwordPedestalBlockEntity.COLOR_TAG, SwordPedestalBlockEntity.GLOW_TAG, SwordPedestalBlockEntity.INFUSED_TAG);
+		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_RELIC.get(), RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), SwordPedestalBlockEntity.COLOR_TAG, SwordPedestalBlockEntity.GLOW_TAG, SwordPedestalBlockEntity.INFUSED_TAG);
+		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_TIME.get(), RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), SwordPedestalBlockEntity.COLOR_TAG, SwordPedestalBlockEntity.GLOW_TAG, SwordPedestalBlockEntity.INFUSED_TAG);
+		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_TWILIGHT.get(), RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), SwordPedestalBlockEntity.COLOR_TAG, SwordPedestalBlockEntity.GLOW_TAG, SwordPedestalBlockEntity.INFUSED_TAG);
+		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_STONE.get(), RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), SwordPedestalBlockEntity.COLOR_TAG, SwordPedestalBlockEntity.GLOW_TAG, SwordPedestalBlockEntity.INFUSED_TAG);
+		createStandardTable(RelicsBlocks.INFUSED_STARSTONE_BLOCK.get(), RelicsBlockEntities.INFUSED_STARSTONE_BLOCK_ENTITY.get());
 	}
 
 	@Override

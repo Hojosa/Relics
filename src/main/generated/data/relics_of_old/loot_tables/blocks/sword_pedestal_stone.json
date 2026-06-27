@@ -16,8 +16,30 @@
               "ops": [
                 {
                   "op": "replace",
-                  "source": "bla",
-                  "target": "BlockEntityTag.bla"
+                  "source": "Color",
+                  "target": "BlockEntityTag.Color"
+                }
+              ],
+              "source": "block_entity"
+            },
+            {
+              "function": "minecraft:copy_nbt",
+              "ops": [
+                {
+                  "op": "replace",
+                  "source": "Glow",
+                  "target": "BlockEntityTag.Glow"
+                }
+              ],
+              "source": "block_entity"
+            },
+            {
+              "function": "minecraft:copy_nbt",
+              "ops": [
+                {
+                  "op": "replace",
+                  "source": "Infused",
+                  "target": "BlockEntityTag.Infused"
                 }
               ],
               "source": "block_entity"
