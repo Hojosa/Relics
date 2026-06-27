@@ -29,14 +29,23 @@ public class RelicsBlockTags extends BlockTagsProvider {
 		.add(RelicsBlocks.SWORD_PEDESTAL_RELIC.get())
 		.add(RelicsBlocks.SWORD_PEDESTAL_RELIC_VARIANTS.get())
 		.add(RelicsBlocks.SWORD_PEDESTAL_TIME.get())
-		.add(RelicsBlocks.SWORD_PEDESTAL_TWILIGHT.get());
+		.add(RelicsBlocks.SWORD_PEDESTAL_TWILIGHT.get())
+		.add(RelicsBlocks.INFUSED_STARSTONE_BLOCK.get())
+		.add(RelicsBlocks.SKYBEAM_BLOCK.get())
+		.add(RelicsBlocks.STARSTONE_BLOCK.get())
+		.add(RelicsBlocks.ODDISH_POT.get());
 		tag(BlockTags.NEEDS_STONE_TOOL)
 		.add(RelicsBlocks.SWORD_PEDESTAL_NORMAL.get())
 		.add(RelicsBlocks.SWORD_PEDESTAL_STONE.get())
 		.add(RelicsBlocks.SWORD_PEDESTAL_RELIC.get())
 		.add(RelicsBlocks.SWORD_PEDESTAL_RELIC_VARIANTS.get())
 		.add(RelicsBlocks.SWORD_PEDESTAL_TIME.get())
-		.add(RelicsBlocks.SWORD_PEDESTAL_TWILIGHT.get());
+		.add(RelicsBlocks.SWORD_PEDESTAL_TWILIGHT.get())
+		.add(RelicsBlocks.ODDISH_POT.get());
+		tag(BlockTags.NEEDS_IRON_TOOL)
+		.add(RelicsBlocks.INFUSED_STARSTONE_BLOCK.get())
+		.add(RelicsBlocks.SKYBEAM_BLOCK.get())
+		.add(RelicsBlocks.STARSTONE_BLOCK.get());
 		tag(RelicsTags.Blocks.SWORD_PEDESTAL_VARIANTS)
 		.add(Blocks.STONE, Blocks.POLISHED_GRANITE, Blocks.POLISHED_BLACKSTONE, Blocks.POLISHED_ANDESITE, Blocks.POLISHED_DIORITE, Blocks.CUT_SANDSTONE, Blocks.CUT_RED_SANDSTONE, Blocks.NETHER_BRICKS, Blocks.RED_NETHER_BRICKS, Blocks.POLISHED_BASALT, Blocks.OBSIDIAN)
 		.addOptionalTag(Mantle.commonResource("storage_blocks"));
