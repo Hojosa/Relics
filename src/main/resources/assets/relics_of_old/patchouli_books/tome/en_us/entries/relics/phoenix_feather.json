@@ -11,10 +11,10 @@
 		},
 		{
 		    "type": "relics_of_old:magic_infusion_template",
-		    "item1": "relics_of_old:blank_tablet",
-			"item2": "relics_of_old:infused_star_stone",
+		    "item1": "relics_of_old:infused_star_dust",
+			"item2": "relics_of_old:totem_dust",
 			"item3": "minecraft:blaze_powder",
-			"item4": "minecraft:netherite_ingot"
+			"item4": "minecraft:feather"
 		}
     ]
 }
