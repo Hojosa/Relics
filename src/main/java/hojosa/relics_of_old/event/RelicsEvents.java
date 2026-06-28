@@ -1,9 +1,13 @@
 package hojosa.relics_of_old.event;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 import java.util.Random;
 
 import be.florens.expandability.api.forge.LivingFluidCollisionEvent;
+import hojosa.relics_of_old.Relics;
 import hojosa.relics_of_old.common.entity.FallingStarEntity;
 import hojosa.relics_of_old.common.entity.StarBeamEntity;
 import hojosa.relics_of_old.common.init.RelicsConfig;
@@ -20,7 +24,9 @@ import hojosa.relics_of_old.network.RelicsNetwork;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.FluidTags;
@@ -36,6 +42,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.LevelResource;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
@@ -180,5 +187,47 @@ public class RelicsEvents {
     	        mapping.remap(remappedItem);
     	    }
     	}
+    }
+    
+    //rewrite our old guide book to the new id if present. 
+    @SubscribeEvent
+    public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
+    	//fix our guidebook
+        Player player = event.getEntity();
+        Item guideBook = ForgeRegistries.ITEMS.getValue(new ResourceLocation("patchouli", "guide_book"));
+        if (guideBook == null) return;
+        
+        for (ItemStack stack : player.getInventory().items) {
+            if (stack.getItem() == guideBook && stack.hasTag()) {
+                CompoundTag tag = stack.getTag();
+                if (tag.contains("patchouli:book") && 
+                    tag.getString("patchouli:book").equals("relics:tome")) {
+                    tag.putString("patchouli:book", "relics_of_old:tome");
+                }
+            }
+        }
+        
+        //also convert our advancements
+        if (!(event.getEntity() instanceof ServerPlayer playerSMP)) return;
+        // get the advancements file for this player
+        ServerLevel level = playerSMP.serverLevel();
+        File advancementsFile = new File(
+            level.getServer().getWorldPath(LevelResource.PLAYER_ADVANCEMENTS_DIR).toFile(),
+            playerSMP.getStringUUID() + ".json"
+        );
+        
+        if (!advancementsFile.exists()) return;
+        
+        try {
+            String content = Files.readString(advancementsFile.toPath());
+            if (content.contains("\"relics:")) {
+                String migrated = content.replace("\"relics:", "\"relics_of_old:");
+                Files.writeString(advancementsFile.toPath(), migrated);
+                // reload advancements for this player
+                playerSMP.getAdvancements().reload(level.getServer().getAdvancements());
+            }
+        } catch (IOException e) {
+            Relics.LOGGER.error("Failed to migrate advancements for player {}", playerSMP.getStringUUID(), e);
+        }
     }
 }
