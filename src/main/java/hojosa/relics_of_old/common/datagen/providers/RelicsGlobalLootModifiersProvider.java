@@ -1,20 +1,14 @@
 package hojosa.relics_of_old.common.datagen.providers;
 
-import java.util.List;
-
 import hojosa.relics_of_old.common.init.RelicsItems;
 import hojosa.relics_of_old.common.loot.AddItemModifier;
-import hojosa.relics_of_old.lib.OptionalLootItem;
 import hojosa.relics_of_old.lib.References;
-import hojosa.relics_of_old.lib.RelicsUtil;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
-import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
 import net.minecraftforge.common.loot.LootTableIdCondition;
 
@@ -39,7 +33,6 @@ public class RelicsGlobalLootModifiersProvider extends GlobalLootModifierProvide
 						.build()},
 						RelicsItems.BLANK_TABLET.get()));
 		
-
 		//todo, add supplemtaries urn
 		//forge doesnt support data conditional loading outside of recipes and advancements. so this has to wait. (or write a custom one)
 		

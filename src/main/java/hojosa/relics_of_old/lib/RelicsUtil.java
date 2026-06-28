@@ -26,15 +26,15 @@ public class RelicsUtil {
 	private static final Map<Block, List<Block>> BLOCK_CYCLES = new HashMap<>();
 
 	public static ResourceLocation mcLoc(String path) {
-		return new ResourceLocation(ResourceLocation.DEFAULT_NAMESPACE, path);
+		return ResourceLocation.fromNamespaceAndPath(ResourceLocation.DEFAULT_NAMESPACE, path);
 	}
 
 	public static ResourceLocation forgeLoc(String path) {
-		return new ResourceLocation("forge", path);
+		return ResourceLocation.fromNamespaceAndPath("forge", path);
 	}
 
 	public static ResourceLocation modLoc(String path) {
-		return new ResourceLocation(References.MOD_ID, path);
+		return ResourceLocation.fromNamespaceAndPath(References.MOD_ID, path);
 	}
 
 	public static float r(float phase) {

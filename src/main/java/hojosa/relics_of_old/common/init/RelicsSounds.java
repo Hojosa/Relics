@@ -47,6 +47,6 @@ public class RelicsSounds {
 	public static final RegistryObject<SoundEvent> MAGIC_POWDER = registerSound(References.UnlocalizedName.MAGIC_POWDER);
 
 	private static RegistryObject<SoundEvent> registerSound(String name) {
-		return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(References.MOD_ID, name)));
+		return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(References.MOD_ID, name)));
 	}
 }

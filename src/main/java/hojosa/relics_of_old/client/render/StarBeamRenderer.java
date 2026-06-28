@@ -65,7 +65,7 @@ public class StarBeamRenderer extends EntityRenderer<StarBeamEntity> {
 
 	@Override
 	public ResourceLocation getTextureLocation(StarBeamEntity pEntity) {
-		return new ResourceLocation(References.MOD_ID, "textures/entity/beam.png");
+		return ResourceLocation.fromNamespaceAndPath(References.MOD_ID, "textures/entity/beam.png");
 	}
 	
 	@Override

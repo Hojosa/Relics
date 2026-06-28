@@ -36,7 +36,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
@@ -92,7 +91,7 @@ public class RelicsEvents {
     @SubscribeEvent
     public static void onAttachCapabilitiesPlayer(AttachCapabilitiesEvent<Entity> event) {
         if(event.getObject() instanceof Player && !event.getObject().getCapability(StarFallChanceProvider.PLAYER_STAR_FALL).isPresent()) {
-                event.addCapability(new ResourceLocation(References.MOD_ID, "properties"), new StarFallChanceProvider());
+                event.addCapability(ResourceLocation.fromNamespaceAndPath(References.MOD_ID, "properties"), new StarFallChanceProvider());
             }
     }
 
@@ -162,7 +161,7 @@ public class RelicsEvents {
     	// For blocks
     	for (MissingMappingsEvent.Mapping<Block> mapping : event.getMappings(ForgeRegistries.Keys.BLOCKS, "relics")) {
     	    Block remappedBlock = ForgeRegistries.BLOCKS.getValue(
-    	        new ResourceLocation(References.MOD_ID, mapping.getKey().getPath())
+    	    		ResourceLocation.fromNamespaceAndPath(References.MOD_ID, mapping.getKey().getPath())
     	    );
     	    System.out.println("trying to remap blocks: " + remappedBlock);
     	    if (remappedBlock != null) {
@@ -173,7 +172,7 @@ public class RelicsEvents {
     	// For items
     	for (MissingMappingsEvent.Mapping<Item> mapping : event.getMappings(ForgeRegistries.Keys.ITEMS, "relics")) {
     	    Item remappedItem = ForgeRegistries.ITEMS.getValue(
-    	        new ResourceLocation(References.MOD_ID, mapping.getKey().getPath())
+    	    		ResourceLocation.fromNamespaceAndPath(References.MOD_ID, mapping.getKey().getPath())
     	    );
     	    System.out.println("trying to remap items: " + remappedItem);
     	    if (remappedItem != null) {

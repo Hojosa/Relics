@@ -87,7 +87,7 @@ public class OptionalLootItem extends LootPoolSingletonContainer {
         }
 
         protected OptionalLootItem deserialize(JsonObject object, JsonDeserializationContext context, int weight, int quality, LootItemCondition[] conditions, LootItemFunction[] functions) {
-            ResourceLocation item = new ResourceLocation(GsonHelper.getAsString(object, "name"));
+            ResourceLocation item = ResourceLocation.parse(GsonHelper.getAsString(object, "name"));
             List<ICondition> loadingConditions = JsonHelper.deserializeConditions(object, "when");
             if (testConditions(loadingConditions) && !ForgeRegistries.ITEMS.containsKey(item)) {
                 throw new JsonParseException("Could not find unknown item " + item);
