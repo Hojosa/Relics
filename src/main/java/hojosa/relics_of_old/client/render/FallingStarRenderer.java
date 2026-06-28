@@ -25,7 +25,7 @@ public class FallingStarRenderer extends EntityRenderer<FallingStarEntity> {
 		super(pContext);
 	}
 	public static final NonNullLazy<ModelHandle> modelStarBit = NonNullLazy.of(() -> ModelHandle.of(References.MOD_ID + ":models/entity/starbit.obj"));
-	public static final ResourceLocation BEAM = new ResourceLocation(References.MOD_ID, "textures/entity/beam.png");
+	public static final ResourceLocation BEAM_TEX = new ResourceLocation(References.MOD_ID, "textures/entity/beam.png");
 
 	@Override
 	public ResourceLocation getTextureLocation(FallingStarEntity pEntity) {
@@ -39,7 +39,7 @@ public class FallingStarRenderer extends EntityRenderer<FallingStarEntity> {
         pPoseStack.scale(scale, scale, scale);
 
         if(!pEntity.onGround())
-        	renderStarTail(pPoseStack, pBuffer.getBuffer(RelicsRenderTypes.BEAM));
+        	renderStarTail(pPoseStack, pBuffer.getBuffer(RenderType.beaconBeam(BEAM_TEX, true)));
 
         float rotationAngle = (System.currentTimeMillis() % 3600) / 10f;
         pPoseStack.translate(0, 0.42, 0);
