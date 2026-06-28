@@ -1,5 +1,6 @@
 {
   "type": "relics_of_old:magic_infusion",
+  "category": "misc",
   "ingredients": [
     {	
       "item": "relics_of_old:star_dust"
