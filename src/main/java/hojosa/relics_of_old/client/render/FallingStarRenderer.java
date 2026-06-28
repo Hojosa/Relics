@@ -29,7 +29,7 @@ public class FallingStarRenderer extends EntityRenderer<FallingStarEntity> {
 
 	@Override
 	public ResourceLocation getTextureLocation(FallingStarEntity pEntity) {
-		return ResourceLocation.fromNamespaceAndPath(References.MOD_ID, "textures/entity/white_stained_glass.png");
+		return ResourceLocation.fromNamespaceAndPath(References.MOD_ID, "textures/entity/white.png");
 	}
 
 	@Override
