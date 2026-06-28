@@ -25,11 +25,11 @@ public class FallingStarRenderer extends EntityRenderer<FallingStarEntity> {
 		super(pContext);
 	}
 	public static final NonNullLazy<ModelHandle> modelStarBit = NonNullLazy.of(() -> ModelHandle.of(References.MOD_ID + ":models/entity/starbit.obj"));
-	public static final ResourceLocation BEAM_TEX = new ResourceLocation(References.MOD_ID, "textures/entity/beam.png");
+	public static final ResourceLocation BEAM_TEX = ResourceLocation.fromNamespaceAndPath(References.MOD_ID, "textures/entity/beam.png");
 
 	@Override
 	public ResourceLocation getTextureLocation(FallingStarEntity pEntity) {
-		return new ResourceLocation("minecraft:textures/block/white_stained_glass.png");
+		return ResourceLocation.fromNamespaceAndPath(References.MOD_ID, "textures/entity/white_stained_glass.png");
 	}
 
 	@Override
@@ -46,10 +46,10 @@ public class FallingStarRenderer extends EntityRenderer<FallingStarEntity> {
         pPoseStack.mulPose(Axis.XP.rotationDegrees(rotationAngle));
         
         pPoseStack.pushPose();
-        modelStarBit.get().render(pPoseStack, pBuffer, RenderType.entitySolid(getTextureLocation(pEntity)), 200, 0xFF96a2e1);
+        modelStarBit.get().render(pPoseStack, pBuffer, RenderType.entitySolid(getTextureLocation(pEntity)), 15728880, 0xFF96a2e1);
         pPoseStack.popPose();
         
-        modelStarBit.get().render(pPoseStack, pBuffer, RenderType.entityTranslucent(getTextureLocation(pEntity)), 200, 0xFF767676);
+        modelStarBit.get().render(pPoseStack, pBuffer, RenderType.entityTranslucent(getTextureLocation(pEntity)), 15728880, 0xFF767676);
         modelStarBit.get().render(pPoseStack, pBuffer, RelicsRenderTypes.ENTITY_GLINT_DIRECT_RAINBOW, 240, 0xFFffd619);
 
         pPoseStack.popPose();

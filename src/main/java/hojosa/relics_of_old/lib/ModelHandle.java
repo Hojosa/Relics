@@ -16,7 +16,7 @@ public class ModelHandle {
 	private final CompositeRenderable renderable;
 
 	public static ModelHandle of(String modelLocation) {
-		return new ModelHandle(new ResourceLocation(modelLocation));
+		return new ModelHandle(ResourceLocation.parse(modelLocation));
 	}
 
 	public ModelHandle(ResourceLocation modelLocation) {
