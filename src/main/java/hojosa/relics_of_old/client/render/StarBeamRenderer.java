@@ -8,7 +8,6 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import hojosa.relics_of_old.common.entity.StarBeamEntity;
 import hojosa.relics_of_old.lib.References;
 import hojosa.relics_of_old.lib.RelicsUtil;
-import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -17,6 +16,7 @@ import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 
 public class StarBeamRenderer extends EntityRenderer<StarBeamEntity> {
@@ -27,27 +27,31 @@ public class StarBeamRenderer extends EntityRenderer<StarBeamEntity> {
 
 	@Override
 	public void render(StarBeamEntity pEntity, float pEntityYaw, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight) {
-		renderStarBeam(pPoseStack, pBuffer.getBuffer(RenderType.lines()), pEntity.getStartPos(), pEntity.getTargetPos());
+		// Calculate the entity's camera-relative position with partial tick interpolation,
+	    // so we can undo the entity transform the renderer baked into the PoseStack.
+		Vec3 camPos = Minecraft.getInstance().gameRenderer.getMainCamera().getPosition();
+	    double ex = Mth.lerp(pPartialTick, pEntity.xOld, pEntity.getX()) - camPos.x;
+	    double ey = Mth.lerp(pPartialTick, pEntity.yOld, pEntity.getY()) - camPos.y;
+	    double ez = Mth.lerp(pPartialTick, pEntity.zOld, pEntity.getZ()) - camPos.z;
+	    renderStarBeam(pPoseStack, pBuffer.getBuffer(RenderType.lines()), 
+	            pEntity.getStartPos(), pEntity.getTargetPos(), camPos, new Vec3(ex, ey, ez));
 	}
 	
-    private static void renderStarBeam(PoseStack matrixStack, VertexConsumer builder, BlockPos startPos, BlockPos endPos) {
+    private static void renderStarBeam(PoseStack matrixStack, VertexConsumer builder, BlockPos startPos, BlockPos endPos, Vec3 cameraPos, Vec3 entityOffset) {
 		float phase = (System.currentTimeMillis() % 2000L) / 2000.0f;
         int r = (int) (RelicsUtil.r(phase)*255);
         int g = (int) (RelicsUtil.g(phase)*255);
         int b = (int) (RelicsUtil.b(phase)*255);
     	
         matrixStack.pushPose();
+        // Undo the entity transform baked in by the renderer,
+        // resetting the PoseStack to camera-relative world space.
+        matrixStack.translate(-entityOffset.x, -entityOffset.y, -entityOffset.z);
+        Matrix4f matrix4f = matrixStack.last().pose();
         
-    	Matrix4f matrix4f = matrixStack.last().pose();
-	    matrixStack.translate(0, 1.3f, 0);
-	    
-	    // 1. Get camera position
-	    Camera camera = Minecraft.getInstance().gameRenderer.getMainCamera();
-	    Vec3 cameraPos = camera.getPosition();
-	    
-	    // 2. setup start and end position
-	    Vec3 start = Vec3.atCenterOf(startPos).subtract(cameraPos);
-	    Vec3 end = Vec3.atCenterOf(endPos).subtract(cameraPos);
+        // Subtract camera position to convert block positions to camera-relative space.
+        Vec3 start = Vec3.atCenterOf(startPos).subtract(cameraPos);
+        Vec3 end = Vec3.atCenterOf(endPos).subtract(cameraPos);
 
 	    // 3. Draw line
 	    builder.vertex(matrix4f, (float)start.x, (float)start.y, (float)start.z)
