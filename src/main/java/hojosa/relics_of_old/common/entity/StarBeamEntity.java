@@ -72,9 +72,13 @@ public class StarBeamEntity extends Entity {
     		
     			this.level().addParticle(RelicsParticles.STAR_BEAM_GRIND_PATTICLES.get(), this.xo + offsetX, this.yo - 0.3, this.zo + offsetZ, 0.0D, 0.0D, 0.0D);
     		}
-	        if(!this.level().isClientSide && this.position().distanceToSqr(this.entityData.get(DATA_ID_TARGET_POS).getCenter()) < 0.15 && !getNextTarget(this.entityData.get(DATA_ID_TARGET_POS))) {
-		        	this.discard();
-	        }   
+	        if(!this.level().isClientSide && this.position().distanceToSqr(this.entityData.get(DATA_ID_TARGET_POS).getCenter()) < 0.15) {
+	            BlockPos target = this.entityData.get(DATA_ID_TARGET_POS);
+	            this.setPos(target.getCenter().x, target.getCenter().y, target.getCenter().z);
+	            if(!getNextTarget(target)) {
+	                this.discard();
+	            }
+	        }
 	    }
 	    
 	    @Override
@@ -82,9 +86,18 @@ public class StarBeamEntity extends Entity {
 	    	return false;
 	    }
 	    
+	    @Override
+	    public double getPassengersRidingOffset() {
+	    	return 0.3f;
+	    }
+	    
 	    private boolean getNextTarget(BlockPos checkPoint) {
 	    	int radius = 6;
-	    	Optional<BlockPos> matchingPos = BlockPos.withinManhattanStream(checkPoint, radius, radius, radius).filter(pos -> level().getBlockState(pos).getBlock() instanceof StarBeamTorch && !pos.equals(checkPoint) && !pos.equals(this.getStartPos())).findFirst();
+	    	Optional<BlockPos> matchingPos = BlockPos.withinManhattanStream(checkPoint, radius, radius, radius)
+	    			.filter(pos -> level().getBlockState(pos).getBlock() instanceof StarBeamTorch 
+	    					&& !pos.equals(checkPoint) 
+	    					&& !pos.equals(this.getStartPos()))
+	    			.findFirst();
 	    	if(matchingPos.isEmpty()) {
 	    		return false;
 	    	}
@@ -100,11 +113,13 @@ public class StarBeamEntity extends Entity {
 	    
 	    //calc the motion vector to travel from startPos to targetPos
 	    private void calcMotionVec() {
-	    	this.setMotion(new Vector3f(
-		    	this.getTargetPos().getX() - this.getStartPos().getX(),
-		    	this.getTargetPos().getY() - this.getStartPos().getY(),
-		    	this.getTargetPos().getZ() - this.getStartPos().getZ()
-	    	).normalize().mul(0.25f));
+	    	Vec3 start = this.getStartPos().getCenter();
+	        Vec3 target = this.getTargetPos().getCenter();
+	        this.setMotion(new Vector3f(
+	            (float)(target.x - start.x),
+	            (float)(target.y - start.y),
+	            (float)(target.z - start.z)
+	        ).normalize().mul(0.25f));
 	    }
 	    
 	    private boolean hasClearPath(Level level, Vec3 start, Vec3 end) {
