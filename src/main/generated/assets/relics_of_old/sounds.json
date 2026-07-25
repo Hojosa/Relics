@@ -5,6 +5,18 @@
     ],
     "subtitle": "relics_of_old.subtitle.emerald_pickup"
   },
+  "emerald_piece_pickup": {
+    "sounds": [
+      "relics_of_old:emerald_piece_pickup"
+    ],
+    "subtitle": "relics_of_old.subtitle.emerald_piece_pickup"
+  },
+  "emerald_shard_pickup": {
+    "sounds": [
+      "relics_of_old:emerald_shard_pickup"
+    ],
+    "subtitle": "relics_of_old.subtitle.emerald_shard_pickup"
+  },
   "fancy_sword_place": {
     "sounds": [
       "relics_of_old:fancy_sword_place"

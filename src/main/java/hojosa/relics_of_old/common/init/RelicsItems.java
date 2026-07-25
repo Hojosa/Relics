@@ -1,5 +1,6 @@
 package hojosa.relics_of_old.common.init;
 
+import hojosa.relics_of_old.common.item.EmeraldPiece;
 import hojosa.relics_of_old.common.item.EmeraldShard;
 import hojosa.relics_of_old.common.item.FireTablet;
 import hojosa.relics_of_old.common.item.FlameSword;
@@ -43,7 +44,7 @@ public class RelicsItems {
 	public static final RegistryObject<RelicsItem> PHOENIX_FEATHER = ITEMS.register(References.UnlocalizedName.PHOENIX_FEATHER,
 			() -> new InfusedItem(new Item.Properties().stacksTo(64).rarity(Rarity.RARE).fireResistant()));
 	public static final RegistryObject<RelicsItem> EMERALD_SHARD = ITEMS.register(References.UnlocalizedName.EMERALD_SHARD, EmeraldShard::new);
-	public static final RegistryObject<RelicsItem> EMERALD_PIECE = ITEMS.register(References.UnlocalizedName.EMERALD_PIECE, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> EMERALD_PIECE = ITEMS.register(References.UnlocalizedName.EMERALD_PIECE, EmeraldPiece::new);
 	public static final RegistryObject<RelicsItem> HEART = ITEMS.register(References.UnlocalizedName.HEART, Heart::new);
 	public static final RegistryObject<RelicsItem> TOTEM_DUST = ITEMS.register(References.UnlocalizedName.TOTEM_DUST, () -> new RelicsItem(64, Rarity.UNCOMMON));
 	public static final RegistryObject<LostPage> LOST_PAGE_1 = ITEMS.register(References.UnlocalizedName.LOST_PAGE_1, () -> new LostPage(1, References.LostPagesText.LOST_PAGE_1));
