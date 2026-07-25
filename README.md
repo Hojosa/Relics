@@ -17,3 +17,7 @@ Emerald Piece/Shard, all falling star related textures (star piece, dust, stone,
 
 Big thanks to gigaherz for the .obj model handle <br/>
 Thanks to MinecraftschurliMods for the ShapeUtil, which is based off <a href="https://github.com/mekanism/Mekanism/blob/1.20.x/src/main/java/mekanism/common/util/VoxelShapeUtils.java">Mekanism's VoxelShapeUtils</a>
+
+Code and assets from the original LegendGear mods are licensed under CC BY-NC-SA 4.0
+Originally creating LegendGear 1-2 (both licensed under CC BY-NC-SA 4.0) and making memories for a lot of players ~ NMcCoy
+Contacting NMcCoy for permissions and archiving the original source code ~ xJon [Link](https://github.com/xJon/LegendGear)
