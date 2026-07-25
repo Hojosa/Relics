@@ -153,5 +153,18 @@ public class RelicsGlobalLootModifiersProvider extends GlobalLootModifierProvide
 						.or(LootTableIdCondition.builder(BuiltInLootTables.SIMPLE_DUNGEON))
 						.or(LootTableIdCondition.builder(BuiltInLootTables.ABANDONED_MINESHAFT)).build() },
 						RelicsItems.LOST_PAGE_7.get()));
+		
+		add("mystic_seed_from_loot_chest",
+				new AddItemModifier(new LootItemCondition[] { 
+						LootItemRandomChanceCondition.randomChance(0.20f).build(),
+						LootTableIdCondition.builder(BuiltInLootTables.JUNGLE_TEMPLE)
+						.or(LootTableIdCondition.builder(BuiltInLootTables.NETHER_BRIDGE))
+						.or(LootTableIdCondition.builder(BuiltInLootTables.VILLAGE_PLAINS_HOUSE))
+						.or(LootTableIdCondition.builder(BuiltInLootTables.SIMPLE_DUNGEON))
+						.or(LootTableIdCondition.builder(BuiltInLootTables.JUNGLE_TEMPLE_DISPENSER))
+						.or(LootTableIdCondition.builder(BuiltInLootTables.DESERT_WELL_ARCHAEOLOGY))
+						.or(LootTableIdCondition.builder(BuiltInLootTables.SNIFFER_DIGGING))
+						.or(LootTableIdCondition.builder(BuiltInLootTables.ABANDONED_MINESHAFT)).build() },
+						RelicsItems.MYSTIC_SEED.get()));
 	}
 }
