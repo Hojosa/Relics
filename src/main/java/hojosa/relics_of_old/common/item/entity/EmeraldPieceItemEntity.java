@@ -3,7 +3,6 @@ package hojosa.relics_of_old.common.item.entity;
 import hojosa.relics_of_old.common.init.RelicsSounds;
 import net.minecraft.network.protocol.game.ClientboundSoundEntityPacket;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -26,5 +25,4 @@ public class EmeraldPieceItemEntity extends ItemEntity {
 			}
 		}
 	}
-	
 }
