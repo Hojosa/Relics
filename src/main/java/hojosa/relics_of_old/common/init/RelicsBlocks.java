@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
 
 import hojosa.relics_of_old.common.block.InfusedStarstoneBlock;
+import hojosa.relics_of_old.common.block.MysticShrub;
 import hojosa.relics_of_old.common.block.NormalSwordPedestal;
 import hojosa.relics_of_old.common.block.RelicRetexturedSwordPedestal;
 import hojosa.relics_of_old.common.block.RelicSwordPedestal;
@@ -77,6 +78,8 @@ public class RelicsBlocks {
 
 	public static final ItemObject<Block> STARBEAM_TORCH = BLOCKS.register(References.UnlocalizedName.STARBEAM_TORCH,
 			() -> new StarBeamTorch(BlockBehaviour.Properties.copy(Blocks.TORCH).lightLevel(value -> 15)), BLOCK_ITEM);
+	
+	public static final ItemObject<Block> MYSTIC_SHRUB = BLOCKS.register(References.UnlocalizedName.MYSTIC_SHRUB, () -> new MysticShrub(), BLOCK_ITEM);
 
 
 	/**
@@ -106,6 +109,7 @@ public class RelicsBlocks {
 		output.accept(STARSTONE_BLOCK.get().asItem());
 		output.accept(INFUSED_STARSTONE_BLOCK.get().asItem());
 		output.accept(STARBEAM_TORCH.get().asItem());
+		output.accept(MYSTIC_SHRUB.get().asItem());
 
 		Predicate<ItemStack> variants = stack -> {
 			output.accept(stack);

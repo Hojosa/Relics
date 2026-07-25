@@ -8,16 +8,23 @@ import java.util.Map;
 import java.util.Random;
 
 import hojosa.relics_of_old.Relics;
+import hojosa.relics_of_old.common.block.MysticShrub;
+import hojosa.relics_of_old.common.block.MysticShrub.ShrubState;
+import hojosa.relics_of_old.common.init.RelicsBlocks;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.Cat;
 import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -25,6 +32,7 @@ public class RelicsUtil {
 	static Random random = new Random();
 	private static final Map<Block, List<Block>> BLOCK_CYCLES = new HashMap<>();
 
+	@Deprecated // use ResourceLocation.withDefaultNamespace isntead
 	public static ResourceLocation mcLoc(String path) {
 		return ResourceLocation.fromNamespaceAndPath(ResourceLocation.DEFAULT_NAMESPACE, path);
 	}
@@ -136,4 +144,43 @@ public class RelicsUtil {
 			Relics.LOGGER.error("error or mob without variant when trying to get method for " + animal + ": " + e);
 		}
 	}
+
+	public static boolean putShrub(LevelAccessor level, BlockPos pos, boolean charged) {
+		BlockState state = RelicsBlocks.MYSTIC_SHRUB.get().defaultBlockState().setValue(MysticShrub.STATE, charged ? ShrubState.CHARGED : ShrubState.NORMAL);
+		if (level.getBlockState(pos).isAir() && level.getBlockState(pos.below()).is(BlockTags.DIRT)) {
+			level.setBlock(pos, state, 3);
+			return true;
+		}
+		return false;
+	}
+
+	public static void buildShrubStar(LevelAccessor level, BlockPos center, boolean charged) {
+		// inner cross (distance 1)
+		putShrub(level, center.offset(-1, 0, 0), charged);
+		putShrub(level, center.offset(1, 0, 0), charged);
+		putShrub(level, center.offset(0, 0, -1), charged);
+		putShrub(level, center.offset(0, 0, 1), charged);
+		// outer cross (distance 3)
+		putShrub(level, center.offset(-3, 0, 0), charged);
+		putShrub(level, center.offset(3, 0, 0), charged);
+		putShrub(level, center.offset(0, 0, -3), charged);
+		putShrub(level, center.offset(0, 0, 3), charged);
+		// diagonals (distance 2)
+		putShrub(level, center.offset(-2, 0, -2), charged);
+		putShrub(level, center.offset(2, 0, -2), charged);
+		putShrub(level, center.offset(2, 0, 2), charged);
+		putShrub(level, center.offset(-2, 0, 2), charged);
+	}
+
+	public static void buildClump(LevelAccessor level, BlockPos center, boolean charged) {
+		putShrub(level, center.offset(0, 0, 1), charged);
+		putShrub(level, center.offset(1, 0, 1), charged);
+		for (int i = -1; i < 3; i++)
+			putShrub(level, center.offset(i, 0, 0), charged);
+		for (int i = -1; i < 3; i++)
+			putShrub(level, center.offset(i, 0, -1), charged);
+		putShrub(level, center.offset(0, 0, -2), charged);
+		putShrub(level, center.offset(1, 0, -2), charged);
+	}
+
 }

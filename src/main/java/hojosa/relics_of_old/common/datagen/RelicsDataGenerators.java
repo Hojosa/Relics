@@ -15,6 +15,7 @@ import hojosa.relics_of_old.common.datagen.providers.RelicsLootTables;
 import hojosa.relics_of_old.common.datagen.providers.RelicsParticleDescriptionProvider;
 import hojosa.relics_of_old.common.datagen.providers.RelicsRecipesProvider;
 import hojosa.relics_of_old.common.datagen.providers.RelicsSoundsProvider;
+import hojosa.relics_of_old.common.datagen.providers.RelicsWorldGenProvider;
 import hojosa.relics_of_old.lib.References;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -53,5 +54,6 @@ public class RelicsDataGenerators {
 		generator.addProvider(event.includeClient(), new RelicsItemModelProvider(packOutput, existingFileHelper));
 		generator.addProvider(event.includeServer(), new ForgeAdvancementProvider(packOutput, lookupProvider, existingFileHelper, List.of(new RelicAdvancementProvider())));
 		generator.addProvider(event.includeServer(), new RelicsBiomeTagsProvider(packOutput, lookupProvider, existingFileHelper));
+		generator.addProvider(event.includeServer(), new RelicsWorldGenProvider(packOutput, lookupProvider));
 	}
 }

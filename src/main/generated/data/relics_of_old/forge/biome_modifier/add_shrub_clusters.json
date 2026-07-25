@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#relics_of_old:has_feature/mystic_shrub",
+  "features": "relics_of_old:shrub_cluster_placed",
+  "step": "vegetal_decoration"
+}

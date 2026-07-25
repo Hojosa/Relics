@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "state=charged": {
+      "model": "relics_of_old:block/mystic_shrub_charged"
+    },
+    "state=normal": {
+      "model": "relics_of_old:block/mystic_shrub"
+    },
+    "state=stump": {
+      "model": "relics_of_old:block/mystic_shrub_stump"
+    }
+  }
+}

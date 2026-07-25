@@ -27,6 +27,7 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		withExistingParent(RelicsBlocks.STARSTONE_BLOCK);
 		withExistingParent(RelicsBlocks.INFUSED_STARSTONE_BLOCK);
 		withExistingParent(RelicsBlocks.STARBEAM_TORCH);
+		withExistingParent(RelicsBlocks.MYSTIC_SHRUB);
 		basicItem(RelicsItems.STAR_PIECE);
 		basicItem(RelicsItems.STAR_DUST);
 		basicItem(RelicsItems.STAR_STONE);
@@ -51,11 +52,12 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItem(RelicsItems.LOST_PAGE_7);
 		basicItem(RelicsItems.MAGIC_POWDER);
 		basicItem(RelicsItems.BLANK_TABLET);
+		basicItem(RelicsItems.MYSTIC_SEED);
+		mysticSeed(RelicsItems.MYSTIC_SEED);
 	}
 
 	private ItemModelBuilder infusedItem(RegistryObject<RelicsItem> item, RegistryObject<RelicsItem> parent) {
-		return getBuilder(item.getId().toString()).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0",
-				new ResourceLocation(item.getId().getNamespace(), "item/" + parent.getId().getPath()));
+		return getBuilder(item.getId().toString()).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", ResourceLocation.fromNamespaceAndPath(item.getId().getNamespace(), "item/" + parent.getId().getPath()));
 	}
 
 	private void withExistingParent(ItemObject<Block> itemRef) {
@@ -64,5 +66,14 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 
 	private void basicItem(RegistryObject<? extends Item> itemRef) {
 		basicItem(itemRef.getId());
+	}
+
+	private void mysticSeed(RegistryObject<? extends Item> itemRef) {
+		// charged variant
+		getBuilder(itemRef.getId().getPath() + "_charged").parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", modLoc("item/mystic_seed_charged"));
+
+		// base model with override
+		getBuilder(itemRef.getId().toString()).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", modLoc("item/mystic_seed")).override().predicate(modLoc("thundering"), 1.0f)
+				.model(new ModelFile.UncheckedModelFile(modLoc("item/mystic_seed_charged"))).end();
 	}
 }

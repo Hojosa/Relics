@@ -10,6 +10,7 @@ import hojosa.relics_of_old.common.item.InfusedItem;
 import hojosa.relics_of_old.common.item.LostPage;
 import hojosa.relics_of_old.common.item.MagicPowder;
 import hojosa.relics_of_old.common.item.MasterSword;
+import hojosa.relics_of_old.common.item.MysticSeed;
 import hojosa.relics_of_old.common.item.RelicsItem;
 import hojosa.relics_of_old.common.item.WaterTablet;
 import hojosa.relics_of_old.lib.References;
@@ -55,6 +56,7 @@ public class RelicsItems {
 	public static final RegistryObject<LostPage> LOST_PAGE_6 = ITEMS.register(References.UnlocalizedName.LOST_PAGE_6, () -> new LostPage(1, References.LostPagesText.LOST_PAGE_6));
 	public static final RegistryObject<LostPage> LOST_PAGE_7 = ITEMS.register(References.UnlocalizedName.LOST_PAGE_7, () -> new LostPage(1, References.LostPagesText.LOST_PAGE_7));
 	public static final RegistryObject<MagicPowder> MAGIC_POWDER = ITEMS.register(References.UnlocalizedName.MAGIC_POWDER, MagicPowder::new);
+	public static final RegistryObject<MysticSeed> MYSTIC_SEED = ITEMS.register(References.UnlocalizedName.MYSTIC_SEED, () -> new MysticSeed(RelicsBlocks.MYSTIC_SHRUB.get()));
 
 	public static void addTabItems(ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
 		RelicsItems.ITEMS.getEntries().forEach(itemRegistryObject -> output.accept(new ItemStack(itemRegistryObject.get())));

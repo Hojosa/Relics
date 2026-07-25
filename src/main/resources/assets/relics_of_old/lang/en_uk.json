@@ -13,6 +13,7 @@
 	"block.relics_of_old.skybeam_block": "Skybeam Block",
 	"block.relics_of_old.oddish_pot": "Planted Weed?",
 	"block.relics_of_old.star_beam_torch": "Star Beam Torch",
+	"block.relics_of_old.mystic_shrub": "Mystic Shrub",
 	"item.relics_of_old.flame_sword": "Flame Sword",
 	"item.relics_of_old.master_sword": "Master Sword",
 	"item.relics_of_old.clay_blue": "Blue Clay",
@@ -37,5 +38,6 @@
 	"item.relics_of_old.lost_page_3": "Lost Page 3",
 	"item.relics_of_old.lost_page_4": "Lost Page 4",
 	"item.relics_of_old.lost_page_5": "Lost Page 5",
-	"item.relics_of_old.lost_page_6": "Lost Page 6"
+	"item.relics_of_old.lost_page_6": "Lost Page 6",
+	"item.relics_of_old.mystic_seed": "Mystic Seed"
 }

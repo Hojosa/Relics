@@ -10,6 +10,7 @@ import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.BiomeTagsProvider;
 import net.minecraft.tags.BiomeTags;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class RelicsBiomeTagsProvider extends BiomeTagsProvider{
@@ -22,6 +23,7 @@ public class RelicsBiomeTagsProvider extends BiomeTagsProvider{
 	protected void addTags(Provider pProvider) {
 		tag(RelicsTags.Biomes.HasStructure.PEDESTAL_TIME).addTags(BiomeTags.IS_FOREST);
 		tag(RelicsTags.Biomes.HasStructure.PEDESTAL_TWILIGHT).addTags(BiomeTags.IS_FOREST);
+		tag(RelicsTags.Biomes.HasFeature.MYSTIC_SHRUB).addTags(BiomeTags.IS_FOREST, Tags.Biomes.IS_PLAINS);
 	}
 
 	@Override
