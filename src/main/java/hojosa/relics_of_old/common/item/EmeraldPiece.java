@@ -3,6 +3,7 @@ package hojosa.relics_of_old.common.item;
 import org.jetbrains.annotations.Nullable;
 
 import hojosa.relics_of_old.common.item.entity.EmeraldPieceItemEntity;
+import hojosa.relics_of_old.lib.item.RelicsItem;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;

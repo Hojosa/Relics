@@ -2,8 +2,8 @@ package hojosa.relics_of_old.common.datagen.providers;
 
 import hojosa.relics_of_old.common.init.RelicsBlocks;
 import hojosa.relics_of_old.common.init.RelicsItems;
-import hojosa.relics_of_old.common.item.RelicsItem;
 import hojosa.relics_of_old.lib.References;
+import hojosa.relics_of_old.lib.item.RelicsItem;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -56,6 +56,7 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItem(RelicsItems.MYSTIC_SEED);
 		mysticSeed(RelicsItems.MYSTIC_SEED);
 		basicItem(RelicsBlocks.CALTROPS.asItem());
+		basicItem(RelicsItems.MILK_CHOCOLATE);
 	}
 
 	private ItemModelBuilder infusedItem(RegistryObject<RelicsItem> item, RegistryObject<RelicsItem> parent) {

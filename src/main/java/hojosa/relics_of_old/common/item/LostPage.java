@@ -3,6 +3,7 @@ package hojosa.relics_of_old.common.item;
 import java.util.List;
 
 import hojosa.relics_of_old.lib.RelicsUtil;
+import hojosa.relics_of_old.lib.item.RelicsItem;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.network.chat.Component;

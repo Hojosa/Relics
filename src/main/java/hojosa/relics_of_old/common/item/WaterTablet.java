@@ -2,6 +2,7 @@ package hojosa.relics_of_old.common.item;
 
 import javax.annotation.Nullable;
 
+import hojosa.relics_of_old.lib.item.RelicsItem;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;

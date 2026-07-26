@@ -1,4 +1,4 @@
-package hojosa.relics_of_old.common.item;
+package hojosa.relics_of_old.lib.item;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -10,6 +10,10 @@ public class RelicsItem extends Item {
 
 	public RelicsItem(int stackSize) {
 		super(getInitProperties(stackSize));
+	}
+	
+	public RelicsItem() {
+		super(getInitProperties(64));
 	}
 
 	public RelicsItem(Properties properties) {

@@ -4,6 +4,7 @@ import java.util.Random;
 
 import hojosa.relics_of_old.common.init.RelicsSounds;
 import hojosa.relics_of_old.lib.RelicsUtil;
+import hojosa.relics_of_old.lib.item.RelicsItem;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;

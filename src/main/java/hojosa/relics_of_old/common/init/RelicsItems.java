@@ -8,12 +8,13 @@ import hojosa.relics_of_old.common.item.Heart;
 import hojosa.relics_of_old.common.item.LostPage;
 import hojosa.relics_of_old.common.item.MagicPowder;
 import hojosa.relics_of_old.common.item.MasterSword;
+import hojosa.relics_of_old.common.item.MilkChocolate;
 import hojosa.relics_of_old.common.item.MysticSeed;
-import hojosa.relics_of_old.common.item.RelicsItem;
 import hojosa.relics_of_old.common.item.WaterTablet;
 import hojosa.relics_of_old.lib.References;
 import hojosa.relics_of_old.lib.item.InfuseableItem;
 import hojosa.relics_of_old.lib.item.InfusedItem;
+import hojosa.relics_of_old.lib.item.RelicsItem;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import net.minecraft.world.item.CreativeModeTab;
@@ -57,6 +58,7 @@ public class RelicsItems {
 	public static final RegistryObject<LostPage> LOST_PAGE_7 = ITEMS.register(References.UnlocalizedName.LOST_PAGE_7, () -> new LostPage(1, References.LostPagesText.LOST_PAGE_7));
 	public static final RegistryObject<MagicPowder> MAGIC_POWDER = ITEMS.register(References.UnlocalizedName.MAGIC_POWDER, MagicPowder::new);
 	public static final RegistryObject<MysticSeed> MYSTIC_SEED = ITEMS.register(References.UnlocalizedName.MYSTIC_SEED, () -> new MysticSeed(RelicsBlocks.MYSTIC_SHRUB.get()));
+	public static final RegistryObject<MilkChocolate> MILK_CHOCOLATE = ITEMS.register(References.UnlocalizedName.MILK_CHOCOLATE, MilkChocolate::new);
 
 	public static void addTabItems(ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
 		RelicsItems.ITEMS.getEntries().forEach(itemRegistryObject -> output.accept(new ItemStack(itemRegistryObject.get())));

@@ -1,5 +1,6 @@
 package hojosa.relics_of_old.common.item;
 
+import hojosa.relics_of_old.lib.item.RelicsItem;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;

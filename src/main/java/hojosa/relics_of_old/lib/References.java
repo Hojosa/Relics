@@ -62,6 +62,7 @@ public class References {
 		public static final String MYSTIC_SEED = "mystic_seed";
 		public static final String CALTROPS = "caltrops";
 		public static final String HEART = "heart";
+		public static final String MILK_CHOCOLATE = "milk_chocolate";
 	}
 	
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

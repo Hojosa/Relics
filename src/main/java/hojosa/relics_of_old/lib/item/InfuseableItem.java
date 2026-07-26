@@ -3,7 +3,6 @@ package hojosa.relics_of_old.lib.item;
 import java.util.List;
 
 import hojosa.relics_of_old.common.init.RelicsSounds;
-import hojosa.relics_of_old.common.item.RelicsItem;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
