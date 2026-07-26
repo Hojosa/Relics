@@ -25,4 +25,7 @@ public class RelicsParticles {
 	
 	public static final RegistryObject<SimpleParticleType> SPARKLE_PARTICLES = 
 			PARTICLE_TYPES.register(References.UnlocalizedName.SPARKLE_PATTICLES, () -> new SimpleParticleType(true));
+
+	public static final RegistryObject<SimpleParticleType> RUNE_PARTICLE = 
+			PARTICLE_TYPES.register(References.UnlocalizedName.RUNE_PARTICLE, () -> new SimpleParticleType(true));
 }

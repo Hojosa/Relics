@@ -12,6 +12,7 @@ import hojosa.relics_of_old.common.init.RelicsConfig;
 import hojosa.relics_of_old.common.init.RelicsCreativeModeTabs;
 import hojosa.relics_of_old.common.init.RelicsEntities;
 import hojosa.relics_of_old.common.init.RelicsFeatures;
+import hojosa.relics_of_old.common.init.RelicsItemProperties;
 import hojosa.relics_of_old.common.init.RelicsItems;
 import hojosa.relics_of_old.common.init.RelicsSounds;
 import hojosa.relics_of_old.common.loot.RelicsGlobalLootModifier;
@@ -21,8 +22,6 @@ import hojosa.relics_of_old.lib.References;
 import hojosa.relics_of_old.lib.RelicsUtil;
 import hojosa.relics_of_old.lib.recipe.StonecutterRetexturedRecipe;
 import hojosa.relics_of_old.network.RelicsNetwork;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -68,13 +67,7 @@ public class Relics {
 	}
 
 	private void clientSetupEvent(final FMLClientSetupEvent event) {
-		event.enqueueWork(() -> {
-	          ItemProperties.register(RelicsItems.MYSTIC_SEED.get(), RelicsUtil.modLoc("thundering"),
-	              (stack, level, entity, seed) -> {
-	                  if (level == null) level = Minecraft.getInstance().level;
-	                  return level != null && level.isThundering() ? 1.0f : 0.0f;
-	              });
-	      });
+		event.enqueueWork(RelicsItemProperties::setupItemProperties);      
 	}
 
 	private void setup(final FMLCommonSetupEvent event) {

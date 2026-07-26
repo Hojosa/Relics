@@ -68,6 +68,12 @@
     ],
     "subtitle": "relics_of_old.subtitle.revive"
   },
+  "sine": {
+    "sounds": [
+      "relics_of_old:sine"
+    ],
+    "subtitle": "relics_of_old.subtitle.sine"
+  },
   "sprinkle": {
     "sounds": [
       "relics_of_old:sprinkle",

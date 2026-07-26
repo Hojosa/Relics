@@ -64,6 +64,8 @@ public class References {
 		public static final String HEART = "heart";
 		public static final String MILK_CHOCOLATE = "milk_chocolate";
 		public static final String SPARKLE_PATTICLES = "sparkle_particle";
+		public static final String MAGIC_MIRROR = "magic_mirror";
+		public static final String RUNE_PARTICLE = "";
 	}
 	
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -88,6 +90,7 @@ public class References {
 		public static final String ITEM_GET = "item_get";
 		public static final String TRANSFORM = "transform";
 		public static final String SPRINKLE = "sprinkle";
+		public static final String SINE = "sine";
 		
 	}
 	

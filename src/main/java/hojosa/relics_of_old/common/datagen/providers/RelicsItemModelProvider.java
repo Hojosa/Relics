@@ -7,6 +7,7 @@ import hojosa.relics_of_old.lib.item.RelicsItem;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
@@ -53,10 +54,49 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItem(RelicsItems.LOST_PAGE_7);
 		basicItem(RelicsItems.MAGIC_POWDER);
 		basicItem(RelicsItems.BLANK_TABLET);
-		basicItem(RelicsItems.MYSTIC_SEED);
-		mysticSeed(RelicsItems.MYSTIC_SEED);
+		itemWithOverride(RelicsItems.MYSTIC_SEED, "thundering", "charged");
 		basicItem(RelicsBlocks.CALTROPS.asItem());
 		basicItem(RelicsItems.MILK_CHOCOLATE);
+//		itemWithOverride(RelicsItems.MAGIC_MIRROR, "active", "lit");
+		
+		//magic mirror model
+		//models for the in use animation
+		for (int i = 0; i < 4; i++) {
+		      getBuilder("magic_mirror_use_" + i)
+		          .parent(new ModelFile.UncheckedModelFile("item/generated"))
+		          .texture("layer0", modLoc("item/magic_mirror_use_" + i));
+		  }
+		
+		// lit model
+		getBuilder("magic_mirror_lit")
+			.parent(new ModelFile.UncheckedModelFile("item/generated"))
+		    .texture("layer0", modLoc("item/magic_mirror_lit"));
+		  
+		// base model with all overrides
+		getBuilder(RelicsItems.MAGIC_MIRROR.getId().toString())
+			.parent(new ModelFile.UncheckedModelFile("item/generated"))
+			.texture("layer0", modLoc("item/magic_mirror"))
+			.transforms()
+	          .transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND)
+	              .rotation(0, 0, 55)
+	              .translation(0, 4, 2)
+	              .scale(0.85f)
+	              .end()
+	          .transform(ItemDisplayContext.THIRD_PERSON_LEFT_HAND)
+	              .rotation(0, 0, -55)
+	              .translation(0, 4, 2)
+	              .scale(0.85f)
+	              .end().end()
+			.override().predicate(modLoc("active"), 1.0f)
+				.model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_lit"))).end()
+			.override().predicate(modLoc("using"), 0.25f)
+				.model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_use_0"))).end()
+			.override().predicate(modLoc("using"), 0.5f)
+				.model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_use_1"))).end()
+			.override().predicate(modLoc("using"), 0.75f)
+				.model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_use_2"))).end()
+			.override().predicate(modLoc("using"), 1.0f)
+				.model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_use_3"))).end();
 	}
 
 	private ItemModelBuilder infusedItem(RegistryObject<RelicsItem> item, RegistryObject<RelicsItem> parent) {
@@ -71,12 +111,16 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItem(itemRef.getId());
 	}
 
-	private void mysticSeed(RegistryObject<? extends Item> itemRef) {
-		// charged variant
-		getBuilder(itemRef.getId().getPath() + "_charged").parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", modLoc("item/mystic_seed_charged"));
+	private void itemWithOverride(RegistryObject<? extends Item> itemRef, String predicate, String variantSuffix) {
+		// variant model
+		getBuilder(itemRef.getId().getPath() + "_" + variantSuffix)
+		.parent(new ModelFile.UncheckedModelFile("item/generated"))
+		.texture("layer0", modLoc("item/" + itemRef.getId().getPath() + "_" + variantSuffix));
 
 		// base model with override
-		getBuilder(itemRef.getId().toString()).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", modLoc("item/mystic_seed")).override().predicate(modLoc("thundering"), 1.0f)
-				.model(new ModelFile.UncheckedModelFile(modLoc("item/mystic_seed_charged"))).end();
+		getBuilder(itemRef.getId().toString()).parent(new ModelFile.UncheckedModelFile("item/generated"))
+		.texture("layer0", modLoc("item/" + itemRef.getId().getPath())).override()
+		.predicate(modLoc(predicate), 1.0f)
+		.model(new ModelFile.UncheckedModelFile(modLoc("item/" + itemRef.getId().getPath() + "_" + variantSuffix))).end();
 	}
 }

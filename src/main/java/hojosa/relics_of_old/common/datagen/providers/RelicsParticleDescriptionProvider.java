@@ -1,5 +1,7 @@
 package hojosa.relics_of_old.common.datagen.providers;
 
+import java.util.stream.IntStream;
+
 import hojosa.relics_of_old.client.particle.RelicsParticles;
 import hojosa.relics_of_old.lib.RelicsUtil;
 import net.minecraft.data.PackOutput;
@@ -19,6 +21,9 @@ public class RelicsParticleDescriptionProvider extends ParticleDescriptionProvid
 		sprite(RelicsParticles.STAR_BEAM_TORCH_PATTICLES.get(), RelicsUtil.modLoc("star_dust"));
 		sprite(RelicsParticles.STAR_BEAM_GRIND_PATTICLES.get(), RelicsUtil.modLoc("star_dust"));
 		sprite(RelicsParticles.SPARKLE_PARTICLES.get(), ResourceLocation.withDefaultNamespace("spell_5"));
+		spriteSet(RelicsParticles.RUNE_PARTICLE.get(), IntStream.rangeClosed('a', 'z')
+				.mapToObj(c -> ResourceLocation.withDefaultNamespace("sga_" + (char) c))
+				.toList());
 	}
 	
 	@Override

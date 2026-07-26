@@ -6,6 +6,7 @@ import hojosa.relics_of_old.common.item.FireTablet;
 import hojosa.relics_of_old.common.item.FlameSword;
 import hojosa.relics_of_old.common.item.Heart;
 import hojosa.relics_of_old.common.item.LostPage;
+import hojosa.relics_of_old.common.item.MagicMirror;
 import hojosa.relics_of_old.common.item.MagicPowder;
 import hojosa.relics_of_old.common.item.MasterSword;
 import hojosa.relics_of_old.common.item.MilkChocolate;
@@ -59,6 +60,7 @@ public class RelicsItems {
 	public static final RegistryObject<MagicPowder> MAGIC_POWDER = ITEMS.register(References.UnlocalizedName.MAGIC_POWDER, MagicPowder::new);
 	public static final RegistryObject<MysticSeed> MYSTIC_SEED = ITEMS.register(References.UnlocalizedName.MYSTIC_SEED, () -> new MysticSeed(RelicsBlocks.MYSTIC_SHRUB.get()));
 	public static final RegistryObject<MilkChocolate> MILK_CHOCOLATE = ITEMS.register(References.UnlocalizedName.MILK_CHOCOLATE, MilkChocolate::new);
+	public static final RegistryObject<MagicMirror> MAGIC_MIRROR = ITEMS.register(References.UnlocalizedName.MAGIC_MIRROR, MagicMirror::new);
 
 	public static void addTabItems(ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
 		RelicsItems.ITEMS.getEntries().forEach(itemRegistryObject -> output.accept(new ItemStack(itemRegistryObject.get())));
