@@ -62,17 +62,18 @@
     ],
     "subtitle": "relics_of_old.subtitle.magic_crafting"
   },
-  "magic_powder": {
-    "sounds": [
-      "relics_of_old:magic_powder"
-    ],
-    "subtitle": "relics_of_old.subtitle.magic_powder"
-  },
   "revive": {
     "sounds": [
       "relics_of_old:revive"
     ],
     "subtitle": "relics_of_old.subtitle.revive"
+  },
+  "sprinkle": {
+    "sounds": [
+      "relics_of_old:sprinkle",
+      "relics_of_old:sprinkle2"
+    ],
+    "subtitle": "relics_of_old.subtitle.sprinkle"
   },
   "star_caught": {
     "sounds": [
@@ -121,5 +122,11 @@
       "relics_of_old:sword_place_fancy"
     ],
     "subtitle": "relics_of_old.subtitle.sword_place_fancy"
+  },
+  "transform": {
+    "sounds": [
+      "relics_of_old:transform"
+    ],
+    "subtitle": "relics_of_old.subtitle.transform"
   }
 }

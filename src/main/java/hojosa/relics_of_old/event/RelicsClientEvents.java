@@ -2,6 +2,7 @@ package hojosa.relics_of_old.event;
 
 import hojosa.relics_of_old.client.particle.CustomParticle;
 import hojosa.relics_of_old.client.particle.RelicsParticles;
+import hojosa.relics_of_old.client.particle.SparkleParticle;
 import hojosa.relics_of_old.client.particle.StarBeamGrindParticle;
 import hojosa.relics_of_old.client.particle.StarBeamTorchParticle;
 import hojosa.relics_of_old.client.render.FallingStarRenderer;
@@ -52,5 +53,6 @@ public class RelicsClientEvents {
     	event.registerSpriteSet(RelicsParticles.FLAME_PATTICLES.get(), CustomParticle.Provider::new);
     	event.registerSpriteSet(RelicsParticles.STAR_BEAM_TORCH_PATTICLES.get(), StarBeamTorchParticle.Provider::new);
     	event.registerSpriteSet(RelicsParticles.STAR_BEAM_GRIND_PATTICLES.get(), StarBeamGrindParticle.Provider::new);
+    	event.registerSpriteSet(RelicsParticles.SPARKLE_PARTICLES.get(), SparkleParticle.Provider::new);
     }
 }

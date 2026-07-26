@@ -2,6 +2,7 @@ package hojosa.relics_of_old.common.item;
 
 import java.util.Random;
 
+import hojosa.relics_of_old.client.particle.RelicsParticles;
 import hojosa.relics_of_old.common.init.RelicsSounds;
 import hojosa.relics_of_old.lib.RelicsUtil;
 import hojosa.relics_of_old.lib.item.RelicsItem;
@@ -27,23 +28,25 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class MagicPowder extends RelicsItem {
 	Random random = new Random();
+
 	public MagicPowder() {
 		super(64, Rarity.UNCOMMON);
 	}
 
 	@Override
 	public InteractionResult interactLivingEntity(ItemStack pStack, Player pPlayer, LivingEntity pInteractionTarget, InteractionHand pUsedHand) {
-		if(!pPlayer.level().isClientSide) {
-			//any animal with a variant is also an ageableMob, so we dont need to check them here
+		if (!pPlayer.level().isClientSide) {
+			// any animal with a variant is also an ageableMob, so we dont need to check
+			// them here
 			if (pInteractionTarget instanceof AgeableMob ageable) {
 				// Toggle age state
 				ageable.setBaby(!ageable.isBaby());
-				if(pInteractionTarget instanceof Animal animal) {
+				if (pInteractionTarget instanceof Animal animal) {
 					RelicsUtil.cycleMobVariant(animal);
 					return finishInteractionEntity(pPlayer, pUsedHand);
 				}
 				return finishInteractionEntity(pPlayer, pUsedHand);
-			}//todo, doesn work yet
+			} // todo, doesn work yet
 			if (pInteractionTarget instanceof Creeper crepper) {
 				crepper.getEntityData().set(Creeper.DATA_IS_POWERED, crepper.isPowered());
 				pPlayer.getItemInHand(pUsedHand).shrink(1);
@@ -61,41 +64,66 @@ public class MagicPowder extends RelicsItem {
 				return finishInteractionEntity(pPlayer, pUsedHand);
 			}
 		}
-		if(pInteractionTarget instanceof AgeableMob || pInteractionTarget instanceof Zombie || pInteractionTarget instanceof Creeper) {
-			pPlayer.level().playSound(pPlayer, pInteractionTarget.blockPosition(), RelicsSounds.MAGIC_POWDER.get(), SoundSource.BLOCKS);
+		if (pInteractionTarget instanceof AgeableMob || pInteractionTarget instanceof Zombie || pInteractionTarget instanceof Creeper) {
+			pPlayer.level().playSound(pPlayer, pInteractionTarget.blockPosition(), RelicsSounds.SPRINKLE.get(), SoundSource.PLAYERS, 0.2f, 1.0f);
+			pPlayer.level().playSound(pPlayer, pInteractionTarget.blockPosition(), RelicsSounds.TRANSFORM.get(), SoundSource.PLAYERS, 1.0f, 0.7f + random.nextFloat() * 0.5f);
 			pPlayer.level().addParticle(ParticleTypes.EXPLOSION, pInteractionTarget.getX(), pInteractionTarget.getY() + pInteractionTarget.getBbHeight() / 2, pInteractionTarget.getZ(), 0.0, 0.0, 0.0);
+			for (int i = 0; i < 20; i++)
+				pPlayer.level().addParticle(RelicsParticles.SPARKLE_PARTICLES.get(), pInteractionTarget.getX() + random.nextGaussian() * 0.5f, pInteractionTarget.getY() + random.nextGaussian() + 0.5f,
+						pInteractionTarget.getZ() + random.nextGaussian() * 0.5f, 0.0, -0.02f, 0.0);
 			return InteractionResult.SUCCESS;
 		}
 		return super.interactLivingEntity(pStack, pPlayer, pInteractionTarget, pUsedHand);
 	}
-	
+
 	@Override
 	public InteractionResult onItemUseFirst(ItemStack stack, UseOnContext context) {
-        // Get the clicked block and world
-        BlockState clickedBlock = context.getLevel().getBlockState(context.getClickedPos());
-        Level level = context.getLevel();
-        if(RelicsUtil.hasBlockToCycle(clickedBlock.getBlock())) {
-	        if(!level.isClientSide) {
-	        	Block newBlock = RelicsUtil.getNextBlock(clickedBlock.getBlock());
-	        	if(newBlock != Blocks.AIR) {
-	        		level.setBlockAndUpdate(context.getClickedPos(), newBlock.defaultBlockState());
-	        		if(!context.getPlayer().isCreative())
-	        			stack.shrink(1);
-	        		return InteractionResult.SUCCESS;
-	        	}
-	    		return super.onItemUseFirst(stack, context);
-	        }
-	        else {
-	        	level.playSound(context.getPlayer(), context.getClickedPos(), RelicsSounds.MAGIC_POWDER.get(), SoundSource.PLAYERS);
-	        	level.addParticle(ParticleTypes.EXPLOSION, context.getPlayer().getX(), context.getPlayer().getY() + context.getPlayer().getBbHeight() / 2, context.getPlayer().getZ(), 0.0, 0.0, 0.0);
-	        	return InteractionResult.SUCCESS;
-	        }
-        }
+		// Get the clicked block and world
+		BlockState clickedBlock = context.getLevel().getBlockState(context.getClickedPos());
+		Level level = context.getLevel();
+		if (RelicsUtil.hasBlockToCycle(clickedBlock.getBlock())) {
+			if (!level.isClientSide) {
+				Block newBlock = RelicsUtil.getNextBlock(clickedBlock.getBlock());
+				if (newBlock != Blocks.AIR) {
+					level.setBlockAndUpdate(context.getClickedPos(), newBlock.defaultBlockState());
+					if (!context.getPlayer().isCreative())
+						stack.shrink(1);
+					return InteractionResult.SUCCESS;
+				}
+				return super.onItemUseFirst(stack, context);
+			} else {
+				level.playSound(context.getPlayer(), context.getClickedPos(), RelicsSounds.SPRINKLE.get(), SoundSource.PLAYERS, 0.2f, 1.0f);
+				level.playSound(context.getPlayer(), context.getClickedPos(), RelicsSounds.TRANSFORM.get(), SoundSource.PLAYERS, 1.0f, 0.7f + random.nextFloat() * 0.5f);
+				level.addParticle(ParticleTypes.EXPLOSION, context.getClickedPos().getX() + 0.5, context.getClickedPos().getY() + 0.5, context.getClickedPos().getZ() + 0.5, 0.0, 0.0, 0.0);
+				level.addParticle(RelicsParticles.SPARKLE_PARTICLES.get(), context.getClickedPos().getX() + random.nextGaussian() * 0.5f, context.getClickedPos().getY() + random.nextGaussian() + 0.5f,
+						context.getClickedPos().getZ() + random.nextGaussian() * 0.5f, 0.0, -0.02f, 0.0);
+
+				return InteractionResult.SUCCESS;
+			}
+		}
+		if (RelicsUtil.hasStateToChange(clickedBlock)) {
+			if (!level.isClientSide) {
+				BlockState targetState = RelicsUtil.getTargetState(clickedBlock);
+				if (targetState != null) {
+					level.setBlockAndUpdate(context.getClickedPos(), targetState);
+					if (!context.getPlayer().isCreative())
+						stack.shrink(1);
+					return InteractionResult.SUCCESS;
+				}
+			} else {
+				level.playSound(context.getPlayer(), context.getClickedPos(), RelicsSounds.SPRINKLE.get(), SoundSource.PLAYERS, 0.2f, 1.0f);
+				level.playSound(context.getPlayer(), context.getClickedPos(), RelicsSounds.TRANSFORM.get(), SoundSource.PLAYERS, 1.0f, 0.7f + random.nextFloat() * 0.5f);
+				level.addParticle(ParticleTypes.EXPLOSION, context.getClickedPos().getX() + 0.5, context.getClickedPos().getY() + 0.5, context.getClickedPos().getZ() + 0.5, 0.0, 0.0, 0.0);
+				level.addParticle(RelicsParticles.SPARKLE_PARTICLES.get(), context.getClickedPos().getX() + random.nextGaussian() * 0.5f, context.getClickedPos().getY() + random.nextGaussian() + 0.5f,
+						context.getClickedPos().getZ() + random.nextGaussian() * 0.5f, 0.0, -0.02f, 0.0);
+				return InteractionResult.SUCCESS;
+			}
+		}
 		return super.onItemUseFirst(stack, context);
 	}
 
 	private static InteractionResult finishInteractionEntity(Player player, InteractionHand usedHand) {
-		if(!player.isCreative())
+		if (!player.isCreative())
 			player.getItemInHand(usedHand).shrink(1);
 		player.level().playSound(player, player.blockPosition(), RelicsSounds.INFUSE_SUCCESS.get(), SoundSource.BLOCKS);
 		return InteractionResult.SUCCESS;

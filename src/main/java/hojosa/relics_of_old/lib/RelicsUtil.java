@@ -31,8 +31,9 @@ import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
 public class RelicsUtil {
 	static Random random = new Random();
 	private static final Map<Block, List<Block>> BLOCK_CYCLES = new HashMap<>();
+	private static final Map<BlockState, BlockState> STATE_CHANGE = new HashMap<>();
 
-	@Deprecated // use ResourceLocation.withDefaultNamespace isntead
+	@Deprecated // use ResourceLocation.withDefaultNamespace instead
 	public static ResourceLocation mcLoc(String path) {
 		return ResourceLocation.fromNamespaceAndPath(ResourceLocation.DEFAULT_NAMESPACE, path);
 	}
@@ -79,7 +80,6 @@ public class RelicsUtil {
 	}
 
 	public static void setupBlockCycleMap() {
-
 		addCycle(Blocks.STONE_BRICKS, Blocks.MOSSY_STONE_BRICKS, Blocks.CRACKED_STONE_BRICKS);
 		addCycle(Blocks.SANDSTONE, Blocks.CHISELED_SANDSTONE, Blocks.CUT_SANDSTONE, Blocks.SMOOTH_SANDSTONE);
 		addCycle(Blocks.RED_SANDSTONE, Blocks.CHISELED_RED_SANDSTONE, Blocks.CUT_RED_SANDSTONE, Blocks.SMOOTH_RED_SANDSTONE);
@@ -109,6 +109,18 @@ public class RelicsUtil {
 
 	public static boolean hasBlockToCycle(Block block) {
 		return BLOCK_CYCLES.containsKey(block);
+	}
+	
+	public static void setupStateChangeMap() {
+		STATE_CHANGE.put(RelicsBlocks.MYSTIC_SHRUB.get().defaultBlockState().setValue(MysticShrub.STATE, ShrubState.STUMP), RelicsBlocks.MYSTIC_SHRUB.get().defaultBlockState().setValue(MysticShrub.STATE, ShrubState.NORMAL));
+	}
+	
+	public static BlockState getTargetState(BlockState state) {
+		return STATE_CHANGE.get(state);
+	}
+	
+	public static boolean hasStateToChange(BlockState clickedBlock) {
+		return STATE_CHANGE.containsKey(clickedBlock);
 	}
 
 	public static <T extends Animal> void cycleMobVariant(T animal) {

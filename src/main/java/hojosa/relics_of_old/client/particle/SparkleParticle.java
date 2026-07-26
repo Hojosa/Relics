@@ -10,31 +10,30 @@ import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class StarBeamGrindParticle extends TextureSheetParticle {
+public class SparkleParticle extends TextureSheetParticle {
+	private final float baseSize;
 
-	protected StarBeamGrindParticle(ClientLevel pLevel, double pX, double pY, double pZ, SpriteSet spriteSet, double pXSpeed, double pYSpeed, double pZSpeed) {
+	protected SparkleParticle(ClientLevel pLevel, double pX, double pY, double pZ, SpriteSet spriteSet, double pXSpeed, double pYSpeed, double pZSpeed) {
 		super(pLevel, pX, pY, pZ, pXSpeed, pYSpeed, pZSpeed);
-		this.friction = 0.8F;
 		this.xd = pXSpeed;
 		this.yd = pYSpeed;
 		this.zd = pZSpeed;
-		this.quadSize *= 0.5F;
-		this.lifetime = 5;
-		this.setSpriteFromAge(spriteSet);
+		this.baseSize = 0.1f;
+		this.quadSize = baseSize;
+		this.lifetime = 6;
+		this.pickSprite(spriteSet);
 
 		this.rCol = 1f;
 		this.gCol = 1f;
-		this.bCol = 1f;
+		this.bCol = 0.4f;
 	}
 	
     @Override
     public void tick() {
         super.tick();
-        fadeOut();
-    }
-
-    private void fadeOut() {
-        this.alpha = (-(1/(float)lifetime) * age + 1);
+        float freshness = 1f - (float) age / lifetime;
+        this.bCol = bCol * freshness;// * 0.6f;
+        this.quadSize = freshness * baseSize;
     }
 
 	@Override
@@ -51,7 +50,7 @@ public class StarBeamGrindParticle extends TextureSheetParticle {
 		}
 
 		public Particle createParticle(SimpleParticleType particleType, ClientLevel level, double x, double y, double z, double dx, double dy, double dz) {
-			return new StarBeamGrindParticle(level, x, y, z, this.sprites, dx, dy, dz);
+			return new SparkleParticle(level, x, y, z, this.sprites, dx, dy, dz);
 		}
 	}
 }
