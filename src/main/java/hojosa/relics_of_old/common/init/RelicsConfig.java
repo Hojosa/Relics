@@ -53,7 +53,7 @@ public class RelicsConfig {
         	{
         		caltropsDropChance = builder
         				.comment("chance that a caltrops doesnt get destroyed when something steps on it. Default: 50 in 100 (50%)")
-        				.defineInRange("caltropsDropChance", 5, 1, 10);
+        				.defineInRange("caltropsDropChance", 7, 1, 15);
         	}
         	
         	test= builder.comment("test").define("test", false);

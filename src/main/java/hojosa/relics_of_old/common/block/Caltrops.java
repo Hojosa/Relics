@@ -59,7 +59,7 @@ public class Caltrops extends RelicsNormalBlock {
             if (living.hurt(pLevel.damageSources().cactus(), 2.0f)) {
                 living.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 5 * 20, 2));
                 living.addEffect(new MobEffectInstance(MobEffects.JUMP, 5 * 20, -2));
-                if (pLevel.random.nextInt(10) < RelicsConfig.COMMON.caltropsDropChance.get()) {
+                if (pLevel.random.nextInt(15) < RelicsConfig.COMMON.caltropsDropChance.get()) {
                 	pLevel.destroyBlock(pPos, false);
                 }   
             }
