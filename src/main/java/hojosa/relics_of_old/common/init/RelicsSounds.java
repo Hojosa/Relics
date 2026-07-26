@@ -14,26 +14,26 @@ public class RelicsSounds {
 
 	public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, References.MOD_ID);
 
-	public static final RegistryObject<SoundEvent> SWORD_PLACE_SOUND = registerSound(References.UnlocalizedName.SWORD_PLACE_SOUND);
-	public static final RegistryObject<SoundEvent> SWORD_DRAW_SOUND = registerSound(References.UnlocalizedName.SWORD_DRAW_SOUND);
-	public static final RegistryObject<SoundEvent> FANCY_SWORD_PLACE_SOUND = registerSound(References.UnlocalizedName.FANCY_SWORD_PLACE_SOUND);
-	public static final RegistryObject<SoundEvent> STAR_FALL_SOUND = registerSound(References.UnlocalizedName.STAR_FALL_SOUND);
-	public static final RegistryObject<SoundEvent> STAR_TWINKLE_SOUND = registerSound(References.UnlocalizedName.STAR_TWINKLE_SOUND);
-	public static final RegistryObject<SoundEvent> STAR_CAUGHT_SOUND = registerSound(References.UnlocalizedName.STAR_CAUGHT_SOUND);
+	public static final RegistryObject<SoundEvent> SWORD_PLACE_SOUND = registerSound(References.SoundName.SWORD_PLACE_SOUND);
+	public static final RegistryObject<SoundEvent> SWORD_DRAW_SOUND = registerSound(References.SoundName.SWORD_DRAW_SOUND);
+	public static final RegistryObject<SoundEvent> FANCY_SWORD_PLACE_SOUND = registerSound(References.SoundName.FANCY_SWORD_PLACE_SOUND);
+	public static final RegistryObject<SoundEvent> STAR_FALL_SOUND = registerSound(References.SoundName.STAR_FALL_SOUND);
+	public static final RegistryObject<SoundEvent> STAR_TWINKLE_SOUND = registerSound(References.SoundName.STAR_TWINKLE_SOUND);
+	public static final RegistryObject<SoundEvent> STAR_CAUGHT_SOUND = registerSound(References.SoundName.STAR_CAUGHT_SOUND);
 	public static final RegistryObject<SoundEvent> HEART = registerSound(References.UnlocalizedName.HEART);
-	public static final RegistryObject<SoundEvent> REVIVE = registerSound(References.UnlocalizedName.REVIVE);
-	public static final RegistryObject<SoundEvent> EMERALD_PICKUP = registerSound(References.UnlocalizedName.EMERALD_PICKUP);
-	public static final RegistryObject<SoundEvent> EMERALD_PIECE_PICKUP = registerSound(References.UnlocalizedName.EMERALD_PIECE_PICKUP);
-	public static final RegistryObject<SoundEvent> EMERALD_SHARD_PICKUP = registerSound(References.UnlocalizedName.EMERALD_SHARD_PICKUP);
-	public static final RegistryObject<SoundEvent> INFUSE_CHARGE = registerSound(References.UnlocalizedName.INFUSE_CHARGE);
-	public static final RegistryObject<SoundEvent> INFUSE_SUCCESS = registerSound(References.UnlocalizedName.INFUSE_SUCCESS);
-	public static final RegistryObject<SoundEvent> OOT_SWORD_DRAW = registerSound(References.UnlocalizedName.OOT_SWORD_DRAW);
-	public static final RegistryObject<SoundEvent> TP_SWORD_DRAW = registerSound(References.UnlocalizedName.TP_SWORD_DRAW);
-	public static final RegistryObject<SoundEvent> MAGIC_CRAFTING = registerSound(References.UnlocalizedName.MAGIC_CRAFTING);
-	public static final RegistryObject<SoundEvent> ITEM_GET = registerSound(References.UnlocalizedName.ITEM_GET);
+	public static final RegistryObject<SoundEvent> REVIVE = registerSound(References.SoundName.REVIVE);
+	public static final RegistryObject<SoundEvent> EMERALD_PICKUP = registerSound(References.SoundName.EMERALD_PICKUP);
+	public static final RegistryObject<SoundEvent> EMERALD_PIECE_PICKUP = registerSound(References.SoundName.EMERALD_PIECE_PICKUP);
+	public static final RegistryObject<SoundEvent> EMERALD_SHARD_PICKUP = registerSound(References.SoundName.EMERALD_SHARD_PICKUP);
+	public static final RegistryObject<SoundEvent> INFUSE_CHARGE = registerSound(References.SoundName.INFUSE_CHARGE);
+	public static final RegistryObject<SoundEvent> INFUSE_SUCCESS = registerSound(References.SoundName.INFUSE_SUCCESS);
+	public static final RegistryObject<SoundEvent> OOT_SWORD_DRAW = registerSound(References.SoundName.OOT_SWORD_DRAW);
+	public static final RegistryObject<SoundEvent> TP_SWORD_DRAW = registerSound(References.SoundName.TP_SWORD_DRAW);
+	public static final RegistryObject<SoundEvent> MAGIC_CRAFTING = registerSound(References.SoundName.MAGIC_CRAFTING);
+	public static final RegistryObject<SoundEvent> ITEM_GET = registerSound(References.SoundName.ITEM_GET);
 	public static final RegistryObject<SoundEvent> MAGIC_POWDER = registerSound(References.UnlocalizedName.MAGIC_POWDER);
-	public static final RegistryObject<SoundEvent> CALTROPS_LAND = registerSound(References.UnlocalizedName.CALTROPS_LAND);
-	public static final RegistryObject<SoundEvent> CALTROPS_TAP = registerSound(References.UnlocalizedName.CALTROPS_TAP);
+	public static final RegistryObject<SoundEvent> CALTROPS_LAND = registerSound(References.SoundName.CALTROPS_LAND);
+	public static final RegistryObject<SoundEvent> CALTROPS_TAP = registerSound(References.SoundName.CALTROPS_TAP);
 
 	private static RegistryObject<SoundEvent> registerSound(String name) {
 		return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(References.MOD_ID, name)));
