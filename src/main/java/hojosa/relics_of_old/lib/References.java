@@ -77,6 +77,9 @@ public class References {
 		public static final String LOST_PAGE_7 = "lost_page_7";
 		public static final String MYSTIC_SHRUB = "mystic_shrub";
 		public static final String MYSTIC_SEED = "mystic_seed";
+		public static final String CALTROPS = "caltrops";
+		public static final String CALTROPS_LAND = "caltrops_land";
+		public static final String CALTROPS_TAP = "caltrops_tap";
 	}
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)
 	public static class LostPagesText {

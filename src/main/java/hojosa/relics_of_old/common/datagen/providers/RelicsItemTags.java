@@ -41,7 +41,7 @@ public class RelicsItemTags extends ItemTagsProvider {
 		copy(RelicsTags.Blocks.SWORD_PEDESTAL_VARIANTS, RelicsTags.Items.SWORD_PEDESTAL_VARIANTS);
 		tag(RelicsTags.Items.CLEANER)
 		.add(Items.SPONGE)
-		.add(TagEntry.optionalElement(new ResourceLocation("supplementaries", "soap")));
+		.add(TagEntry.optionalElement(ResourceLocation.fromNamespaceAndPath("supplementaries", "soap")));
 		tag(RelicsTags.Items.HEART)
 		.add(RelicsItems.HEART.get());
 		

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    " i ",
+    " i ",
+    "i i"
+  ],
+  "result": {
+    "count": 4,
+    "item": "relics_of_old:caltrops"
+  },
+  "show_notification": true
+}

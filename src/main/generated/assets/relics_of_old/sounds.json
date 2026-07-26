@@ -1,4 +1,19 @@
 {
+  "caltrops_land": {
+    "sounds": [
+      "relics_of_old:caltrops_land",
+      "relics_of_old:caltrops_land2",
+      "relics_of_old:caltrops_land3"
+    ],
+    "subtitle": "relics_of_old.subtitle.caltrops_land"
+  },
+  "caltrops_tap": {
+    "sounds": [
+      "relics_of_old:caltrops_tap",
+      "relics_of_old:caltrops_tap2"
+    ],
+    "subtitle": "relics_of_old.subtitle.caltrops_tap"
+  },
   "emerald_pickup": {
     "sounds": [
       "relics_of_old:emerald_pickup"

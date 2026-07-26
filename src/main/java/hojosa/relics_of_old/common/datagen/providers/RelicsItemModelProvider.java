@@ -28,6 +28,7 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		withExistingParent(RelicsBlocks.INFUSED_STARSTONE_BLOCK);
 		withExistingParent(RelicsBlocks.STARBEAM_TORCH);
 		withExistingParent(RelicsBlocks.MYSTIC_SHRUB);
+		
 		basicItem(RelicsItems.STAR_PIECE);
 		basicItem(RelicsItems.STAR_DUST);
 		basicItem(RelicsItems.STAR_STONE);
@@ -54,6 +55,7 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItem(RelicsItems.BLANK_TABLET);
 		basicItem(RelicsItems.MYSTIC_SEED);
 		mysticSeed(RelicsItems.MYSTIC_SEED);
+		basicItem(RelicsBlocks.CALTROPS.asItem());
 	}
 
 	private ItemModelBuilder infusedItem(RegistryObject<RelicsItem> item, RegistryObject<RelicsItem> parent) {

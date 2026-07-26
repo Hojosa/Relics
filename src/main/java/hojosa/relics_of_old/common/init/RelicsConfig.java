@@ -19,6 +19,7 @@ public class RelicsConfig {
         public final BooleanValue doHeartsDropFromMobs;
         public final IntValue heartChance;
         public final BooleanValue test;
+        public final IntValue caltropsDropChance;
         
         private static final String CATEGORY_ITEM_DROPS = "loot";
         private static final String CATEGORY_ITEM_DROPS_MOBS = "from_mobs";
@@ -49,13 +50,15 @@ public class RelicsConfig {
         	builder.pop();
         	
         	builder.comment("loot drops from block can be customized via datapack. Config settings for this may come at a later point").push(CATEGORY_ITEM_DROPS_BLOCKS);
+        	{
+        		caltropsDropChance = builder
+        				.comment("chance that a caltrops doesnt get destroyed when something steps on it. Default: 50 in 100 (50%)")
+        				.defineInRange("caltropsDropChance", 5, 1, 10);
+        	}
+        	
         	test= builder.comment("test").define("test", false);
         	builder.pop(2);
         }
-        
-        
-        
-        
     }
     
     public static final ForgeConfigSpec commonSpec;

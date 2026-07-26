@@ -190,5 +190,14 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.group(References.CREATIVE_TAB)
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.STAR_DUST.get()))
 		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsBlocks.CALTROPS.get(), 4)
+		.pattern(" i ")
+		.pattern(" i ")
+		.pattern("i i")
+		.define('i', Items.IRON_INGOT)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT))
+		.save(consumer);
 	}
 }

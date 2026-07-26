@@ -1,4 +1,4 @@
-package hojosa.relics_of_old.common.item;
+package hojosa.relics_of_old.lib.item;
 
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;

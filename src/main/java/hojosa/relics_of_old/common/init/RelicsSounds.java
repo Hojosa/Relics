@@ -32,6 +32,8 @@ public class RelicsSounds {
 	public static final RegistryObject<SoundEvent> MAGIC_CRAFTING = registerSound(References.UnlocalizedName.MAGIC_CRAFTING);
 	public static final RegistryObject<SoundEvent> ITEM_GET = registerSound(References.UnlocalizedName.ITEM_GET);
 	public static final RegistryObject<SoundEvent> MAGIC_POWDER = registerSound(References.UnlocalizedName.MAGIC_POWDER);
+	public static final RegistryObject<SoundEvent> CALTROPS_LAND = registerSound(References.UnlocalizedName.CALTROPS_LAND);
+	public static final RegistryObject<SoundEvent> CALTROPS_TAP = registerSound(References.UnlocalizedName.CALTROPS_TAP);
 
 	private static RegistryObject<SoundEvent> registerSound(String name) {
 		return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(References.MOD_ID, name)));

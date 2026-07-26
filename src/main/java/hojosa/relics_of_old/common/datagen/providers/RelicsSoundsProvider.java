@@ -34,6 +34,8 @@ public class RelicsSoundsProvider extends SoundDefinitionsProvider {
 		add(RelicsSounds.MAGIC_CRAFTING, definition().subtitle(getSubtitle(RelicsSounds.MAGIC_CRAFTING)).with(sound(RelicsSounds.MAGIC_CRAFTING.getId())));
 		add(RelicsSounds.ITEM_GET, definition().subtitle(getSubtitle(RelicsSounds.ITEM_GET)).with(sound(RelicsSounds.ITEM_GET.getId())));
 		add(RelicsSounds.MAGIC_POWDER, definition().subtitle(getSubtitle(RelicsSounds.MAGIC_POWDER)).with(sound(RelicsSounds.MAGIC_POWDER.getId())));
+		add(RelicsSounds.CALTROPS_LAND, definition().subtitle(getSubtitle(RelicsSounds.CALTROPS_LAND)).with(sound(RelicsSounds.CALTROPS_LAND.getId())).with(sound(RelicsSounds.CALTROPS_LAND.getId()+"2")).with(sound(RelicsSounds.CALTROPS_LAND.getId()+"3")));
+		add(RelicsSounds.CALTROPS_TAP, definition().subtitle(getSubtitle(RelicsSounds.CALTROPS_TAP)).with(sound(RelicsSounds.CALTROPS_TAP.getId())).with(sound(RelicsSounds.CALTROPS_TAP.getId()+"2")));
 	}
 
 	private String getSubtitle(RegistryObject<SoundEvent> sound) {

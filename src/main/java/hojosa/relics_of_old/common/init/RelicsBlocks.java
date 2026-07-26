@@ -4,6 +4,7 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
 
+import hojosa.relics_of_old.common.block.Caltrops;
 import hojosa.relics_of_old.common.block.InfusedStarstoneBlock;
 import hojosa.relics_of_old.common.block.MysticShrub;
 import hojosa.relics_of_old.common.block.NormalSwordPedestal;
@@ -14,11 +15,12 @@ import hojosa.relics_of_old.common.block.StarBeamTorch;
 import hojosa.relics_of_old.common.block.StoneSwordPedestal;
 import hojosa.relics_of_old.common.block.TimeSwordPedestal;
 import hojosa.relics_of_old.common.block.TwilightSwordPedestal;
-import hojosa.relics_of_old.common.item.ItemBlockGlint;
 import hojosa.relics_of_old.lib.References;
 import hojosa.relics_of_old.lib.block.RelicsFacingBlock;
 import hojosa.relics_of_old.lib.block.RelicsNormalBlock;
+import hojosa.relics_of_old.lib.block.SelfPlacingBlockItem;
 import hojosa.relics_of_old.lib.block.SwordPedestalBaseBlock;
+import hojosa.relics_of_old.lib.item.ItemBlockGlint;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import net.minecraft.world.item.BlockItem;
@@ -45,6 +47,7 @@ public class RelicsBlocks {
 
 	protected static final Item.Properties ITEM_PROPS = new Item.Properties();
 	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM = b -> new BlockItem(b, ITEM_PROPS);
+	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM_SELFPLACING = b -> new SelfPlacingBlockItem(b, new Item.Properties());
 	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM_UNCOMMON = b -> new BlockItem(b, ITEM_PROPS.rarity(Rarity.UNCOMMON));
 	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM_EPIC = b -> new BlockItem(b, ITEM_PROPS.rarity(Rarity.EPIC));
 	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM_GLINT = b -> new ItemBlockGlint(b, ITEM_PROPS.rarity(Rarity.EPIC));
@@ -80,6 +83,8 @@ public class RelicsBlocks {
 			() -> new StarBeamTorch(BlockBehaviour.Properties.copy(Blocks.TORCH).lightLevel(value -> 15)), BLOCK_ITEM);
 	
 	public static final ItemObject<Block> MYSTIC_SHRUB = BLOCKS.register(References.UnlocalizedName.MYSTIC_SHRUB, () -> new MysticShrub(), BLOCK_ITEM);
+	
+	public static final ItemObject<Block> CALTROPS = BLOCKS.register(References.UnlocalizedName.CALTROPS, () -> new Caltrops(Blocks.IRON_BLOCK), BLOCK_ITEM_SELFPLACING);
 
 
 	/**
@@ -110,7 +115,8 @@ public class RelicsBlocks {
 		output.accept(INFUSED_STARSTONE_BLOCK.get().asItem());
 		output.accept(STARBEAM_TORCH.get().asItem());
 		output.accept(MYSTIC_SHRUB.get().asItem());
-
+		output.accept(CALTROPS.get().asItem());
+		
 		Predicate<ItemStack> variants = stack -> {
 			output.accept(stack);
 			return false;
