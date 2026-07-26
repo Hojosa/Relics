@@ -32,12 +32,6 @@
     ],
     "subtitle": "relics_of_old.subtitle.emerald_shard_pickup"
   },
-  "fancy_sword_place": {
-    "sounds": [
-      "relics_of_old:fancy_sword_place"
-    ],
-    "subtitle": "relics_of_old.subtitle.fancy_sword_place"
-  },
   "heart": {
     "sounds": [
       "relics_of_old:heart"
@@ -74,12 +68,6 @@
     ],
     "subtitle": "relics_of_old.subtitle.magic_powder"
   },
-  "oot_sword_draw": {
-    "sounds": [
-      "relics_of_old:oot_sword_draw"
-    ],
-    "subtitle": "relics_of_old.subtitle.oot_sword_draw"
-  },
   "revive": {
     "sounds": [
       "relics_of_old:revive"
@@ -110,16 +98,28 @@
     ],
     "subtitle": "relics_of_old.subtitle.sword_draw"
   },
+  "sword_draw_oot": {
+    "sounds": [
+      "relics_of_old:sword_draw_oot"
+    ],
+    "subtitle": "relics_of_old.subtitle.sword_draw_oot"
+  },
+  "sword_draw_tp": {
+    "sounds": [
+      "relics_of_old:sword_draw_tp"
+    ],
+    "subtitle": "relics_of_old.subtitle.sword_draw_tp"
+  },
   "sword_place": {
     "sounds": [
       "relics_of_old:sword_place"
     ],
     "subtitle": "relics_of_old.subtitle.sword_place"
   },
-  "tp_sword_draw": {
+  "sword_place_fancy": {
     "sounds": [
-      "relics_of_old:tp_sword_draw"
+      "relics_of_old:sword_place_fancy"
     ],
-    "subtitle": "relics_of_old.subtitle.tp_sword_draw"
+    "subtitle": "relics_of_old.subtitle.sword_place_fancy"
   }
 }
