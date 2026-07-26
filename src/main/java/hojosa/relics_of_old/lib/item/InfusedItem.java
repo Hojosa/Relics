@@ -1,5 +1,6 @@
-package hojosa.relics_of_old.common.item;
+package hojosa.relics_of_old.lib.item;
 
+import hojosa.relics_of_old.common.item.RelicsItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 
