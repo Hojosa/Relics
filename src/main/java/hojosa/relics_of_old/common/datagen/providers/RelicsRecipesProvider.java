@@ -199,5 +199,16 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.group(References.CREATIVE_TAB)
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT))
 		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.MAGIC_MIRROR.get(), 1)
+		.pattern("ege")
+		.pattern("gdg")
+		.pattern("ege")
+		.define('e', Items.ENDER_PEARL)
+		.define('g', Items.GOLD_INGOT)
+		.define('d', Items.DIAMOND)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT))
+		.save(consumer);
 	}
 }
