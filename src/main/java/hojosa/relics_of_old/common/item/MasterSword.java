@@ -5,6 +5,7 @@ import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -13,7 +14,7 @@ import net.minecraft.world.item.enchantment.Enchantments;
 public class MasterSword extends SwordItem{
 
 	public MasterSword() {
-		super(Tiers.NETHERITE, 5, -2.4F, new Item.Properties());
+		super(Tiers.NETHERITE, 5, -2.4F, new Item.Properties().rarity(Rarity.EPIC));
 	}
 
 	@Override
