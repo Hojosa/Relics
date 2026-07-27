@@ -57,11 +57,9 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		itemWithOverride(RelicsItems.MYSTIC_SEED, "thundering", "charged");
 		basicItem(RelicsBlocks.CALTROPS.asItem());
 		basicItem(RelicsItems.MILK_CHOCOLATE);
-//		itemWithOverride(RelicsItems.MAGIC_MIRROR, "active", "lit");
 		
 		//magic mirror model
 		//base model that contains the base transform settings for the model
-		
 		ModelFile magic_mirror_base = getBuilder("magic_mirror_base")
 				.parent(new ModelFile.UncheckedModelFile("item/generated"))
 				.texture("layer0", modLoc("item/magic_mirror"))

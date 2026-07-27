@@ -1,5 +1,6 @@
-package hojosa.relics_of_old.common.init;
+package hojosa.relics_of_old.client;
 
+import hojosa.relics_of_old.common.init.RelicsItems;
 import hojosa.relics_of_old.lib.RelicsUtil;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
