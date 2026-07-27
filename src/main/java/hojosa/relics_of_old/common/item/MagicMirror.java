@@ -16,13 +16,18 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 
 public class MagicMirror extends RelicsItem{
 
-	public MagicMirror() {
-		super(1);
+	public MagicMirror(Rarity rarity) {
+		super(1, rarity);
+	}
+	
+	public MagicMirror(Rarity rarity, int durability) {
+		super(1, rarity, durability);
 	}
 	
 	@Override
@@ -38,6 +43,11 @@ public class MagicMirror extends RelicsItem{
 	@Override
 	public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
 		return slotChanged;
+	}
+	
+	@Override
+	public boolean isFoil(ItemStack pStack) {
+		return this.getMaxDamage() == 0;
 	}
 	
 	@Override
@@ -76,7 +86,7 @@ public class MagicMirror extends RelicsItem{
 
             pLevel.playSound(null, player.blockPosition(), SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 0.3f, 1.0f);
             ((ServerLevel) pLevel).sendParticles(ParticleTypes.EXPLOSION_EMITTER, player.getX(), player.getY()-1, player.getZ(), 1, 0, 0, 0, 0);
-            
+            pStack.hurtAndBreak(1, pLivingEntity, e -> e.broadcastBreakEvent(pLivingEntity.getUsedItemHand()));
             nbt.putLong("lastwarp", pLevel.getGameTime());
         }
         return pStack;

@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:item/generated",
+  "parent": "relics_of_old:item/magic_mirror_base",
   "textures": {
     "layer0": "relics_of_old:item/magic_mirror_lit"
   }

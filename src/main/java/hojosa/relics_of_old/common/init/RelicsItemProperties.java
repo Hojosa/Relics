@@ -26,5 +26,16 @@ public class RelicsItemProperties {
 		      int remaining = entity.getUseItemRemainingTicks();
 		      return ((remaining % 4) +1) / 4.0f;
 		  });
+		
+		ItemProperties.register(RelicsItems.FLAWLESS_MAGIC_MIRROR.get(), RelicsUtil.modLoc("active"), (stack, level, entity, seed) -> {
+			return stack.hasTag() && stack.getOrCreateTag().getBoolean("outdoors") ? 0.0f : 1.0f;
+		});
+		
+		ItemProperties.register(RelicsItems.FLAWLESS_MAGIC_MIRROR.get(), RelicsUtil.modLoc("using"), (stack, level, entity, seed) -> {
+		      if (entity == null || !entity.isUsingItem() || entity.getUseItem() != stack)
+		          return 0f;
+		      int remaining = entity.getUseItemRemainingTicks();
+		      return ((remaining % 4) +1) / 4.0f;
+		  });
 	}
 }

@@ -21,6 +21,7 @@ import lombok.NoArgsConstructor;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTab.ItemDisplayParameters;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Item.Properties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.SwordItem;
@@ -60,7 +61,8 @@ public class RelicsItems {
 	public static final RegistryObject<MagicPowder> MAGIC_POWDER = ITEMS.register(References.UnlocalizedName.MAGIC_POWDER, MagicPowder::new);
 	public static final RegistryObject<MysticSeed> MYSTIC_SEED = ITEMS.register(References.UnlocalizedName.MYSTIC_SEED, () -> new MysticSeed(RelicsBlocks.MYSTIC_SHRUB.get()));
 	public static final RegistryObject<MilkChocolate> MILK_CHOCOLATE = ITEMS.register(References.UnlocalizedName.MILK_CHOCOLATE, MilkChocolate::new);
-	public static final RegistryObject<MagicMirror> MAGIC_MIRROR = ITEMS.register(References.UnlocalizedName.MAGIC_MIRROR, MagicMirror::new);
+	public static final RegistryObject<MagicMirror> MAGIC_MIRROR = ITEMS.register(References.UnlocalizedName.MAGIC_MIRROR, () -> new MagicMirror(Rarity.UNCOMMON, 4));
+	public static final RegistryObject<MagicMirror> FLAWLESS_MAGIC_MIRROR = ITEMS.register(References.UnlocalizedName.FLAWLESS_MAGIC_MIRROR, () -> new MagicMirror(Rarity.EPIC));
 
 	public static void addTabItems(ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
 		RelicsItems.ITEMS.getEntries().forEach(itemRegistryObject -> output.accept(new ItemStack(itemRegistryObject.get())));

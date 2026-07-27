@@ -1,11 +1,11 @@
 {
-  "parent": "relics_of_old:item/magic_mirror_base",
+  "parent": "minecraft:item/generated",
   "display": {
     "firstperson_lefthand": {
       "rotation": [
-        -11,
-        -12,
-        11
+        0,
+        -90,
+        25
       ],
       "scale": [
         0.85,
@@ -13,16 +13,16 @@
         1
       ],
       "translation": [
-        -2,
-        2,
-        -2.75
+        1.13,
+        3.2,
+        1.13
       ]
     },
     "firstperson_righthand": {
       "rotation": [
-        -12,
-        -12,
-        103
+        0,
+        -90,
+        100
       ],
       "scale": [
         0.85,
@@ -30,16 +30,16 @@
         1
       ],
       "translation": [
-        -4,
-        2,
-        -2.7
+        1.13,
+        3.2,
+        1.13
       ]
     },
     "thirdperson_lefthand": {
       "rotation": [
         0,
-        0,
-        -28
+        90,
+        -55
       ],
       "scale": [
         0.85,
@@ -47,7 +47,7 @@
         1
       ],
       "translation": [
-        -3,
+        0,
         5,
         2
       ]
@@ -55,8 +55,8 @@
     "thirdperson_righthand": {
       "rotation": [
         0,
-        0,
-        65
+        90,
+        55
       ],
       "scale": [
         0.85,
@@ -64,13 +64,13 @@
         1
       ],
       "translation": [
-        -3,
+        0,
         5,
         2
       ]
     }
   },
   "textures": {
-    "layer0": "relics_of_old:item/magic_mirror_use_0"
+    "layer0": "relics_of_old:item/magic_mirror"
   }
 }

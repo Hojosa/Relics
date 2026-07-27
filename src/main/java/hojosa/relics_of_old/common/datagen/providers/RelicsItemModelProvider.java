@@ -60,33 +60,71 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 //		itemWithOverride(RelicsItems.MAGIC_MIRROR, "active", "lit");
 		
 		//magic mirror model
-		//models for the in use animation
+		//base model that contains the base transform settings for the model
+		
+		ModelFile magic_mirror_base = getBuilder("magic_mirror_base")
+				.parent(new ModelFile.UncheckedModelFile("item/generated"))
+				.texture("layer0", modLoc("item/magic_mirror"))
+				.transforms()
+		        .transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND)
+		            .rotation(0, 90, 55)
+		            .translation(0, 5, 2)
+		            .scale(0.85f, 0.85f, 1f)
+		            .end()
+		        .transform(ItemDisplayContext.THIRD_PERSON_LEFT_HAND)
+		            .rotation(0, 90, -55)
+		            .translation(0, 5, 2)
+		            .scale(0.85f, 0.85f, 1f)
+		            .end()
+	            .transform(ItemDisplayContext.FIRST_PERSON_RIGHT_HAND)
+		            .rotation(0, -90, 100)
+		            .translation(1.13f, 3.2f, 1.13f)
+		            .scale(0.85f, 0.85f, 1f)
+		            .end()
+				.transform(ItemDisplayContext.FIRST_PERSON_LEFT_HAND)
+			        .rotation(0, -90, 25)
+			        .translation(1.13f, 3.2f, 1.13f)
+			        .scale(0.85f, 0.85f, 1f)
+			        .end()
+		    .end();
+		
+		//models for the inUse animation
 		for (int i = 0; i < 4; i++) {
 		      getBuilder("magic_mirror_use_" + i)
-		          .parent(new ModelFile.UncheckedModelFile("item/generated"))
-		          .texture("layer0", modLoc("item/magic_mirror_use_" + i));
+		          .parent(magic_mirror_base)
+		          .texture("layer0", modLoc("item/magic_mirror_use_" + i))
+		          .transforms().transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND)
+		            .rotation(0, 0, 65)
+		            .translation(-3, 5, 2)
+		            .scale(0.85f, 0.85f, 1f)
+		            .end()
+	            .transform(ItemDisplayContext.THIRD_PERSON_LEFT_HAND)
+		            .rotation(0, 0, -28)
+		            .translation(-3, 5, 2)
+		            .scale(0.85f, 0.85f, 1f)
+		            .end()
+	            .transform(ItemDisplayContext.FIRST_PERSON_RIGHT_HAND)
+		            .rotation(-12f, -12f, 103f)
+		            .translation(-4f, 2f, -2.7f)
+		            .scale(0.85f, 0.85f, 1f)
+		            .end()
+	            .transform(ItemDisplayContext.FIRST_PERSON_LEFT_HAND)
+		            .rotation(-11f, -12f, 11f)
+		            .translation(-2f, 2f, -2.75f)
+		            .scale(0.85f, 0.85f, 1f)
+		            .end()
+	            .end();
 		  }
 		
 		// lit model
 		getBuilder("magic_mirror_lit")
-			.parent(new ModelFile.UncheckedModelFile("item/generated"))
+			.parent(magic_mirror_base)
 		    .texture("layer0", modLoc("item/magic_mirror_lit"));
 		  
-		// base model with all overrides
+		// normal model with all overrides
 		getBuilder(RelicsItems.MAGIC_MIRROR.getId().toString())
-			.parent(new ModelFile.UncheckedModelFile("item/generated"))
-			.texture("layer0", modLoc("item/magic_mirror"))
-			.transforms()
-	          .transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND)
-	              .rotation(0, 0, 55)
-	              .translation(0, 4, 2)
-	              .scale(0.85f)
-	              .end()
-	          .transform(ItemDisplayContext.THIRD_PERSON_LEFT_HAND)
-	              .rotation(0, 0, -55)
-	              .translation(0, 4, 2)
-	              .scale(0.85f)
-	              .end().end()
+			.parent(magic_mirror_base)
+//			.texture("layer0", modLoc("item/magic_mirror"))
 			.override().predicate(modLoc("active"), 1.0f)
 				.model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_lit"))).end()
 			.override().predicate(modLoc("using"), 0.25f)
@@ -97,6 +135,21 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 				.model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_use_2"))).end()
 			.override().predicate(modLoc("using"), 1.0f)
 				.model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_use_3"))).end();
+		
+		//flawless mirror
+		getBuilder(RelicsItems.FLAWLESS_MAGIC_MIRROR.getId().toString())
+	      .parent(magic_mirror_base)
+//	      .texture("layer0", modLoc("item/magic_mirror"))
+	      .override().predicate(modLoc("active"), 1.0f)
+	          .model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_lit"))).end()
+	      .override().predicate(modLoc("using"), 0.25f)
+	          .model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_use_0"))).end()
+	      .override().predicate(modLoc("using"), 0.5f)
+	          .model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_use_1"))).end()
+	      .override().predicate(modLoc("using"), 0.75f)
+	          .model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_use_2"))).end()
+	      .override().predicate(modLoc("using"), 1.0f)
+	          .model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_use_3"))).end();
 	}
 
 	private ItemModelBuilder infusedItem(RegistryObject<RelicsItem> item, RegistryObject<RelicsItem> parent) {
