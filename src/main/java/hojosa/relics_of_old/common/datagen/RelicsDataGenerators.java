@@ -11,6 +11,7 @@ import hojosa.relics_of_old.common.datagen.providers.RelicsBlockTags;
 import hojosa.relics_of_old.common.datagen.providers.RelicsGlobalLootModifiersProvider;
 import hojosa.relics_of_old.common.datagen.providers.RelicsItemModelProvider;
 import hojosa.relics_of_old.common.datagen.providers.RelicsItemTags;
+import hojosa.relics_of_old.common.datagen.providers.RelicsLanguageProvider;
 import hojosa.relics_of_old.common.datagen.providers.RelicsLootTables;
 import hojosa.relics_of_old.common.datagen.providers.RelicsParticleDescriptionProvider;
 import hojosa.relics_of_old.common.datagen.providers.RelicsRecipesProvider;
@@ -55,5 +56,7 @@ public class RelicsDataGenerators {
 		generator.addProvider(event.includeServer(), new ForgeAdvancementProvider(packOutput, lookupProvider, existingFileHelper, List.of(new RelicAdvancementProvider())));
 		generator.addProvider(event.includeServer(), new RelicsBiomeTagsProvider(packOutput, lookupProvider, existingFileHelper));
 		generator.addProvider(event.includeServer(), new RelicsWorldGenProvider(packOutput, lookupProvider));
+		generator.addProvider(event.includeServer(), new RelicsLanguageProvider(packOutput, "en_uk"));
+		generator.addProvider(event.includeServer(), new RelicsLanguageProvider(packOutput, "en_us"));
 	}
 }
