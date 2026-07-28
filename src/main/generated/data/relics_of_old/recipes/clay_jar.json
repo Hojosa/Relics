@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "b": {
+      "item": "minecraft:brick"
+    }
+  },
+  "pattern": [
+    "b b",
+    "b b",
+    "bbb"
+  ],
+  "result": {
+    "count": 16,
+    "item": "relics_of_old:clay_jar"
+  },
+  "show_notification": true
+}

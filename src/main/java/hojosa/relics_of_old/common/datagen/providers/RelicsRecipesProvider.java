@@ -210,5 +210,14 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.group(References.CREATIVE_TAB)
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT))
 		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsBlocks.CLAY_JAR.get(), 16)
+		.pattern("b b")
+		.pattern("b b")
+		.pattern("bbb")
+		.define('b', Items.BRICK)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.BRICK))
+		.save(consumer);
 	}
 }
