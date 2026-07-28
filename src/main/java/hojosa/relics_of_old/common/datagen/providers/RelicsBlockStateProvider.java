@@ -36,6 +36,7 @@ public class RelicsBlockStateProvider extends BlockStateProvider{
 				modLoc("block/" + References.UnlocalizedName.SKYBEAM_BLOCK + "_side"), mcLoc("block/obsidian"), modLoc("block/" + References.UnlocalizedName.SKYBEAM_BLOCK + "_top")));
 		mysticShrub();
 		simpleBlock(RelicsBlocks.CALTROPS.get(), models().crop(RelicsBlocks.CALTROPS.getId().getPath(), modLoc("block/"+ References.UnlocalizedName.CALTROPS)).renderType("cutout"));
+		simpleBlock(RelicsBlocks.CLAY_JAR.get(), models().getExistingFile(modLoc("block/clay_jar")));
 	}
 	
     private void simpleBlockInfused(Block block, Block parent) {

@@ -1,5 +1,6 @@
 package hojosa.relics_of_old.common.init;
 
+import hojosa.relics_of_old.common.block.entity.ClayJarBlockEntity;
 import hojosa.relics_of_old.common.block.entity.InfusedStarstoneBlockEntity;
 import hojosa.relics_of_old.common.block.entity.RetexturedSwordPedestalEntity;
 import hojosa.relics_of_old.common.block.entity.SkybeamBlockEntity;
@@ -35,4 +36,7 @@ public class RelicsBlockEntities {
 	
 	public static final RegistryObject<BlockEntityType<SkybeamBlockEntity>> SKYBEAM_BLOCK_ENTITY = BLOCK_ENTITIES.register(References.UnlocalizedName.SKYBEAM_BLOCK,
 			SkybeamBlockEntity::new, builder -> builder.add(RelicsBlocks.SKYBEAM_BLOCK.get()));
+	
+	public static final RegistryObject<BlockEntityType<ClayJarBlockEntity>> CLAY_JAR_ENTITY = BLOCK_ENTITIES.register(References.UnlocalizedName.CLAY_JAR,
+			ClayJarBlockEntity::new, builder -> builder.add(RelicsBlocks.CLAY_JAR.get()));
 }

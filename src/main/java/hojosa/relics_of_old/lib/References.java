@@ -66,8 +66,8 @@ public class References {
 		public static final String SPARKLE_PATTICLES = "sparkle_particle";
 		public static final String MAGIC_MIRROR = "magic_mirror";
 		public static final String FLAWLESS_MAGIC_MIRROR = "flawless_magic_mirror";
-		
 		public static final String RUNE_PARTICLE = "";
+		public static final String CLAY_JAR = "clay_jar";
 	}
 	
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

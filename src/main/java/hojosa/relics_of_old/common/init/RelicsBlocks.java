@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
 
 import hojosa.relics_of_old.common.block.Caltrops;
+import hojosa.relics_of_old.common.block.ClayJar;
 import hojosa.relics_of_old.common.block.InfusedStarstoneBlock;
 import hojosa.relics_of_old.common.block.MysticShrub;
 import hojosa.relics_of_old.common.block.NormalSwordPedestal;
@@ -48,9 +49,9 @@ public class RelicsBlocks {
 	protected static final Item.Properties ITEM_PROPS = new Item.Properties();
 	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM = b -> new BlockItem(b, ITEM_PROPS);
 	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM_SELFPLACING = b -> new SelfPlacingBlockItem(b, new Item.Properties());
-	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM_UNCOMMON = b -> new BlockItem(b, ITEM_PROPS.rarity(Rarity.UNCOMMON));
-	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM_EPIC = b -> new BlockItem(b, ITEM_PROPS.rarity(Rarity.EPIC));
-	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM_GLINT = b -> new ItemBlockGlint(b, ITEM_PROPS.rarity(Rarity.EPIC));
+	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM_UNCOMMON = b -> new BlockItem(b, new Item.Properties().rarity(Rarity.UNCOMMON));
+	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM_EPIC = b -> new BlockItem(b, new Item.Properties().rarity(Rarity.EPIC));
+	protected static final Function<Block, ? extends BlockItem> BLOCK_ITEM_GLINT = b -> new ItemBlockGlint(b, new Item.Properties().rarity(Rarity.EPIC));
 
 //	public static final ItemObject<Block> LAPIS_BRICK = BLOCKS.register(References.UnlocalizedName.LAPIS_BRICK,
 //			() -> new RelicsNormalBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS)), BLOCK_ITEM);
@@ -84,7 +85,9 @@ public class RelicsBlocks {
 	
 	public static final ItemObject<Block> MYSTIC_SHRUB = BLOCKS.register(References.UnlocalizedName.MYSTIC_SHRUB, () -> new MysticShrub(), BLOCK_ITEM);
 	
-	public static final ItemObject<Block> CALTROPS = BLOCKS.register(References.UnlocalizedName.CALTROPS, () -> new Caltrops(Blocks.IRON_BLOCK), BLOCK_ITEM_SELFPLACING);
+	public static final ItemObject<Block> CALTROPS = BLOCKS.register(References.UnlocalizedName.CALTROPS, () -> new Caltrops(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)), BLOCK_ITEM_SELFPLACING);
+	
+	public static final ItemObject<Block> CLAY_JAR = BLOCKS.register(References.UnlocalizedName.CLAY_JAR, () -> new ClayJar(BlockBehaviour.Properties.copy(Blocks.DECORATED_POT).strength(0).noOcclusion().sound(SoundType.DECORATED_POT)), BLOCK_ITEM);
 
 
 	/**
@@ -116,6 +119,7 @@ public class RelicsBlocks {
 		output.accept(STARBEAM_TORCH.get().asItem());
 		output.accept(MYSTIC_SHRUB.get().asItem());
 		output.accept(CALTROPS.get().asItem());
+		output.accept(CLAY_JAR.get().asItem());
 		
 		Predicate<ItemStack> variants = stack -> {
 			output.accept(stack);
