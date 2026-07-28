@@ -25,8 +25,8 @@ public class Caltrops extends RelicsNormalBlock {
 	private static final VoxelShape SHAPE = Block.box(3, 0, 3, 13, 3, 13).optimize();
 	private static final ForgeSoundType CALTROPS_SOUNDS = new ForgeSoundType(1.0f, 1.0f, RelicsSounds.CALTROPS_LAND, RelicsSounds.CALTROPS_TAP, RelicsSounds.CALTROPS_LAND, RelicsSounds.CALTROPS_TAP, RelicsSounds.CALTROPS_LAND);
 
-	public Caltrops(Block material) {
-		super(Properties.copy(material)
+	public Caltrops(Properties material) {
+		super(material
 				.pushReaction(PushReaction.DESTROY)
 				.noCollission()
 				.noOcclusion()
