@@ -67,7 +67,8 @@ public class RelicsLanguageProvider extends LanguageProvider {
 	      addItem(RelicsItems.MILK_CHOCOLATE, "Milk Chocolate");
 	      addItem(RelicsItems.MAGIC_MIRROR, "Magic Mirror");
 	      addItem(RelicsItems.FLAWLESS_MAGIC_MIRROR, "Flawless Magic Mirror");
-	      addItem(RelicsItems.MYSTIC_SEED, "Mystic Seed");	
+	      addItem(RelicsItems.MYSTIC_SEED, "Mystic Seed");
+	      addItem(RelicsItems.MAGIC_BOOMERANG, "Magic Bommerang");	
 	}
 	
 	@Override

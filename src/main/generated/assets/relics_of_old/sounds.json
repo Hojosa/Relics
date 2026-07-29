@@ -56,6 +56,12 @@
     ],
     "subtitle": "relics_of_old.subtitle.item_get"
   },
+  "magic_boomerang": {
+    "sounds": [
+      "relics_of_old:magic_boomerang"
+    ],
+    "subtitle": "relics_of_old.subtitle.magic_boomerang"
+  },
   "magic_crafting": {
     "sounds": [
       "relics_of_old:magic_crafting"

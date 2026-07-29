@@ -58,6 +58,7 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		itemWithOverride(RelicsItems.MYSTIC_SEED, "thundering", "charged");
 		basicItem(RelicsBlocks.CALTROPS.asItem());
 		basicItem(RelicsItems.MILK_CHOCOLATE);
+		basicItem(RelicsItems.MAGIC_BOOMERANG);
 		
 		//magic mirror model
 		//base model that contains the base transform settings for the model

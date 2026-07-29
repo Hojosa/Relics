@@ -1,6 +1,7 @@
 package hojosa.relics_of_old.common.init;
 
 import hojosa.relics_of_old.common.entity.FallingStarEntity;
+import hojosa.relics_of_old.common.entity.MagicBoomerangEntity;
 import hojosa.relics_of_old.common.entity.StarBeamEntity;
 import hojosa.relics_of_old.lib.References;
 import lombok.AccessLevel;
@@ -22,5 +23,8 @@ public class RelicsEntities {
 	
 	public static final RegistryObject<EntityType<StarBeamEntity>> STARBEAM = ENTITY_TYPES.register(References.UnlocalizedName.STARBEAM,
 			() -> EntityType.Builder.<StarBeamEntity>of(StarBeamEntity::new, MobCategory.MISC).sized(0.1f, 0.1f).clientTrackingRange(16).build(References.UnlocalizedName.STARBEAM));
+
+	public static final RegistryObject<EntityType<MagicBoomerangEntity>> MAGIC_BOOMERANG = ENTITY_TYPES.register(References.UnlocalizedName.MAGIC_BOOMERANG,
+			() -> EntityType.Builder.<MagicBoomerangEntity>of(MagicBoomerangEntity::new, MobCategory.MISC).sized(0.25f, 0.25f).clientTrackingRange(16).build(References.UnlocalizedName.MAGIC_BOOMERANG));
 
 }

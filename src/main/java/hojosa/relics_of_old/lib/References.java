@@ -68,6 +68,7 @@ public class References {
 		public static final String FLAWLESS_MAGIC_MIRROR = "flawless_magic_mirror";
 		public static final String RUNE_PARTICLE = "";
 		public static final String CLAY_JAR = "clay_jar";
+		public static final String MAGIC_BOOMERANG = "magic_boomerang";
 	}
 	
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -93,6 +94,7 @@ public class References {
 		public static final String TRANSFORM = "transform";
 		public static final String SPRINKLE = "sprinkle";
 		public static final String SINE = "sine";
+		public static final String MAGIC_BOOMERANG = "magic_boomerang";
 		
 	}
 	
