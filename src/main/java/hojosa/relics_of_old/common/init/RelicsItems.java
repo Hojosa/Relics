@@ -1,5 +1,6 @@
 package hojosa.relics_of_old.common.init;
 
+import hojosa.relics_of_old.common.item.Medallion;
 import hojosa.relics_of_old.common.item.EmeraldPiece;
 import hojosa.relics_of_old.common.item.EmeraldShard;
 import hojosa.relics_of_old.common.item.FireTablet;
@@ -10,6 +11,8 @@ import hojosa.relics_of_old.common.item.MagicBoomerang;
 import hojosa.relics_of_old.common.item.MagicMirror;
 import hojosa.relics_of_old.common.item.MagicPowder;
 import hojosa.relics_of_old.common.item.MasterSword;
+import hojosa.relics_of_old.common.item.EmptyMedallion;
+import hojosa.relics_of_old.common.item.EmptyMedallion.MedallionType;
 import hojosa.relics_of_old.common.item.MilkChocolate;
 import hojosa.relics_of_old.common.item.MysticSeed;
 import hojosa.relics_of_old.common.item.WaterTablet;
@@ -63,7 +66,9 @@ public class RelicsItems {
 	public static final RegistryObject<MilkChocolate> MILK_CHOCOLATE = ITEMS.register(References.UnlocalizedName.MILK_CHOCOLATE, MilkChocolate::new);
 	public static final RegistryObject<MagicMirror> MAGIC_MIRROR = ITEMS.register(References.UnlocalizedName.MAGIC_MIRROR, () -> new MagicMirror(Rarity.UNCOMMON, 4));
 	public static final RegistryObject<MagicMirror> FLAWLESS_MAGIC_MIRROR = ITEMS.register(References.UnlocalizedName.FLAWLESS_MAGIC_MIRROR, () -> new MagicMirror(Rarity.EPIC));
-	public static final RegistryObject<MagicBoomerang> MAGIC_BOOMERANG = ITEMS.register(References.UnlocalizedName.MAGIC_BOOMERANG, MagicBoomerang::new);;
+	public static final RegistryObject<MagicBoomerang> MAGIC_BOOMERANG = ITEMS.register(References.UnlocalizedName.MAGIC_BOOMERANG, MagicBoomerang::new);
+	public static final RegistryObject<EmptyMedallion> EMPTY_FIRE_MEDALLION = ITEMS.register("empty_" + References.UnlocalizedName.FIRE_MEDALLION, () -> new EmptyMedallion(MedallionType.FIRE));
+	public static final RegistryObject<Medallion> FIRE_MEDALLION = ITEMS.register(References.UnlocalizedName.FIRE_MEDALLION, () -> new Medallion(MedallionType.FIRE, 3));
 
 	public static void addTabItems(ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
 		RelicsItems.ITEMS.getEntries().forEach(itemRegistryObject -> output.accept(new ItemStack(itemRegistryObject.get())));

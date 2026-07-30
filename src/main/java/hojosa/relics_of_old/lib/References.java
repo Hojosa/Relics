@@ -69,6 +69,8 @@ public class References {
 		public static final String RUNE_PARTICLE = "";
 		public static final String CLAY_JAR = "clay_jar";
 		public static final String MAGIC_BOOMERANG = "magic_boomerang";
+		public static final String MEDALLION = "medallion_entity";
+		public static final String FIRE_MEDALLION = "fire_medallion";
 	}
 	
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

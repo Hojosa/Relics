@@ -27,7 +27,7 @@ public class MagicMirror extends RelicsItem{
 	}
 	
 	public MagicMirror(Rarity rarity, int durability) {
-		super(1, rarity, durability);
+		super(rarity, durability);
 	}
 	
 	@Override

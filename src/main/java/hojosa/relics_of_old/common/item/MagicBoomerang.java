@@ -14,7 +14,7 @@ import net.minecraft.world.level.Level;
 public class MagicBoomerang extends RelicsItem {
 
 	public MagicBoomerang() {
-		super(1, Rarity.UNCOMMON, 256);
+		super(Rarity.UNCOMMON, 256);
 	}
 
 	@Override

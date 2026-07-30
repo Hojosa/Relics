@@ -20,13 +20,18 @@ public class RelicsItem extends Item {
 		super(properties);
 	}
 
-	public RelicsItem(int stackSize, Rarity rarity, int durability) {
-		super(getInitProperties(stackSize).rarity(rarity).durability(durability));
+	public RelicsItem(Rarity rarity, int durability) {
+		super(getInitProperties().rarity(rarity).durability(durability));
 	}
 
 	private static Properties getInitProperties(int maxStackSize) {
 		Properties properties = new Properties();
 		properties.stacksTo(maxStackSize);
+		return properties;
+	}
+	
+	private static Properties getInitProperties() {
+		Properties properties = new Properties();
 		return properties;
 	}
 }
