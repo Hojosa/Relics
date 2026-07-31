@@ -17,13 +17,17 @@ public class RelicsParticleDescriptionProvider extends ParticleDescriptionProvid
 
 	@Override
 	protected void addDescriptions() {
-		sprite(RelicsParticles.FLAME_PATTICLES.get(), RelicsUtil.modLoc("fire_0"));
+//		sprite(RelicsParticles.FLAME_PATTICLES.get(), RelicsUtil.modLoc("fire_0"));
+		sprite(RelicsParticles.FLAME_PATTICLES.get(), ResourceLocation.withDefaultNamespace("flame"));
 		sprite(RelicsParticles.STAR_BEAM_TORCH_PATTICLES.get(), RelicsUtil.modLoc("star_dust"));
 		sprite(RelicsParticles.STAR_BEAM_GRIND_PATTICLES.get(), RelicsUtil.modLoc("star_dust"));
 		sprite(RelicsParticles.SPARKLE_PARTICLES.get(), ResourceLocation.withDefaultNamespace("spell_5"));
 		spriteSet(RelicsParticles.RUNE_PARTICLE.get(), IntStream.rangeClosed('a', 'z')
 				.mapToObj(c -> ResourceLocation.withDefaultNamespace("sga_" + (char) c))
 				.toList());
+		spriteSet(RelicsParticles.FLARE_PARTICLE.get(), IntStream.rangeClosed(0, 7)
+		          .mapToObj(i -> ResourceLocation.withDefaultNamespace("generic_" + i))
+		          .toList());
 	}
 	
 	@Override

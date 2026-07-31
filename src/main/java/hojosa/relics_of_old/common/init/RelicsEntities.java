@@ -1,9 +1,10 @@
 package hojosa.relics_of_old.common.init;
 
-import hojosa.relics_of_old.common.entity.MedallionEntity;
 import hojosa.relics_of_old.common.entity.FallingStarEntity;
 import hojosa.relics_of_old.common.entity.MagicBoomerangEntity;
+import hojosa.relics_of_old.common.entity.MedallionEntity;
 import hojosa.relics_of_old.common.entity.StarBeamEntity;
+import hojosa.relics_of_old.common.entity.attacks.FireblastEntity;
 import hojosa.relics_of_old.lib.References;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -30,4 +31,7 @@ public class RelicsEntities {
 
 	public static final RegistryObject<EntityType<MedallionEntity>> MEDALLION = ENTITY_TYPES.register(References.UnlocalizedName.MEDALLION,
 			() -> EntityType.Builder.<MedallionEntity>of(MedallionEntity::new, MobCategory.MISC).sized(0.25f, 0.25f).clientTrackingRange(16).build(References.UnlocalizedName.MEDALLION));
+	
+	public static final RegistryObject<EntityType<FireblastEntity>> FIREBLAST = ENTITY_TYPES.register(References.UnlocalizedName.FIRE_BLAST,
+			() -> EntityType.Builder.<FireblastEntity>of(FireblastEntity::new, MobCategory.MISC).sized(0.25f, 0.25f).clientTrackingRange(16).build(References.UnlocalizedName.FIRE_BLAST));
 }

@@ -31,8 +31,8 @@ public class InfuseableItem extends RelicsItem{
 	
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
-		ItemStack itemstack = pPlayer.getItemInHand(pUsedHand);
 		if(pPlayer.experienceLevel >= 3) {
+			ItemStack itemstack = pPlayer.getItemInHand(pUsedHand);
             pPlayer.startUsingItem(pUsedHand);
             pLevel.playSound(pPlayer, pPlayer.blockPosition(), RelicsSounds.INFUSE_CHARGE.get(), SoundSource.BLOCKS);
             return InteractionResultHolder.consume(itemstack);

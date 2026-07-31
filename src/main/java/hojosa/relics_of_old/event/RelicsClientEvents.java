@@ -1,15 +1,18 @@
 package hojosa.relics_of_old.event;
 
-import hojosa.relics_of_old.client.particle.CustomParticle;
+import hojosa.relics_of_old.client.particle.FlameParticle;
+import hojosa.relics_of_old.client.particle.FlareParticle;
 import hojosa.relics_of_old.client.particle.RelicsParticles;
 import hojosa.relics_of_old.client.particle.RuneParticle;
 import hojosa.relics_of_old.client.particle.SparkleParticle;
 import hojosa.relics_of_old.client.particle.StarBeamGrindParticle;
 import hojosa.relics_of_old.client.particle.StarBeamTorchParticle;
+import hojosa.relics_of_old.client.render.EmptyEntityRenderer;
 import hojosa.relics_of_old.client.render.FallingStarRenderer;
 import hojosa.relics_of_old.client.render.GlintBlockRenderer;
 import hojosa.relics_of_old.client.render.InfusedStarstoneBlockRenderer;
 import hojosa.relics_of_old.client.render.MagicBoomerangRenderer;
+import hojosa.relics_of_old.client.render.MedallionEntityRenderer;
 import hojosa.relics_of_old.client.render.SkybeamBlockRenderer;
 import hojosa.relics_of_old.client.render.StarBeamRenderer;
 import hojosa.relics_of_old.client.render.SwordPedestalBlockRenderer;
@@ -49,14 +52,17 @@ public class RelicsClientEvents {
 		event.registerEntityRenderer(RelicsEntities.FALLING_STAR.get(), FallingStarRenderer::new);
 		event.registerEntityRenderer(RelicsEntities.STARBEAM.get(), StarBeamRenderer::new);
 		event.registerEntityRenderer(RelicsEntities.MAGIC_BOOMERANG.get(), MagicBoomerangRenderer::new);
+		event.registerEntityRenderer(RelicsEntities.MEDALLION.get(), MedallionEntityRenderer::new);
+		event.registerEntityRenderer(RelicsEntities.FIREBLAST.get(), EmptyEntityRenderer::new);
 	}
 	
     @SubscribeEvent
     public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
-    	event.registerSpriteSet(RelicsParticles.FLAME_PATTICLES.get(), CustomParticle.Provider::new);
+    	event.registerSpriteSet(RelicsParticles.FLAME_PATTICLES.get(), FlameParticle.Provider::new);
     	event.registerSpriteSet(RelicsParticles.STAR_BEAM_TORCH_PATTICLES.get(), StarBeamTorchParticle.Provider::new);
     	event.registerSpriteSet(RelicsParticles.STAR_BEAM_GRIND_PATTICLES.get(), StarBeamGrindParticle.Provider::new);
     	event.registerSpriteSet(RelicsParticles.SPARKLE_PARTICLES.get(), SparkleParticle.Provider::new);
     	event.registerSpriteSet(RelicsParticles.RUNE_PARTICLE.get(), RuneParticle.Provider::new);
+    	event.registerSpriteSet(RelicsParticles.FLARE_PARTICLE.get(), FlareParticle.Provider::new);
     }
 }

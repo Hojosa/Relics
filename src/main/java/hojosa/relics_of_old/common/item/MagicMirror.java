@@ -2,6 +2,7 @@ package hojosa.relics_of_old.common.item;
 
 import hojosa.relics_of_old.client.particle.RelicsParticles;
 import hojosa.relics_of_old.common.init.RelicsSounds;
+import hojosa.relics_of_old.lib.RelicsParticleOptions;
 import hojosa.relics_of_old.lib.item.RelicsItem;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.particles.ParticleTypes;
@@ -105,7 +106,7 @@ public class MagicMirror extends RelicsItem{
             double theta = Math.PI * 6 * progress;
             double r = 2 * (1 - progress);
             for (int i = 0; i < 3; i++) {
-            	pLevel.addParticle(RelicsParticles.RUNE_PARTICLE.get(),
+            	pLevel.addParticle(new RelicsParticleOptions(RelicsParticles.RUNE_PARTICLE, 45, 0.15f),
                     player.getX() + Math.cos(theta) * r,
                     player.getY(),
                     player.getZ() + Math.sin(theta) * r,
