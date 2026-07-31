@@ -57,8 +57,30 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItem(RelicsItems.BLANK_TABLET);
 		itemWithOverride(RelicsItems.MYSTIC_SEED, "thundering", "charged");
 		basicItem(RelicsBlocks.CALTROPS.asItem());
-		basicItem(RelicsItems.MILK_CHOCOLATE);
 		basicItem(RelicsItems.MAGIC_BOOMERANG);
+		basicItem(RelicsItems.MILK_CHOCOLATE);
+		basicItem(RelicsItems.EARTH_MEDALLION);
+		basicItemWithOtherTexture(RelicsItems.EMPTY_EARTH_MEDALLION, RelicsItems.EARTH_MEDALLION.getId());
+		basicItem(RelicsItems.FIRE_MEDALLION);
+		basicItemWithOtherTexture(RelicsItems.EMPTY_FIRE_MEDALLION, RelicsItems.FIRE_MEDALLION.getId());
+		basicItem(RelicsItems.WIND_MEDALLION);
+		basicItemWithOtherTexture(RelicsItems.EMPTY_WIND_MEDALLION, RelicsItems.WIND_MEDALLION.getId());
+		basicItem(RelicsItems.ENDER_MEDALLION);
+		basicItemWithOtherTexture(RelicsItems.EMPTY_ENDER_MEDALLION, RelicsItems.ENDER_MEDALLION.getId());
+		basicItem(RelicsItems.FOREST_MEDALLION);
+		basicItemWithOtherTexture(RelicsItems.EMPTY_FOREST_MEDALLION, RelicsItems.FOREST_MEDALLION.getId());
+		basicItem(RelicsItems.MAGIC_MEDALLION);
+		basicItemWithOtherTexture(RelicsItems.EMPTY_MAGIC_MEDALLION, RelicsItems.MAGIC_MEDALLION.getId());
+		basicItem(RelicsItems.ICE_MEDALLION);
+		basicItemWithOtherTexture(RelicsItems.EMPTY_ICE_MEDALLION, RelicsItems.ICE_MEDALLION.getId());
+		basicItem(RelicsItems.WATER_MEDALLION);
+		basicItemWithOtherTexture(RelicsItems.EMPTY_WATER_MEDALLION, RelicsItems.WATER_MEDALLION.getId());
+		basicItem(RelicsItems.GRAVITY_MEDALLION);
+		basicItemWithOtherTexture(RelicsItems.EMPTY_GRAVITY_MEDALLION, RelicsItems.GRAVITY_MEDALLION.getId());
+		basicItem(RelicsItems.LIGHTNING_MEDALLION);
+		basicItemWithOtherTexture(RelicsItems.EMPTY_LIGHTNING_MEDALLION, RelicsItems.LIGHTNING_MEDALLION.getId());
+		
+		
 		
 		//magic mirror model
 		//base model that contains the base transform settings for the model
@@ -162,6 +184,12 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 
 	private void basicItem(RegistryObject<? extends Item> itemRef) {
 		basicItem(itemRef.getId());
+	}
+	
+	 private ItemModelBuilder basicItemWithOtherTexture(RegistryObject<? extends Item> item, ResourceLocation textureName) {
+		 return getBuilder(item.getId().toString())
+	        .parent(new ModelFile.UncheckedModelFile("item/generated"))
+	        .texture("layer0", ResourceLocation.fromNamespaceAndPath(item.getId().getNamespace(), "item/" + textureName.getPath()));
 	}
 
 	private void itemWithOverride(RegistryObject<? extends Item> itemRef, String predicate, String variantSuffix) {

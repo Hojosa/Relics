@@ -40,9 +40,9 @@ public class Medallion extends EmptyMedallion {
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
 		var item = pPlayer.getItemInHand(pUsedHand);
-		if (item.getDamageValue() > 0) {
-			item.setDamageValue(item.getDamageValue() - 1);
-			return InteractionResultHolder.success(item);
+		if (item.getDamageValue() < item.getMaxDamage()) {
+			pPlayer.startUsingItem(pUsedHand);
+			return InteractionResultHolder.consume(item);
 		}
 		pLevel.playSound(null, pPlayer.blockPosition(), SoundEvents.DISPENSER_FAIL, SoundSource.PLAYERS, 0.5f, 1.0F);
 		return InteractionResultHolder.fail(item);
@@ -50,10 +50,13 @@ public class Medallion extends EmptyMedallion {
 
 	@Override
 	public ItemStack finishUsingItem(ItemStack pStack, Level pLevel, LivingEntity pLivingEntity) {
-		pLevel.playSound(null, pLivingEntity.blockPosition(), SoundEvents.CROSSBOW_SHOOT, SoundSource.PLAYERS, 0.5f, 1.0F);
-		MedallionEntity boomerang = new MedallionEntity(pLevel, pLivingEntity, pStack, this.type);
-		pLevel.addFreshEntity(boomerang);
-
+		if(!pLevel.isClientSide) {
+			pStack.setDamageValue(pStack.getDamageValue() + 1);
+			pLevel.playSound(null, pLivingEntity.blockPosition(), SoundEvents.CROSSBOW_SHOOT, SoundSource.PLAYERS, 0.5f, 1.0F);
+			MedallionEntity attack = new MedallionEntity(pLevel, pLivingEntity, pStack, this.type);
+			attack.shootFromRotation(pLivingEntity, pLivingEntity.getXRot(), pLivingEntity.getYRot(), 0.0f, 1.5f, 1.0f);
+			pLevel.addFreshEntity(attack);
+		}
 		return pStack;
 	}
 	

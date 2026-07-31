@@ -71,6 +71,17 @@ public class References {
 		public static final String MAGIC_BOOMERANG = "magic_boomerang";
 		public static final String MEDALLION = "medallion_entity";
 		public static final String FIRE_MEDALLION = "fire_medallion";
+		public static final String EARTH_MEDALLION = "earth_medallion";
+		public static final String WIND_MEDALLION = "wind_medallion";
+		public static final String ENDER_MEDALLION = "ender_medallion";
+		public static final String ICE_MEDALLION = "ice_medallion";
+		public static final String WATER_MEDALLION = "water_medallion";
+		public static final String FOREST_MEDALLION = "forest_medallion";
+		public static final String MAGIC_MEDALLION = "magic_medallion";
+		public static final String GRAVITY_MEDALLION = "gravity_medallion";
+		public static final String LIGHTNING_MEDALLION = "lightning_medallion";
+		public static final String FIRE_BLAST = "fire_blast";
+		public static final String FLARE_PARTICLE = "flare_particle";
 	}
 	
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

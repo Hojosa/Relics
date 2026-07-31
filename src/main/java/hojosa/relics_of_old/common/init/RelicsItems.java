@@ -1,8 +1,9 @@
 package hojosa.relics_of_old.common.init;
 
-import hojosa.relics_of_old.common.item.Medallion;
 import hojosa.relics_of_old.common.item.EmeraldPiece;
 import hojosa.relics_of_old.common.item.EmeraldShard;
+import hojosa.relics_of_old.common.item.EmptyMedallion;
+import hojosa.relics_of_old.common.item.EmptyMedallion.MedallionType;
 import hojosa.relics_of_old.common.item.FireTablet;
 import hojosa.relics_of_old.common.item.FlameSword;
 import hojosa.relics_of_old.common.item.Heart;
@@ -11,8 +12,7 @@ import hojosa.relics_of_old.common.item.MagicBoomerang;
 import hojosa.relics_of_old.common.item.MagicMirror;
 import hojosa.relics_of_old.common.item.MagicPowder;
 import hojosa.relics_of_old.common.item.MasterSword;
-import hojosa.relics_of_old.common.item.EmptyMedallion;
-import hojosa.relics_of_old.common.item.EmptyMedallion.MedallionType;
+import hojosa.relics_of_old.common.item.Medallion;
 import hojosa.relics_of_old.common.item.MilkChocolate;
 import hojosa.relics_of_old.common.item.MysticSeed;
 import hojosa.relics_of_old.common.item.WaterTablet;
@@ -25,7 +25,6 @@ import lombok.NoArgsConstructor;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTab.ItemDisplayParameters;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.SwordItem;
 import net.minecraftforge.registries.DeferredRegister;
@@ -67,10 +66,28 @@ public class RelicsItems {
 	public static final RegistryObject<MagicMirror> MAGIC_MIRROR = ITEMS.register(References.UnlocalizedName.MAGIC_MIRROR, () -> new MagicMirror(Rarity.UNCOMMON, 4));
 	public static final RegistryObject<MagicMirror> FLAWLESS_MAGIC_MIRROR = ITEMS.register(References.UnlocalizedName.FLAWLESS_MAGIC_MIRROR, () -> new MagicMirror(Rarity.EPIC));
 	public static final RegistryObject<MagicBoomerang> MAGIC_BOOMERANG = ITEMS.register(References.UnlocalizedName.MAGIC_BOOMERANG, MagicBoomerang::new);
-	public static final RegistryObject<EmptyMedallion> EMPTY_FIRE_MEDALLION = ITEMS.register("empty_" + References.UnlocalizedName.FIRE_MEDALLION, () -> new EmptyMedallion(MedallionType.FIRE));
 	public static final RegistryObject<Medallion> FIRE_MEDALLION = ITEMS.register(References.UnlocalizedName.FIRE_MEDALLION, () -> new Medallion(MedallionType.FIRE, 3));
+	public static final RegistryObject<EmptyMedallion> EMPTY_FIRE_MEDALLION = ITEMS.register("empty_" + References.UnlocalizedName.FIRE_MEDALLION, () -> new EmptyMedallion(MedallionType.FIRE, FIRE_MEDALLION));
+	public static final RegistryObject<Medallion> EARTH_MEDALLION = ITEMS.register(References.UnlocalizedName.EARTH_MEDALLION, () -> new Medallion(MedallionType.EARTH, 3));
+	public static final RegistryObject<EmptyMedallion> EMPTY_EARTH_MEDALLION = ITEMS.register("empty_" + References.UnlocalizedName.EARTH_MEDALLION, () -> new EmptyMedallion(MedallionType.EARTH, EARTH_MEDALLION));
+	public static final RegistryObject<Medallion> WIND_MEDALLION = ITEMS.register(References.UnlocalizedName.WIND_MEDALLION, () -> new Medallion(MedallionType.WIND, 3));
+	public static final RegistryObject<EmptyMedallion> EMPTY_WIND_MEDALLION = ITEMS.register("empty_" + References.UnlocalizedName.WIND_MEDALLION, () -> new EmptyMedallion(MedallionType.WIND, WIND_MEDALLION));
+	public static final RegistryObject<Medallion> ENDER_MEDALLION = ITEMS.register(References.UnlocalizedName.ENDER_MEDALLION, () -> new Medallion(MedallionType.ENDER, 3));
+	public static final RegistryObject<EmptyMedallion> EMPTY_ENDER_MEDALLION = ITEMS.register("empty_" + References.UnlocalizedName.ENDER_MEDALLION, () -> new EmptyMedallion(MedallionType.ENDER, ENDER_MEDALLION));
+	public static final RegistryObject<Medallion> ICE_MEDALLION = ITEMS.register(References.UnlocalizedName.ICE_MEDALLION, () -> new Medallion(MedallionType.ICE, 3));
+	public static final RegistryObject<EmptyMedallion> EMPTY_ICE_MEDALLION = ITEMS.register("empty_" + References.UnlocalizedName.ICE_MEDALLION, () -> new EmptyMedallion(MedallionType.ICE, ICE_MEDALLION));
+	public static final RegistryObject<Medallion> WATER_MEDALLION = ITEMS.register(References.UnlocalizedName.WATER_MEDALLION, () -> new Medallion(MedallionType.WATER, 3));
+	public static final RegistryObject<EmptyMedallion> EMPTY_WATER_MEDALLION = ITEMS.register("empty_" + References.UnlocalizedName.WATER_MEDALLION, () -> new EmptyMedallion(MedallionType.WATER, WATER_MEDALLION));
+	public static final RegistryObject<Medallion> FOREST_MEDALLION = ITEMS.register(References.UnlocalizedName.FOREST_MEDALLION, () -> new Medallion(MedallionType.FOREST, 3));
+	public static final RegistryObject<EmptyMedallion> EMPTY_FOREST_MEDALLION = ITEMS.register("empty_" + References.UnlocalizedName.FOREST_MEDALLION, () -> new EmptyMedallion(MedallionType.FOREST, FOREST_MEDALLION));
+	public static final RegistryObject<Medallion> MAGIC_MEDALLION = ITEMS.register(References.UnlocalizedName.MAGIC_MEDALLION, () -> new Medallion(MedallionType.MAGIC, 3));
+	public static final RegistryObject<EmptyMedallion> EMPTY_MAGIC_MEDALLION = ITEMS.register("empty_" + References.UnlocalizedName.MAGIC_MEDALLION, () -> new EmptyMedallion(MedallionType.MAGIC, MAGIC_MEDALLION));
+	public static final RegistryObject<Medallion> GRAVITY_MEDALLION = ITEMS.register(References.UnlocalizedName.GRAVITY_MEDALLION, () -> new Medallion(MedallionType.GRAVITY, 3));
+	public static final RegistryObject<EmptyMedallion> EMPTY_GRAVITY_MEDALLION = ITEMS.register("empty_" + References.UnlocalizedName.GRAVITY_MEDALLION, () -> new EmptyMedallion(MedallionType.GRAVITY, GRAVITY_MEDALLION));
+	public static final RegistryObject<Medallion> LIGHTNING_MEDALLION = ITEMS.register(References.UnlocalizedName.LIGHTNING_MEDALLION, () -> new Medallion(MedallionType.LIGHTNING, 3));
+	public static final RegistryObject<EmptyMedallion> EMPTY_LIGHTNING_MEDALLION = ITEMS.register("empty_" + References.UnlocalizedName.LIGHTNING_MEDALLION, () -> new EmptyMedallion(MedallionType.LIGHTNING, LIGHTNING_MEDALLION));
 
 	public static void addTabItems(ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
-		RelicsItems.ITEMS.getEntries().forEach(itemRegistryObject -> output.accept(new ItemStack(itemRegistryObject.get())));
+		RelicsItems.ITEMS.getEntries().forEach(itemRegistryObject -> output.accept(itemRegistryObject.get().getDefaultInstance()));
 	}
 }
