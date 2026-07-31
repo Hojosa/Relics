@@ -62,4 +62,14 @@ public class EmptyMedallion extends RelicsItem {
 		item.setDamageValue(item.getMaxDamage());
 		return item;
 	}
+	
+	@Override
+	  public boolean isEnchantable(ItemStack pStack) {
+	      return false;
+	  }
+
+	  @Override
+	  public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
+	      return false;
+	  }
 }

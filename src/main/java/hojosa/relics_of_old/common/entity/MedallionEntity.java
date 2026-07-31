@@ -45,8 +45,9 @@ public class MedallionEntity extends ThrowableItemProjectile {
 	@Override
 	public void tick() {
 		super.tick();
-		this.level().addParticle(new RelicsParticleOptions(RelicsParticles.RUNE_PARTICLE, 20, 0.15f), this.getX() + this.random.nextGaussian() * 0.1, this.getY() + this.random.nextGaussian() * 0.1, this.getZ() + this.random.nextGaussian() * 0.1,
-				this.random.nextGaussian() * 0.03, this.random.nextGaussian() * 0.03, 1.0f);
+		this.level().addParticle(new RelicsParticleOptions(RelicsParticles.RUNE_PARTICLE, 30, 0.15f), 
+				this.getX() + this.random.nextGaussian() * 0.1, this.getY() + this.random.nextGaussian() * 0.1, this.getZ() + this.random.nextGaussian() * 0.1,
+				this.random.nextGaussian() * 0.03, this.random.nextGaussian() * 0.03, this.random.nextGaussian() * 0.03);
 	}
 
 	@Override

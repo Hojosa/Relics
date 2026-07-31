@@ -49,7 +49,7 @@ public class FireblastEntity extends Entity {
         if (lifetime == 0) {
             if (level().isClientSide) {
                 for (int i = 0; i < 15; i++) {
-                    level().addParticle(new RelicsParticleOptions(RelicsParticles.RUNE_PARTICLE, 20, 0.15f),
+                    level().addParticle(new RelicsParticleOptions(RelicsParticles.RUNE_PARTICLE, 30, 0.15f),
                             getX() + random.nextGaussian() * 0.3, getY(), getZ() + random.nextGaussian() * 0.3,
                             0.0, random.nextDouble(), 0.0);
                 }
