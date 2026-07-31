@@ -38,7 +38,6 @@ public class MedallionEntityRenderer extends EntityRenderer<MedallionEntity>   {
         float b = (color & 0xFF) / 255.0f;
 
         VertexConsumer builder = pBuffer.getBuffer(RenderType.beaconBeam(STAR_TEX, true));
-
         pPoseStack.pushPose();
 
         // first star — clockwise
@@ -72,7 +71,6 @@ public class MedallionEntityRenderer extends EntityRenderer<MedallionEntity>   {
     }
 
     private static int getColor(MedallionType type) {
-    	System.out.println(type);
         return switch (type) {
             case FIRE      -> 0xFF4400;
             case EARTH     -> 0x8B6914;

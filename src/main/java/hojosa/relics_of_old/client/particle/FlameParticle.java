@@ -19,7 +19,7 @@ public class FlameParticle extends TextureSheetParticle {
 		this.yd = pYSpeed;
 		this.zd = pZSpeed;
 		this.quadSize *= 2.5F;
-		this.lifetime = 20;
+		this.lifetime = 25;
 		this.setSpriteFromAge(spriteSet);
 
 		this.rCol = 1f;

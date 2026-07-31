@@ -115,8 +115,14 @@ public class RelicsEvents {
 	public static void onPlayerDeath(LivingDeathEvent event) {
 		if (event.getEntity() instanceof ServerPlayer targetPlayer && targetPlayer.getInventory().contains(new ItemStack(RelicsItems.PHOENIX_FEATHER.get()))) {
 			targetPlayer.getInventory().getItem(targetPlayer.getInventory().findSlotMatchingItem(new ItemStack(RelicsItems.PHOENIX_FEATHER.get()))).shrink(1);
-			targetPlayer.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 220));
-			targetPlayer.setHealth(10);
+			targetPlayer.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 65, 1));
+			targetPlayer.setHealth(1);
+			targetPlayer.invulnerableTime = 65;
+			targetPlayer.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 28, 3));
+			targetPlayer.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 65, 4));
+			targetPlayer.removeEffect(MobEffects.POISON);
+			targetPlayer.removeEffect(MobEffects.WITHER);
+			targetPlayer.setRemainingFireTicks(60);
 			event.getEntity().level().playSound(targetPlayer, event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), RelicsSounds.REVIVE.get(), SoundSource.BLOCKS, 1f, 1f);
 			RelicsNetwork.getInstance().sendToTrackingAndSelf(new PhoenixParticlePacket(targetPlayer.getX(), targetPlayer.getY(), targetPlayer.getZ()), targetPlayer);
 			event.setCanceled(true);

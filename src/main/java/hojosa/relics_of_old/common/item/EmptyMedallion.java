@@ -58,7 +58,6 @@ public class EmptyMedallion extends RelicsItem {
 	@Override
 	public ItemStack getDefaultInstance() {
 		var item = new ItemStack(this);
-		System.out.println(item.getMaxDamage());
 		item.setDamageValue(item.getMaxDamage());
 		return item;
 	}
