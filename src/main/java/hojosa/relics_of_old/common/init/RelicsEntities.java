@@ -4,7 +4,10 @@ import hojosa.relics_of_old.common.entity.FallingStarEntity;
 import hojosa.relics_of_old.common.entity.MagicBoomerangEntity;
 import hojosa.relics_of_old.common.entity.MedallionEntity;
 import hojosa.relics_of_old.common.entity.StarBeamEntity;
+import hojosa.relics_of_old.common.entity.attacks.ArrowStormEntity;
+import hojosa.relics_of_old.common.entity.attacks.EnderBombEntity;
 import hojosa.relics_of_old.common.entity.attacks.FireblastEntity;
+import hojosa.relics_of_old.common.entity.attacks.QuakeEntity;
 import hojosa.relics_of_old.lib.References;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -34,4 +37,18 @@ public class RelicsEntities {
 	
 	public static final RegistryObject<EntityType<FireblastEntity>> FIREBLAST = ENTITY_TYPES.register(References.UnlocalizedName.FIRE_BLAST,
 			() -> EntityType.Builder.<FireblastEntity>of(FireblastEntity::new, MobCategory.MISC).sized(0.25f, 0.25f).clientTrackingRange(16).build(References.UnlocalizedName.FIRE_BLAST));
+
+	public static final RegistryObject<EntityType<ArrowStormEntity>> ARROW_STORM = ENTITY_TYPES.register(References.UnlocalizedName.ARROW_STORM,
+			() -> EntityType.Builder.<ArrowStormEntity>of(ArrowStormEntity::new, MobCategory.MISC).sized(0.25f, 0.25f).clientTrackingRange(16).build(References.UnlocalizedName.ARROW_STORM));
+	
+	public static final RegistryObject<EntityType<QuakeEntity>> QUAKE = ENTITY_TYPES.register(References.UnlocalizedName.QUAKE,
+			() -> EntityType.Builder.<QuakeEntity>of(QuakeEntity::new, MobCategory.MISC).sized(0.25f, 0.25f).clientTrackingRange(16).build(References.UnlocalizedName.ARROW_STORM));
+	
+	public static final RegistryObject<EntityType<EnderBombEntity>> ENDER_BOMB = ENTITY_TYPES.register(References.UnlocalizedName.ENDER_BOMB,
+			() -> EntityType.Builder.<EnderBombEntity>of(EnderBombEntity::new, MobCategory.MISC).sized(0.25f, 0.25f).clientTrackingRange(16).build(References.UnlocalizedName.ARROW_STORM));
+
+
+
+
+
 }

@@ -8,6 +8,7 @@ import hojosa.relics_of_old.client.particle.SparkleParticle;
 import hojosa.relics_of_old.client.particle.StarBeamGrindParticle;
 import hojosa.relics_of_old.client.particle.StarBeamTorchParticle;
 import hojosa.relics_of_old.client.render.EmptyEntityRenderer;
+import hojosa.relics_of_old.client.render.EnderBombEntityRenderer;
 import hojosa.relics_of_old.client.render.FallingStarRenderer;
 import hojosa.relics_of_old.client.render.GlintBlockRenderer;
 import hojosa.relics_of_old.client.render.InfusedStarstoneBlockRenderer;
@@ -54,6 +55,9 @@ public class RelicsClientEvents {
 		event.registerEntityRenderer(RelicsEntities.MAGIC_BOOMERANG.get(), MagicBoomerangRenderer::new);
 		event.registerEntityRenderer(RelicsEntities.MEDALLION.get(), MedallionEntityRenderer::new);
 		event.registerEntityRenderer(RelicsEntities.FIREBLAST.get(), EmptyEntityRenderer::new);
+		event.registerEntityRenderer(RelicsEntities.QUAKE.get(), EmptyEntityRenderer::new);
+		event.registerEntityRenderer(RelicsEntities.ARROW_STORM.get(), EmptyEntityRenderer::new);
+		event.registerEntityRenderer(RelicsEntities.ENDER_BOMB.get(), EnderBombEntityRenderer::new);
 	}
 	
     @SubscribeEvent

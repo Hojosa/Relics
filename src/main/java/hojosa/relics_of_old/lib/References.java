@@ -82,7 +82,9 @@ public class References {
 		public static final String LIGHTNING_MEDALLION = "lightning_medallion";
 		public static final String FIRE_BLAST = "fire_blast";
 		public static final String FLARE_PARTICLE = "flare_particle";
-	}
+		public static final String ARROW_STORM = "arrow_storm";
+		public static final String QUAKE = "quake";
+		public static final String ENDER_BOMB = "ender_bomb";}
 	
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)
 	public static class SoundName {
