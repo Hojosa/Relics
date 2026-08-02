@@ -219,5 +219,99 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.group(References.CREATIVE_TAB)
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.BRICK))
 		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.MILK_CHOCOLATE.get())
+		.pattern("mc ")
+		.pattern("s  ")
+		.define('m', Items.MILK_BUCKET)
+		.define('c', Items.COCOA_BEANS)
+		.define('s', Items.MILK_BUCKET)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.MILK_BUCKET))
+		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.EMPTY_EARTH_MEDALLION.get())
+		.pattern("gbg")
+		.pattern("bab")
+		.pattern("gbg")
+		.define('g', Items.GOLD_NUGGET)
+		.define('b', Items.BRICK)
+		.define('a', Items.DIRT)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.GOLD_NUGGET))
+		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.EMPTY_FIRE_MEDALLION.get())
+		.pattern("gbg")
+		.pattern("bab")
+		.pattern("gbg")
+		.define('g', Items.GOLD_NUGGET)
+		.define('b', Items.BRICK)
+		.define('a', Items.FIRE_CHARGE)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.GOLD_NUGGET))
+		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.EMPTY_WIND_MEDALLION.get())
+		.pattern("gbg")
+		.pattern("bab")
+		.pattern("gbg")
+		.define('g', Items.GOLD_NUGGET)
+		.define('b', Items.BRICK)
+		.define('a', Items.ARROW)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.GOLD_NUGGET))
+		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.EMPTY_ENDER_MEDALLION.get())
+		.pattern("gbg")
+		.pattern("bab")
+		.pattern("gbg")
+		.define('g', Items.GOLD_NUGGET)
+		.define('b', Items.BRICK)
+		.define('a', Items.ENDER_PEARL)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.GOLD_NUGGET))
+		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.MAGIC_BOOMERANG.get())
+		.pattern("dgg")
+		.pattern("g  ")
+		.pattern("g  ")
+		.define('g', Items.GOLD_INGOT)
+		.define('d', Items.DIAMOND)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.GOLD_NUGGET))
+		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.PYRO_AMULET.get())
+		.pattern(" g ")
+		.pattern("g g")
+		.pattern(" a ")
+		.define('g', Items.GOLD_INGOT)
+		.define('a', RelicsItems.FIRE_MEDALLION.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.FIRE_MEDALLION.get()))
+		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.GEO_AMULET.get())
+		.pattern(" g ")
+		.pattern("g g")
+		.pattern(" a ")
+		.define('g', Items.GOLD_INGOT)
+		.define('a', RelicsItems.EARTH_MEDALLION.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.EARTH_MEDALLION.get()))
+		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.AERO_AMULET.get())
+		.pattern(" g ")
+		.pattern("g g")
+		.pattern(" a ")
+		.define('g', Items.GOLD_INGOT)
+		.define('a', RelicsItems.WIND_MEDALLION.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.WIND_MEDALLION.get()))
+		.save(consumer);
 	}
 }

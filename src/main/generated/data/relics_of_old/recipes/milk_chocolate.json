@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "c": {
+      "item": "minecraft:cocoa_beans"
+    },
+    "m": {
+      "item": "minecraft:milk_bucket"
+    },
+    "s": {
+      "item": "minecraft:milk_bucket"
+    }
+  },
+  "pattern": [
+    "mc ",
+    "s  "
+  ],
+  "result": {
+    "item": "relics_of_old:milk_chocolate"
+  },
+  "show_notification": true
+}

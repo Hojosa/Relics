@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "a": {
+      "item": "minecraft:fire_charge"
+    },
+    "b": {
+      "item": "minecraft:brick"
+    },
+    "g": {
+      "item": "minecraft:gold_nugget"
+    }
+  },
+  "pattern": [
+    "gbg",
+    "bab",
+    "gbg"
+  ],
+  "result": {
+    "item": "relics_of_old:empty_fire_medallion"
+  },
+  "show_notification": true
+}
