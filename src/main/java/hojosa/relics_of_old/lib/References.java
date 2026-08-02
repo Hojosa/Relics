@@ -84,8 +84,13 @@ public class References {
 		public static final String FLARE_PARTICLE = "flare_particle";
 		public static final String ARROW_STORM = "arrow_storm";
 		public static final String QUAKE = "quake";
-		public static final String ENDER_BOMB = "ender_bomb";}
-	
+		public static final String ENDER_BOMB = "ender_bomb";
+		public static final String PYRO_AMULET = "pyro_amulet";
+		public static final String GEO_AMULET = "geo_amulet";
+		public static final String AERO_AMULET = "aero_amulet";
+		public static final String MAGIC_SCRAMBLE_PARTICLE = "magic_scramble_particle";
+	}
+
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)
 	public static class SoundName {
 		public static final String SWORD_PLACE_SOUND = "sword_place";
@@ -110,9 +115,9 @@ public class References {
 		public static final String SPRINKLE = "sprinkle";
 		public static final String SINE = "sine";
 		public static final String MAGIC_BOOMERANG = "magic_boomerang";
-		
+		public static final String REPEL = "repel";
 	}
-	
+
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)
 	public static class LostPagesText {
 		public static final String LOST_PAGE_1 = "A Page that details Information about a legendary sword that banishes evil";

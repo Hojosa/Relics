@@ -37,6 +37,7 @@ public class RelicsSounds {
 	public static final RegistryObject<SoundEvent> SPRINKLE = registerSound(References.SoundName.SPRINKLE);
 	public static final RegistryObject<SoundEvent> SINE = registerSound(References.SoundName.SINE);
 	public static final RegistryObject<SoundEvent> MAGIC_BOOMERANG = registerSound(References.SoundName.MAGIC_BOOMERANG);
+	public static final RegistryObject<SoundEvent> REPEL = registerSound(References.SoundName.REPEL);
 
 	private static RegistryObject<SoundEvent> registerSound(String name) {
 		return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(References.MOD_ID, name)));

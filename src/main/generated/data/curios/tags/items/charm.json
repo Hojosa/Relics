@@ -1,6 +1,9 @@
 {
   "values": [
     "relics_of_old:fire_tablet",
-    "relics_of_old:water_tablet"
+    "relics_of_old:water_tablet",
+    "relics_of_old:pyro_amulet",
+    "relics_of_old:geo_amulet",
+    "relics_of_old:aero_amulet"
   ]
 }

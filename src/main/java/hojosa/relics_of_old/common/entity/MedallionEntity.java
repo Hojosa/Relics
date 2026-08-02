@@ -7,8 +7,8 @@ import hojosa.relics_of_old.common.entity.attacks.FireblastEntity;
 import hojosa.relics_of_old.common.entity.attacks.QuakeEntity;
 import hojosa.relics_of_old.common.init.RelicsEntities;
 import hojosa.relics_of_old.common.init.RelicsItems;
-import hojosa.relics_of_old.common.item.EmptyMedallion.MedallionType;
 import hojosa.relics_of_old.lib.RelicsParticleOptions;
+import hojosa.relics_of_old.lib.RelicsUtil.ElementType;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -27,13 +27,13 @@ import net.minecraft.world.phys.HitResult;
 public class MedallionEntity extends ThrowableItemProjectile {
 
 	private static final EntityDataAccessor<String> DATA_MEDALLION_TYPE = SynchedEntityData.defineId(MedallionEntity.class, EntityDataSerializers.STRING);
-	private MedallionType medallionType;
+	private ElementType medallionType;
 
 	public MedallionEntity(EntityType<? extends ThrowableItemProjectile> pEntityType, Level level) {
 		super(pEntityType, level);
 	}
 
-	public MedallionEntity(Level pLevel, LivingEntity pShooter, ItemStack item, MedallionType type) {
+	public MedallionEntity(Level pLevel, LivingEntity pShooter, ItemStack item, ElementType type) {
 		super(RelicsEntities.MEDALLION.get(), pShooter, pLevel);
 		this.medallionType = type;
 		this.setItem(item);
@@ -80,11 +80,11 @@ public class MedallionEntity extends ThrowableItemProjectile {
 		this.entityData.define(DATA_MEDALLION_TYPE, "");
 	}
 
-	public MedallionType getMedallionType() {
+	public ElementType getMedallionType() {
 		String name = entityData.get(DATA_MEDALLION_TYPE);
 		if (name.isEmpty())
 			return null;
-		return MedallionType.valueOf(name);
+		return ElementType.valueOf(name);
 	}
 
 	@Override
@@ -99,7 +99,7 @@ public class MedallionEntity extends ThrowableItemProjectile {
 	public void readAdditionalSaveData(CompoundTag tag) {
 		super.readAdditionalSaveData(tag);
 		if (tag.contains("MedallionType")) {
-			this.medallionType = MedallionType.valueOf(tag.getString("MedallionType"));
+			this.medallionType = ElementType.valueOf(tag.getString("MedallionType"));
 			this.entityData.set(DATA_MEDALLION_TYPE, medallionType.name());
 		}
 	}

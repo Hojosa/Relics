@@ -1,8 +1,8 @@
 package hojosa.relics_of_old.common.item;
 
+import hojosa.relics_of_old.lib.RelicsUtil.ElementType;
 import hojosa.relics_of_old.lib.item.RelicsItem;
 import lombok.Getter;
-import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -11,32 +11,17 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class EmptyMedallion extends RelicsItem {
 	
-	public enum MedallionType implements StringRepresentable {
-		FIRE("fire"), EARTH("earth"), WIND("wind"), ENDER("ender"), ICE("ice"), WATER("water"), LIGHTNING("lightning"), MAGIC("magic"), GRAVITY("gravity"), FOREST("forest");
-
-		private final String name;
-
-		MedallionType(String name) {
-			this.name = name;
-		}
-
-		@Override
-		public String getSerializedName() {
-			return name;
-		}
-	}
-	
-	protected MedallionType type;
+	protected ElementType type;
 	@Getter
 	private RegistryObject<Medallion> chargedMedallion;
 	
-	public EmptyMedallion(MedallionType medallionType, RegistryObject<Medallion> chargedMedallion) {
+	public EmptyMedallion(ElementType medallionType, RegistryObject<Medallion> chargedMedallion) {
 		super(Rarity.RARE, 50);
 		this.type = medallionType;
 		this.chargedMedallion = chargedMedallion;
 	}
 	
-	public EmptyMedallion(MedallionType medallionType, int charges) {
+	public EmptyMedallion(ElementType medallionType, int charges) {
 		super(Rarity.RARE, charges);
 		this.type = medallionType;
 	}

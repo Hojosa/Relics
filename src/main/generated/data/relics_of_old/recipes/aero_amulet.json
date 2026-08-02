@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "a": {
+      "item": "relics_of_old:wind_medallion"
+    },
+    "g": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "pattern": [
+    " g ",
+    "g g",
+    " a "
+  ],
+  "result": {
+    "item": "relics_of_old:aero_amulet"
+  },
+  "show_notification": true
+}

@@ -79,6 +79,9 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItemWithOtherTexture(RelicsItems.EMPTY_GRAVITY_MEDALLION, RelicsItems.GRAVITY_MEDALLION.getId());
 		basicItem(RelicsItems.LIGHTNING_MEDALLION);
 		basicItemWithOtherTexture(RelicsItems.EMPTY_LIGHTNING_MEDALLION, RelicsItems.LIGHTNING_MEDALLION.getId());
+		basicItem(RelicsItems.PYRO_AMULET);
+		basicItem(RelicsItems.GEO_AMULET);
+		basicItem(RelicsItems.AERO_AMULET);
 		
 		
 		

@@ -2,6 +2,7 @@ package hojosa.relics_of_old.event;
 
 import hojosa.relics_of_old.client.particle.FlameParticle;
 import hojosa.relics_of_old.client.particle.FlareParticle;
+import hojosa.relics_of_old.client.particle.MagicScrambleParticle;
 import hojosa.relics_of_old.client.particle.RelicsParticles;
 import hojosa.relics_of_old.client.particle.RuneParticle;
 import hojosa.relics_of_old.client.particle.SparkleParticle;
@@ -68,5 +69,6 @@ public class RelicsClientEvents {
     	event.registerSpriteSet(RelicsParticles.SPARKLE_PARTICLES.get(), SparkleParticle.Provider::new);
     	event.registerSpriteSet(RelicsParticles.RUNE_PARTICLE.get(), RuneParticle.Provider::new);
     	event.registerSpriteSet(RelicsParticles.FLARE_PARTICLE.get(), FlareParticle.Provider::new);
+    	event.registerSpriteSet(RelicsParticles.MAGIC_SCRAMBLE_PARTICLE.get(), MagicScrambleParticle.Provider::new);
     }
 }

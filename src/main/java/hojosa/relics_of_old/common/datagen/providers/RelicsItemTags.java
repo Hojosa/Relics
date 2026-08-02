@@ -28,7 +28,10 @@ public class RelicsItemTags extends ItemTagsProvider {
 	protected void addTags(HolderLookup.Provider provider) {
 		tag(RelicsTags.Items.CHARM_TAG)
 		.add(RelicsItems.FIRE_TABLET.get())
-		.add(RelicsItems.WATER_TABLET.get());
+		.add(RelicsItems.WATER_TABLET.get())
+		.add(RelicsItems.PYRO_AMULET.get())
+		.add(RelicsItems.GEO_AMULET.get())
+		.add(RelicsItems.AERO_AMULET.get());
 		tag(ItemTags.SWORDS)
 		.add(RelicsItems.FIRE_SWORD.get())
 		.add(RelicsItems.MASTER_SWORD.get());

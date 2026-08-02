@@ -10,15 +10,18 @@ import be.florens.expandability.api.forge.LivingFluidCollisionEvent;
 import hojosa.relics_of_old.Relics;
 import hojosa.relics_of_old.common.entity.FallingStarEntity;
 import hojosa.relics_of_old.common.entity.StarBeamEntity;
+import hojosa.relics_of_old.common.entity.attacks.QuakeEntity;
 import hojosa.relics_of_old.common.init.RelicsConfig;
 import hojosa.relics_of_old.common.init.RelicsItems;
 import hojosa.relics_of_old.common.init.RelicsSounds;
+import hojosa.relics_of_old.common.item.RelicsAmulet;
 import hojosa.relics_of_old.common.item.entity.EmeraldShardItemEntity;
 import hojosa.relics_of_old.common.item.entity.HeartItemEntity;
 import hojosa.relics_of_old.common.player.StarFallChance;
 import hojosa.relics_of_old.common.player.StarFallChanceProvider;
 import hojosa.relics_of_old.lib.References;
 import hojosa.relics_of_old.lib.RelicsUtil;
+import hojosa.relics_of_old.lib.RelicsUtil.ElementType;
 import hojosa.relics_of_old.network.PhoenixParticlePacket;
 import hojosa.relics_of_old.network.RelicsNetwork;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
@@ -29,6 +32,7 @@ import net.minecraft.network.protocol.game.ClientboundSoundEntityPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -50,6 +54,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityMountEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.event.village.WandererTradesEvent;
@@ -59,6 +64,8 @@ import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.MissingMappingsEvent;
+import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.SlotResult;
 import vazkii.patchouli.api.PatchouliAPI;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -200,7 +207,7 @@ public class RelicsEvents {
 	@SubscribeEvent
 	public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
 		// fix our guidebook
-		Player player = event.getEntity(); 
+		Player player = event.getEntity();
 		Item guideBook = ForgeRegistries.ITEMS.getValue(ResourceLocation.fromNamespaceAndPath("patchouli", "guide_book"));
 		if (guideBook == null)
 			return;
@@ -242,5 +249,57 @@ public class RelicsEvents {
 		if (event.getStack().is(Items.EMERALD) && event.getEntity() instanceof ServerPlayer serverPlayer) {
 			serverPlayer.connection.send(new ClientboundSoundEntityPacket(RelicsSounds.EMERALD_PICKUP.getHolder().get(), SoundSource.PLAYERS, serverPlayer, 1.0f, 1.0f, 1L));
 		}
+	}
+
+	@SubscribeEvent
+	public static void onPlayerHurt(LivingHurtEvent event) {
+		// only run when a player is damaged
+		if (!(event.getEntity() instanceof ServerPlayer player))
+			return;
+		//get all amulets that are equipped, this should only ever be one, but other mods can add additonal charm slots and there is usally the one universal curios slot as well
+		CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+			List<SlotResult> amulets = handler.findCurios(stack -> stack.getItem() instanceof RelicsAmulet);
+			for (SlotResult result : amulets) {
+				RelicsAmulet amulet = (RelicsAmulet) result.stack().getItem();
+				ElementType type = amulet.getAmuletType();
+				if (RelicsUtil.matchesDamageType(type, event.getSource()) && amulet.hasCharges(result.stack())) {
+					switch (type) {
+					case FIRE -> {
+						System.out.println("RUNNING DAMAGE REDUCTION");
+						int damage = (int) Math.ceil(event.getAmount());
+						amulet.consumeCharge(result.stack(), damage);
+						player.heal(damage);
+						player.invulnerableTime = player.invulnerableTime;
+						player.level().playSound(null, player.blockPosition(), RelicsSounds.HEART.get(), SoundSource.PLAYERS, 0.2f, 1.0f);
+						event.setCanceled(true);
+						return;
+					}
+					case EARTH -> {
+					      int damage = (int) Math.ceil(event.getAmount());
+					      amulet.consumeCharge(result.stack(), damage);
+
+					      float scale = Math.min(damage / 20.0f, 1.0f);
+					      double radius = 3.0 + 12.0 * scale;
+
+					      player.level().addFreshEntity(new QuakeEntity(player.level(), player.position(), player, radius, damage));
+//					      // explosion particle ring
+//					      ServerLevel serverLevel = (ServerLevel) player.level();
+//					      for (int i = 0; i < 12; i++) {
+//					          double th = (double) i * Math.PI * 2.0 / 12.0;
+//					          double vx = Math.cos(th);
+//					          double vz = Math.sin(th);
+//					          serverLevel.sendParticles(ParticleTypes.EXPLOSION,
+//					                  player.getX() + vx * radius, player.getY(), player.getZ() + vz * radius,
+//					                  1, 0.0, 0.0, 0.0, 0.0);
+//					      }
+					      player.level().playSound(null, player.blockPosition(), SoundEvents.GENERIC_EXPLODE,
+					              SoundSource.PLAYERS, 0.4f + 3.0f * scale, 1.2f - scale * 0.8f);
+					      event.setCanceled(true);
+					  }
+					default -> {}
+					}
+				}
+			}
+		});
 	}
 }

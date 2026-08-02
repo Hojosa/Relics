@@ -89,6 +89,9 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addItem(RelicsItems.GRAVITY_MEDALLION, "Gravity Medallion");
 		addItem(RelicsItems.EMPTY_LIGHTNING_MEDALLION, "Empty Lightning Medallion");
 		addItem(RelicsItems.LIGHTNING_MEDALLION, "Lightning Medallion");
+		addItem(RelicsItems.PYRO_AMULET, "Pyro Amulet");
+		addItem(RelicsItems.GEO_AMULET, "Geo Amulet");
+		addItem(RelicsItems.AERO_AMULET, "Aero Amulet");
 	}
 
 	@Override

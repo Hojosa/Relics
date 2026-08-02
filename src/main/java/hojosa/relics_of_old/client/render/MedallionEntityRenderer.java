@@ -7,8 +7,8 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 
 import hojosa.relics_of_old.common.entity.MedallionEntity;
-import hojosa.relics_of_old.common.item.EmptyMedallion.MedallionType;
 import hojosa.relics_of_old.lib.References;
+import hojosa.relics_of_old.lib.RelicsUtil.ElementType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -70,7 +70,7 @@ public class MedallionEntityRenderer extends EntityRenderer<MedallionEntity>   {
         poseStack.popPose();
     }
 
-    private static int getColor(MedallionType type) {
+    private static int getColor(ElementType type) {
         return switch (type) {
             case FIRE      -> 0xFF4400;
             case EARTH     -> 0x8B6914;

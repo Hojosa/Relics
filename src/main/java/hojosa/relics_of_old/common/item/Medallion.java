@@ -1,6 +1,7 @@
 package hojosa.relics_of_old.common.item;
 
 import hojosa.relics_of_old.common.entity.MedallionEntity;
+import hojosa.relics_of_old.lib.RelicsUtil.ElementType;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -13,7 +14,7 @@ import net.minecraft.world.level.Level;
 
 public class Medallion extends EmptyMedallion {
 
-	public Medallion(MedallionType medallionType, int charges) {
+	public Medallion(ElementType medallionType, int charges) {
 		super(medallionType, charges);
 	}
 

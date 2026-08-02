@@ -33,4 +33,12 @@ public class RelicsParticles {
 			});
 
 	public static final RegistryObject<SimpleParticleType> FLARE_PARTICLE = PARTICLE_TYPES.register(References.UnlocalizedName.FLARE_PARTICLE, () -> new SimpleParticleType(true));
+
+	public static final RegistryObject<ParticleType<RelicsParticleOptions>> MAGIC_SCRAMBLE_PARTICLE = PARTICLE_TYPES.register(References.UnlocalizedName.MAGIC_SCRAMBLE_PARTICLE,
+	          () -> new ParticleType<>(true, RelicsParticleOptions.DESERIALIZER) {
+	              @Override
+	              public Codec<RelicsParticleOptions> codec() {
+	                  return RelicsParticleOptions.codec(MAGIC_SCRAMBLE_PARTICLE);
+	              }
+	          });
 }

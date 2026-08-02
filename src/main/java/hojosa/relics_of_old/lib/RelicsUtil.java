@@ -17,6 +17,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.StringRepresentable;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.Cat;
 import net.minecraft.world.entity.animal.Sheep;
@@ -110,15 +113,16 @@ public class RelicsUtil {
 	public static boolean hasBlockToCycle(Block block) {
 		return BLOCK_CYCLES.containsKey(block);
 	}
-	
+
 	public static void setupStateChangeMap() {
-		STATE_CHANGE.put(RelicsBlocks.MYSTIC_SHRUB.get().defaultBlockState().setValue(MysticShrub.STATE, ShrubState.STUMP), RelicsBlocks.MYSTIC_SHRUB.get().defaultBlockState().setValue(MysticShrub.STATE, ShrubState.NORMAL));
+		STATE_CHANGE.put(RelicsBlocks.MYSTIC_SHRUB.get().defaultBlockState().setValue(MysticShrub.STATE, ShrubState.STUMP),
+				RelicsBlocks.MYSTIC_SHRUB.get().defaultBlockState().setValue(MysticShrub.STATE, ShrubState.NORMAL));
 	}
-	
+
 	public static BlockState getTargetState(BlockState state) {
 		return STATE_CHANGE.get(state);
 	}
-	
+
 	public static boolean hasStateToChange(BlockState clickedBlock) {
 		return STATE_CHANGE.containsKey(clickedBlock);
 	}
@@ -195,4 +199,32 @@ public class RelicsUtil {
 		putShrub(level, center.offset(1, 0, -2), charged);
 	}
 
+	public enum ElementType implements StringRepresentable {
+		FIRE("fire"), EARTH("earth"), WIND("wind"), ENDER("ender"), ICE("ice"), WATER("water"), LIGHTNING("lightning"), MAGIC("magic"), GRAVITY("gravity"), FOREST("forest");
+
+		private final String name;
+
+		ElementType(String name) {
+			this.name = name;
+		}
+
+		@Override
+		public String getSerializedName() {
+			return name;
+		}
+	}
+
+	public static boolean matchesDamageType(ElementType type, DamageSource damage) {
+		switch (type) {
+		case FIRE -> {
+			return damage.is(DamageTypes.ON_FIRE) || damage.is(DamageTypes.FIREBALL) || damage.is(DamageTypes.IN_FIRE);
+		}
+		case EARTH -> {
+			return damage.is(DamageTypes.FALL);
+		}
+		default -> {
+			return false;
+		}
+		}
+	}
 }

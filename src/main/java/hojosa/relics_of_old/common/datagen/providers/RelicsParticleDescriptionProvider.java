@@ -27,6 +27,9 @@ public class RelicsParticleDescriptionProvider extends ParticleDescriptionProvid
 		spriteSet(RelicsParticles.FLARE_PARTICLE.get(), IntStream.rangeClosed(0, 7)
 		          .mapToObj(i -> ResourceLocation.withDefaultNamespace("generic_" + i))
 		          .toList());
+		spriteSet(RelicsParticles.MAGIC_SCRAMBLE_PARTICLE.get(), IntStream.rangeClosed('a', 'z')
+				.mapToObj(c -> ResourceLocation.withDefaultNamespace("sga_" + (char) c))
+				.toList());
 	}
 	
 	@Override

@@ -68,6 +68,12 @@
     ],
     "subtitle": "relics_of_old.subtitle.magic_crafting"
   },
+  "repel": {
+    "sounds": [
+      "relics_of_old:repel"
+    ],
+    "subtitle": "relics_of_old.subtitle.repel"
+  },
   "revive": {
     "sounds": [
       "relics_of_old:revive"
