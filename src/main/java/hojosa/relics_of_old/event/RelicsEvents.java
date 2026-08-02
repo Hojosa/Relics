@@ -15,6 +15,7 @@ import hojosa.relics_of_old.common.init.RelicsConfig;
 import hojosa.relics_of_old.common.init.RelicsItems;
 import hojosa.relics_of_old.common.init.RelicsSounds;
 import hojosa.relics_of_old.common.item.RelicsAmulet;
+import hojosa.relics_of_old.common.item.WhirlwindBoots;
 import hojosa.relics_of_old.common.item.entity.EmeraldShardItemEntity;
 import hojosa.relics_of_old.common.item.entity.HeartItemEntity;
 import hojosa.relics_of_old.common.player.StarFallChance;
@@ -38,6 +39,7 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades.ItemListing;
@@ -75,8 +77,12 @@ public class RelicsEvents {
 
 	@SubscribeEvent
 	public static void fluidWalker(LivingFluidCollisionEvent event) {
-		if (event.getFluidState().is(FluidTags.WATER) && RelicsItems.WATER_TABLET.get().isEquipped(event.getEntity())) {
-			event.setResult(Event.Result.ALLOW);
+		if (event.getFluidState().is(FluidTags.WATER)) {
+			if (RelicsItems.WATER_TABLET.get().isEquipped(event.getEntity())) {
+				event.setResult(Event.Result.ALLOW);
+			} else if (event.getEntity() instanceof Player player && player.isSprinting() && player.getItemBySlot(EquipmentSlot.FEET).getItem() instanceof WhirlwindBoots) {
+				event.setResult(Event.Result.ALLOW);
+			}
 		}
 	}
 
@@ -256,7 +262,9 @@ public class RelicsEvents {
 		// only run when a player is damaged
 		if (!(event.getEntity() instanceof ServerPlayer player))
 			return;
-		//get all amulets that are equipped, this should only ever be one, but other mods can add additonal charm slots and there is usally the one universal curios slot as well
+		// get all amulets that are equipped, this should only ever be one, but other
+		// mods can add additonal charm slots and there is usally the one universal
+		// curios slot as well
 		CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
 			List<SlotResult> amulets = handler.findCurios(stack -> stack.getItem() instanceof RelicsAmulet);
 			for (SlotResult result : amulets) {
@@ -275,28 +283,18 @@ public class RelicsEvents {
 						return;
 					}
 					case EARTH -> {
-					      int damage = (int) Math.ceil(event.getAmount());
-					      amulet.consumeCharge(result.stack(), damage);
+						int damage = (int) Math.ceil(event.getAmount());
+						amulet.consumeCharge(result.stack(), damage);
 
-					      float scale = Math.min(damage / 20.0f, 1.0f);
-					      double radius = 3.0 + 12.0 * scale;
+						float scale = Math.min(damage / 20.0f, 1.0f);
+						double radius = 3.0 + 12.0 * scale;
 
-					      player.level().addFreshEntity(new QuakeEntity(player.level(), player.position(), player, radius, damage));
-//					      // explosion particle ring
-//					      ServerLevel serverLevel = (ServerLevel) player.level();
-//					      for (int i = 0; i < 12; i++) {
-//					          double th = (double) i * Math.PI * 2.0 / 12.0;
-//					          double vx = Math.cos(th);
-//					          double vz = Math.sin(th);
-//					          serverLevel.sendParticles(ParticleTypes.EXPLOSION,
-//					                  player.getX() + vx * radius, player.getY(), player.getZ() + vz * radius,
-//					                  1, 0.0, 0.0, 0.0, 0.0);
-//					      }
-					      player.level().playSound(null, player.blockPosition(), SoundEvents.GENERIC_EXPLODE,
-					              SoundSource.PLAYERS, 0.4f + 3.0f * scale, 1.2f - scale * 0.8f);
-					      event.setCanceled(true);
-					  }
-					default -> {}
+						player.level().addFreshEntity(new QuakeEntity(player.level(), player.position(), player, radius, damage));
+						player.level().playSound(null, player.blockPosition(), SoundEvents.GENERIC_EXPLODE, SoundSource.PLAYERS, 0.4f + 3.0f * scale, 1.2f - scale * 0.8f);
+						event.setCanceled(true);
+					}
+					default -> {
+					}
 					}
 				}
 			}

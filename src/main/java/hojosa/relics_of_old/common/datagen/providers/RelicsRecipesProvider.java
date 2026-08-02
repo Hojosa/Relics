@@ -18,6 +18,7 @@ import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.data.recipes.SingleItemRecipeBuilder;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
@@ -310,6 +311,17 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.pattern(" a ")
 		.define('g', Items.GOLD_INGOT)
 		.define('a', RelicsItems.WIND_MEDALLION.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.WIND_MEDALLION.get()))
+		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.WHIRLWIND_BOOTS.get())
+		.pattern("g g")
+		.pattern("waw")
+		.define('g', Items.GOLD_INGOT)
+		.define('w', ItemTags.WOOL)
+		.define('a', RelicsItems.WIND_MEDALLION.get())
+		
 		.group(References.CREATIVE_TAB)
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.WIND_MEDALLION.get()))
 		.save(consumer);

@@ -82,6 +82,7 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItem(RelicsItems.PYRO_AMULET);
 		basicItem(RelicsItems.GEO_AMULET);
 		basicItem(RelicsItems.AERO_AMULET);
+		basicItem(RelicsItems.WHIRLWIND_BOOTS);
 		
 		
 		

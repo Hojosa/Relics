@@ -17,10 +17,12 @@ import hojosa.relics_of_old.common.item.MilkChocolate;
 import hojosa.relics_of_old.common.item.MysticSeed;
 import hojosa.relics_of_old.common.item.RelicsAmulet;
 import hojosa.relics_of_old.common.item.WaterTablet;
+import hojosa.relics_of_old.common.item.WhirlwindBoots;
 import hojosa.relics_of_old.lib.References;
 import hojosa.relics_of_old.lib.RelicsUtil.ElementType;
 import hojosa.relics_of_old.lib.item.InfuseableItem;
 import hojosa.relics_of_old.lib.item.InfusedItem;
+import hojosa.relics_of_old.lib.item.RelicsArmorMaterials;
 import hojosa.relics_of_old.lib.item.RelicsItem;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -91,6 +93,7 @@ public class RelicsItems {
 	public static final RegistryObject<RelicsAmulet> PYRO_AMULET = ITEMS.register(References.UnlocalizedName.PYRO_AMULET, () -> new RelicsAmulet(50, ElementType.FIRE));
 	public static final RegistryObject<RelicsAmulet> GEO_AMULET = ITEMS.register(References.UnlocalizedName.GEO_AMULET, () -> new RelicsAmulet(50, ElementType.EARTH));
 	public static final RegistryObject<RelicsAmulet> AERO_AMULET = ITEMS.register(References.UnlocalizedName.AERO_AMULET, () -> new AeroAmulet(50));
+	public static final RegistryObject<WhirlwindBoots> WHIRLWIND_BOOTS = ITEMS.register(References.UnlocalizedName.WHIRLWIND_BOOTS, () -> new WhirlwindBoots(RelicsArmorMaterials.WHIRLWIND));
 	
 	public static void addTabItems(ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
 		RelicsItems.ITEMS.getEntries().forEach(itemRegistryObject -> output.accept(itemRegistryObject.get().getDefaultInstance()));

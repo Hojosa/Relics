@@ -89,6 +89,7 @@ public class References {
 		public static final String GEO_AMULET = "geo_amulet";
 		public static final String AERO_AMULET = "aero_amulet";
 		public static final String MAGIC_SCRAMBLE_PARTICLE = "magic_scramble_particle";
+		public static final String WHIRLWIND_BOOTS = "whirlwind_boots";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -116,6 +117,7 @@ public class References {
 		public static final String SINE = "sine";
 		public static final String MAGIC_BOOMERANG = "magic_boomerang";
 		public static final String REPEL = "repel";
+		public static final String DASH = "dash";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)
