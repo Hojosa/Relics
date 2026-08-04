@@ -41,6 +41,8 @@ public class RelicsSoundsProvider extends SoundDefinitionsProvider {
 		add(RelicsSounds.MAGIC_BOOMERANG, definition().subtitle(getSubtitle(RelicsSounds.MAGIC_BOOMERANG)).with(sound(RelicsSounds.MAGIC_BOOMERANG.getId())));
 		add(RelicsSounds.REPEL, definition().subtitle(getSubtitle(RelicsSounds.REPEL)).with(sound(RelicsSounds.REPEL.getId())));
 		add(RelicsSounds.DASH, definition().subtitle(getSubtitle(RelicsSounds.DASH)).with(sound(RelicsSounds.DASH.getId())));
+		add(RelicsSounds.THROW, definition().subtitle(getSubtitle(RelicsSounds.THROW)).with(sound(RelicsSounds.THROW.getId())));
+		add(RelicsSounds.LIFT, definition().subtitle(getSubtitle(RelicsSounds.LIFT)).with(sound(RelicsSounds.LIFT.getId())));
 	}
 
 	private String getSubtitle(RegistryObject<SoundEvent> sound) {

@@ -29,6 +29,7 @@ public interface RelicsTags {
 		TagKey<Item> CLEANER = tag("cleaner");
 		TagKey<Item> HEART = tag("heart");
 		TagKey<Item> CHARM_TAG = ItemTags.create(ResourceLocation.fromNamespaceAndPath(CuriosApi.MODID, SlotTypePreset.CHARM.getIdentifier()));
+		TagKey<Item> BELT_TAG = ItemTags.create(ResourceLocation.fromNamespaceAndPath(CuriosApi.MODID, SlotTypePreset.BELT.getIdentifier()));
 
 		static TagKey<Item> tag(String name) {
 			return TagKey.create(Registries.ITEM, RelicsUtil.modLoc(name));

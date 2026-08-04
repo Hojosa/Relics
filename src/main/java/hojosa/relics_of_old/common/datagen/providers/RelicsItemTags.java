@@ -32,6 +32,8 @@ public class RelicsItemTags extends ItemTagsProvider {
 		.add(RelicsItems.PYRO_AMULET.get())
 		.add(RelicsItems.GEO_AMULET.get())
 		.add(RelicsItems.AERO_AMULET.get());
+		tag(RelicsTags.Items.BELT_TAG)
+		.add(RelicsItems.TITAN_BAND.get());
 		tag(ItemTags.SWORDS)
 		.add(RelicsItems.FIRE_SWORD.get())
 		.add(RelicsItems.MASTER_SWORD.get());

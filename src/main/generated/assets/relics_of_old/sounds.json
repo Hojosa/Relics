@@ -62,6 +62,12 @@
     ],
     "subtitle": "relics_of_old.subtitle.item_get"
   },
+  "lift": {
+    "sounds": [
+      "relics_of_old:lift"
+    ],
+    "subtitle": "relics_of_old.subtitle.lift"
+  },
   "magic_boomerang": {
     "sounds": [
       "relics_of_old:magic_boomerang"
@@ -146,6 +152,12 @@
       "relics_of_old:sword_place_fancy"
     ],
     "subtitle": "relics_of_old.subtitle.sword_place_fancy"
+  },
+  "throw": {
+    "sounds": [
+      "relics_of_old:throw"
+    ],
+    "subtitle": "relics_of_old.subtitle.throw"
   },
   "transform": {
     "sounds": [

@@ -53,3 +53,6 @@ issueTrackerURL = "https://github.com/Hojosa/Relics/issues"
     versionRange="${curios_range}"
     ordering="NONE"
     side="BOTH"
+    
+ [[mixins]]
+ 	config = "relics_of_old.mixins.json"

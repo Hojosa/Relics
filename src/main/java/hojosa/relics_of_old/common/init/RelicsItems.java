@@ -16,6 +16,7 @@ import hojosa.relics_of_old.common.item.Medallion;
 import hojosa.relics_of_old.common.item.MilkChocolate;
 import hojosa.relics_of_old.common.item.MysticSeed;
 import hojosa.relics_of_old.common.item.RelicsAmulet;
+import hojosa.relics_of_old.common.item.TitanBand;
 import hojosa.relics_of_old.common.item.WaterTablet;
 import hojosa.relics_of_old.common.item.WhirlwindBoots;
 import hojosa.relics_of_old.lib.References;
@@ -94,6 +95,7 @@ public class RelicsItems {
 	public static final RegistryObject<RelicsAmulet> GEO_AMULET = ITEMS.register(References.UnlocalizedName.GEO_AMULET, () -> new RelicsAmulet(50, ElementType.EARTH));
 	public static final RegistryObject<RelicsAmulet> AERO_AMULET = ITEMS.register(References.UnlocalizedName.AERO_AMULET, () -> new AeroAmulet(50));
 	public static final RegistryObject<WhirlwindBoots> WHIRLWIND_BOOTS = ITEMS.register(References.UnlocalizedName.WHIRLWIND_BOOTS, () -> new WhirlwindBoots(RelicsArmorMaterials.WHIRLWIND));
+	public static final RegistryObject<TitanBand> TITAN_BAND = ITEMS.register(References.UnlocalizedName.TITAN_BAND, TitanBand::new);
 	
 	public static void addTabItems(ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
 		RelicsItems.ITEMS.getEntries().forEach(itemRegistryObject -> output.accept(itemRegistryObject.get().getDefaultInstance()));

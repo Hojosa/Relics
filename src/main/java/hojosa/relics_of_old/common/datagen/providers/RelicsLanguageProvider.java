@@ -93,6 +93,7 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addItem(RelicsItems.GEO_AMULET, "Geo Amulet");
 		addItem(RelicsItems.AERO_AMULET, "Aero Amulet");
 		addItem(RelicsItems.WHIRLWIND_BOOTS, "Whirlwind Boots");
+		addItem(RelicsItems.TITAN_BAND, "Titan Band");
 	}
 
 	@Override

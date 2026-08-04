@@ -40,6 +40,8 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades.ItemListing;
@@ -57,7 +59,9 @@ import net.minecraftforge.event.entity.EntityMountEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.event.village.WandererTradesEvent;
 import net.minecraftforge.eventbus.api.Event;
@@ -299,5 +303,62 @@ public class RelicsEvents {
 				}
 			}
 		});
+		// titan band drop interaction
+		CompoundTag data = player.getPersistentData();
+		if (player.getFirstPassenger() != null && data.getBoolean("TitanLift")) {
+			ItemStack bandStack = RelicsItems.TITAN_BAND.get().getEquippedStack(player);
+			if (bandStack != null) {
+				Entity passenger = player.getFirstPassenger();
+				passenger.stopRiding();
+				player.level().playSound(null, player.blockPosition(), RelicsSounds.THROW.get(), SoundSource.PLAYERS, 0.3f, 1.0f);
+				bandStack.getOrCreateTag().putBoolean("TitanLift", false);
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public static void onEntityInteract(PlayerInteractEvent.EntityInteract event) {
+		Player player = event.getEntity();
+		if (!player.getMainHandItem().isEmpty())
+			return;
+		if (player.getFirstPassenger() != null)
+			return;
+		if (!(event.getTarget() instanceof LivingEntity target))
+			return;
+
+		ItemStack bandStack = RelicsItems.TITAN_BAND.get().getEquippedStack(player);
+		if (bandStack == null)
+			return;
+
+		// mount on both sides for client prediction
+		target.startRiding(player, true);
+
+		// server-only: durability, state, sounds
+		if (!event.getLevel().isClientSide) {
+			bandStack.hurtAndBreak(1, player, p -> {
+			});
+			bandStack.getOrCreateTag().putBoolean("TitanLift", true);
+			player.level().playSound(null, player.blockPosition(), RelicsSounds.LIFT.get(), SoundSource.PLAYERS, 0.3f, 1.0f);
+			if (target instanceof Mob mob) {
+				mob.playAmbientSound();
+			}
+		}
+		event.setCanceled(true);
+	}
+
+	@SubscribeEvent
+	public static void onPlayerInteract(PlayerInteractEvent event) {
+		Player player = event.getEntity();
+		if (player.getFirstPassenger() != null && player.getPersistentData().getBoolean("TitanLift") && event.isCancelable()) {
+			event.setCanceled(true);
+		}
+	}
+
+	@SubscribeEvent
+	public static void onAttackEntity(AttackEntityEvent event) {
+		Player player = event.getEntity();
+		if (player.getFirstPassenger() != null && player.getPersistentData().getBoolean("TitanLift")) {
+			event.setCanceled(true);
+		}
 	}
 }

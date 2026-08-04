@@ -17,6 +17,7 @@ import hojosa.relics_of_old.common.init.RelicsItems;
 import hojosa.relics_of_old.common.init.RelicsSounds;
 import hojosa.relics_of_old.common.loot.RelicsGlobalLootModifier;
 import hojosa.relics_of_old.common.recipes.RelicsRecipes;
+import hojosa.relics_of_old.event.RelicsClientEvents;
 import hojosa.relics_of_old.integration.RelicsIntegration;
 import hojosa.relics_of_old.lib.References;
 import hojosa.relics_of_old.lib.RelicsUtil;
@@ -67,7 +68,9 @@ public class Relics {
 	}
 
 	private void clientSetupEvent(final FMLClientSetupEvent event) {
-		event.enqueueWork(RelicsItemProperties::setupItemProperties);      
+		event.enqueueWork(RelicsItemProperties::setupItemProperties);
+		MinecraftForge.EVENT_BUS.addListener(RelicsClientEvents::onRenderLiving);
+		MinecraftForge.EVENT_BUS.addListener(RelicsClientEvents::onRenderHand);
 	}
 
 	private void setup(final FMLCommonSetupEvent event) {

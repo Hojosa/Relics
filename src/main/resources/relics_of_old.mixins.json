@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"package": "hojosa.relics_of_old.mixin",
+	"compatibilityLevel": "JAVA_17",
+	"minVersion": "0.8",
+	"client": [
+		"LivingEntityRendererMixin"
+	],
+	"mixins": [
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

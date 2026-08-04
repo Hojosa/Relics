@@ -13,5 +13,6 @@ public class CuriosIntegration {
 	
     public static void init() {
 		InterModComms.sendTo(CuriosApi.MODID,  SlotTypeMessage.REGISTER_TYPE, () -> SlotTypePreset.CHARM.getMessageBuilder().build());
+		InterModComms.sendTo(CuriosApi.MODID,  SlotTypeMessage.REGISTER_TYPE, () -> SlotTypePreset.BELT.getMessageBuilder().build());
 	}
 }

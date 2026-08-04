@@ -321,9 +321,19 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.define('g', Items.GOLD_INGOT)
 		.define('w', ItemTags.WOOL)
 		.define('a', RelicsItems.WIND_MEDALLION.get())
-		
 		.group(References.CREATIVE_TAB)
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.WIND_MEDALLION.get()))
+		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.TITAN_BAND.get())
+		.pattern("glg")
+		.pattern("lal")
+		.pattern("glg")
+		.define('g', Items.GOLD_INGOT)
+		.define('l', Items.LEATHER)
+		.define('a', RelicsItems.EARTH_MEDALLION.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.EARTH_MEDALLION.get()))
 		.save(consumer);
 	}
 }
