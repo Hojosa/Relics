@@ -1,4 +1,4 @@
-package hojosa.relics_of_old.client.particle;
+package hojosa.relics_of_old.common.init;
 
 import com.mojang.serialization.Codec;
 

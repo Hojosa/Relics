@@ -2,8 +2,8 @@ package hojosa.relics_of_old.common.block;
 
 import java.util.Optional;
 
-import hojosa.relics_of_old.client.particle.RelicsParticles;
 import hojosa.relics_of_old.common.entity.StarBeamEntity;
+import hojosa.relics_of_old.common.init.RelicsParticles;
 import hojosa.relics_of_old.lib.ShapeUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

@@ -1,6 +1,6 @@
 package hojosa.relics_of_old.network;
 
-import hojosa.relics_of_old.client.particle.RelicsParticles;
+import hojosa.relics_of_old.common.init.RelicsParticles;
 import hojosa.relics_of_old.common.init.RelicsSounds;
 import lombok.AllArgsConstructor;
 import net.minecraft.client.Minecraft;

@@ -2,7 +2,7 @@ package hojosa.relics_of_old.common.item;
 
 import java.util.List;
 
-import hojosa.relics_of_old.client.particle.RelicsParticles;
+import hojosa.relics_of_old.common.init.RelicsParticles;
 import hojosa.relics_of_old.common.init.RelicsSounds;
 import hojosa.relics_of_old.lib.RelicsParticleOptions;
 import hojosa.relics_of_old.lib.RelicsUtil.ElementType;

@@ -1,12 +1,12 @@
 package hojosa.relics_of_old.common.entity;
 
-import hojosa.relics_of_old.client.particle.RelicsParticles;
 import hojosa.relics_of_old.common.entity.attacks.ArrowStormEntity;
 import hojosa.relics_of_old.common.entity.attacks.EnderBombEntity;
 import hojosa.relics_of_old.common.entity.attacks.FireblastEntity;
 import hojosa.relics_of_old.common.entity.attacks.QuakeEntity;
 import hojosa.relics_of_old.common.init.RelicsEntities;
 import hojosa.relics_of_old.common.init.RelicsItems;
+import hojosa.relics_of_old.common.init.RelicsParticles;
 import hojosa.relics_of_old.lib.RelicsParticleOptions;
 import hojosa.relics_of_old.lib.RelicsUtil.ElementType;
 import net.minecraft.nbt.CompoundTag;

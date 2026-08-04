@@ -2,7 +2,7 @@ package hojosa.relics_of_old.common.datagen.providers;
 
 import java.util.stream.IntStream;
 
-import hojosa.relics_of_old.client.particle.RelicsParticles;
+import hojosa.relics_of_old.common.init.RelicsParticles;
 import hojosa.relics_of_old.lib.RelicsUtil;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;

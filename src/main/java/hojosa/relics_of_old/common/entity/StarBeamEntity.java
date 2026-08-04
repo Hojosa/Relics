@@ -4,9 +4,9 @@ import java.util.Optional;
 
 import org.joml.Vector3f;
 
-import hojosa.relics_of_old.client.particle.RelicsParticles;
 import hojosa.relics_of_old.common.block.StarBeamTorch;
 import hojosa.relics_of_old.common.init.RelicsEntities;
+import hojosa.relics_of_old.common.init.RelicsParticles;
 import lombok.Getter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
