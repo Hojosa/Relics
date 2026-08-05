@@ -97,6 +97,7 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addItem(RelicsItems.HEADBAND_OF_VALOR, "Headband of Valor");
 		addItem(RelicsItems.REED_PIPES, "Reed Pipes");
 		addItem(RelicsItems.SLIME_SWORD, "Slime Sword");
+		addItem(RelicsItems.CAPTURE_EGG, "Capture Egg");
 	}
 
 	@Override

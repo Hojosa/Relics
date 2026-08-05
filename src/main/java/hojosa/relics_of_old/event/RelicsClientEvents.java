@@ -30,6 +30,7 @@ import lombok.NoArgsConstructor;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.PlayerModel;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -80,6 +81,7 @@ public class RelicsClientEvents {
 		event.registerEntityRenderer(RelicsEntities.QUAKE.get(), EmptyEntityRenderer::new);
 		event.registerEntityRenderer(RelicsEntities.ARROW_STORM.get(), EmptyEntityRenderer::new);
 		event.registerEntityRenderer(RelicsEntities.ENDER_BOMB.get(), EnderBombEntityRenderer::new);
+		event.registerEntityRenderer(RelicsEntities.CAPTURE_EGG.get(), ThrownItemRenderer::new);
 	}
 
 	@SubscribeEvent

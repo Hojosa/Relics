@@ -1,6 +1,7 @@
 package hojosa.relics_of_old.common.init;
 
 import hojosa.relics_of_old.common.item.AeroAmulet;
+import hojosa.relics_of_old.common.item.CaptureEgg;
 import hojosa.relics_of_old.common.item.EmeraldPiece;
 import hojosa.relics_of_old.common.item.EmeraldShard;
 import hojosa.relics_of_old.common.item.EmptyMedallion;
@@ -102,6 +103,7 @@ public class RelicsItems {
 	public static final RegistryObject<HeadbandOfValor> HEADBAND_OF_VALOR = ITEMS.register(References.UnlocalizedName.HEADBAND_OF_VALOR, () -> new HeadbandOfValor(RelicsArmorMaterials.HEADBAND));
 	public static final RegistryObject<ReedPipes> REED_PIPES = ITEMS.register(References.UnlocalizedName.REED_PIPES, ReedPipes::new);
 	public static final RegistryObject<SwordItem> SLIME_SWORD = ITEMS.register(References.UnlocalizedName.SLIME_SWORD, SlimeSword::new);
+	public static final RegistryObject<CaptureEgg> CAPTURE_EGG = ITEMS.register(References.UnlocalizedName.CAPTURE_EGG, CaptureEgg::new);
 	
 	public static void addTabItems(ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
 		RelicsItems.ITEMS.getEntries().forEach(itemRegistryObject -> output.accept(itemRegistryObject.get().getDefaultInstance()));

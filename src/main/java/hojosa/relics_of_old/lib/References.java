@@ -94,6 +94,7 @@ public class References {
 		public static final String HEADBAND_OF_VALOR = "headband_of_valor";
 		public static final String REED_PIPES = "reed_pipes";
 		public static final String SLIME_SWORD = "slime_sword";
+		public static final String CAPTURE_EGG = "capture_egg";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)
