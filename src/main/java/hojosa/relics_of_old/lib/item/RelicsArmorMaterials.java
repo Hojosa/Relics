@@ -15,11 +15,18 @@ import net.minecraft.world.item.crafting.Ingredient;
 public enum RelicsArmorMaterials implements ArmorMaterial {
 
 	WHIRLWIND("whirlwind", 462, Util.make(new EnumMap<>(ArmorItem.Type.class), m -> {
-		m.put(ArmorItem.Type.BOOTS, 1);
+		m.put(ArmorItem.Type.BOOTS, 0);
 		m.put(ArmorItem.Type.LEGGINGS, 0);
 		m.put(ArmorItem.Type.CHESTPLATE, 0);
 		m.put(ArmorItem.Type.HELMET, 0);
-	}), 0, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> Ingredient.EMPTY);
+	}), 0, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> Ingredient.EMPTY),
+	
+	HEADBAND("headband", 14, Util.make(new EnumMap<>(ArmorItem.Type.class), m -> {
+	      m.put(ArmorItem.Type.BOOTS, 0);
+	      m.put(ArmorItem.Type.LEGGINGS, 0);
+	      m.put(ArmorItem.Type.CHESTPLATE, 0);
+	      m.put(ArmorItem.Type.HELMET, 0);
+	  }), 0, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> Ingredient.EMPTY);
 
 	private static final EnumMap<ArmorItem.Type, Integer> HEALTH_FUNCTION_FOR_TYPE = Util.make(new EnumMap<>(ArmorItem.Type.class), m -> {
 		m.put(ArmorItem.Type.BOOTS, 13);
@@ -37,19 +44,17 @@ public enum RelicsArmorMaterials implements ArmorMaterial {
 	private final float knockbackResistance;
 	private final LazyLoadedValue<Ingredient> repairIngredient;
 
-	RelicsArmorMaterials(String name, int durabilityMultiplier,
-                EnumMap<ArmorItem.Type, Integer> protection, int enchantmentValue,
-                SoundEvent equipSound, float toughness, float knockbackResistance,
-                Supplier<Ingredient> repairIngredient) {
-            this.name = name;
-            this.durabilityMultiplier = durabilityMultiplier;
-            this.protection = protection;                                 
-            this.enchantmentValue = enchantmentValue;
-            this.equipSound = equipSound;
-            this.toughness = toughness;
-            this.knockbackResistance = knockbackResistance;
-            this.repairIngredient = new LazyLoadedValue<>(repairIngredient);
-        }
+	RelicsArmorMaterials(String name, int durabilityMultiplier, EnumMap<ArmorItem.Type, Integer> protection, int enchantmentValue, SoundEvent equipSound, float toughness, float knockbackResistance,
+			Supplier<Ingredient> repairIngredient) {
+		this.name = name;
+		this.durabilityMultiplier = durabilityMultiplier;
+		this.protection = protection;
+		this.enchantmentValue = enchantmentValue;
+		this.equipSound = equipSound;
+		this.toughness = toughness;
+		this.knockbackResistance = knockbackResistance;
+		this.repairIngredient = new LazyLoadedValue<>(repairIngredient);
+	}
 
 	@Override
 	public int getDurabilityForType(ArmorItem.Type type) {

@@ -84,6 +84,7 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItem(RelicsItems.AERO_AMULET);
 		basicItem(RelicsItems.WHIRLWIND_BOOTS);
 		basicItem(RelicsItems.TITAN_BAND);
+		basicItem(RelicsItems.HEADBAND_OF_VALOR);
 		
 		
 		

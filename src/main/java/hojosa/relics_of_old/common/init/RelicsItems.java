@@ -6,6 +6,7 @@ import hojosa.relics_of_old.common.item.EmeraldShard;
 import hojosa.relics_of_old.common.item.EmptyMedallion;
 import hojosa.relics_of_old.common.item.FireTablet;
 import hojosa.relics_of_old.common.item.FlameSword;
+import hojosa.relics_of_old.common.item.HeadbandOfValor;
 import hojosa.relics_of_old.common.item.Heart;
 import hojosa.relics_of_old.common.item.LostPage;
 import hojosa.relics_of_old.common.item.MagicBoomerang;
@@ -96,6 +97,7 @@ public class RelicsItems {
 	public static final RegistryObject<RelicsAmulet> AERO_AMULET = ITEMS.register(References.UnlocalizedName.AERO_AMULET, () -> new AeroAmulet(50));
 	public static final RegistryObject<WhirlwindBoots> WHIRLWIND_BOOTS = ITEMS.register(References.UnlocalizedName.WHIRLWIND_BOOTS, () -> new WhirlwindBoots(RelicsArmorMaterials.WHIRLWIND));
 	public static final RegistryObject<TitanBand> TITAN_BAND = ITEMS.register(References.UnlocalizedName.TITAN_BAND, TitanBand::new);
+	public static final RegistryObject<HeadbandOfValor> HEADBAND_OF_VALOR = ITEMS.register(References.UnlocalizedName.HEADBAND_OF_VALOR, () -> new HeadbandOfValor(RelicsArmorMaterials.HEADBAND));
 	
 	public static void addTabItems(ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
 		RelicsItems.ITEMS.getEntries().forEach(itemRegistryObject -> output.accept(itemRegistryObject.get().getDefaultInstance()));

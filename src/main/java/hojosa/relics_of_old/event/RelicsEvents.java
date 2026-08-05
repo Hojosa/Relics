@@ -14,6 +14,7 @@ import hojosa.relics_of_old.common.entity.attacks.QuakeEntity;
 import hojosa.relics_of_old.common.init.RelicsConfig;
 import hojosa.relics_of_old.common.init.RelicsItems;
 import hojosa.relics_of_old.common.init.RelicsSounds;
+import hojosa.relics_of_old.common.item.HeadbandOfValor;
 import hojosa.relics_of_old.common.item.RelicsAmulet;
 import hojosa.relics_of_old.common.item.WhirlwindBoots;
 import hojosa.relics_of_old.common.item.entity.EmeraldShardItemEntity;
@@ -262,58 +263,70 @@ public class RelicsEvents {
 	}
 
 	@SubscribeEvent
-	public static void onPlayerHurt(LivingHurtEvent event) {
+	public static void onLivingHurt(LivingHurtEvent event) {
 		// only run when a player is damaged
-		if (!(event.getEntity() instanceof ServerPlayer player))
-			return;
-		// get all amulets that are equipped, this should only ever be one, but other
-		// mods can add additonal charm slots and there is usally the one universal
-		// curios slot as well
-		CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
-			List<SlotResult> amulets = handler.findCurios(stack -> stack.getItem() instanceof RelicsAmulet);
-			for (SlotResult result : amulets) {
-				RelicsAmulet amulet = (RelicsAmulet) result.stack().getItem();
-				ElementType type = amulet.getAmuletType();
-				if (RelicsUtil.matchesDamageType(type, event.getSource()) && amulet.hasCharges(result.stack())) {
-					switch (type) {
-					case FIRE -> {
-						System.out.println("RUNNING DAMAGE REDUCTION");
-						int damage = (int) Math.ceil(event.getAmount());
-						amulet.consumeCharge(result.stack(), damage);
-						player.heal(damage);
-						player.invulnerableTime = player.invulnerableTime;
-						player.level().playSound(null, player.blockPosition(), RelicsSounds.HEART.get(), SoundSource.PLAYERS, 0.2f, 1.0f);
-						event.setCanceled(true);
-						return;
-					}
-					case EARTH -> {
-						int damage = (int) Math.ceil(event.getAmount());
-						amulet.consumeCharge(result.stack(), damage);
+		if ((event.getEntity() instanceof ServerPlayer player)) {
 
-						float scale = Math.min(damage / 20.0f, 1.0f);
-						double radius = 3.0 + 12.0 * scale;
+			// get all amulets that are equipped, this should only ever be one, but other
+			// mods can add additonal charm slots and there is usally the one universal
+			// curios slot as well
+			CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+				List<SlotResult> amulets = handler.findCurios(stack -> stack.getItem() instanceof RelicsAmulet);
+				for (SlotResult result : amulets) {
+					RelicsAmulet amulet = (RelicsAmulet) result.stack().getItem();
+					ElementType type = amulet.getAmuletType();
+					if (RelicsUtil.matchesDamageType(type, event.getSource()) && amulet.hasCharges(result.stack())) {
+						switch (type) {
+						case FIRE -> {
+							int damage = (int) Math.ceil(event.getAmount());
+							amulet.consumeCharge(result.stack(), damage);
+							player.heal(damage);
+							player.invulnerableTime = player.invulnerableTime;
+							player.level().playSound(null, player.blockPosition(), RelicsSounds.HEART.get(), SoundSource.PLAYERS, 0.2f, 1.0f);
+							event.setCanceled(true);
+							return;
+						}
+						case EARTH -> {
+							int damage = (int) Math.ceil(event.getAmount());
+							amulet.consumeCharge(result.stack(), damage);
 
-						player.level().addFreshEntity(new QuakeEntity(player.level(), player.position(), player, radius, damage));
-						player.level().playSound(null, player.blockPosition(), SoundEvents.GENERIC_EXPLODE, SoundSource.PLAYERS, 0.4f + 3.0f * scale, 1.2f - scale * 0.8f);
-						event.setCanceled(true);
-					}
-					default -> {
-					}
+							float scale = Math.min(damage / 20.0f, 1.0f);
+							double radius = 3.0 + 12.0 * scale;
+
+							player.level().addFreshEntity(new QuakeEntity(player.level(), player.position(), player, radius, damage));
+							player.level().playSound(null, player.blockPosition(), SoundEvents.GENERIC_EXPLODE, SoundSource.PLAYERS, 0.4f + 3.0f * scale, 1.2f - scale * 0.8f);
+							event.setCanceled(true);
+						}
+						default -> {
+						}
+						}
 					}
 				}
-			}
-		});
-		// titan band drop interaction
-		CompoundTag data = player.getPersistentData();
-		if (player.getFirstPassenger() != null && data.getBoolean("TitanLift")) {
-			ItemStack bandStack = RelicsItems.TITAN_BAND.get().getEquippedStack(player);
-			if (bandStack != null) {
-				Entity passenger = player.getFirstPassenger();
-				passenger.stopRiding();
-				player.level().playSound(null, player.blockPosition(), RelicsSounds.THROW.get(), SoundSource.PLAYERS, 0.3f, 1.0f);
-				bandStack.getOrCreateTag().putBoolean("TitanLift", false);
+			});
+			// titan band drop interaction
+			CompoundTag data = player.getPersistentData();
+			if (player.getFirstPassenger() != null && data.getBoolean("TitanLift")) {
+				ItemStack bandStack = RelicsItems.TITAN_BAND.get().getEquippedStack(player);
+				if (bandStack != null) {
+					Entity passenger = player.getFirstPassenger();
+					passenger.stopRiding();
+					player.level().playSound(null, player.blockPosition(), RelicsSounds.THROW.get(), SoundSource.PLAYERS, 0.3f, 1.0f);
+					bandStack.getOrCreateTag().putBoolean("TitanLift", false);
+				}
 			}
 		}
+		// headband of valor, player attack bonus
+		if (event.getSource().getDirectEntity() instanceof Player player && !player.level().isClientSide) {
+			ItemStack headSlot = player.getItemBySlot(EquipmentSlot.HEAD);
+			if (headSlot.getItem() instanceof HeadbandOfValor headband && HeadbandOfValor.isNaked(player)) {
+				int oldAmount = (int) event.getAmount();
+				int newAmount = headband.getBonus(oldAmount);
+				event.setAmount(newAmount);
+				player.level().playSound(null, event.getEntity().blockPosition(), RelicsSounds.ESCALATE.get(), SoundSource.PLAYERS, 0.5f, 0.8f + player.getRandom().nextFloat() * 0.4f);
+				headSlot.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(EquipmentSlot.HEAD));
+			}
+		}
+
 	}
 
 	@SubscribeEvent

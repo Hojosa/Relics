@@ -48,6 +48,10 @@ public class RelicsUtil {
 	public static ResourceLocation modLoc(String path) {
 		return ResourceLocation.fromNamespaceAndPath(References.MOD_ID, path);
 	}
+	
+	public static String modLocArmor(String textureName) {
+		return References.MOD_ID + ":textures/models/armor/" + textureName +  ".png";
+	}
 
 	public static float r(float phase) {
 		phase = (float) (phase * (Math.PI * 2));

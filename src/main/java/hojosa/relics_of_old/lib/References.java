@@ -91,6 +91,7 @@ public class References {
 		public static final String MAGIC_SCRAMBLE_PARTICLE = "magic_scramble_particle";
 		public static final String WHIRLWIND_BOOTS = "whirlwind_boots";
 		public static final String TITAN_BAND = "titan_band";
+		public static final String HEADBAND_OF_VALOR = "headband_of_valor";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -121,6 +122,7 @@ public class References {
 		public static final String DASH = "dash";
 		public static final String THROW = "throw";
 		public static final String LIFT = "lift";
+		public static final String ESCALATE = "escalate";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

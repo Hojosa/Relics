@@ -335,5 +335,14 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.group(References.CREATIVE_TAB)
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.EARTH_MEDALLION.get()))
 		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.HEADBAND_OF_VALOR.get())
+		.pattern("www")
+		.pattern("waw")
+		.define('w', ItemTags.WOOL)
+		.define('a', RelicsItems.FIRE_MEDALLION.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.FIRE_MEDALLION.get()))
+		.save(consumer);
 	}
 }

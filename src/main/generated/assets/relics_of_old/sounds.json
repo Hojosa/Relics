@@ -38,6 +38,12 @@
     ],
     "subtitle": "relics_of_old.subtitle.emerald_shard_pickup"
   },
+  "escalate": {
+    "sounds": [
+      "relics_of_old:escalate"
+    ],
+    "subtitle": "relics_of_old.subtitle.escalate"
+  },
   "heart": {
     "sounds": [
       "relics_of_old:heart"
