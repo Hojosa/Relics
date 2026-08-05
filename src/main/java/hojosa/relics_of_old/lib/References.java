@@ -93,6 +93,7 @@ public class References {
 		public static final String TITAN_BAND = "titan_band";
 		public static final String HEADBAND_OF_VALOR = "headband_of_valor";
 		public static final String REED_PIPES = "reed_pipes";
+		public static final String SLIME_SWORD = "slime_sword";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

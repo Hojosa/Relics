@@ -353,5 +353,15 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.group(References.CREATIVE_TAB)
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.SUGAR_CANE))
 		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.SLIME_SWORD.get())
+		.pattern("s  ")
+		.pattern("s  ")
+		.pattern("w  ")
+		.define('s', Items.SLIME_BALL)
+		.define('w', Items.STICK)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.SLIME_BALL))
+		.save(consumer);
 	}
 }

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "s": {
+      "item": "minecraft:slime_ball"
+    },
+    "w": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "s  ",
+    "s  ",
+    "w  "
+  ],
+  "result": {
+    "item": "relics_of_old:slime_sword"
+  },
+  "show_notification": true
+}
