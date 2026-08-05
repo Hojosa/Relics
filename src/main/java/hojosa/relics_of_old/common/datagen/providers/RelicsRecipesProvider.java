@@ -344,5 +344,14 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.group(References.CREATIVE_TAB)
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.FIRE_MEDALLION.get()))
 		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.REED_PIPES.get())
+		.pattern("rrr")
+		.pattern("rr ")
+		.pattern("r  ")
+		.define('r', Items.SUGAR_CANE)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.SUGAR_CANE))
+		.save(consumer);
 	}
 }

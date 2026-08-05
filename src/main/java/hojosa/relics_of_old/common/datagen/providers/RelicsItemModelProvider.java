@@ -85,7 +85,7 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItem(RelicsItems.WHIRLWIND_BOOTS);
 		basicItem(RelicsItems.TITAN_BAND);
 		basicItem(RelicsItems.HEADBAND_OF_VALOR);
-		
+		basicItem(RelicsItems.REED_PIPES);
 		
 		
 		//magic mirror model

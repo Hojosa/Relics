@@ -92,6 +92,7 @@ public class References {
 		public static final String WHIRLWIND_BOOTS = "whirlwind_boots";
 		public static final String TITAN_BAND = "titan_band";
 		public static final String HEADBAND_OF_VALOR = "headband_of_valor";
+		public static final String REED_PIPES = "reed_pipes";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -123,6 +124,8 @@ public class References {
 		public static final String THROW = "throw";
 		public static final String LIFT = "lift";
 		public static final String ESCALATE = "escalate";
+		public static final String FLUTE_PLAY = "flute_play";
+		public static final String FLUTE_SUSTAIN = "flute_sustain";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

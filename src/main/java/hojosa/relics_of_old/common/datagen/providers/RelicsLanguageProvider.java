@@ -95,6 +95,7 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addItem(RelicsItems.WHIRLWIND_BOOTS, "Whirlwind Boots");
 		addItem(RelicsItems.TITAN_BAND, "Titan Band");
 		addItem(RelicsItems.HEADBAND_OF_VALOR, "Headband of Valor");
+		addItem(RelicsItems.REED_PIPES, "Reed Pipes");
 	}
 
 	@Override

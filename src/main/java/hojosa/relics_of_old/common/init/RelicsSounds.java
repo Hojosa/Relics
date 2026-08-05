@@ -42,6 +42,8 @@ public class RelicsSounds {
 	public static final RegistryObject<SoundEvent> THROW = registerSound(References.SoundName.THROW);
 	public static final RegistryObject<SoundEvent> LIFT = registerSound(References.SoundName.LIFT);
 	public static final RegistryObject<SoundEvent> ESCALATE = registerSound(References.SoundName.ESCALATE);
+	public static final RegistryObject<SoundEvent> FLUTE_PLAY = registerSound(References.SoundName.FLUTE_PLAY);
+	public static final RegistryObject<SoundEvent> FLUTE_SUSTAIN = registerSound(References.SoundName.FLUTE_SUSTAIN);
 	
 	private static RegistryObject<SoundEvent> registerSound(String name) {
 		return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(References.MOD_ID, name)));

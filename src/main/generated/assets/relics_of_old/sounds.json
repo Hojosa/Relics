@@ -44,6 +44,18 @@
     ],
     "subtitle": "relics_of_old.subtitle.escalate"
   },
+  "flute_play": {
+    "sounds": [
+      "relics_of_old:flute_play"
+    ],
+    "subtitle": "relics_of_old.subtitle.flute_play"
+  },
+  "flute_sustain": {
+    "sounds": [
+      "relics_of_old:flute_sustain"
+    ],
+    "subtitle": "relics_of_old.subtitle.flute_sustain"
+  },
   "heart": {
     "sounds": [
       "relics_of_old:heart"

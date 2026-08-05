@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "r": {
+      "item": "minecraft:sugar_cane"
+    }
+  },
+  "pattern": [
+    "rrr",
+    "rr ",
+    "r  "
+  ],
+  "result": {
+    "item": "relics_of_old:reed_pipes"
+  },
+  "show_notification": true
+}
