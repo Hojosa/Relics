@@ -36,7 +36,8 @@ public class RelicsItemTags extends ItemTagsProvider {
 		.add(RelicsItems.TITAN_BAND.get());
 		tag(ItemTags.SWORDS)
 		.add(RelicsItems.FIRE_SWORD.get())
-		.add(RelicsItems.MASTER_SWORD.get());
+		.add(RelicsItems.MASTER_SWORD.get())
+		.add(RelicsItems.SLIME_SWORD.get());
 		tag(RelicsTags.Items.SWORD_PEDESTAL_INFUSEABLE)
 		.add(RelicsItems.INFUSED_STAR_STONE.get());
 		tag(RelicsTags.Items.SWORD_PEDESTAL_GLOW)
