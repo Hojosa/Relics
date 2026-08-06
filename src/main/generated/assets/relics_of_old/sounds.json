@@ -56,6 +56,12 @@
     ],
     "subtitle": "relics_of_old.subtitle.flute_sustain"
   },
+  "full_charge": {
+    "sounds": [
+      "relics_of_old:full_charge"
+    ],
+    "subtitle": "relics_of_old.subtitle.full_charge"
+  },
   "heart": {
     "sounds": [
       "relics_of_old:heart"
@@ -97,6 +103,12 @@
       "relics_of_old:magic_crafting"
     ],
     "subtitle": "relics_of_old.subtitle.magic_crafting"
+  },
+  "partial_charge": {
+    "sounds": [
+      "relics_of_old:partial_charge"
+    ],
+    "subtitle": "relics_of_old.subtitle.partial_charge"
   },
   "repel": {
     "sounds": [
