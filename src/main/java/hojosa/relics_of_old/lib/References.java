@@ -130,6 +130,7 @@ public class References {
 		public static final String FLUTE_SUSTAIN = "flute_sustain";
 		public static final String PARTIAL_CHARGE = "partial_charge";
 		public static final String FULL_CHARGE = "full_charge";
+		public static final String FIRE_BUILD = "fire_build";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

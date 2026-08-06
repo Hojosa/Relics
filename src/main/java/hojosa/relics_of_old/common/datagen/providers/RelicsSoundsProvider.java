@@ -48,6 +48,7 @@ public class RelicsSoundsProvider extends SoundDefinitionsProvider {
 		add(RelicsSounds.FLUTE_SUSTAIN, definition().subtitle(getSubtitle(RelicsSounds.FLUTE_SUSTAIN)).with(sound(RelicsSounds.FLUTE_SUSTAIN.getId())));
 		add(RelicsSounds.PARTIAL_CHARGE, definition().subtitle(getSubtitle(RelicsSounds.PARTIAL_CHARGE)).with(sound(RelicsSounds.PARTIAL_CHARGE.getId())));
 		add(RelicsSounds.FULL_CHARGE, definition().subtitle(getSubtitle(RelicsSounds.FULL_CHARGE)).with(sound(RelicsSounds.FULL_CHARGE.getId())));
+		add(RelicsSounds.FIRE_BUILD, definition().subtitle(getSubtitle(RelicsSounds.FIRE_BUILD)).with(sound(RelicsSounds.FIRE_BUILD.getId())));
 	}
 
 	private String getSubtitle(RegistryObject<SoundEvent> sound) {

@@ -4,6 +4,7 @@ import java.util.List;
 
 import hojosa.relics_of_old.common.init.RelicsEntities;
 import hojosa.relics_of_old.common.init.RelicsParticles;
+import hojosa.relics_of_old.common.init.RelicsSounds;
 import hojosa.relics_of_old.lib.RelicsParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -54,7 +55,7 @@ public class FireblastEntity extends Entity {
                             0.0, random.nextDouble(), 0.0);
                 }
             } else {
-                level().playSound(null, blockPosition(), SoundEvents.FIRECHARGE_USE, SoundSource.HOSTILE, 3.0f, 1.0f);
+                level().playSound(null, blockPosition(), RelicsSounds.FIRE_BUILD.get(), SoundSource.HOSTILE, 3.0f, 1.0f);
             }
         }
 

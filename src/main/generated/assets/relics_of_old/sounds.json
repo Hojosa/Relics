@@ -44,6 +44,12 @@
     ],
     "subtitle": "relics_of_old.subtitle.escalate"
   },
+  "fire_build": {
+    "sounds": [
+      "relics_of_old:fire_build"
+    ],
+    "subtitle": "relics_of_old.subtitle.fire_build"
+  },
   "flute_play": {
     "sounds": [
       "relics_of_old:flute_play"
