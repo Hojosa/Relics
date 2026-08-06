@@ -47,7 +47,7 @@ public class EmptyMedallion extends RelicsItem {
 
 	public static ItemStack findEmptyMedallion(Player player, ElementType type) {
 		for (ItemStack stack : player.getInventory().items) {
-			if (stack.getItem() instanceof EmptyMedallion medallion && medallion.type == type) {
+			if (stack.getItem().getClass() == EmptyMedallion.class && ((EmptyMedallion) stack.getItem()).type == type) {
 				return stack;
 			}
 		}
