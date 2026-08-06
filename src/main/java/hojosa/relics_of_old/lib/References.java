@@ -131,6 +131,7 @@ public class References {
 		public static final String PARTIAL_CHARGE = "partial_charge";
 		public static final String FULL_CHARGE = "full_charge";
 		public static final String FIRE_BUILD = "fire_build";
+		public static final String GRIND = "grind";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

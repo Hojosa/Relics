@@ -68,6 +68,12 @@
     ],
     "subtitle": "relics_of_old.subtitle.full_charge"
   },
+  "grind": {
+    "sounds": [
+      "relics_of_old:grind"
+    ],
+    "subtitle": "relics_of_old.subtitle.grind"
+  },
   "heart": {
     "sounds": [
       "relics_of_old:heart"
