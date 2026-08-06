@@ -397,17 +397,19 @@ public class RelicsEvents {
 		EnderMan enderman = event.getEntity();
 		if (!enderman.isCreepy() || enderman.getTarget() != event.getPlayer())
 			return;
+		//in case the enderman ports away (rain, water touched) and isCreepy or getTarget is not reset, we skip if he is to far away (16 blocks)
+		if (enderman.distanceToSqr(event.getPlayer()) > 256.0) return;
 
 		if (event.getPlayer() instanceof ServerPlayer player) {
 			CompoundTag data = player.getPersistentData();
 			long lastCharge = data.getLong("EnderMedallionLastCharge");
-			if (player.tickCount - lastCharge < 400)
+			if (player.level().getGameTime() - lastCharge < 400)
 				return;
 
 			ItemStack stack = EmptyMedallion.findEmptyMedallion(player, ElementType.ENDER);
 			if (stack != null) {
 				((EmptyMedallion) stack.getItem()).charge(stack, 5, player, player.level());
-				data.putLong("EnderMedallionLastCharge", player.tickCount);
+				data.putLong("EnderMedallionLastCharge", player.level().getGameTime());
 			}
 		}
 	}
