@@ -10,6 +10,7 @@ import hojosa.relics_of_old.common.init.RelicsParticles;
 import hojosa.relics_of_old.common.init.RelicsSounds;
 import hojosa.relics_of_old.lib.RelicsParticleOptions;
 import lombok.Getter;
+import lombok.Setter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -32,8 +33,14 @@ public class StarBeamEntity extends Entity {
 	private static final EntityDataAccessor<BlockPos> DATA_ID_TARGET_POS = SynchedEntityData.defineId(FallingStarEntity.class, EntityDataSerializers.BLOCK_POS);
 	private static final EntityDataAccessor<BlockPos> DATA_ID_START_POS = SynchedEntityData.defineId(FallingStarEntity.class, EntityDataSerializers.BLOCK_POS);
 	private static final EntityDataAccessor<Vector3f> DATA_ID_MOTION = SynchedEntityData.defineId(FallingStarEntity.class, EntityDataSerializers.VECTOR3);
-
 	private Player player;
+	private static final double MIN_SPEED = 0.15;
+	private static final double MAX_SPEED = 1.0;
+	private static final double START_SPEED = 0.3;
+	private static final double DRAG = 0.002;
+	@Getter
+	@Setter
+	private double speed = START_SPEED;
 
 	public StarBeamEntity(EntityType<?> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
@@ -65,13 +72,29 @@ public class StarBeamEntity extends Entity {
 			else
 				this.player.startRiding(this);
 		}
+		Vec3 dir = new Vec3(this.getMotion()).normalize();
+
 		if (!this.getPassengers().isEmpty() && this.getFirstPassenger().isShiftKeyDown()) {
-			this.move(MoverType.SELF, new Vec3(this.getMotion()).scale(0.5));
+			speed += dir.y * -0.04;
+//			this.move(MoverType.SELF, new Vec3(this.getMotion()).scale(0.5));
 		} else
-			this.move(MoverType.SELF, new Vec3(this.getMotion()));
+			speed += dir.y * -0.02;
+//			this.move(MoverType.SELF, new Vec3(this.getMotion()));
+		if (speed > MAX_SPEED) {
+			speed = MAX_SPEED;
+		}
+
+		speed -= DRAG;
+		if (speed < MIN_SPEED) {
+		      speed = MIN_SPEED;
+		  }
+
+		this.setMotion(dir.toVector3f().mul((float) speed));
+		this.move(MoverType.SELF, new Vec3(this.getMotion()));
 
 		if (!this.level().isClientSide && this.tickCount % 5 == 0) {
-			this.level().playSound(null, this.blockPosition(), RelicsSounds.GRIND.get(), SoundSource.PLAYERS, 0.3f, 1.0f);
+			float speedlevel = (float) ((this.speed - MIN_SPEED) / (MAX_SPEED - MIN_SPEED));
+			this.level().playSound(null, this.blockPosition(), RelicsSounds.GRIND.get(), SoundSource.PLAYERS, 0.3f, 0.5f + speedlevel * 1.5f);
 		}
 
 		if (this.level().isClientSide) {
@@ -121,7 +144,7 @@ public class StarBeamEntity extends Entity {
 	private void calcMotionVec() {
 		Vec3 start = this.getStartPos().getCenter();
 		Vec3 target = this.getTargetPos().getCenter();
-		this.setMotion(new Vector3f((float) (target.x - start.x), (float) (target.y - start.y), (float) (target.z - start.z)).normalize().mul(0.25f));
+		this.setMotion(new Vector3f((float) (target.x - start.x), (float) (target.y - start.y), (float) (target.z - start.z)).normalize().mul((float) speed));
 	}
 
 	private boolean hasClearPath(Level level, Vec3 start, Vec3 end) {
@@ -143,12 +166,14 @@ public class StarBeamEntity extends Entity {
 	protected void readAdditionalSaveData(CompoundTag tag) {
 		this.setStartPos(BlockPos.of(tag.getLong("StartPos")));
 		this.setTargetPos(BlockPos.of(tag.getLong("TargetPos")));
+		this.setSpeed(tag.getDouble("Speed"));
 	}
 
 	@Override
 	protected void addAdditionalSaveData(CompoundTag tag) {
 		tag.putLong("StartPos", getStartPos().asLong());
 		tag.putLong("TargetPos", getTargetPos().asLong());
+		tag.putDouble("Speed", this.getSpeed());
 	}
 
 	public BlockPos getStartPos() {
