@@ -7,6 +7,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.RegistryObject;
 
 public class EmptyMedallion extends RelicsItem {
@@ -31,9 +32,9 @@ public class EmptyMedallion extends RelicsItem {
 		return false;
 	}
 	
-	public void charge(ItemStack item, int chargeAmount, Player player) {
+	public void charge(ItemStack item, int chargeAmount, Player player, Level level) {
 		item.setDamageValue(item.getDamageValue() - chargeAmount);
-		if(item.getDamageValue() == 50) {
+		if(item.getDamageValue() == 0) {
 			Inventory inv = player.getInventory();
 			int slot = inv.findSlotMatchingItem(item);
 			inv.setItem(slot, new ItemStack(this.chargedMedallion.get()));
