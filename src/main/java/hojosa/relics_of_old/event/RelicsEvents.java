@@ -14,6 +14,7 @@ import hojosa.relics_of_old.common.entity.attacks.QuakeEntity;
 import hojosa.relics_of_old.common.init.RelicsConfig;
 import hojosa.relics_of_old.common.init.RelicsItems;
 import hojosa.relics_of_old.common.init.RelicsSounds;
+import hojosa.relics_of_old.common.item.EmptyMedallion;
 import hojosa.relics_of_old.common.item.HeadbandOfValor;
 import hojosa.relics_of_old.common.item.RelicsAmulet;
 import hojosa.relics_of_old.common.item.WhirlwindBoots;
@@ -43,6 +44,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades.ItemListing;
@@ -57,6 +59,7 @@ import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityMountEvent;
+import net.minecraftforge.event.entity.living.EnderManAngerEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -303,6 +306,20 @@ public class RelicsEvents {
 					}
 				}
 			});
+			// empty medallion charging
+			if (!event.isCanceled()) {
+				int chargeAmount = (int) Math.ceil(event.getAmount());
+				for (ElementType type : new ElementType[] { ElementType.FIRE, ElementType.EARTH, ElementType.WIND }) {
+					if (RelicsUtil.matchesDamageType(type, event.getSource())) {
+						ItemStack medallionStack = EmptyMedallion.findEmptyMedallion(player, type);
+						if (medallionStack != null) {
+							((EmptyMedallion) medallionStack.getItem()).charge(medallionStack, chargeAmount, player, player.level());
+						}
+						break;
+					}
+				}
+			}
+
 			// titan band drop interaction
 			CompoundTag data = player.getPersistentData();
 			if (player.getFirstPassenger() != null && data.getBoolean("TitanLift")) {
@@ -372,6 +389,26 @@ public class RelicsEvents {
 		Player player = event.getEntity();
 		if (player.getFirstPassenger() != null && player.getPersistentData().getBoolean("TitanLift")) {
 			event.setCanceled(true);
+		}
+	}
+
+	@SubscribeEvent
+	public static void onEnderManAnger(EnderManAngerEvent event) {
+		EnderMan enderman = event.getEntity();
+		if (!enderman.isCreepy() || enderman.getTarget() != event.getPlayer())
+			return;
+
+		if (event.getPlayer() instanceof ServerPlayer player) {
+			CompoundTag data = player.getPersistentData();
+			long lastCharge = data.getLong("EnderMedallionLastCharge");
+			if (player.tickCount - lastCharge < 400)
+				return;
+
+			ItemStack stack = EmptyMedallion.findEmptyMedallion(player, ElementType.ENDER);
+			if (stack != null) {
+				((EmptyMedallion) stack.getItem()).charge(stack, 5, player, player.level());
+				data.putLong("EnderMedallionLastCharge", player.tickCount);
+			}
 		}
 	}
 }

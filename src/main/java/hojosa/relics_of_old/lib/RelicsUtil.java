@@ -221,11 +221,15 @@ public class RelicsUtil {
 	public static boolean matchesDamageType(ElementType type, DamageSource damage) {
 		switch (type) {
 		case FIRE -> {
-			return damage.is(DamageTypes.ON_FIRE) || damage.is(DamageTypes.FIREBALL) || damage.is(DamageTypes.IN_FIRE);
+			return damage.is(DamageTypes.ON_FIRE) || damage.is(DamageTypes.FIREBALL) || damage.is(DamageTypes.IN_FIRE) || damage.is(DamageTypes.HOT_FLOOR) || damage.is(DamageTypes.LAVA) || damage.is(DamageTypes.UNATTRIBUTED_FIREBALL);
 		}
 		case EARTH -> {
 			return damage.is(DamageTypes.FALL);
 		}
+		case WIND -> {
+		      return damage.is(DamageTypes.ARROW);
+		  }
+
 		default -> {
 			return false;
 		}
