@@ -111,14 +111,15 @@ public class StarBeamTorch extends TorchBlock {
     
     @Override
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
+    	if (pRandom.nextInt(3) != 0) return;
         double x = pPos.getX() + 0.5D;
         double y = pPos.getY() + 0.7D;
         double z = pPos.getZ() + 0.5D;
         
-        double offsetX = pRandom.nextGaussian() * 0.08;
+        double offsetX = pRandom.nextGaussian() * 0.15;
         double offsetY = pRandom.nextGaussian() * 0.08 - 0.04;
-        double offsetZ = pRandom.nextGaussian() * 0.08;
+        double offsetZ = pRandom.nextGaussian() * 0.15;
 
-        pLevel.addParticle(RelicsParticles.STAR_BEAM_TORCH_PATTICLES.get(), x + offsetX, y + offsetY, z + offsetZ, 0.0D, 0.0D, 0.0D);
+        pLevel.addParticle(RelicsParticles.SPARKLE_PARTICLES.get(), x + offsetX, y + offsetY, z + offsetZ, 0.0D, 0.0D, 0.0D);
     }
 }

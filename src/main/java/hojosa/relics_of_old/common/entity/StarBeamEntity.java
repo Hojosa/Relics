@@ -86,8 +86,8 @@ public class StarBeamEntity extends Entity {
 
 		speed -= DRAG;
 		if (speed < MIN_SPEED) {
-		      speed = MIN_SPEED;
-		  }
+			speed = MIN_SPEED;
+		}
 
 		this.setMotion(dir.toVector3f().mul((float) speed));
 		this.move(MoverType.SELF, new Vec3(this.getMotion()));
@@ -98,10 +98,7 @@ public class StarBeamEntity extends Entity {
 		}
 
 		if (this.level().isClientSide) {
-			double offsetX = random.nextGaussian() * 0.08;
-			double offsetZ = random.nextGaussian() * 0.08;
-
-			this.level().addParticle(RelicsParticles.STAR_BEAM_GRIND_PATTICLES.get(), this.xo + offsetX, this.yo - 0.3, this.zo + offsetZ, 0.0D, 0.0D, 0.0D);
+			this.level().addParticle(RelicsParticles.SPARKLE_PARTICLES.get(), this.xo, this.yo, this.zo, random.nextGaussian() * 0.1, random.nextGaussian() * 0.1, random.nextGaussian() * 0.1);
 			this.level().addParticle(new RelicsParticleOptions(RelicsParticles.RUNE_PARTICLE, 40, 0.15f), this.getX(), this.getY(), this.getZ(), 0, 0, 0);
 		}
 		if (!this.level().isClientSide && this.position().distanceToSqr(this.entityData.get(DATA_ID_TARGET_POS).getCenter()) < 0.15) {

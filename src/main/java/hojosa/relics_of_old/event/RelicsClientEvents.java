@@ -5,8 +5,6 @@ import hojosa.relics_of_old.client.particle.FlareParticle;
 import hojosa.relics_of_old.client.particle.MagicScrambleParticle;
 import hojosa.relics_of_old.client.particle.RuneParticle;
 import hojosa.relics_of_old.client.particle.SparkleParticle;
-import hojosa.relics_of_old.client.particle.StarBeamGrindParticle;
-import hojosa.relics_of_old.client.particle.StarBeamTorchParticle;
 import hojosa.relics_of_old.client.render.EmptyEntityRenderer;
 import hojosa.relics_of_old.client.render.EnderBombEntityRenderer;
 import hojosa.relics_of_old.client.render.FallingStarRenderer;
@@ -87,8 +85,6 @@ public class RelicsClientEvents {
 	@SubscribeEvent
 	public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
 		event.registerSpriteSet(RelicsParticles.FLAME_PATTICLES.get(), FlameParticle.Provider::new);
-		event.registerSpriteSet(RelicsParticles.STAR_BEAM_TORCH_PATTICLES.get(), StarBeamTorchParticle.Provider::new);
-		event.registerSpriteSet(RelicsParticles.STAR_BEAM_GRIND_PATTICLES.get(), StarBeamGrindParticle.Provider::new);
 		event.registerSpriteSet(RelicsParticles.SPARKLE_PARTICLES.get(), SparkleParticle.Provider::new);
 		event.registerSpriteSet(RelicsParticles.RUNE_PARTICLE.get(), RuneParticle.Provider::new);
 		event.registerSpriteSet(RelicsParticles.FLARE_PARTICLE.get(), FlareParticle.Provider::new);
