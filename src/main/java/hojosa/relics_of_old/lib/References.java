@@ -96,6 +96,8 @@ public class References {
 		public static final String SLIME_SWORD = "slime_sword";
 		public static final String CAPTURE_EGG = "capture_egg";
 		public static final String BOOST_PLATE = "boost_plate";
+		public static final String ENDER_SWORD = "ender_sword";
+		public static final String WOODEN_BOOMERANG = "wooden_boomerang";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

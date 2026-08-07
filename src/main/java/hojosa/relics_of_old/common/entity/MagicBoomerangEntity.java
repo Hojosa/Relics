@@ -5,6 +5,7 @@ import java.util.List;
 import hojosa.relics_of_old.common.init.RelicsEntities;
 import hojosa.relics_of_old.common.init.RelicsItems;
 import hojosa.relics_of_old.common.init.RelicsSounds;
+import lombok.Getter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -27,22 +28,27 @@ import net.minecraft.world.phys.Vec3;
 public class MagicBoomerangEntity extends ThrowableItemProjectile {
 
 	public static final int MAX_THROW_TIME = 10;
-	public static final float BOOMERANG_SPEED = 1.5f;
-	public static final int BOOMERANG_DAMAGE = 6;
 	private static final int SAFETY_TIMEOUT = -100;
 
 	private int returnTimer = MAX_THROW_TIME;
+	@Getter
+	private float speed = 1.5f;
+	public int damage = 6;
 	private int thrownFromSlot;
 	private ItemStack boomerangItem = ItemStack.EMPTY;
+	private int maxItemPickup;
 
 	public MagicBoomerangEntity(EntityType<? extends ThrowableItemProjectile> type, Level level) {
 		super(type, level);
 	}
 
-	public MagicBoomerangEntity(Level level, LivingEntity shooter, ItemStack stack) {
+	public MagicBoomerangEntity(Level level, LivingEntity shooter, ItemStack stack, float speed, int damage, int maxItemPickup) {
 		super(RelicsEntities.MAGIC_BOOMERANG.get(), shooter, level);
 		this.boomerangItem = stack.copy();
 		this.setItem(stack);
+		this.speed = speed;
+		this.damage = damage;
+		this.maxItemPickup = maxItemPickup;
 	}
 
 	@Override
@@ -112,7 +118,7 @@ public class MagicBoomerangEntity extends ThrowableItemProjectile {
 			double motionX = Math.cos(newHeading) * Math.cos(newPitch);
 			double motionZ = Math.sin(newHeading) * Math.cos(newPitch);
 			double motionY = Math.sin(newPitch);
-			shoot(motionX, motionY, motionZ, BOOMERANG_SPEED, 0.0f);
+			shoot(motionX, motionY, motionZ, speed, 0.0f);
 		}
 
 		// safety timeout — drop item if it can't reach the player
@@ -158,7 +164,7 @@ public class MagicBoomerangEntity extends ThrowableItemProjectile {
 
 		// damage non-owner living entities
 		if (hit != owner && hit instanceof LivingEntity) {
-			hit.hurt(damageSources().thrown(this, owner), BOOMERANG_DAMAGE);
+			hit.hurt(damageSources().thrown(this, owner), damage);
 
 			if (!boomerangItem.isEmpty()) {
 				ServerPlayer serverPlayer = owner instanceof ServerPlayer sp ? sp : null;
@@ -230,7 +236,7 @@ public class MagicBoomerangEntity extends ThrowableItemProjectile {
 
 	@Override
 	protected boolean canAddPassenger(Entity passenger) {
-		return getPassengers().isEmpty();
+		return this.getPassengers().size() < this.maxItemPickup;
 	}
 
 	@Override

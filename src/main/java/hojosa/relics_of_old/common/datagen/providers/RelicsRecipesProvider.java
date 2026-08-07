@@ -275,14 +275,13 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.GOLD_NUGGET))
 		.save(consumer);
 		
-		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.MAGIC_BOOMERANG.get())
-		.pattern("dgg")
-		.pattern("g  ")
-		.pattern("g  ")
-		.define('g', Items.GOLD_INGOT)
-		.define('d', Items.DIAMOND)
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.WOODEN_BOOMERANG.get())
+		.pattern("www")
+		.pattern("w  ")
+		.pattern("w  ")
+		.define('w', ItemTags.PLANKS)
 		.group(References.CREATIVE_TAB)
-		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.GOLD_NUGGET))
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.OAK_PLANKS))
 		.save(consumer);
 		
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.PYRO_AMULET.get())
@@ -374,6 +373,17 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.define('s', RelicsItems.STAR_DUST.get())
 		.group(References.CREATIVE_TAB)
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.STAR_DUST.get()))
+		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.ENDER_SWORD.get())
+		.pattern("i  ")
+		.pattern("e  ")
+		.pattern("s  ")
+		.define('i', Items.IRON_INGOT)
+		.define('e', RelicsItems.ENDER_MEDALLION.get())
+		.define('s', Items.STICK)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.ENDER_MEDALLION.get()))
 		.save(consumer);
 	}
 }

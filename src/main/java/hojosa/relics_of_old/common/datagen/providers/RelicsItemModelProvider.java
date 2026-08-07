@@ -58,6 +58,7 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItem(RelicsItems.BLANK_TABLET);
 		itemWithOverride(RelicsItems.MYSTIC_SEED, "thundering", "charged");
 		basicItem(RelicsBlocks.CALTROPS.asItem());
+		basicItem(RelicsItems.WOODEN_BOOMERANG);
 		basicItem(RelicsItems.MAGIC_BOOMERANG);
 		basicItem(RelicsItems.MILK_CHOCOLATE);
 		basicItem(RelicsItems.EARTH_MEDALLION);
@@ -89,6 +90,7 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItem(RelicsItems.REED_PIPES);
 		basicItem(RelicsItems.SLIME_SWORD);
 		basicItem(RelicsItems.CAPTURE_EGG);
+		basicItem(RelicsItems.ENDER_SWORD);
 		
 		
 		//magic mirror model

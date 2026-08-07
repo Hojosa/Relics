@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "w": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "pattern": [
+    "www",
+    "w  ",
+    "w  "
+  ],
+  "result": {
+    "item": "relics_of_old:wooden_boomerang"
+  },
+  "show_notification": true
+}

@@ -12,6 +12,7 @@ import hojosa.relics_of_old.common.entity.FallingStarEntity;
 import hojosa.relics_of_old.common.entity.StarBeamEntity;
 import hojosa.relics_of_old.common.entity.attacks.QuakeEntity;
 import hojosa.relics_of_old.common.init.RelicsConfig;
+import hojosa.relics_of_old.common.init.RelicsEffects;
 import hojosa.relics_of_old.common.init.RelicsItems;
 import hojosa.relics_of_old.common.init.RelicsSounds;
 import hojosa.relics_of_old.common.item.EmptyMedallion;
@@ -59,6 +60,7 @@ import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityMountEvent;
+import net.minecraftforge.event.entity.EntityTeleportEvent;
 import net.minecraftforge.event.entity.living.EnderManAngerEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
@@ -413,4 +415,11 @@ public class RelicsEvents {
 			}
 		}
 	}
+	
+	@SubscribeEvent
+	  public static void onEnderTeleport(EntityTeleportEvent.EnderEntity event) {
+	      if (event.getEntityLiving().hasEffect(RelicsEffects.ENDER_LOCK.get())) {
+	          event.setCanceled(true);
+	      }
+	  }
 }

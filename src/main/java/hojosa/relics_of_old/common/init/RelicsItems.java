@@ -5,6 +5,7 @@ import hojosa.relics_of_old.common.item.CaptureEgg;
 import hojosa.relics_of_old.common.item.EmeraldPiece;
 import hojosa.relics_of_old.common.item.EmeraldShard;
 import hojosa.relics_of_old.common.item.EmptyMedallion;
+import hojosa.relics_of_old.common.item.EnderSword;
 import hojosa.relics_of_old.common.item.FireTablet;
 import hojosa.relics_of_old.common.item.FlameSword;
 import hojosa.relics_of_old.common.item.HeadbandOfValor;
@@ -74,7 +75,8 @@ public class RelicsItems {
 	public static final RegistryObject<MilkChocolate> MILK_CHOCOLATE = ITEMS.register(References.UnlocalizedName.MILK_CHOCOLATE, MilkChocolate::new);
 	public static final RegistryObject<MagicMirror> MAGIC_MIRROR = ITEMS.register(References.UnlocalizedName.MAGIC_MIRROR, () -> new MagicMirror(Rarity.UNCOMMON, 4));
 	public static final RegistryObject<MagicMirror> FLAWLESS_MAGIC_MIRROR = ITEMS.register(References.UnlocalizedName.FLAWLESS_MAGIC_MIRROR, () -> new MagicMirror(Rarity.EPIC));
-	public static final RegistryObject<MagicBoomerang> MAGIC_BOOMERANG = ITEMS.register(References.UnlocalizedName.MAGIC_BOOMERANG, MagicBoomerang::new);
+	public static final RegistryObject<MagicBoomerang> WOODEN_BOOMERANG = ITEMS.register(References.UnlocalizedName.WOODEN_BOOMERANG, () -> new MagicBoomerang(1.0f, 4, 0));
+	public static final RegistryObject<MagicBoomerang> MAGIC_BOOMERANG = ITEMS.register(References.UnlocalizedName.MAGIC_BOOMERANG, () -> new MagicBoomerang(1.5f, 6, 1));
 	public static final RegistryObject<Medallion> FIRE_MEDALLION = ITEMS.register(References.UnlocalizedName.FIRE_MEDALLION, () -> new Medallion(ElementType.FIRE, 3));
 	public static final RegistryObject<EmptyMedallion> EMPTY_FIRE_MEDALLION = ITEMS.register("empty_" + References.UnlocalizedName.FIRE_MEDALLION, () -> new EmptyMedallion(ElementType.FIRE, FIRE_MEDALLION));
 	public static final RegistryObject<Medallion> EARTH_MEDALLION = ITEMS.register(References.UnlocalizedName.EARTH_MEDALLION, () -> new Medallion(ElementType.EARTH, 3));
@@ -104,6 +106,7 @@ public class RelicsItems {
 	public static final RegistryObject<ReedPipes> REED_PIPES = ITEMS.register(References.UnlocalizedName.REED_PIPES, ReedPipes::new);
 	public static final RegistryObject<SwordItem> SLIME_SWORD = ITEMS.register(References.UnlocalizedName.SLIME_SWORD, SlimeSword::new);
 	public static final RegistryObject<CaptureEgg> CAPTURE_EGG = ITEMS.register(References.UnlocalizedName.CAPTURE_EGG, CaptureEgg::new);
+	public static final RegistryObject<SwordItem> ENDER_SWORD = ITEMS.register(References.UnlocalizedName.ENDER_SWORD, EnderSword::new);
 	
 	public static void addTabItems(ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
 		RelicsItems.ITEMS.getEntries().forEach(itemRegistryObject -> output.accept(itemRegistryObject.get().getDefaultInstance()));

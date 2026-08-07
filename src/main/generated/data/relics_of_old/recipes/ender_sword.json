@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "e": {
+      "item": "relics_of_old:ender_medallion"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "i  ",
+    "e  ",
+    "s  "
+  ],
+  "result": {
+    "item": "relics_of_old:ender_sword"
+  },
+  "show_notification": true
+}

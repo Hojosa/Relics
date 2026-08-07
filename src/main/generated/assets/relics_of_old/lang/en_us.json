@@ -31,6 +31,7 @@
   "item.relics_of_old.empty_water_medallion": "Empty Water Medallion",
   "item.relics_of_old.empty_wind_medallion": "Empty Wind Medallion",
   "item.relics_of_old.ender_medallion": "Ender Medallion",
+  "item.relics_of_old.ender_sword": "Ender Sword",
   "item.relics_of_old.fire_medallion": "Fire Medallion",
   "item.relics_of_old.fire_tablet": "Fire Tablet",
   "item.relics_of_old.flame_sword": "Flame Sword",
@@ -72,5 +73,6 @@
   "item.relics_of_old.water_tablet": "Water Tablet",
   "item.relics_of_old.whirlwind_boots": "Whirlwind Boots",
   "item.relics_of_old.wind_medallion": "Wind Medallion",
+  "item.relics_of_old.wooden_boomerang": "Wooden Bommerang",
   "item_group.relics_of_old.tab": "Relics of Old"
 }

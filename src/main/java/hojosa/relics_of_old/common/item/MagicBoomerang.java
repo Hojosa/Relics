@@ -13,17 +13,25 @@ import net.minecraft.world.level.Level;
 
 public class MagicBoomerang extends RelicsItem {
 
-	public MagicBoomerang() {
+	private float entitySpeed;
+	private int entityDamage;
+	private int entityMaxItemPickup;
+
+	public MagicBoomerang(float speed, int damage, int maxItemPickup) {
 		super(Rarity.UNCOMMON, 256);
+		this.entitySpeed=speed;
+		this.entityDamage=damage;
+		this.entityMaxItemPickup=maxItemPickup;
+		
 	}
 
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
 		ItemStack stack = pPlayer.getItemInHand(pUsedHand);
 		if (!pLevel.isClientSide) {
-			MagicBoomerangEntity boomerang = new MagicBoomerangEntity(pLevel, pPlayer, stack);
+			MagicBoomerangEntity boomerang = new MagicBoomerangEntity(pLevel, pPlayer, stack, entitySpeed, entityDamage, entityMaxItemPickup);
 			boomerang.setThrownFromSlot(pPlayer.getInventory().selected);
-			boomerang.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0f, MagicBoomerangEntity.BOOMERANG_SPEED, 1.0f);
+			boomerang.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0f, boomerang.getSpeed(), 1.0f);
 			pLevel.addFreshEntity(boomerang);
 		}
 		pLevel.playSound(null, pPlayer.blockPosition(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 0.5f, 0.4f / (pLevel.getRandom().nextFloat() * 0.4f + 0.8f));
