@@ -30,6 +30,7 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		withExistingParent(RelicsBlocks.STARBEAM_TORCH);
 		withExistingParent(RelicsBlocks.MYSTIC_SHRUB);
 		withExistingParent(RelicsBlocks.CLAY_JAR);
+		withExistingParent(RelicsBlocks.BOOST_PLATE);
 		
 		basicItem(RelicsItems.STAR_PIECE);
 		basicItem(RelicsItems.STAR_DUST);

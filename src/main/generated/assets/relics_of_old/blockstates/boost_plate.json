@@ -1,0 +1,49 @@
+{
+  "variants": {
+    "facing=east,type=heal": {
+      "model": "relics_of_old:block/boost_plate_heal",
+      "y": 90
+    },
+    "facing=east,type=jump": {
+      "model": "relics_of_old:block/boost_plate_jump",
+      "y": 90
+    },
+    "facing=east,type=speed": {
+      "model": "relics_of_old:block/boost_plate",
+      "y": 90
+    },
+    "facing=north,type=heal": {
+      "model": "relics_of_old:block/boost_plate_heal"
+    },
+    "facing=north,type=jump": {
+      "model": "relics_of_old:block/boost_plate_jump"
+    },
+    "facing=north,type=speed": {
+      "model": "relics_of_old:block/boost_plate"
+    },
+    "facing=south,type=heal": {
+      "model": "relics_of_old:block/boost_plate_heal",
+      "y": 180
+    },
+    "facing=south,type=jump": {
+      "model": "relics_of_old:block/boost_plate_jump",
+      "y": 180
+    },
+    "facing=south,type=speed": {
+      "model": "relics_of_old:block/boost_plate",
+      "y": 180
+    },
+    "facing=west,type=heal": {
+      "model": "relics_of_old:block/boost_plate_heal",
+      "y": 270
+    },
+    "facing=west,type=jump": {
+      "model": "relics_of_old:block/boost_plate_jump",
+      "y": 270
+    },
+    "facing=west,type=speed": {
+      "model": "relics_of_old:block/boost_plate",
+      "y": 270
+    }
+  }
+}

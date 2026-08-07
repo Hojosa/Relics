@@ -4,6 +4,7 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
 
+import hojosa.relics_of_old.common.block.BoostPlate;
 import hojosa.relics_of_old.common.block.Caltrops;
 import hojosa.relics_of_old.common.block.ClayJar;
 import hojosa.relics_of_old.common.block.InfusedStarstoneBlock;
@@ -82,13 +83,10 @@ public class RelicsBlocks {
 
 	public static final ItemObject<Block> STARBEAM_TORCH = BLOCKS.register(References.UnlocalizedName.STARBEAM_TORCH,
 			() -> new StarBeamTorch(BlockBehaviour.Properties.copy(Blocks.TORCH).lightLevel(value -> 15)), BLOCK_ITEM);
-	
 	public static final ItemObject<Block> MYSTIC_SHRUB = BLOCKS.register(References.UnlocalizedName.MYSTIC_SHRUB, () -> new MysticShrub(), BLOCK_ITEM);
-	
 	public static final ItemObject<Block> CALTROPS = BLOCKS.register(References.UnlocalizedName.CALTROPS, () -> new Caltrops(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)), BLOCK_ITEM_SELFPLACING);
-	
 	public static final ItemObject<Block> CLAY_JAR = BLOCKS.register(References.UnlocalizedName.CLAY_JAR, () -> new ClayJar(BlockBehaviour.Properties.copy(Blocks.DECORATED_POT).strength(0).noOcclusion().sound(SoundType.DECORATED_POT)), BLOCK_ITEM);
-
+	public static final ItemObject<Block> BOOST_PLATE = BLOCKS.register(References.UnlocalizedName.BOOST_PLATE, () -> new BoostPlate(BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE)), BLOCK_ITEM);
 
 	/**
 	 * We use this builder to ensure that our blocks all have the most important
@@ -120,6 +118,7 @@ public class RelicsBlocks {
 		output.accept(MYSTIC_SHRUB.get().asItem());
 		output.accept(CALTROPS.get().asItem());
 		output.accept(CLAY_JAR.get().asItem());
+		output.accept(BOOST_PLATE.get().asItem());
 		
 		Predicate<ItemStack> variants = stack -> {
 			output.accept(stack);
@@ -129,7 +128,7 @@ public class RelicsBlocks {
 		RetexturedHelper.addTagVariants(variants, SWORD_PEDESTAL_NORMAL, RelicsTags.Items.SWORD_PEDESTAL_VARIANTS);
 		RetexturedHelper.addTagVariants(variants, SWORD_PEDESTAL_RELIC_VARIANTS, RelicsTags.Items.SWORD_PEDESTAL_VARIANTS);
 	}
-	
+
 	private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
 		return (state) -> state.getValue(BlockStateProperties.LIT) ? lightValue : 0;
 	}

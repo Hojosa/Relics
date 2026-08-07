@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "a": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "d": {
+      "item": "minecraft:diamond"
+    },
+    "o": {
+      "item": "minecraft:obsidian"
+    },
+    "s": {
+      "item": "relics_of_old:star_dust"
+    }
+  },
+  "pattern": [
+    "odo",
+    "asa",
+    "odo"
+  ],
+  "result": {
+    "item": "relics_of_old:boost_plate"
+  },
+  "show_notification": true
+}

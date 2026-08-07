@@ -33,7 +33,8 @@ public class RelicsBlockTags extends BlockTagsProvider {
 		.add(RelicsBlocks.INFUSED_STARSTONE_BLOCK.get())
 		.add(RelicsBlocks.SKYBEAM_BLOCK.get())
 		.add(RelicsBlocks.STARSTONE_BLOCK.get())
-		.add(RelicsBlocks.ODDISH_POT.get());
+		.add(RelicsBlocks.ODDISH_POT.get())
+		.add(RelicsBlocks.BOOST_PLATE.get());
 		tag(BlockTags.NEEDS_STONE_TOOL)
 		.add(RelicsBlocks.SWORD_PEDESTAL_NORMAL.get())
 		.add(RelicsBlocks.SWORD_PEDESTAL_STONE.get())

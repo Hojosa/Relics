@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/pressure_plate_up",
+  "textures": {
+    "texture": "relics_of_old:block/boost_plate_jump"
+  }
+}

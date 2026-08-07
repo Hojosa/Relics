@@ -36,6 +36,7 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addBlock(RelicsBlocks.MYSTIC_SHRUB, "Mystic Shrub");
 		addBlock(RelicsBlocks.CALTROPS, "Caltrops");
 		addBlock(RelicsBlocks.CLAY_JAR, "Clay Jar");
+		addBlock(RelicsBlocks.BOOST_PLATE, "Boost Plate");
 
 		// Items
 		addItem(RelicsItems.FIRE_SWORD, "Flame Sword");

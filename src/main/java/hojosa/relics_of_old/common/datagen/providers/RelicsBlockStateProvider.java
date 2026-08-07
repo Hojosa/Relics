@@ -2,10 +2,12 @@ package hojosa.relics_of_old.common.datagen.providers;
 
 import org.jetbrains.annotations.NotNull;
 
+import hojosa.relics_of_old.common.block.BoostPlate;
 import hojosa.relics_of_old.common.block.MysticShrub;
 import hojosa.relics_of_old.common.block.NormalSwordPedestal;
 import hojosa.relics_of_old.common.init.RelicsBlocks;
 import hojosa.relics_of_old.lib.References;
+import hojosa.relics_of_old.lib.block.RelicsFacingBlock;
 import hojosa.relics_of_old.lib.block.SwordPedestalBaseBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
@@ -37,6 +39,7 @@ public class RelicsBlockStateProvider extends BlockStateProvider{
 		mysticShrub();
 		simpleBlock(RelicsBlocks.CALTROPS.get(), models().crop(RelicsBlocks.CALTROPS.getId().getPath(), modLoc("block/"+ References.UnlocalizedName.CALTROPS)).renderType("cutout"));
 		simpleBlock(RelicsBlocks.CLAY_JAR.get(), models().getExistingFile(modLoc("block/clay_jar")));
+		boostPlate();
 	}
 	
     private void simpleBlockInfused(Block block, Block parent) {
@@ -87,6 +90,37 @@ public class RelicsBlockStateProvider extends BlockStateProvider{
 	          .partialState().with(MysticShrub.STATE, MysticShrub.ShrubState.STUMP)
 	              .modelForState().modelFile(stump).addModel();
 	  }
+	
+	private void boostPlate() {
+	      Block block = RelicsBlocks.BOOST_PLATE.get();
+	      String base = References.UnlocalizedName.BOOST_PLATE;
+
+	      ModelFile speed = models().withExistingParent(base, mcLoc("block/pressure_plate_up"))
+	              .texture("texture", modLoc("block/" + base + "_speed"));
+	      ModelFile jump = models().withExistingParent(base + "_jump", mcLoc("block/pressure_plate_up"))
+	              .texture("texture", modLoc("block/" + base + "_jump"));
+	      ModelFile healing = models().withExistingParent(base + "_heal", mcLoc("block/pressure_plate_up"))
+	              .texture("texture", modLoc("block/" + base + "_heal"));
+
+	      for (BoostPlate.BoostType type : BoostPlate.BoostType.values()) {
+	          ModelFile model = switch (type) {
+	              case SPEED -> speed;
+	              case JUMP -> jump;
+	              case HEALING -> healing;
+	          };
+	          getVariantBuilder(block)
+	              .partialState().with(BoostPlate.TYPE, type).with(RelicsFacingBlock.FACING, Direction.NORTH)
+	                  .modelForState().modelFile(model).rotationY(0).addModel()
+	              .partialState().with(BoostPlate.TYPE, type).with(RelicsFacingBlock.FACING, Direction.EAST)
+	                  .modelForState().modelFile(model).rotationY(90).addModel()
+	              .partialState().with(BoostPlate.TYPE, type).with(RelicsFacingBlock.FACING, Direction.SOUTH)
+	                  .modelForState().modelFile(model).rotationY(180).addModel()
+	              .partialState().with(BoostPlate.TYPE, type).with(RelicsFacingBlock.FACING, Direction.WEST)
+	                  .modelForState().modelFile(model).rotationY(270).addModel();
+	      }
+
+	  }
+
 	
 	@Override
 	public @NotNull String getName() {

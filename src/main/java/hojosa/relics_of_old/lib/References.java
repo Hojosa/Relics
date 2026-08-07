@@ -95,6 +95,7 @@ public class References {
 		public static final String REED_PIPES = "reed_pipes";
 		public static final String SLIME_SWORD = "slime_sword";
 		public static final String CAPTURE_EGG = "capture_egg";
+		public static final String BOOST_PLATE = "boost_plate";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -132,6 +133,7 @@ public class References {
 		public static final String FULL_CHARGE = "full_charge";
 		public static final String FIRE_BUILD = "fire_build";
 		public static final String GRIND = "grind";
+		public static final String SPEED_BOOST = "speed_boost";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

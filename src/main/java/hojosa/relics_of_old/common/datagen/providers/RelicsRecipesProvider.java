@@ -363,5 +363,17 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.group(References.CREATIVE_TAB)
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.SLIME_BALL))
 		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsBlocks.BOOST_PLATE.get())
+		.pattern("odo")
+		.pattern("asa")
+		.pattern("odo")
+		.define('o', Items.OBSIDIAN)
+		.define('d', Items.DIAMOND)
+		.define('a', Items.AMETHYST_SHARD)
+		.define('s', RelicsItems.STAR_DUST.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.STAR_DUST.get()))
+		.save(consumer);
 	}
 }

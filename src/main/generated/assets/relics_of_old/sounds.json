@@ -140,6 +140,12 @@
     ],
     "subtitle": "relics_of_old.subtitle.sine"
   },
+  "speed_boost": {
+    "sounds": [
+      "relics_of_old:speed_boost"
+    ],
+    "subtitle": "relics_of_old.subtitle.speed_boost"
+  },
   "sprinkle": {
     "sounds": [
       "relics_of_old:sprinkle",
