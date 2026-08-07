@@ -54,7 +54,7 @@ public class ClayJar extends RelicsWaterloggedBlock implements EntityBlock {
 			if (blockEntity != null && blockEntity.isEmpty()) {
 				blockEntity.setItem(0, item.getItem());
 				item.remove(RemovalReason.KILLED);
-				pLevel.playLocalSound(pPos, SoundEvents.CHICKEN_EGG, SoundSource.BLOCKS, 1.0f, 1.0f, false);
+				pLevel.playSound(null, pPos, SoundEvents.CHICKEN_EGG, SoundSource.BLOCKS, 1.0f, 1.0f);
 			}
 		}
 	}
