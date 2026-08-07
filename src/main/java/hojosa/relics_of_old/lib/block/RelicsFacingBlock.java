@@ -46,19 +46,6 @@ public class RelicsFacingBlock extends RelicsWaterloggedBlock{
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
     
-    @SuppressWarnings("deprecation")
-	@Override
-    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean flag) {
-        if (!state.is(newState.getBlock())) {
-            BlockEntity blockentity = level.getBlockEntity(pos);
-            if (blockentity instanceof Container container) {
-                Containers.dropContents(level, pos, container);
-                level.updateNeighbourForOutputSignal(pos, this);
-            }
-            super.onRemove(state, level, pos, newState, flag);
-        }
-    }
-    
     @Override
     public PushReaction getPistonPushReaction(BlockState state) {
         return PushReaction.BLOCK;
