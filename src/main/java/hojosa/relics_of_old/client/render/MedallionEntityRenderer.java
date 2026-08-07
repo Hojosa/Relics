@@ -80,8 +80,9 @@ public class MedallionEntityRenderer extends EntityRenderer<MedallionEntity>   {
             case WATER     -> 0x2266FF;
             case LIGHTNING -> 0xFFEE00;
             case MAGIC     -> 0xFF44FF;
-            case GRAVITY   -> 0x6622AA;
+            case SHADOW   -> 0x6622AA;
             case FOREST    -> 0x22AA22;
+            case STAR -> 0xAABBFF;
             default 	   -> 0xFFFFFF;
         };
     }

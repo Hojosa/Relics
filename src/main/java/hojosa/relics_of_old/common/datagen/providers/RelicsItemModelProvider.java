@@ -77,13 +77,16 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItemWithOtherTexture(RelicsItems.EMPTY_ICE_MEDALLION, RelicsItems.ICE_MEDALLION.getId());
 		basicItem(RelicsItems.WATER_MEDALLION);
 		basicItemWithOtherTexture(RelicsItems.EMPTY_WATER_MEDALLION, RelicsItems.WATER_MEDALLION.getId());
-		basicItem(RelicsItems.GRAVITY_MEDALLION);
-		basicItemWithOtherTexture(RelicsItems.EMPTY_GRAVITY_MEDALLION, RelicsItems.GRAVITY_MEDALLION.getId());
+		basicItem(RelicsItems.SHADOW_MEDALLION);
+		basicItemWithOtherTexture(RelicsItems.EMPTY_SHADOW_MEDALLION, RelicsItems.SHADOW_MEDALLION.getId());
 		basicItem(RelicsItems.LIGHTNING_MEDALLION);
 		basicItemWithOtherTexture(RelicsItems.EMPTY_LIGHTNING_MEDALLION, RelicsItems.LIGHTNING_MEDALLION.getId());
+		basicItem(RelicsItems.STAR_MEDALLION);
+		basicItemWithOtherTexture(RelicsItems.EMPTY_STAR_MEDALLION, RelicsItems.STAR_MEDALLION.getId());
 		basicItem(RelicsItems.PYRO_AMULET);
 		basicItem(RelicsItems.GEO_AMULET);
 		basicItem(RelicsItems.AERO_AMULET);
+		basicItem(RelicsItems.END_AMULET);
 		basicItem(RelicsItems.WHIRLWIND_BOOTS);
 		basicItem(RelicsItems.TITAN_BAND);
 		basicItem(RelicsItems.HEADBAND_OF_VALOR);

@@ -204,7 +204,7 @@ public class RelicsUtil {
 	}
 
 	public enum ElementType implements StringRepresentable {
-		FIRE("fire"), EARTH("earth"), WIND("wind"), ENDER("ender"), ICE("ice"), WATER("water"), LIGHTNING("lightning"), MAGIC("magic"), GRAVITY("gravity"), FOREST("forest");
+		FIRE("fire"), EARTH("earth"), WIND("wind"), ENDER("ender"), ICE("ice"), WATER("water"), LIGHTNING("lightning"), MAGIC("magic"), SHADOW("shadow"), FOREST("forest"), STAR("star");
 
 		private final String name;
 

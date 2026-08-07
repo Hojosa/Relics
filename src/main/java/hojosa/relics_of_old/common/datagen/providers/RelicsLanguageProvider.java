@@ -87,13 +87,16 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addItem(RelicsItems.ICE_MEDALLION, "Ice Medallion");
 		addItem(RelicsItems.EMPTY_WATER_MEDALLION, "Empty Water Medallion");
 		addItem(RelicsItems.WATER_MEDALLION, "Water Medallion");
-		addItem(RelicsItems.EMPTY_GRAVITY_MEDALLION, "Empty Gravity Medallion");
-		addItem(RelicsItems.GRAVITY_MEDALLION, "Gravity Medallion");
+		addItem(RelicsItems.EMPTY_SHADOW_MEDALLION, "Empty Shadow Medallion");
+		addItem(RelicsItems.SHADOW_MEDALLION, "Shadow Medallion");
 		addItem(RelicsItems.EMPTY_LIGHTNING_MEDALLION, "Empty Lightning Medallion");
 		addItem(RelicsItems.LIGHTNING_MEDALLION, "Lightning Medallion");
+		addItem(RelicsItems.EMPTY_STAR_MEDALLION, "Empty Star Medallion");
+		addItem(RelicsItems.STAR_MEDALLION, "Star Medallion");
 		addItem(RelicsItems.PYRO_AMULET, "Pyro Amulet");
 		addItem(RelicsItems.GEO_AMULET, "Geo Amulet");
 		addItem(RelicsItems.AERO_AMULET, "Aero Amulet");
+		addItem(RelicsItems.END_AMULET, "End Amulet");
 		addItem(RelicsItems.WHIRLWIND_BOOTS, "Whirlwind Boots");
 		addItem(RelicsItems.TITAN_BAND, "Titan Band");
 		addItem(RelicsItems.HEADBAND_OF_VALOR, "Headband of Valor");

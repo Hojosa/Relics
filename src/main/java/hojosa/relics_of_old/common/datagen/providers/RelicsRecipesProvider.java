@@ -314,6 +314,16 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.WIND_MEDALLION.get()))
 		.save(consumer);
 		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.END_AMULET.get())
+		.pattern(" g ")
+		.pattern("g g")
+		.pattern(" a ")
+		.define('g', Items.GOLD_INGOT)
+		.define('a', RelicsItems.ENDER_MEDALLION.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.ENDER_MEDALLION.get()))
+		.save(consumer);
+		
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.WHIRLWIND_BOOTS.get())
 		.pattern("g g")
 		.pattern("waw")
