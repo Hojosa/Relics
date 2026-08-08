@@ -22,6 +22,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
+import slimeknights.mantle.recipe.crafting.ShapedRetexturedRecipeBuilder;
 
 
 public class RelicsRecipesProvider extends RecipeProvider {
@@ -220,6 +221,19 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.group(References.CREATIVE_TAB)
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.BRICK))
 		.save(consumer);
+
+		ShapedRetexturedRecipeBuilder.fromShaped(
+			      ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsBlocks.CLAY_JAR.get(), 16)
+			          .pattern("t t")
+			          .pattern("t t")
+			          .pattern("ttt")
+			          .define('t', RelicsTags.Items.CLAY_JAR_VARIANTS)
+			          .group(References.CREATIVE_TAB)
+			          .unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsBlocks.CLAY_JAR.get())))
+			  .setSource(RelicsTags.Items.CLAY_JAR_VARIANTS)
+			  .setMatchAll()
+			  .build(consumer, RelicsUtil.modLoc("clay_jar_retextured"));
+
 		
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.MILK_CHOCOLATE.get())
 		.pattern("mc ")

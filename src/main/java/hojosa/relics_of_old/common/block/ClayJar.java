@@ -1,7 +1,7 @@
 package hojosa.relics_of_old.common.block;
 
 import hojosa.relics_of_old.common.block.entity.ClayJarBlockEntity;
-import hojosa.relics_of_old.lib.block.RelicsWaterloggedBlock;
+import hojosa.relics_of_old.lib.block.RelicsRetexturedWaterloggedBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -13,14 +13,13 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class ClayJar extends RelicsWaterloggedBlock implements EntityBlock {
+public class ClayJar extends RelicsRetexturedWaterloggedBlock {
 	private static final VoxelShape SHAPE = Shapes.or(
 			Block.box(4, 15, 4, 12, 16, 12), // rim
 			Block.box(5, 14, 5, 11, 15, 11), // neck

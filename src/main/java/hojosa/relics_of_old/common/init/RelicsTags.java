@@ -14,6 +14,7 @@ import top.theillusivec4.curios.api.SlotTypePreset;
 public interface RelicsTags {
 	interface Blocks {
 		TagKey<Block> SWORD_PEDESTAL_VARIANTS = tag("sword_pedestal_variants");
+		TagKey<Block> CLAY_JAR_VARIANTS = tag("clay_jar_variants");
 
 		static TagKey<Block> tag(String name) {
 			return TagKey.create(Registries.BLOCK, RelicsUtil.modLoc(name));
@@ -30,6 +31,7 @@ public interface RelicsTags {
 		TagKey<Item> HEART = tag("heart");
 		TagKey<Item> CHARM_TAG = ItemTags.create(ResourceLocation.fromNamespaceAndPath(CuriosApi.MODID, SlotTypePreset.CHARM.getIdentifier()));
 		TagKey<Item> BELT_TAG = ItemTags.create(ResourceLocation.fromNamespaceAndPath(CuriosApi.MODID, SlotTypePreset.BELT.getIdentifier()));
+		TagKey<Item> CLAY_JAR_VARIANTS = tag("clay_jar_variants");
 
 		static TagKey<Item> tag(String name) {
 			return TagKey.create(Registries.ITEM, RelicsUtil.modLoc(name));

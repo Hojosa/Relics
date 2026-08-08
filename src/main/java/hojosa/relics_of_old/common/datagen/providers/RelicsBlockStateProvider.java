@@ -19,6 +19,7 @@ import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.client.model.generators.MultiPartBlockStateBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
+import slimeknights.mantle.client.model.builder.RetexturedModelBuilder;
 import slimeknights.mantle.registration.object.ItemObject;
 
 public class RelicsBlockStateProvider extends BlockStateProvider{
@@ -38,8 +39,9 @@ public class RelicsBlockStateProvider extends BlockStateProvider{
 				modLoc("block/" + References.UnlocalizedName.SKYBEAM_BLOCK + "_side"), mcLoc("block/obsidian"), modLoc("block/" + References.UnlocalizedName.SKYBEAM_BLOCK + "_top")));
 		mysticShrub();
 		simpleBlock(RelicsBlocks.CALTROPS.get(), models().crop(RelicsBlocks.CALTROPS.getId().getPath(), modLoc("block/"+ References.UnlocalizedName.CALTROPS)).renderType("cutout"));
-		simpleBlock(RelicsBlocks.CLAY_JAR.get(), models().getExistingFile(modLoc("block/clay_jar")));
+//		simpleBlock(RelicsBlocks.CLAY_JAR.get(), models().getExistingFile(modLoc("block/clay_jar")));
 		boostPlate();
+		clayJar();
 	}
 	
     private void simpleBlockInfused(Block block, Block parent) {
@@ -118,9 +120,27 @@ public class RelicsBlockStateProvider extends BlockStateProvider{
 	              .partialState().with(BoostPlate.TYPE, type).with(RelicsFacingBlock.FACING, Direction.WEST)
 	                  .modelForState().modelFile(model).rotationY(270).addModel();
 	      }
-
 	  }
-
+	
+	private void clayJar() {
+	      Block block = RelicsBlocks.CLAY_JAR.get();
+	      ModelFile model = models()
+	          .withExistingParent("clay_jar", modLoc("block/clay_jar_base"))
+	          .renderType("cutout")
+	          .texture("jar_side", modLoc("block/clay_jar_side"))
+	          .texture("jar_top", modLoc("block/clay_jar_top"))
+	          .texture("jar_bottom", modLoc("block/clay_jar_bottom"))
+	          .texture("jar_side_overlay", modLoc("block/clay_jar_side_overlay"))
+	          .texture("jar_top_overlay", modLoc("block/clay_jar_top_overlay"))
+	          .texture("particle", modLoc("block/clay_jar_bottom"))
+	          .customLoader(RetexturedModelBuilder::new)
+	          .retexture("jar_side")
+	          .retexture("jar_top")
+	          .retexture("jar_bottom")
+	          .retexture("particle")
+	          .end();
+	      simpleBlock(block, model);
+	  }
 	
 	@Override
 	public @NotNull String getName() {

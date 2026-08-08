@@ -52,7 +52,7 @@ public class RelicsItemTags extends ItemTagsProvider {
 		.add(TagEntry.optionalElement(ResourceLocation.fromNamespaceAndPath("supplementaries", "soap")));
 		tag(RelicsTags.Items.HEART)
 		.add(RelicsItems.HEART.get());
-		
+		copy(RelicsTags.Blocks.CLAY_JAR_VARIANTS, RelicsTags.Items.CLAY_JAR_VARIANTS);
 	}
 
     @Override

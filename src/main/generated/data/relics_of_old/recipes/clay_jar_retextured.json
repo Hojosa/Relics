@@ -1,0 +1,24 @@
+{
+  "type": "mantle:crafting_shaped_retextured",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "t": {
+      "tag": "relics_of_old:clay_jar_variants"
+    }
+  },
+  "match_all": true,
+  "pattern": [
+    "t t",
+    "t t",
+    "ttt"
+  ],
+  "result": {
+    "count": 16,
+    "item": "relics_of_old:clay_jar"
+  },
+  "show_notification": true,
+  "texture": {
+    "tag": "relics_of_old:clay_jar_variants"
+  }
+}

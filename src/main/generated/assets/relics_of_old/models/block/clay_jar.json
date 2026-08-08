@@ -1,0 +1,19 @@
+{
+  "parent": "relics_of_old:block/clay_jar_base",
+  "loader": "mantle:retextured",
+  "render_type": "minecraft:cutout",
+  "retextured": [
+    "jar_side",
+    "jar_top",
+    "jar_bottom",
+    "particle"
+  ],
+  "textures": {
+    "jar_bottom": "relics_of_old:block/clay_jar_bottom",
+    "jar_side": "relics_of_old:block/clay_jar_side",
+    "jar_side_overlay": "relics_of_old:block/clay_jar_side_overlay",
+    "jar_top": "relics_of_old:block/clay_jar_top",
+    "jar_top_overlay": "relics_of_old:block/clay_jar_top_overlay",
+    "particle": "relics_of_old:block/clay_jar_bottom"
+  }
+}

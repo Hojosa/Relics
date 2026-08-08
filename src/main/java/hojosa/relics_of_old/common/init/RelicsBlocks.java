@@ -127,6 +127,7 @@ public class RelicsBlocks {
 
 		RetexturedHelper.addTagVariants(variants, SWORD_PEDESTAL_NORMAL, RelicsTags.Items.SWORD_PEDESTAL_VARIANTS);
 		RetexturedHelper.addTagVariants(variants, SWORD_PEDESTAL_RELIC_VARIANTS, RelicsTags.Items.SWORD_PEDESTAL_VARIANTS);
+		RetexturedHelper.addTagVariants(variants, CLAY_JAR, RelicsTags.Items.CLAY_JAR_VARIANTS);
 	}
 
 	private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
