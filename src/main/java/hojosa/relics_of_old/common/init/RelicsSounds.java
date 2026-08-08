@@ -20,6 +20,7 @@ public class RelicsSounds {
 	public static final RegistryObject<SoundEvent> STAR_FALL_SOUND = registerSound(References.SoundName.STAR_FALL_SOUND);
 	public static final RegistryObject<SoundEvent> STAR_TWINKLE_SOUND = registerSound(References.SoundName.STAR_TWINKLE_SOUND);
 	public static final RegistryObject<SoundEvent> STAR_CAUGHT_SOUND = registerSound(References.SoundName.STAR_CAUGHT_SOUND);
+	public static final RegistryObject<SoundEvent> STAR_CAUGHT_X_SOUND = registerSound(References.SoundName.STAR_CAUGHT_X_SOUND);
 	public static final RegistryObject<SoundEvent> HEART = registerSound(References.UnlocalizedName.HEART);
 	public static final RegistryObject<SoundEvent> REVIVE = registerSound(References.SoundName.REVIVE);
 	public static final RegistryObject<SoundEvent> EMERALD_PICKUP = registerSound(References.SoundName.EMERALD_PICKUP);

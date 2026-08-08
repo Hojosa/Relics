@@ -34,13 +34,12 @@ public class FallingStarEntity extends Entity {
 		this(RelicsEntities.FALLING_STAR.get(), player.level());
 		double theta = this.random.nextDouble() * Math.PI * 2.0;
 		double radius = 42.0;
-		this.setPos(player.position().x + Math.cos(theta) * radius, player.position().y + 100, player.position().z + Math.sin(theta) * radius);
+		this.setPos(player.position().x + Math.cos(theta) * radius, player.position().y + 110, player.position().z + Math.sin(theta) * radius);
 	}
 
 	@Override
 	public void playerTouch(Player pPlayer) {
 		if (!this.level().isClientSide()) {
-			this.playSound(RelicsSounds.STAR_CAUGHT_SOUND.get(), 1f, 1f);
 			pPlayer.addItem(new ItemStack(RelicsItems.STAR_PIECE.get(), 1));
 			ExperienceOrb.award((ServerLevel) this.level(), this.position(), 3);
 			pPlayer.getCapability(StarFallChanceProvider.PLAYER_STAR_FALL).ifPresent(star -> star.setStarsCollected(star.getStarsCollected()+1));
@@ -50,8 +49,10 @@ public class FallingStarEntity extends Entity {
 			//a little bonus for star collectors:
 			pPlayer.getCapability(StarFallChanceProvider.PLAYER_STAR_FALL).ifPresent(star -> {
 				if(star.getStarsCollected() != 0 && star.getStarsCollected() % 7 == 0 ) {
+					this.playSound(RelicsSounds.STAR_CAUGHT_X_SOUND.get(), 1f, 1f);
 					pPlayer.level().addFreshEntity(new FallingStarEntity(pPlayer));
 				}
+				else this.playSound(RelicsSounds.STAR_CAUGHT_SOUND.get(), 1f, 1f);
 			});
 		}
 	}
@@ -60,8 +61,9 @@ public class FallingStarEntity extends Entity {
 	public void tick() {
 		// star is flying
 		if (!this.onGround()) {
-			if(this.tickCount == 6 && this.level().isClientSide()) {
-				this.level().playLocalSound(this.blockPosition(), RelicsSounds.STAR_FALL_SOUND.get(), getSoundSource(), 0.5f, 1.0f, false);
+			System.out.println(this.tickCount);
+			if(this.tickCount == 5 && !this.level().isClientSide()) {
+				this.level().playSound(null, this.blockPosition(), RelicsSounds.STAR_FALL_SOUND.get(), getSoundSource(), 10.0f, 1.0f);
 			}
 			this.movementY -= 0.03;
 			this.move(MoverType.SELF, new Vec3(0, this.movementY, 0));

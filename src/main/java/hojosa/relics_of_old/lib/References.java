@@ -138,6 +138,7 @@ public class References {
 		public static final String FIRE_BUILD = "fire_build";
 		public static final String GRIND = "grind";
 		public static final String SPEED_BOOST = "speed_boost";
+		public static final String STAR_CAUGHT_X_SOUND = "star_caught_x";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

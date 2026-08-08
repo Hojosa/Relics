@@ -159,6 +159,12 @@
     ],
     "subtitle": "relics_of_old.subtitle.star_caught"
   },
+  "star_caught_x": {
+    "sounds": [
+      "relics_of_old:star_caught_x"
+    ],
+    "subtitle": "relics_of_old.subtitle.star_caught_x"
+  },
   "star_fall": {
     "sounds": [
       "relics_of_old:star_fall"
