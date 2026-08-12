@@ -1,6 +1,7 @@
 package hojosa.relics_of_old.common.datagen.providers;
 
 import hojosa.relics_of_old.common.init.RelicsBlocks;
+import hojosa.relics_of_old.common.init.RelicsEnchantments;
 import hojosa.relics_of_old.common.init.RelicsItems;
 import hojosa.relics_of_old.lib.References;
 import net.minecraft.data.PackOutput;
@@ -117,6 +118,9 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		add("augment.relics_of_old.shadow", "Augment: Shadow");
 		add("augment.relics_of_old.forest", "Augment: Forest");
 		add("augment.relics_of_old.star", "Augment: Star");
+		
+		//Other stuff
+		addEnchantment(RelicsEnchantments.FOCUS, "Focus");
 
 	}
 

@@ -11,6 +11,7 @@ import hojosa.relics_of_old.common.init.RelicsBlocks;
 import hojosa.relics_of_old.common.init.RelicsConfig;
 import hojosa.relics_of_old.common.init.RelicsCreativeModeTabs;
 import hojosa.relics_of_old.common.init.RelicsEffects;
+import hojosa.relics_of_old.common.init.RelicsEnchantments;
 import hojosa.relics_of_old.common.init.RelicsEntities;
 import hojosa.relics_of_old.common.init.RelicsFeatures;
 import hojosa.relics_of_old.common.init.RelicsItems;
@@ -59,6 +60,7 @@ public class Relics {
 		RelicsBlockEntities.BLOCK_ENTITIES.register(modEventBus);
 		RelicsCreativeModeTabs.CREATIVE_TABS.register(modEventBus);
 		RelicsEntities.ENTITY_TYPES.register(modEventBus);
+		RelicsEnchantments.ENCHANTMENTS.register(modEventBus);
 		RelicsSounds.SOUNDS.register(modEventBus);
 		RelicsEffects.EFFECTS.register(modEventBus);
 		RelicsGlobalLootModifier.register(modEventBus);

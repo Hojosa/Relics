@@ -6,6 +6,7 @@ import org.spongepowered.asm.mixin.Mixin;
 
 import hojosa.relics_of_old.common.entity.attacks.QuakeEntity;
 import hojosa.relics_of_old.common.entity.attacks.WhirlwindEntity;
+import hojosa.relics_of_old.common.init.RelicsEnchantments;
 import hojosa.relics_of_old.common.init.RelicsParticles;
 import hojosa.relics_of_old.common.init.RelicsSounds;
 import hojosa.relics_of_old.lib.References;
@@ -33,6 +34,7 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TieredItem;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -110,19 +112,20 @@ public abstract class SwordItemMixin extends TieredItem {
 			return;
 
 		int ticksUsed = getUseDuration(stack) - remainingTicks;
+		int effectiveCharge = getEffectiveChargeTime(stack);
 
-		if (ticksUsed > 4 && ticksUsed < CHARGE_TIME && level.isClientSide) {
+		if (ticksUsed > 4 && ticksUsed < effectiveCharge && level.isClientSide) {
 			InteractionHand hand = entity.getUsedItemHand();
 			boolean mainArmRight = entity.getMainArm() == HumanoidArm.RIGHT;
 			boolean rightSide = (hand == InteractionHand.MAIN_HAND) == mainArmRight;
-			spawnChargeParticles(entity, ticksUsed, rightSide);
+			spawnChargeParticles(entity, ticksUsed, rightSide, stack);
 		}
 
-		if (ticksUsed == CHARGE_TIME && !level.isClientSide) {
+		if (ticksUsed == effectiveCharge && !level.isClientSide) {
 			level.playSound(null, entity.blockPosition(), RelicsSounds.PARTIAL_CHARGE.get(), SoundSource.PLAYERS, 0.15f, 2.0f);
 		}
 		// discharge sparkle while holding after full charge
-		if (ticksUsed >= CHARGE_TIME && level.isClientSide) {
+		if (ticksUsed >= effectiveCharge && level.isClientSide) {
 			InteractionHand hand = entity.getUsedItemHand();
 			boolean mainArmRight = entity.getMainArm() == HumanoidArm.RIGHT;
 			boolean rightSide = (hand == InteractionHand.MAIN_HAND) == mainArmRight;
@@ -190,7 +193,7 @@ public abstract class SwordItemMixin extends TieredItem {
 
 		int ticksUsed = getUseDuration(stack) - remainingTicks;
 		// only mark as charged, ability fires on next left-click via onEntitySwing
-		if (ticksUsed >= CHARGE_TIME) {
+		if (ticksUsed >= getEffectiveChargeTime(stack)) {
 			stack.getOrCreateTag().putLong("chargedAt", level.getGameTime());
 		}
 	}
@@ -232,7 +235,12 @@ public abstract class SwordItemMixin extends TieredItem {
 		return stack.hasTag() && stack.getTag().contains("medallion");
 	}
 
-	private static void spawnChargeParticles(LivingEntity entity, int ticksUsed, boolean rightSide) {
+	private static int getEffectiveChargeTime(ItemStack stack) {
+		int focusLevel = EnchantmentHelper.getTagEnchantmentLevel(RelicsEnchantments.FOCUS.get(), stack);
+		return (int) (CHARGE_TIME / (1.0f + focusLevel * 0.5f));
+	}
+
+	private static void spawnChargeParticles(LivingEntity entity, int ticksUsed, boolean rightSide, ItemStack stack) {
 		float yawRad = entity.getYRot() * Mth.DEG_TO_RAD;
 		float pitchRad = entity.getXRot() * Mth.DEG_TO_RAD;
 
@@ -252,7 +260,7 @@ public abstract class SwordItemMixin extends TieredItem {
 		double z = entity.getZ() + lookZ * 0.5 + sideZ * 0.6;
 
 		// converging spiral
-		double r = (float) (CHARGE_TIME - ticksUsed) / CHARGE_TIME;
+		double r = (float) (getEffectiveChargeTime(stack) - ticksUsed) / getEffectiveChargeTime(stack);
 		double theta = r * Math.PI * 3.0;
 		double h = Math.cos(theta) * r;
 		double offy = Math.sin(theta) * r;
@@ -360,7 +368,7 @@ public abstract class SwordItemMixin extends TieredItem {
 		// durability cost: maxDamage / (enchantability * 4), if overflow occures, save
 		// it and accumulate until an extra point is reached.
 		if (success) {
-			int enchantability = Math.max(1, sword.getItem().getEnchantmentValue());
+			int enchantability = Math.max(1, sword.getItem().getEnchantmentValue(sword));
 			int uses = enchantability * 4;
 			int maxDmg = sword.getMaxDamage();
 			int damage = maxDmg / uses;
