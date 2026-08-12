@@ -19,12 +19,12 @@ public class RelicsParticles {
 
 	public static final RegistryObject<SimpleParticleType> FLAME_PATTICLES = PARTICLE_TYPES.register(References.UnlocalizedName.FLAME_PARTICLE, () -> new SimpleParticleType(true));
 	public static final RegistryObject<ParticleType<RelicsParticleOptions>> SPARKLE_PARTICLES = PARTICLE_TYPES.register(References.UnlocalizedName.SPARKLE_PATTICLES,
-            () -> new ParticleType<>(true, RelicsParticleOptions.DESERIALIZER) {
-                    @Override
-                    public Codec<RelicsParticleOptions> codec() {
-                            return RelicsParticleOptions.codec(SPARKLE_PARTICLES);
-                    }
-            });
+			() -> new ParticleType<>(true, RelicsParticleOptions.DESERIALIZER) {
+				@Override
+				public Codec<RelicsParticleOptions> codec() {
+					return RelicsParticleOptions.codec(SPARKLE_PARTICLES);
+				}
+			});
 	public static final RegistryObject<ParticleType<RelicsParticleOptions>> RUNE_PARTICLE = PARTICLE_TYPES.register(References.UnlocalizedName.RUNE_PARTICLE,
 			() -> new ParticleType<>(true, RelicsParticleOptions.DESERIALIZER) {
 				@Override
@@ -41,4 +41,6 @@ public class RelicsParticles {
 					return RelicsParticleOptions.codec(MAGIC_SCRAMBLE_PARTICLE);
 				}
 			});
+
+	public static final RegistryObject<SimpleParticleType> SUGAR_PARTICLE = PARTICLE_TYPES.register(References.UnlocalizedName.SUGAR_PARTICLE, () -> new SimpleParticleType(false));
 }

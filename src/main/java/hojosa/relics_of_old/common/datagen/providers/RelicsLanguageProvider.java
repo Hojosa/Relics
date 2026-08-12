@@ -38,6 +38,7 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addBlock(RelicsBlocks.CALTROPS, "Caltrops");
 		addBlock(RelicsBlocks.CLAY_JAR, "Clay Jar");
 		addBlock(RelicsBlocks.BOOST_PLATE, "Boost Plate");
+		addBlock(RelicsBlocks.SUGAR_CUBE, "Sugar Cube");
 
 		// Items
 		addItem(RelicsItems.FIRE_SWORD, "Flame Sword");
@@ -105,6 +106,10 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addItem(RelicsItems.SLIME_SWORD, "Slime Sword");
 		addItem(RelicsItems.CAPTURE_EGG, "Capture Egg");
 		addItem(RelicsItems.ENDER_SWORD, "Ender Sword");
+		addItem(RelicsItems.ROCK_CANDY_REDSTONE, "Redstone Rock Candy");
+		addItem(RelicsItems.ROCK_CANDY_LAPIS, "Lapis Rock Candy");
+		addItem(RelicsItems.ROCK_CANDY_EMERALD, "Emerald Rock Candy");
+		addItem(RelicsItems.ROCK_CANDY_DIAMOND, "Diamond Rock Candy");
 
 		// Sword augment tooltips
 		add("augment.relics_of_old.fire", "Augment: Fire");
@@ -118,8 +123,8 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		add("augment.relics_of_old.shadow", "Augment: Shadow");
 		add("augment.relics_of_old.forest", "Augment: Forest");
 		add("augment.relics_of_old.star", "Augment: Star");
-		
-		//Other stuff
+
+		// Other stuff
 		addEnchantment(RelicsEnchantments.FOCUS, "Focus");
 
 	}

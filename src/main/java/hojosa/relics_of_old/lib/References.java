@@ -101,6 +101,12 @@ public class References {
 		public static final String WOODEN_BOOMERANG = "wooden_boomerang";
 		public static final String END_AMULET = "end_amulet";
 		public static final String WHIRLWIND = "whirlwind";
+		public static final String SUGAR_CUBE = "sugar_cube";
+		public static final String ROCK_CANDY_REDSTONE = "rock_candy_redstone";
+		public static final String ROCK_CANDY_LAPIS = "rock_candy_lapis";
+		public static final String ROCK_CANDY_EMERALD = "rock_candy_emerald";
+		public static final String ROCK_CANDY_DIAMOND = "rock_candy_diamond";
+		public static final String SUGAR_PARTICLE = "sugar_particle";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

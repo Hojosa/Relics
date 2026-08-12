@@ -48,6 +48,7 @@ public class RelicsLootTables extends VanillaBlockLoot {
 		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_TWILIGHT.get(), RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), SwordPedestalBlockEntity.COLOR_TAG, SwordPedestalBlockEntity.GLOW_TAG, SwordPedestalBlockEntity.INFUSED_TAG);
 		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_STONE.get(), RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), SwordPedestalBlockEntity.COLOR_TAG, SwordPedestalBlockEntity.GLOW_TAG, SwordPedestalBlockEntity.INFUSED_TAG);
 		createStandardTable(RelicsBlocks.INFUSED_STARSTONE_BLOCK.get(), RelicsBlockEntities.INFUSED_STARSTONE_BLOCK_ENTITY.get());
+		dropSelf(RelicsBlocks.SUGAR_CUBE.get());
 		
 		add(RelicsBlocks.MYSTIC_SHRUB.get(), LootTable.lootTable()
 			      // Normal drops — 3 independent pools, each 20% chance

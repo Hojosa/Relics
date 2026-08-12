@@ -5,6 +5,7 @@ import hojosa.relics_of_old.client.particle.FlareParticle;
 import hojosa.relics_of_old.client.particle.MagicScrambleParticle;
 import hojosa.relics_of_old.client.particle.RuneParticle;
 import hojosa.relics_of_old.client.particle.SparkleParticle;
+import hojosa.relics_of_old.client.particle.SugarParticle;
 import hojosa.relics_of_old.client.render.EmptyEntityRenderer;
 import hojosa.relics_of_old.client.render.EnderBombEntityRenderer;
 import hojosa.relics_of_old.client.render.FallingStarRenderer;
@@ -90,6 +91,7 @@ public class RelicsClientEvents {
 		event.registerSpriteSet(RelicsParticles.RUNE_PARTICLE.get(), RuneParticle.Provider::new);
 		event.registerSpriteSet(RelicsParticles.FLARE_PARTICLE.get(), FlareParticle.Provider::new);
 		event.registerSpriteSet(RelicsParticles.MAGIC_SCRAMBLE_PARTICLE.get(), MagicScrambleParticle.Provider::new);
+		event.registerSpriteSet(RelicsParticles.SUGAR_PARTICLE.get(), SugarParticle.Factory::new);	
 	}
 
 	// this needs to fire on the forge event bus, so no subscribe event here

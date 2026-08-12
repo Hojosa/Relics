@@ -1,10 +1,10 @@
 package hojosa.relics_of_old.common.datagen.providers;
 
-
 import java.util.concurrent.CompletableFuture;
 
 import org.jetbrains.annotations.Nullable;
 
+import hojosa.relics_of_old.common.init.RelicsBlocks;
 import hojosa.relics_of_old.common.init.RelicsItems;
 import hojosa.relics_of_old.common.init.RelicsTags;
 import hojosa.relics_of_old.lib.References;
@@ -24,39 +24,23 @@ public class RelicsItemTags extends ItemTagsProvider {
 		super(packOutput, lookupProvider, pBlockTagsProvider.contentsGetter(), References.MOD_ID, existingFileHelper);
 	}
 
-	@Override 
+	@Override
 	protected void addTags(HolderLookup.Provider provider) {
-		tag(RelicsTags.Items.CHARM_TAG)
-		.add(RelicsItems.FIRE_TABLET.get())
-		.add(RelicsItems.WATER_TABLET.get())
-		.add(RelicsItems.PYRO_AMULET.get())
-		.add(RelicsItems.GEO_AMULET.get())
-		.add(RelicsItems.END_AMULET.get())
-		.add(RelicsItems.AERO_AMULET.get());
-		tag(RelicsTags.Items.BELT_TAG)
-		.add(RelicsItems.TITAN_BAND.get());
-		tag(ItemTags.SWORDS)
-		.add(RelicsItems.FIRE_SWORD.get())
-		.add(RelicsItems.MASTER_SWORD.get())
-		.add(RelicsItems.ENDER_SWORD.get())
-		.add(RelicsItems.SLIME_SWORD.get());
-		tag(RelicsTags.Items.SWORD_PEDESTAL_INFUSEABLE)
-		.add(RelicsItems.INFUSED_STAR_STONE.get());
-		tag(RelicsTags.Items.SWORD_PEDESTAL_GLOW)
-		.add(Items.GLOWSTONE)
-		.add(Items.GLOW_INK_SAC)
-		.add(Items.GLOW_BERRIES);
+		tag(RelicsTags.Items.CHARM_TAG).add(RelicsItems.FIRE_TABLET.get()).add(RelicsItems.WATER_TABLET.get()).add(RelicsItems.PYRO_AMULET.get()).add(RelicsItems.GEO_AMULET.get()).add(RelicsItems.END_AMULET.get())
+				.add(RelicsItems.AERO_AMULET.get());
+		tag(RelicsTags.Items.BELT_TAG).add(RelicsItems.TITAN_BAND.get());
+		tag(ItemTags.SWORDS).add(RelicsItems.FIRE_SWORD.get()).add(RelicsItems.MASTER_SWORD.get()).add(RelicsItems.ENDER_SWORD.get()).add(RelicsItems.SLIME_SWORD.get());
+		tag(RelicsTags.Items.SWORD_PEDESTAL_INFUSEABLE).add(RelicsItems.INFUSED_STAR_STONE.get());
+		tag(RelicsTags.Items.SWORD_PEDESTAL_GLOW).add(Items.GLOWSTONE).add(Items.GLOW_INK_SAC).add(Items.GLOW_BERRIES);
 		copy(RelicsTags.Blocks.SWORD_PEDESTAL_VARIANTS, RelicsTags.Items.SWORD_PEDESTAL_VARIANTS);
-		tag(RelicsTags.Items.CLEANER)
-		.add(Items.SPONGE)
-		.add(TagEntry.optionalElement(ResourceLocation.fromNamespaceAndPath("supplementaries", "soap")));
-		tag(RelicsTags.Items.HEART)
-		.add(RelicsItems.HEART.get());
+		tag(RelicsTags.Items.CLEANER).add(Items.SPONGE).add(TagEntry.optionalElement(ResourceLocation.fromNamespaceAndPath("supplementaries", "soap")));
+		tag(RelicsTags.Items.HEART).add(RelicsItems.HEART.get());
 		copy(RelicsTags.Blocks.CLAY_JAR_VARIANTS, RelicsTags.Items.CLAY_JAR_VARIANTS);
+		tag(RelicsTags.Items.SUGAR_CUBES).add(RelicsBlocks.SUGAR_CUBE.get().asItem()).add(TagEntry.optionalElement(ResourceLocation.fromNamespaceAndPath("supplementaries", "sugar_cube")));
 	}
 
-    @Override
-    public String getName() {
-        return "Relics Item Tags";
-    }
+	@Override
+	public String getName() {
+		return "Relics Item Tags";
+	}
 }

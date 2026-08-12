@@ -20,6 +20,7 @@ import hojosa.relics_of_old.common.item.MilkChocolate;
 import hojosa.relics_of_old.common.item.MysticSeed;
 import hojosa.relics_of_old.common.item.ReedPipes;
 import hojosa.relics_of_old.common.item.RelicsAmulet;
+import hojosa.relics_of_old.common.item.RockCandyItem;
 import hojosa.relics_of_old.common.item.SlimeSword;
 import hojosa.relics_of_old.common.item.TitanBand;
 import hojosa.relics_of_old.common.item.WaterTablet;
@@ -32,6 +33,7 @@ import hojosa.relics_of_old.lib.item.RelicsArmorMaterials;
 import hojosa.relics_of_old.lib.item.RelicsItem;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTab.ItemDisplayParameters;
 import net.minecraft.world.item.Item;
@@ -46,7 +48,7 @@ public class RelicsItems {
 
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, References.MOD_ID);
 
-	//relics
+	// relics
 	public static final RegistryObject<FireTablet> FIRE_TABLET = ITEMS.register(References.UnlocalizedName.FIRE_PLATE, () -> new FireTablet(1, Rarity.EPIC));
 	public static final RegistryObject<WaterTablet> WATER_TABLET = ITEMS.register(References.UnlocalizedName.WATER_PLATE, () -> new WaterTablet(1, Rarity.EPIC));
 	public static final RegistryObject<RelicsItem> BLANK_TABLET = ITEMS.register(References.UnlocalizedName.BLANK_TABLET, () -> new RelicsItem(64, Rarity.UNCOMMON));
@@ -54,17 +56,17 @@ public class RelicsItems {
 			() -> new InfusedItem(new Item.Properties().stacksTo(64).rarity(Rarity.RARE).fireResistant()));
 	public static final RegistryObject<MagicMirror> MAGIC_MIRROR = ITEMS.register(References.UnlocalizedName.MAGIC_MIRROR, () -> new MagicMirror(Rarity.UNCOMMON, 4));
 	public static final RegistryObject<MagicMirror> FLAWLESS_MAGIC_MIRROR = ITEMS.register(References.UnlocalizedName.FLAWLESS_MAGIC_MIRROR, () -> new MagicMirror(Rarity.EPIC));
-	
-	//weapons
+
+	// weapons
 	public static final RegistryObject<SwordItem> FIRE_SWORD = ITEMS.register(References.UnlocalizedName.FIRE_SWORD, FlameSword::new);
 	public static final RegistryObject<SwordItem> MASTER_SWORD = ITEMS.register(References.UnlocalizedName.MASTER_SWORD, MasterSword::new);
 	public static final RegistryObject<SwordItem> SLIME_SWORD = ITEMS.register(References.UnlocalizedName.SLIME_SWORD, SlimeSword::new);
 	public static final RegistryObject<SwordItem> ENDER_SWORD = ITEMS.register(References.UnlocalizedName.ENDER_SWORD, EnderSword::new);
-	
+
 	public static final RegistryObject<MagicBoomerang> WOODEN_BOOMERANG = ITEMS.register(References.UnlocalizedName.WOODEN_BOOMERANG, () -> new MagicBoomerang(1.0f, 4, 0));
 	public static final RegistryObject<MagicBoomerang> MAGIC_BOOMERANG = ITEMS.register(References.UnlocalizedName.MAGIC_BOOMERANG, () -> new MagicBoomerang(1.5f, 6, 1));
-	
-	//items
+
+	// items
 	public static final RegistryObject<RelicsItem> INFUSED_STAR_PIECE = ITEMS.register(References.UnlocalizedName.INFUSED_STAR_PIECE, () -> new InfusedItem(64, Rarity.EPIC));
 	public static final RegistryObject<RelicsItem> STAR_PIECE = ITEMS.register(References.UnlocalizedName.STAR_PIECE, () -> new InfuseableItem(64, Rarity.UNCOMMON, INFUSED_STAR_PIECE));
 	public static final RegistryObject<RelicsItem> STAR_DUST = ITEMS.register(References.UnlocalizedName.STAR_DUST, () -> new RelicsItem(64, Rarity.UNCOMMON));
@@ -80,8 +82,12 @@ public class RelicsItems {
 	public static final RegistryObject<MilkChocolate> MILK_CHOCOLATE = ITEMS.register(References.UnlocalizedName.MILK_CHOCOLATE, MilkChocolate::new);
 	public static final RegistryObject<ReedPipes> REED_PIPES = ITEMS.register(References.UnlocalizedName.REED_PIPES, ReedPipes::new);
 	public static final RegistryObject<CaptureEgg> CAPTURE_EGG = ITEMS.register(References.UnlocalizedName.CAPTURE_EGG, CaptureEgg::new);
-	
-	//lost pages
+	public static final RegistryObject<RockCandyItem> ROCK_CANDY_REDSTONE = ITEMS.register(References.UnlocalizedName.ROCK_CANDY_REDSTONE, () -> new RockCandyItem(MobEffects.DAMAGE_BOOST, 0)); // Strength I
+	public static final RegistryObject<RockCandyItem> ROCK_CANDY_LAPIS = ITEMS.register(References.UnlocalizedName.ROCK_CANDY_LAPIS, () -> new RockCandyItem(MobEffects.JUMP, 1)); // Jump Boost II
+	public static final RegistryObject<RockCandyItem> ROCK_CANDY_EMERALD = ITEMS.register(References.UnlocalizedName.ROCK_CANDY_EMERALD, () -> new RockCandyItem(MobEffects.DIG_SPEED, 3)); // Haste IV
+	public static final RegistryObject<RockCandyItem> ROCK_CANDY_DIAMOND = ITEMS.register(References.UnlocalizedName.ROCK_CANDY_DIAMOND, () -> new RockCandyItem(MobEffects.DAMAGE_RESISTANCE, 3)); // Resistance IV
+
+	// lost pages
 	public static final RegistryObject<LostPage> LOST_PAGE_1 = ITEMS.register(References.UnlocalizedName.LOST_PAGE_1, () -> new LostPage(1, References.LostPagesText.LOST_PAGE_1));
 	public static final RegistryObject<LostPage> LOST_PAGE_2 = ITEMS.register(References.UnlocalizedName.LOST_PAGE_2, () -> new LostPage(1, References.LostPagesText.LOST_PAGE_2));
 	public static final RegistryObject<LostPage> LOST_PAGE_3 = ITEMS.register(References.UnlocalizedName.LOST_PAGE_3, () -> new LostPage(1, References.LostPagesText.LOST_PAGE_3));
@@ -90,7 +96,7 @@ public class RelicsItems {
 	public static final RegistryObject<LostPage> LOST_PAGE_6 = ITEMS.register(References.UnlocalizedName.LOST_PAGE_6, () -> new LostPage(1, References.LostPagesText.LOST_PAGE_6));
 	public static final RegistryObject<LostPage> LOST_PAGE_7 = ITEMS.register(References.UnlocalizedName.LOST_PAGE_7, () -> new LostPage(1, References.LostPagesText.LOST_PAGE_7));
 
-	//anything medallions related
+	// anything medallions related
 	public static final RegistryObject<Medallion> FIRE_MEDALLION = ITEMS.register(References.UnlocalizedName.FIRE_MEDALLION, () -> new Medallion(ElementType.FIRE, 3));
 	public static final RegistryObject<EmptyMedallion> EMPTY_FIRE_MEDALLION = ITEMS.register("empty_" + References.UnlocalizedName.FIRE_MEDALLION, () -> new EmptyMedallion(ElementType.FIRE, FIRE_MEDALLION));
 	public static final RegistryObject<Medallion> EARTH_MEDALLION = ITEMS.register(References.UnlocalizedName.EARTH_MEDALLION, () -> new Medallion(ElementType.EARTH, 3));
@@ -110,19 +116,20 @@ public class RelicsItems {
 	public static final RegistryObject<Medallion> SHADOW_MEDALLION = ITEMS.register(References.UnlocalizedName.SHADOW_MEDALLION, () -> new Medallion(ElementType.SHADOW, 3));
 	public static final RegistryObject<EmptyMedallion> EMPTY_SHADOW_MEDALLION = ITEMS.register("empty_" + References.UnlocalizedName.SHADOW_MEDALLION, () -> new EmptyMedallion(ElementType.SHADOW, SHADOW_MEDALLION));
 	public static final RegistryObject<Medallion> LIGHTNING_MEDALLION = ITEMS.register(References.UnlocalizedName.LIGHTNING_MEDALLION, () -> new Medallion(ElementType.LIGHTNING, 3));
-	public static final RegistryObject<EmptyMedallion> EMPTY_LIGHTNING_MEDALLION = ITEMS.register("empty_" + References.UnlocalizedName.LIGHTNING_MEDALLION, () -> new EmptyMedallion(ElementType.LIGHTNING, LIGHTNING_MEDALLION));
+	public static final RegistryObject<EmptyMedallion> EMPTY_LIGHTNING_MEDALLION = ITEMS.register("empty_" + References.UnlocalizedName.LIGHTNING_MEDALLION,
+			() -> new EmptyMedallion(ElementType.LIGHTNING, LIGHTNING_MEDALLION));
 	public static final RegistryObject<Medallion> STAR_MEDALLION = ITEMS.register(References.UnlocalizedName.STAR_MEDALLION, () -> new Medallion(ElementType.STAR, 3));
 	public static final RegistryObject<EmptyMedallion> EMPTY_STAR_MEDALLION = ITEMS.register("empty_" + References.UnlocalizedName.STAR_MEDALLION, () -> new EmptyMedallion(ElementType.STAR, STAR_MEDALLION));
-	//amulets
+	// amulets
 	public static final RegistryObject<RelicsAmulet> PYRO_AMULET = ITEMS.register(References.UnlocalizedName.PYRO_AMULET, () -> new RelicsAmulet(50, ElementType.FIRE));
 	public static final RegistryObject<RelicsAmulet> GEO_AMULET = ITEMS.register(References.UnlocalizedName.GEO_AMULET, () -> new RelicsAmulet(50, ElementType.EARTH));
 	public static final RegistryObject<RelicsAmulet> AERO_AMULET = ITEMS.register(References.UnlocalizedName.AERO_AMULET, () -> new AeroAmulet(50));
 	public static final RegistryObject<RelicsAmulet> END_AMULET = ITEMS.register(References.UnlocalizedName.END_AMULET, () -> new RelicsAmulet(50, ElementType.ENDER));
-	//things made from medallions
+	// things made from medallions
 	public static final RegistryObject<WhirlwindBoots> WHIRLWIND_BOOTS = ITEMS.register(References.UnlocalizedName.WHIRLWIND_BOOTS, () -> new WhirlwindBoots(RelicsArmorMaterials.WHIRLWIND));
 	public static final RegistryObject<TitanBand> TITAN_BAND = ITEMS.register(References.UnlocalizedName.TITAN_BAND, TitanBand::new);
 	public static final RegistryObject<HeadbandOfValor> HEADBAND_OF_VALOR = ITEMS.register(References.UnlocalizedName.HEADBAND_OF_VALOR, () -> new HeadbandOfValor(RelicsArmorMaterials.HEADBAND));
-	
+
 	public static void addTabItems(ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
 		RelicsItems.ITEMS.getEntries().forEach(itemRegistryObject -> output.accept(itemRegistryObject.get().getDefaultInstance()));
 	}

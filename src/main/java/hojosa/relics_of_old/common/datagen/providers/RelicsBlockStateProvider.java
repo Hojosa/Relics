@@ -42,6 +42,7 @@ public class RelicsBlockStateProvider extends BlockStateProvider{
 //		simpleBlock(RelicsBlocks.CLAY_JAR.get(), models().getExistingFile(modLoc("block/clay_jar")));
 		boostPlate();
 		clayJar();
+		simpleBlock(RelicsBlocks.SUGAR_CUBE.get());
 	}
 	
     private void simpleBlockInfused(Block block, Block parent) {

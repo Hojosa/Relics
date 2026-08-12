@@ -1,0 +1,9 @@
+{
+  "values": [
+    "relics_of_old:sugar_cube",
+    {
+      "id": "supplementaries:sugar_cube",
+      "required": false
+    }
+  ]
+}

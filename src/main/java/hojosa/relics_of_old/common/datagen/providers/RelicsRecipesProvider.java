@@ -409,5 +409,59 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.group(References.CREATIVE_TAB)
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.ENDER_MEDALLION.get()))
 		.save(consumer);
+		
+		// Sugar Cube: 9 sugar -> 1 sugar cube
+		ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, RelicsBlocks.SUGAR_CUBE.get())
+		.pattern("sss")
+	  	.pattern("sss")
+	  	.pattern("sss")
+	  	.define('s', Items.SUGAR)
+	  	.group(References.CREATIVE_TAB)
+	    .unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.SUGAR))
+	    .save(consumer);
+		
+		// Sugar Cube -> 9 sugar (shapeless reverse)
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.SUGAR, 9)
+		.requires(RelicsBlocks.SUGAR_CUBE.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsBlocks.SUGAR_CUBE.get()))
+		.save(consumer, RelicsUtil.modLoc("sugar_from_sugar_cube"));
+		
+		// Rock Candy: 6x sugar cube tag + stick + gem + water bucket
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, RelicsItems.ROCK_CANDY_REDSTONE.get())
+		.requires(Ingredient.of(RelicsTags.Items.SUGAR_CUBES), 6)
+		.requires(Items.STICK)
+		.requires(Items.REDSTONE)
+		.requires(Items.WATER_BUCKET)
+	    .group(References.CREATIVE_TAB)
+	    .unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.SUGAR))
+	    .save(consumer);
+		
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, RelicsItems.ROCK_CANDY_LAPIS.get())
+		.requires(Ingredient.of(RelicsTags.Items.SUGAR_CUBES), 6)
+		.requires(Items.STICK)
+		.requires(Items.LAPIS_LAZULI)
+		.requires(Items.WATER_BUCKET)
+		.group(References.CREATIVE_TAB)
+      	.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.SUGAR))
+      	.save(consumer);
+		
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, RelicsItems.ROCK_CANDY_EMERALD.get())
+		.requires(Ingredient.of(RelicsTags.Items.SUGAR_CUBES), 6)
+		.requires(Items.STICK)
+		.requires(Items.EMERALD)
+		.requires(Items.WATER_BUCKET)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.SUGAR))
+		.save(consumer);
+	
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, RelicsItems.ROCK_CANDY_DIAMOND.get())
+		.requires(Ingredient.of(RelicsTags.Items.SUGAR_CUBES), 6)
+		.requires(Items.STICK)
+		.requires(Items.DIAMOND)
+		.requires(Items.WATER_BUCKET)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.SUGAR))
+		.save(consumer);
 	}
 }

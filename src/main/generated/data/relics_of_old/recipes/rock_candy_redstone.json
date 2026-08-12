@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "tab",
+  "ingredients": [
+    {
+      "tag": "relics_of_old:sugar_cubes"
+    },
+    {
+      "tag": "relics_of_old:sugar_cubes"
+    },
+    {
+      "tag": "relics_of_old:sugar_cubes"
+    },
+    {
+      "tag": "relics_of_old:sugar_cubes"
+    },
+    {
+      "tag": "relics_of_old:sugar_cubes"
+    },
+    {
+      "tag": "relics_of_old:sugar_cubes"
+    },
+    {
+      "item": "minecraft:stick"
+    },
+    {
+      "item": "minecraft:redstone"
+    },
+    {
+      "item": "minecraft:water_bucket"
+    }
+  ],
+  "result": {
+    "item": "relics_of_old:rock_candy_redstone"
+  }
+}

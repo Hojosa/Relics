@@ -28,6 +28,8 @@ public class RelicsParticleDescriptionProvider extends ParticleDescriptionProvid
 		spriteSet(RelicsParticles.MAGIC_SCRAMBLE_PARTICLE.get(), IntStream.rangeClosed('a', 'z')
 				.mapToObj(c -> ResourceLocation.withDefaultNamespace("sga_" + (char) c))
 				.toList());
+		//dummy call, the actual particle fetches the block texture via terrain particle
+		sprite(RelicsParticles.SUGAR_PARTICLE.get(), ResourceLocation.withDefaultNamespace("generic_0"));
 	}
 	
 	@Override
