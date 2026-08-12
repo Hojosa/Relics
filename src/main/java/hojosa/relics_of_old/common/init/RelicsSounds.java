@@ -50,6 +50,7 @@ public class RelicsSounds {
 	public static final RegistryObject<SoundEvent> FIRE_BUILD = registerSound(References.SoundName.FIRE_BUILD);
 	public static final RegistryObject<SoundEvent> GRIND = registerSound(References.SoundName.GRIND);
 	public static final RegistryObject<SoundEvent> SPEED_BOOST = registerSound(References.SoundName.SPEED_BOOST);
+	public static final RegistryObject<SoundEvent> WHIRLWIND = registerSound(References.SoundName.WHIRLWIND);
 	
 	private static RegistryObject<SoundEvent> registerSound(String name) {
 		return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(References.MOD_ID, name)));

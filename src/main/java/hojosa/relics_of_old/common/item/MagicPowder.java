@@ -4,6 +4,7 @@ import java.util.Random;
 
 import hojosa.relics_of_old.common.init.RelicsParticles;
 import hojosa.relics_of_old.common.init.RelicsSounds;
+import hojosa.relics_of_old.lib.RelicsParticleOptions;
 import hojosa.relics_of_old.lib.RelicsUtil;
 import hojosa.relics_of_old.lib.item.RelicsItem;
 import net.minecraft.core.particles.ParticleTypes;
@@ -69,7 +70,7 @@ public class MagicPowder extends RelicsItem {
 			pPlayer.level().playSound(pPlayer, pInteractionTarget.blockPosition(), RelicsSounds.TRANSFORM.get(), SoundSource.PLAYERS, 1.0f, 0.7f + random.nextFloat() * 0.5f);
 			pPlayer.level().addParticle(ParticleTypes.EXPLOSION, pInteractionTarget.getX(), pInteractionTarget.getY() + pInteractionTarget.getBbHeight() / 2, pInteractionTarget.getZ(), 0.0, 0.0, 0.0);
 			for (int i = 0; i < 20; i++)
-				pPlayer.level().addParticle(RelicsParticles.SPARKLE_PARTICLES.get(), pInteractionTarget.getX() + random.nextGaussian() * 0.5f, pInteractionTarget.getY() + random.nextGaussian() + 0.5f,
+				pPlayer.level().addParticle(new RelicsParticleOptions(RelicsParticles.SPARKLE_PARTICLES, 6, 0.1f), pInteractionTarget.getX() + random.nextGaussian() * 0.5f, pInteractionTarget.getY() + random.nextGaussian() + 0.5f,
 						pInteractionTarget.getZ() + random.nextGaussian() * 0.5f, 0.0, -0.02f, 0.0);
 			return InteractionResult.SUCCESS;
 		}
@@ -95,7 +96,7 @@ public class MagicPowder extends RelicsItem {
 				level.playSound(context.getPlayer(), context.getClickedPos(), RelicsSounds.SPRINKLE.get(), SoundSource.PLAYERS, 0.2f, 1.0f);
 				level.playSound(context.getPlayer(), context.getClickedPos(), RelicsSounds.TRANSFORM.get(), SoundSource.PLAYERS, 1.0f, 0.7f + random.nextFloat() * 0.5f);
 				level.addParticle(ParticleTypes.EXPLOSION, context.getClickedPos().getX() + 0.5, context.getClickedPos().getY() + 0.5, context.getClickedPos().getZ() + 0.5, 0.0, 0.0, 0.0);
-				level.addParticle(RelicsParticles.SPARKLE_PARTICLES.get(), context.getClickedPos().getX() + random.nextGaussian() * 0.5f, context.getClickedPos().getY() + random.nextGaussian() + 0.5f,
+				level.addParticle(new RelicsParticleOptions(RelicsParticles.SPARKLE_PARTICLES, 6, 0.1f), context.getClickedPos().getX() + random.nextGaussian() * 0.5f, context.getClickedPos().getY() + random.nextGaussian() + 0.5f,
 						context.getClickedPos().getZ() + random.nextGaussian() * 0.5f, 0.0, -0.02f, 0.0);
 
 				return InteractionResult.SUCCESS;
@@ -114,7 +115,7 @@ public class MagicPowder extends RelicsItem {
 				level.playSound(context.getPlayer(), context.getClickedPos(), RelicsSounds.SPRINKLE.get(), SoundSource.PLAYERS, 0.2f, 1.0f);
 				level.playSound(context.getPlayer(), context.getClickedPos(), RelicsSounds.TRANSFORM.get(), SoundSource.PLAYERS, 1.0f, 0.7f + random.nextFloat() * 0.5f);
 				level.addParticle(ParticleTypes.EXPLOSION, context.getClickedPos().getX() + 0.5, context.getClickedPos().getY() + 0.5, context.getClickedPos().getZ() + 0.5, 0.0, 0.0, 0.0);
-				level.addParticle(RelicsParticles.SPARKLE_PARTICLES.get(), context.getClickedPos().getX() + random.nextGaussian() * 0.5f, context.getClickedPos().getY() + random.nextGaussian() + 0.5f,
+				level.addParticle(new RelicsParticleOptions(RelicsParticles.SPARKLE_PARTICLES, 6, 0.1f), context.getClickedPos().getX() + random.nextGaussian() * 0.5f, context.getClickedPos().getY() + random.nextGaussian() + 0.5f,
 						context.getClickedPos().getZ() + random.nextGaussian() * 0.5f, 0.0, -0.02f, 0.0);
 				return InteractionResult.SUCCESS;
 			}

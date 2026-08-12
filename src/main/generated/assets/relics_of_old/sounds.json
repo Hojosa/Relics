@@ -218,5 +218,11 @@
       "relics_of_old:transform"
     ],
     "subtitle": "relics_of_old.subtitle.transform"
+  },
+  "whirlwind": {
+    "sounds": [
+      "relics_of_old:whirlwind"
+    ],
+    "subtitle": "relics_of_old.subtitle.whirlwind"
   }
 }

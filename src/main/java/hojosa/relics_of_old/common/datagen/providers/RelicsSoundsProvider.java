@@ -52,6 +52,7 @@ public class RelicsSoundsProvider extends SoundDefinitionsProvider {
 		add(RelicsSounds.FIRE_BUILD, definition().subtitle(getSubtitle(RelicsSounds.FIRE_BUILD)).with(sound(RelicsSounds.FIRE_BUILD.getId())));
 		add(RelicsSounds.GRIND, definition().subtitle(getSubtitle(RelicsSounds.GRIND)).with(sound(RelicsSounds.GRIND.getId())));
 		add(RelicsSounds.SPEED_BOOST, definition().subtitle(getSubtitle(RelicsSounds.SPEED_BOOST)).with(sound(RelicsSounds.SPEED_BOOST.getId())));
+		add(RelicsSounds.WHIRLWIND, definition().subtitle(getSubtitle(RelicsSounds.WHIRLWIND)).with(sound(RelicsSounds.WHIRLWIND.getId())));
 	}
 
 	private String getSubtitle(RegistryObject<SoundEvent> sound) {

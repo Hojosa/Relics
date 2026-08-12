@@ -14,11 +14,12 @@ import net.minecraftforge.registries.RegistryObject;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RelicsRecipes {
-    public static final DeferredRegister<RecipeSerializer<?>> SERIALIZERS  = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, References.MOD_ID);
-    
-    public static final RegistryObject<RecipeSerializer<MagicInfusionRecipce>> MAGIC_INFUSION_SERIALIZER = registerSerializer("magic_infusion", () -> MagicInfusionRecipce.Serializer.INSTANCE);
-    
-    private static <T extends Recipe<Container>> RegistryObject<RecipeSerializer<T>> registerSerializer(String name, Supplier<RecipeSerializer<T>> type) {
-        return SERIALIZERS.register(name, type);
-    } 
+	public static final DeferredRegister<RecipeSerializer<?>> SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, References.MOD_ID);
+
+	public static final RegistryObject<RecipeSerializer<MagicInfusionRecipce>> MAGIC_INFUSION_SERIALIZER = registerSerializer("magic_infusion", () -> MagicInfusionRecipce.Serializer.INSTANCE);
+	public static final RegistryObject<RecipeSerializer<MedallionSmithingRecipe>> MEDALLION_SMITHING_SERIALIZER = registerSerializer("medallion_smithing", () -> MedallionSmithingRecipe.Serializer.INSTANCE);
+
+	private static <T extends Recipe<Container>> RegistryObject<RecipeSerializer<T>> registerSerializer(String name, Supplier<RecipeSerializer<T>> type) {
+		return SERIALIZERS.register(name, type);
+	}
 }

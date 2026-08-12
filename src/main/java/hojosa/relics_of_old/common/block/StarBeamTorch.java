@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import hojosa.relics_of_old.common.entity.StarBeamEntity;
 import hojosa.relics_of_old.common.init.RelicsParticles;
+import hojosa.relics_of_old.lib.RelicsParticleOptions;
 import hojosa.relics_of_old.lib.ShapeUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -120,6 +121,6 @@ public class StarBeamTorch extends TorchBlock {
         double offsetY = pRandom.nextGaussian() * 0.08 - 0.04;
         double offsetZ = pRandom.nextGaussian() * 0.15;
 
-        pLevel.addParticle(RelicsParticles.SPARKLE_PARTICLES.get(), x + offsetX, y + offsetY, z + offsetZ, 0.0D, 0.0D, 0.0D);
+        pLevel.addParticle(new RelicsParticleOptions(RelicsParticles.SPARKLE_PARTICLES, 6, 0.1f), x + offsetX, y + offsetY, z + offsetZ, 0.0D, 0.0D, 0.0D);
     }
 }

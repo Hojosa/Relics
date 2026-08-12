@@ -8,6 +8,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
+import lombok.Getter;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -25,7 +26,7 @@ public class RelicsParticleOptions implements ParticleOptions {
         }
 
         public RelicsParticleOptions fromNetwork(ParticleType<RelicsParticleOptions> type, FriendlyByteBuf buf) {
-            return new RelicsParticleOptions(() -> type, buf.readInt(), buf.readFloat());
+            return new RelicsParticleOptions(() -> type, buf.readInt(), buf.readFloat(), buf.readFloat(), buf.readFloat(), buf.readFloat());
         }
     };
 
@@ -40,11 +41,24 @@ public class RelicsParticleOptions implements ParticleOptions {
     private final Supplier<ParticleType<RelicsParticleOptions>> type;
     private final int lifetime;
     private final float size;
+    @Getter
+    private final float r;
+    @Getter
+    private final float g;
+    @Getter
+    private final float b;
 
     public RelicsParticleOptions(Supplier<ParticleType<RelicsParticleOptions>> type, int lifetime, float size) {
-        this.type = type;
-    	this.lifetime = lifetime;
-        this.size = size;
+        this(type, lifetime, size, 1f, 1f, 0.4f);
+  }
+
+    public RelicsParticleOptions(Supplier<ParticleType<RelicsParticleOptions>> type, int lifetime, float size, float r, float g, float b) {
+          this.type = type;
+          this.lifetime = lifetime;
+          this.size = size;
+          this.r = r;
+          this.g = g;
+          this.b = b;
     }
 
     public int getLifetime() {
@@ -64,6 +78,9 @@ public class RelicsParticleOptions implements ParticleOptions {
     public void writeToNetwork(FriendlyByteBuf buf) {
         buf.writeInt(lifetime);
         buf.writeFloat(size);
+        buf.writeFloat(r);
+        buf.writeFloat(g);
+        buf.writeFloat(b);
     }
 
     @Override

@@ -80,7 +80,7 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addItem(RelicsItems.EMPTY_ENDER_MEDALLION, "Empty Ender Medallion");
 		addItem(RelicsItems.ENDER_MEDALLION, "Ender Medallion");
 		addItem(RelicsItems.EMPTY_FOREST_MEDALLION, "Empty Forest Medallion");
-		addItem(RelicsItems.FOREST_MEDALLION,  "Forest Medallion");
+		addItem(RelicsItems.FOREST_MEDALLION, "Forest Medallion");
 		addItem(RelicsItems.EMPTY_MAGIC_MEDALLION, "Empty Magic Medallion");
 		addItem(RelicsItems.MAGIC_MEDALLION, "Magic Medallion");
 		addItem(RelicsItems.EMPTY_ICE_MEDALLION, "Empty Ice Medallion");
@@ -104,6 +104,20 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addItem(RelicsItems.SLIME_SWORD, "Slime Sword");
 		addItem(RelicsItems.CAPTURE_EGG, "Capture Egg");
 		addItem(RelicsItems.ENDER_SWORD, "Ender Sword");
+
+		// Sword augment tooltips
+		add("augment.relics_of_old.fire", "Augment: Fire");
+		add("augment.relics_of_old.earth", "Augment: Earth");
+		add("augment.relics_of_old.wind", "Augment: Wind");
+		add("augment.relics_of_old.ender", "Augment: Ender");
+		add("augment.relics_of_old.ice", "Augment: Ice");
+		add("augment.relics_of_old.water", "Augment: Water");
+		add("augment.relics_of_old.lightning", "Augment: Lightning");
+		add("augment.relics_of_old.magic", "Augment: Magic");
+		add("augment.relics_of_old.shadow", "Augment: Shadow");
+		add("augment.relics_of_old.forest", "Augment: Forest");
+		add("augment.relics_of_old.star", "Augment: Star");
+
 	}
 
 	@Override

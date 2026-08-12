@@ -98,7 +98,7 @@ public class StarBeamEntity extends Entity {
 		}
 
 		if (this.level().isClientSide) {
-			this.level().addParticle(RelicsParticles.SPARKLE_PARTICLES.get(), this.xo, this.yo, this.zo, random.nextGaussian() * 0.1, random.nextGaussian() * 0.1, random.nextGaussian() * 0.1);
+			this.level().addParticle(new RelicsParticleOptions(RelicsParticles.SPARKLE_PARTICLES, 6, 0.1f), this.xo, this.yo, this.zo, random.nextGaussian() * 0.1, random.nextGaussian() * 0.1, random.nextGaussian() * 0.1);
 			this.level().addParticle(new RelicsParticleOptions(RelicsParticles.RUNE_PARTICLE, 40, 0.15f), this.getX(), this.getY(), this.getZ(), 0, 0, 0);
 		}
 		if (!this.level().isClientSide && this.position().distanceToSqr(this.entityData.get(DATA_ID_TARGET_POS).getCenter()) < 0.15) {

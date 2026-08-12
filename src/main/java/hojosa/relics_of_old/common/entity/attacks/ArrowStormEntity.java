@@ -80,7 +80,7 @@ public class ArrowStormEntity extends Entity {
 			for (int i = 0; i < 2; i++) {
 				double ox = Math.cos(theta) * SPREAD_RADIUS * 0.5;
 				double oz = Math.sin(theta) * SPREAD_RADIUS * 0.5;
-				level().addParticle(RelicsParticles.SPARKLE_PARTICLES.get(), getX() + ox, getY() + 2.0 + random.nextDouble(), getZ() + oz, 0.0, -0.3, 0.0);
+				level().addParticle(new RelicsParticleOptions(RelicsParticles.SPARKLE_PARTICLES, 6, 0.1f), getX() + ox, getY() + 2.0 + random.nextDouble(), getZ() + oz, 0.0, -0.3, 0.0);
 				theta += Math.PI;
 			}
 		}

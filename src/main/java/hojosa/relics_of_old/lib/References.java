@@ -100,6 +100,7 @@ public class References {
 		public static final String ENDER_SWORD = "ender_sword";
 		public static final String WOODEN_BOOMERANG = "wooden_boomerang";
 		public static final String END_AMULET = "end_amulet";
+		public static final String WHIRLWIND = "whirlwind";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -139,6 +140,7 @@ public class References {
 		public static final String GRIND = "grind";
 		public static final String SPEED_BOOST = "speed_boost";
 		public static final String STAR_CAUGHT_X_SOUND = "star_caught_x";
+		public static final String WHIRLWIND = "whirlwind";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

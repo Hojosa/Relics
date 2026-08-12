@@ -30,10 +30,11 @@ public class QuakeEntity extends Entity {
 	public static final double HORIZONTAL_LAUNCH = 0.3;
 	public static final int DAMAGE_PER_HIT = 7;
 	private boolean noSelfDamage = false;
-	private double customRadius = -1;
+//	private double customRadius = -1;
 	private int customDamage = -1;
 
 	private static final EntityDataAccessor<Integer> DATA_LIFETIME = SynchedEntityData.defineId(QuakeEntity.class, EntityDataSerializers.INT);
+	private static final EntityDataAccessor<Float> DATA_CUSTOM_RADIUS = SynchedEntityData.defineId(QuakeEntity.class, EntityDataSerializers.FLOAT);
 
 	private UUID throwerUUID;
 
@@ -49,23 +50,24 @@ public class QuakeEntity extends Entity {
 		if (thrower != null)
 			this.throwerUUID = thrower.getUUID();
 	}
-	
+
 	public QuakeEntity(Level pLevel, Vec3 pPos, LivingEntity thrower, double radius, int damage) {
-	      super(RelicsEntities.QUAKE.get(), pLevel);
-	      this.setPos(pPos);
-	      this.noPhysics = true;
-	      if (thrower != null) this.throwerUUID = thrower.getUUID();
-	      this.noSelfDamage = true;
-	      this.customRadius = radius;
-	      this.customDamage = damage;
-	  }
+		super(RelicsEntities.QUAKE.get(), pLevel);
+		this.setPos(pPos);
+		this.noPhysics = true;
+		if (thrower != null)
+			this.throwerUUID = thrower.getUUID();
+		this.noSelfDamage = true;
+		this.setCustomRadius((float) radius);
+		this.customDamage = damage;
+	}
 
 	@Override
 	public void tick() {
 		super.tick();
 		int lifetime = getLifetime();
 
-		if (lifetime == 0) {
+		if (lifetime == 0 && getCustomRadius() == -1) {
 			if (level().isClientSide) {
 				for (int i = 0; i < 15; i++) {
 					level().addParticle(new RelicsParticleOptions(RelicsParticles.RUNE_PARTICLE, 30, 0.15f), getX() + random.nextGaussian() * 0.3, getY(), getZ() + random.nextGaussian() * 0.3, 0.0, random.nextDouble(),
@@ -75,39 +77,37 @@ public class QuakeEntity extends Entity {
 				level().playSound(null, blockPosition(), SoundEvents.LIGHTNING_BOLT_THUNDER, SoundSource.HOSTILE, 2.0f, 0.3f);
 			}
 		}
-		if(this.customRadius == -1) {
+		if (this.getCustomRadius() == -1) {
 			if (lifetime % PULSE_INTERVAL == 0) {
 				double radius = FIRST_PULSE_RADIUS + RADIUS_PER_TICK * lifetime;
 				doPulse(radius);
 			}
-	
+
 			setLifetime(lifetime + 1);
 			if (lifetime >= MAX_LIFESPAN) {
 				discard();
 			}
 		} else {
-			// amulet effect: damage on first tick, expanding particles over ~10 ticks, then discard
-		      if (lifetime == 0 && !level().isClientSide) {
-		          doPulse(this.customRadius);
-		      }
+			// amulet effect: damage on first tick, expanding particles over ~10 ticks, then
+			// discard
+			if (lifetime == 0 && !level().isClientSide) {
+				doPulse(this.getCustomRadius());
+			}
 
-		      if (level().isClientSide && lifetime <= 10) {
-		          double progress = (double) lifetime / 10.0;
-		          double radius = this.customRadius * progress;
-		          for (int i = 0; i < 12; i++) {
-		              double th = (double) i * Math.PI * 2.0 / 12.0;
-		              double vx = Math.cos(th);
-		              double vz = Math.sin(th);
-		              level().addParticle(ParticleTypes.EXPLOSION,
-		                      getX() + vx * radius, getY(), getZ() + vz * radius,
-		                      vx * 0.05, 0.2, vz * 0.05);
-		          }
-		      }
+			if (level().isClientSide && lifetime <= 2) {
+				double radius = this.getCustomRadius();
+				for (int i = 0; i < 12; i++) {
+					double th = (double) i * Math.PI * 2.0 / 12.0;
+					double vx = Math.cos(th);
+					double vz = Math.sin(th);
+					level().addParticle(ParticleTypes.EXPLOSION, getX() + vx * radius, getY(), getZ() + vz * radius, vx * 0.05, 0.2, vz * 0.05);
+				}
+			}
 
-		      setLifetime(lifetime + 1);
-		      if (lifetime > 10) {
-		          discard();
-		      }
+			setLifetime(lifetime + 1);
+			if (lifetime > 10) {
+				discard();
+			}
 
 		}
 	}
@@ -131,10 +131,10 @@ public class QuakeEntity extends Entity {
 					continue;
 				if (target.equals(thrower) && this.noSelfDamage)
 					continue;
-				if(this.customDamage != -1) {
+				if (this.customDamage != -1) {
 					target.hurt(damageSources().indirectMagic(this, thrower), this.customDamage);
-				}
-				else target.hurt(damageSources().indirectMagic(this, thrower), DAMAGE_PER_HIT);
+				} else
+					target.hurt(damageSources().indirectMagic(this, thrower), DAMAGE_PER_HIT);
 				target.push(random.nextGaussian() * HORIZONTAL_LAUNCH, VERTICAL_LAUNCH, random.nextGaussian() * HORIZONTAL_LAUNCH);
 				target.hurtMarked = true;
 			}
@@ -155,10 +155,19 @@ public class QuakeEntity extends Entity {
 	private void setLifetime(int value) {
 		entityData.set(DATA_LIFETIME, value);
 	}
+	
+	private float getCustomRadius() {
+	      return entityData.get(DATA_CUSTOM_RADIUS);
+	  }  
+
+	  private void setCustomRadius(float value) {
+	      entityData.set(DATA_CUSTOM_RADIUS, value);
+	  }  
 
 	@Override
 	protected void defineSynchedData() {
 		entityData.define(DATA_LIFETIME, 0);
+		entityData.define(DATA_CUSTOM_RADIUS, -1f);
 	}
 
 	@Override
@@ -166,6 +175,8 @@ public class QuakeEntity extends Entity {
 		setLifetime(tag.getInt("Lifetime"));
 		if (tag.hasUUID("Thrower"))
 			throwerUUID = tag.getUUID("Thrower");
+		if (tag.contains("CustomRadius")) setCustomRadius(tag.getFloat("CustomRadius"));
+			setCustomRadius(tag.getFloat("CustomRadius"));
 	}
 
 	@Override
@@ -173,5 +184,6 @@ public class QuakeEntity extends Entity {
 		tag.putInt("Lifetime", getLifetime());
 		if (throwerUUID != null)
 			tag.putUUID("Thrower", throwerUUID);
+		tag.putFloat("CustomRadius", getCustomRadius());
 	}
 }

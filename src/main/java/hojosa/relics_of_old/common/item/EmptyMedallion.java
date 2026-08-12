@@ -13,7 +13,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.RegistryObject;
 
 public class EmptyMedallion extends RelicsItem {
-
+	@Getter
 	protected ElementType type;
 	@Getter
 	private RegistryObject<Medallion> chargedMedallion;

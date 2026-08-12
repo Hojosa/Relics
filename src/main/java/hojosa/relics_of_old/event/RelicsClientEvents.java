@@ -80,6 +80,7 @@ public class RelicsClientEvents {
 		event.registerEntityRenderer(RelicsEntities.ARROW_STORM.get(), EmptyEntityRenderer::new);
 		event.registerEntityRenderer(RelicsEntities.ENDER_BOMB.get(), EnderBombEntityRenderer::new);
 		event.registerEntityRenderer(RelicsEntities.CAPTURE_EGG.get(), ThrownItemRenderer::new);
+		event.registerEntityRenderer(RelicsEntities.WHIRLWIND.get(), EmptyEntityRenderer::new);
 	}
 
 	@SubscribeEvent

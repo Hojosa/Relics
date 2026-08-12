@@ -54,7 +54,7 @@ public class Medallion extends EmptyMedallion {
 		if (!pLevel.isClientSide) {
 			if (pLivingEntity instanceof Player player && !player.isCreative())
 				pStack.setDamageValue(pStack.getDamageValue() + 1);
-			pLevel.playSound(null, pLivingEntity.blockPosition(), SoundEvents.CROSSBOW_SHOOT, SoundSource.PLAYERS, 0.5f, 1.0F);
+			pLevel.playSound(null, pLivingEntity.blockPosition(), SoundEvents.SPLASH_POTION_THROW, SoundSource.PLAYERS, 0.5f, 1.0F);
 			MedallionEntity attack = new MedallionEntity(pLevel, pLivingEntity, pStack, this.type);
 			attack.shootFromRotation(pLivingEntity, pLivingEntity.getXRot(), pLivingEntity.getYRot(), 0.0f, 1.5f, 1.0f);
 			pLevel.addFreshEntity(attack);
