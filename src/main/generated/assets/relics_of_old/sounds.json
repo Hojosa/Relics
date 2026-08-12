@@ -80,6 +80,12 @@
     ],
     "subtitle": "relics_of_old.subtitle.heart"
   },
+  "high_charge": {
+    "sounds": [
+      "relics_of_old:high_charge"
+    ],
+    "subtitle": "relics_of_old.subtitle.high_charge"
+  },
   "infuse_charge": {
     "sounds": [
       "relics_of_old:infuse_charge"
@@ -176,6 +182,12 @@
       "relics_of_old:star_twinkle"
     ],
     "subtitle": "relics_of_old.subtitle.star_twinkle"
+  },
+  "sword_charge": {
+    "sounds": [
+      "relics_of_old:sword_charge"
+    ],
+    "subtitle": "relics_of_old.subtitle.sword_charge"
   },
   "sword_draw": {
     "sounds": [

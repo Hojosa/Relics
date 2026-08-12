@@ -141,6 +141,8 @@ public class References {
 		public static final String SPEED_BOOST = "speed_boost";
 		public static final String STAR_CAUGHT_X_SOUND = "star_caught_x";
 		public static final String WHIRLWIND = "whirlwind";
+		public static final String SWORD_CHARGE = "sword_charge";
+		public static final String HIGH_CHARGE = "high_charge";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

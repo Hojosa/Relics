@@ -51,6 +51,8 @@ public class RelicsSounds {
 	public static final RegistryObject<SoundEvent> GRIND = registerSound(References.SoundName.GRIND);
 	public static final RegistryObject<SoundEvent> SPEED_BOOST = registerSound(References.SoundName.SPEED_BOOST);
 	public static final RegistryObject<SoundEvent> WHIRLWIND = registerSound(References.SoundName.WHIRLWIND);
+	public static final RegistryObject<SoundEvent> SWORD_CHARGE = registerSound(References.SoundName.SWORD_CHARGE);
+	public static final RegistryObject<SoundEvent> HIGH_CHARGE = registerSound(References.SoundName.HIGH_CHARGE);
 	
 	private static RegistryObject<SoundEvent> registerSound(String name) {
 		return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(References.MOD_ID, name)));

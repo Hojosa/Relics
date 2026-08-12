@@ -18,6 +18,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
@@ -122,7 +123,9 @@ public abstract class SwordItemMixin extends TieredItem {
 		}
 
 		if (ticksUsed == effectiveCharge && !level.isClientSide) {
-			level.playSound(null, entity.blockPosition(), RelicsSounds.PARTIAL_CHARGE.get(), SoundSource.PLAYERS, 0.15f, 2.0f);
+			int focusLevel = EnchantmentHelper.getTagEnchantmentLevel(RelicsEnchantments.FOCUS.get(), stack);
+		      SoundEvent chargeSound = focusLevel > 0 ? RelicsSounds.HIGH_CHARGE.get() : RelicsSounds.SWORD_CHARGE.get();
+		      level.playSound(null, entity.blockPosition(), chargeSound, SoundSource.PLAYERS, 0.8f, 1.0f);
 		}
 		// discharge sparkle while holding after full charge
 		if (ticksUsed >= effectiveCharge && level.isClientSide) {
