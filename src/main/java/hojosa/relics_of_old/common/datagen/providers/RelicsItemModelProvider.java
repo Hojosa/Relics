@@ -32,6 +32,7 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		withExistingParent(RelicsBlocks.CLAY_JAR);
 		withExistingParent(RelicsBlocks.BOOST_PLATE);
 		withExistingParent(RelicsBlocks.SUGAR_CUBE);
+		withExistingParent(RelicsBlocks.BOMB_FLOWER);
 		
 		basicItem(RelicsItems.STAR_PIECE);
 		basicItem(RelicsItems.STAR_DUST);
@@ -99,6 +100,7 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItem(RelicsItems.ROCK_CANDY_LAPIS);
 		basicItem(RelicsItems.ROCK_CANDY_EMERALD);
 		basicItem(RelicsItems.ROCK_CANDY_DIAMOND);
+		basicItem(RelicsItems.BOMB);
 		
 		
 		//magic mirror model

@@ -1,5 +1,6 @@
 package hojosa.relics_of_old.common.init;
 
+import hojosa.relics_of_old.common.entity.BombEntity;
 import hojosa.relics_of_old.common.entity.CaptureEggEntity;
 import hojosa.relics_of_old.common.entity.FallingStarEntity;
 import hojosa.relics_of_old.common.entity.MagicBoomerangEntity;
@@ -53,4 +54,7 @@ public class RelicsEntities {
 
 	public static final RegistryObject<EntityType<WhirlwindEntity>> WHIRLWIND = ENTITY_TYPES.register(References.UnlocalizedName.WHIRLWIND,
 			() -> EntityType.Builder.<WhirlwindEntity>of(WhirlwindEntity::new, MobCategory.MISC).sized(0.5f, 0.5f).clientTrackingRange(8).updateInterval(5).build("whirlwind"));
+
+	public static final RegistryObject<EntityType<BombEntity>> BOMB = ENTITY_TYPES.register(References.UnlocalizedName.BOMB,
+			() -> EntityType.Builder.<BombEntity>of(BombEntity::new, MobCategory.MISC).sized(0.5f, 0.5f).clientTrackingRange(8).updateInterval(3).build(References.UnlocalizedName.BOMB));
 }

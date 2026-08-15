@@ -4,6 +4,7 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
 
+import hojosa.relics_of_old.common.block.BombFlower;
 import hojosa.relics_of_old.common.block.BoostPlate;
 import hojosa.relics_of_old.common.block.Caltrops;
 import hojosa.relics_of_old.common.block.ClayJar;
@@ -89,6 +90,7 @@ public class RelicsBlocks {
 			() -> new ClayJar(BlockBehaviour.Properties.copy(Blocks.DECORATED_POT).strength(0).noOcclusion().sound(SoundType.DECORATED_POT)), BLOCK_ITEM);
 	public static final ItemObject<Block> BOOST_PLATE = BLOCKS.register(References.UnlocalizedName.BOOST_PLATE, () -> new BoostPlate(BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE)), BLOCK_ITEM);
 	public static final ItemObject<Block> SUGAR_CUBE = BLOCKS.register(References.UnlocalizedName.SUGAR_CUBE, SugarCubeBlock::new, BLOCK_ITEM);
+	public static final ItemObject<Block> BOMB_FLOWER = BLOCKS.register(References.UnlocalizedName.BOMB_FLOWER, BombFlower::new, BLOCK_ITEM);
 
 	/**
 	 * We use this builder to ensure that our blocks all have the most important
@@ -122,6 +124,7 @@ public class RelicsBlocks {
 		output.accept(CLAY_JAR.get().asItem());
 		output.accept(BOOST_PLATE.get().asItem());
 		output.accept(SUGAR_CUBE.get().asItem());
+		output.accept(BOMB_FLOWER.get().asItem());
 
 		Predicate<ItemStack> variants = stack -> {
 			output.accept(stack);

@@ -11,22 +11,19 @@ import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfigur
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
 public class RelicsConfiguredFeatures {
-	public static final ResourceKey<ConfiguredFeature<?, ?>> SHRUB_CLUSTER =
-	          registerKey("shrub_cluster");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> SHRUB_CLUSTER = registerKey("shrub_cluster");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> BOMB_FLOWER_CLUSTER = registerKey("bomb_flower_cluster");
 
-	      public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
-	          register(context, SHRUB_CLUSTER, RelicsFeatures.SHRUB_CLUSTER.get(),
-	              NoneFeatureConfiguration.INSTANCE);
-	      }
+	public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
+		register(context, SHRUB_CLUSTER, RelicsFeatures.SHRUB_CLUSTER.get(), NoneFeatureConfiguration.INSTANCE);
+		register(context, BOMB_FLOWER_CLUSTER, RelicsFeatures.BOMB_FLOWER_CLUSTER.get(), NoneFeatureConfiguration.INSTANCE);
+	}
 
-	      private static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {
-	          return ResourceKey.create(Registries.CONFIGURED_FEATURE, RelicsUtil.modLoc(name));
-	      }
+	private static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {
+		return ResourceKey.create(Registries.CONFIGURED_FEATURE, RelicsUtil.modLoc(name));
+	}
 
-	      private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(
-	              BootstapContext<ConfiguredFeature<?, ?>> context,
-	              ResourceKey<ConfiguredFeature<?, ?>> key,
-	              F feature, FC config) {
-	          context.register(key, new ConfiguredFeature<>(feature, config));
-	      }
+	private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(BootstapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, F feature, FC config) {
+		context.register(key, new ConfiguredFeature<>(feature, config));
+	}
 }

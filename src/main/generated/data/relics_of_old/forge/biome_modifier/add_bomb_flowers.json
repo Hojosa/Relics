@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#relics_of_old:has_feature/bomb_flower",
+  "features": "relics_of_old:bomb_flower_cluster_placed",
+  "step": "vegetal_decoration"
+}

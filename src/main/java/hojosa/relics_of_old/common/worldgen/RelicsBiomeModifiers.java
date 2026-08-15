@@ -13,6 +13,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class RelicsBiomeModifiers {
 	public static final ResourceKey<BiomeModifier> ADD_SHRUB_CLUSTERS = registerKey("add_shrub_clusters");
+	public static final ResourceKey<BiomeModifier> ADD_BOMB_FLOWERS = registerKey("add_bomb_flowers");
 
 	public static void bootstrap(BootstapContext<BiomeModifier> context) {
 		var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
@@ -20,6 +21,9 @@ public class RelicsBiomeModifiers {
 
 		context.register(ADD_SHRUB_CLUSTERS, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(biomes.getOrThrow(RelicsTags.Biomes.HasFeature.MYSTIC_SHRUB),
 				HolderSet.direct(placedFeatures.getOrThrow(RelicsPlacedFeatures.SHRUB_CLUSTER_PLACED)), GenerationStep.Decoration.VEGETAL_DECORATION));
+
+		context.register(ADD_BOMB_FLOWERS, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(biomes.getOrThrow(RelicsTags.Biomes.HasFeature.BOMB_FLOWER),
+				HolderSet.direct(placedFeatures.getOrThrow(RelicsPlacedFeatures.BOMB_FLOWER_CLUSTER_PLACED)), GenerationStep.Decoration.VEGETAL_DECORATION));
 	}
 
 	private static ResourceKey<BiomeModifier> registerKey(String name) {

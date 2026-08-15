@@ -107,6 +107,8 @@ public class References {
 		public static final String ROCK_CANDY_EMERALD = "rock_candy_emerald";
 		public static final String ROCK_CANDY_DIAMOND = "rock_candy_diamond";
 		public static final String SUGAR_PARTICLE = "sugar_particle";
+		public static final String BOMB = "bomb";
+		public static final String BOMB_FLOWER = "bomb_flower";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

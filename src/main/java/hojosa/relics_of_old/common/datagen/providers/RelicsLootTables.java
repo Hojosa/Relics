@@ -3,12 +3,14 @@ package hojosa.relics_of_old.common.datagen.providers;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import hojosa.relics_of_old.common.block.BombFlower;
 import hojosa.relics_of_old.common.block.MysticShrub;
 import hojosa.relics_of_old.common.block.entity.SwordPedestalBlockEntity;
 import hojosa.relics_of_old.common.init.RelicsBlockEntities;
 import hojosa.relics_of_old.common.init.RelicsBlocks;
 import hojosa.relics_of_old.common.init.RelicsItems;
 import hojosa.relics_of_old.lib.References;
+import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.packs.VanillaBlockLoot;
 import net.minecraft.resources.ResourceLocation;
@@ -26,6 +28,7 @@ import net.minecraft.world.level.storage.loot.functions.SetContainerContents;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
+import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraft.world.level.storage.loot.providers.nbt.ContextNbtProvider;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -49,6 +52,14 @@ public class RelicsLootTables extends VanillaBlockLoot {
 		createStandardTable(RelicsBlocks.SWORD_PEDESTAL_STONE.get(), RelicsBlockEntities.SWORD_PEDESTAL_BLOCK_ENTITY.get(), SwordPedestalBlockEntity.COLOR_TAG, SwordPedestalBlockEntity.GLOW_TAG, SwordPedestalBlockEntity.INFUSED_TAG);
 		createStandardTable(RelicsBlocks.INFUSED_STARSTONE_BLOCK.get(), RelicsBlockEntities.INFUSED_STARSTONE_BLOCK_ENTITY.get());
 		dropSelf(RelicsBlocks.SUGAR_CUBE.get());
+		add(RelicsBlocks.BOMB_FLOWER.get(), LootTable.lootTable()
+			      .withPool(LootPool.lootPool()
+			          .setRolls(ConstantValue.exactly(1))
+			          .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(RelicsBlocks.BOMB_FLOWER.get())
+			              .setProperties(StatePropertiesPredicate.Builder.properties()
+			                  .hasProperty(BombFlower.STATE, BombFlower.FlowerState.NORMAL)))
+			          .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(Items.SHEARS)))
+			          .add(LootItem.lootTableItem(RelicsBlocks.BOMB_FLOWER.get()))));
 		
 		add(RelicsBlocks.MYSTIC_SHRUB.get(), LootTable.lootTable()
 			      // Normal drops — 3 independent pools, each 20% chance
