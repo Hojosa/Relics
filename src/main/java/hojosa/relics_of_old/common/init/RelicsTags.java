@@ -16,6 +16,7 @@ public interface RelicsTags {
 	interface Blocks {
 		TagKey<Block> SWORD_PEDESTAL_VARIANTS = tag("sword_pedestal_variants");
 		TagKey<Block> CLAY_JAR_VARIANTS = tag("clay_jar_variants");
+		TagKey<Block> BOMBABLE = tag("bombable");
 
 		static TagKey<Block> tag(String name) {
 			return TagKey.create(Registries.BLOCK, RelicsUtil.modLoc(name));

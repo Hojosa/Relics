@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "group": "tab",
+  "ingredients": [
+    {
+      "item": "minecraft:arrow"
+    },
+    {
+      "item": "relics_of_old:bomb"
+    }
+  ],
+  "result": {
+    "item": "relics_of_old:bomb_arrow"
+  }
+}

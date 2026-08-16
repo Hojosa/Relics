@@ -51,7 +51,10 @@ public class RelicsBlockTags extends BlockTagsProvider {
 		.add(Blocks.STONE, Blocks.POLISHED_GRANITE, Blocks.POLISHED_BLACKSTONE, Blocks.POLISHED_ANDESITE, Blocks.POLISHED_DIORITE, Blocks.CUT_SANDSTONE, Blocks.CUT_RED_SANDSTONE, Blocks.NETHER_BRICKS, Blocks.RED_NETHER_BRICKS, Blocks.POLISHED_BASALT, Blocks.OBSIDIAN)
 		.addOptionalTag(Mantle.commonResource("storage_blocks"));
 		tag(RelicsTags.Blocks.CLAY_JAR_VARIANTS)
-		.addTags(BlockTags.TERRACOTTA);
+		.addTag(BlockTags.TERRACOTTA);
+		tag(RelicsTags.Blocks.BOMBABLE)
+	    .add(Blocks.COBBLESTONE, Blocks.TNT)
+	    .add(RelicsBlocks.CLAY_JAR.get());
 	}
 
     @Override

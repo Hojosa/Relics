@@ -37,6 +37,7 @@ public class RelicsItemTags extends ItemTagsProvider {
 		tag(RelicsTags.Items.HEART).add(RelicsItems.HEART.get());
 		copy(RelicsTags.Blocks.CLAY_JAR_VARIANTS, RelicsTags.Items.CLAY_JAR_VARIANTS);
 		tag(RelicsTags.Items.SUGAR_CUBES).add(RelicsBlocks.SUGAR_CUBE.get().asItem()).add(TagEntry.optionalElement(ResourceLocation.fromNamespaceAndPath("supplementaries", "sugar_cube")));
+		tag(ItemTags.ARROWS).add(RelicsItems.BOMB_ARROW.get());
 	}
 
 	@Override

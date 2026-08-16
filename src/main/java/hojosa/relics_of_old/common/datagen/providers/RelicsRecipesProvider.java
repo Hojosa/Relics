@@ -463,5 +463,12 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.group(References.CREATIVE_TAB)
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.SUGAR))
 		.save(consumer);
+		
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, RelicsItems.BOMB_ARROW.get())
+		.requires(Items.ARROW)
+		.requires(RelicsItems.BOMB.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.BOMB.get()))
+		.save(consumer);
 	}
 }

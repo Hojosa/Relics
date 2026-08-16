@@ -6,6 +6,7 @@ import hojosa.relics_of_old.client.particle.MagicScrambleParticle;
 import hojosa.relics_of_old.client.particle.RuneParticle;
 import hojosa.relics_of_old.client.particle.SparkleParticle;
 import hojosa.relics_of_old.client.particle.SugarParticle;
+import hojosa.relics_of_old.client.render.BombArrowEntityRenderer;
 import hojosa.relics_of_old.client.render.BombEntityRenderer;
 import hojosa.relics_of_old.client.render.EmptyEntityRenderer;
 import hojosa.relics_of_old.client.render.EnderBombEntityRenderer;
@@ -84,6 +85,7 @@ public class RelicsClientEvents {
 		event.registerEntityRenderer(RelicsEntities.CAPTURE_EGG.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(RelicsEntities.WHIRLWIND.get(), EmptyEntityRenderer::new);
 		event.registerEntityRenderer(RelicsEntities.BOMB.get(), BombEntityRenderer::new);
+		event.registerEntityRenderer(RelicsEntities.BOMB_ARROW.get(), BombArrowEntityRenderer::new);
 	}
 
 	@SubscribeEvent

@@ -7,6 +7,8 @@ import hojosa.relics_of_old.common.block.BombFlower;
 import hojosa.relics_of_old.common.init.RelicsBlocks;
 import hojosa.relics_of_old.common.init.RelicsEntities;
 import hojosa.relics_of_old.common.init.RelicsItems;
+import hojosa.relics_of_old.common.init.RelicsTags;
+import lombok.Getter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -44,6 +46,7 @@ public class BombEntity extends Entity {
 	private UUID throwerUUID;
 	private double pulse = 0.0;
 	private boolean primed = false;
+	@Getter
 	private boolean unblastable;
 
 	public BombEntity(EntityType<?> type, Level level) {
@@ -169,15 +172,6 @@ public class BombEntity extends Entity {
 			serverLevel.sendParticles(ParticleTypes.LAVA, getX(), getY() + 0.25, getZ(), 8, 0.5, 0.5, 0.5, 1.0);
 			serverLevel.sendParticles(ParticleTypes.POOF, getX(), getY(), getZ(), 8, 1.0, 1.0, 1.0, 0);
 		}
-		// explosion particles (client)
-//		if (level().isClientSide) {
-//			for (int i = 0; i < 8; i++) {
-//				level().addParticle(ParticleTypes.EXPLOSION, getX() + random.nextGaussian(), getY() + random.nextGaussian(), getZ() + random.nextGaussian(), 0, 0, 0);
-//				level().addParticle(ParticleTypes.LAVA, getX(), getY() + 0.25, getZ(), random.nextGaussian(), random.nextGaussian(), random.nextGaussian());
-//				level().addParticle(ParticleTypes.POOF, getX() + random.nextGaussian(), getY() + random.nextGaussian(), getZ() + random.nextGaussian(), 0, 0, 0);
-//			}
-//		}
-
 		discard();
 	}
 
@@ -211,8 +205,7 @@ public class BombEntity extends Entity {
 	}
 
 	private boolean isBombable(BlockState state) {
-		Block block = state.getBlock();
-		return block == Blocks.COBBLESTONE || block == Blocks.TNT || block == RelicsBlocks.CLAY_JAR.get();
+		return state.is(RelicsTags.Blocks.BOMBABLE);
 	}
 
 	private Entity getThrower() {

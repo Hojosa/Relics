@@ -101,6 +101,7 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItem(RelicsItems.ROCK_CANDY_EMERALD);
 		basicItem(RelicsItems.ROCK_CANDY_DIAMOND);
 		basicItem(RelicsItems.BOMB);
+		basicItem(RelicsItems.BOMB_ARROW);
 		
 		
 		//magic mirror model

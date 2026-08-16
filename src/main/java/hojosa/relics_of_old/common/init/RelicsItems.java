@@ -1,6 +1,7 @@
 package hojosa.relics_of_old.common.init;
 
 import hojosa.relics_of_old.common.item.AeroAmulet;
+import hojosa.relics_of_old.common.item.BombArrowItem;
 import hojosa.relics_of_old.common.item.BombItem;
 import hojosa.relics_of_old.common.item.CaptureEgg;
 import hojosa.relics_of_old.common.item.EmeraldPiece;
@@ -66,6 +67,8 @@ public class RelicsItems {
 
 	public static final RegistryObject<MagicBoomerang> WOODEN_BOOMERANG = ITEMS.register(References.UnlocalizedName.WOODEN_BOOMERANG, () -> new MagicBoomerang(1.0f, 4, 0));
 	public static final RegistryObject<MagicBoomerang> MAGIC_BOOMERANG = ITEMS.register(References.UnlocalizedName.MAGIC_BOOMERANG, () -> new MagicBoomerang(1.5f, 6, 1));
+	
+	public static final RegistryObject<BombArrowItem> BOMB_ARROW = ITEMS.register(References.UnlocalizedName.BOMB_ARROW, BombArrowItem::new);
 
 	// items
 	public static final RegistryObject<RelicsItem> INFUSED_STAR_PIECE = ITEMS.register(References.UnlocalizedName.INFUSED_STAR_PIECE, () -> new InfusedItem(64, Rarity.EPIC));

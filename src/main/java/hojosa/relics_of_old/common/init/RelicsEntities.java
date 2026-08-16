@@ -1,5 +1,6 @@
 package hojosa.relics_of_old.common.init;
 
+import hojosa.relics_of_old.common.entity.BombArrowEntity;
 import hojosa.relics_of_old.common.entity.BombEntity;
 import hojosa.relics_of_old.common.entity.CaptureEggEntity;
 import hojosa.relics_of_old.common.entity.FallingStarEntity;
@@ -57,4 +58,7 @@ public class RelicsEntities {
 
 	public static final RegistryObject<EntityType<BombEntity>> BOMB = ENTITY_TYPES.register(References.UnlocalizedName.BOMB,
 			() -> EntityType.Builder.<BombEntity>of(BombEntity::new, MobCategory.MISC).sized(0.5f, 0.5f).clientTrackingRange(8).updateInterval(3).build(References.UnlocalizedName.BOMB));
+
+	public static final RegistryObject<EntityType<BombArrowEntity>> BOMB_ARROW = ENTITY_TYPES.register(References.UnlocalizedName.BOMB_ARROW,
+			() -> EntityType.Builder.<BombArrowEntity>of(BombArrowEntity::new, MobCategory.MISC).sized(0.5f, 0.5f).clientTrackingRange(4).updateInterval(20).build(References.UnlocalizedName.BOMB_ARROW));
 }
