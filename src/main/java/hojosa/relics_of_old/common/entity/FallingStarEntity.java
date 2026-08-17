@@ -61,7 +61,6 @@ public class FallingStarEntity extends Entity {
 	public void tick() {
 		// star is flying
 		if (!this.onGround()) {
-			System.out.println(this.tickCount);
 			if(this.tickCount == 5 && !this.level().isClientSide()) {
 				this.level().playSound(null, this.blockPosition(), RelicsSounds.STAR_FALL_SOUND.get(), getSoundSource(), 10.0f, 1.0f);
 			}

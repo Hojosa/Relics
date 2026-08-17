@@ -34,7 +34,6 @@ public class SparkleParticle extends TextureSheetParticle {
 	public void tick() {
 		super.tick();
 		float freshness = 1f - (float) age / lifetime;
-//		this.bCol = bCol * freshness;// * 0.6f;
 		this.quadSize = freshness * baseSize;
 	}
 
