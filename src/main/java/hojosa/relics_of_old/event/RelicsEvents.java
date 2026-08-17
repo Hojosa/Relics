@@ -293,7 +293,6 @@ public class RelicsEvents {
 					serverPlayer.take(event.getItem(), toInsert);
 					event.getItem().discard();
 					event.setCanceled(true);
-//					serverPlayer.playSound(SoundEvents.ITEM_PICKUP, 0.2f, ((serverPlayer.getRandom().nextFloat() - serverPlayer.getRandom().nextFloat()) * 0.7f + 1.0f) * 2.0f);
 					return;
 				}
 			}
