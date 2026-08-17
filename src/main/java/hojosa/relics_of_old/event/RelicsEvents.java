@@ -15,6 +15,7 @@ import hojosa.relics_of_old.common.init.RelicsConfig;
 import hojosa.relics_of_old.common.init.RelicsEffects;
 import hojosa.relics_of_old.common.init.RelicsItems;
 import hojosa.relics_of_old.common.init.RelicsSounds;
+import hojosa.relics_of_old.common.item.BombBagItem;
 import hojosa.relics_of_old.common.item.EmptyMedallion;
 import hojosa.relics_of_old.common.item.HeadbandOfValor;
 import hojosa.relics_of_old.common.item.RelicsAmulet;
@@ -66,6 +67,7 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
+import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
@@ -260,10 +262,42 @@ public class RelicsEvents {
 		}
 	}
 
+	// this fires after the item has been picked up
 	@SubscribeEvent
 	public static void onItemPickup(PlayerEvent.ItemPickupEvent event) {
 		if (event.getStack().is(Items.EMERALD) && event.getEntity() instanceof ServerPlayer serverPlayer) {
 			serverPlayer.connection.send(new ClientboundSoundEntityPacket(RelicsSounds.EMERALD_PICKUP.getHolder().get(), SoundSource.PLAYERS, serverPlayer, 1.0f, 1.0f, 1L));
+		}
+	}
+
+	// this fires before the item gets picked up
+	@SubscribeEvent
+	public static void onItemPickup(EntityItemPickupEvent event) {
+
+		if (event.getItem().getItem().is(RelicsItems.BOMB.get()) && event.getEntity() instanceof ServerPlayer serverPlayer) {
+			ItemStack bombStack = event.getItem().getItem();
+			for (ItemStack slot : serverPlayer.getInventory().items) {
+				if (!(slot.getItem() instanceof BombBagItem))
+					continue;
+				if (BombBagItem.isBagFull(slot))
+					continue;
+
+				int current = BombBagItem.getBombCount(slot);
+				int space = BombBagItem.MAX_BOMBS - current;
+
+				int toInsert = Math.min(bombStack.getCount(), space);
+				BombBagItem.setBombCount(slot, current + toInsert);
+				bombStack.shrink(toInsert);
+
+				if (bombStack.isEmpty()) {
+					serverPlayer.take(event.getItem(), toInsert);
+					event.getItem().discard();
+					event.setCanceled(true);
+//					serverPlayer.playSound(SoundEvents.ITEM_PICKUP, 0.2f, ((serverPlayer.getRandom().nextFloat() - serverPlayer.getRandom().nextFloat()) * 0.7f + 1.0f) * 2.0f);
+					return;
+				}
+			}
+
 		}
 	}
 
@@ -399,8 +433,10 @@ public class RelicsEvents {
 		EnderMan enderman = event.getEntity();
 		if (!enderman.isCreepy() || enderman.getTarget() != event.getPlayer())
 			return;
-		//in case the enderman ports away (rain, water touched) and isCreepy or getTarget is not reset, we skip if he is to far away (16 blocks)
-		if (enderman.distanceToSqr(event.getPlayer()) > 256.0) return;
+		// in case the enderman ports away (rain, water touched) and isCreepy or
+		// getTarget is not reset, we skip if he is to far away (16 blocks)
+		if (enderman.distanceToSqr(event.getPlayer()) > 256.0)
+			return;
 
 		if (event.getPlayer() instanceof ServerPlayer player) {
 			CompoundTag data = player.getPersistentData();
@@ -415,11 +451,11 @@ public class RelicsEvents {
 			}
 		}
 	}
-	
+
 	@SubscribeEvent
-	  public static void onEnderTeleport(EntityTeleportEvent.EnderEntity event) {
-	      if (event.getEntityLiving().hasEffect(RelicsEffects.ENDER_LOCK.get())) {
-	          event.setCanceled(true);
-	      }
-	  }
+	public static void onEnderTeleport(EntityTeleportEvent.EnderEntity event) {
+		if (event.getEntityLiving().hasEffect(RelicsEffects.ENDER_LOCK.get())) {
+			event.setCanceled(true);
+		}
+	}
 }

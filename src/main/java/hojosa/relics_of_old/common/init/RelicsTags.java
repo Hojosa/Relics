@@ -2,7 +2,6 @@ package hojosa.relics_of_old.common.init;
 
 import hojosa.relics_of_old.lib.RelicsUtil;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;

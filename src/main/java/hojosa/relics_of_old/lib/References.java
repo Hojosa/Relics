@@ -110,6 +110,7 @@ public class References {
 		public static final String BOMB = "bomb";
 		public static final String BOMB_FLOWER = "bomb_flower";
 		public static final String BOMB_ARROW = "bomb_arrow";
+		public static final String BOMB_BAG = "bomb_bag";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

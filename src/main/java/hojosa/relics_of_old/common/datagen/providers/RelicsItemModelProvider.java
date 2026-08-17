@@ -102,7 +102,7 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItem(RelicsItems.ROCK_CANDY_DIAMOND);
 		basicItem(RelicsItems.BOMB);
 		basicItem(RelicsItems.BOMB_ARROW);
-		
+		basicItem(RelicsItems.BOMB_BAG);		
 		
 		//magic mirror model
 		//base model that contains the base transform settings for the model

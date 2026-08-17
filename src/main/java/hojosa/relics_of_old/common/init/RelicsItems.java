@@ -2,6 +2,7 @@ package hojosa.relics_of_old.common.init;
 
 import hojosa.relics_of_old.common.item.AeroAmulet;
 import hojosa.relics_of_old.common.item.BombArrowItem;
+import hojosa.relics_of_old.common.item.BombBagItem;
 import hojosa.relics_of_old.common.item.BombItem;
 import hojosa.relics_of_old.common.item.CaptureEgg;
 import hojosa.relics_of_old.common.item.EmeraldPiece;
@@ -68,7 +69,9 @@ public class RelicsItems {
 	public static final RegistryObject<MagicBoomerang> WOODEN_BOOMERANG = ITEMS.register(References.UnlocalizedName.WOODEN_BOOMERANG, () -> new MagicBoomerang(1.0f, 4, 0));
 	public static final RegistryObject<MagicBoomerang> MAGIC_BOOMERANG = ITEMS.register(References.UnlocalizedName.MAGIC_BOOMERANG, () -> new MagicBoomerang(1.5f, 6, 1));
 	
+	public static final RegistryObject<BombItem> BOMB = ITEMS.register(References.UnlocalizedName.BOMB, BombItem::new);
 	public static final RegistryObject<BombArrowItem> BOMB_ARROW = ITEMS.register(References.UnlocalizedName.BOMB_ARROW, BombArrowItem::new);
+	public static final RegistryObject<BombBagItem> BOMB_BAG = ITEMS.register(References.UnlocalizedName.BOMB_BAG, BombBagItem::new);
 
 	// items
 	public static final RegistryObject<RelicsItem> INFUSED_STAR_PIECE = ITEMS.register(References.UnlocalizedName.INFUSED_STAR_PIECE, () -> new InfusedItem(64, Rarity.EPIC));
@@ -90,8 +93,7 @@ public class RelicsItems {
 	public static final RegistryObject<RockCandyItem> ROCK_CANDY_LAPIS = ITEMS.register(References.UnlocalizedName.ROCK_CANDY_LAPIS, () -> new RockCandyItem(MobEffects.JUMP, 1)); // Jump Boost II
 	public static final RegistryObject<RockCandyItem> ROCK_CANDY_EMERALD = ITEMS.register(References.UnlocalizedName.ROCK_CANDY_EMERALD, () -> new RockCandyItem(MobEffects.DIG_SPEED, 3)); // Haste IV
 	public static final RegistryObject<RockCandyItem> ROCK_CANDY_DIAMOND = ITEMS.register(References.UnlocalizedName.ROCK_CANDY_DIAMOND, () -> new RockCandyItem(MobEffects.DAMAGE_RESISTANCE, 3)); // Resistance IV
-	public static final RegistryObject<BombItem> BOMB = ITEMS.register(References.UnlocalizedName.BOMB, BombItem::new);
-
+	
 	// lost pages
 	public static final RegistryObject<LostPage> LOST_PAGE_1 = ITEMS.register(References.UnlocalizedName.LOST_PAGE_1, () -> new LostPage(1, References.LostPagesText.LOST_PAGE_1));
 	public static final RegistryObject<LostPage> LOST_PAGE_2 = ITEMS.register(References.UnlocalizedName.LOST_PAGE_2, () -> new LostPage(1, References.LostPagesText.LOST_PAGE_2));

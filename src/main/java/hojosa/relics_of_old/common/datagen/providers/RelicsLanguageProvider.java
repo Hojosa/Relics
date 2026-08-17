@@ -113,6 +113,7 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addItem(RelicsItems.ROCK_CANDY_DIAMOND, "Diamond Rock Candy");
 		addItem(RelicsItems.BOMB, "Bomb");
 		addItem(RelicsItems.BOMB_ARROW, "Bomb Arrow");
+		addItem(RelicsItems.BOMB_BAG, "Bomb Bag");
 
 		// Sword augment tooltips
 		add("augment.relics_of_old.fire", "Augment: Fire");

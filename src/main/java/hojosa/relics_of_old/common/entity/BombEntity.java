@@ -67,7 +67,7 @@ public class BombEntity extends Entity {
 		Vec3 look = thrower.getLookAngle();
 		setDeltaMovement(look.scale(0.5));
 	}
-	
+
 	public BombEntity(Level level, double posX, double posY, double posZ, int fuseTime) {
 		super(RelicsEntities.BOMB.get(), level);
 		setFuse(fuseTime);
@@ -121,7 +121,7 @@ public class BombEntity extends Entity {
 		}
 	}
 
-	private void fizzle() {
+	public void fizzle() {
 		if (!level().isClientSide) {
 			ItemEntity drop = new ItemEntity(level(), getX(), getY(), getZ(), new ItemStack(RelicsItems.BOMB.get()));
 			level().addFreshEntity(drop);
@@ -130,6 +130,11 @@ public class BombEntity extends Entity {
 			((ServerLevel) level()).sendParticles(ParticleTypes.SMOKE, getX(), getY() + 0.5, getZ(), 3, 0.1, 0.1, 0.1, 0);
 		}
 		discard();
+	}
+
+	@Override
+	public boolean isPickable() {
+		return !isRemoved();
 	}
 
 	private void detonate() {
@@ -193,12 +198,12 @@ public class BombEntity extends Entity {
 						level().destroyBlock(pos, true);
 					}
 					if (block == RelicsBlocks.BOMB_FLOWER.get() && state.getValue(BombFlower.STATE) == BombFlower.FlowerState.NORMAL) {
-					      level().setBlock(pos, state.setValue(BombFlower.STATE, BombFlower.FlowerState.CUT), 3);
-					      // chain reaction — short fuse bomb
-					      BombEntity chainBomb = new BombEntity(level(), pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, BombEntity.SHORT_FUSE_TIME);
-					      chainBomb.setDeltaMovement(0, 0.1, 0);
-					      level().addFreshEntity(chainBomb);
-					  }
+						level().setBlock(pos, state.setValue(BombFlower.STATE, BombFlower.FlowerState.CUT), 3);
+						// chain reaction — short fuse bomb
+						BombEntity chainBomb = new BombEntity(level(), pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, BombEntity.SHORT_FUSE_TIME);
+						chainBomb.setDeltaMovement(0, 0.1, 0);
+						level().addFreshEntity(chainBomb);
+					}
 				}
 			}
 		}

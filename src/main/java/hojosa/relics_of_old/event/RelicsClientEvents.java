@@ -24,6 +24,7 @@ import hojosa.relics_of_old.common.init.RelicsBlocks;
 import hojosa.relics_of_old.common.init.RelicsEntities;
 import hojosa.relics_of_old.common.init.RelicsItems;
 import hojosa.relics_of_old.common.init.RelicsParticles;
+import hojosa.relics_of_old.common.item.BombBagItem;
 import hojosa.relics_of_old.lib.References;
 import hojosa.relics_of_old.lib.RelicsBlockColor;
 import lombok.AccessLevel;
@@ -32,6 +33,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -39,6 +41,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.client.event.RegisterItemDecorationsEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.client.event.RenderHandEvent;
 import net.minecraftforge.client.event.RenderLivingEvent;
@@ -48,6 +51,8 @@ import net.minecraftforge.fml.common.Mod;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Mod.EventBusSubscriber(modid = References.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class RelicsClientEvents {
+
+	private static final ResourceLocation DIGITS_ATLAS = ResourceLocation.fromNamespaceAndPath(References.MOD_ID, "textures/gui/digits.png");
 
 	public static final HumanoidModel.ArmPose TITAN_CARRY = HumanoidModel.ArmPose.create("TITAN_CARRY", true, (model, entity, arm) -> {
 		// arms straight up: xRot = -PI is fully overhead
@@ -95,7 +100,34 @@ public class RelicsClientEvents {
 		event.registerSpriteSet(RelicsParticles.RUNE_PARTICLE.get(), RuneParticle.Provider::new);
 		event.registerSpriteSet(RelicsParticles.FLARE_PARTICLE.get(), FlareParticle.Provider::new);
 		event.registerSpriteSet(RelicsParticles.MAGIC_SCRAMBLE_PARTICLE.get(), MagicScrambleParticle.Provider::new);
-		event.registerSpriteSet(RelicsParticles.SUGAR_PARTICLE.get(), SugarParticle.Factory::new);	
+		event.registerSpriteSet(RelicsParticles.SUGAR_PARTICLE.get(), SugarParticle.Factory::new);
+	}
+
+	@SubscribeEvent
+	public static void onRegisterItemDecorations(RegisterItemDecorationsEvent event) {
+		// bombBag counter
+		event.register(RelicsItems.BOMB_BAG.get(), (guiGraphics, font, stack, xOffset, yOffset) -> {
+			int count = BombBagItem.getBombCount(stack);
+			if (count <= 0)
+				return false;
+
+			int color = count >= BombBagItem.MAX_BOMBS ? 0xFFFF55 : 0xFFFFFF;
+			guiGraphics.setColor(((color >> 16) & 0xFF) / 255f, ((color >> 8) & 0xFF) / 255f, (color & 0xFF) / 255f, 1f);
+
+			guiGraphics.pose().pushPose();
+			guiGraphics.pose().translate(0, 0, 200);
+
+			// ones digit — row 0
+			guiGraphics.blit(DIGITS_ATLAS, xOffset, yOffset, (count % 10) * 16, 0, 16, 16, 160, 48);
+
+			// tens digit — row 1
+			if (count >= 10) {
+				guiGraphics.blit(DIGITS_ATLAS, xOffset, yOffset, (count / 10) * 16, 16, 16, 16, 160, 48);
+			}
+			guiGraphics.pose().popPose();
+			guiGraphics.setColor(1f, 1f, 1f, 1f);
+			return false;
+		});
 	}
 
 	// this needs to fire on the forge event bus, so no subscribe event here
