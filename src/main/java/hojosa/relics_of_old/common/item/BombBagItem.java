@@ -30,8 +30,6 @@ public class BombBagItem extends RelicsItem {
 		super(new Properties().stacksTo(1));
 	}
 
-	// --- NBT helpers ---
-
 	public static int getBombCount(ItemStack stack) {
 		CompoundTag tag = stack.getTag();
 		return tag != null ? tag.getInt(TAG_BOMBS) : 0;
@@ -40,12 +38,10 @@ public class BombBagItem extends RelicsItem {
 	public static void setBombCount(ItemStack stack, int count) {
 		stack.getOrCreateTag().putInt(TAG_BOMBS, Math.max(0, Math.min(count, MAX_BOMBS)));
 	}
-	
+
 	public static boolean isBagFull(ItemStack stack) {
 		return getBombCount(stack) == MAX_BOMBS;
 	}
-
-	// --- Right click in world: throw a bomb ---
 
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
@@ -71,8 +67,6 @@ public class BombBagItem extends RelicsItem {
 		return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
 	}
 
-	// --- Left click entity: fizzle a bomb ---
-
 	@Override
 	public boolean onLeftClickEntity(ItemStack stack, Player player, Entity entity) {
 		if (entity instanceof BombEntity bomb) {
@@ -82,53 +76,45 @@ public class BombBagItem extends RelicsItem {
 		return false;
 	}
 
-	// --- Inventory: click bag ON another slot ---
-
 	@Override
 	public boolean overrideStackedOnOther(ItemStack bag, Slot slot, ClickAction action, Player player) {
 		if (bag.getCount() != 1)
 			return false;
-
+		System.out.println(action);
+		System.out.println(player.isShiftKeyDown());
 		int count = getBombCount(bag);
 
-		if (action == ClickAction.SECONDARY) {
-			// right click bag on empty slot → extract 1 bomb
-			if (slot.getItem().isEmpty() && count > 0) {
-				ItemStack bomb = new ItemStack(RelicsItems.BOMB.get(), 1);
-				slot.safeInsert(bomb);
+		if (action == ClickAction.SECONDARY && count > 0) {
+			// right click bag on empty slot -> extract 1 bomb
+			if (slot.getItem().isEmpty()) {
+				slot.safeInsert(new ItemStack(RelicsItems.BOMB.get(), 1));
+				setBombCount(bag, count - 1);
+				player.playSound(SoundEvents.BUNDLE_REMOVE_ONE, 0.8f, 1.0f);
+				return true;
+			} else if (slot.getItem().getItem() == RelicsItems.BOMB.get() && slot.getItem().getCount() < slot.getItem().getMaxStackSize()) {
+				// extract 1 more bomb to existing bomb stack
+				slot.getItem().grow(1);
 				setBombCount(bag, count - 1);
 				player.playSound(SoundEvents.BUNDLE_REMOVE_ONE, 0.8f, 1.0f);
 				return true;
 			}
-			// right click bag on bomb stack → insert those bombs
-			if (slot.getItem().getItem() == RelicsItems.BOMB.get()) {
-				int space = MAX_BOMBS - count;
-				int toInsert = Math.min(slot.getItem().getCount(), space);
-				if (toInsert > 0) {
-					slot.getItem().shrink(toInsert);
-					setBombCount(bag, count + toInsert);
-					player.playSound(SoundEvents.BUNDLE_INSERT, 0.8f, 1.0f);
-					return true;
-				}
-			}
 		}
 
-		// shift right click (PRIMARY) on empty slot → extract full stack
-		if (action == ClickAction.PRIMARY && player.isShiftKeyDown()) {
-			if (slot.getItem().isEmpty() && count > 0) {
-				int toExtract = Math.min(count, RelicsItems.BOMB.get().getMaxStackSize(bag));
-				ItemStack bombs = new ItemStack(RelicsItems.BOMB.get(), toExtract);
-				slot.safeInsert(bombs);
+		// shift right click (PRIMARY) on bomb in a slot -> fill bomb stack up to max
+		if (action == ClickAction.PRIMARY && slot.getItem().getItem() == RelicsItems.BOMB.get() && count > 0) {
+			int slotCount = slot.getItem().getCount();
+			int maxStack = slot.getItem().getMaxStackSize();
+			int space = maxStack - slotCount;
+			int toExtract = Math.min(count, space);
+			if (toExtract > 0) {
+				slot.getItem().grow(toExtract);
 				setBombCount(bag, count - toExtract);
 				player.playSound(SoundEvents.BUNDLE_REMOVE_ONE, 0.8f, 0.8f);
 				return true;
 			}
 		}
-
 		return false;
 	}
-
-	// --- Inventory: click something ON the bag ---
 
 	@Override
 	public boolean overrideOtherStackedOnMe(ItemStack bag, ItemStack other, Slot slot, ClickAction action, Player player, SlotAccess access) {
@@ -139,7 +125,7 @@ public class BombBagItem extends RelicsItem {
 
 		int count = getBombCount(bag);
 
-		// right click bombs onto the bag → insert
+		// right click bombs onto the bag -> insert
 		if (other.getItem() == RelicsItems.BOMB.get()) {
 			int space = MAX_BOMBS - count;
 			int toInsert = Math.min(other.getCount(), space);
@@ -151,39 +137,19 @@ public class BombBagItem extends RelicsItem {
 			}
 		}
 
-		// right click empty cursor on bag → extract 1 bomb to cursor
+		// right click empty cursor on bag -> extract 1 bomb to cursor
 		if (other.isEmpty() && count > 0) {
 			access.set(new ItemStack(RelicsItems.BOMB.get(), 1));
 			setBombCount(bag, count - 1);
 			player.playSound(SoundEvents.BUNDLE_REMOVE_ONE, 0.8f, 1.0f);
 			return true;
 		}
-
 		return false;
 	}
-
-	// --- Tooltip ---
 
 	@Override
 	public void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
 		int count = getBombCount(stack);
 		tooltip.add(Component.translatable("item.relics_of_old.bomb_bag.count", count, MAX_BOMBS).withStyle(count >= MAX_BOMBS ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
 	}
-
-	// --- Durability bar as fill indicator ---
-
-//	@Override
-//	public boolean isBarVisible(ItemStack stack) {
-//		return getBombCount(stack) > 0;
-//	}
-
-//	@Override
-//	public int getBarWidth(ItemStack stack) {
-//		return Math.round(13.0f * getBombCount(stack) / MAX_BOMBS);
-//	}
-
-//	@Override
-//	public int getBarColor(ItemStack stack) {
-//		return 0x886633; // brown to match the bag
-//	}
 }
