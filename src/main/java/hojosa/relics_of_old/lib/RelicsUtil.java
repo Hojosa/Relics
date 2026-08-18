@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Random;
 
 import hojosa.relics_of_old.Relics;
+import hojosa.relics_of_old.common.block.BoostPlate;
 import hojosa.relics_of_old.common.block.MysticShrub;
 import hojosa.relics_of_old.common.block.MysticShrub.ShrubState;
 import hojosa.relics_of_old.common.init.RelicsBlocks;
@@ -28,13 +29,14 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RelicsUtil {
 	static Random random = new Random();
 	private static final Map<Block, List<Block>> BLOCK_CYCLES = new HashMap<>();
-	private static final Map<BlockState, BlockState> STATE_CHANGE = new HashMap<>();
+	private static final Map<Block, Property<?>> CYCLE_BLOCK_STATES = new HashMap<>();
 
 	@Deprecated // use ResourceLocation.withDefaultNamespace instead
 	public static ResourceLocation mcLoc(String path) {
@@ -48,9 +50,9 @@ public class RelicsUtil {
 	public static ResourceLocation modLoc(String path) {
 		return ResourceLocation.fromNamespaceAndPath(References.MOD_ID, path);
 	}
-	
+
 	public static String modLocArmor(String textureName) {
-		return References.MOD_ID + ":textures/models/armor/" + textureName +  ".png";
+		return References.MOD_ID + ":textures/models/armor/" + textureName + ".png";
 	}
 
 	public static float r(float phase) {
@@ -118,17 +120,17 @@ public class RelicsUtil {
 		return BLOCK_CYCLES.containsKey(block);
 	}
 
-	public static void setupStateChangeMap() {
-		STATE_CHANGE.put(RelicsBlocks.MYSTIC_SHRUB.get().defaultBlockState().setValue(MysticShrub.STATE, ShrubState.STUMP),
-				RelicsBlocks.MYSTIC_SHRUB.get().defaultBlockState().setValue(MysticShrub.STATE, ShrubState.NORMAL));
+	public static void setupCycleBlockStates() {
+		CYCLE_BLOCK_STATES.put(RelicsBlocks.BOOST_PLATE.get(), BoostPlate.TYPE);
 	}
 
-	public static BlockState getTargetState(BlockState state) {
-		return STATE_CHANGE.get(state);
+	public static boolean hasStateToCycle(Block block) {
+		return CYCLE_BLOCK_STATES.containsKey(block);
 	}
 
-	public static boolean hasStateToChange(BlockState clickedBlock) {
-		return STATE_CHANGE.containsKey(clickedBlock);
+	public static BlockState cycleBlockState(BlockState state) {
+		Property<?> property = CYCLE_BLOCK_STATES.get(state.getBlock());
+		return state.cycle(property);
 	}
 
 	public static <T extends Animal> void cycleMobVariant(T animal) {
@@ -221,14 +223,15 @@ public class RelicsUtil {
 	public static boolean matchesDamageType(ElementType type, DamageSource damage) {
 		switch (type) {
 		case FIRE -> {
-			return damage.is(DamageTypes.ON_FIRE) || damage.is(DamageTypes.FIREBALL) || damage.is(DamageTypes.IN_FIRE) || damage.is(DamageTypes.HOT_FLOOR) || damage.is(DamageTypes.LAVA) || damage.is(DamageTypes.UNATTRIBUTED_FIREBALL);
+			return damage.is(DamageTypes.ON_FIRE) || damage.is(DamageTypes.FIREBALL) || damage.is(DamageTypes.IN_FIRE) || damage.is(DamageTypes.HOT_FLOOR) || damage.is(DamageTypes.LAVA)
+					|| damage.is(DamageTypes.UNATTRIBUTED_FIREBALL);
 		}
 		case EARTH -> {
 			return damage.is(DamageTypes.FALL);
 		}
 		case WIND -> {
-		      return damage.is(DamageTypes.ARROW);
-		  }
+			return damage.is(DamageTypes.ARROW);
+		}
 
 		default -> {
 			return false;

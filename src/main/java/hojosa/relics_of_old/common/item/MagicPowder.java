@@ -2,11 +2,15 @@ package hojosa.relics_of_old.common.item;
 
 import java.util.Random;
 
+import hojosa.relics_of_old.common.block.MysticShrub;
+import hojosa.relics_of_old.common.block.MysticShrub.ShrubState;
+import hojosa.relics_of_old.common.init.RelicsBlocks;
 import hojosa.relics_of_old.common.init.RelicsParticles;
 import hojosa.relics_of_old.common.init.RelicsSounds;
 import hojosa.relics_of_old.lib.RelicsParticleOptions;
 import hojosa.relics_of_old.lib.RelicsUtil;
 import hojosa.relics_of_old.lib.item.RelicsItem;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -66,12 +70,7 @@ public class MagicPowder extends RelicsItem {
 			}
 		}
 		if (pInteractionTarget instanceof AgeableMob || pInteractionTarget instanceof Zombie || pInteractionTarget instanceof Creeper) {
-			pPlayer.level().playSound(pPlayer, pInteractionTarget.blockPosition(), RelicsSounds.SPRINKLE.get(), SoundSource.PLAYERS, 0.2f, 1.0f);
-			pPlayer.level().playSound(pPlayer, pInteractionTarget.blockPosition(), RelicsSounds.TRANSFORM.get(), SoundSource.PLAYERS, 1.0f, 0.7f + random.nextFloat() * 0.5f);
-			pPlayer.level().addParticle(ParticleTypes.EXPLOSION, pInteractionTarget.getX(), pInteractionTarget.getY() + pInteractionTarget.getBbHeight() / 2, pInteractionTarget.getZ(), 0.0, 0.0, 0.0);
-			for (int i = 0; i < 20; i++)
-				pPlayer.level().addParticle(new RelicsParticleOptions(RelicsParticles.SPARKLE_PARTICLES, 6, 0.1f), pInteractionTarget.getX() + random.nextGaussian() * 0.5f, pInteractionTarget.getY() + random.nextGaussian() + 0.5f,
-						pInteractionTarget.getZ() + random.nextGaussian() * 0.5f, 0.0, -0.02f, 0.0);
+			clientEffects(pPlayer, pInteractionTarget.getX(), pInteractionTarget.getY() + pInteractionTarget.getBbHeight() / 2, pInteractionTarget.getZ());
 			return InteractionResult.SUCCESS;
 		}
 		return super.interactLivingEntity(pStack, pPlayer, pInteractionTarget, pUsedHand);
@@ -93,18 +92,26 @@ public class MagicPowder extends RelicsItem {
 				}
 				return super.onItemUseFirst(stack, context);
 			} else {
-				level.playSound(context.getPlayer(), context.getClickedPos(), RelicsSounds.SPRINKLE.get(), SoundSource.PLAYERS, 0.2f, 1.0f);
-				level.playSound(context.getPlayer(), context.getClickedPos(), RelicsSounds.TRANSFORM.get(), SoundSource.PLAYERS, 1.0f, 0.7f + random.nextFloat() * 0.5f);
-				level.addParticle(ParticleTypes.EXPLOSION, context.getClickedPos().getX() + 0.5, context.getClickedPos().getY() + 0.5, context.getClickedPos().getZ() + 0.5, 0.0, 0.0, 0.0);
-				level.addParticle(new RelicsParticleOptions(RelicsParticles.SPARKLE_PARTICLES, 6, 0.1f), context.getClickedPos().getX() + random.nextGaussian() * 0.5f, context.getClickedPos().getY() + random.nextGaussian() + 0.5f,
-						context.getClickedPos().getZ() + random.nextGaussian() * 0.5f, 0.0, -0.02f, 0.0);
-
+				clientEffects(context.getPlayer(), context.getClickedPos().getX() + 0.5, context.getClickedPos().getY() + 0.5, context.getClickedPos().getZ() + 0.5);
 				return InteractionResult.SUCCESS;
 			}
 		}
-		if (RelicsUtil.hasStateToChange(clickedBlock)) {
+		// custom block change to a specific state, no cycle
+		if (clickedBlock.is(RelicsBlocks.MYSTIC_SHRUB.get()) && clickedBlock.getValue(MysticShrub.STATE) == ShrubState.STUMP) {
 			if (!level.isClientSide) {
-				BlockState targetState = RelicsUtil.getTargetState(clickedBlock);
+				var targetBlock = clickedBlock.setValue(MysticShrub.STATE, ShrubState.NORMAL);
+
+				if (targetBlock != null) {
+					level.setBlockAndUpdate(context.getClickedPos(), targetBlock);
+					if (!context.getPlayer().isCreative())
+						stack.shrink(1);
+					return InteractionResult.SUCCESS;
+				}
+			}
+		} else if (RelicsUtil.hasStateToCycle(clickedBlock.getBlock())) {
+			if (!level.isClientSide) {
+				var targetState = RelicsUtil.cycleBlockState(clickedBlock);
+
 				if (targetState != null) {
 					level.setBlockAndUpdate(context.getClickedPos(), targetState);
 					if (!context.getPlayer().isCreative())
@@ -112,15 +119,20 @@ public class MagicPowder extends RelicsItem {
 					return InteractionResult.SUCCESS;
 				}
 			} else {
-				level.playSound(context.getPlayer(), context.getClickedPos(), RelicsSounds.SPRINKLE.get(), SoundSource.PLAYERS, 0.2f, 1.0f);
-				level.playSound(context.getPlayer(), context.getClickedPos(), RelicsSounds.TRANSFORM.get(), SoundSource.PLAYERS, 1.0f, 0.7f + random.nextFloat() * 0.5f);
-				level.addParticle(ParticleTypes.EXPLOSION, context.getClickedPos().getX() + 0.5, context.getClickedPos().getY() + 0.5, context.getClickedPos().getZ() + 0.5, 0.0, 0.0, 0.0);
-				level.addParticle(new RelicsParticleOptions(RelicsParticles.SPARKLE_PARTICLES, 6, 0.1f), context.getClickedPos().getX() + random.nextGaussian() * 0.5f, context.getClickedPos().getY() + random.nextGaussian() + 0.5f,
-						context.getClickedPos().getZ() + random.nextGaussian() * 0.5f, 0.0, -0.02f, 0.0);
+				clientEffects(context.getPlayer(), context.getClickedPos().getX() + 0.5, context.getClickedPos().getY() + 0.5, context.getClickedPos().getZ() + 0.5);
 				return InteractionResult.SUCCESS;
 			}
 		}
 		return super.onItemUseFirst(stack, context);
+	}
+
+	private void clientEffects(Player pPlayer, double x, double y, double z) {
+		pPlayer.level().playSound(pPlayer, BlockPos.containing(x, y, z), RelicsSounds.SPRINKLE.get(), SoundSource.PLAYERS, 0.2f, 1.0f);
+		pPlayer.level().playSound(pPlayer, BlockPos.containing(x, y, z), RelicsSounds.TRANSFORM.get(), SoundSource.PLAYERS, 1.0f, 0.7f + random.nextFloat() * 0.5f);
+		pPlayer.level().addParticle(ParticleTypes.EXPLOSION, x, y, z, 0.0, 0.0, 0.0);
+		for (int i = 0; i < 20; i++)
+			pPlayer.level().addParticle(new RelicsParticleOptions(RelicsParticles.SPARKLE_PARTICLES, 6, 0.1f), x + random.nextGaussian() * 0.5f, y + random.nextGaussian() * 0.5, z + random.nextGaussian() * 0.5f, 0.0,
+					-0.02f, 0.0);
 	}
 
 	private static InteractionResult finishInteractionEntity(Player player, InteractionHand usedHand) {

@@ -6,13 +6,10 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
@@ -20,7 +17,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -60,35 +56,9 @@ public class BoostPlate extends RelicsFacingBlock {
 		return SHAPE;
 	}
 
-//    @Override
-//    public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-//        return Shapes.empty();
-//    }
-
 	@Override
 	public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
 		return canSupportRigidBlock(level, pos.below());
-	}
-
-//    @Override
-//    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
-//        if (direction == Direction.DOWN && !canSurvive(state, level, pos)) {
-//            return Blocks.AIR.defaultBlockState();
-//        }
-//        return state;
-//    }
-
-	@Override
-	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-		if (player.isShiftKeyDown()) {
-			if (!level.isClientSide) {
-				BoostType[] types = BoostType.values();
-				BoostType next = types[(state.getValue(TYPE).ordinal() + 1) % types.length];
-				level.setBlock(pos, state.setValue(TYPE, next), UPDATE_ALL);
-			}
-			return InteractionResult.sidedSuccess(level.isClientSide);
-		}
-		return InteractionResult.PASS;
 	}
 
 	@Override

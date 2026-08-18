@@ -80,7 +80,7 @@ public class Relics {
 	private void setup(final FMLCommonSetupEvent event) {
 		RelicsNetwork.register();
 		event.enqueueWork(RelicsUtil::setupBlockCycleMap);
-		event.enqueueWork(RelicsUtil::setupStateChangeMap);
+		event.enqueueWork(RelicsUtil::setupCycleBlockStates);
 	}
 
 	private void register(RegisterEvent event) {
