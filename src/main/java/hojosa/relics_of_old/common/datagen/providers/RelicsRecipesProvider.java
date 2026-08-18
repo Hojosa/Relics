@@ -120,28 +120,10 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.INFUSED_STAR_PIECE.get()))
 		.save(consumer);
 		
-		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.EMERALD_PIECE.get())
-		.pattern("eee")
-		.pattern("e e")
-		.pattern("eee")
-		.define('e', RelicsItems.EMERALD_SHARD.get())
-		.group(References.CREATIVE_TAB)
-		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.EMERALD_SHARD.get()))
-		.save(consumer);
-		
-		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Items.EMERALD)
-		.pattern("eee")
-		.pattern("e e")
-		.pattern("eee")
-		.define('e', RelicsItems.EMERALD_PIECE.get())
-		.group(References.CREATIVE_TAB)
-		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.EMERALD_PIECE.get()))
-		.save(consumer, RelicsUtil.modLoc("emerald_from_emerald_piece"));
-		
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.EMERALD_PIECE.get(), 8)
 		.requires(Items.EMERALD)
 		.group(References.CREATIVE_TAB)
-		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.EMERALD_PIECE.get()))
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.EMERALD))
 		.save(consumer, RelicsUtil.modLoc("emerald_piece_reverse"));
 		
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.EMERALD_SHARD.get(), 8)
