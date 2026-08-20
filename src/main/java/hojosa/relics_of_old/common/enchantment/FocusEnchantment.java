@@ -1,4 +1,4 @@
-package hojosa.relics_of_old.common;
+package hojosa.relics_of_old.common.enchantment;
 
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.Enchantment;
