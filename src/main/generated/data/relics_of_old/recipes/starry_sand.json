@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "group": "tab",
+  "ingredients": [
+    {
+      "item": "minecraft:sand"
+    },
+    {
+      "item": "relics_of_old:star_dust"
+    }
+  ],
+  "result": {
+    "item": "relics_of_old:starry_sand"
+  }
+}

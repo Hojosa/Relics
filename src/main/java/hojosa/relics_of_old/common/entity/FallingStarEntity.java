@@ -1,5 +1,6 @@
 package hojosa.relics_of_old.common.entity;
 
+import hojosa.relics_of_old.common.entity.attacks.SpellEffectEntity;
 import hojosa.relics_of_old.common.init.RelicsEntities;
 import hojosa.relics_of_old.common.init.RelicsItems;
 import hojosa.relics_of_old.common.init.RelicsSounds;
@@ -42,17 +43,17 @@ public class FallingStarEntity extends Entity {
 		if (!this.level().isClientSide()) {
 			pPlayer.addItem(new ItemStack(RelicsItems.STAR_PIECE.get(), 1));
 			ExperienceOrb.award((ServerLevel) this.level(), this.position(), 3);
-			pPlayer.getCapability(StarFallChanceProvider.PLAYER_STAR_FALL).ifPresent(star -> star.setStarsCollected(star.getStarsCollected()+1));
+			pPlayer.getCapability(StarFallChanceProvider.PLAYER_STAR_FALL).ifPresent(star -> star.setStarsCollected(star.getStarsCollected() + 1));
 			// add achivement maybe?
 			this.remove(RemovalReason.DISCARDED);
 
-			//a little bonus for star collectors:
+			// a little bonus for star collectors:
 			pPlayer.getCapability(StarFallChanceProvider.PLAYER_STAR_FALL).ifPresent(star -> {
-				if(star.getStarsCollected() != 0 && star.getStarsCollected() % 7 == 0 ) {
+				if (star.getStarsCollected() != 0 && star.getStarsCollected() % 7 == 0) {
 					this.playSound(RelicsSounds.STAR_CAUGHT_X_SOUND.get(), 1f, 1f);
 					pPlayer.level().addFreshEntity(new FallingStarEntity(pPlayer));
-				}
-				else this.playSound(RelicsSounds.STAR_CAUGHT_SOUND.get(), 1f, 1f);
+				} else
+					this.playSound(RelicsSounds.STAR_CAUGHT_SOUND.get(), 1f, 1f);
 			});
 		}
 	}
@@ -61,7 +62,7 @@ public class FallingStarEntity extends Entity {
 	public void tick() {
 		// star is flying
 		if (!this.onGround()) {
-			if(this.tickCount == 5 && !this.level().isClientSide()) {
+			if (this.tickCount == 5 && !this.level().isClientSide()) {
 				this.level().playSound(null, this.blockPosition(), RelicsSounds.STAR_FALL_SOUND.get(), getSoundSource(), 10.0f, 1.0f);
 			}
 			this.movementY -= 0.03;
@@ -69,13 +70,17 @@ public class FallingStarEntity extends Entity {
 
 			if (!this.level().isClientSide() && (this.horizontalCollision || this.verticalCollision)) {
 
-					this.level().explode(this, this.getX(), this.getY(), this.getZ(), 0.3F, Level.ExplosionInteraction.NONE);
+				this.level().explode(this, this.getX(), this.getY(), this.getZ(), 0.3F, Level.ExplosionInteraction.NONE);
 
-					if (this.isInWater()) {
-						this.playSound(this.getSwimSplashSound(), 2F, 2.0F);
-					}
-					this.level().setBlockAndUpdate(this.blockPosition(), Blocks.LIGHT.defaultBlockState());
+				if (this.isInWater()) {
+					this.playSound(this.getSwimSplashSound(), 2F, 2.0F);
 				}
+
+				// convert nearby sand to starry sand
+				SpellEffectEntity spell = new SpellEffectEntity(this.level(), SpellEffectEntity.SpellType.STAR_IMPACT, null, this.position(), 2.0, 1.0, false);
+				this.level().addFreshEntity(spell);
+				this.level().setBlockAndUpdate(this.blockPosition(), Blocks.LIGHT.defaultBlockState());
+			}
 		}
 		// landed
 		else {
@@ -90,9 +95,9 @@ public class FallingStarEntity extends Entity {
 			} else {
 				if (!this.level().isClientSide()) {
 					if (this.getAliveState() % 25 == 0)
-							this.playSound(RelicsSounds.STAR_TWINKLE_SOUND.get(), 0.1f, 0.5f);
-					
-					this.setAliveState(this.getAliveState() -1);
+						this.playSound(RelicsSounds.STAR_TWINKLE_SOUND.get(), 0.1f, 0.5f);
+
+					this.setAliveState(this.getAliveState() - 1);
 				}
 			}
 		}
@@ -105,12 +110,12 @@ public class FallingStarEntity extends Entity {
 
 	@Override
 	protected void readAdditionalSaveData(CompoundTag pCompound) {
-		//not needed?
+		// not needed?
 	}
 
 	@Override
 	protected void addAdditionalSaveData(CompoundTag pCompound) {
-		//not needed?
+		// not needed?
 	}
 
 	public Integer getAliveState() {
@@ -120,7 +125,7 @@ public class FallingStarEntity extends Entity {
 	public void setAliveState(int state) {
 		this.entityData.set(DATA_ID_ALIVE, state);
 	}
-	
+
 	@Override
 	public void remove(RemovalReason pReason) {
 		this.level().setBlockAndUpdate(this.blockPosition(), Blocks.AIR.defaultBlockState());

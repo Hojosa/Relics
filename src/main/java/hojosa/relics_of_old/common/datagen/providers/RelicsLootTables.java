@@ -15,6 +15,7 @@ import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.packs.VanillaBlockLoot;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -26,6 +27,7 @@ import net.minecraft.world.level.storage.loot.functions.CopyNameFunction;
 import net.minecraft.world.level.storage.loot.functions.CopyNbtFunction;
 import net.minecraft.world.level.storage.loot.functions.SetContainerContents;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.predicates.MatchTool;
@@ -100,6 +102,24 @@ public class RelicsLootTables extends VanillaBlockLoot {
 			          // .add(LootItem.lootTableItem(RelicsItems.BOMB.get()).setWeight(1)
 			          //     .apply(SetItemCountFunction.setCount(ConstantValue.exactly(3)))))
 			  );
+		add(RelicsBlocks.STARRY_SAND.get(), LootTable.lootTable()
+			      // silk touch: drop the block itself
+			      .withPool(LootPool.lootPool()
+			          .setRolls(ConstantValue.exactly(1))
+			          .when(HAS_SILK_TOUCH)
+			          .add(LootItem.lootTableItem(RelicsBlocks.STARRY_SAND.get())))
+			      // no silk touch: always drop sand
+			      .withPool(LootPool.lootPool()
+			          .setRolls(ConstantValue.exactly(1))
+			          .when(HAS_NO_SILK_TOUCH)
+			          .add(LootItem.lootTableItem(Items.SAND)))
+			      // no silk touch: 50% chance to drop star dust (fortune increases chance)
+			      .withPool(LootPool.lootPool()
+			          .setRolls(ConstantValue.exactly(1))
+			          .when(HAS_NO_SILK_TOUCH)
+			          .when(BonusLevelTableCondition.bonusLevelFlatChance(
+			              Enchantments.BLOCK_FORTUNE, 0.5f, 0.667f, 0.833f, 1.0f))
+			          .add(LootItem.lootTableItem(RelicsItems.STAR_DUST.get()))));
 	}
 
 	@Override

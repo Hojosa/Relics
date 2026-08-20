@@ -45,6 +45,7 @@ public class RelicsBlockStateProvider extends BlockStateProvider {
 		clayJar();
 		simpleBlock(RelicsBlocks.SUGAR_CUBE.get());
 		bombFlower();
+		simpleBlock(RelicsBlocks.STARRY_SAND.get());
 	}
 
 	private void simpleBlockInfused(Block block, Block parent) {

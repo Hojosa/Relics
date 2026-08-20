@@ -40,6 +40,7 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addBlock(RelicsBlocks.BOOST_PLATE, "Boost Plate");
 		addBlock(RelicsBlocks.SUGAR_CUBE, "Sugar Cube");
 		addBlock(RelicsBlocks.BOMB_FLOWER, "Bomb Flower");
+		addBlock(RelicsBlocks.STARRY_SAND, "Starry Sand");
 
 		// Items
 		addItem(RelicsItems.FIRE_SWORD, "Flame Sword");

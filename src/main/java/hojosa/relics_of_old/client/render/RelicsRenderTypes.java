@@ -80,6 +80,14 @@ public class RelicsRenderTypes extends RenderType {
                 256, false, false, state);
     });
     
+	// -- Custom RenderType for solid triangles with color, no texture --
+	public static final RenderType SPELL_TRIANGLES = RenderType.create("relics_spell_triangles", DefaultVertexFormat.POSITION_COLOR_NORMAL, VertexFormat.Mode.QUADS, 256, false, true, RenderType.CompositeState.builder()
+			.setShaderState(RenderType.POSITION_COLOR_SHADER)
+			.setTransparencyState(RenderType.TRANSLUCENT_TRANSPARENCY)
+			.setCullState(RenderType.NO_CULL)
+			.setWriteMaskState(RenderType.COLOR_DEPTH_WRITE)
+			.createCompositeState(false));
+    
     public static RenderType getTextureRenderColored(ResourceLocation texture) {
         return getTextureRenderColored(texture, false);
     }

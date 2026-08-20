@@ -55,6 +55,8 @@ public class RelicsBlockTags extends BlockTagsProvider {
 		tag(RelicsTags.Blocks.BOMBABLE)
 	    .add(Blocks.COBBLESTONE, Blocks.TNT)
 	    .add(RelicsBlocks.CLAY_JAR.get());
+		tag(BlockTags.MINEABLE_WITH_SHOVEL)
+		.add(RelicsBlocks.STARRY_SAND.get());
 	}
 
     @Override

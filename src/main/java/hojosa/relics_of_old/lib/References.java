@@ -111,6 +111,8 @@ public class References {
 		public static final String BOMB_FLOWER = "bomb_flower";
 		public static final String BOMB_ARROW = "bomb_arrow";
 		public static final String BOMB_BAG = "bomb_bag";
+		public static final String STARRY_SAND = "starry_sand";
+		public static final String SPELL_EFFECT = "spell_effect";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

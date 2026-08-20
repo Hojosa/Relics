@@ -11,6 +11,7 @@ import hojosa.relics_of_old.common.entity.attacks.ArrowStormEntity;
 import hojosa.relics_of_old.common.entity.attacks.EnderBombEntity;
 import hojosa.relics_of_old.common.entity.attacks.FireblastEntity;
 import hojosa.relics_of_old.common.entity.attacks.QuakeEntity;
+import hojosa.relics_of_old.common.entity.attacks.SpellEffectEntity;
 import hojosa.relics_of_old.common.entity.attacks.WhirlwindEntity;
 import hojosa.relics_of_old.lib.References;
 import lombok.AccessLevel;
@@ -61,4 +62,7 @@ public class RelicsEntities {
 
 	public static final RegistryObject<EntityType<BombArrowEntity>> BOMB_ARROW = ENTITY_TYPES.register(References.UnlocalizedName.BOMB_ARROW,
 			() -> EntityType.Builder.<BombArrowEntity>of(BombArrowEntity::new, MobCategory.MISC).sized(0.5f, 0.5f).clientTrackingRange(4).updateInterval(20).build(References.UnlocalizedName.BOMB_ARROW));
+	
+	public static final RegistryObject<EntityType<SpellEffectEntity>> SPELL_EFFECT = ENTITY_TYPES.register(References.UnlocalizedName.SPELL_EFFECT,
+			() -> EntityType.Builder.<SpellEffectEntity>of(SpellEffectEntity::new, MobCategory.MISC).sized(0.25f, 0.25f).clientTrackingRange(16).build(References.UnlocalizedName.SPELL_EFFECT));
 }

@@ -452,5 +452,19 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.group(References.CREATIVE_TAB)
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.BOMB.get()))
 		.save(consumer);
+		
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, RelicsBlocks.STARRY_SAND.get())
+		.requires(Items.SAND)
+		.requires(RelicsItems.STAR_DUST.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.STAR_DUST.get()))
+		.save(consumer);
+		
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, RelicsBlocks.STARRY_SAND.get())
+		.requires(Items.SAND)
+		.requires(RelicsItems.INFUSED_STAR_DUST.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.INFUSED_STAR_DUST.get()))
+		.save(consumer, RelicsUtil.modLoc("starry_sand_from_infused_dust"));
 	}
 }

@@ -1,6 +1,6 @@
 package hojosa.relics_of_old.common.init;
 
-import hojosa.relics_of_old.common.FocusEnchantment;
+import hojosa.relics_of_old.common.enchantment.FocusEnchantment;
 import hojosa.relics_of_old.lib.References;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
