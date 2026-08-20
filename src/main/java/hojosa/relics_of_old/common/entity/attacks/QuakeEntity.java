@@ -1,17 +1,16 @@
 package hojosa.relics_of_old.common.entity.attacks;
 
 import java.util.List;
-import java.util.UUID;
 
 import hojosa.relics_of_old.common.init.RelicsEntities;
 import hojosa.relics_of_old.common.init.RelicsParticles;
+import hojosa.relics_of_old.lib.AttackEffectEntity;
 import hojosa.relics_of_old.lib.RelicsParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
@@ -20,7 +19,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
-public class QuakeEntity extends Entity {
+public class QuakeEntity extends AttackEffectEntity {
 
 	public static final int MAX_LIFESPAN = 60;
 	public static final int PULSE_INTERVAL = 7;
@@ -30,33 +29,24 @@ public class QuakeEntity extends Entity {
 	public static final double HORIZONTAL_LAUNCH = 0.3;
 	public static final int DAMAGE_PER_HIT = 7;
 	private boolean noSelfDamage = false;
-//	private double customRadius = -1;
 	private int customDamage = -1;
 
-	private static final EntityDataAccessor<Integer> DATA_LIFETIME = SynchedEntityData.defineId(QuakeEntity.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Float> DATA_CUSTOM_RADIUS = SynchedEntityData.defineId(QuakeEntity.class, EntityDataSerializers.FLOAT);
-
-	private UUID throwerUUID;
 
 	public QuakeEntity(EntityType<?> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
-		this.noPhysics = true;
 	}
 
 	public QuakeEntity(Level pLevel, Vec3 pPos, LivingEntity thrower) {
 		super(RelicsEntities.QUAKE.get(), pLevel);
 		this.setPos(pPos);
-		this.noPhysics = true;
-		if (thrower != null)
-			this.throwerUUID = thrower.getUUID();
+		setThrower(thrower);
 	}
 
 	public QuakeEntity(Level pLevel, Vec3 pPos, LivingEntity thrower, double radius, int damage) {
 		super(RelicsEntities.QUAKE.get(), pLevel);
 		this.setPos(pPos);
-		this.noPhysics = true;
-		if (thrower != null)
-			this.throwerUUID = thrower.getUUID();
+		this.setThrower(thrower);
 		this.noSelfDamage = true;
 		this.setCustomRadius((float) radius);
 		this.customDamage = damage;
@@ -104,7 +94,7 @@ public class QuakeEntity extends Entity {
 				}
 			}
 
-			setLifetime(lifetime + 1);
+			advanceLifetime();
 			if (lifetime > 10) {
 				discard();
 			}
@@ -141,49 +131,32 @@ public class QuakeEntity extends Entity {
 		}
 	}
 
-	private Entity getThrower() {
-		if (throwerUUID != null && level() instanceof ServerLevel serverLevel) {
-			return serverLevel.getEntity(throwerUUID);
-		}
-		return null;
-	}
-
-	private int getLifetime() {
-		return entityData.get(DATA_LIFETIME);
-	}
-
-	private void setLifetime(int value) {
-		entityData.set(DATA_LIFETIME, value);
-	}
-	
 	private float getCustomRadius() {
-	      return entityData.get(DATA_CUSTOM_RADIUS);
-	  }  
+		return entityData.get(DATA_CUSTOM_RADIUS);
+	}
 
-	  private void setCustomRadius(float value) {
-	      entityData.set(DATA_CUSTOM_RADIUS, value);
-	  }  
+	private void setCustomRadius(float value) {
+		entityData.set(DATA_CUSTOM_RADIUS, value);
+	}
 
 	@Override
-	protected void defineSynchedData() {
-		entityData.define(DATA_LIFETIME, 0);
+	public int getMaxLifespan() {
+		return 60;
+	}
+
+	@Override
+	protected void defineExtraData() {
 		entityData.define(DATA_CUSTOM_RADIUS, -1f);
 	}
 
 	@Override
-	protected void readAdditionalSaveData(CompoundTag tag) {
-		setLifetime(tag.getInt("Lifetime"));
-		if (tag.hasUUID("Thrower"))
-			throwerUUID = tag.getUUID("Thrower");
-		if (tag.contains("CustomRadius")) setCustomRadius(tag.getFloat("CustomRadius"));
+	protected void readExtraSaveData(CompoundTag tag) {
+		if (tag.contains("CustomRadius"))
 			setCustomRadius(tag.getFloat("CustomRadius"));
 	}
 
 	@Override
-	protected void addAdditionalSaveData(CompoundTag tag) {
-		tag.putInt("Lifetime", getLifetime());
-		if (throwerUUID != null)
-			tag.putUUID("Thrower", throwerUUID);
+	protected void writeExtraSaveData(CompoundTag tag) {
 		tag.putFloat("CustomRadius", getCustomRadius());
 	}
 }
