@@ -120,6 +120,38 @@ public class RelicsLootTables extends VanillaBlockLoot {
 			          .when(BonusLevelTableCondition.bonusLevelFlatChance(
 			              Enchantments.BLOCK_FORTUNE, 0.5f, 0.667f, 0.833f, 1.0f))
 			          .add(LootItem.lootTableItem(RelicsItems.STAR_DUST.get()))));
+		// struck sand: drops sand, + fulgurite when mined with shovel (no silk touch)
+		  add(RelicsBlocks.STRUCK_SAND.get(), LootTable.lootTable()
+		      .withPool(LootPool.lootPool()
+		          .setRolls(ConstantValue.exactly(1))
+		          .when(HAS_SILK_TOUCH)
+		          .add(LootItem.lootTableItem(RelicsBlocks.STRUCK_SAND.get())))
+		      .withPool(LootPool.lootPool()
+		          .setRolls(ConstantValue.exactly(1))
+		          .when(HAS_NO_SILK_TOUCH)
+		          .add(LootItem.lootTableItem(Items.SAND)))
+		      .withPool(LootPool.lootPool()
+		          .setRolls(ConstantValue.exactly(1))
+		          .when(HAS_NO_SILK_TOUCH)
+		          .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(net.minecraft.tags.ItemTags.SHOVELS)))
+		          .add(LootItem.lootTableItem(RelicsItems.FULGURITE.get()))));
+
+		  // struck dirt: same pattern but drops dirt
+		  add(RelicsBlocks.STRUCK_DIRT.get(), LootTable.lootTable()
+		      .withPool(LootPool.lootPool()
+		          .setRolls(ConstantValue.exactly(1))
+		          .when(HAS_SILK_TOUCH)
+		          .add(LootItem.lootTableItem(RelicsBlocks.STRUCK_DIRT.get())))
+		      .withPool(LootPool.lootPool()
+		          .setRolls(ConstantValue.exactly(1))
+		          .when(HAS_NO_SILK_TOUCH)
+		          .add(LootItem.lootTableItem(Items.DIRT)))
+		      .withPool(LootPool.lootPool()
+		          .setRolls(ConstantValue.exactly(1))
+		          .when(HAS_NO_SILK_TOUCH)
+		          .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(net.minecraft.tags.ItemTags.SHOVELS)))
+		          .add(LootItem.lootTableItem(RelicsItems.FULGURITE.get()))));
+
 	}
 
 	@Override

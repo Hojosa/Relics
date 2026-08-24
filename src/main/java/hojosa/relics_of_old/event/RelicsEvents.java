@@ -11,6 +11,7 @@ import hojosa.relics_of_old.Relics;
 import hojosa.relics_of_old.common.entity.FallingStarEntity;
 import hojosa.relics_of_old.common.entity.StarBeamEntity;
 import hojosa.relics_of_old.common.entity.attacks.QuakeEntity;
+import hojosa.relics_of_old.common.init.RelicsBlocks;
 import hojosa.relics_of_old.common.init.RelicsConfig;
 import hojosa.relics_of_old.common.init.RelicsEffects;
 import hojosa.relics_of_old.common.init.RelicsItems;
@@ -32,6 +33,7 @@ import hojosa.relics_of_old.network.RelicsNetwork;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundSoundEntityPacket;
 import net.minecraft.resources.ResourceLocation;
@@ -43,7 +45,9 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.monster.EnderMan;
@@ -56,6 +60,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.storage.LevelResource;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
@@ -187,6 +193,27 @@ public class RelicsEvents {
 					event.player.level().addFreshEntity(new FallingStarEntity(event.player));
 				}
 			});
+			if (event.player.level().isThundering() && event.player.level().isRaining() && random.nextInt(1500) == 0) {
+				int strikeX = (int) event.player.getX() + random.nextInt(96) - 48;
+				int strikeZ = (int) event.player.getZ() + random.nextInt(96) - 48;
+				ServerLevel serverLevel = (ServerLevel) event.player.level();
+				int strikeY = serverLevel.getHeight(Heightmap.Types.MOTION_BLOCKING, strikeX, strikeZ);
+
+				// spawn lightning bolt
+				LightningBolt bolt = EntityType.LIGHTNING_BOLT.create(serverLevel);
+				bolt.moveTo(strikeX, strikeY, strikeZ);
+				serverLevel.addFreshEntity(bolt);
+
+				// convert ground block
+				BlockPos groundPos = new BlockPos(strikeX, strikeY - 1, strikeZ);
+				Block groundBlock = serverLevel.getBlockState(groundPos).getBlock();
+				//todo turn into tags, add corase dirt and dirt path. make red struck sand
+				if (groundBlock == Blocks.SAND || groundBlock == Blocks.RED_SAND) {
+					serverLevel.setBlockAndUpdate(groundPos, RelicsBlocks.STRUCK_SAND.get().defaultBlockState());
+				} else if (groundBlock == Blocks.DIRT || groundBlock == Blocks.GRASS_BLOCK || groundBlock == Blocks.MYCELIUM) {
+					serverLevel.setBlockAndUpdate(groundPos, RelicsBlocks.STRUCK_DIRT.get().defaultBlockState());
+				}
+			}
 		}
 	}
 

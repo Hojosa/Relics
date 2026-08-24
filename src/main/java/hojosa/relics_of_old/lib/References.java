@@ -113,6 +113,9 @@ public class References {
 		public static final String BOMB_BAG = "bomb_bag";
 		public static final String STARRY_SAND = "starry_sand";
 		public static final String SPELL_EFFECT = "spell_effect";
+		public static final String STRUCK_SAND = "struck_sand";
+		public static final String STRUCK_DIRT = "struck_dirt";
+		public static final String FULGURITE = "fulgurite";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

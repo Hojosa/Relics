@@ -41,6 +41,8 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addBlock(RelicsBlocks.SUGAR_CUBE, "Sugar Cube");
 		addBlock(RelicsBlocks.BOMB_FLOWER, "Bomb Flower");
 		addBlock(RelicsBlocks.STARRY_SAND, "Starry Sand");
+		addBlock(RelicsBlocks.STRUCK_SAND, "Struck Sand");
+		addBlock(RelicsBlocks.STRUCK_DIRT, "Struck Dirt");
 
 		// Items
 		addItem(RelicsItems.FIRE_SWORD, "Flame Sword");
@@ -115,6 +117,7 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addItem(RelicsItems.BOMB, "Bomb");
 		addItem(RelicsItems.BOMB_ARROW, "Bomb Arrow");
 		addItem(RelicsItems.BOMB_BAG, "Bomb Bag");
+		addItem(RelicsItems.FULGURITE, "Fulgurite");
 
 		// Sword augment tooltips
 		add("augment.relics_of_old.fire", "Augment: Fire");

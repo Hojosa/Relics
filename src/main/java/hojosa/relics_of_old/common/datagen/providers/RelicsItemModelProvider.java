@@ -34,6 +34,8 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		withExistingParent(RelicsBlocks.SUGAR_CUBE);
 		withExistingParent(RelicsBlocks.BOMB_FLOWER);
 		withExistingParent(RelicsBlocks.STARRY_SAND);
+		withExistingParent(RelicsBlocks.STRUCK_DIRT);
+		withExistingParent(RelicsBlocks.STRUCK_SAND);
 		
 		basicItem(RelicsItems.STAR_PIECE);
 		basicItem(RelicsItems.STAR_DUST);
@@ -103,7 +105,8 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItem(RelicsItems.ROCK_CANDY_DIAMOND);
 		basicItem(RelicsItems.BOMB);
 		basicItem(RelicsItems.BOMB_ARROW);
-		basicItem(RelicsItems.BOMB_BAG);		
+		basicItem(RelicsItems.BOMB_BAG);
+		basicItem(RelicsItems.FULGURITE);
 		
 		//magic mirror model
 		//base model that contains the base transform settings for the model

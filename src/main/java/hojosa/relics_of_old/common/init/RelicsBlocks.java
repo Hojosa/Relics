@@ -92,6 +92,8 @@ public class RelicsBlocks {
 	public static final ItemObject<Block> SUGAR_CUBE = BLOCKS.register(References.UnlocalizedName.SUGAR_CUBE, SugarCubeBlock::new, BLOCK_ITEM);
 	public static final ItemObject<Block> BOMB_FLOWER = BLOCKS.register(References.UnlocalizedName.BOMB_FLOWER, BombFlower::new, BLOCK_ITEM);
 	public static final ItemObject<Block> STARRY_SAND = BLOCKS.register(References.UnlocalizedName.STARRY_SAND, () -> new RelicsNormalBlock(BlockBehaviour.Properties.copy(Blocks.SAND)), BLOCK_ITEM);
+	public static final ItemObject<Block> STRUCK_SAND = BLOCKS.register(References.UnlocalizedName.STRUCK_SAND, () -> new RelicsNormalBlock(BlockBehaviour.Properties.copy(Blocks.SAND).strength(0.5f)), BLOCK_ITEM);
+	public static final ItemObject<Block> STRUCK_DIRT = BLOCKS.register(References.UnlocalizedName.STRUCK_DIRT, () -> new RelicsNormalBlock(BlockBehaviour.Properties.copy(Blocks.DIRT).strength(0.5f)), BLOCK_ITEM);
 
 	/**
 	 * We use this builder to ensure that our blocks all have the most important
@@ -127,6 +129,8 @@ public class RelicsBlocks {
 		output.accept(SUGAR_CUBE.get().asItem());
 		output.accept(BOMB_FLOWER.get().asItem());
 		output.accept(STARRY_SAND.get().asItem());
+		output.accept(STRUCK_DIRT.get().asItem());
+		output.accept(STRUCK_SAND.get().asItem());
 
 		Predicate<ItemStack> variants = stack -> {
 			output.accept(stack);

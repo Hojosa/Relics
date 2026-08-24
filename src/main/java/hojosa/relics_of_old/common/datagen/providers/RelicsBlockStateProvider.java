@@ -40,12 +40,13 @@ public class RelicsBlockStateProvider extends BlockStateProvider {
 				modLoc("block/" + References.UnlocalizedName.SKYBEAM_BLOCK + "_top")));
 		mysticShrub();
 		simpleBlock(RelicsBlocks.CALTROPS.get(), models().crop(RelicsBlocks.CALTROPS.getId().getPath(), modLoc("block/" + References.UnlocalizedName.CALTROPS)).renderType("cutout"));
-//		simpleBlock(RelicsBlocks.CLAY_JAR.get(), models().getExistingFile(modLoc("block/clay_jar")));
 		boostPlate();
 		clayJar();
 		simpleBlock(RelicsBlocks.SUGAR_CUBE.get());
 		bombFlower();
 		simpleBlock(RelicsBlocks.STARRY_SAND.get());
+		simpleBlock(RelicsBlocks.STRUCK_SAND.get(), models().cubeBottomTop(RelicsBlocks.STRUCK_SAND.getId().getPath(), mcLoc("block/sand"), mcLoc("block/sand"), modLoc("block/struck_sand")));
+		simpleBlock(RelicsBlocks.STRUCK_DIRT.get(), models().cubeBottomTop(RelicsBlocks.STRUCK_DIRT.getId().getPath(), mcLoc("block/dirt"), mcLoc("block/dirt"), modLoc("block/struck_dirt")));
 	}
 
 	private void simpleBlockInfused(Block block, Block parent) {
