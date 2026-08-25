@@ -6,6 +6,7 @@ import hojosa.relics_of_old.common.block.BombFlower;
 import hojosa.relics_of_old.common.block.BoostPlate;
 import hojosa.relics_of_old.common.block.MysticShrub;
 import hojosa.relics_of_old.common.block.NormalSwordPedestal;
+import hojosa.relics_of_old.common.block.StarwellBlock;
 import hojosa.relics_of_old.common.init.RelicsBlocks;
 import hojosa.relics_of_old.lib.References;
 import hojosa.relics_of_old.lib.block.RelicsFacingBlock;
@@ -47,6 +48,10 @@ public class RelicsBlockStateProvider extends BlockStateProvider {
 		simpleBlock(RelicsBlocks.STARRY_SAND.get());
 		simpleBlock(RelicsBlocks.STRUCK_SAND.get(), models().cubeBottomTop(RelicsBlocks.STRUCK_SAND.getId().getPath(), mcLoc("block/sand"), mcLoc("block/sand"), modLoc("block/struck_sand")));
 		simpleBlock(RelicsBlocks.STRUCK_DIRT.get(), models().cubeBottomTop(RelicsBlocks.STRUCK_DIRT.getId().getPath(), mcLoc("block/dirt"), mcLoc("block/dirt"), modLoc("block/struck_dirt")));
+		simpleBlock(RelicsBlocks.STARWELL_FRAME.get());
+		starwellCore();
+		simpleBlock(RelicsBlocks.SKY_LENS.get());
+		simpleBlock(RelicsBlocks.RITUAL_LOCUS.get());
 	}
 
 	private void simpleBlockInfused(Block block, Block parent) {
@@ -124,6 +129,25 @@ public class RelicsBlockStateProvider extends BlockStateProvider {
 				.texture("particle", modLoc("block/clay_jar_bottom")).customLoader(RetexturedModelBuilder::new).retexture("jar_side").retexture("jar_top").retexture("jar_bottom").retexture("particle").end();
 		simpleBlock(block, model);
 	}
+	
+	private void starwellCore() {
+	      Block block = RelicsBlocks.STARWELL_CORE.get();
+	      String base = References.UnlocalizedName.STARWELL_CORE;
+
+	      // side + bottom reuse the frame texture, top switches on active state
+	      ModelFile inert = models().cubeBottomTop(base,
+	              modLoc("block/" + References.UnlocalizedName.STARWELL_FRAME),
+	              modLoc("block/" + References.UnlocalizedName.STARWELL_FRAME),
+	              mcLoc("block/obsidian"));
+	      ModelFile active = models().cubeBottomTop(base + "_active",
+	              modLoc("block/" + References.UnlocalizedName.STARWELL_FRAME),
+	              modLoc("block/" + References.UnlocalizedName.STARWELL_FRAME),
+	              modLoc("block/" + base + "_top_active"));
+
+	      getVariantBuilder(block)
+	              .partialState().with(StarwellBlock.ACTIVE, false).modelForState().modelFile(inert).addModel()
+	              .partialState().with(StarwellBlock.ACTIVE, true).modelForState().modelFile(active).addModel();
+	  }
 
 	@Override
 	public @NotNull String getName() {

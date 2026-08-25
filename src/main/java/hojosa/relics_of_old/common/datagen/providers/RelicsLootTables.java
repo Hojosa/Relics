@@ -151,7 +151,10 @@ public class RelicsLootTables extends VanillaBlockLoot {
 		          .when(HAS_NO_SILK_TOUCH)
 		          .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(net.minecraft.tags.ItemTags.SHOVELS)))
 		          .add(LootItem.lootTableItem(RelicsItems.FULGURITE.get()))));
-
+		  dropSelf(RelicsBlocks.STARWELL_FRAME.get());
+		  dropSelf(RelicsBlocks.STARWELL_CORE.get());
+		  dropSelf(RelicsBlocks.SKY_LENS.get());
+		  dropSelf(RelicsBlocks.RITUAL_LOCUS.get());
 	}
 
 	@Override

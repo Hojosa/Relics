@@ -19,6 +19,7 @@ import net.minecraft.world.level.levelgen.placement.RarityFilter;
 public class RelicsPlacedFeatures {
 	public static final ResourceKey<PlacedFeature> SHRUB_CLUSTER_PLACED = createKey("shrub_cluster_placed");
 	public static final ResourceKey<PlacedFeature> BOMB_FLOWER_CLUSTER_PLACED = createKey("bomb_flower_cluster_placed");
+	public static final ResourceKey<PlacedFeature> STARWELL_PLACED = createKey("starwell_placed");
 
 	public static void bootstrap(BootstapContext<PlacedFeature> context) {
 		HolderGetter<ConfiguredFeature<?, ?>> configured = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -28,6 +29,10 @@ public class RelicsPlacedFeatures {
 
 		register(context, BOMB_FLOWER_CLUSTER_PLACED, configured.getOrThrow(RelicsConfiguredFeatures.BOMB_FLOWER_CLUSTER),
 				List.of(RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
+		
+		register(context, STARWELL_PLACED, configured.getOrThrow(RelicsConfiguredFeatures.STARWELL),
+		          List.of(RarityFilter.onAverageOnceEvery(200), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
+
 	}
 
 	private static ResourceKey<PlacedFeature> createKey(String name) {

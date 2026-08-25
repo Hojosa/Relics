@@ -53,7 +53,22 @@ public class RelicsSounds {
 	public static final RegistryObject<SoundEvent> WHIRLWIND = registerSound(References.SoundName.WHIRLWIND);
 	public static final RegistryObject<SoundEvent> SWORD_CHARGE = registerSound(References.SoundName.SWORD_CHARGE);
 	public static final RegistryObject<SoundEvent> HIGH_CHARGE = registerSound(References.SoundName.HIGH_CHARGE);
-	
+	public static final RegistryObject<SoundEvent> MYSTERY_SPARKLE = registerSound(References.SoundName.MYSTERY_SPARKLE);
+	public static final RegistryObject<SoundEvent> STAR_APPEAR = registerSound(References.SoundName.STAR_APPEAR);
+	public static final RegistryObject<SoundEvent> RITUAL_FORK = registerSound(References.SoundName.RITUAL_FORK);
+	public static final RegistryObject<SoundEvent> RING_0 = registerSound(References.SoundName.RING_0);
+	public static final RegistryObject<SoundEvent> RING_1 = registerSound(References.SoundName.RING_1);
+	public static final RegistryObject<SoundEvent> RING_2 = registerSound(References.SoundName.RING_2);
+	public static final RegistryObject<SoundEvent> RING_3 = registerSound(References.SoundName.RING_3);
+	public static final RegistryObject<SoundEvent> RING_5 = registerSound(References.SoundName.RING_5);
+	public static final RegistryObject<SoundEvent> RING_6 = registerSound(References.SoundName.RING_6);
+	public static final RegistryObject<SoundEvent> RING_7 = registerSound(References.SoundName.RING_7);
+	public static final RegistryObject<SoundEvent> RING_SAD = registerSound(References.SoundName.RING_SAD);
+	public static final RegistryObject<SoundEvent> RITUAL_READY = registerSound(References.SoundName.RITUAL_READY);
+	public static final RegistryObject<SoundEvent> RITUAL_SUCCESS = registerSound(References.SoundName.RITUAL_SUCCESS);
+	public static final RegistryObject<SoundEvent> RITUAL_FAIL = registerSound(References.SoundName.RITUAL_FAIL);
+	public static final RegistryObject<SoundEvent> RITUAL_LASER = registerSound(References.SoundName.RITUAL_LASER);
+
 	private static RegistryObject<SoundEvent> registerSound(String name) {
 		return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(References.MOD_ID, name)));
 	}

@@ -36,6 +36,10 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		withExistingParent(RelicsBlocks.STARRY_SAND);
 		withExistingParent(RelicsBlocks.STRUCK_DIRT);
 		withExistingParent(RelicsBlocks.STRUCK_SAND);
+		withExistingParent(RelicsBlocks.STARWELL_FRAME);
+		withExistingParent(RelicsBlocks.STARWELL_CORE);
+		withExistingParent(RelicsBlocks.SKY_LENS);
+		withExistingParent(RelicsBlocks.RITUAL_LOCUS);
 		
 		basicItem(RelicsItems.STAR_PIECE);
 		basicItem(RelicsItems.STAR_DUST);

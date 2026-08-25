@@ -122,6 +122,12 @@
     ],
     "subtitle": "relics_of_old.subtitle.magic_crafting"
   },
+  "mystery_sparkle": {
+    "sounds": [
+      "relics_of_old:mystery_sparkle"
+    ],
+    "subtitle": "relics_of_old.subtitle.mystery_sparkle"
+  },
   "partial_charge": {
     "sounds": [
       "relics_of_old:partial_charge"
@@ -139,6 +145,84 @@
       "relics_of_old:revive"
     ],
     "subtitle": "relics_of_old.subtitle.revive"
+  },
+  "ring_0": {
+    "sounds": [
+      "relics_of_old:ring_0"
+    ],
+    "subtitle": "relics_of_old.subtitle.ring_0"
+  },
+  "ring_1": {
+    "sounds": [
+      "relics_of_old:ring_1"
+    ],
+    "subtitle": "relics_of_old.subtitle.ring_1"
+  },
+  "ring_2": {
+    "sounds": [
+      "relics_of_old:ring_2"
+    ],
+    "subtitle": "relics_of_old.subtitle.ring_2"
+  },
+  "ring_3": {
+    "sounds": [
+      "relics_of_old:ring_3"
+    ],
+    "subtitle": "relics_of_old.subtitle.ring_3"
+  },
+  "ring_5": {
+    "sounds": [
+      "relics_of_old:ring_5"
+    ],
+    "subtitle": "relics_of_old.subtitle.ring_5"
+  },
+  "ring_6": {
+    "sounds": [
+      "relics_of_old:ring_6"
+    ],
+    "subtitle": "relics_of_old.subtitle.ring_6"
+  },
+  "ring_7": {
+    "sounds": [
+      "relics_of_old:ring_7"
+    ],
+    "subtitle": "relics_of_old.subtitle.ring_7"
+  },
+  "ring_sad": {
+    "sounds": [
+      "relics_of_old:ring_sad"
+    ],
+    "subtitle": "relics_of_old.subtitle.ring_sad"
+  },
+  "ritual_fail": {
+    "sounds": [
+      "relics_of_old:ritual_fail"
+    ],
+    "subtitle": "relics_of_old.subtitle.ritual_fail"
+  },
+  "ritual_fork": {
+    "sounds": [
+      "relics_of_old:ritual_fork"
+    ],
+    "subtitle": "relics_of_old.subtitle.ritual_fork"
+  },
+  "ritual_laser": {
+    "sounds": [
+      "relics_of_old:ritual_laser"
+    ],
+    "subtitle": "relics_of_old.subtitle.ritual_laser"
+  },
+  "ritual_ready": {
+    "sounds": [
+      "relics_of_old:ritual_ready"
+    ],
+    "subtitle": "relics_of_old.subtitle.ritual_ready"
+  },
+  "ritual_success": {
+    "sounds": [
+      "relics_of_old:ritual_success"
+    ],
+    "subtitle": "relics_of_old.subtitle.ritual_success"
   },
   "sine": {
     "sounds": [
@@ -158,6 +242,12 @@
       "relics_of_old:sprinkle2"
     ],
     "subtitle": "relics_of_old.subtitle.sprinkle"
+  },
+  "star_appear": {
+    "sounds": [
+      "relics_of_old:star_appear"
+    ],
+    "subtitle": "relics_of_old.subtitle.star_appear"
   },
   "star_caught": {
     "sounds": [

@@ -34,10 +34,11 @@ public class RelicsSoundsProvider extends SoundDefinitionsProvider {
 		add(RelicsSounds.TP_SWORD_DRAW, definition().subtitle(getSubtitle(RelicsSounds.TP_SWORD_DRAW)).with(sound(RelicsSounds.TP_SWORD_DRAW.getId())));
 		add(RelicsSounds.MAGIC_CRAFTING, definition().subtitle(getSubtitle(RelicsSounds.MAGIC_CRAFTING)).with(sound(RelicsSounds.MAGIC_CRAFTING.getId())));
 		add(RelicsSounds.ITEM_GET, definition().subtitle(getSubtitle(RelicsSounds.ITEM_GET)).with(sound(RelicsSounds.ITEM_GET.getId())));
-		add(RelicsSounds.CALTROPS_LAND, definition().subtitle(getSubtitle(RelicsSounds.CALTROPS_LAND)).with(sound(RelicsSounds.CALTROPS_LAND.getId())).with(sound(RelicsSounds.CALTROPS_LAND.getId()+"2")).with(sound(RelicsSounds.CALTROPS_LAND.getId()+"3")));
-		add(RelicsSounds.CALTROPS_TAP, definition().subtitle(getSubtitle(RelicsSounds.CALTROPS_TAP)).with(sound(RelicsSounds.CALTROPS_TAP.getId())).with(sound(RelicsSounds.CALTROPS_TAP.getId()+"2")));
+		add(RelicsSounds.CALTROPS_LAND, definition().subtitle(getSubtitle(RelicsSounds.CALTROPS_LAND)).with(sound(RelicsSounds.CALTROPS_LAND.getId())).with(sound(RelicsSounds.CALTROPS_LAND.getId() + "2"))
+				.with(sound(RelicsSounds.CALTROPS_LAND.getId() + "3")));
+		add(RelicsSounds.CALTROPS_TAP, definition().subtitle(getSubtitle(RelicsSounds.CALTROPS_TAP)).with(sound(RelicsSounds.CALTROPS_TAP.getId())).with(sound(RelicsSounds.CALTROPS_TAP.getId() + "2")));
 		add(RelicsSounds.TRANSFORM, definition().subtitle(getSubtitle(RelicsSounds.TRANSFORM)).with(sound(RelicsSounds.TRANSFORM.getId())));
-		add(RelicsSounds.SPRINKLE, definition().subtitle(getSubtitle(RelicsSounds.SPRINKLE)).with(sound(RelicsSounds.SPRINKLE.getId())).with(sound(RelicsSounds.SPRINKLE.getId()+"2")));
+		add(RelicsSounds.SPRINKLE, definition().subtitle(getSubtitle(RelicsSounds.SPRINKLE)).with(sound(RelicsSounds.SPRINKLE.getId())).with(sound(RelicsSounds.SPRINKLE.getId() + "2")));
 		add(RelicsSounds.SINE, definition().subtitle(getSubtitle(RelicsSounds.SINE)).with(sound(RelicsSounds.SINE.getId())));
 		add(RelicsSounds.MAGIC_BOOMERANG, definition().subtitle(getSubtitle(RelicsSounds.MAGIC_BOOMERANG)).with(sound(RelicsSounds.MAGIC_BOOMERANG.getId())));
 		add(RelicsSounds.REPEL, definition().subtitle(getSubtitle(RelicsSounds.REPEL)).with(sound(RelicsSounds.REPEL.getId())));
@@ -55,6 +56,21 @@ public class RelicsSoundsProvider extends SoundDefinitionsProvider {
 		add(RelicsSounds.WHIRLWIND, definition().subtitle(getSubtitle(RelicsSounds.WHIRLWIND)).with(sound(RelicsSounds.WHIRLWIND.getId())));
 		add(RelicsSounds.SWORD_CHARGE, definition().subtitle(getSubtitle(RelicsSounds.SWORD_CHARGE)).with(sound(RelicsSounds.SWORD_CHARGE.getId())));
 		add(RelicsSounds.HIGH_CHARGE, definition().subtitle(getSubtitle(RelicsSounds.HIGH_CHARGE)).with(sound(RelicsSounds.HIGH_CHARGE.getId())));
+		add(RelicsSounds.MYSTERY_SPARKLE, definition().subtitle(getSubtitle(RelicsSounds.MYSTERY_SPARKLE)).with(sound(RelicsSounds.MYSTERY_SPARKLE.getId())));
+		add(RelicsSounds.STAR_APPEAR, definition().subtitle(getSubtitle(RelicsSounds.STAR_APPEAR)).with(sound(RelicsSounds.STAR_APPEAR.getId())));
+		add(RelicsSounds.RITUAL_FORK, definition().subtitle(getSubtitle(RelicsSounds.RITUAL_FORK)).with(sound(RelicsSounds.RITUAL_FORK.getId())));
+		add(RelicsSounds.RING_0, definition().subtitle(getSubtitle(RelicsSounds.RING_0)).with(sound(RelicsSounds.RING_0.getId())));
+		add(RelicsSounds.RING_1, definition().subtitle(getSubtitle(RelicsSounds.RING_1)).with(sound(RelicsSounds.RING_1.getId())));
+		add(RelicsSounds.RING_2, definition().subtitle(getSubtitle(RelicsSounds.RING_2)).with(sound(RelicsSounds.RING_2.getId())));
+		add(RelicsSounds.RING_3, definition().subtitle(getSubtitle(RelicsSounds.RING_3)).with(sound(RelicsSounds.RING_3.getId())));
+		add(RelicsSounds.RING_5, definition().subtitle(getSubtitle(RelicsSounds.RING_5)).with(sound(RelicsSounds.RING_5.getId())));
+		add(RelicsSounds.RING_6, definition().subtitle(getSubtitle(RelicsSounds.RING_6)).with(sound(RelicsSounds.RING_6.getId())));
+		add(RelicsSounds.RING_7, definition().subtitle(getSubtitle(RelicsSounds.RING_7)).with(sound(RelicsSounds.RING_7.getId())));
+		add(RelicsSounds.RING_SAD, definition().subtitle(getSubtitle(RelicsSounds.RING_SAD)).with(sound(RelicsSounds.RING_SAD.getId())));
+		add(RelicsSounds.RITUAL_READY, definition().subtitle(getSubtitle(RelicsSounds.RITUAL_READY)).with(sound(RelicsSounds.RITUAL_READY.getId())));
+		add(RelicsSounds.RITUAL_SUCCESS, definition().subtitle(getSubtitle(RelicsSounds.RITUAL_SUCCESS)).with(sound(RelicsSounds.RITUAL_SUCCESS.getId())));
+		add(RelicsSounds.RITUAL_FAIL, definition().subtitle(getSubtitle(RelicsSounds.RITUAL_FAIL)).with(sound(RelicsSounds.RITUAL_FAIL.getId())));
+		add(RelicsSounds.RITUAL_LASER, definition().subtitle(getSubtitle(RelicsSounds.RITUAL_LASER)).with(sound(RelicsSounds.RITUAL_LASER.getId())));
 	}
 
 	private String getSubtitle(RegistryObject<SoundEvent> sound) {

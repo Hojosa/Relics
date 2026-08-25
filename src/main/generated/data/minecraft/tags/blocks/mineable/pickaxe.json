@@ -10,6 +10,10 @@
     "relics_of_old:skybeam_block",
     "relics_of_old:starstone_block",
     "relics_of_old:oddish_pot",
-    "relics_of_old:boost_plate"
+    "relics_of_old:boost_plate",
+    "relics_of_old:starwell_frame",
+    "relics_of_old:starwell_core",
+    "relics_of_old:sky_lens",
+    "relics_of_old:ritual_locus"
   ]
 }

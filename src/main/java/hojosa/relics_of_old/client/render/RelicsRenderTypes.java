@@ -88,11 +88,25 @@ public class RelicsRenderTypes extends RenderType {
 			.setWriteMaskState(RenderType.COLOR_DEPTH_WRITE)
 			.createCompositeState(false));
     
+	private static final BiFunction<ResourceLocation, Boolean, RenderType> ADDITIVE_BEAM = Util.memoize((texture, translucent) -> {
+	      CompositeState state = CompositeState.builder()
+	              .setShaderState(RENDERTYPE_BEACON_BEAM_SHADER)
+	              .setTextureState(new TextureStateShard(texture, false, false))
+	              .setTransparencyState(LIGHTNING_TRANSPARENCY)
+	              .setWriteMaskState(translucent ? COLOR_WRITE : COLOR_DEPTH_WRITE)
+	              .setCullState(NO_CULL)
+	              .createCompositeState(false);
+	      return create(References.MOD_ID + ":additive_beam", DefaultVertexFormat.BLOCK, VertexFormat.Mode.QUADS, 256, false, true, state);
+	  });
+
+	public static RenderType additiveBeam(ResourceLocation texture, boolean translucent) {
+	      return ADDITIVE_BEAM.apply(texture, translucent);
+	  }
+	
     public static RenderType getTextureRenderColored(ResourceLocation texture) {
         return getTextureRenderColored(texture, false);
     }
     public static RenderType getTextureRenderColored(ResourceLocation texture, boolean disableDepthTest) {
         return TEXTURE_RENDER_COLORED.apply(texture, disableDepthTest);
     }
-		
 }

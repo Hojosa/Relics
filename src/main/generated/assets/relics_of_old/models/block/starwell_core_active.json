@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "relics_of_old:block/starwell_frame",
+    "side": "relics_of_old:block/starwell_frame",
+    "top": "relics_of_old:block/starwell_core_top_active"
+  }
+}

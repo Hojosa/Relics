@@ -13,10 +13,12 @@ import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConf
 public class RelicsConfiguredFeatures {
 	public static final ResourceKey<ConfiguredFeature<?, ?>> SHRUB_CLUSTER = registerKey("shrub_cluster");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> BOMB_FLOWER_CLUSTER = registerKey("bomb_flower_cluster");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> STARWELL = registerKey("starwell");
 
 	public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
 		register(context, SHRUB_CLUSTER, RelicsFeatures.SHRUB_CLUSTER.get(), NoneFeatureConfiguration.INSTANCE);
 		register(context, BOMB_FLOWER_CLUSTER, RelicsFeatures.BOMB_FLOWER_CLUSTER.get(), NoneFeatureConfiguration.INSTANCE);
+		register(context, STARWELL, RelicsFeatures.STARWELL.get(), NoneFeatureConfiguration.INSTANCE);
 	}
 
 	private static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {

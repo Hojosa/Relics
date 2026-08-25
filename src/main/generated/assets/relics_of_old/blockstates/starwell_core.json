@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "active=false": {
+      "model": "relics_of_old:block/starwell_core"
+    },
+    "active=true": {
+      "model": "relics_of_old:block/starwell_core_active"
+    }
+  }
+}

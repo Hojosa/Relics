@@ -3,7 +3,9 @@ package hojosa.relics_of_old.common.init;
 import hojosa.relics_of_old.common.block.entity.ClayJarBlockEntity;
 import hojosa.relics_of_old.common.block.entity.InfusedStarstoneBlockEntity;
 import hojosa.relics_of_old.common.block.entity.RetexturedSwordPedestalEntity;
+import hojosa.relics_of_old.common.block.entity.RitualLocusBlockEntity;
 import hojosa.relics_of_old.common.block.entity.SkybeamBlockEntity;
+import hojosa.relics_of_old.common.block.entity.StarwellBlockEntity;
 import hojosa.relics_of_old.common.block.entity.SwordPedestalBlockEntity;
 import hojosa.relics_of_old.common.block.entity.SwordPedestalStoneBlockEntity;
 import hojosa.relics_of_old.lib.References;
@@ -22,21 +24,25 @@ public class RelicsBlockEntities {
 	public static final RegistryObject<BlockEntityType<RetexturedSwordPedestalEntity>> REXTURED_SWORD_PEDESTAL_BLOCK_ENTITY = BLOCK_ENTITIES.register(References.UnlocalizedName.SWORD_PEDESTAL,
 			RetexturedSwordPedestalEntity::new, builder -> builder.add(RelicsBlocks.SWORD_PEDESTAL_NORMAL.get(), RelicsBlocks.SWORD_PEDESTAL_RELIC_VARIANTS.get()));
 
-	public static final RegistryObject<BlockEntityType<SwordPedestalBlockEntity>> SWORD_PEDESTAL_BLOCK_ENTITY = BLOCK_ENTITIES.register(References.UnlocalizedName.SWORD_PEDESTAL_FANCY,
-			SwordPedestalBlockEntity::new, builder -> builder.add(RelicsBlocks.SWORD_PEDESTAL_RELIC.get(), RelicsBlocks.SWORD_PEDESTAL_TIME.get(), RelicsBlocks.SWORD_PEDESTAL_TWILIGHT.get()));
-	
+	public static final RegistryObject<BlockEntityType<SwordPedestalBlockEntity>> SWORD_PEDESTAL_BLOCK_ENTITY = BLOCK_ENTITIES.register(References.UnlocalizedName.SWORD_PEDESTAL_FANCY, SwordPedestalBlockEntity::new,
+			builder -> builder.add(RelicsBlocks.SWORD_PEDESTAL_RELIC.get(), RelicsBlocks.SWORD_PEDESTAL_TIME.get(), RelicsBlocks.SWORD_PEDESTAL_TWILIGHT.get()));
+
 	public static final RegistryObject<BlockEntityType<SwordPedestalStoneBlockEntity>> SWORD_PEDESTAL_STONE_BLOCK_ENTITY = BLOCK_ENTITIES.register(References.UnlocalizedName.SWORD_PEDESTAL_STONE,
 			SwordPedestalStoneBlockEntity::new, builder -> builder.add(RelicsBlocks.SWORD_PEDESTAL_STONE.get()));
-	
-	public static final RegistryObject<BlockEntityType<GlintBlockEntity>> GLINT_BLOCK_ENTITY = BLOCK_ENTITIES.register(References.UnlocalizedName.GLINT_BLOCK,
-			GlintBlockEntity::new, builder -> builder.add());
-	
+
+	public static final RegistryObject<BlockEntityType<GlintBlockEntity>> GLINT_BLOCK_ENTITY = BLOCK_ENTITIES.register(References.UnlocalizedName.GLINT_BLOCK, GlintBlockEntity::new, builder -> builder.add());
+
 	public static final RegistryObject<BlockEntityType<InfusedStarstoneBlockEntity>> INFUSED_STARSTONE_BLOCK_ENTITY = BLOCK_ENTITIES.register(References.UnlocalizedName.INFUSED_STARSTONE_BLOCK,
 			InfusedStarstoneBlockEntity::new, builder -> builder.add(RelicsBlocks.INFUSED_STARSTONE_BLOCK.get()));
-	
-	public static final RegistryObject<BlockEntityType<SkybeamBlockEntity>> SKYBEAM_BLOCK_ENTITY = BLOCK_ENTITIES.register(References.UnlocalizedName.SKYBEAM_BLOCK,
-			SkybeamBlockEntity::new, builder -> builder.add(RelicsBlocks.SKYBEAM_BLOCK.get()));
-	
-	public static final RegistryObject<BlockEntityType<ClayJarBlockEntity>> CLAY_JAR_ENTITY = BLOCK_ENTITIES.register(References.UnlocalizedName.CLAY_JAR,
-			ClayJarBlockEntity::new, builder -> builder.add(RelicsBlocks.CLAY_JAR.get()));
+
+	public static final RegistryObject<BlockEntityType<SkybeamBlockEntity>> SKYBEAM_BLOCK_ENTITY = BLOCK_ENTITIES.register(References.UnlocalizedName.SKYBEAM_BLOCK, SkybeamBlockEntity::new,
+			builder -> builder.add(RelicsBlocks.SKYBEAM_BLOCK.get()));
+
+	public static final RegistryObject<BlockEntityType<ClayJarBlockEntity>> CLAY_JAR_ENTITY = BLOCK_ENTITIES.register(References.UnlocalizedName.CLAY_JAR, ClayJarBlockEntity::new,
+			builder -> builder.add(RelicsBlocks.CLAY_JAR.get()));
+	public static final RegistryObject<BlockEntityType<StarwellBlockEntity>> STARWELL_BLOCK_ENTITY = BLOCK_ENTITIES.register(References.UnlocalizedName.STARWELL_CORE, StarwellBlockEntity::new,
+			builder -> builder.add(RelicsBlocks.STARWELL_CORE.get()));
+
+	public static final RegistryObject<BlockEntityType<RitualLocusBlockEntity>> RITUAL_LOCUS_BLOCK_ENTITY = BLOCK_ENTITIES.register(References.UnlocalizedName.RITUAL_LOCUS, RitualLocusBlockEntity::new,
+			builder -> builder.add(RelicsBlocks.RITUAL_LOCUS.get()));
 }

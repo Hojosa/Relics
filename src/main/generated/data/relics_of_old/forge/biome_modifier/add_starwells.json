@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#relics_of_old:has_feature/starwell",
+  "features": "relics_of_old:starwell_placed",
+  "step": "surface_structures"
+}

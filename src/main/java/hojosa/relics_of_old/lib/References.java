@@ -116,6 +116,10 @@ public class References {
 		public static final String STRUCK_SAND = "struck_sand";
 		public static final String STRUCK_DIRT = "struck_dirt";
 		public static final String FULGURITE = "fulgurite";
+		public static final String STARWELL_FRAME = "starwell_frame";
+		public static final String STARWELL_CORE = "starwell_core";
+		public static final String SKY_LENS = "sky_lens";
+		public static final String RITUAL_LOCUS = "ritual_locus";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -158,6 +162,21 @@ public class References {
 		public static final String WHIRLWIND = "whirlwind";
 		public static final String SWORD_CHARGE = "sword_charge";
 		public static final String HIGH_CHARGE = "high_charge";
+		public static final String MYSTERY_SPARKLE = "mystery_sparkle";
+		public static final String STAR_APPEAR = "star_appear";
+		public static final String RITUAL_FORK = "ritual_fork";
+		public static final String RING_0 = "ring_0";
+		public static final String RING_1 = "ring_1";
+		public static final String RING_2 = "ring_2";
+		public static final String RING_3 = "ring_3";
+		public static final String RING_5 = "ring_5";
+		public static final String RING_6 = "ring_6";
+		public static final String RING_7 = "ring_7";
+		public static final String RING_SAD = "ring_sad";
+		public static final String RITUAL_READY = "ritual_ready";
+		public static final String RITUAL_SUCCESS = "ritual_success";
+		public static final String RITUAL_FAIL = "ritual_fail";
+		public static final String RITUAL_LASER = "ritual_laser";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

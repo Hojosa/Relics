@@ -13,8 +13,11 @@ import hojosa.relics_of_old.common.block.MysticShrub;
 import hojosa.relics_of_old.common.block.NormalSwordPedestal;
 import hojosa.relics_of_old.common.block.RelicRetexturedSwordPedestal;
 import hojosa.relics_of_old.common.block.RelicSwordPedestal;
+import hojosa.relics_of_old.common.block.RitualLocusBlock;
 import hojosa.relics_of_old.common.block.SkybeamBlock;
 import hojosa.relics_of_old.common.block.StarBeamTorch;
+import hojosa.relics_of_old.common.block.StarwellBlock;
+import hojosa.relics_of_old.common.block.StarwellFrameBlock;
 import hojosa.relics_of_old.common.block.StoneSwordPedestal;
 import hojosa.relics_of_old.common.block.SugarCubeBlock;
 import hojosa.relics_of_old.common.block.TimeSwordPedestal;
@@ -95,6 +98,13 @@ public class RelicsBlocks {
 	public static final ItemObject<Block> STRUCK_SAND = BLOCKS.register(References.UnlocalizedName.STRUCK_SAND, () -> new RelicsNormalBlock(BlockBehaviour.Properties.copy(Blocks.SAND).strength(0.5f)), BLOCK_ITEM);
 	public static final ItemObject<Block> STRUCK_DIRT = BLOCKS.register(References.UnlocalizedName.STRUCK_DIRT, () -> new RelicsNormalBlock(BlockBehaviour.Properties.copy(Blocks.DIRT).strength(0.5f)), BLOCK_ITEM);
 
+	// starwell / ritual blocks
+	public static final ItemObject<Block> STARWELL_FRAME = BLOCKS.register(References.UnlocalizedName.STARWELL_FRAME, StarwellFrameBlock::new, BLOCK_ITEM);
+	public static final ItemObject<Block> STARWELL_CORE = BLOCKS.register(References.UnlocalizedName.STARWELL_CORE, StarwellBlock::new, BLOCK_ITEM);
+	public static final ItemObject<Block> SKY_LENS = BLOCKS.register(References.UnlocalizedName.SKY_LENS,
+			() -> new RelicsNormalBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).sound(SoundType.STONE)), BLOCK_ITEM);
+	public static final ItemObject<Block> RITUAL_LOCUS = BLOCKS.register(References.UnlocalizedName.RITUAL_LOCUS, RitualLocusBlock::new, BLOCK_ITEM);
+
 	/**
 	 * We use this builder to ensure that our blocks all have the most important
 	 * properties set. This way it'll stick out if a block doesn't have a sound set.
@@ -131,6 +141,12 @@ public class RelicsBlocks {
 		output.accept(STARRY_SAND.get().asItem());
 		output.accept(STRUCK_DIRT.get().asItem());
 		output.accept(STRUCK_SAND.get().asItem());
+		output.accept(STARWELL_FRAME.get().asItem());
+		output.accept(SKY_LENS.get().asItem());
+		output.accept(STARWELL_FRAME.get().asItem());
+		output.accept(STARWELL_CORE.get().asItem());
+		output.accept(SKY_LENS.get().asItem());
+		output.accept(RITUAL_LOCUS.get().asItem());
 
 		Predicate<ItemStack> variants = stack -> {
 			output.accept(stack);
