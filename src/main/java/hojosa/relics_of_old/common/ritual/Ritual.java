@@ -6,14 +6,19 @@ import hojosa.relics_of_old.common.block.entity.RitualLocusBlockEntity;
 import hojosa.relics_of_old.common.recipes.RitualRecipe;
 import hojosa.relics_of_old.common.recipes.RitualRecipeComponent;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.event.ForgeEventFactory;
 
 public abstract class Ritual {
 	public RitualRecipe components;
@@ -74,22 +79,21 @@ public abstract class Ritual {
 
 	// Summoning ritual subtype
 	public static class Summoning extends Ritual {
-		public Class<? extends Mob> creatureClass;
+		public EntityType<?> entityType;
 		public Object focusFilter;
 
-		public Summoning(String name, Class<? extends Mob> creature, RitualRecipeComponent identifiers, Object focusFilter) {
+		public Summoning(String name, EntityType<?> creature, RitualRecipeComponent identifiers, Object focusFilter) {
 			this(name, creature, new RitualRecipe().add(identifiers).add(new RitualRecipeComponent(Blocks.EMERALD_BLOCK)), focusFilter);
 		}
 
-		public Summoning(String name, Class<? extends Mob> creature, RitualRecipe recipe, Object focusFilter) {
+		public Summoning(String name, EntityType<?> creature, RitualRecipe recipe, Object focusFilter) {
 			super(name, recipe);
-			this.creatureClass = creature;
+			this.entityType = creature;
 			this.focusFilter = focusFilter;
 		}
 
 		@Override
 		public boolean invoke(RitualRecipe ingredients, RitualLocusBlockEntity location, Player caster) {
-			System.out.println("hello?");
 			List<Entity> targets = filterFocus(focusFilter, location);
 			if (targets == null)
 				return false;
@@ -103,25 +107,31 @@ public abstract class Ritual {
 			} else {
 				return false;
 			}
-
-			try {
-				System.out.println("hello?");
-				Mob summoned = creatureClass.getConstructor(net.minecraft.world.entity.EntityType.class, net.minecraft.world.level.Level.class)
-						.newInstance(net.minecraft.world.entity.EntityType.byString(
-								net.minecraftforge.registries.ForgeRegistries.ENTITY_TYPES.getKey(net.minecraft.world.entity.EntityType.byString(creatureClass.getSimpleName().toLowerCase()).orElse(null)).toString())
-								.orElse(null), location.getLevel());
-				if (summoned == null)
-		              return false;
-		          BlockPos pos = location.getBlockPos();
-		          summoned.moveTo(pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5);
-		          summoned.finalizeSpawn(((net.minecraft.server.level.ServerLevel) location.getLevel()), location.getLevel().getCurrentDifficultyAt(pos),
-		  net.minecraft.world.entity.MobSpawnType.MOB_SUMMONED, null, null);
-		          location.getLevel().addFreshEntity(summoned);
-				// Fallback: use EntityType registry
-			} catch (Exception e) {
-				// Summoning will be set up per-ritual with proper EntityType references
-				return false;
+			
+			Level level = location.getLevel();
+			Entity mob = entityType.create(level);
+			BlockPos pos = location.getBlockPos();
+			mob.moveTo(pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5);
+			if (mob instanceof Mob living) {
+				ForgeEventFactory.onFinalizeSpawn(living, (ServerLevel) level, level.getCurrentDifficultyAt(pos), MobSpawnType.MOB_SUMMONED, null, null);
 			}
+			level.addFreshEntity(mob);
+//			try {
+//				Mob summoned = creatureClass.getConstructor(net.minecraft.world.entity.EntityType.class, net.minecraft.world.level.Level.class)
+//						.newInstance(net.minecraft.world.entity.EntityType.byString(
+//								net.minecraftforge.registries.ForgeRegistries.ENTITY_TYPES.getKey(net.minecraft.world.entity.EntityType.byString(creatureClass.getSimpleName().toLowerCase()).orElse(null)).toString())
+//								.orElse(null), location.getLevel());
+//				if (summoned == null)
+//					return false;
+//				BlockPos pos = location.getBlockPos();
+//				summoned.moveTo(pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5);
+//				summoned.finalizeSpawn(((net.minecraft.server.level.ServerLevel) location.getLevel()), location.getLevel().getCurrentDifficultyAt(pos), net.minecraft.world.entity.MobSpawnType.MOB_SUMMONED, null, null);
+//				location.getLevel().addFreshEntity(summoned);
+//				// Fallback: use EntityType registry
+//			} catch (Exception e) {
+//				// Summoning will be set up per-ritual with proper EntityType references
+//				return false;
+//			}
 			return true;
 		}
 	}

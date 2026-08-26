@@ -8,11 +8,9 @@ import hojosa.relics_of_old.common.block.entity.RitualLocusBlockEntity;
 import hojosa.relics_of_old.common.recipes.RitualRecipe;
 import hojosa.relics_of_old.common.recipes.RitualRecipeComponent;
 import hojosa.relics_of_old.common.ritual.Ritual;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.animal.Cow;
 import net.minecraft.world.entity.animal.MushroomCow;
-import net.minecraft.world.entity.animal.Pig;
-import net.minecraft.world.entity.animal.Sheep;
-import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -31,16 +29,16 @@ public class RitualManager {
 
 	private void registerRituals() {
 		// Summon mooshroom: red mushroom + mycelium edge, mushroom stew focus
-		rituals.add(new Ritual.Summoning("summonMooshroom", MushroomCow.class, new RitualRecipeComponent(Blocks.RED_MUSHROOM, Blocks.MYCELIUM), Items.MUSHROOM_STEW));
+		rituals.add(new Ritual.Summoning("summonMooshroom", EntityType.MOOSHROOM, new RitualRecipeComponent(Blocks.RED_MUSHROOM, Blocks.MYCELIUM), Items.MUSHROOM_STEW));
 
 		// Summon sheep: wool + grass edge, grass focus
-		rituals.add(new Ritual.Summoning("summonSheep", Sheep.class, new RitualRecipeComponent(Blocks.WHITE_WOOL, Blocks.GRASS_BLOCK), Blocks.GRASS_BLOCK));
+		rituals.add(new Ritual.Summoning("summonSheep", EntityType.SHEEP, new RitualRecipeComponent(Blocks.WHITE_WOOL, Blocks.GRASS_BLOCK), Blocks.GRASS_BLOCK));
 
 		// Summon horse: hay + grass edge, sugar focus
-		rituals.add(new Ritual.Summoning("summonHorse", Horse.class, new RitualRecipeComponent(Blocks.HAY_BLOCK, Blocks.GRASS_BLOCK), Items.SUGAR));
+		rituals.add(new Ritual.Summoning("summonHorse", EntityType.HORSE, new RitualRecipeComponent(Blocks.HAY_BLOCK, Blocks.GRASS_BLOCK), Items.SUGAR));
 
 		// Summon pig: brown mushroom + grass edge, carrot focus
-		rituals.add(new Ritual.Summoning("summonPig", Pig.class, new RitualRecipeComponent(Blocks.BROWN_MUSHROOM, Blocks.GRASS_BLOCK), Items.CARROT));
+		rituals.add(new Ritual.Summoning("summonPig", EntityType.PIG, new RitualRecipeComponent(Blocks.BROWN_MUSHROOM, Blocks.GRASS_BLOCK), Items.CARROT));
 
 		// Convert cow to mooshroom
 		rituals.add(new Ritual("convertMooshroom", new RitualRecipe().add(new RitualRecipeComponent(Blocks.RED_MUSHROOM, Blocks.BROWN_MUSHROOM))) {
@@ -139,7 +137,6 @@ public class RitualManager {
 	public boolean attemptInvocation(RitualRecipe ingredients, RitualLocusBlockEntity location, Player caster) {
 		for (Ritual r : rituals) {
 			if (r.accepts(ingredients)) {
-				System.out.println("hello1?");
 				return r.invoke(ingredients, location, caster);
 			}
 		}
