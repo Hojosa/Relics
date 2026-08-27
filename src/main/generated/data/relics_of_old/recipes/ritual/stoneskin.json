@@ -1,0 +1,16 @@
+{
+  "type": "relics_of_old:ritual_blessing",
+  "amplifier": 1,
+  "base_duration": 3600,
+  "bonus_per_extra": 600,
+  "components": [
+    {
+      "block_a": "minecraft:stone",
+      "block_b": "minecraft:stone"
+    }
+  ],
+  "effect": "minecraft:resistance",
+  "focus": {
+    "item": "minecraft:leather"
+  }
+}

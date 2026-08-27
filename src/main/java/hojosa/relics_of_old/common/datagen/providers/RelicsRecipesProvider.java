@@ -3,6 +3,7 @@ package hojosa.relics_of_old.common.datagen.providers;
 
 import java.util.function.Consumer;
 
+import hojosa.relics_of_old.common.datagen.builders.RitualRecipeBuilder;
 import hojosa.relics_of_old.common.init.RelicsBlocks;
 import hojosa.relics_of_old.common.init.RelicsItems;
 import hojosa.relics_of_old.common.init.RelicsTags;
@@ -19,6 +20,8 @@ import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.data.recipes.SingleItemRecipeBuilder;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
@@ -466,5 +469,61 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.group(References.CREATIVE_TAB)
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.INFUSED_STAR_DUST.get()))
 		.save(consumer, RelicsUtil.modLoc("starry_sand_from_infused_dust"));
+		
+		// ---- Ritual recipes ----
+		RitualRecipeBuilder.summoning()
+		.pair(Blocks.RED_MUSHROOM, Blocks.MYCELIUM)
+		.keystone(Blocks.EMERALD_BLOCK)
+		.focusItem(Items.MUSHROOM_STEW)
+		.result(EntityType.MOOSHROOM)
+		.save(consumer, "summon_mooshroom");
+		
+		RitualRecipeBuilder.summoning()
+		.pair(Blocks.WHITE_WOOL, Blocks.GRASS_BLOCK)
+		.keystone(Blocks.EMERALD_BLOCK)
+		.focusBlock(Blocks.GRASS_BLOCK)
+		.result(EntityType.SHEEP)
+		.save(consumer, "summon_sheep");
+		
+		RitualRecipeBuilder.summoning()
+		.pair(Blocks.HAY_BLOCK, Blocks.GRASS_BLOCK)
+		.keystone(Blocks.EMERALD_BLOCK)
+		.focusItem(Items.SUGAR)
+		.result(EntityType.HORSE, 4)
+		.result(EntityType.DONKEY, 1)
+		.save(consumer, "summon_horse");
+		
+		RitualRecipeBuilder.summoning()
+		.pair(Blocks.BROWN_MUSHROOM, Blocks.GRASS_BLOCK)
+		.keystone(Blocks.EMERALD_BLOCK)
+		.focusItem(Items.CARROT)
+		.result(EntityType.PIG)
+		.save(consumer, "summon_pig");
+		
+		RitualRecipeBuilder.convert()
+		.pair(Blocks.RED_MUSHROOM, Blocks.BROWN_MUSHROOM)
+		.source(EntityType.COW)
+		.result(EntityType.MOOSHROOM)
+		.save(consumer, "convert_mooshroom");
+		
+		RitualRecipeBuilder.crucible()
+		.pair(Blocks.LAVA, Blocks.LAVA)
+		.save(consumer, "crucible");
+		
+		RitualRecipeBuilder.blessing()
+		.pair(Blocks.STONE, Blocks.STONE)
+		.focusItem(Items.LEATHER)
+		.effect(MobEffects.DAMAGE_RESISTANCE, 1)
+		.duration(3600, 600)
+		.save(consumer, "stoneskin");
+
+//		// Soul tether enchanting
+//		RitualRecipeBuilder.enchanting()
+//		.pair(Blocks.SOUL_SAND, Blocks.TRIPWIRE)
+//		.keystone(Blocks.IRON_BLOCK)
+//		.nbt("soulTether", true)
+//		.xpCost(10)
+//		.save(consumer, "soul_tether");
+
 	}
 }

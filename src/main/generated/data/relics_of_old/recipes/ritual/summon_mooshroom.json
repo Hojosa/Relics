@@ -1,0 +1,20 @@
+{
+  "type": "relics_of_old:ritual_summoning",
+  "components": [
+    {
+      "block_a": "minecraft:red_mushroom",
+      "block_b": "minecraft:mycelium"
+    },
+    {
+      "keystone_block": "minecraft:emerald_block"
+    }
+  ],
+  "focus": {
+    "item": "minecraft:mushroom_stew"
+  },
+  "results": [
+    {
+      "entity": "minecraft:mooshroom"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "type": "relics_of_old:ritual_summoning",
+  "components": [
+    {
+      "block_a": "minecraft:white_wool",
+      "block_b": "minecraft:grass_block"
+    },
+    {
+      "keystone_block": "minecraft:emerald_block"
+    }
+  ],
+  "focus": {
+    "block": "minecraft:grass_block"
+  },
+  "results": [
+    {
+      "entity": "minecraft:sheep"
+    }
+  ]
+}

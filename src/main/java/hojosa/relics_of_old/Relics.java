@@ -66,6 +66,7 @@ public class Relics {
 		RelicsGlobalLootModifier.register(modEventBus);
 		RelicsParticles.PARTICLE_TYPES.register(modEventBus);
 		RelicsRecipes.SERIALIZERS.register(modEventBus);
+		RelicsRecipes.TYPES.register(modEventBus);
 		RelicsFeatures.FEATURES.register(modEventBus);
 
 		MinecraftForge.EVENT_BUS.register(this);

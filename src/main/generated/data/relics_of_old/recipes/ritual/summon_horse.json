@@ -1,0 +1,24 @@
+{
+  "type": "relics_of_old:ritual_summoning",
+  "components": [
+    {
+      "block_a": "minecraft:hay_block",
+      "block_b": "minecraft:grass_block"
+    },
+    {
+      "keystone_block": "minecraft:emerald_block"
+    }
+  ],
+  "focus": {
+    "item": "minecraft:sugar"
+  },
+  "results": [
+    {
+      "entity": "minecraft:horse",
+      "weight": 4
+    },
+    {
+      "entity": "minecraft:donkey"
+    }
+  ]
+}

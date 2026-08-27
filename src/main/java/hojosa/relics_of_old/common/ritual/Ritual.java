@@ -20,6 +20,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.event.ForgeEventFactory;
 
+@Deprecated
 public abstract class Ritual {
 	public RitualRecipe components;
 	public String name;

@@ -1,0 +1,9 @@
+{
+  "type": "relics_of_old:ritual_crucible",
+  "components": [
+    {
+      "block_a": "minecraft:lava",
+      "block_b": "minecraft:lava"
+    }
+  ]
+}
