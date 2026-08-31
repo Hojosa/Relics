@@ -5,7 +5,6 @@ import java.util.List;
 import com.google.gson.JsonObject;
 
 import hojosa.relics_of_old.common.block.entity.RitualLocusBlockEntity;
-import hojosa.relics_of_old.common.init.RitualManager;
 import hojosa.relics_of_old.lib.RelicsUtil;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -41,7 +40,7 @@ public class RitualEnchantingRecipe extends RitualRecipeBase {
         if (stack.getMaxStackSize() != 1) return false;
 
         // Spend XP levels or deal damage for shortfall
-        if (!RitualManager.spendRitualLevels(caster, xpCost)) return false;
+        if (!spendRitualLevels(caster, xpCost)) return false;
 
         stack.getOrCreateTag().putBoolean(nbtTag, nbtValue);
         return true;

@@ -11,8 +11,8 @@ import hojosa.relics_of_old.common.block.StarwellBlock;
 import hojosa.relics_of_old.common.init.RelicsBlockEntities;
 import hojosa.relics_of_old.common.init.RelicsBlocks;
 import hojosa.relics_of_old.common.init.RelicsSounds;
-import hojosa.relics_of_old.common.init.RitualManager;
 import hojosa.relics_of_old.common.recipes.RitualRecipe;
+import hojosa.relics_of_old.common.recipes.RitualRecipeBase;
 import hojosa.relics_of_old.common.recipes.RitualRecipeComponent;
 import hojosa.relics_of_old.common.ritual.Edge;
 import hojosa.relics_of_old.common.ritual.RitualGrid;
@@ -45,6 +45,7 @@ public class RitualLocusBlockEntity extends MantleBlockEntity {
 	public int successEffectTimer = 0;
 	public static final int SUCCESS_EFFECT_DURATION = 30;
 	public boolean successGoing = false;
+	private RitualRecipeBase lastMatchedRecipe;
 
 	public RitualLocusBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
 		super(type, pos, state);
@@ -82,12 +83,28 @@ public class RitualLocusBlockEntity extends MantleBlockEntity {
 			return false;
 
 		RitualRecipe ingredients = getIngredients();
-		boolean success = RitualManager.INSTANCE.attemptInvocation(ingredients, this, player);
+		boolean success = false;
+		
+		if (lastMatchedRecipe != null && lastMatchedRecipe.matchesRitual(ingredients)) {
+	          success = lastMatchedRecipe.invoke(ingredients, this, player);
+	      } else {
+	          var recipes = level.getRecipeManager().getAllRecipesFor(RitualRecipeBase.Type.INSTANCE);
+	          for (RitualRecipeBase recipe : recipes) {
+	              if (recipe.matchesRitual(ingredients)) {
+	                  lastMatchedRecipe = recipe;
+	                  success = recipe.invoke(ingredients, this, player);
+	                  break;
+	              }
+	          }
+	      }
+
 
 		if (success) {
 			level.playSound(null, worldPosition, RelicsSounds.RITUAL_SUCCESS.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
 			level.playSound(null, worldPosition, RelicsSounds.RITUAL_LASER.get(), SoundSource.BLOCKS, 0.15f, 1.0f);
 			successGoing = true;
+		} else {
+			level.playSound(null, worldPosition, RelicsSounds.RITUAL_FAIL.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
 		}
 
 		dirty = true;

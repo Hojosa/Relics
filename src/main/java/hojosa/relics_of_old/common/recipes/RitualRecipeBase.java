@@ -102,6 +102,16 @@ public abstract class RitualRecipeBase implements Recipe<Container> {
 		}
 	}
 
+	// Spend XP levels, dealing damage for the shortfall
+	protected static boolean spendRitualLevels(Player caster, int levels) {
+		int spend = Math.min(caster.experienceLevel, levels);
+		caster.giveExperienceLevels(-spend);
+		if (spend < levels) {
+			caster.hurt(caster.damageSources().magic(), 4.0f * (levels - spend));
+		}
+		return caster.getHealth() > 0;
+	}
+
 	// --- Shared parsing helpers for all serializers ---
 
 	public static List<RitualRecipeComponent> parseComponents(JsonArray componentArray) {

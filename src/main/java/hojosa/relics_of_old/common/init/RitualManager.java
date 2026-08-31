@@ -6,7 +6,7 @@ import hojosa.relics_of_old.common.recipes.RitualRecipeBase;
 import lombok.NoArgsConstructor;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-
+@Deprecated
 @NoArgsConstructor
 public class RitualManager {
 	public static final RitualManager INSTANCE = new RitualManager();
@@ -110,6 +110,7 @@ public class RitualManager {
 //	}
 
 	// Spend XP levels, dealing damage for the shortfall
+	@Deprecated
 	public static boolean spendRitualLevels(Player caster, int levels) {
 		int spend = Math.min(caster.experienceLevel, levels);
 		caster.giveExperienceLevels(-spend);
@@ -119,6 +120,7 @@ public class RitualManager {
 		return caster.getHealth() > 0;
 	}
 	
+	@Deprecated
 	public boolean attemptInvocation(RitualRecipe ingredients, RitualLocusBlockEntity location, Player caster) {
         Level level = location.getLevel();
         if (level == null) return false;

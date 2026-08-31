@@ -5,14 +5,20 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
+import hojosa.relics_of_old.common.block.entity.RitualLocusBlockEntity;
 import hojosa.relics_of_old.common.init.RelicsBlocks;
 import hojosa.relics_of_old.common.init.RelicsEntities;
+import hojosa.relics_of_old.common.init.RelicsSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -23,8 +29,10 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.entity.IEntityAdditionalSpawnData;
+import net.minecraftforge.network.NetworkHooks;
 
-public class SpellEffectEntity extends Entity {
+public class SpellEffectEntity extends Entity implements IEntityAdditionalSpawnData {
 
 	private static final EntityDataAccessor<Integer> DATA_SPELL_TYPE = SynchedEntityData.defineId(SpellEffectEntity.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Integer> DATA_LIFETIME = SynchedEntityData.defineId(SpellEffectEntity.class, EntityDataSerializers.INT);
@@ -190,6 +198,25 @@ public class SpellEffectEntity extends Entity {
 			tag.putUUID("Caster", casterUUID);
 	}
 
+	@Override
+	public void writeSpawnData(FriendlyByteBuf buffer) {
+		buffer.writeDouble(radius);
+		buffer.writeDouble(power);
+		buffer.writeBoolean(isCrit);
+	}
+
+	@Override
+	public void readSpawnData(FriendlyByteBuf additionalData) {
+		radius = additionalData.readDouble();
+		power = additionalData.readDouble();
+		isCrit = additionalData.readBoolean();
+	}
+
+	@Override
+	public Packet<ClientGamePacketListener> getAddEntityPacket() {
+		return NetworkHooks.getEntitySpawningPacket(this);
+	}
+
 	public enum SpellType {
 		STAR_IMPACT(Element.STAR, 10, true), ORB_EXPLOSION(Element.EXPLOSION, 2, true) {
 			@Override
@@ -210,16 +237,35 @@ public class SpellEffectEntity extends Entity {
 				living.hurt(spell.damageSources().indirectMagic(spell, caster), damage);
 				spell.knockRadialOutward(living, 0.5f, 0.0f);
 			}
-			
+
 			@Override
 			public void clientTick(SpellEffectEntity spell, int lifetime) {
 				// TODO Auto-generated method stub
 				super.clientTick(spell, lifetime);
 			}
 		},
-		FIRE(Element.FIRE, 15, true), LIGHTNING(Element.LIGHTNING, 10, false), ICE(Element.ICE, 10, true),
+		FIRE(Element.FIRE, 15, true), LIGHTNING(Element.LIGHTNING, 5, false), ICE(Element.ICE, 10, true),
 		// add more spell types here as needed
-		;
+		SPRINKLE_STARDUST(Element.HARMLESS, 30, true) {
+			@Override
+			public void affectBlock(SpellEffectEntity spell, BlockPos pos) {
+				Level level = spell.level();
+				// Activate ritual locus
+				if (level.getBlockEntity(pos) instanceof RitualLocusBlockEntity locus) {
+					Player caster = spell.getCaster();
+					if (caster != null) {
+						locus.tryInvoke(caster);
+					}
+				}
+			}
+
+			@Override
+			public void onSpawn(SpellEffectEntity spell) {
+				//wrong sound
+				spell.level().playSound(null, spell.blockPosition(), RelicsSounds.SPRINKLE.get(), SoundSource.PLAYERS, 2.5f, 1.0f);
+			}
+
+		};
 
 		public final Element element;
 		public final int maxLife;

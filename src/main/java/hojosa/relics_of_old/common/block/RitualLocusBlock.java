@@ -39,20 +39,4 @@ public class RitualLocusBlock extends RelicsNormalBlock implements EntityBlock {
 			}
 		};
 	}
-
-	@Override
-	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, net.minecraft.world.phys.BlockHitResult hit) {
-		if (level.isClientSide)
-			return InteractionResult.SUCCESS;
-
-		BlockEntity be = level.getBlockEntity(pos);
-		if (be instanceof RitualLocusBlockEntity ritual) {
-			boolean success = ritual.tryInvoke(player);
-			if (!success) {
-				// Fail sound
-				level.playSound(null, pos, RelicsSounds.RITUAL_FAIL.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
-			}
-		}
-		return InteractionResult.CONSUME;
-	}
 }

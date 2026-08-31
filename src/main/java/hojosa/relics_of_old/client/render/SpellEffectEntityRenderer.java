@@ -25,6 +25,7 @@ public class SpellEffectEntityRenderer extends EntityRenderer<SpellEffectEntity>
 	// per-entity particle lists, keyed by entity ID
 	private final Map<Integer, List<MiniParticle>> particleMap = new HashMap<>();
 	private final Random rand = new Random();
+	private long lastGameTime = -1;
 
 	public SpellEffectEntityRenderer(EntityRendererProvider.Context context) {
 		super(context);
@@ -44,7 +45,15 @@ public class SpellEffectEntityRenderer extends EntityRenderer<SpellEffectEntity>
 		List<MiniParticle> particles = particleMap.get(id);
 
 		// tick the particle sim
-		particles = MiniParticle.tickAll(particles);
+//		particles = MiniParticle.tickAll(particles);
+		long gameTime = entity.level().getGameTime();
+		if (gameTime != lastGameTime) {
+			for (var entry : particleMap.entrySet()) {
+				entry.setValue(MiniParticle.tickAll(entry.getValue()));
+			}
+			lastGameTime = gameTime;
+		}
+
 		particleMap.put(id, particles);
 
 		// clean up when entity is gone
@@ -94,7 +103,6 @@ public class SpellEffectEntityRenderer extends EntityRenderer<SpellEffectEntity>
 	}
 
 	// -- Particle generation per spell type --
-
 	private List<MiniParticle> generateParticles(SpellType type, double radius, double power) {
 		List<MiniParticle> particles = new ArrayList<>();
 
@@ -139,6 +147,15 @@ public class SpellEffectEntityRenderer extends EntityRenderer<SpellEffectEntity>
 		case ORB_EXPLOSION -> {
 			// minimal — mostly handled by vanilla explosion particle via clientTick
 		}
+		case SPRINKLE_STARDUST -> {
+			for (int i = 0; i < 30; i++) {
+				MiniParticle p = MiniParticle.newRadial(rand, radius, 0.0, 0.0);
+				p.maxLife = 15;
+				p.hibernateTime = rand.nextInt(7);
+				particles.add(p);
+			}
+		}
+
 		default -> {
 		}
 		}
@@ -192,6 +209,15 @@ public class SpellEffectEntityRenderer extends EntityRenderer<SpellEffectEntity>
 				drawPolyOutline(poseStack, lineBuilder, 6, size, r, g, b, a);
 			}
 		}
+		case SPRINKLE_STARDUST -> {
+			// pinch diamond
+			float r = 1.0f;
+			float g = Math.min(1.0f, (float) (1.5 - age));
+			float b = Math.min(1.0f, (float) (0.5 + age));
+			float a = 1.0f;
+			drawPinchDiamond(poseStack, triBuilder, age, 0.25, r, g, b, a);
+		}
+
 		default -> {
 		}
 		}
@@ -303,6 +329,29 @@ public class SpellEffectEntityRenderer extends EntityRenderer<SpellEffectEntity>
 			builder.vertex(matrix, x1, cy, z1).color(r, g, b, a).normal(poseStack.last().normal(), dx / len, 0, dz / len).endVertex();
 			builder.vertex(matrix, x2, cy, z2).color(r, g, b, a).normal(poseStack.last().normal(), dx / len, 0, dz / len).endVertex();
 		}
+	}
+
+	private void drawPinchDiamond(PoseStack poseStack, VertexConsumer builder, double phase, double size, float r, float g, float b, float a) {
+		poseStack.pushPose();
+		poseStack.mulPose(this.entityRenderDispatcher.cameraOrientation());
+		Matrix4f matrix = poseStack.last().pose();
+
+		// X shrinks, Y stretches over lifetime
+		float sy = (float) (phase * phase * size);
+		float sx = (float) ((1.0 - phase) * (1.0 - phase) * size);
+
+		// Two triangles forming a diamond
+		vertex(builder, matrix, 0, sy, 0, r, g, b, a);
+		vertex(builder, matrix, -sx, 0, 0, r, g, b, a);
+		vertex(builder, matrix, sx, 0, 0, r, g, b, a);
+		vertex(builder, matrix, sx, 0, 0, r, g, b, a);
+
+		vertex(builder, matrix, 0, -sy, 0, r, g, b, a);
+		vertex(builder, matrix, sx, 0, 0, r, g, b, a);
+		vertex(builder, matrix, -sx, 0, 0, r, g, b, a);
+		vertex(builder, matrix, -sx, 0, 0, r, g, b, a);
+
+		poseStack.popPose();
 	}
 
 	// -- Vertex shorthand for lines --

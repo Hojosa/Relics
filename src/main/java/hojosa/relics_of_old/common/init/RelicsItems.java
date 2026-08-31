@@ -13,6 +13,7 @@ import hojosa.relics_of_old.common.item.FireTablet;
 import hojosa.relics_of_old.common.item.FlameSword;
 import hojosa.relics_of_old.common.item.HeadbandOfValor;
 import hojosa.relics_of_old.common.item.Heart;
+import hojosa.relics_of_old.common.item.InfusedStarDustItem;
 import hojosa.relics_of_old.common.item.LostPage;
 import hojosa.relics_of_old.common.item.MagicBoomerang;
 import hojosa.relics_of_old.common.item.MagicMirror;
@@ -78,7 +79,7 @@ public class RelicsItems {
 	public static final RegistryObject<RelicsItem> STAR_PIECE = ITEMS.register(References.UnlocalizedName.STAR_PIECE, () -> new InfuseableItem(64, Rarity.UNCOMMON, INFUSED_STAR_PIECE));
 	public static final RegistryObject<RelicsItem> STAR_DUST = ITEMS.register(References.UnlocalizedName.STAR_DUST, () -> new RelicsItem(64, Rarity.UNCOMMON));
 	public static final RegistryObject<RelicsItem> STAR_STONE = ITEMS.register(References.UnlocalizedName.STAR_STONE, () -> new RelicsItem(64, Rarity.UNCOMMON));
-	public static final RegistryObject<RelicsItem> INFUSED_STAR_DUST = ITEMS.register(References.UnlocalizedName.INFUSED_STAR_DUST, () -> new InfusedItem(64, Rarity.EPIC));
+	public static final RegistryObject<RelicsItem> INFUSED_STAR_DUST = ITEMS.register(References.UnlocalizedName.INFUSED_STAR_DUST, () -> new InfusedStarDustItem(64, Rarity.EPIC));
 	public static final RegistryObject<RelicsItem> INFUSED_STAR_STONE = ITEMS.register(References.UnlocalizedName.INFUSED_STAR_STONE, () -> new InfusedItem(64, Rarity.EPIC));
 	public static final RegistryObject<RelicsItem> EMERALD_SHARD = ITEMS.register(References.UnlocalizedName.EMERALD_SHARD, EmeraldShard::new);
 	public static final RegistryObject<RelicsItem> EMERALD_PIECE = ITEMS.register(References.UnlocalizedName.EMERALD_PIECE, EmeraldPiece::new);
