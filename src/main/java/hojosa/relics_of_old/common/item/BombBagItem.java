@@ -80,8 +80,6 @@ public class BombBagItem extends RelicsItem {
 	public boolean overrideStackedOnOther(ItemStack bag, Slot slot, ClickAction action, Player player) {
 		if (bag.getCount() != 1)
 			return false;
-		System.out.println(action);
-		System.out.println(player.isShiftKeyDown());
 		int count = getBombCount(bag);
 
 		if (action == ClickAction.SECONDARY && count > 0) {
