@@ -32,6 +32,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.entity.IEntityAdditionalSpawnData;
 import net.minecraftforge.network.NetworkHooks;
 
+//this class handels LG2 stlye spells (effects, interactions etc)
 public class SpellEffectEntity extends Entity implements IEntityAdditionalSpawnData {
 
 	private static final EntityDataAccessor<Integer> DATA_SPELL_TYPE = SynchedEntityData.defineId(SpellEffectEntity.class, EntityDataSerializers.INT);
@@ -74,6 +75,8 @@ public class SpellEffectEntity extends Entity implements IEntityAdditionalSpawnD
 		// sound on spawn
 		if (lifetime == 0 && !level().isClientSide) {
 			type.onSpawn(this);
+			SpellDecoratorEntity decorator = new SpellDecoratorEntity(this);
+			level().addFreshEntity(decorator);
 		}
 
 		// affect blocks at sleepTime
@@ -261,10 +264,8 @@ public class SpellEffectEntity extends Entity implements IEntityAdditionalSpawnD
 
 			@Override
 			public void onSpawn(SpellEffectEntity spell) {
-				//wrong sound
-				spell.level().playSound(null, spell.blockPosition(), RelicsSounds.SPRINKLE.get(), SoundSource.PLAYERS, 2.5f, 1.0f);
+				spell.level().playSound(null, spell.blockPosition(), RelicsSounds.STARDUST.get(), SoundSource.PLAYERS, 2.5f, 1.0f);
 			}
-
 		};
 
 		public final Element element;

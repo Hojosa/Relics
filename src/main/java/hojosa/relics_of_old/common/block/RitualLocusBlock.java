@@ -1,13 +1,8 @@
 package hojosa.relics_of_old.common.block;
 
 import hojosa.relics_of_old.common.block.entity.RitualLocusBlockEntity;
-import hojosa.relics_of_old.common.init.RelicsSounds;
 import hojosa.relics_of_old.lib.block.RelicsNormalBlock;
 import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.EntityBlock;
