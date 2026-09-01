@@ -84,20 +84,19 @@ public class RitualLocusBlockEntity extends MantleBlockEntity {
 
 		RitualRecipe ingredients = getIngredients();
 		boolean success = false;
-		
-		if (lastMatchedRecipe != null && lastMatchedRecipe.matchesRitual(ingredients)) {
-	          success = lastMatchedRecipe.invoke(ingredients, this, player);
-	      } else {
-	          var recipes = level.getRecipeManager().getAllRecipesFor(RitualRecipeBase.Type.INSTANCE);
-	          for (RitualRecipeBase recipe : recipes) {
-	              if (recipe.matchesRitual(ingredients)) {
-	                  lastMatchedRecipe = recipe;
-	                  success = recipe.invoke(ingredients, this, player);
-	                  break;
-	              }
-	          }
-	      }
 
+		if (lastMatchedRecipe != null && lastMatchedRecipe.matchesRitual(ingredients)) {
+			success = lastMatchedRecipe.invoke(ingredients, this, player);
+		} else {
+			var recipes = level.getRecipeManager().getAllRecipesFor(RitualRecipeBase.Type.INSTANCE);
+			for (RitualRecipeBase recipe : recipes) {
+				if (recipe.matchesRitual(ingredients)) {
+					lastMatchedRecipe = recipe;
+					success = recipe.invoke(ingredients, this, player);
+					break;
+				}
+			}
+		}
 
 		if (success) {
 			level.playSound(null, worldPosition, RelicsSounds.RITUAL_SUCCESS.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
@@ -112,6 +111,21 @@ public class RitualLocusBlockEntity extends MantleBlockEntity {
 		stable = false;
 		level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
 		return success;
+	}
+
+	public void tuning() {
+		if (!active)
+			return;
+
+		if (!dirty) {
+			int edgeNumber = grid.inhabitedPoints(level).size();
+			if (edgeNumber < 8) {
+				// Play the chime for the next grid point offset
+				playChimeForIndex(grid.offsets[edgeNumber], worldPosition, 1.0f, 0.5f);
+			}
+		} else {
+			level.playSound(null, worldPosition, RelicsSounds.RING_SAD.get(), SoundSource.BLOCKS, 1.0f, 0.5f);
+		}
 	}
 
 	public void tick() {
@@ -199,7 +213,7 @@ public class RitualLocusBlockEntity extends MantleBlockEntity {
 			int edgeNumber = grid.inhabitedPoints(level).size() - 1;
 
 			// Play ring sound for this point
-			playChimeForIndex(edgeNumber, pos);
+			playChimeForIndex(edgeNumber, pos, 0.5f, 1.0f);
 
 			int destination = grid.makeEdgeFrom(point, edgeNumber);
 			pulseStartTime[destination] = level.getGameTime() + PULSE_SEPARATION;
@@ -208,7 +222,7 @@ public class RitualLocusBlockEntity extends MantleBlockEntity {
 	}
 
 	// Plays the appropriate chime pitch for the given grid index
-	private void playChimeForIndex(int index, BlockPos pos) {
+	private void playChimeForIndex(int index, BlockPos pos, float volume, float pitch) {
 		SoundEvent ring = switch (index) {
 		case 0 -> RelicsSounds.RING_0.get();
 		case 1 -> RelicsSounds.RING_1.get();
@@ -220,7 +234,7 @@ public class RitualLocusBlockEntity extends MantleBlockEntity {
 		case 7 -> RelicsSounds.RING_7.get();
 		default -> RelicsSounds.RING_0.get();
 		};
-		level.playSound(null, pos, ring, SoundSource.BLOCKS, 0.5f, 1.0f);
+		level.playSound(null, pos, ring, SoundSource.BLOCKS, volume, pitch);
 	}
 
 	// Builds the recipe from the current grid state

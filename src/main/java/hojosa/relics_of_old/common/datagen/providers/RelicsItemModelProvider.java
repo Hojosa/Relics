@@ -111,6 +111,7 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItem(RelicsItems.BOMB_ARROW);
 		basicItem(RelicsItems.BOMB_BAG);
 		basicItem(RelicsItems.FULGURITE);
+		basicItem(RelicsItems.TUNING_FORK);
 		
 		//magic mirror model
 		//base model that contains the base transform settings for the model

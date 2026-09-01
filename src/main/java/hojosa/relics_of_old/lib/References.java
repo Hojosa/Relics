@@ -121,6 +121,7 @@ public class References {
 		public static final String STARWELL_CORE = "starwell_core";
 		public static final String SKY_LENS = "sky_lens";
 		public static final String RITUAL_LOCUS = "ritual_locus";
+		public static final String TUNING_FORK = "tuning_fork";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

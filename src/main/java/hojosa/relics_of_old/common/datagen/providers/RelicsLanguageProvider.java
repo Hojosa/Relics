@@ -122,6 +122,7 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addItem(RelicsItems.BOMB_ARROW, "Bomb Arrow");
 		addItem(RelicsItems.BOMB_BAG, "Bomb Bag");
 		addItem(RelicsItems.FULGURITE, "Fulgurite");
+		addItem(RelicsItems.TUNING_FORK, "Tuning Fork");
 
 		// Sword augment tooltips
 		add("augment.relics_of_old.fire", "Augment: Fire");

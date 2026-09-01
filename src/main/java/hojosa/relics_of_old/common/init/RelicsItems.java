@@ -27,6 +27,7 @@ import hojosa.relics_of_old.common.item.RelicsAmulet;
 import hojosa.relics_of_old.common.item.RockCandyItem;
 import hojosa.relics_of_old.common.item.SlimeSword;
 import hojosa.relics_of_old.common.item.TitanBand;
+import hojosa.relics_of_old.common.item.TuningForkItem;
 import hojosa.relics_of_old.common.item.WaterTablet;
 import hojosa.relics_of_old.common.item.WhirlwindBoots;
 import hojosa.relics_of_old.lib.References;
@@ -94,6 +95,8 @@ public class RelicsItems {
 	public static final RegistryObject<RockCandyItem> ROCK_CANDY_LAPIS = ITEMS.register(References.UnlocalizedName.ROCK_CANDY_LAPIS, () -> new RockCandyItem(MobEffects.JUMP, 1)); // Jump Boost II
 	public static final RegistryObject<RockCandyItem> ROCK_CANDY_EMERALD = ITEMS.register(References.UnlocalizedName.ROCK_CANDY_EMERALD, () -> new RockCandyItem(MobEffects.DIG_SPEED, 3)); // Haste IV
 	public static final RegistryObject<RockCandyItem> ROCK_CANDY_DIAMOND = ITEMS.register(References.UnlocalizedName.ROCK_CANDY_DIAMOND, () -> new RockCandyItem(MobEffects.DAMAGE_RESISTANCE, 3)); // Resistance IV
+	public static final RegistryObject<RelicsItem> FULGURITE = ITEMS.register(References.UnlocalizedName.FULGURITE, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> TUNING_FORK = ITEMS.register(References.UnlocalizedName.TUNING_FORK, TuningForkItem::new);
 	
 	// lost pages
 	public static final RegistryObject<LostPage> LOST_PAGE_1 = ITEMS.register(References.UnlocalizedName.LOST_PAGE_1, () -> new LostPage(1, References.LostPagesText.LOST_PAGE_1));
@@ -137,7 +140,7 @@ public class RelicsItems {
 	public static final RegistryObject<WhirlwindBoots> WHIRLWIND_BOOTS = ITEMS.register(References.UnlocalizedName.WHIRLWIND_BOOTS, () -> new WhirlwindBoots(RelicsArmorMaterials.WHIRLWIND));
 	public static final RegistryObject<TitanBand> TITAN_BAND = ITEMS.register(References.UnlocalizedName.TITAN_BAND, TitanBand::new);
 	public static final RegistryObject<HeadbandOfValor> HEADBAND_OF_VALOR = ITEMS.register(References.UnlocalizedName.HEADBAND_OF_VALOR, () -> new HeadbandOfValor(RelicsArmorMaterials.HEADBAND));
-	public static final RegistryObject<RelicsItem> FULGURITE = ITEMS.register(References.UnlocalizedName.FULGURITE, () -> new RelicsItem(64));
+	
 
 	public static void addTabItems(ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
 		RelicsItems.ITEMS.getEntries().forEach(itemRegistryObject -> output.accept(itemRegistryObject.get().getDefaultInstance()));
