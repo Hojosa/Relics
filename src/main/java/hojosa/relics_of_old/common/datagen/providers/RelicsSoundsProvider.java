@@ -71,6 +71,7 @@ public class RelicsSoundsProvider extends SoundDefinitionsProvider {
 		add(RelicsSounds.RITUAL_SUCCESS, definition().subtitle(getSubtitle(RelicsSounds.RITUAL_SUCCESS)).with(sound(RelicsSounds.RITUAL_SUCCESS.getId())));
 		add(RelicsSounds.RITUAL_FAIL, definition().subtitle(getSubtitle(RelicsSounds.RITUAL_FAIL)).with(sound(RelicsSounds.RITUAL_FAIL.getId())));
 		add(RelicsSounds.RITUAL_LASER, definition().subtitle(getSubtitle(RelicsSounds.RITUAL_LASER)).with(sound(RelicsSounds.RITUAL_LASER.getId())));
+		add(RelicsSounds.STARDUST, definition().subtitle(getSubtitle(RelicsSounds.STARDUST)).with(sound(RelicsSounds.STARDUST.getId())));
 	}
 
 	private String getSubtitle(RegistryObject<SoundEvent> sound) {

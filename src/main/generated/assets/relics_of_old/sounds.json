@@ -273,6 +273,12 @@
     ],
     "subtitle": "relics_of_old.subtitle.star_twinkle"
   },
+  "stardust": {
+    "sounds": [
+      "relics_of_old:stardust"
+    ],
+    "subtitle": "relics_of_old.subtitle.stardust"
+  },
   "sword_charge": {
     "sounds": [
       "relics_of_old:sword_charge"
