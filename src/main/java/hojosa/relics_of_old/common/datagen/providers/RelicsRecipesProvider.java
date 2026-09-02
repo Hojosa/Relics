@@ -208,21 +208,21 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.save(consumer);
 
 		ShapedRetexturedRecipeBuilder.fromShaped(
-			      ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsBlocks.CLAY_JAR.get(), 16)
-			          .pattern("t t")
-			          .pattern("t t")
-			          .pattern("ttt")
-			          .define('t', RelicsTags.Items.CLAY_JAR_VARIANTS)
-			          .group(References.CREATIVE_TAB)
-			          .unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsBlocks.CLAY_JAR.get())))
-			  .setSource(RelicsTags.Items.CLAY_JAR_VARIANTS)
-			  .setMatchAll()
-			  .build(consumer, RelicsUtil.modLoc("clay_jar_retextured"));
+			ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsBlocks.CLAY_JAR.get(), 16)
+			.pattern("t t")
+			.pattern("t t")
+			.pattern("ttt")
+			.define('t', RelicsTags.Items.CLAY_JAR_VARIANTS)
+			.group(References.CREATIVE_TAB)
+			.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsBlocks.CLAY_JAR.get())))
+			.setSource(RelicsTags.Items.CLAY_JAR_VARIANTS)
+			.setMatchAll()
+			.build(consumer, RelicsUtil.modLoc("clay_jar_retextured"));
 
 		
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.MILK_CHOCOLATE.get())
 		.pattern("mc ")
-		.pattern("s  ")
+		.pattern("s")
 		.define('m', Items.MILK_BUCKET)
 		.define('c', Items.COCOA_BEANS)
 		.define('s', Items.MILK_BUCKET)
@@ -276,8 +276,8 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.WOODEN_BOOMERANG.get())
 		.pattern("www")
-		.pattern("w  ")
-		.pattern("w  ")
+		.pattern("w")
+		.pattern("w")
 		.define('w', ItemTags.PLANKS)
 		.group(References.CREATIVE_TAB)
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.OAK_PLANKS))
@@ -356,16 +356,16 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.REED_PIPES.get())
 		.pattern("rrr")
 		.pattern("rr ")
-		.pattern("r  ")
+		.pattern("r")
 		.define('r', Items.SUGAR_CANE)
 		.group(References.CREATIVE_TAB)
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.SUGAR_CANE))
 		.save(consumer);
 		
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.SLIME_SWORD.get())
-		.pattern("s  ")
-		.pattern("s  ")
-		.pattern("w  ")
+		.pattern("s")
+		.pattern("s")
+		.pattern("w")
 		.define('s', Items.SLIME_BALL)
 		.define('w', Items.STICK)
 		.group(References.CREATIVE_TAB)
@@ -385,9 +385,9 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.save(consumer);
 		
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.ENDER_SWORD.get())
-		.pattern("i  ")
-		.pattern("e  ")
-		.pattern("s  ")
+		.pattern("i")
+		.pattern("e")
+		.pattern("s")
 		.define('i', Items.IRON_INGOT)
 		.define('e', RelicsItems.ENDER_MEDALLION.get())
 		.define('s', Items.STICK)
@@ -398,12 +398,12 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		// Sugar Cube: 9 sugar -> 1 sugar cube
 		ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, RelicsBlocks.SUGAR_CUBE.get())
 		.pattern("sss")
-	  	.pattern("sss")
-	  	.pattern("sss")
-	  	.define('s', Items.SUGAR)
-	  	.group(References.CREATIVE_TAB)
-	    .unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.SUGAR))
-	    .save(consumer);
+		.pattern("sss")
+		.pattern("sss")
+		.define('s', Items.SUGAR)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.SUGAR))
+		.save(consumer);
 		
 		// Sugar Cube -> 9 sugar (shapeless reverse)
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.SUGAR, 9)
@@ -418,9 +418,9 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.requires(Items.STICK)
 		.requires(Items.REDSTONE)
 		.requires(Items.WATER_BUCKET)
-	    .group(References.CREATIVE_TAB)
-	    .unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.SUGAR))
-	    .save(consumer);
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.SUGAR))
+		.save(consumer);
 		
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, RelicsItems.ROCK_CANDY_LAPIS.get())
 		.requires(Ingredient.of(RelicsTags.Items.SUGAR_CUBES), 6)
@@ -428,8 +428,8 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.requires(Items.LAPIS_LAZULI)
 		.requires(Items.WATER_BUCKET)
 		.group(References.CREATIVE_TAB)
-      	.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.SUGAR))
-      	.save(consumer);
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.SUGAR))
+		.save(consumer);
 		
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, RelicsItems.ROCK_CANDY_EMERALD.get())
 		.requires(Ingredient.of(RelicsTags.Items.SUGAR_CUBES), 6)
@@ -524,6 +524,234 @@ public class RelicsRecipesProvider extends RecipeProvider {
 //		.nbt("soulTether", true)
 //		.xpCost(10)
 //		.save(consumer, "soul_tether");
+		
+		// Starglass lump: smelt starry sand
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(RelicsBlocks.STARRY_SAND.get()), RecipeCategory.MISC, RelicsItems.STARGLASS_LUMP.get(), 0.0f, 200)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsBlocks.STARRY_SAND.get()))
+		.save(consumer);
 
-	}
+		// Starsteel dust: infused star dust + iron dust (requires another mod to provide forge:dusts/iron)
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.STARSTEEL_DUST.get())
+		.requires(RelicsItems.INFUSED_STAR_DUST.get())
+		.requires(Ingredient.of(RelicsTags.Items.DUSTS_IRON))
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.INFUSED_STAR_DUST.get()))
+		.save(consumer);
+
+		// Starsteel ingot: smelt starsteel dust
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(RelicsItems.STARSTEEL_DUST.get()), RecipeCategory.MISC, RelicsItems.STARSTEEL_INGOT.get(), 0.0f, 200)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.STARSTEEL_DUST.get()))
+		.save(consumer);
+
+		// Starsteel ingot (alt): dimensional catalyst + iron ingot + infused star dust
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.STARSTEEL_INGOT.get())
+		.requires(RelicsItems.DIMENSIONAL_CATALYST.get())
+		.requires(Items.IRON_INGOT)
+		.requires(RelicsItems.INFUSED_STAR_DUST.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.DIMENSIONAL_CATALYST.get()))
+		.save(consumer, RelicsUtil.modLoc("starsteel_ingot_from_catalyst"));
+
+		// Abstraction gel: slime ball + infused star dust -> 4 gel
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.ABSTRACTION_GEL.get(), 4)
+		.requires(Items.SLIME_BALL)
+		.requires(RelicsItems.INFUSED_STAR_DUST.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.INFUSED_STAR_DUST.get()))
+		.save(consumer);
+
+		// Dimensional catalyst: infused star dust + ender pearl -> 16 catalyst
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.DIMENSIONAL_CATALYST.get(), 16)
+		.requires(RelicsItems.INFUSED_STAR_DUST.get())
+		.requires(Items.ENDER_PEARL)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.INFUSED_STAR_DUST.get()))
+		.save(consumer);
+
+		// Azurite dot: smelt azurite dust
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(RelicsItems.AZURITE_DUST.get()), RecipeCategory.MISC, RelicsItems.AZURITE_DOT.get(), 0.0f, 200)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.AZURITE_DUST.get()))
+		.save(consumer);
+		
+		// Azurite dust: reverse from azurite dot
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.AZURITE_DUST.get())
+		.requires(RelicsItems.AZURITE_DOT.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.AZURITE_DOT.get()))
+		.save(consumer, RelicsUtil.modLoc("azurite_dust_from_dot"));
+
+		// ---- Nucleus recipes: abstraction gel + ingredient ----
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.NUCLEUS_FIRE.get())
+		.requires(RelicsItems.ABSTRACTION_GEL.get())
+		.requires(Items.LAVA_BUCKET)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.ABSTRACTION_GEL.get()))
+		.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.NUCLEUS_ICE.get())
+		.requires(RelicsItems.ABSTRACTION_GEL.get())
+		.requires(Blocks.ICE)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.ABSTRACTION_GEL.get()))
+		.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.NUCLEUS_LIGHTNING.get())
+		.requires(RelicsItems.ABSTRACTION_GEL.get())
+		.requires(RelicsItems.FULGURITE.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.ABSTRACTION_GEL.get()))
+		.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.NUCLEUS_CUT.get())
+		.requires(RelicsItems.ABSTRACTION_GEL.get())
+		.requires(Items.SHEARS)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.ABSTRACTION_GEL.get()))
+		.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.NUCLEUS_SKY.get())
+		.requires(RelicsItems.ABSTRACTION_GEL.get())
+		.requires(RelicsItems.AZURITE_DOT.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.ABSTRACTION_GEL.get()))
+		.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.NUCLEUS_SUN.get())
+		.requires(RelicsItems.ABSTRACTION_GEL.get())
+		.requires(Items.SUNFLOWER)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.ABSTRACTION_GEL.get()))
+		.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.NUCLEUS_NAVIGATE.get())
+		.requires(RelicsItems.ABSTRACTION_GEL.get())
+		.requires(Items.COMPASS)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.ABSTRACTION_GEL.get()))
+		.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.NUCLEUS_DARK.get())
+		.requires(RelicsItems.ABSTRACTION_GEL.get())
+		.requires(Blocks.OBSIDIAN)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.ABSTRACTION_GEL.get()))
+		.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.NUCLEUS_STAR.get())
+		.requires(RelicsItems.ABSTRACTION_GEL.get())
+		.requires(RelicsItems.STAR_PIECE.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.ABSTRACTION_GEL.get()))
+		.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.NUCLEUS_HEALTH.get())
+		.requires(RelicsItems.ABSTRACTION_GEL.get())
+		.requires(Items.APPLE)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.ABSTRACTION_GEL.get()))
+		.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.NUCLEUS_WEAPON.get())
+		.requires(RelicsItems.ABSTRACTION_GEL.get())
+		.requires(Items.IRON_SWORD)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.ABSTRACTION_GEL.get()))
+		.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.NUCLEUS_WEALTH.get())
+		.requires(RelicsItems.ABSTRACTION_GEL.get())
+		.requires(Items.EMERALD)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.ABSTRACTION_GEL.get()))
+		.save(consumer);
+
+		// ---- Gem recipes: diamond + nucleus ----
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.GEM_FIRE.get())
+		.requires(Items.DIAMOND)
+		.requires(RelicsItems.NUCLEUS_FIRE.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.NUCLEUS_FIRE.get()))
+		.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.GEM_ICE.get())
+		.requires(Items.DIAMOND)
+		.requires(RelicsItems.NUCLEUS_ICE.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.NUCLEUS_ICE.get()))
+		.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.GEM_LIGHTNING.get())
+		.requires(Items.DIAMOND)
+		.requires(RelicsItems.NUCLEUS_LIGHTNING.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.NUCLEUS_LIGHTNING.get()))
+		.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.GEM_CUT.get())
+		.requires(Items.DIAMOND)
+		.requires(RelicsItems.NUCLEUS_CUT.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.NUCLEUS_CUT.get()))
+		.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.GEM_SKY.get())
+		.requires(Items.DIAMOND)
+		.requires(RelicsItems.NUCLEUS_SKY.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.NUCLEUS_SKY.get()))
+		.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.GEM_SUN.get())
+		.requires(Items.DIAMOND)
+		.requires(RelicsItems.NUCLEUS_SUN.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.NUCLEUS_SUN.get()))
+		.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.GEM_NAVIGATE.get())
+		.requires(Items.DIAMOND)
+		.requires(RelicsItems.NUCLEUS_NAVIGATE.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.NUCLEUS_NAVIGATE.get()))
+		.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.GEM_DARK.get())
+		.requires(Items.DIAMOND)
+		.requires(RelicsItems.NUCLEUS_DARK.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.NUCLEUS_DARK.get()))
+		.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.GEM_STAR.get())
+		.requires(Items.DIAMOND)
+		.requires(RelicsItems.NUCLEUS_STAR.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.NUCLEUS_STAR.get()))
+		.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.GEM_HEALTH.get())
+		.requires(Items.DIAMOND)
+		.requires(RelicsItems.NUCLEUS_HEALTH.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.NUCLEUS_HEALTH.get()))
+		.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.GEM_WEAPON.get())
+		.requires(Items.DIAMOND)
+		.requires(RelicsItems.NUCLEUS_WEAPON.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.NUCLEUS_WEAPON.get()))
+		.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.GEM_WEALTH.get())
+		.requires(Items.DIAMOND)
+		.requires(RelicsItems.NUCLEUS_WEALTH.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.NUCLEUS_WEALTH.get()))
+		.save(consumer);
+
+
+		}
 }

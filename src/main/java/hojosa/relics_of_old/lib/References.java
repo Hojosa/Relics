@@ -122,6 +122,38 @@ public class References {
 		public static final String SKY_LENS = "sky_lens";
 		public static final String RITUAL_LOCUS = "ritual_locus";
 		public static final String TUNING_FORK = "tuning_fork";
+		public static final String STARGLASS_LUMP = "starglass_lump";
+		public static final String STARSTEEL_INGOT = "starsteel_ingot";
+		public static final String STARSTEEL_DUST = "starsteel_dust";
+		public static final String AZURITE_DUST = "azurite_dust";
+		public static final String AZURITE_DOT = "azurite_dot";
+		public static final String ABSTRACTION_GEL = "abstraction_gel";
+		public static final String DIMENSIONAL_CATALYST = "dimensional_catalyst";
+		public static final String NUCLEUS_FIRE = "nucleus_fire";
+		public static final String NUCLEUS_ICE = "nucleus_ice";
+		public static final String NUCLEUS_LIGHTNING = "nucleus_lightning";
+		public static final String NUCLEUS_CUT = "nucleus_cut";
+		public static final String NUCLEUS_SKY = "nucleus_sky";
+		public static final String NUCLEUS_SUN = "nucleus_sun";
+		public static final String NUCLEUS_NAVIGATE = "nucleus_navigate";
+		public static final String NUCLEUS_DARK = "nucleus_dark";
+		public static final String NUCLEUS_STAR = "nucleus_star";
+		public static final String NUCLEUS_HEALTH = "nucleus_health";
+		public static final String NUCLEUS_WEAPON = "nucleus_weapon";
+		public static final String NUCLEUS_WEALTH = "nucleus_wealth";
+		public static final String GEM_FIRE = "gem_fire";
+		public static final String GEM_ICE = "gem_ice";
+		public static final String GEM_LIGHTNING = "gem_lightning";
+		public static final String GEM_CUT = "gem_cut";
+		public static final String GEM_SKY = "gem_sky";
+		public static final String GEM_SUN = "gem_sun";
+		public static final String GEM_NAVIGATE = "gem_navigate";
+		public static final String GEM_DARK = "gem_dark";
+		public static final String GEM_STAR = "gem_star";
+		public static final String GEM_HEALTH = "gem_health";
+		public static final String GEM_WEAPON = "gem_weapon";
+		public static final String GEM_WEALTH = "gem_wealth";
+		public static final String MUSIC_DISC_DRAGONDOT = "music_disc_dragondot";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -180,6 +212,7 @@ public class References {
 		public static final String RITUAL_FAIL = "ritual_fail";
 		public static final String RITUAL_LASER = "ritual_laser";
 		public static final String STARDUST = "stardust";
+		public static final String DRAGONDOT = "dragondot";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

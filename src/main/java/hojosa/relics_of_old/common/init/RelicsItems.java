@@ -5,6 +5,7 @@ import hojosa.relics_of_old.common.item.BombArrowItem;
 import hojosa.relics_of_old.common.item.BombBagItem;
 import hojosa.relics_of_old.common.item.BombItem;
 import hojosa.relics_of_old.common.item.CaptureEgg;
+import hojosa.relics_of_old.common.item.DimensionalCatalystItem;
 import hojosa.relics_of_old.common.item.EmeraldPiece;
 import hojosa.relics_of_old.common.item.EmeraldShard;
 import hojosa.relics_of_old.common.item.EmptyMedallion;
@@ -43,6 +44,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTab.ItemDisplayParameters;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.RecordItem;
 import net.minecraft.world.item.SwordItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -70,7 +72,7 @@ public class RelicsItems {
 
 	public static final RegistryObject<MagicBoomerang> WOODEN_BOOMERANG = ITEMS.register(References.UnlocalizedName.WOODEN_BOOMERANG, () -> new MagicBoomerang(1.0f, 4, 0));
 	public static final RegistryObject<MagicBoomerang> MAGIC_BOOMERANG = ITEMS.register(References.UnlocalizedName.MAGIC_BOOMERANG, () -> new MagicBoomerang(1.5f, 6, 1));
-	
+
 	public static final RegistryObject<BombItem> BOMB = ITEMS.register(References.UnlocalizedName.BOMB, BombItem::new);
 	public static final RegistryObject<BombArrowItem> BOMB_ARROW = ITEMS.register(References.UnlocalizedName.BOMB_ARROW, BombArrowItem::new);
 	public static final RegistryObject<BombBagItem> BOMB_BAG = ITEMS.register(References.UnlocalizedName.BOMB_BAG, BombBagItem::new);
@@ -97,7 +99,16 @@ public class RelicsItems {
 	public static final RegistryObject<RockCandyItem> ROCK_CANDY_DIAMOND = ITEMS.register(References.UnlocalizedName.ROCK_CANDY_DIAMOND, () -> new RockCandyItem(MobEffects.DAMAGE_RESISTANCE, 3)); // Resistance IV
 	public static final RegistryObject<RelicsItem> FULGURITE = ITEMS.register(References.UnlocalizedName.FULGURITE, () -> new RelicsItem(64));
 	public static final RegistryObject<RelicsItem> TUNING_FORK = ITEMS.register(References.UnlocalizedName.TUNING_FORK, TuningForkItem::new);
-	
+	public static final RegistryObject<RelicsItem> STARGLASS_LUMP = ITEMS.register(References.UnlocalizedName.STARGLASS_LUMP, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> STARSTEEL_INGOT = ITEMS.register(References.UnlocalizedName.STARSTEEL_INGOT, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> STARSTEEL_DUST = ITEMS.register(References.UnlocalizedName.STARSTEEL_DUST, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> AZURITE_DUST = ITEMS.register(References.UnlocalizedName.AZURITE_DUST, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> AZURITE_DOT = ITEMS.register(References.UnlocalizedName.AZURITE_DOT, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> ABSTRACTION_GEL = ITEMS.register(References.UnlocalizedName.ABSTRACTION_GEL, () -> new InfusedItem(64, Rarity.COMMON));
+	public static final RegistryObject<DimensionalCatalystItem> DIMENSIONAL_CATALYST = ITEMS.register(References.UnlocalizedName.DIMENSIONAL_CATALYST, DimensionalCatalystItem::new);
+	public static final RegistryObject<RecordItem> MUSIC_DISC_DRAGONDOT = ITEMS.register(References.UnlocalizedName.MUSIC_DISC_DRAGONDOT,
+	        () -> new RecordItem(15, RelicsSounds.DRAGONDOT, new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 1720));
+
 	// lost pages
 	public static final RegistryObject<LostPage> LOST_PAGE_1 = ITEMS.register(References.UnlocalizedName.LOST_PAGE_1, () -> new LostPage(1, References.LostPagesText.LOST_PAGE_1));
 	public static final RegistryObject<LostPage> LOST_PAGE_2 = ITEMS.register(References.UnlocalizedName.LOST_PAGE_2, () -> new LostPage(1, References.LostPagesText.LOST_PAGE_2));
@@ -140,7 +151,34 @@ public class RelicsItems {
 	public static final RegistryObject<WhirlwindBoots> WHIRLWIND_BOOTS = ITEMS.register(References.UnlocalizedName.WHIRLWIND_BOOTS, () -> new WhirlwindBoots(RelicsArmorMaterials.WHIRLWIND));
 	public static final RegistryObject<TitanBand> TITAN_BAND = ITEMS.register(References.UnlocalizedName.TITAN_BAND, TitanBand::new);
 	public static final RegistryObject<HeadbandOfValor> HEADBAND_OF_VALOR = ITEMS.register(References.UnlocalizedName.HEADBAND_OF_VALOR, () -> new HeadbandOfValor(RelicsArmorMaterials.HEADBAND));
-	
+
+	// nucleus
+	public static final RegistryObject<RelicsItem> NUCLEUS_FIRE = ITEMS.register(References.UnlocalizedName.NUCLEUS_FIRE, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> NUCLEUS_ICE = ITEMS.register(References.UnlocalizedName.NUCLEUS_ICE, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> NUCLEUS_LIGHTNING = ITEMS.register(References.UnlocalizedName.NUCLEUS_LIGHTNING, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> NUCLEUS_CUT = ITEMS.register(References.UnlocalizedName.NUCLEUS_CUT, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> NUCLEUS_SKY = ITEMS.register(References.UnlocalizedName.NUCLEUS_SKY, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> NUCLEUS_SUN = ITEMS.register(References.UnlocalizedName.NUCLEUS_SUN, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> NUCLEUS_NAVIGATE = ITEMS.register(References.UnlocalizedName.NUCLEUS_NAVIGATE, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> NUCLEUS_DARK = ITEMS.register(References.UnlocalizedName.NUCLEUS_DARK, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> NUCLEUS_STAR = ITEMS.register(References.UnlocalizedName.NUCLEUS_STAR, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> NUCLEUS_HEALTH = ITEMS.register(References.UnlocalizedName.NUCLEUS_HEALTH, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> NUCLEUS_WEAPON = ITEMS.register(References.UnlocalizedName.NUCLEUS_WEAPON, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> NUCLEUS_WEALTH = ITEMS.register(References.UnlocalizedName.NUCLEUS_WEALTH, () -> new RelicsItem(64));
+
+	// gems
+	public static final RegistryObject<RelicsItem> GEM_FIRE = ITEMS.register(References.UnlocalizedName.GEM_FIRE, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> GEM_ICE = ITEMS.register(References.UnlocalizedName.GEM_ICE, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> GEM_LIGHTNING = ITEMS.register(References.UnlocalizedName.GEM_LIGHTNING, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> GEM_CUT = ITEMS.register(References.UnlocalizedName.GEM_CUT, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> GEM_SKY = ITEMS.register(References.UnlocalizedName.GEM_SKY, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> GEM_SUN = ITEMS.register(References.UnlocalizedName.GEM_SUN, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> GEM_NAVIGATE = ITEMS.register(References.UnlocalizedName.GEM_NAVIGATE, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> GEM_DARK = ITEMS.register(References.UnlocalizedName.GEM_DARK, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> GEM_STAR = ITEMS.register(References.UnlocalizedName.GEM_STAR, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> GEM_HEALTH = ITEMS.register(References.UnlocalizedName.GEM_HEALTH, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> GEM_WEAPON = ITEMS.register(References.UnlocalizedName.GEM_WEAPON, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> GEM_WEALTH = ITEMS.register(References.UnlocalizedName.GEM_WEALTH, () -> new RelicsItem(64));
 
 	public static void addTabItems(ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
 		RelicsItems.ITEMS.getEntries().forEach(itemRegistryObject -> output.accept(itemRegistryObject.get().getDefaultInstance()));

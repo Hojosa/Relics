@@ -17,7 +17,6 @@ import hojosa.relics_of_old.client.render.MagicBoomerangRenderer;
 import hojosa.relics_of_old.client.render.MedallionEntityRenderer;
 import hojosa.relics_of_old.client.render.RitualLocusBlockRenderer;
 import hojosa.relics_of_old.client.render.SkybeamBlockRenderer;
-import hojosa.relics_of_old.client.render.SpellDecoratorEntityRenderer;
 import hojosa.relics_of_old.client.render.StarBeamRenderer;
 import hojosa.relics_of_old.client.render.StarwellBlockRenderer;
 import hojosa.relics_of_old.client.render.SwordPedestalBlockRenderer;

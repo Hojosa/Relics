@@ -40,7 +40,7 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		withExistingParent(RelicsBlocks.STARWELL_CORE);
 		withExistingParent(RelicsBlocks.SKY_LENS);
 		withExistingParent(RelicsBlocks.RITUAL_LOCUS);
-		
+
 		basicItem(RelicsItems.STAR_PIECE);
 		basicItem(RelicsItems.STAR_DUST);
 		basicItem(RelicsItems.STAR_STONE);
@@ -112,101 +112,77 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItem(RelicsItems.BOMB_BAG);
 		basicItem(RelicsItems.FULGURITE);
 		basicItem(RelicsItems.TUNING_FORK);
-		
-		//magic mirror model
-		//base model that contains the base transform settings for the model
-		ModelFile magic_mirror_base = getBuilder("magic_mirror_base")
-				.parent(new ModelFile.UncheckedModelFile("item/generated"))
-				.texture("layer0", modLoc("item/magic_mirror"))
-				.transforms()
-		        .transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND)
-		            .rotation(0, 90, 55)
-		            .translation(0, 5, 2)
-		            .scale(0.85f, 0.85f, 1f)
-		            .end()
-		        .transform(ItemDisplayContext.THIRD_PERSON_LEFT_HAND)
-		            .rotation(0, 90, -55)
-		            .translation(0, 5, 2)
-		            .scale(0.85f, 0.85f, 1f)
-		            .end()
-	            .transform(ItemDisplayContext.FIRST_PERSON_RIGHT_HAND)
-		            .rotation(0, -90, 100)
-		            .translation(1.13f, 3.2f, 1.13f)
-		            .scale(0.85f, 0.85f, 1f)
-		            .end()
-				.transform(ItemDisplayContext.FIRST_PERSON_LEFT_HAND)
-			        .rotation(0, -90, 25)
-			        .translation(1.13f, 3.2f, 1.13f)
-			        .scale(0.85f, 0.85f, 1f)
-			        .end()
-		    .end();
-		
-		//models for the inUse animation
+		basicItem(RelicsItems.STARGLASS_LUMP);
+		basicItem(RelicsItems.STARSTEEL_INGOT);
+		basicItem(RelicsItems.STARSTEEL_DUST);
+		basicItem(RelicsItems.AZURITE_DUST);
+		basicItem(RelicsItems.AZURITE_DOT);
+		basicItem(RelicsItems.ABSTRACTION_GEL);
+		basicItem(RelicsItems.DIMENSIONAL_CATALYST);
+		basicItem(RelicsItems.NUCLEUS_FIRE);
+		basicItem(RelicsItems.NUCLEUS_ICE);
+		basicItem(RelicsItems.NUCLEUS_LIGHTNING);
+		basicItem(RelicsItems.NUCLEUS_CUT);
+		basicItem(RelicsItems.NUCLEUS_SKY);
+		basicItem(RelicsItems.NUCLEUS_SUN);
+		basicItem(RelicsItems.NUCLEUS_NAVIGATE);
+		basicItem(RelicsItems.NUCLEUS_DARK);
+		basicItem(RelicsItems.NUCLEUS_STAR);
+		basicItem(RelicsItems.NUCLEUS_HEALTH);
+		basicItem(RelicsItems.NUCLEUS_WEAPON);
+		basicItem(RelicsItems.NUCLEUS_WEALTH);
+		basicItem(RelicsItems.GEM_FIRE);
+		basicItem(RelicsItems.GEM_ICE);
+		basicItem(RelicsItems.GEM_LIGHTNING);
+		basicItem(RelicsItems.GEM_CUT);
+		basicItem(RelicsItems.GEM_SKY);
+		basicItem(RelicsItems.GEM_SUN);
+		basicItem(RelicsItems.GEM_NAVIGATE);
+		basicItem(RelicsItems.GEM_DARK);
+		basicItem(RelicsItems.GEM_STAR);
+		basicItem(RelicsItems.GEM_HEALTH);
+		basicItem(RelicsItems.GEM_WEAPON);
+		basicItem(RelicsItems.GEM_WEALTH);
+		basicItem(RelicsItems.MUSIC_DISC_DRAGONDOT);
+
+		// magic mirror model
+		// base model that contains the base transform settings for the model
+		ModelFile magic_mirror_base = getBuilder("magic_mirror_base").parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", modLoc("item/magic_mirror")).transforms()
+				.transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND).rotation(0, 90, 55).translation(0, 5, 2).scale(0.85f, 0.85f, 1f).end().transform(ItemDisplayContext.THIRD_PERSON_LEFT_HAND).rotation(0, 90, -55)
+				.translation(0, 5, 2).scale(0.85f, 0.85f, 1f).end().transform(ItemDisplayContext.FIRST_PERSON_RIGHT_HAND).rotation(0, -90, 100).translation(1.13f, 3.2f, 1.13f).scale(0.85f, 0.85f, 1f).end()
+				.transform(ItemDisplayContext.FIRST_PERSON_LEFT_HAND).rotation(0, -90, 25).translation(1.13f, 3.2f, 1.13f).scale(0.85f, 0.85f, 1f).end().end();
+
+		// models for the inUse animation
 		for (int i = 0; i < 4; i++) {
-		      getBuilder("magic_mirror_use_" + i)
-		          .parent(magic_mirror_base)
-		          .texture("layer0", modLoc("item/magic_mirror_use_" + i))
-		          .transforms().transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND)
-		            .rotation(0, 0, 65)
-		            .translation(-3, 5, 2)
-		            .scale(0.85f, 0.85f, 1f)
-		            .end()
-	            .transform(ItemDisplayContext.THIRD_PERSON_LEFT_HAND)
-		            .rotation(0, 0, -28)
-		            .translation(-3, 5, 2)
-		            .scale(0.85f, 0.85f, 1f)
-		            .end()
-	            .transform(ItemDisplayContext.FIRST_PERSON_RIGHT_HAND)
-		            .rotation(-12f, -12f, 103f)
-		            .translation(-4f, 2f, -2.7f)
-		            .scale(0.85f, 0.85f, 1f)
-		            .end()
-	            .transform(ItemDisplayContext.FIRST_PERSON_LEFT_HAND)
-		            .rotation(-11f, -12f, 11f)
-		            .translation(-2f, 2f, -2.75f)
-		            .scale(0.85f, 0.85f, 1f)
-		            .end()
-	            .end();
-		  }
-		
+			getBuilder("magic_mirror_use_" + i).parent(magic_mirror_base).texture("layer0", modLoc("item/magic_mirror_use_" + i)).transforms().transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND).rotation(0, 0, 65)
+					.translation(-3, 5, 2).scale(0.85f, 0.85f, 1f).end().transform(ItemDisplayContext.THIRD_PERSON_LEFT_HAND).rotation(0, 0, -28).translation(-3, 5, 2).scale(0.85f, 0.85f, 1f).end()
+					.transform(ItemDisplayContext.FIRST_PERSON_RIGHT_HAND).rotation(-12f, -12f, 103f).translation(-4f, 2f, -2.7f).scale(0.85f, 0.85f, 1f).end().transform(ItemDisplayContext.FIRST_PERSON_LEFT_HAND)
+					.rotation(-11f, -12f, 11f).translation(-2f, 2f, -2.75f).scale(0.85f, 0.85f, 1f).end().end();
+		}
+
 		// lit model
-		getBuilder("magic_mirror_lit")
-			.parent(magic_mirror_base)
-		    .texture("layer0", modLoc("item/magic_mirror_lit"));
-		  
+		getBuilder("magic_mirror_lit").parent(magic_mirror_base).texture("layer0", modLoc("item/magic_mirror_lit"));
+
 		// normal model with all overrides
-		getBuilder(RelicsItems.MAGIC_MIRROR.getId().toString())
-			.parent(magic_mirror_base)
+		getBuilder(RelicsItems.MAGIC_MIRROR.getId().toString()).parent(magic_mirror_base)
 //			.texture("layer0", modLoc("item/magic_mirror"))
-			.override().predicate(modLoc("active"), 1.0f)
-				.model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_lit"))).end()
-			.override().predicate(modLoc("using"), 0.25f)
-				.model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_use_0"))).end()
-			.override().predicate(modLoc("using"), 0.5f)
-				.model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_use_1"))).end()
-			.override().predicate(modLoc("using"), 0.75f)
-				.model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_use_2"))).end()
-			.override().predicate(modLoc("using"), 1.0f)
+				.override().predicate(modLoc("active"), 1.0f).model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_lit"))).end().override().predicate(modLoc("using"), 0.25f)
+				.model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_use_0"))).end().override().predicate(modLoc("using"), 0.5f).model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_use_1")))
+				.end().override().predicate(modLoc("using"), 0.75f).model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_use_2"))).end().override().predicate(modLoc("using"), 1.0f)
 				.model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_use_3"))).end();
-		
-		//flawless mirror
-		getBuilder(RelicsItems.FLAWLESS_MAGIC_MIRROR.getId().toString())
-	      .parent(magic_mirror_base)
+
+		// flawless mirror
+		getBuilder(RelicsItems.FLAWLESS_MAGIC_MIRROR.getId().toString()).parent(magic_mirror_base)
 //	      .texture("layer0", modLoc("item/magic_mirror"))
-	      .override().predicate(modLoc("active"), 1.0f)
-	          .model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_lit"))).end()
-	      .override().predicate(modLoc("using"), 0.25f)
-	          .model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_use_0"))).end()
-	      .override().predicate(modLoc("using"), 0.5f)
-	          .model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_use_1"))).end()
-	      .override().predicate(modLoc("using"), 0.75f)
-	          .model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_use_2"))).end()
-	      .override().predicate(modLoc("using"), 1.0f)
-	          .model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_use_3"))).end();
+				.override().predicate(modLoc("active"), 1.0f).model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_lit"))).end().override().predicate(modLoc("using"), 0.25f)
+				.model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_use_0"))).end().override().predicate(modLoc("using"), 0.5f).model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_use_1")))
+				.end().override().predicate(modLoc("using"), 0.75f).model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_use_2"))).end().override().predicate(modLoc("using"), 1.0f)
+				.model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_use_3"))).end();
 	}
 
 	private ItemModelBuilder infusedItem(RegistryObject<RelicsItem> item, RegistryObject<RelicsItem> parent) {
-		return getBuilder(item.getId().toString()).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", ResourceLocation.fromNamespaceAndPath(item.getId().getNamespace(), "item/" + parent.getId().getPath()));
+		return getBuilder(item.getId().toString()).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0",
+				ResourceLocation.fromNamespaceAndPath(item.getId().getNamespace(), "item/" + parent.getId().getPath()));
 	}
 
 	private void withExistingParent(ItemObject<Block> itemRef) {
@@ -216,23 +192,18 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 	private void basicItem(RegistryObject<? extends Item> itemRef) {
 		basicItem(itemRef.getId());
 	}
-	
-	 private ItemModelBuilder basicItemWithOtherTexture(RegistryObject<? extends Item> item, ResourceLocation textureName) {
-		 return getBuilder(item.getId().toString())
-	        .parent(new ModelFile.UncheckedModelFile("item/generated"))
-	        .texture("layer0", ResourceLocation.fromNamespaceAndPath(item.getId().getNamespace(), "item/" + textureName.getPath()));
+
+	private ItemModelBuilder basicItemWithOtherTexture(RegistryObject<? extends Item> item, ResourceLocation textureName) {
+		return getBuilder(item.getId().toString()).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0",
+				ResourceLocation.fromNamespaceAndPath(item.getId().getNamespace(), "item/" + textureName.getPath()));
 	}
 
 	private void itemWithOverride(RegistryObject<? extends Item> itemRef, String predicate, String variantSuffix) {
 		// variant model
-		getBuilder(itemRef.getId().getPath() + "_" + variantSuffix)
-		.parent(new ModelFile.UncheckedModelFile("item/generated"))
-		.texture("layer0", modLoc("item/" + itemRef.getId().getPath() + "_" + variantSuffix));
+		getBuilder(itemRef.getId().getPath() + "_" + variantSuffix).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", modLoc("item/" + itemRef.getId().getPath() + "_" + variantSuffix));
 
 		// base model with override
-		getBuilder(itemRef.getId().toString()).parent(new ModelFile.UncheckedModelFile("item/generated"))
-		.texture("layer0", modLoc("item/" + itemRef.getId().getPath())).override()
-		.predicate(modLoc(predicate), 1.0f)
-		.model(new ModelFile.UncheckedModelFile(modLoc("item/" + itemRef.getId().getPath() + "_" + variantSuffix))).end();
+		getBuilder(itemRef.getId().toString()).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", modLoc("item/" + itemRef.getId().getPath())).override().predicate(modLoc(predicate), 1.0f)
+				.model(new ModelFile.UncheckedModelFile(modLoc("item/" + itemRef.getId().getPath() + "_" + variantSuffix))).end();
 	}
 }

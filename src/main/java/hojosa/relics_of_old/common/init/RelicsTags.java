@@ -34,6 +34,7 @@ public interface RelicsTags {
 		TagKey<Item> BELT_TAG = ItemTags.create(ResourceLocation.fromNamespaceAndPath(CuriosApi.MODID, SlotTypePreset.BELT.getIdentifier()));
 		TagKey<Item> CLAY_JAR_VARIANTS = tag("clay_jar_variants");
 		TagKey<Item> SUGAR_CUBES = tag("sugar_cubes");
+		TagKey<Item> DUSTS_IRON = ItemTags.create(ResourceLocation.fromNamespaceAndPath("forge", "dusts/iron"));
 
 		static TagKey<Item> tag(String name) {
 			return TagKey.create(Registries.ITEM, RelicsUtil.modLoc(name));

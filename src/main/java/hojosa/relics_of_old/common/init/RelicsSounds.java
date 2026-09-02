@@ -69,6 +69,7 @@ public class RelicsSounds {
 	public static final RegistryObject<SoundEvent> RITUAL_FAIL = registerSound(References.SoundName.RITUAL_FAIL);
 	public static final RegistryObject<SoundEvent> RITUAL_LASER = registerSound(References.SoundName.RITUAL_LASER);
 	public static final RegistryObject<SoundEvent> STARDUST = registerSound(References.SoundName.STARDUST);
+	public static final RegistryObject<SoundEvent> DRAGONDOT = registerSound(References.SoundName.DRAGONDOT);
 
 	private static RegistryObject<SoundEvent> registerSound(String name) {
 		return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(References.MOD_ID, name)));
