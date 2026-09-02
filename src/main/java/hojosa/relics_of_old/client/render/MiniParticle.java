@@ -7,6 +7,7 @@ import java.util.Random;
 import net.minecraft.world.phys.Vec3;
 
 //Lightweight animation anchor point for spell effect geometry
+@Deprecated
 public class MiniParticle {
 	public double x, y, z;
 	public double vx, vy, vz;

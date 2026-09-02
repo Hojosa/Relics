@@ -2,13 +2,17 @@ package hojosa.relics_of_old.common.entity.attacks;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 import java.util.UUID;
 
+import hojosa.relics_of_old.client.particle.SpellDiamondParticle;
 import hojosa.relics_of_old.common.block.entity.RitualLocusBlockEntity;
 import hojosa.relics_of_old.common.init.RelicsBlocks;
 import hojosa.relics_of_old.common.init.RelicsEntities;
 import hojosa.relics_of_old.common.init.RelicsSounds;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
@@ -75,8 +79,8 @@ public class SpellEffectEntity extends Entity implements IEntityAdditionalSpawnD
 		// sound on spawn
 		if (lifetime == 0 && !level().isClientSide) {
 			type.onSpawn(this);
-			SpellDecoratorEntity decorator = new SpellDecoratorEntity(this);
-			level().addFreshEntity(decorator);
+//			SpellDecoratorEntity decorator = new SpellDecoratorEntity(this);
+//			level().addFreshEntity(decorator);
 		}
 
 		// affect blocks at sleepTime
@@ -265,6 +269,26 @@ public class SpellEffectEntity extends Entity implements IEntityAdditionalSpawnD
 			@Override
 			public void onSpawn(SpellEffectEntity spell) {
 				spell.level().playSound(null, spell.blockPosition(), RelicsSounds.STARDUST.get(), SoundSource.PLAYERS, 2.5f, 1.0f);
+			}
+
+			@Override
+			public void clientTick(SpellEffectEntity spell, int lifetime) {
+				// Spawn diamond particles on first client tick
+				if (lifetime == 0) {
+					Random rand = new Random();
+					ClientLevel clientLevel = (ClientLevel) spell.level();
+					for (int i = 0; i < 30; i++) {
+						Vec3 outward = new Vec3(rand.nextGaussian(), rand.nextGaussian(), rand.nextGaussian()).normalize();
+						double dist = rand.nextDouble() * spell.radius;
+						double gx = outward.x * dist;
+						double gy = outward.y * dist;
+						double gz = outward.z * dist;
+						int hibernateTime = rand.nextInt(8);
+
+						SpellDiamondParticle diamond = new SpellDiamondParticle(clientLevel, spell.getX() + gx, spell.getY() + gy, spell.getZ() + gz, 0, 0, 0, 5, hibernateTime); // no velocity for stardust
+						Minecraft.getInstance().particleEngine.add(diamond);
+					}
+				}
 			}
 		};
 

@@ -18,6 +18,7 @@ import net.minecraftforge.entity.IEntityAdditionalSpawnData;
 import net.minecraftforge.network.NetworkHooks;
 
 //this class handels LG2 stlye spell visuals
+@Deprecated
 public class SpellDecoratorEntity extends Entity implements IEntityAdditionalSpawnData {
 
 	public int spellType;

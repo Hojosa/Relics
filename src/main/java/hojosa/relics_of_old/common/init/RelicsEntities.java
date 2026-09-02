@@ -66,8 +66,8 @@ public class RelicsEntities {
 
 	public static final RegistryObject<EntityType<SpellEffectEntity>> SPELL_EFFECT = ENTITY_TYPES.register(References.UnlocalizedName.SPELL_EFFECT,
 			() -> EntityType.Builder.<SpellEffectEntity>of(SpellEffectEntity::new, MobCategory.MISC).sized(0.25f, 0.25f).clientTrackingRange(16).build(References.UnlocalizedName.SPELL_EFFECT));
-
-	public static final RegistryObject<EntityType<SpellDecoratorEntity>> SPELL_DECORATOR = ENTITY_TYPES.register(References.UnlocalizedName.SPELL_DECORATOR,
-			() -> EntityType.Builder.<SpellDecoratorEntity>of(SpellDecoratorEntity::new, MobCategory.MISC).sized(0.25f, 0.25f).clientTrackingRange(16).build(References.UnlocalizedName.SPELL_DECORATOR));
+	
+//	public static final RegistryObject<EntityType<SpellDecoratorEntity>> SPELL_DECORATOR = ENTITY_TYPES.register(References.UnlocalizedName.SPELL_DECORATOR,
+//			() -> EntityType.Builder.<SpellDecoratorEntity>of(SpellDecoratorEntity::new, MobCategory.MISC).sized(0.25f, 0.25f).clientTrackingRange(16).build(References.UnlocalizedName.SPELL_DECORATOR));
 
 }

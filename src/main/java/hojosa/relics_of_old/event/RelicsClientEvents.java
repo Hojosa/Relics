@@ -98,7 +98,7 @@ public class RelicsClientEvents {
 		event.registerEntityRenderer(RelicsEntities.BOMB.get(), BombEntityRenderer::new);
 		event.registerEntityRenderer(RelicsEntities.BOMB_ARROW.get(), BombArrowEntityRenderer::new);
 		event.registerEntityRenderer(RelicsEntities.SPELL_EFFECT.get(), EmptyEntityRenderer::new);
-		event.registerEntityRenderer(RelicsEntities.SPELL_DECORATOR.get(), SpellDecoratorEntityRenderer::new);
+//		event.registerEntityRenderer(RelicsEntities.SPELL_DECORATOR.get(), EmptyEntityRenderer::new);
 	}
 
 	@SubscribeEvent
