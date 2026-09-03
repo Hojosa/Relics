@@ -6,7 +6,12 @@ import java.util.Random;
 import java.util.Set;
 import java.util.UUID;
 
+import hojosa.relics_of_old.client.particle.SpellCritRingParticle;
+import hojosa.relics_of_old.client.particle.SpellCrossParticle;
 import hojosa.relics_of_old.client.particle.SpellDiamondParticle;
+import hojosa.relics_of_old.client.particle.SpellFireParticle;
+import hojosa.relics_of_old.client.particle.SpellIceParticle;
+import hojosa.relics_of_old.client.particle.SpellLightningParticle;
 import hojosa.relics_of_old.common.block.entity.RitualLocusBlockEntity;
 import hojosa.relics_of_old.common.init.RelicsBlocks;
 import hojosa.relics_of_old.common.init.RelicsEntities;
@@ -227,8 +232,7 @@ public class SpellEffectEntity extends Entity implements IEntityAdditionalSpawnD
 	}
 
 	public enum SpellType {
-		STAR_IMPACT(Element.STAR, 10, true), 
-		ORB_EXPLOSION(Element.EXPLOSION, 2, true) {
+		STAR_IMPACT(Element.STAR, 10, true), ORB_EXPLOSION(Element.EXPLOSION, 2, true) {
 			@Override
 			public void affectBlock(SpellEffectEntity spell, BlockPos pos) {
 				BlockState state = spell.level().getBlockState(pos);
@@ -247,17 +251,17 @@ public class SpellEffectEntity extends Entity implements IEntityAdditionalSpawnD
 				living.hurt(spell.damageSources().indirectMagic(spell, caster), damage);
 				spell.knockRadialOutward(living, 0.5f, 0.0f);
 			}
-			
+
 			@Override
-		      public void onSpawn(SpellEffectEntity spell) {
-		          spell.level().playSound(null, spell.blockPosition(), SoundEvents.GENERIC_EXPLODE, SoundSource.PLAYERS, 1.0f, 1.0f);
-		      }
+			public void onSpawn(SpellEffectEntity spell) {
+				spell.level().playSound(null, spell.blockPosition(), SoundEvents.GENERIC_EXPLODE, SoundSource.PLAYERS, 1.0f, 1.0f);
+			}
 
 			@Override
 			public void clientTick(SpellEffectEntity spell, int lifetime) {
 				if (lifetime == 0) {
-		              spell.level().addParticle(ParticleTypes.EXPLOSION, spell.getX(), spell.getY(), spell.getZ(), 0, 0, 0);
-		          }
+					spell.level().addParticle(ParticleTypes.EXPLOSION, spell.getX(), spell.getY(), spell.getZ(), 0, 0, 0);
+				}
 			}
 		},
 		FIRE(Element.FIRE, 15, true) {
@@ -266,6 +270,24 @@ public class SpellEffectEntity extends Entity implements IEntityAdditionalSpawnD
 				spell.level().playSound(null, spell.blockPosition(), RelicsSounds.SPELL_FIRE.get(), SoundSource.PLAYERS, 2.5f, 1.0f);
 			}
 
+			@Override
+			public void clientTick(SpellEffectEntity spell, int lifetime) {
+				super.clientTick(spell, lifetime);
+				if (lifetime == 0) {
+					Random rand = new Random();
+					ClientLevel clientLevel = (ClientLevel) spell.level();
+					for (int i = 0; i < 30; i++) {
+						Vec3 outward = new Vec3(rand.nextGaussian(), rand.nextGaussian(), rand.nextGaussian()).normalize();
+						double dist = rand.nextDouble() * spell.radius * 0.75;
+						double gx = outward.x() * dist;
+						double gy = outward.y() * dist;
+						double gz = outward.z() * dist;
+						SpellFireParticle p = new SpellFireParticle(clientLevel, spell.getX() + gx, spell.getY() + 0.5f + gy, spell.getZ() + gz, gx * 0.1, gy * 0.1, gz * 0.1, spell.power, 15 + rand.nextInt(10),
+								rand.nextInt(5), 0.8, gx * -0.002, 0.03, gz * -0.002);
+						Minecraft.getInstance().particleEngine.add(p);
+					}
+				}
+			}
 		},
 		LIGHTNING(Element.LIGHTNING, 5, false) {
 			@Override
@@ -273,6 +295,23 @@ public class SpellEffectEntity extends Entity implements IEntityAdditionalSpawnD
 				spell.level().playSound(null, spell.blockPosition(), RelicsSounds.SPELL_LIGHTNING.get(), SoundSource.PLAYERS, 2.5f, 1.0f);
 			}
 
+			@Override
+			public void clientTick(SpellEffectEntity spell, int lifetime) {
+				super.clientTick(spell, lifetime);
+				if (lifetime == 0) {
+					Random rand = new Random();
+					ClientLevel clientLevel = (ClientLevel) spell.level();
+					for (int i = 0; i < 30; i++) {
+						Vec3 outward = new Vec3(rand.nextGaussian(), rand.nextGaussian(), rand.nextGaussian()).normalize();
+						double dist = rand.nextDouble() * spell.radius;
+						double gx = outward.x() * dist;
+						double gy = outward.y() * dist;
+						double gz = outward.z() * dist;
+						SpellLightningParticle p = new SpellLightningParticle(clientLevel, spell.getX() + gx, spell.getY() + gy, spell.getZ() + gz, spell.power, 15, rand.nextInt(5), rand.nextDouble(), gx, gy, gz);
+						Minecraft.getInstance().particleEngine.add(p);
+					}
+				}
+			}
 		},
 		ICE(Element.ICE, 10, true) {
 			@Override
@@ -280,6 +319,21 @@ public class SpellEffectEntity extends Entity implements IEntityAdditionalSpawnD
 				spell.level().playSound(null, spell.blockPosition(), RelicsSounds.SPELL_ICE.get(), SoundSource.PLAYERS, 2.5f, 1.0f);
 			}
 
+			@Override
+			public void clientTick(SpellEffectEntity spell, int lifetime) {
+				super.clientTick(spell, lifetime);
+				if (lifetime == 0) {
+					Random rand = new Random();
+					ClientLevel clientLevel = (ClientLevel) spell.level();
+					for (int i = 0; i < 20; i++) {
+						Vec3 outward = new Vec3(rand.nextGaussian(), rand.nextGaussian(), rand.nextGaussian()).normalize();
+						double dist = rand.nextDouble() * spell.radius;
+						SpellIceParticle p = new SpellIceParticle(clientLevel, spell.getX() + outward.x() * dist, spell.getY() + 0.5f + outward.y() * dist, spell.getZ() + outward.z() * dist, spell.power, 15,
+								rand.nextInt(5));
+						Minecraft.getInstance().particleEngine.add(p);
+					}
+				}
+			}
 		},
 		TWINKLE(Element.STAR, 10, false) {
 			@Override
@@ -287,6 +341,21 @@ public class SpellEffectEntity extends Entity implements IEntityAdditionalSpawnD
 				spell.level().playSound(null, spell.blockPosition(), RelicsSounds.SPELL_TWINKLE.get(), SoundSource.PLAYERS, 2.5f, 1.0f);
 			}
 
+			@Override
+			public void clientTick(SpellEffectEntity spell, int lifetime) {
+				super.clientTick(spell, lifetime);
+				if (lifetime == 0) {
+					Random rand = new Random();
+					ClientLevel clientLevel = (ClientLevel) spell.level();
+					for (int i = 0; i < 50; i++) {
+						Vec3 outward = new Vec3(rand.nextGaussian(), rand.nextGaussian(), rand.nextGaussian()).normalize();
+						double dist = rand.nextDouble() * spell.radius;
+						SpellCrossParticle p = new SpellCrossParticle(clientLevel, spell.getX() + outward.x() * dist, spell.getY() + 0.5f + outward.y() * dist, spell.getZ() + outward.z() * dist, spell.power, 5,
+								rand.nextInt(15), 2);
+						Minecraft.getInstance().particleEngine.add(p);
+					}
+				}
+			}
 		},
 		SPRINKLE_STARDUST(Element.HARMLESS, 30, true) {
 			@Override
@@ -308,6 +377,7 @@ public class SpellEffectEntity extends Entity implements IEntityAdditionalSpawnD
 
 			@Override
 			public void clientTick(SpellEffectEntity spell, int lifetime) {
+				super.clientTick(spell, lifetime);
 				// Spawn diamond particles on first client tick
 				if (lifetime == 0) {
 					Random rand = new Random();
@@ -395,7 +465,12 @@ public class SpellEffectEntity extends Entity implements IEntityAdditionalSpawnD
 
 		// -- Called every tick, client side --
 		public void clientTick(SpellEffectEntity spell, int lifetime) {
-			// override per type for custom particles
+			// Crit flash rings on first tick
+			if (lifetime == 0 && spell.isCrit) {
+				ClientLevel clientLevel = (ClientLevel) spell.level();
+				SpellCritRingParticle ring = new SpellCritRingParticle(clientLevel, spell.getX(), spell.getY(), spell.getZ(), spell.radius);
+				Minecraft.getInstance().particleEngine.add(ring);
+			}
 		}
 	}
 
