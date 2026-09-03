@@ -14,6 +14,7 @@ import hojosa.relics_of_old.common.init.RelicsSounds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.Packet;
@@ -22,6 +23,7 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -225,7 +227,8 @@ public class SpellEffectEntity extends Entity implements IEntityAdditionalSpawnD
 	}
 
 	public enum SpellType {
-		STAR_IMPACT(Element.STAR, 10, true), ORB_EXPLOSION(Element.EXPLOSION, 2, true) {
+		STAR_IMPACT(Element.STAR, 10, true), 
+		ORB_EXPLOSION(Element.EXPLOSION, 2, true) {
 			@Override
 			public void affectBlock(SpellEffectEntity spell, BlockPos pos) {
 				BlockState state = spell.level().getBlockState(pos);
@@ -244,15 +247,47 @@ public class SpellEffectEntity extends Entity implements IEntityAdditionalSpawnD
 				living.hurt(spell.damageSources().indirectMagic(spell, caster), damage);
 				spell.knockRadialOutward(living, 0.5f, 0.0f);
 			}
+			
+			@Override
+		      public void onSpawn(SpellEffectEntity spell) {
+		          spell.level().playSound(null, spell.blockPosition(), SoundEvents.GENERIC_EXPLODE, SoundSource.PLAYERS, 1.0f, 1.0f);
+		      }
 
 			@Override
 			public void clientTick(SpellEffectEntity spell, int lifetime) {
-				// TODO Auto-generated method stub
-				super.clientTick(spell, lifetime);
+				if (lifetime == 0) {
+		              spell.level().addParticle(ParticleTypes.EXPLOSION, spell.getX(), spell.getY(), spell.getZ(), 0, 0, 0);
+		          }
 			}
 		},
-		FIRE(Element.FIRE, 15, true), LIGHTNING(Element.LIGHTNING, 5, false), ICE(Element.ICE, 10, true),
-		// add more spell types here as needed
+		FIRE(Element.FIRE, 15, true) {
+			@Override
+			public void onSpawn(SpellEffectEntity spell) {
+				spell.level().playSound(null, spell.blockPosition(), RelicsSounds.SPELL_FIRE.get(), SoundSource.PLAYERS, 2.5f, 1.0f);
+			}
+
+		},
+		LIGHTNING(Element.LIGHTNING, 5, false) {
+			@Override
+			public void onSpawn(SpellEffectEntity spell) {
+				spell.level().playSound(null, spell.blockPosition(), RelicsSounds.SPELL_LIGHTNING.get(), SoundSource.PLAYERS, 2.5f, 1.0f);
+			}
+
+		},
+		ICE(Element.ICE, 10, true) {
+			@Override
+			public void onSpawn(SpellEffectEntity spell) {
+				spell.level().playSound(null, spell.blockPosition(), RelicsSounds.SPELL_ICE.get(), SoundSource.PLAYERS, 2.5f, 1.0f);
+			}
+
+		},
+		TWINKLE(Element.STAR, 10, false) {
+			@Override
+			public void onSpawn(SpellEffectEntity spell) {
+				spell.level().playSound(null, spell.blockPosition(), RelicsSounds.SPELL_TWINKLE.get(), SoundSource.PLAYERS, 2.5f, 1.0f);
+			}
+
+		},
 		SPRINKLE_STARDUST(Element.HARMLESS, 30, true) {
 			@Override
 			public void affectBlock(SpellEffectEntity spell, BlockPos pos) {

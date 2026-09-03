@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "tab",
+  "ingredients": [
+    {
+      "item": "relics_of_old:dimensional_catalyst"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "relics_of_old:infused_star_dust"
+    }
+  ],
+  "result": {
+    "item": "relics_of_old:starsteel_ingot"
+  }
+}

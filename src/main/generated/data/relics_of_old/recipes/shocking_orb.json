@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "tab",
+  "ingredients": [
+    {
+      "item": "relics_of_old:starglass_shell"
+    },
+    {
+      "item": "relics_of_old:dimensional_catalyst"
+    },
+    {
+      "item": "relics_of_old:dimensional_catalyst"
+    },
+    {
+      "item": "relics_of_old:infused_star_piece"
+    },
+    {
+      "item": "relics_of_old:nucleus_lightning"
+    }
+  ],
+  "result": {
+    "item": "relics_of_old:shocking_orb"
+  }
+}

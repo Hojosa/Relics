@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "tab",
+  "ingredients": [
+    {
+      "item": "minecraft:diamond"
+    },
+    {
+      "item": "relics_of_old:nucleus_sky"
+    }
+  ],
+  "result": {
+    "item": "relics_of_old:gem_sky"
+  }
+}

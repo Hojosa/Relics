@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "tab",
+  "ingredients": [
+    {
+      "item": "relics_of_old:azurite_dot"
+    }
+  ],
+  "result": {
+    "item": "relics_of_old:azurite_dust"
+  }
+}

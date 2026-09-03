@@ -11,9 +11,9 @@
     }
   },
   "pattern": [
-    "s  ",
-    "s  ",
-    "w  "
+    "s",
+    "s",
+    "w"
   ],
   "result": {
     "item": "relics_of_old:slime_sword"

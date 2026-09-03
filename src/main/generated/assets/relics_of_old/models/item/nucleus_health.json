@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "relics_of_old:item/nucleus_base",
+    "layer1": "relics_of_old:item/nucleus_core"
+  }
+}

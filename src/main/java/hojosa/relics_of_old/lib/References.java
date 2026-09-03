@@ -154,6 +154,16 @@ public class References {
 		public static final String GEM_WEAPON = "gem_weapon";
 		public static final String GEM_WEALTH = "gem_wealth";
 		public static final String MUSIC_DISC_DRAGONDOT = "music_disc_dragondot";
+		public static final String AZURITE_SPHERE = "azurite_sphere";
+		public static final String STARGLASS_SHELL = "starglass_shell";
+		public static final String WATER_SHELL = "water_shell";
+		public static final String LAVA_SHELL = "lava_shell";
+		public static final String BLAST_SHELL = "blast_shell";
+		public static final String GLITTERING_ORB = "glittering_orb";
+		public static final String BURNING_ORB = "burning_orb";
+		public static final String FREEZING_ORB = "freezing_orb";
+		public static final String SHOCKING_ORB = "shocking_orb";
+		public static final String THROWN_ORB = "thrown_orb";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -213,6 +223,10 @@ public class References {
 		public static final String RITUAL_LASER = "ritual_laser";
 		public static final String STARDUST = "stardust";
 		public static final String DRAGONDOT = "dragondot";
+		public static final String SPELL_FIRE = "spell_fire";
+		public static final String SPELL_LIGHTNING = "spell_lightning";
+		public static final String SPELL_ICE = "spell_ice";
+		public static final String SPELL_TWINKLE = "spell_twinkle";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

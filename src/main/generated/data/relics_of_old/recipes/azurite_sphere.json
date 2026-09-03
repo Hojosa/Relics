@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "D": {
+      "item": "relics_of_old:azurite_dot"
+    }
+  },
+  "pattern": [
+    "DDD",
+    "DDD",
+    "DDD"
+  ],
+  "result": {
+    "item": "relics_of_old:azurite_sphere"
+  },
+  "show_notification": true
+}

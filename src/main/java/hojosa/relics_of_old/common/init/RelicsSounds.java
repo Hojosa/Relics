@@ -70,6 +70,10 @@ public class RelicsSounds {
 	public static final RegistryObject<SoundEvent> RITUAL_LASER = registerSound(References.SoundName.RITUAL_LASER);
 	public static final RegistryObject<SoundEvent> STARDUST = registerSound(References.SoundName.STARDUST);
 	public static final RegistryObject<SoundEvent> DRAGONDOT = registerSound(References.SoundName.DRAGONDOT);
+	public static final RegistryObject<SoundEvent> SPELL_FIRE = registerSound(References.SoundName.SPELL_FIRE);
+	public static final RegistryObject<SoundEvent> SPELL_LIGHTNING = registerSound(References.SoundName.SPELL_LIGHTNING);
+	public static final RegistryObject<SoundEvent> SPELL_ICE = registerSound(References.SoundName.SPELL_ICE);
+	public static final RegistryObject<SoundEvent> SPELL_TWINKLE = registerSound(References.SoundName.SPELL_TWINKLE);
 
 	private static RegistryObject<SoundEvent> registerSound(String name) {
 		return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(References.MOD_ID, name)));

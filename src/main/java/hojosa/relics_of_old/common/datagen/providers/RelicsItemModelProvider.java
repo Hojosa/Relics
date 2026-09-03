@@ -119,31 +119,42 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItem(RelicsItems.AZURITE_DOT);
 		basicItem(RelicsItems.ABSTRACTION_GEL);
 		basicItem(RelicsItems.DIMENSIONAL_CATALYST);
-		basicItem(RelicsItems.NUCLEUS_FIRE);
-		basicItem(RelicsItems.NUCLEUS_ICE);
-		basicItem(RelicsItems.NUCLEUS_LIGHTNING);
-		basicItem(RelicsItems.NUCLEUS_CUT);
-		basicItem(RelicsItems.NUCLEUS_SKY);
-		basicItem(RelicsItems.NUCLEUS_SUN);
-		basicItem(RelicsItems.NUCLEUS_NAVIGATE);
-		basicItem(RelicsItems.NUCLEUS_DARK);
-		basicItem(RelicsItems.NUCLEUS_STAR);
-		basicItem(RelicsItems.NUCLEUS_HEALTH);
-		basicItem(RelicsItems.NUCLEUS_WEAPON);
-		basicItem(RelicsItems.NUCLEUS_WEALTH);
-		basicItem(RelicsItems.GEM_FIRE);
-		basicItem(RelicsItems.GEM_ICE);
-		basicItem(RelicsItems.GEM_LIGHTNING);
-		basicItem(RelicsItems.GEM_CUT);
-		basicItem(RelicsItems.GEM_SKY);
-		basicItem(RelicsItems.GEM_SUN);
-		basicItem(RelicsItems.GEM_NAVIGATE);
-		basicItem(RelicsItems.GEM_DARK);
-		basicItem(RelicsItems.GEM_STAR);
-		basicItem(RelicsItems.GEM_HEALTH);
-		basicItem(RelicsItems.GEM_WEAPON);
-		basicItem(RelicsItems.GEM_WEALTH);
+		// Nucleus models (ame layered textures, tinted at runtime)
+		nucleusItem(RelicsItems.NUCLEUS_FIRE);
+		nucleusItem(RelicsItems.NUCLEUS_ICE);
+		nucleusItem(RelicsItems.NUCLEUS_LIGHTNING);
+		nucleusItem(RelicsItems.NUCLEUS_CUT);
+		nucleusItem(RelicsItems.NUCLEUS_SKY);
+		nucleusItem(RelicsItems.NUCLEUS_SUN);
+		nucleusItem(RelicsItems.NUCLEUS_NAVIGATE);
+		nucleusItem(RelicsItems.NUCLEUS_DARK);
+		nucleusItem(RelicsItems.NUCLEUS_STAR);
+		nucleusItem(RelicsItems.NUCLEUS_HEALTH);
+		nucleusItem(RelicsItems.NUCLEUS_WEAPON);
+		nucleusItem(RelicsItems.NUCLEUS_WEALTH);
+		// Gem models (same layered textures, tinted at runtime)
+		gemItem(RelicsItems.GEM_FIRE);
+		gemItem(RelicsItems.GEM_ICE);
+		gemItem(RelicsItems.GEM_LIGHTNING);
+		gemItem(RelicsItems.GEM_CUT);
+		gemItem(RelicsItems.GEM_SKY);
+		gemItem(RelicsItems.GEM_SUN);
+		gemItem(RelicsItems.GEM_NAVIGATE);
+		gemItem(RelicsItems.GEM_DARK);
+		gemItem(RelicsItems.GEM_STAR);
+		gemItem(RelicsItems.GEM_HEALTH);
+		gemItem(RelicsItems.GEM_WEAPON);
+		gemItem(RelicsItems.GEM_WEALTH);
 		basicItem(RelicsItems.MUSIC_DISC_DRAGONDOT);
+		basicItem(RelicsItems.AZURITE_SPHERE);
+		basicItem(RelicsItems.STARGLASS_SHELL);
+		basicItem(RelicsItems.WATER_SHELL);
+		basicItem(RelicsItems.LAVA_SHELL);
+		basicItem(RelicsItems.BLAST_SHELL);
+		sparkleOrb(RelicsItems.GLITTERING_ORB);
+		sparkleOrb(RelicsItems.BURNING_ORB);
+		sparkleOrb(RelicsItems.FREEZING_ORB);
+		sparkleOrb(RelicsItems.SHOCKING_ORB);
 
 		// magic mirror model
 		// base model that contains the base transform settings for the model
@@ -183,6 +194,19 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 	private ItemModelBuilder infusedItem(RegistryObject<RelicsItem> item, RegistryObject<RelicsItem> parent) {
 		return getBuilder(item.getId().toString()).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0",
 				ResourceLocation.fromNamespaceAndPath(item.getId().getNamespace(), "item/" + parent.getId().getPath()));
+	}
+
+	private void nucleusItem(RegistryObject<? extends Item> item) {
+		getBuilder(item.getId().toString()).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", modLoc("item/nucleus_base")).texture("layer1", modLoc("item/nucleus_core"));
+	}
+
+	private void sparkleOrb(RegistryObject<? extends Item> item) {
+		getBuilder(item.getId().toString()).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", modLoc("item/" + item.getId().getPath())).texture("layer1", modLoc("item/orb_sparkle"));
+	}
+
+	private void gemItem(RegistryObject<? extends Item> item) {
+		getBuilder(item.getId().toString()).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", modLoc("item/gem_base")).texture("layer1", modLoc("item/gem_fill")).texture("layer2",
+				modLoc("item/gem_overlay"));
 	}
 
 	private void withExistingParent(ItemObject<Block> itemRef) {

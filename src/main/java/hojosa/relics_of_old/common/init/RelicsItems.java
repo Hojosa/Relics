@@ -1,5 +1,6 @@
 package hojosa.relics_of_old.common.init;
 
+import hojosa.relics_of_old.common.entity.ThrownOrbEntity.OrbType;
 import hojosa.relics_of_old.common.item.AeroAmulet;
 import hojosa.relics_of_old.common.item.BombArrowItem;
 import hojosa.relics_of_old.common.item.BombBagItem;
@@ -27,6 +28,7 @@ import hojosa.relics_of_old.common.item.ReedPipes;
 import hojosa.relics_of_old.common.item.RelicsAmulet;
 import hojosa.relics_of_old.common.item.RockCandyItem;
 import hojosa.relics_of_old.common.item.SlimeSword;
+import hojosa.relics_of_old.common.item.ThrowableOrbItem;
 import hojosa.relics_of_old.common.item.TitanBand;
 import hojosa.relics_of_old.common.item.TuningForkItem;
 import hojosa.relics_of_old.common.item.WaterTablet;
@@ -104,10 +106,11 @@ public class RelicsItems {
 	public static final RegistryObject<RelicsItem> STARSTEEL_DUST = ITEMS.register(References.UnlocalizedName.STARSTEEL_DUST, () -> new RelicsItem(64));
 	public static final RegistryObject<RelicsItem> AZURITE_DUST = ITEMS.register(References.UnlocalizedName.AZURITE_DUST, () -> new RelicsItem(64));
 	public static final RegistryObject<RelicsItem> AZURITE_DOT = ITEMS.register(References.UnlocalizedName.AZURITE_DOT, () -> new RelicsItem(64));
+	public static final RegistryObject<RelicsItem> AZURITE_SPHERE = ITEMS.register(References.UnlocalizedName.AZURITE_SPHERE, () -> new RelicsItem(64));
 	public static final RegistryObject<RelicsItem> ABSTRACTION_GEL = ITEMS.register(References.UnlocalizedName.ABSTRACTION_GEL, () -> new InfusedItem(64, Rarity.COMMON));
 	public static final RegistryObject<DimensionalCatalystItem> DIMENSIONAL_CATALYST = ITEMS.register(References.UnlocalizedName.DIMENSIONAL_CATALYST, DimensionalCatalystItem::new);
 	public static final RegistryObject<RecordItem> MUSIC_DISC_DRAGONDOT = ITEMS.register(References.UnlocalizedName.MUSIC_DISC_DRAGONDOT,
-	        () -> new RecordItem(15, RelicsSounds.DRAGONDOT, new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 1720));
+			() -> new RecordItem(15, RelicsSounds.DRAGONDOT, new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 1720));
 
 	// lost pages
 	public static final RegistryObject<LostPage> LOST_PAGE_1 = ITEMS.register(References.UnlocalizedName.LOST_PAGE_1, () -> new LostPage(1, References.LostPagesText.LOST_PAGE_1));
@@ -179,6 +182,18 @@ public class RelicsItems {
 	public static final RegistryObject<RelicsItem> GEM_HEALTH = ITEMS.register(References.UnlocalizedName.GEM_HEALTH, () -> new RelicsItem(64));
 	public static final RegistryObject<RelicsItem> GEM_WEAPON = ITEMS.register(References.UnlocalizedName.GEM_WEAPON, () -> new RelicsItem(64));
 	public static final RegistryObject<RelicsItem> GEM_WEALTH = ITEMS.register(References.UnlocalizedName.GEM_WEALTH, () -> new RelicsItem(64));
+
+	// shells
+	public static final RegistryObject<RelicsItem> STARGLASS_SHELL = ITEMS.register(References.UnlocalizedName.STARGLASS_SHELL, () -> new RelicsItem(16, "Usable in crafting"));
+	// throwable shells
+	public static final RegistryObject<ThrowableOrbItem> WATER_SHELL = ITEMS.register(References.UnlocalizedName.WATER_SHELL, () -> new ThrowableOrbItem(OrbType.WATER));
+	public static final RegistryObject<ThrowableOrbItem> LAVA_SHELL = ITEMS.register(References.UnlocalizedName.LAVA_SHELL, () -> new ThrowableOrbItem(OrbType.LAVA));
+	public static final RegistryObject<ThrowableOrbItem> BLAST_SHELL = ITEMS.register(References.UnlocalizedName.BLAST_SHELL, () -> new ThrowableOrbItem(OrbType.BLAST));
+	// orbs
+	public static final RegistryObject<ThrowableOrbItem> GLITTERING_ORB = ITEMS.register(References.UnlocalizedName.GLITTERING_ORB, () -> new ThrowableOrbItem(OrbType.TWINKLE, "Usable in crafting"));
+	public static final RegistryObject<ThrowableOrbItem> BURNING_ORB = ITEMS.register(References.UnlocalizedName.BURNING_ORB, () -> new ThrowableOrbItem(OrbType.FIRE, "Usable in crafting"));
+	public static final RegistryObject<ThrowableOrbItem> FREEZING_ORB = ITEMS.register(References.UnlocalizedName.FREEZING_ORB, () -> new ThrowableOrbItem(OrbType.ICE, "Usable in crafting"));
+	public static final RegistryObject<ThrowableOrbItem> SHOCKING_ORB = ITEMS.register(References.UnlocalizedName.SHOCKING_ORB, () -> new ThrowableOrbItem(OrbType.ZAP, "Usable in crafting"));
 
 	public static void addTabItems(ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
 		RelicsItems.ITEMS.getEntries().forEach(itemRegistryObject -> output.accept(itemRegistryObject.get().getDefaultInstance()));

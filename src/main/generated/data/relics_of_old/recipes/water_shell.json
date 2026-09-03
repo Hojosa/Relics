@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "tab",
+  "ingredients": [
+    {
+      "item": "relics_of_old:starglass_shell"
+    },
+    {
+      "item": "relics_of_old:dimensional_catalyst"
+    },
+    {
+      "item": "minecraft:water_bucket"
+    }
+  ],
+  "result": {
+    "item": "relics_of_old:water_shell"
+  }
+}

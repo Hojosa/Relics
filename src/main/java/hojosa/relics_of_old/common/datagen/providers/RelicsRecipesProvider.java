@@ -222,7 +222,7 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.MILK_CHOCOLATE.get())
 		.pattern("mc ")
-		.pattern("s")
+		.pattern("s  ")
 		.define('m', Items.MILK_BUCKET)
 		.define('c', Items.COCOA_BEANS)
 		.define('s', Items.MILK_BUCKET)
@@ -276,8 +276,8 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.WOODEN_BOOMERANG.get())
 		.pattern("www")
-		.pattern("w")
-		.pattern("w")
+		.pattern("w  ")
+		.pattern("w  ")
 		.define('w', ItemTags.PLANKS)
 		.group(References.CREATIVE_TAB)
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.OAK_PLANKS))
@@ -356,7 +356,7 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.REED_PIPES.get())
 		.pattern("rrr")
 		.pattern("rr ")
-		.pattern("r")
+		.pattern("r  ")
 		.define('r', Items.SUGAR_CANE)
 		.group(References.CREATIVE_TAB)
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.SUGAR_CANE))
@@ -752,6 +752,82 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.NUCLEUS_WEALTH.get()))
 		.save(consumer);
 
+		// Azurite sphere: 9 azurite dots → 1 sphere
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RelicsItems.AZURITE_SPHERE.get())
+		.define('D', RelicsItems.AZURITE_DOT.get())
+		.pattern("DDD").pattern("DDD").pattern("DDD")
+		.unlockedBy(hasItem, has(RelicsItems.AZURITE_DOT.get()))
+		.group(References.CREATIVE_TAB).save(consumer);
+
+		// Empty shell: 4 starglass lumps → 8 shells
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RelicsItems.STARGLASS_SHELL.get(), 8)
+		.define('X', RelicsItems.STARGLASS_LUMP.get())
+		.pattern(" X ").pattern("X X").pattern(" X ")
+		.unlockedBy(hasItem, has(RelicsItems.STARGLASS_LUMP.get()))
+		.group(References.CREATIVE_TAB).save(consumer);
+
+		// Water shell
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.WATER_SHELL.get())
+		.requires(RelicsItems.STARGLASS_SHELL.get())
+		.requires(RelicsItems.DIMENSIONAL_CATALYST.get())
+		.requires(Items.WATER_BUCKET)
+		.unlockedBy(hasItem, has(RelicsItems.STARGLASS_SHELL.get()))
+		.group(References.CREATIVE_TAB).save(consumer);
+
+		// Lava shell
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.LAVA_SHELL.get())
+		.requires(RelicsItems.STARGLASS_SHELL.get())
+		.requires(RelicsItems.DIMENSIONAL_CATALYST.get())
+		.requires(Items.LAVA_BUCKET)
+		.unlockedBy(hasItem, has(RelicsItems.STARGLASS_SHELL.get()))
+		.group(References.CREATIVE_TAB).save(consumer);
+
+		// Blast shell
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.BLAST_SHELL.get())
+		.requires(RelicsItems.STARGLASS_SHELL.get())
+		.requires(RelicsItems.DIMENSIONAL_CATALYST.get())
+		.requires(Items.GUNPOWDER)
+		.requires(Items.FLINT)
+		.unlockedBy(hasItem, has(RelicsItems.STARGLASS_SHELL.get()))
+		.group(References.CREATIVE_TAB).save(consumer);
+
+		// Glittering orb
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.GLITTERING_ORB.get())
+		.requires(RelicsItems.STARGLASS_SHELL.get())
+		.requires(RelicsItems.DIMENSIONAL_CATALYST.get())
+		.requires(RelicsItems.INFUSED_STAR_PIECE.get())
+		.unlockedBy(hasItem, has(RelicsItems.STARGLASS_SHELL.get()))
+		.group(References.CREATIVE_TAB).save(consumer);
+
+		// Burning orb
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.BURNING_ORB.get())
+		.requires(RelicsItems.STARGLASS_SHELL.get())
+		.requires(RelicsItems.DIMENSIONAL_CATALYST.get())
+		.requires(RelicsItems.DIMENSIONAL_CATALYST.get())
+		.requires(RelicsItems.INFUSED_STAR_PIECE.get())
+		.requires(RelicsItems.NUCLEUS_FIRE.get())
+		.unlockedBy(hasItem, has(RelicsItems.STARGLASS_SHELL.get()))
+		.group(References.CREATIVE_TAB).save(consumer);
+		
+		// Freezing orb
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.FREEZING_ORB.get())
+		.requires(RelicsItems.STARGLASS_SHELL.get())
+		.requires(RelicsItems.DIMENSIONAL_CATALYST.get())
+		.requires(RelicsItems.DIMENSIONAL_CATALYST.get())
+		.requires(RelicsItems.INFUSED_STAR_PIECE.get())
+		.requires(RelicsItems.NUCLEUS_ICE.get())
+		.unlockedBy(hasItem, has(RelicsItems.STARGLASS_SHELL.get()))
+		.group(References.CREATIVE_TAB).save(consumer);
+
+		// Shocking orb
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.SHOCKING_ORB.get())
+		.requires(RelicsItems.STARGLASS_SHELL.get())
+		.requires(RelicsItems.DIMENSIONAL_CATALYST.get())
+		.requires(RelicsItems.DIMENSIONAL_CATALYST.get())
+		.requires(RelicsItems.INFUSED_STAR_PIECE.get())
+		.requires(RelicsItems.NUCLEUS_LIGHTNING.get())
+		.unlockedBy(hasItem, has(RelicsItems.STARGLASS_SHELL.get()))
+		.group(References.CREATIVE_TAB).save(consumer);
 
 		}
 }

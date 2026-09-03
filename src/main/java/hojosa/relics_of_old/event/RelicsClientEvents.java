@@ -39,6 +39,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -49,6 +50,7 @@ import net.minecraftforge.client.event.RenderHandEvent;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.RegistryObject;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Mod.EventBusSubscriber(modid = References.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -71,6 +73,37 @@ public class RelicsClientEvents {
 	public static void registerBlockColorHandlers(RegisterColorHandlersEvent.Block event) {
 		event.register(new RelicsBlockColor(), RelicsBlocks.SWORD_PEDESTAL_NORMAL.get(), RelicsBlocks.SWORD_PEDESTAL_RELIC.get(), RelicsBlocks.SWORD_PEDESTAL_RELIC_VARIANTS.get(), RelicsBlocks.SWORD_PEDESTAL_TIME.get(),
 				RelicsBlocks.SWORD_PEDESTAL_TWILIGHT.get());
+	}
+
+	@SubscribeEvent
+	public static void registerItemColors(RegisterColorHandlersEvent.Item event) {
+		// Nucleus colors: layer0 = color1, layer1 = color2
+		registerNucleusColor(event, RelicsItems.NUCLEUS_FIRE, 0xFF6600, 0xFFDD00);
+		registerNucleusColor(event, RelicsItems.NUCLEUS_ICE, 0x88BBFF, 0xCCEEFF);
+		registerNucleusColor(event, RelicsItems.NUCLEUS_LIGHTNING, 0x22FFEE, 0xFFFFB4);
+		registerNucleusColor(event, RelicsItems.NUCLEUS_CUT, 0xEEEEEE, 0xBBBBCC);
+		registerNucleusColor(event, RelicsItems.NUCLEUS_SKY, 0x0066FF, 0x22DDFF);
+		registerNucleusColor(event, RelicsItems.NUCLEUS_SUN, 0xFFBB00, 0xFFFFAA);
+		registerNucleusColor(event, RelicsItems.NUCLEUS_NAVIGATE, 0x888888, 0xFF5555);
+		registerNucleusColor(event, RelicsItems.NUCLEUS_DARK, 0x000011, 0x330066);
+		registerNucleusColor(event, RelicsItems.NUCLEUS_STAR, 0xFF77FF, 0xFFFFDD);
+		registerNucleusColor(event, RelicsItems.NUCLEUS_HEALTH, 0xAA0000, 0xFF4444);
+		registerNucleusColor(event, RelicsItems.NUCLEUS_WEAPON, 0xD8D8D8, 0x896B27);
+		registerNucleusColor(event, RelicsItems.NUCLEUS_WEALTH, 0x63F9AA, 0x00B038);
+
+		// Gem colors: same pairs, layer2 untinted
+		registerGemColor(event, RelicsItems.GEM_FIRE, 0xFF6600, 0xFFDD00);
+		registerGemColor(event, RelicsItems.GEM_ICE, 0x88BBFF, 0xCCEEFF);
+		registerGemColor(event, RelicsItems.GEM_LIGHTNING, 0x22FFEE, 0xFFFFB4);
+		registerGemColor(event, RelicsItems.GEM_CUT, 0xEEEEEE, 0xBBBBCC);
+		registerGemColor(event, RelicsItems.GEM_SKY, 0x0066FF, 0x22DDFF);
+		registerGemColor(event, RelicsItems.GEM_SUN, 0xFFBB00, 0xFFFFAA);
+		registerGemColor(event, RelicsItems.GEM_NAVIGATE, 0x888888, 0xFF5555);
+		registerGemColor(event, RelicsItems.GEM_DARK, 0x000011, 0x330066);
+		registerGemColor(event, RelicsItems.GEM_STAR, 0xFF77FF, 0xFFFFDD);
+		registerGemColor(event, RelicsItems.GEM_HEALTH, 0xAA0000, 0xFF4444);
+		registerGemColor(event, RelicsItems.GEM_WEAPON, 0xD8D8D8, 0x896B27);
+		registerGemColor(event, RelicsItems.GEM_WEALTH, 0x63F9AA, 0x00B038);
 	}
 
 	@SubscribeEvent
@@ -97,6 +130,7 @@ public class RelicsClientEvents {
 		event.registerEntityRenderer(RelicsEntities.BOMB.get(), BombEntityRenderer::new);
 		event.registerEntityRenderer(RelicsEntities.BOMB_ARROW.get(), BombArrowEntityRenderer::new);
 		event.registerEntityRenderer(RelicsEntities.SPELL_EFFECT.get(), EmptyEntityRenderer::new);
+		event.registerEntityRenderer(RelicsEntities.THROWN_ORB.get(), ThrownItemRenderer::new);
 //		event.registerEntityRenderer(RelicsEntities.SPELL_DECORATOR.get(), EmptyEntityRenderer::new);
 	}
 
@@ -173,5 +207,17 @@ public class RelicsClientEvents {
 				event.setCanceled(true);
 			}
 		}
+	}
+
+	private static void registerNucleusColor(RegisterColorHandlersEvent.Item event, RegistryObject<? extends Item> item, int color1, int color2) {
+		event.register((stack, tintIndex) -> tintIndex == 0 ? color1 : color2, item.get());
+	}
+
+	private static void registerGemColor(RegisterColorHandlersEvent.Item event, RegistryObject<? extends Item> item, int color1, int color2) {
+		event.register((stack, tintIndex) -> switch (tintIndex) {
+		case 0 -> color1;
+		case 1 -> color2;
+		default -> 0xFFFFFF; // layer2 (cover) untinted
+		}, item.get());
 	}
 }

@@ -14,9 +14,9 @@
     }
   },
   "pattern": [
-    "i  ",
-    "e  ",
-    "s  "
+    "i",
+    "e",
+    "s"
   ],
   "result": {
     "item": "relics_of_old:ender_sword"

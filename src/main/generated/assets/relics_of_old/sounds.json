@@ -236,6 +236,30 @@
     ],
     "subtitle": "relics_of_old.subtitle.speed_boost"
   },
+  "spell_fire": {
+    "sounds": [
+      "relics_of_old:spell_fire"
+    ],
+    "subtitle": "relics_of_old.subtitle.spell_fire"
+  },
+  "spell_ice": {
+    "sounds": [
+      "relics_of_old:spell_ice"
+    ],
+    "subtitle": "relics_of_old.subtitle.spell_ice"
+  },
+  "spell_lightning": {
+    "sounds": [
+      "relics_of_old:spell_lightning"
+    ],
+    "subtitle": "relics_of_old.subtitle.spell_lightning"
+  },
+  "spell_twinkle": {
+    "sounds": [
+      "relics_of_old:spell_twinkle"
+    ],
+    "subtitle": "relics_of_old.subtitle.spell_twinkle"
+  },
   "sprinkle": {
     "sounds": [
       "relics_of_old:sprinkle",

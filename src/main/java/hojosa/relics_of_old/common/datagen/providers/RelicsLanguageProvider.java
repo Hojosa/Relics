@@ -156,6 +156,15 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addItem(RelicsItems.GEM_WEALTH, "Wealth Gem");
 		addItem(RelicsItems.MUSIC_DISC_DRAGONDOT, "Music Disc");
 		add("item.relics_of_old.music_disc_dragondot.desc", "Dragondot");
+		addItem(RelicsItems.AZURITE_SPHERE, "Azurite Sphere");
+		addItem(RelicsItems.STARGLASS_SHELL, "Starglass Shell");
+		addItem(RelicsItems.WATER_SHELL, "Water Shell");
+		addItem(RelicsItems.LAVA_SHELL, "Lava Shell");
+		addItem(RelicsItems.BLAST_SHELL, "Blast Shell");
+		addItem(RelicsItems.GLITTERING_ORB, "Glittering Orb");
+		addItem(RelicsItems.BURNING_ORB, "Burning Orb");
+		addItem(RelicsItems.FREEZING_ORB, "Freezing Orb");
+		addItem(RelicsItems.SHOCKING_ORB, "Shocking Orb");
 
 		// Sword augment tooltips
 		add("augment.relics_of_old.fire", "Augment: Fire");

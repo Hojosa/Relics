@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "relics_of_old:starry_sand"
+  },
+  "result": "relics_of_old:starglass_lump"
+}

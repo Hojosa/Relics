@@ -36,16 +36,16 @@ public class SpellDecoratorEntity extends Entity implements IEntityAdditionalSpa
 	}
 
 	// Spawned server-side by SpellEffectEntity on tick 0
-	public SpellDecoratorEntity(SpellEffectEntity spell) {
-		super(RelicsEntities.SPELL_DECORATOR.get(), spell.level());
-		this.setPos(spell.getX(), spell.getY(), spell.getZ());
-		this.radius = spell.radius;
-		this.power = spell.power;
-		this.isCrit = spell.isCrit;
-		this.spellType = spell.getSpellType().ordinal();
-		this.noCulling = true;
-		generateParticles();
-	}
+//	public SpellDecoratorEntity(SpellEffectEntity spell) {
+//		super(RelicsEntities.SPELL_DECORATOR.get(), spell.level());
+//		this.setPos(spell.getX(), spell.getY(), spell.getZ());
+//		this.radius = spell.radius;
+//		this.power = spell.power;
+//		this.isCrit = spell.isCrit;
+//		this.spellType = spell.getSpellType().ordinal();
+//		this.noCulling = true;
+//		generateParticles();
+//	}
 
 	// Particle generation — mirrors LG2's SpellDecorator.generateParticles() with
 	// original values
