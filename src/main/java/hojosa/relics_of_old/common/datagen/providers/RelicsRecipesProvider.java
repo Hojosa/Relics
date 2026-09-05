@@ -11,6 +11,7 @@ import hojosa.relics_of_old.lib.References;
 import hojosa.relics_of_old.lib.RelicsUtil;
 import hojosa.relics_of_old.lib.recipe.StonecutterRetexturedRecipeBuilder;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -19,12 +20,17 @@ import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.data.recipes.SingleItemRecipeBuilder;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.crafting.ConditionalRecipe;
+import net.minecraftforge.common.crafting.conditions.NotCondition;
+import net.minecraftforge.common.crafting.conditions.TagEmptyCondition;
 import slimeknights.mantle.recipe.crafting.ShapedRetexturedRecipeBuilder;
 
 
@@ -571,12 +577,16 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.save(consumer);
 
 		// Starsteel dust: infused star dust + iron dust (requires another mod to provide forge:dusts/iron)
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.STARSTEEL_DUST.get())
-		.requires(RelicsItems.INFUSED_STAR_DUST.get())
-		.requires(Ingredient.of(RelicsTags.Items.DUSTS_IRON))
-		.group(References.CREATIVE_TAB)
-		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.INFUSED_STAR_DUST.get()))
-		.save(consumer);
+		ConditionalRecipe.builder()
+	      .addCondition(new NotCondition(new TagEmptyCondition(ResourceLocation.fromNamespaceAndPath("forge", "dusts/iron"))))
+	      .addRecipe(
+	          ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.STARSTEEL_DUST.get())
+	              .requires(RelicsItems.INFUSED_STAR_DUST.get())
+	              .requires(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "dusts/iron")))
+	              .unlockedBy("has_infused_star_dust", has(RelicsItems.INFUSED_STAR_DUST.get()))
+	              ::save
+	      )
+	      .build(consumer, ResourceLocation.fromNamespaceAndPath(References.MOD_ID, "starsteel_dust_from_iron_dust"));
 
 		// Starsteel ingot: smelt starsteel dust
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(RelicsItems.STARSTEEL_DUST.get()), RecipeCategory.MISC, RelicsItems.STARSTEEL_INGOT.get(), 0.0f, 200)
