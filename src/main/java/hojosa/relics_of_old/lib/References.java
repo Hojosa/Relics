@@ -178,6 +178,7 @@ public class References {
 		public static final String RESONANCE_RING = "resonance_ring";
 		public static final String PLAIN_RING = "plain_ring";
 		public static final String PHOENIX_RING = "phoenix_ring";
+		public static final String STARSTEEL_BOOMERANG = "starstel_boomerang";
 
 	}
 

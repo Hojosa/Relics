@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "d": {
+      "item": "minecraft:diamond"
+    },
+    "g": {
+      "item": "minecraft:gold_ingot"
+    },
+    "w": {
+      "item": "relics_of_old:wooden_boomerang"
+    }
+  },
+  "pattern": [
+    "wg ",
+    "gd "
+  ],
+  "result": {
+    "item": "relics_of_old:magic_boomerang"
+  },
+  "show_notification": true
+}

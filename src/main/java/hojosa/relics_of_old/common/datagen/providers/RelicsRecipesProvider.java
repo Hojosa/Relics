@@ -283,6 +283,46 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.OAK_PLANKS))
 		.save(consumer);
 		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.MAGIC_BOOMERANG.get())
+		.pattern("dgg")
+		.pattern("g  ")
+		.pattern("g  ")
+		.define('d', Items.DIAMOND)
+		.define('g', Items.GOLD_INGOT)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.DIAMOND))
+		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.MAGIC_BOOMERANG.get())
+		.pattern("wg ")
+		.pattern("gd ")
+		.define('w', RelicsItems.WOODEN_BOOMERANG.get())
+		.define('d', Items.DIAMOND)
+		.define('g', Items.GOLD_INGOT)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.DIAMOND))
+		.save(consumer, RelicsUtil.modLoc("magic_boomerang_upgrade"));
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.STARSTEEL_BOOMERANG.get())
+		.pattern("gss")
+		.pattern("s  ")
+		.pattern("s  ")
+		.define('g', RelicsItems.STARGLASS_LUMP.get())
+		.define('s', RelicsItems.STARSTEEL_INGOT.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.STARGLASS_LUMP.get()))
+		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.STARSTEEL_BOOMERANG.get())
+		.pattern("ms ")
+		.pattern("sg ")
+		.define('m', RelicsItems.MAGIC_BOOMERANG.get())
+		.define('g', RelicsItems.STARGLASS_LUMP.get())
+		.define('s', RelicsItems.STARSTEEL_INGOT.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.STARGLASS_LUMP.get()))
+		.save(consumer, RelicsUtil.modLoc("starsteel_boomerang_upgrade"));
+		
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.PYRO_AMULET.get())
 		.pattern(" g ")
 		.pattern("g g")

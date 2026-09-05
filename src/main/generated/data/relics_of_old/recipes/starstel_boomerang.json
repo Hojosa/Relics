@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "g": {
+      "item": "relics_of_old:starglass_lump"
+    },
+    "s": {
+      "item": "relics_of_old:starsteel_ingot"
+    }
+  },
+  "pattern": [
+    "gss",
+    "s  ",
+    "s  "
+  ],
+  "result": {
+    "item": "relics_of_old:starstel_boomerang"
+  },
+  "show_notification": true
+}
