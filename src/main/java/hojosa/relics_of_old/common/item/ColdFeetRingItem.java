@@ -1,5 +1,6 @@
 package hojosa.relics_of_old.common.item;
 
+import hojosa.relics_of_old.common.player.PlayerMana;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -12,7 +13,7 @@ import top.theillusivec4.curios.api.SlotContext;
 public class ColdFeetRingItem extends MagicRingItem {
 	
 	public ColdFeetRingItem() {
-		super("Freeze water underfoot");
+		super("Freeze water underfoot", 0.1f);
 	}
 
 	@Override
@@ -20,6 +21,9 @@ public class ColdFeetRingItem extends MagicRingItem {
         if (!(slotContext.entity() instanceof Player player)) return;
         if (player.level().isClientSide) return;
 
+        PlayerMana mana = PlayerMana.get(player);
+        if (mana == null || mana.getAvailableMana() <= 0.0f) return;
+        
         AABB box = player.getBoundingBox().inflate(0.25);
         int y = (int) Math.floor(box.minY);
 
@@ -31,6 +35,7 @@ public class ColdFeetRingItem extends MagicRingItem {
                 if ((state.is(Blocks.WATER) || state.is(Blocks.WATER)) && state.getValue(LiquidBlock.LEVEL) == 0) {
                     // LG2 uses ThawingIceBlock — using frosted ice as 1.20.1 equivalent
                     player.level().setBlockAndUpdate(pos, Blocks.FROSTED_ICE.defaultBlockState());
+                    PlayerMana.spendRingMana(player, this.getManaCost(), hasResonance(player));
                 }
             }
         }

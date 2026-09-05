@@ -242,6 +242,8 @@ public class References {
 		public static final String SPELL_LIGHTNING = "spell_lightning";
 		public static final String SPELL_ICE = "spell_ice";
 		public static final String SPELL_TWINKLE = "spell_twinkle";
+		public static final String RING_TICK = "ring_mana_tick";
+		public static final String RING_OUT = "ring_mana_out";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

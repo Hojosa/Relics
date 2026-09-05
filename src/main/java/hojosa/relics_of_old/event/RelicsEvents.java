@@ -23,6 +23,8 @@ import hojosa.relics_of_old.common.item.RelicsAmulet;
 import hojosa.relics_of_old.common.item.WhirlwindBoots;
 import hojosa.relics_of_old.common.item.entity.EmeraldShardItemEntity;
 import hojosa.relics_of_old.common.item.entity.HeartItemEntity;
+import hojosa.relics_of_old.common.player.PlayerMana;
+import hojosa.relics_of_old.common.player.PlayerManaProvider;
 import hojosa.relics_of_old.common.player.StarFallChance;
 import hojosa.relics_of_old.common.player.StarFallChanceProvider;
 import hojosa.relics_of_old.lib.References;
@@ -77,6 +79,7 @@ import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.entity.player.PlayerXpEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.event.village.WandererTradesEvent;
 import net.minecraftforge.eventbus.api.Event;
@@ -129,17 +132,29 @@ public class RelicsEvents {
 	}
 
 	@SubscribeEvent
+	public static void onRegisterCapabilities(RegisterCapabilitiesEvent event) {
+		event.register(StarFallChance.class);
+		event.register(PlayerMana.class);
+	}
+
+	@SubscribeEvent
 	public static void onAttachCapabilitiesPlayer(AttachCapabilitiesEvent<Entity> event) {
 		if (event.getObject() instanceof Player && !event.getObject().getCapability(StarFallChanceProvider.PLAYER_STAR_FALL).isPresent()) {
 			event.addCapability(ResourceLocation.fromNamespaceAndPath(References.MOD_ID, "properties"), new StarFallChanceProvider());
+		}
+		if (event.getObject() instanceof Player && !event.getObject().getCapability(PlayerManaProvider.PLAYER_MANA).isPresent()) {
+			event.addCapability(ResourceLocation.fromNamespaceAndPath(References.MOD_ID, "mana"), new PlayerManaProvider());
 		}
 	}
 
 	@SubscribeEvent
 	public static void onPlayerCloned(PlayerEvent.Clone event) {
 		if (event.isWasDeath()) {
+			event.getOriginal().reviveCaps();
 			event.getOriginal().getCapability(StarFallChanceProvider.PLAYER_STAR_FALL)
-					.ifPresent(oldStore -> event.getOriginal().getCapability(StarFallChanceProvider.PLAYER_STAR_FALL).ifPresent(newStore -> newStore.copyFrom(oldStore)));
+					.ifPresent(oldStore -> event.getEntity().getCapability(StarFallChanceProvider.PLAYER_STAR_FALL).ifPresent(newStore -> newStore.copyFrom(oldStore)));
+			event.getOriginal().getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(oldMana -> event.getEntity().getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(newMana -> newMana.copyFrom(oldMana)));
+			event.getOriginal().invalidateCaps();
 		}
 	}
 
@@ -180,21 +195,16 @@ public class RelicsEvents {
 	}
 
 	@SubscribeEvent
-	public static void onRegisterCapabilities(RegisterCapabilitiesEvent event) {
-		event.register(StarFallChance.class);
-	}
-
-	@SubscribeEvent
 	public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-		if (event.side == LogicalSide.SERVER) {
+		if (event.side == LogicalSide.SERVER && event.phase == TickEvent.Phase.END) {
 			event.player.getCapability(StarFallChanceProvider.PLAYER_STAR_FALL).ifPresent(star -> {
 				// 1200 ticks, 100 chance
-				if (event.player.level().isNight() && event.player.tickCount % 1200 == 0 && star.getStarChance() == random.nextInt(0, 100)) { // Once Every 10 Seconds on Avg
+				if (event.player.level().isNight() && event.player.tickCount % 1200 == 0 && star.getStarChance() == random.nextInt(0, 50)) { // Once Every 10 Seconds on Avg
 					star.rollNewChance();
 					event.player.level().addFreshEntity(new FallingStarEntity(event.player));
 				}
 			});
-			if (event.player.level().isThundering() && event.player.level().isRaining() && random.nextInt(1500) == 0) {
+			if (event.player.level().isThundering() && event.player.level().isRaining() && random.nextInt(750) == 0) {
 				int strikeX = (int) event.player.getX() + random.nextInt(96) - 48;
 				int strikeZ = (int) event.player.getZ() + random.nextInt(96) - 48;
 				ServerLevel serverLevel = (ServerLevel) event.player.level();
@@ -208,13 +218,17 @@ public class RelicsEvents {
 				// convert ground block
 				BlockPos groundPos = new BlockPos(strikeX, strikeY - 1, strikeZ);
 				Block groundBlock = serverLevel.getBlockState(groundPos).getBlock();
-				//todo turn into tags, add corase dirt and dirt path. make red struck sand
+				// todo turn into tags, add corase dirt and dirt path. make red struck sand
 				if (groundBlock == Blocks.SAND || groundBlock == Blocks.RED_SAND) {
 					serverLevel.setBlockAndUpdate(groundPos, RelicsBlocks.STRUCK_SAND.get().defaultBlockState());
 				} else if (groundBlock == Blocks.DIRT || groundBlock == Blocks.GRASS_BLOCK || groundBlock == Blocks.MYCELIUM) {
 					serverLevel.setBlockAndUpdate(groundPos, RelicsBlocks.STRUCK_DIRT.get().defaultBlockState());
 				}
 			}
+			// Mana regen tick
+			event.player.getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(mana -> {
+				mana.tickRegen(event.player);
+			});
 		}
 	}
 
@@ -252,6 +266,10 @@ public class RelicsEvents {
 	// rewrite our old guide book to the new id if present.
 	@SubscribeEvent
 	public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
+		// Sync mana to client on login
+		event.getEntity().getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(mana -> mana.forceSync(event.getEntity()));
+
+		// migrate our stuff to new modid, to be removed later
 		// fix our guidebook
 		Player player = event.getEntity();
 		Item guideBook = ForgeRegistries.ITEMS.getValue(ResourceLocation.fromNamespaceAndPath("patchouli", "guide_book"));
@@ -290,11 +308,30 @@ public class RelicsEvents {
 		}
 	}
 
+	@SubscribeEvent
+	public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
+		event.getEntity().getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(mana -> mana.forceSync(event.getEntity()));
+	}
+
 	// this fires after the item has been picked up
 	@SubscribeEvent
 	public static void onItemPickup(PlayerEvent.ItemPickupEvent event) {
 		if (event.getStack().is(Items.EMERALD) && event.getEntity() instanceof ServerPlayer serverPlayer) {
 			serverPlayer.connection.send(new ClientboundSoundEntityPacket(RelicsSounds.EMERALD_PICKUP.getHolder().get(), SoundSource.PLAYERS, serverPlayer, 1.0f, 1.0f, 1L));
+		}
+		//refresh the starfall boost flag after death 
+		event.getEntity().getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(mana -> mana.forceSync(event.getEntity()));
+	      // re-sync wish ring flag after respawn
+	      event.getEntity().getCapability(StarFallChanceProvider.PLAYER_STAR_FALL).ifPresent(star -> {
+	          star.setWishRingActive(RelicsItems.WISH_RING.get().isEquipped(event.getEntity()));
+	      }); 
+	}
+
+	@SubscribeEvent
+	public static void onXPPickup(PlayerXpEvent.PickupXp event) {
+		if (!event.getEntity().level().isClientSide) {
+			int xpValue = event.getOrb().getValue();
+			event.getEntity().getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(mana -> mana.healFromXP(event.getEntity(), xpValue));
 		}
 	}
 
@@ -335,19 +372,24 @@ public class RelicsEvents {
 			/////////////////////////////////
 			/// player gets hurt interactions
 			/////////////////////////////////
-			//phoenix ring fire absorption
-			if (!event.getSource().is(DamageTypeTags.IS_FIRE)) return;
-		      if (RelicsItems.PHOENIX_RING.get().isEquipped(player)) {
-		          if ((float) player.invulnerableTime > (float) player.invulnerableTime / 2.0f) {
-		              event.setCanceled(true);
-		              return;
-		          }
-		          float amount = event.getAmount();
-		          player.heal(amount);
-		          player.invulnerableTime = player.invulnerableTime;
-		          player.level().playSound(null, player.blockPosition(), RelicsSounds.HEART.get(), SoundSource.PLAYERS, 0.3f, 1.0f);
-		          event.setCanceled(true);
-		      }
+			// phoenix ring fire absorption
+			if (!event.getSource().is(DamageTypeTags.IS_FIRE))
+				return;
+			if (RelicsItems.PHOENIX_RING.get().isEquipped(player)) {
+				PlayerMana mana = PlayerMana.get(player);
+				if (mana == null || mana.getAvailableMana() <= 0.0f)
+					return;
+				if ((float) player.invulnerableTime > (float) player.invulnerableTime / 2.0f) {
+					event.setCanceled(true);
+					return;
+				}
+				float amount = event.getAmount();
+				player.heal(amount);
+				player.invulnerableTime = player.invulnerableTime;
+				PlayerMana.spendRingMana(player, amount, RelicsItems.RESONANCE_RING.get().isEquipped(player));
+				player.level().playSound(null, player.blockPosition(), RelicsSounds.HEART.get(), SoundSource.PLAYERS, 0.3f, 1.0f);
+				event.setCanceled(true);
+			}
 
 			// get all amulets that are equipped, this should only ever be one, but other
 			// mods can add additonal charm slots and there is usally the one universal
@@ -425,10 +467,14 @@ public class RelicsEvents {
 				headSlot.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(EquipmentSlot.HEAD));
 			}
 			if (RelicsItems.WARRIOR_RING.get().isEquipped(player)) {
-	              event.setAmount(event.getAmount() + 4.0f);
-	              player.level().playSound(null, event.getEntity().blockPosition(),
-	                  RelicsSounds.ESCALATE.get(), SoundSource.PLAYERS, 0.3f, 1.0f);
-	          }
+				PlayerMana mana = PlayerMana.get(player);
+				if (mana != null && mana.getAvailableMana() > 0.0f) {
+					event.setAmount(event.getAmount() + 4.0f);
+					PlayerMana.spendRingMana(player, RelicsItems.WARRIOR_RING.get().getManaCost(), RelicsItems.RESONANCE_RING.get().isEquipped(player));
+					player.level().playSound(null, event.getEntity().blockPosition(), RelicsSounds.ESCALATE.get(), SoundSource.PLAYERS, 0.3f, 1.0f);
+
+				}
+			}
 		}
 	}
 

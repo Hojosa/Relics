@@ -1,4 +1,4 @@
-package hojosa.relics_of_old.common.init;
+ package hojosa.relics_of_old.common.init;
 
 import hojosa.relics_of_old.common.entity.ThrownOrbEntity.OrbType;
 import hojosa.relics_of_old.common.item.AeroAmulet;
@@ -209,7 +209,7 @@ public class RelicsItems {
 	public static final RegistryObject<ColdFeetRingItem> COLD_FEET_RING = ITEMS.register(References.UnlocalizedName.COLD_FEET_RING, ColdFeetRingItem::new);
 	public static final RegistryObject<ThiefRingItem> THIEF_RING = ITEMS.register(References.UnlocalizedName.THIEF_RING, ThiefRingItem::new);
 	public static final RegistryObject<MagicRingItem> MAGE_RING = ITEMS.register(References.UnlocalizedName.MAGE_RING, () -> new MagicRingItem("Reduce magic cost of spells"));
-	public static final RegistryObject<MagicRingItem> WARRIOR_RING = ITEMS.register(References.UnlocalizedName.WARRIOR_RING, () -> new MagicRingItem("Empowers melee attacks"));
+	public static final RegistryObject<MagicRingItem> WARRIOR_RING = ITEMS.register(References.UnlocalizedName.WARRIOR_RING, () -> new MagicRingItem("Empowers melee attacks", 4.0f));
 	public static final RegistryObject<MagicRingItem> FORTUNE_RING = ITEMS.register(References.UnlocalizedName.FORTUNE_RING, () -> new MagicRingItem("Find more emerald shards"));
 	public static final RegistryObject<MagicRingItem> ARROWFIND_RING = ITEMS.register(References.UnlocalizedName.ARROWFIND_RING, () -> new MagicRingItem("Sometimes find arrows"));
 	public static final RegistryObject<MagicRingItem> AZUREFIND_RING = ITEMS.register(References.UnlocalizedName.AZUREFIND_RING, () -> new MagicRingItem("Occasionally find azurite"));

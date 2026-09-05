@@ -20,6 +20,12 @@
     ],
     "subtitle": "relics_of_old.subtitle.dash"
   },
+  "dragondot": {
+    "sounds": [
+      "relics_of_old:dragondot"
+    ],
+    "subtitle": "relics_of_old.subtitle.dragondot"
+  },
   "emerald_pickup": {
     "sounds": [
       "relics_of_old:emerald_pickup"
@@ -187,6 +193,18 @@
       "relics_of_old:ring_7"
     ],
     "subtitle": "relics_of_old.subtitle.ring_7"
+  },
+  "ring_mana_out": {
+    "sounds": [
+      "relics_of_old:ring_mana_out"
+    ],
+    "subtitle": "relics_of_old.subtitle.ring_mana_out"
+  },
+  "ring_mana_tick": {
+    "sounds": [
+      "relics_of_old:ring_mana_tick"
+    ],
+    "subtitle": "relics_of_old.subtitle.ring_mana_tick"
   },
   "ring_sad": {
     "sounds": [

@@ -74,6 +74,8 @@ public class RelicsSounds {
 	public static final RegistryObject<SoundEvent> SPELL_LIGHTNING = registerSound(References.SoundName.SPELL_LIGHTNING);
 	public static final RegistryObject<SoundEvent> SPELL_ICE = registerSound(References.SoundName.SPELL_ICE);
 	public static final RegistryObject<SoundEvent> SPELL_TWINKLE = registerSound(References.SoundName.SPELL_TWINKLE);
+	public static final RegistryObject<SoundEvent> RING_TICK = registerSound(References.SoundName.RING_TICK);
+	public static final RegistryObject<SoundEvent> RING_OUT = registerSound(References.SoundName.RING_OUT);
 
 	private static RegistryObject<SoundEvent> registerSound(String name) {
 		return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(References.MOD_ID, name)));

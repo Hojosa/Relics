@@ -8,6 +8,8 @@ import net.minecraft.nbt.CompoundTag;
 
 public class StarFallChance {
 	@Getter @Setter
+	private boolean wishRingActive = false;
+	@Getter @Setter
 	private int starChance = 0;
 	@Getter @Setter
     private int starsCollected = 0;
@@ -16,6 +18,7 @@ public class StarFallChance {
     public void copyFrom(StarFallChance source) {
         this.starChance = source.starChance;
         this.starsCollected = source.starsCollected;
+        this.wishRingActive = source.wishRingActive;
     }
 
     public void saveNBTData(CompoundTag nbt) {
@@ -29,6 +32,6 @@ public class StarFallChance {
     }
     
     public void rollNewChance() {
-    	this.starChance = random.nextInt(0, 100);
+    	this.starChance = random.nextInt(0, 50);
     }
 }

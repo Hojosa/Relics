@@ -27,5 +27,6 @@ public class RelicsNetwork extends NetworkWrapper{
         
         instance.registerPacket(PhoenixParticlePacket.class, PhoenixParticlePacket::new, NetworkDirection.PLAY_TO_CLIENT);
         instance.registerPacket(DismoutStarBeamPacket.class, DismoutStarBeamPacket::new, NetworkDirection.PLAY_TO_SERVER);
+        instance.registerPacket(ManaSyncPacket.class, ManaSyncPacket::new, NetworkDirection.PLAY_TO_CLIENT);
     }
 }
