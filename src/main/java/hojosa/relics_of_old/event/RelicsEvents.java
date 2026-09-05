@@ -427,13 +427,8 @@ public class RelicsEvents {
 				PlayerMana mana = PlayerMana.get(player);
 				if (mana == null || mana.getAvailableMana() <= 0.0f)
 					return;
-				if ((float) player.invulnerableTime > (float) player.invulnerableTime / 2.0f) {
-					event.setCanceled(true);
-					return;
-				}
 				float amount = event.getAmount();
 				player.heal(amount);
-				player.invulnerableTime = player.invulnerableTime;
 				PlayerMana.spendRingMana(player, amount, RelicsItems.RESONANCE_RING.get().isEquipped(player));
 				player.level().playSound(null, player.blockPosition(), RelicsSounds.HEART.get(), SoundSource.PLAYERS, 0.3f, 1.0f);
 				event.setCanceled(true);
@@ -453,7 +448,6 @@ public class RelicsEvents {
 							int damage = (int) Math.ceil(event.getAmount());
 							amulet.consumeCharge(result.stack(), damage);
 							player.heal(damage);
-							player.invulnerableTime = player.invulnerableTime;
 							player.level().playSound(null, player.blockPosition(), RelicsSounds.HEART.get(), SoundSource.PLAYERS, 0.2f, 1.0f);
 							event.setCanceled(true);
 							return;

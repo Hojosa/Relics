@@ -32,7 +32,7 @@ public class ColdFeetRingItem extends MagicRingItem {
                 BlockPos pos = new BlockPos(x, y, z);
                 BlockState state = player.level().getBlockState(pos);
                 // only freeze source water blocks (level 0)
-                if ((state.is(Blocks.WATER) || state.is(Blocks.WATER)) && state.getValue(LiquidBlock.LEVEL) == 0) {
+                if (state.is(Blocks.WATER) && state.getValue(LiquidBlock.LEVEL) == 0) {
                     // LG2 uses ThawingIceBlock — using frosted ice as 1.20.1 equivalent
                     player.level().setBlockAndUpdate(pos, Blocks.FROSTED_ICE.defaultBlockState());
                     PlayerMana.spendRingMana(player, this.getManaCost(), hasResonance(player));

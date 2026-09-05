@@ -8,7 +8,7 @@ import top.theillusivec4.curios.api.SlotContext;
 public class SoftFallRingItem extends MagicRingItem {
 
 	public SoftFallRingItem() {
-		super("Gentle landings");
+		super("Gentle landings", 1.5f);
 	}
 
 	@Override
@@ -21,6 +21,5 @@ public class SoftFallRingItem extends MagicRingItem {
 			PlayerMana.spendRingMana(player, excess * this.getManaCost(), hasResonance(player));
 			player.fallDistance = 3.0f;
 		}
-
 	}
 }
