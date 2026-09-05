@@ -2,8 +2,10 @@ package hojosa.relics_of_old.common.datagen.providers;
 
 import hojosa.relics_of_old.common.init.RelicsItems;
 import hojosa.relics_of_old.common.loot.AddItemModifier;
+import hojosa.relics_of_old.common.loot.RingLootModifier;
 import hojosa.relics_of_old.lib.References;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
@@ -83,6 +85,15 @@ public class RelicsGlobalLootModifiersProvider extends GlobalLootModifierProvide
 						LootItemRandomChanceCondition.randomChance(0.10f).build(), 
 						LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.TALL_SEAGRASS).build() },
 						RelicsItems.HEART.get()));
+		
+		add("arrowfind_ring_substitute", new RingLootModifier(
+			      new LootItemCondition[] {},
+			      RelicsItems.EMERALD_SHARD.get(),
+			      Items.ARROW,
+			      RelicsItems.ARROWFIND_RING.get(),
+			      0.5f,    // 2/4
+			      0.75f    // 3/4
+			  ));
 		
 		add("lost_page_1_from_loot_chest",
 				new AddItemModifier(new LootItemCondition[] { 

@@ -12,15 +12,13 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class RelicsGlobalLootModifier{
+public class RelicsGlobalLootModifier {
 
-    public static final DeferredRegister<Codec<? extends IGlobalLootModifier>> LOOT_MODIFIER_SERIALIZERS =
-            DeferredRegister.create(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, References.MOD_ID);
+	public static final DeferredRegister<Codec<? extends IGlobalLootModifier>> LOOT_MODIFIER_SERIALIZERS = DeferredRegister.create(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, References.MOD_ID);
+	public static final RegistryObject<Codec<? extends IGlobalLootModifier>> ADD_ITEM = LOOT_MODIFIER_SERIALIZERS.register("add_item", AddItemModifier.CODEC);
+	public static final RegistryObject<Codec<? extends IGlobalLootModifier>> RING_SUBSTITUTE = LOOT_MODIFIER_SERIALIZERS.register("ring_substitute", RingLootModifier.CODEC);
 
-    public static final RegistryObject<Codec<? extends IGlobalLootModifier>> ADD_ITEM =
-            LOOT_MODIFIER_SERIALIZERS.register("add_item", AddItemModifier.CODEC);
-
-    public static void register(IEventBus eventBus) {
-        LOOT_MODIFIER_SERIALIZERS.register(eventBus);
-    }
+	public static void register(IEventBus eventBus) {
+		LOOT_MODIFIER_SERIALIZERS.register(eventBus);
+	}
 }

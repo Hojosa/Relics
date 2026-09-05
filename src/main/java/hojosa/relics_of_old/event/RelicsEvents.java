@@ -53,6 +53,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.npc.VillagerProfession;
@@ -178,19 +179,54 @@ public class RelicsEvents {
 
 	// we drop hearts and emerald shards via event, because there is no loot table
 	// for hostile mobs, only 1 per each mob and mod compat would be a nightmare
-	// otherwise
-	// also, we use our own ItemEntity when dropping this way. the heart "should" be
-	// unobtainable outside of this, and the emerald shard sound is only needed when
-	// dropped this way.
+	// otherwise also, we use our own ItemEntity when dropping this way. the heart
+	// "should" be unobtainable outside of this, and the emerald shard sound is only
+	// needed when dropped this way.
 	// this also saves us the onEntityItemPickup event for the heart
+	// also, based on which ring is equiped, this is modified to another item or
+	// more shards
 	@SubscribeEvent
 	public static void onLivingDropsEvent(LivingDropsEvent event) {
 		if (event.getEntity() instanceof Enemy) {
-			if (RelicsConfig.COMMON.doEmeraldShardsDropFromMobs.get() && random.nextInt(0, RelicsConfig.COMMON.heartChance.get()) == RelicsConfig.COMMON.heartChance.get() / 2)
+			if (RelicsConfig.COMMON.doHeartsDropFromMobs.get() && random.nextInt(0, RelicsConfig.COMMON.heartChance.get()) == RelicsConfig.COMMON.heartChance.get() / 2)
 				event.getDrops().add(new HeartItemEntity(event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), new ItemStack(RelicsItems.HEART.get().asItem())));
-			if (RelicsConfig.COMMON.doHeartsDropFromMobs.get() && random.nextInt(0, RelicsConfig.COMMON.emeraldChance.get()) == RelicsConfig.COMMON.emeraldChance.get() / 2)
-				event.getDrops()
-						.add(new EmeraldShardItemEntity(event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), new ItemStack(RelicsItems.EMERALD_SHARD.get().asItem())));
+			if (RelicsConfig.COMMON.doEmeraldShardsDropFromMobs.get() && random.nextInt(0, RelicsConfig.COMMON.emeraldChance.get()) == RelicsConfig.COMMON.emeraldChance.get() / 2) {
+				// event.getDrops().add(new EmeraldShardItemEntity(event.getEntity().level(),
+				// event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(),
+				// new ItemStack(RelicsItems.EMERALD_SHARD.get().asItem())));
+				Entity sourceEntity = event.getSource().getEntity();
+				Player killer = sourceEntity instanceof Player p ? p : null;
+				int emeralds = 1;
+
+				// fortune ring: chance to double (LG2: 2/6 base, 3/6 resonance)
+				if (killer != null && RelicsItems.FORTUNE_RING.get().isEquipped(killer)) {
+					int roll = random.nextInt(6);
+					int target = RelicsItems.RESONANCE_RING.get().isEquipped(killer) ? 2 : 1;
+					if (roll <= target)
+						emeralds = 2;
+				}
+				// azurefind: chance to substitute one for azurite (LG2: 2/16 base, 3/16 resonance)
+				if (killer != null && emeralds > 0 && RelicsItems.AZUREFIND_RING.get().isEquipped(killer)) {
+					int chance = RelicsItems.RESONANCE_RING.get().isEquipped(killer) ? 3 : 2;
+					if (random.nextInt(16) < chance) {
+						--emeralds;
+						event.getDrops().add(new ItemEntity(event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), new ItemStack(RelicsItems.AZURITE_DUST.get())));
+					}
+				}
+				// arrowfind: chance to substitute one for arrow (LG2: 2/4 base, 3/4 resonance)
+				if (killer != null && emeralds > 0 && RelicsItems.ARROWFIND_RING.get().isEquipped(killer)) {
+					int arrowChance = RelicsItems.RESONANCE_RING.get().isEquipped(killer) ? 3 : 2;
+					if (random.nextInt(4) < arrowChance) {
+						--emeralds;
+						event.getDrops().add(new ItemEntity(event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), new ItemStack(Items.ARROW)));
+					}
+				}
+				// drop remaining emerald shards
+				for (int i = 0; i < emeralds; i++) {
+					event.getDrops().add(
+							new EmeraldShardItemEntity(event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), new ItemStack(RelicsItems.EMERALD_SHARD.get().asItem())));
+				}
+			}
 		}
 	}
 
