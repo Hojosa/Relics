@@ -224,14 +224,13 @@ public class RelicsRecipesProvider extends RecipeProvider {
 			.setSource(RelicsTags.Items.CLAY_JAR_VARIANTS)
 			.setMatchAll()
 			.build(consumer, RelicsUtil.modLoc("clay_jar_retextured"));
-
 		
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, RelicsItems.MILK_CHOCOLATE.get())
 		.pattern("mc ")
 		.pattern("s  ")
 		.define('m', Items.MILK_BUCKET)
 		.define('c', Items.COCOA_BEANS)
-		.define('s', Items.MILK_BUCKET)
+		.define('s', Items.SUGAR)
 		.group(References.CREATIVE_TAB)
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.MILK_BUCKET))
 		.save(consumer);
@@ -993,7 +992,8 @@ public class RelicsRecipesProvider extends RecipeProvider {
         .save(consumer);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RelicsItems.FORTUNE_RING.get())
-        .pattern(" MG").pattern("MSM").pattern(" M ")
+        .pattern(" MG").pattern("MSM")
+        .pattern(" M ")
         .define('M', ItemTags.PLANKS)
         .define('G', RelicsItems.GEM_WEALTH.get())
         .define('S', RelicsItems.INFUSED_STAR_PIECE.get())
@@ -1024,7 +1024,44 @@ public class RelicsRecipesProvider extends RecipeProvider {
         .group(References.CREATIVE_TAB)
         .unlockedBy(hasItem, has(RelicsItems.INFUSED_STAR_PIECE.get()))
         .save(consumer);
-
-
+        
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RelicsBlocks.SKY_LENS.get())
+        .pattern("SSS")
+        .pattern("SAS")
+        .pattern("SSS")
+        .define('S', RelicsItems.STARGLASS_LUMP.get())
+        .define('A', RelicsItems.AZURITE_SPHERE.get())
+        .group(References.CREATIVE_TAB)
+        .unlockedBy(hasItem, has(RelicsItems.STARGLASS_LUMP.get()))
+        .save(consumer);
+        
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RelicsItems.TUNING_FORK.get())
+        .pattern("S S")
+        .pattern("SSS")
+        .pattern(" S ")
+        .define('S', RelicsItems.STARSTEEL_INGOT.get())
+        .group(References.CREATIVE_TAB)
+        .unlockedBy(hasItem, has(RelicsItems.STARSTEEL_INGOT.get()))
+        .save(consumer);
+        
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RelicsBlocks.RITUAL_LOCUS.get())
+        .pattern("SNS")
+        .pattern("NSN")
+        .pattern("SNS")
+        .define('S', RelicsItems.STARGLASS_LUMP.get())
+        .define('N', Items.GOLD_NUGGET)
+        .group(References.CREATIVE_TAB)
+        .unlockedBy(hasItem, has(RelicsItems.STARGLASS_LUMP.get()))
+        .save(consumer);
+        
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RelicsItems.BOMB_BAG.get())
+        .pattern("L L")
+        .pattern("LBL")
+        .pattern("LLL")
+        .define('L', Items.LEATHER)
+        .define('B', RelicsItems.BOMB.get())
+        .group(References.CREATIVE_TAB)
+        .unlockedBy(hasItem, has(RelicsItems.BOMB.get()))
+        .save(consumer);
 		}
 }

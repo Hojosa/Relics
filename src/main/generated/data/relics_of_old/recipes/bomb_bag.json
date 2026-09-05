@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "B": {
+      "item": "relics_of_old:bomb"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    }
+  },
+  "pattern": [
+    "L L",
+    "LBL",
+    "LLL"
+  ],
+  "result": {
+    "item": "relics_of_old:bomb_bag"
+  },
+  "show_notification": true
+}

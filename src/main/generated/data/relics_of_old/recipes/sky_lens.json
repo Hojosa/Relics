@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "A": {
+      "item": "relics_of_old:azurite_sphere"
+    },
+    "S": {
+      "item": "relics_of_old:starglass_lump"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "SAS",
+    "SSS"
+  ],
+  "result": {
+    "item": "relics_of_old:sky_lens"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "S": {
+      "item": "relics_of_old:starsteel_ingot"
+    }
+  },
+  "pattern": [
+    "S S",
+    "SSS",
+    " S "
+  ],
+  "result": {
+    "item": "relics_of_old:tuning_fork"
+  },
+  "show_notification": true
+}
