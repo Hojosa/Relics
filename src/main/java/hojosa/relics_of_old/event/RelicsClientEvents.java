@@ -104,6 +104,22 @@ public class RelicsClientEvents {
 		registerGemColor(event, RelicsItems.GEM_HEALTH, 0xAA0000, 0xFF4444);
 		registerGemColor(event, RelicsItems.GEM_WEAPON, 0xD8D8D8, 0x896B27);
 		registerGemColor(event, RelicsItems.GEM_WEALTH, 0x63F9AA, 0x00B038);
+
+		// Ring gem tinting — matching LG2 NucleusType colors
+		registerRingColor(event, RelicsItems.SPEED_RING, 0xFFFFFF, 0x22FFEE, 0xFFFFB4); // Gold + Lightning gem
+		registerRingColor(event, RelicsItems.CONVECTION_RING, 0xFFFFFF, 0xFF6600, 0xFFDD00); // Gold + Fire gem
+		registerRingColor(event, RelicsItems.SOFT_FALL_RING, 0xFFFFFF, 0x0066FF, 0x22DDFF); // Gold + Sky gem
+		registerRingColor(event, RelicsItems.COLD_FEET_RING, 0xFFFFFF, 0x88BBFF, 0xCCEEFF); // Gold + Ice gem
+		registerRingColor(event, RelicsItems.THIEF_RING, 0xFFFFFF, 0x000011, 0x330066); // Gold + Dark gem
+		registerRingColor(event, RelicsItems.MAGE_RING, 0xFFFFFF, 0xFF77FF, 0xFFFFDD); // Iron + Star gem
+		registerRingColor(event, RelicsItems.WARRIOR_RING, 0xFFFFFF, 0xD8D8D8, 0x896B27); // Iron + Weapon gem
+		registerRingColor(event, RelicsItems.FORTUNE_RING, 0xFFFFFF, 0x63F9AA, 0x00B038); // Wood + Wealth gem
+		registerRingColor(event, RelicsItems.ARROWFIND_RING, 0xFFFFFF, 0xD8D8D8, 0x896B27); // Wood + Weapon gem
+		registerRingColor(event, RelicsItems.AZUREFIND_RING, 0xFFFFFF, 0x0066FF, 0x22DDFF); // Wood + Sky gem
+		registerRingColor(event, RelicsItems.WISH_RING, 0x630AA9, 0xFF77FF, 0xFFFFDD); // Starglass(tinted) + Star gem
+		registerRingColor(event, RelicsItems.RESONANCE_RING, 0x630AA9, 0xFFBB00, 0xFFFFAA); // Starglass(tinted) + Sun gem
+		registerRingColor(event, RelicsItems.PHOENIX_RING, 0xFFDDDD, -1, -1); // Gold(tinted pink), no gem
+
 	}
 
 	@SubscribeEvent
@@ -131,7 +147,6 @@ public class RelicsClientEvents {
 		event.registerEntityRenderer(RelicsEntities.BOMB_ARROW.get(), BombArrowEntityRenderer::new);
 		event.registerEntityRenderer(RelicsEntities.SPELL_EFFECT.get(), EmptyEntityRenderer::new);
 		event.registerEntityRenderer(RelicsEntities.THROWN_ORB.get(), ThrownItemRenderer::new);
-//		event.registerEntityRenderer(RelicsEntities.SPELL_DECORATOR.get(), EmptyEntityRenderer::new);
 	}
 
 	@SubscribeEvent
@@ -218,6 +233,15 @@ public class RelicsClientEvents {
 		case 0 -> color1;
 		case 1 -> color2;
 		default -> 0xFFFFFF; // layer2 (cover) untinted
+		}, item.get());
+	}
+
+	private static void registerRingColor(RegisterColorHandlersEvent.Item event, RegistryObject<? extends Item> item, int ringTint, int gemColor1, int gemColor2) {
+		event.register((stack, tintIndex) -> switch (tintIndex) {
+		case 0 -> ringTint; // ring base
+		case 1 -> gemColor1; // orb base
+		case 2 -> gemColor2; // orb fill
+		default -> 0xFFFFFF; // orb overlay, untinted
 		}, item.get());
 	}
 }

@@ -164,6 +164,21 @@ public class References {
 		public static final String FREEZING_ORB = "freezing_orb";
 		public static final String SHOCKING_ORB = "shocking_orb";
 		public static final String THROWN_ORB = "thrown_orb";
+		public static final String SPEED_RING = "speed_ring";
+		public static final String CONVECTION_RING = "convection_ring";
+		public static final String SOFT_FALL_RING = "soft_fall_ring";
+		public static final String COLD_FEET_RING = "cold_feet_ring";
+		public static final String THIEF_RING = "thief_ring";
+		public static final String MAGE_RING = "mage_ring";
+		public static final String WARRIOR_RING = "warrior_ring";
+		public static final String FORTUNE_RING = "fortune_ring";
+		public static final String ARROWFIND_RING = "arrowfind_ring";
+		public static final String AZUREFIND_RING = "azurefind_ring";
+		public static final String WISH_RING = "wish_ring";
+		public static final String RESONANCE_RING = "resonance_ring";
+		public static final String PLAIN_RING = "plain_ring";
+		public static final String PHOENIX_RING = "phoenix_ring";
+
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

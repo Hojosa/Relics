@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "relics_of_old:item/wooden_ring",
+    "layer1": "relics_of_old:item/ring_orb_base",
+    "layer2": "relics_of_old:item/ring_orb_fill",
+    "layer3": "relics_of_old:item/ring_orb_overlay"
+  }
+}

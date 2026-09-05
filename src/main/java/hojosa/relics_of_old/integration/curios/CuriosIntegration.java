@@ -10,9 +10,10 @@ import top.theillusivec4.curios.api.SlotTypePreset;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @SuppressWarnings("removal")
 public class CuriosIntegration {
-	
-    public static void init() {
-		InterModComms.sendTo(CuriosApi.MODID,  SlotTypeMessage.REGISTER_TYPE, () -> SlotTypePreset.CHARM.getMessageBuilder().build());
-		InterModComms.sendTo(CuriosApi.MODID,  SlotTypeMessage.REGISTER_TYPE, () -> SlotTypePreset.BELT.getMessageBuilder().build());
+
+	public static void init() {
+		InterModComms.sendTo(CuriosApi.MODID, SlotTypeMessage.REGISTER_TYPE, () -> SlotTypePreset.CHARM.getMessageBuilder().build());
+		InterModComms.sendTo(CuriosApi.MODID, SlotTypeMessage.REGISTER_TYPE, () -> SlotTypePreset.BELT.getMessageBuilder().build());
+		InterModComms.sendTo(CuriosApi.MODID, SlotTypeMessage.REGISTER_TYPE, () -> SlotTypePreset.RING.getMessageBuilder().size(2).build());
 	}
 }

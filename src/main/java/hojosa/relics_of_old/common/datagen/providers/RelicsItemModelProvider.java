@@ -155,6 +155,25 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		sparkleOrb(RelicsItems.BURNING_ORB);
 		sparkleOrb(RelicsItems.FREEZING_ORB);
 		sparkleOrb(RelicsItems.SHOCKING_ORB);
+		// Rings — gold base
+		gemRingItem(RelicsItems.SPEED_RING, "gold_ring");
+		gemRingItem(RelicsItems.CONVECTION_RING, "gold_ring");
+		gemRingItem(RelicsItems.SOFT_FALL_RING, "gold_ring");
+		gemRingItem(RelicsItems.COLD_FEET_RING, "gold_ring");
+		gemRingItem(RelicsItems.THIEF_RING, "gold_ring");
+		// Rings — iron base
+		gemRingItem(RelicsItems.MAGE_RING, "iron_ring");
+		gemRingItem(RelicsItems.WARRIOR_RING, "iron_ring");
+		// Rings — wood base
+		gemRingItem(RelicsItems.FORTUNE_RING, "wooden_ring");
+		gemRingItem(RelicsItems.ARROWFIND_RING, "wooden_ring");
+		gemRingItem(RelicsItems.AZUREFIND_RING, "wooden_ring");
+		// Rings — starglass base (tinted via color handler)
+		gemRingItem(RelicsItems.WISH_RING, "iron_ring");
+		gemRingItem(RelicsItems.RESONANCE_RING, "iron_ring");
+		// Rings — no gem
+		plainRingItem(RelicsItems.PLAIN_RING, "gold_ring");
+		plainRingItem(RelicsItems.PHOENIX_RING, "gold_ring");
 
 		// magic mirror model
 		// base model that contains the base transform settings for the model
@@ -202,6 +221,15 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 
 	private void sparkleOrb(RegistryObject<? extends Item> item) {
 		getBuilder(item.getId().toString()).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", modLoc("item/" + item.getId().getPath())).texture("layer1", modLoc("item/orb_sparkle"));
+	}
+
+	private void gemRingItem(RegistryObject<? extends Item> item, String ringBase) {
+		getBuilder(item.getId().toString()).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", modLoc("item/" + ringBase)).texture("layer1", modLoc("item/ring_orb_base"))
+				.texture("layer2", modLoc("item/ring_orb_fill")).texture("layer3", modLoc("item/ring_orb_overlay"));
+	}
+
+	private void plainRingItem(RegistryObject<? extends Item> item, String ringBase) {
+		getBuilder(item.getId().toString()).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", modLoc("item/" + ringBase));
 	}
 
 	private void gemItem(RegistryObject<? extends Item> item) {

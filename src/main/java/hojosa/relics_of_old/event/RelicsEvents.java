@@ -41,6 +41,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -331,6 +332,22 @@ public class RelicsEvents {
 	public static void onLivingHurt(LivingHurtEvent event) {
 		// only run when a player is damaged
 		if ((event.getEntity() instanceof ServerPlayer player)) {
+			/////////////////////////////////
+			/// player gets hurt interactions
+			/////////////////////////////////
+			//phoenix ring fire absorption
+			if (!event.getSource().is(DamageTypeTags.IS_FIRE)) return;
+		      if (RelicsItems.PHOENIX_RING.get().isEquipped(player)) {
+		          if ((float) player.invulnerableTime > (float) player.invulnerableTime / 2.0f) {
+		              event.setCanceled(true);
+		              return;
+		          }
+		          float amount = event.getAmount();
+		          player.heal(amount);
+		          player.invulnerableTime = player.invulnerableTime;
+		          player.level().playSound(null, player.blockPosition(), RelicsSounds.HEART.get(), SoundSource.PLAYERS, 0.3f, 1.0f);
+		          event.setCanceled(true);
+		      }
 
 			// get all amulets that are equipped, this should only ever be one, but other
 			// mods can add additonal charm slots and there is usally the one universal
@@ -394,6 +411,9 @@ public class RelicsEvents {
 				}
 			}
 		}
+		//////////////////////////////////////
+		/// player damage boost interactions
+		//////////////////////////////////////
 		// headband of valor, player attack bonus
 		if (event.getSource().getDirectEntity() instanceof Player player && !player.level().isClientSide) {
 			ItemStack headSlot = player.getItemBySlot(EquipmentSlot.HEAD);
@@ -404,8 +424,12 @@ public class RelicsEvents {
 				player.level().playSound(null, event.getEntity().blockPosition(), RelicsSounds.ESCALATE.get(), SoundSource.PLAYERS, 0.5f, 0.8f + player.getRandom().nextFloat() * 0.4f);
 				headSlot.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(EquipmentSlot.HEAD));
 			}
+			if (RelicsItems.WARRIOR_RING.get().isEquipped(player)) {
+	              event.setAmount(event.getAmount() + 4.0f);
+	              player.level().playSound(null, event.getEntity().blockPosition(),
+	                  RelicsSounds.ESCALATE.get(), SoundSource.PLAYERS, 0.3f, 1.0f);
+	          }
 		}
-
 	}
 
 	@SubscribeEvent

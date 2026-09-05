@@ -165,6 +165,20 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addItem(RelicsItems.BURNING_ORB, "Burning Orb");
 		addItem(RelicsItems.FREEZING_ORB, "Freezing Orb");
 		addItem(RelicsItems.SHOCKING_ORB, "Shocking Orb");
+		addItem(RelicsItems.SPEED_RING, "Dash Ring");
+		addItem(RelicsItems.CONVECTION_RING, "Convection Ring");
+		addItem(RelicsItems.SOFT_FALL_RING, "Descent Ring");
+		addItem(RelicsItems.COLD_FEET_RING, "Coldfeet Ring");
+		addItem(RelicsItems.THIEF_RING, "Thief's Ring");
+		addItem(RelicsItems.MAGE_RING, "Mage's Ring");
+		addItem(RelicsItems.WARRIOR_RING, "Warrior's Ring");
+		addItem(RelicsItems.FORTUNE_RING, "Fortune Ring");
+		addItem(RelicsItems.ARROWFIND_RING, "Archer's Luck Ring");
+		addItem(RelicsItems.AZUREFIND_RING, "Sky Luck Ring");
+		addItem(RelicsItems.WISH_RING, "Wish Ring");
+		addItem(RelicsItems.RESONANCE_RING, "Resonance Ring");
+		addItem(RelicsItems.PLAIN_RING, "Plain Ring");
+		addItem(RelicsItems.PHOENIX_RING, "Phoenix Ring");
 
 		// Sword augment tooltips
 		add("augment.relics_of_old.fire", "Augment: Fire");

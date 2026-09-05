@@ -6,6 +6,8 @@ import hojosa.relics_of_old.common.item.BombArrowItem;
 import hojosa.relics_of_old.common.item.BombBagItem;
 import hojosa.relics_of_old.common.item.BombItem;
 import hojosa.relics_of_old.common.item.CaptureEgg;
+import hojosa.relics_of_old.common.item.ColdFeetRingItem;
+import hojosa.relics_of_old.common.item.ConvectionRingItem;
 import hojosa.relics_of_old.common.item.DimensionalCatalystItem;
 import hojosa.relics_of_old.common.item.EmeraldPiece;
 import hojosa.relics_of_old.common.item.EmeraldShard;
@@ -20,14 +22,19 @@ import hojosa.relics_of_old.common.item.LostPage;
 import hojosa.relics_of_old.common.item.MagicBoomerang;
 import hojosa.relics_of_old.common.item.MagicMirror;
 import hojosa.relics_of_old.common.item.MagicPowder;
+import hojosa.relics_of_old.common.item.MagicRingItem;
 import hojosa.relics_of_old.common.item.MasterSword;
 import hojosa.relics_of_old.common.item.Medallion;
 import hojosa.relics_of_old.common.item.MilkChocolate;
 import hojosa.relics_of_old.common.item.MysticSeed;
+import hojosa.relics_of_old.common.item.PhoenixRingItem;
 import hojosa.relics_of_old.common.item.ReedPipes;
 import hojosa.relics_of_old.common.item.RelicsAmulet;
 import hojosa.relics_of_old.common.item.RockCandyItem;
 import hojosa.relics_of_old.common.item.SlimeSword;
+import hojosa.relics_of_old.common.item.SoftFallRingItem;
+import hojosa.relics_of_old.common.item.SpeedRingItem;
+import hojosa.relics_of_old.common.item.ThiefRingItem;
 import hojosa.relics_of_old.common.item.ThrowableOrbItem;
 import hojosa.relics_of_old.common.item.TitanBand;
 import hojosa.relics_of_old.common.item.TuningForkItem;
@@ -194,6 +201,23 @@ public class RelicsItems {
 	public static final RegistryObject<ThrowableOrbItem> BURNING_ORB = ITEMS.register(References.UnlocalizedName.BURNING_ORB, () -> new ThrowableOrbItem(OrbType.FIRE, "Usable in crafting"));
 	public static final RegistryObject<ThrowableOrbItem> FREEZING_ORB = ITEMS.register(References.UnlocalizedName.FREEZING_ORB, () -> new ThrowableOrbItem(OrbType.ICE, "Usable in crafting"));
 	public static final RegistryObject<ThrowableOrbItem> SHOCKING_ORB = ITEMS.register(References.UnlocalizedName.SHOCKING_ORB, () -> new ThrowableOrbItem(OrbType.ZAP, "Usable in crafting"));
+
+	// rings
+	public static final RegistryObject<SpeedRingItem> SPEED_RING = ITEMS.register(References.UnlocalizedName.SPEED_RING, SpeedRingItem::new);
+	public static final RegistryObject<ConvectionRingItem> CONVECTION_RING = ITEMS.register(References.UnlocalizedName.CONVECTION_RING, ConvectionRingItem::new);
+	public static final RegistryObject<SoftFallRingItem> SOFT_FALL_RING = ITEMS.register(References.UnlocalizedName.SOFT_FALL_RING, SoftFallRingItem::new);
+	public static final RegistryObject<ColdFeetRingItem> COLD_FEET_RING = ITEMS.register(References.UnlocalizedName.COLD_FEET_RING, ColdFeetRingItem::new);
+	public static final RegistryObject<ThiefRingItem> THIEF_RING = ITEMS.register(References.UnlocalizedName.THIEF_RING, ThiefRingItem::new);
+	public static final RegistryObject<MagicRingItem> MAGE_RING = ITEMS.register(References.UnlocalizedName.MAGE_RING, () -> new MagicRingItem("Reduce magic cost of spells"));
+	public static final RegistryObject<MagicRingItem> WARRIOR_RING = ITEMS.register(References.UnlocalizedName.WARRIOR_RING, () -> new MagicRingItem("Empowers melee attacks"));
+	public static final RegistryObject<MagicRingItem> FORTUNE_RING = ITEMS.register(References.UnlocalizedName.FORTUNE_RING, () -> new MagicRingItem("Find more emerald shards"));
+	public static final RegistryObject<MagicRingItem> ARROWFIND_RING = ITEMS.register(References.UnlocalizedName.ARROWFIND_RING, () -> new MagicRingItem("Sometimes find arrows"));
+	public static final RegistryObject<MagicRingItem> AZUREFIND_RING = ITEMS.register(References.UnlocalizedName.AZUREFIND_RING, () -> new MagicRingItem("Occasionally find azurite"));
+	public static final RegistryObject<MagicRingItem> WISH_RING = ITEMS.register(References.UnlocalizedName.WISH_RING, () -> new MagicRingItem("Stars fall a bit more often"));
+	public static final RegistryObject<MagicRingItem> RESONANCE_RING = ITEMS.register(References.UnlocalizedName.RESONANCE_RING, () -> new MagicRingItem("Increase efficiency of other rings"));
+	public static final RegistryObject<RelicsItem> PLAIN_RING = ITEMS.register(References.UnlocalizedName.PLAIN_RING, () -> new RelicsItem(64, "Has potential"));
+
+	public static final RegistryObject<PhoenixRingItem> PHOENIX_RING = ITEMS.register(References.UnlocalizedName.PHOENIX_RING, PhoenixRingItem::new);
 
 	public static void addTabItems(ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
 		RelicsItems.ITEMS.getEntries().forEach(itemRegistryObject -> output.accept(itemRegistryObject.get().getDefaultInstance()));
