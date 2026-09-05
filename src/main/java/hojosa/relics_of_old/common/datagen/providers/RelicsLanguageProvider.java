@@ -179,6 +179,9 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addItem(RelicsItems.RESONANCE_RING, "Resonance Ring");
 		addItem(RelicsItems.PLAIN_RING, "Plain Ring");
 		addItem(RelicsItems.PHOENIX_RING, "Phoenix Ring");
+		addItem(RelicsItems.PHOENIX_CHARM, "Phoenix Charm");
+		addItem(RelicsItems.BLAST_CHARM, "Blast Charm");
+		addItem(RelicsItems.FEATHER_CHARM, "Feather Charm");
 
 		// Sword augment tooltips
 		add("augment.relics_of_old.fire", "Augment: Fire");

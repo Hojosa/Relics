@@ -161,20 +161,32 @@ public class RelicsEvents {
 
 	@SubscribeEvent
 	public static void onPlayerDeath(LivingDeathEvent event) {
-		if (event.getEntity() instanceof ServerPlayer targetPlayer && targetPlayer.getInventory().contains(new ItemStack(RelicsItems.PHOENIX_FEATHER.get()))) {
-			targetPlayer.getInventory().getItem(targetPlayer.getInventory().findSlotMatchingItem(new ItemStack(RelicsItems.PHOENIX_FEATHER.get()))).shrink(1);
-			targetPlayer.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 65, 1));
-			targetPlayer.setHealth(1);
-			targetPlayer.invulnerableTime = 65;
-			targetPlayer.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 28, 3));
-			targetPlayer.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 65, 4));
-			targetPlayer.removeEffect(MobEffects.POISON);
-			targetPlayer.removeEffect(MobEffects.WITHER);
-			targetPlayer.setRemainingFireTicks(60);
-			event.getEntity().level().playSound(targetPlayer, event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), RelicsSounds.REVIVE.get(), SoundSource.BLOCKS, 1f, 1f);
-			RelicsNetwork.getInstance().sendToTrackingAndSelf(new PhoenixParticlePacket(targetPlayer.getX(), targetPlayer.getY(), targetPlayer.getZ()), targetPlayer);
-			event.setCanceled(true);
+		if (event.getEntity() instanceof ServerPlayer targetPlayer) {
+			if (targetPlayer.getInventory().contains(new ItemStack(RelicsItems.PHOENIX_FEATHER.get()))) {
+				targetPlayer.getInventory().getItem(targetPlayer.getInventory().findSlotMatchingItem(new ItemStack(RelicsItems.PHOENIX_FEATHER.get()))).shrink(1);
+				phoenixReviveEffect(targetPlayer);
+				event.setCanceled(true);
+			}
+			else if (RelicsItems.PHOENIX_CHARM.get().isEquipped(targetPlayer)) {
+				RelicsItems.PHOENIX_CHARM.get().consumeCharm(targetPlayer);
+				phoenixReviveEffect(targetPlayer);
+				event.setCanceled(true);
+			}
 		}
+
+	}
+
+	private static void phoenixReviveEffect(Player player) {
+		player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 140, 1));
+		player.setHealth(1);
+		player.invulnerableTime = 65;
+		player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 28, 3));
+		player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 65, 4));
+		player.removeEffect(MobEffects.POISON);
+		player.removeEffect(MobEffects.WITHER);
+		player.setRemainingFireTicks(140);
+		player.level().playSound(player, player.getX(), player.getY(), player.getZ(), RelicsSounds.REVIVE.get(), SoundSource.BLOCKS, 1f, 1f);
+		RelicsNetwork.getInstance().sendToTrackingAndSelf(new PhoenixParticlePacket(player.getX(), player.getY(), player.getZ()), player);
 	}
 
 	// we drop hearts and emerald shards via event, because there is no loot table
@@ -205,7 +217,8 @@ public class RelicsEvents {
 					if (roll <= target)
 						emeralds = 2;
 				}
-				// azurefind: chance to substitute one for azurite (LG2: 2/16 base, 3/16 resonance)
+				// azurefind: chance to substitute one for azurite (LG2: 2/16 base, 3/16
+				// resonance)
 				if (killer != null && emeralds > 0 && RelicsItems.AZUREFIND_RING.get().isEquipped(killer)) {
 					int chance = RelicsItems.RESONANCE_RING.get().isEquipped(killer) ? 3 : 2;
 					if (random.nextInt(16) < chance) {
@@ -421,17 +434,31 @@ public class RelicsEvents {
 			/// player gets hurt interactions
 			/////////////////////////////////
 			// phoenix ring fire absorption
-			if (!event.getSource().is(DamageTypeTags.IS_FIRE))
-				return;
-			if (RelicsItems.PHOENIX_RING.get().isEquipped(player)) {
+			if (event.getSource().is(DamageTypeTags.IS_FIRE) && RelicsItems.PHOENIX_RING.get().isEquipped(player)) {
 				PlayerMana mana = PlayerMana.get(player);
-				if (mana == null || mana.getAvailableMana() <= 0.0f)
+				if (mana != null && mana.getAvailableMana() > 0.0f) {
+					float amount = event.getAmount();
+					player.heal(amount);
+					PlayerMana.spendRingMana(player, amount, RelicsItems.RESONANCE_RING.get().isEquipped(player));
+					player.level().playSound(null, player.blockPosition(), RelicsSounds.HEART.get(), SoundSource.PLAYERS, 0.3f, 1.0f);
+					event.setCanceled(true);
 					return;
-				float amount = event.getAmount();
-				player.heal(amount);
-				PlayerMana.spendRingMana(player, amount, RelicsItems.RESONANCE_RING.get().isEquipped(player));
-				player.level().playSound(null, player.blockPosition(), RelicsSounds.HEART.get(), SoundSource.PLAYERS, 0.3f, 1.0f);
+				}
+			}
+			// blast charm: prevent lethal explosion damage
+			if (event.getSource().is(DamageTypeTags.IS_EXPLOSION) && event.getAmount() >= player.getHealth() && RelicsItems.BLAST_CHARM.get().isEquipped(player)) {
+				RelicsItems.BLAST_CHARM.get().consumeCharm(player);
+				player.level().playSound(null, player.blockPosition(), SoundEvents.ITEM_BREAK, SoundSource.PLAYERS, 1.0f, 1.0f);
 				event.setCanceled(true);
+				return;
+			}
+
+			// feather charm: prevent lethal fall damage
+			if (event.getSource().is(DamageTypeTags.IS_FALL) && event.getAmount() >= player.getHealth() && RelicsItems.FEATHER_CHARM.get().isEquipped(player)) {
+				RelicsItems.FEATHER_CHARM.get().consumeCharm(player);
+				player.level().playSound(null, player.blockPosition(), SoundEvents.ITEM_BREAK, SoundSource.PLAYERS, 1.0f, 1.0f);
+				event.setCanceled(true);
+				return;
 			}
 
 			// get all amulets that are equipped, this should only ever be one, but other

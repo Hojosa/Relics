@@ -1,4 +1,4 @@
- package hojosa.relics_of_old.common.init;
+package hojosa.relics_of_old.common.init;
 
 import hojosa.relics_of_old.common.entity.ThrownOrbEntity.OrbType;
 import hojosa.relics_of_old.common.item.AeroAmulet;
@@ -20,6 +20,7 @@ import hojosa.relics_of_old.common.item.Heart;
 import hojosa.relics_of_old.common.item.InfusedStarDustItem;
 import hojosa.relics_of_old.common.item.LostPage;
 import hojosa.relics_of_old.common.item.MagicBoomerang;
+import hojosa.relics_of_old.common.item.MagicCharmItem;
 import hojosa.relics_of_old.common.item.MagicMirror;
 import hojosa.relics_of_old.common.item.MagicPowder;
 import hojosa.relics_of_old.common.item.MagicRingItem;
@@ -70,9 +71,12 @@ public class RelicsItems {
 	public static final RegistryObject<WaterTablet> WATER_TABLET = ITEMS.register(References.UnlocalizedName.WATER_PLATE, () -> new WaterTablet(1, Rarity.EPIC));
 	public static final RegistryObject<RelicsItem> BLANK_TABLET = ITEMS.register(References.UnlocalizedName.BLANK_TABLET, () -> new RelicsItem(64, Rarity.UNCOMMON));
 	public static final RegistryObject<RelicsItem> PHOENIX_FEATHER = ITEMS.register(References.UnlocalizedName.PHOENIX_FEATHER,
-			() -> new InfusedItem(new Item.Properties().stacksTo(64).rarity(Rarity.RARE).fireResistant()));
+			() -> new InfusedItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).fireResistant()));
 	public static final RegistryObject<MagicMirror> MAGIC_MIRROR = ITEMS.register(References.UnlocalizedName.MAGIC_MIRROR, () -> new MagicMirror(Rarity.UNCOMMON, 4));
 	public static final RegistryObject<MagicMirror> FLAWLESS_MAGIC_MIRROR = ITEMS.register(References.UnlocalizedName.FLAWLESS_MAGIC_MIRROR, () -> new MagicMirror(Rarity.EPIC));
+	public static final RegistryObject<MagicCharmItem> PHOENIX_CHARM = ITEMS.register(References.UnlocalizedName.PHOENIX_CHARM, () -> new MagicCharmItem("Revives on death"));
+	public static final RegistryObject<MagicCharmItem> BLAST_CHARM = ITEMS.register(References.UnlocalizedName.BLAST_CHARM, () -> new MagicCharmItem("Saves from lethal explosions"));
+	public static final RegistryObject<MagicCharmItem> FEATHER_CHARM = ITEMS.register(References.UnlocalizedName.FEATHER_CHARM, () -> new MagicCharmItem("Saves from lethal falls"));
 
 	// weapons
 	public static final RegistryObject<SwordItem> FIRE_SWORD = ITEMS.register(References.UnlocalizedName.FIRE_SWORD, FlameSword::new);
@@ -218,7 +222,6 @@ public class RelicsItems {
 	public static final RegistryObject<MagicRingItem> WISH_RING = ITEMS.register(References.UnlocalizedName.WISH_RING, WishRingItem::new);
 	public static final RegistryObject<MagicRingItem> RESONANCE_RING = ITEMS.register(References.UnlocalizedName.RESONANCE_RING, () -> new MagicRingItem("Increase efficiency of other rings"));
 	public static final RegistryObject<RelicsItem> PLAIN_RING = ITEMS.register(References.UnlocalizedName.PLAIN_RING, () -> new RelicsItem(64, "Has potential"));
-	
 
 	public static final RegistryObject<PhoenixRingItem> PHOENIX_RING = ITEMS.register(References.UnlocalizedName.PHOENIX_RING, PhoenixRingItem::new);
 

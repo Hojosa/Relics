@@ -174,6 +174,9 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		// Rings — no gem
 		plainRingItem(RelicsItems.PLAIN_RING, "gold_ring");
 		plainRingItem(RelicsItems.PHOENIX_RING, "gold_ring");
+		basicItem(RelicsItems.PHOENIX_CHARM);
+		basicItem(RelicsItems.BLAST_CHARM);
+		basicItem(RelicsItems.FEATHER_CHARM);
 
 		// magic mirror model
 		// base model that contains the base transform settings for the model

@@ -990,6 +990,31 @@ public class RelicsRecipesProvider extends RecipeProvider {
         .group(References.CREATIVE_TAB)
         .unlockedBy(hasItem, has(RelicsItems.GEM_WEALTH.get()))
         .save(consumer);
+        
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.PHOENIX_CHARM.get())
+        .requires(RelicsItems.PHOENIX_FEATHER.get())
+        .requires(RelicsItems.INFUSED_STAR_PIECE.get())
+        .requires(Items.STRING)
+        .group(References.CREATIVE_TAB)
+        .unlockedBy(hasItem, has(RelicsItems.PHOENIX_FEATHER.get()))
+        .save(consumer);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.BLAST_CHARM.get())
+        .requires(Items.GUNPOWDER)
+        .requires(RelicsItems.INFUSED_STAR_PIECE.get())
+        .requires(Items.STRING)
+        .group(References.CREATIVE_TAB)
+        .unlockedBy(hasItem, has(RelicsItems.INFUSED_STAR_PIECE.get()))
+        .save(consumer);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.FEATHER_CHARM.get())
+        .requires(Items.FEATHER)
+        .requires(RelicsItems.INFUSED_STAR_PIECE.get())
+        .requires(Items.STRING)
+        .group(References.CREATIVE_TAB)
+        .unlockedBy(hasItem, has(RelicsItems.INFUSED_STAR_PIECE.get()))
+        .save(consumer);
+
 
 		}
 }

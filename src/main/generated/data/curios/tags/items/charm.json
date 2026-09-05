@@ -5,6 +5,9 @@
     "relics_of_old:pyro_amulet",
     "relics_of_old:geo_amulet",
     "relics_of_old:end_amulet",
-    "relics_of_old:aero_amulet"
+    "relics_of_old:aero_amulet",
+    "relics_of_old:phoenix_charm",
+    "relics_of_old:blast_charm",
+    "relics_of_old:feather_charm"
   ]
 }
