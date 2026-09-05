@@ -40,6 +40,7 @@ import hojosa.relics_of_old.common.item.TitanBand;
 import hojosa.relics_of_old.common.item.TuningForkItem;
 import hojosa.relics_of_old.common.item.WaterTablet;
 import hojosa.relics_of_old.common.item.WhirlwindBoots;
+import hojosa.relics_of_old.common.item.WishRingItem;
 import hojosa.relics_of_old.lib.References;
 import hojosa.relics_of_old.lib.RelicsUtil.ElementType;
 import hojosa.relics_of_old.lib.item.InfuseableItem;
@@ -213,9 +214,10 @@ public class RelicsItems {
 	public static final RegistryObject<MagicRingItem> FORTUNE_RING = ITEMS.register(References.UnlocalizedName.FORTUNE_RING, () -> new MagicRingItem("Find more emerald shards"));
 	public static final RegistryObject<MagicRingItem> ARROWFIND_RING = ITEMS.register(References.UnlocalizedName.ARROWFIND_RING, () -> new MagicRingItem("Sometimes find arrows"));
 	public static final RegistryObject<MagicRingItem> AZUREFIND_RING = ITEMS.register(References.UnlocalizedName.AZUREFIND_RING, () -> new MagicRingItem("Occasionally find azurite"));
-	public static final RegistryObject<MagicRingItem> WISH_RING = ITEMS.register(References.UnlocalizedName.WISH_RING, () -> new MagicRingItem("Stars fall a bit more often"));
+	public static final RegistryObject<MagicRingItem> WISH_RING = ITEMS.register(References.UnlocalizedName.WISH_RING, WishRingItem::new);
 	public static final RegistryObject<MagicRingItem> RESONANCE_RING = ITEMS.register(References.UnlocalizedName.RESONANCE_RING, () -> new MagicRingItem("Increase efficiency of other rings"));
 	public static final RegistryObject<RelicsItem> PLAIN_RING = ITEMS.register(References.UnlocalizedName.PLAIN_RING, () -> new RelicsItem(64, "Has potential"));
+	
 
 	public static final RegistryObject<PhoenixRingItem> PHOENIX_RING = ITEMS.register(References.UnlocalizedName.PHOENIX_RING, PhoenixRingItem::new);
 

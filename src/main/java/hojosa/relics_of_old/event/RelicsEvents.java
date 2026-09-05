@@ -198,10 +198,22 @@ public class RelicsEvents {
 	public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
 		if (event.side == LogicalSide.SERVER && event.phase == TickEvent.Phase.END) {
 			event.player.getCapability(StarFallChanceProvider.PLAYER_STAR_FALL).ifPresent(star -> {
-				// 1200 ticks, 100 chance
-				if (event.player.level().isNight() && event.player.tickCount % 1200 == 0 && star.getStarChance() == random.nextInt(0, 50)) { // Once Every 10 Seconds on Avg
-					star.rollNewChance();
-					event.player.level().addFreshEntity(new FallingStarEntity(event.player));
+				// 1200 ticks, 1 in 50 chance, modified by wish ring
+				// Once Every 10 Seconds on Avg
+				if (event.player.level().isNight() && event.player.tickCount % 1200 == 0) {// && star.getStarChance() == random.nextInt(0, 50)) {
+					int chance = 50;
+					if (star.isWishRingActive()) {
+						boolean resonance = RelicsItems.RESONANCE_RING.get().isEquipped(event.player);
+						chance = resonance ? 34 : 38; // ~45% / ~30% more likely
+						// re-roll if stored chance is outside wish ring range
+						if (star.getStarChance() >= chance) {
+							star.setStarChance(random.nextInt(0, chance));
+						}
+					}
+					if (star.getStarChance() == random.nextInt(0, chance)) {
+						star.rollNewChance();
+						event.player.level().addFreshEntity(new FallingStarEntity(event.player));
+					}
 				}
 			});
 			if (event.player.level().isThundering() && event.player.level().isRaining() && random.nextInt(750) == 0) {
@@ -319,12 +331,12 @@ public class RelicsEvents {
 		if (event.getStack().is(Items.EMERALD) && event.getEntity() instanceof ServerPlayer serverPlayer) {
 			serverPlayer.connection.send(new ClientboundSoundEntityPacket(RelicsSounds.EMERALD_PICKUP.getHolder().get(), SoundSource.PLAYERS, serverPlayer, 1.0f, 1.0f, 1L));
 		}
-		//refresh the starfall boost flag after death 
+		// refresh the starfall boost flag after death
 		event.getEntity().getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(mana -> mana.forceSync(event.getEntity()));
-	      // re-sync wish ring flag after respawn
-	      event.getEntity().getCapability(StarFallChanceProvider.PLAYER_STAR_FALL).ifPresent(star -> {
-	          star.setWishRingActive(RelicsItems.WISH_RING.get().isEquipped(event.getEntity()));
-	      }); 
+		// re-sync wish ring flag after respawn
+		event.getEntity().getCapability(StarFallChanceProvider.PLAYER_STAR_FALL).ifPresent(star -> {
+			star.setWishRingActive(RelicsItems.WISH_RING.get().isEquipped(event.getEntity()));
+		});
 	}
 
 	@SubscribeEvent
