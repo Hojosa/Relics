@@ -16,20 +16,21 @@ public class MagicBoomerang extends RelicsItem {
 	private float entitySpeed;
 	private int entityDamage;
 	private int entityMaxItemPickup;
+	private int entityMaxDistance;
 
-	public MagicBoomerang(float speed, int damage, int maxItemPickup) {
+	public MagicBoomerang(float speed, int maxDistance, int damage, int maxItemPickup) {
 		super(Rarity.UNCOMMON, 256);
-		this.entitySpeed=speed;
-		this.entityDamage=damage;
-		this.entityMaxItemPickup=maxItemPickup;
-		
+		this.entitySpeed = speed;
+		this.entityDamage = damage;
+		this.entityMaxItemPickup = maxItemPickup;
+		this.entityMaxDistance = maxDistance;
 	}
 
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
 		ItemStack stack = pPlayer.getItemInHand(pUsedHand);
 		if (!pLevel.isClientSide) {
-			MagicBoomerangEntity boomerang = new MagicBoomerangEntity(pLevel, pPlayer, stack, entitySpeed, entityDamage, entityMaxItemPickup);
+			MagicBoomerangEntity boomerang = new MagicBoomerangEntity(pLevel, pPlayer, stack, entitySpeed, entityMaxDistance, entityDamage, entityMaxItemPickup);
 			boomerang.setThrownFromSlot(pPlayer.getInventory().selected);
 			boomerang.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0f, boomerang.getSpeed(), 1.0f);
 			pLevel.addFreshEntity(boomerang);

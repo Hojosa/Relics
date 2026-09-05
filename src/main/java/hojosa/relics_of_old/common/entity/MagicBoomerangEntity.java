@@ -9,6 +9,9 @@ import lombok.Getter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
@@ -26,11 +29,9 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 
 public class MagicBoomerangEntity extends ThrowableItemProjectile {
-
-	public static final int MAX_THROW_TIME = 10;
+	private static final EntityDataAccessor<Integer> DATA_MAX_DISTANCE = SynchedEntityData.defineId(MagicBoomerangEntity.class, EntityDataSerializers.INT);
 	private static final int SAFETY_TIMEOUT = -100;
-
-	private int returnTimer = MAX_THROW_TIME;
+	private int returnTimer;
 	@Getter
 	private float speed = 1.5f;
 	public int damage = 6;
@@ -42,13 +43,18 @@ public class MagicBoomerangEntity extends ThrowableItemProjectile {
 		super(type, level);
 	}
 
-	public MagicBoomerangEntity(Level level, LivingEntity shooter, ItemStack stack, float speed, int damage, int maxItemPickup) {
+	// we but one copy of the max distance so we know how much reach the boomerang
+	// has, and once it gets assigned to return timer, so we can count down in the
+	// movement
+	public MagicBoomerangEntity(Level level, LivingEntity shooter, ItemStack stack, float speed, int maxDistance, int damage, int maxItemPickup) {
 		super(RelicsEntities.MAGIC_BOOMERANG.get(), shooter, level);
 		this.boomerangItem = stack.copy();
 		this.setItem(stack);
 		this.speed = speed;
 		this.damage = damage;
 		this.maxItemPickup = maxItemPickup;
+		this.returnTimer = maxDistance;
+		this.entityData.set(DATA_MAX_DISTANCE, maxDistance);
 	}
 
 	@Override
@@ -100,13 +106,12 @@ public class MagicBoomerangEntity extends ThrowableItemProjectile {
 			}
 		}
 
-		// return heading logic
 		returnTimer--;
 		if (returnTimer <= 0 && owner != null) {
 			Vec3 delta = getDeltaMovement();
 			float currentHeading = (float) Math.atan2(delta.z, delta.x);
 			float headingToOwner = (float) Math.atan2(owner.getZ() - getZ(), owner.getX() - getX());
-			float curveScale = (float) (-returnTimer) * 0.007f;
+			float curveScale = (float) (-returnTimer) * (0.07f / this.entityData.get(DATA_MAX_DISTANCE));
 			float newHeading = lerpAngle(currentHeading, headingToOwner, curveScale);
 
 			double currentPitch = Math.atan2(delta.y, Math.sqrt(delta.x * delta.x + delta.z * delta.z));
@@ -130,7 +135,6 @@ public class MagicBoomerangEntity extends ThrowableItemProjectile {
 			discard();
 			return;
 		}
-
 		super.tick();
 	}
 
@@ -213,7 +217,7 @@ public class MagicBoomerangEntity extends ThrowableItemProjectile {
 			return;
 
 		// return item to original slot if possible
-		if (!boomerangItem.isEmpty()) {
+		if (!boomerangItem.isEmpty() && !player.getAbilities().instabuild) {
 			ItemStack existing = player.getInventory().getItem(thrownFromSlot);
 			if (existing.isEmpty()) {
 				player.getInventory().setItem(thrownFromSlot, boomerangItem);
@@ -252,6 +256,7 @@ public class MagicBoomerangEntity extends ThrowableItemProjectile {
 		if (!boomerangItem.isEmpty()) {
 			tag.put("BoomerangItem", boomerangItem.save(new CompoundTag()));
 		}
+		tag.putInt("MaxDistance", this.entityData.get(DATA_MAX_DISTANCE));
 	}
 
 	@Override
@@ -262,5 +267,12 @@ public class MagicBoomerangEntity extends ThrowableItemProjectile {
 		if (tag.contains("BoomerangItem", 10)) {
 			boomerangItem = ItemStack.of(tag.getCompound("BoomerangItem"));
 		}
+		this.entityData.set(DATA_MAX_DISTANCE, tag.getInt("MaxDistance"));
+	}
+
+	@Override
+	protected void defineSynchedData() {
+		super.defineSynchedData();
+		this.entityData.define(DATA_MAX_DISTANCE, 10);
 	}
 }

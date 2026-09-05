@@ -84,9 +84,9 @@ public class RelicsItems {
 	public static final RegistryObject<SwordItem> SLIME_SWORD = ITEMS.register(References.UnlocalizedName.SLIME_SWORD, SlimeSword::new);
 	public static final RegistryObject<SwordItem> ENDER_SWORD = ITEMS.register(References.UnlocalizedName.ENDER_SWORD, EnderSword::new);
 
-	public static final RegistryObject<MagicBoomerang> WOODEN_BOOMERANG = ITEMS.register(References.UnlocalizedName.WOODEN_BOOMERANG, () -> new MagicBoomerang(1.0f, 4, 0));
-	public static final RegistryObject<MagicBoomerang> MAGIC_BOOMERANG = ITEMS.register(References.UnlocalizedName.MAGIC_BOOMERANG, () -> new MagicBoomerang(1.5f, 5, 1));
-	public static final RegistryObject<MagicBoomerang> STARSTEEL_BOOMERANG = ITEMS.register(References.UnlocalizedName.STARSTEEL_BOOMERANG, () -> new MagicBoomerang(2f, 7, 3));
+	public static final RegistryObject<MagicBoomerang> WOODEN_BOOMERANG = ITEMS.register(References.UnlocalizedName.WOODEN_BOOMERANG, () -> new MagicBoomerang(1.0f, 3, 4, 0));
+	public static final RegistryObject<MagicBoomerang> MAGIC_BOOMERANG = ITEMS.register(References.UnlocalizedName.MAGIC_BOOMERANG, () -> new MagicBoomerang(1.1f, 5, 5, 1));
+	public static final RegistryObject<MagicBoomerang> STARSTEEL_BOOMERANG = ITEMS.register(References.UnlocalizedName.STARSTEEL_BOOMERANG, () -> new MagicBoomerang(1.3f, 6, 7, 3));
 
 	public static final RegistryObject<BombItem> BOMB = ITEMS.register(References.UnlocalizedName.BOMB, BombItem::new);
 	public static final RegistryObject<BombArrowItem> BOMB_ARROW = ITEMS.register(References.UnlocalizedName.BOMB_ARROW, BombArrowItem::new);

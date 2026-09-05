@@ -79,9 +79,9 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addItem(RelicsItems.MAGIC_MIRROR, "Magic Mirror");
 		addItem(RelicsItems.FLAWLESS_MAGIC_MIRROR, "Flawless Magic Mirror");
 		addItem(RelicsItems.MYSTIC_SEED, "Mystic Seed");
-		addItem(RelicsItems.WOODEN_BOOMERANG, "Wooden Bommerang");
-		addItem(RelicsItems.MAGIC_BOOMERANG, "Magic Bommerang");
-		addItem(RelicsItems.STARSTEEL_BOOMERANG, "Starsteel Bommerang");
+		addItem(RelicsItems.WOODEN_BOOMERANG, "Wooden Boomerang");
+		addItem(RelicsItems.MAGIC_BOOMERANG, "Magic Boomerang");
+		addItem(RelicsItems.STARSTEEL_BOOMERANG, "Starsteel Boomerang");
 		addItem(RelicsItems.EMPTY_EARTH_MEDALLION, "Empty Earth Medallion");
 		addItem(RelicsItems.EARTH_MEDALLION, "Earth Medallion");
 		addItem(RelicsItems.EMPTY_FIRE_MEDALLION, "Empty Fire Medallion");
