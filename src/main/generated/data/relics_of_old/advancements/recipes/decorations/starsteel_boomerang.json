@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "relics_of_old:starstel_boomerang"
+        "recipe": "relics_of_old:starsteel_boomerang"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "relics_of_old:starstel_boomerang"
+      "relics_of_old:starsteel_boomerang"
     ]
   },
   "sends_telemetry_event": false

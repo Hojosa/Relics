@@ -81,6 +81,7 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addItem(RelicsItems.MYSTIC_SEED, "Mystic Seed");
 		addItem(RelicsItems.WOODEN_BOOMERANG, "Wooden Bommerang");
 		addItem(RelicsItems.MAGIC_BOOMERANG, "Magic Bommerang");
+		addItem(RelicsItems.STARSTEEL_BOOMERANG, "Starsteel Bommerang");
 		addItem(RelicsItems.EMPTY_EARTH_MEDALLION, "Empty Earth Medallion");
 		addItem(RelicsItems.EARTH_MEDALLION, "Earth Medallion");
 		addItem(RelicsItems.EMPTY_FIRE_MEDALLION, "Empty Fire Medallion");

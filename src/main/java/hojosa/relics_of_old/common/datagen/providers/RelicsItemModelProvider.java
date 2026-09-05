@@ -69,6 +69,7 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItem(RelicsBlocks.CALTROPS.asItem());
 		basicItem(RelicsItems.WOODEN_BOOMERANG);
 		basicItem(RelicsItems.MAGIC_BOOMERANG);
+		basicItem(RelicsItems.STARSTEEL_BOOMERANG);
 		basicItem(RelicsItems.MILK_CHOCOLATE);
 		basicItem(RelicsItems.EARTH_MEDALLION);
 		basicItemWithOtherTexture(RelicsItems.EMPTY_EARTH_MEDALLION, RelicsItems.EARTH_MEDALLION.getId());

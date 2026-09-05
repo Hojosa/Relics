@@ -166,8 +166,7 @@ public class RelicsEvents {
 				RelicsItems.PHOENIX_CHARM.get().consumeCharm(targetPlayer);
 				phoenixReviveEffect(targetPlayer);
 				event.setCanceled(true);
-			}
-			else if (targetPlayer.getInventory().contains(new ItemStack(RelicsItems.PHOENIX_FEATHER.get()))) {
+			} else if (targetPlayer.getInventory().contains(new ItemStack(RelicsItems.PHOENIX_FEATHER.get()))) {
 				targetPlayer.getInventory().getItem(targetPlayer.getInventory().findSlotMatchingItem(new ItemStack(RelicsItems.PHOENIX_FEATHER.get()))).shrink(1);
 				phoenixReviveEffect(targetPlayer);
 				event.setCanceled(true);

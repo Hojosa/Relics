@@ -178,7 +178,7 @@ public class References {
 		public static final String RESONANCE_RING = "resonance_ring";
 		public static final String PLAIN_RING = "plain_ring";
 		public static final String PHOENIX_RING = "phoenix_ring";
-		public static final String STARSTEEL_BOOMERANG = "starstel_boomerang";
+		public static final String STARSTEEL_BOOMERANG = "starsteel_boomerang";
 		public static final String PHOENIX_CHARM = "phoenix_charm";
 		public static final String BLAST_CHARM = "blast_charm";
 		public static final String FEATHER_CHARM = "feather_charm";

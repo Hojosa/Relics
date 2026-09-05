@@ -83,22 +83,22 @@ public class MagicBoomerangEntity extends ThrowableItemProjectile {
 		}
 
 		// pick up nearby items/entities
-		if (!level().isClientSide() && getPassengers().isEmpty()) {
+		if (!level().isClientSide() && getPassengers().size() < maxItemPickup) {
 			List<Entity> nearby = level().getEntitiesOfClass(Entity.class, getBoundingBox().inflate(1.0), e -> e instanceof ItemEntity);
 			for (Entity e : nearby) {
 				e.startRiding(this);
-				break;
+				if (getPassengers().size() >= maxItemPickup)
+					break;
 			}
 		}
-		
+
 		if (!level().isClientSide()) {
-		      BlockPos pos = blockPosition();
-		      BlockState state = level().getBlockState(pos);
-		      if (!state.isAir() && state.getDestroySpeed(level(), pos) == 0.0f
-		              && state.getCollisionShape(level(), pos).isEmpty()) {
-		          level().destroyBlock(pos, true, getOwner());
-		      }
-		  }
+			BlockPos pos = blockPosition();
+			BlockState state = level().getBlockState(pos);
+			if (!state.isAir() && state.getDestroySpeed(level(), pos) == 0.0f && state.getCollisionShape(level(), pos).isEmpty()) {
+				level().destroyBlock(pos, true, getOwner());
+			}
+		}
 
 		// return heading logic
 		returnTimer--;
