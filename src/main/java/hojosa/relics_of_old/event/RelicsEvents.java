@@ -162,18 +162,17 @@ public class RelicsEvents {
 	@SubscribeEvent
 	public static void onPlayerDeath(LivingDeathEvent event) {
 		if (event.getEntity() instanceof ServerPlayer targetPlayer) {
-			if (targetPlayer.getInventory().contains(new ItemStack(RelicsItems.PHOENIX_FEATHER.get()))) {
-				targetPlayer.getInventory().getItem(targetPlayer.getInventory().findSlotMatchingItem(new ItemStack(RelicsItems.PHOENIX_FEATHER.get()))).shrink(1);
-				phoenixReviveEffect(targetPlayer);
-				event.setCanceled(true);
-			}
-			else if (RelicsItems.PHOENIX_CHARM.get().isEquipped(targetPlayer)) {
+			if (RelicsItems.PHOENIX_CHARM.get().isEquipped(targetPlayer)) {
 				RelicsItems.PHOENIX_CHARM.get().consumeCharm(targetPlayer);
 				phoenixReviveEffect(targetPlayer);
 				event.setCanceled(true);
 			}
+			else if (targetPlayer.getInventory().contains(new ItemStack(RelicsItems.PHOENIX_FEATHER.get()))) {
+				targetPlayer.getInventory().getItem(targetPlayer.getInventory().findSlotMatchingItem(new ItemStack(RelicsItems.PHOENIX_FEATHER.get()))).shrink(1);
+				phoenixReviveEffect(targetPlayer);
+				event.setCanceled(true);
+			}
 		}
-
 	}
 
 	private static void phoenixReviveEffect(Player player) {
