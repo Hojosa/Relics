@@ -1,0 +1,9 @@
+{
+  "type": "relics_of_old:ring_substitute",
+  "chance": 0.5,
+  "conditions": [],
+  "resonance_chance": 0.75,
+  "result_item": "minecraft:arrow",
+  "ring": "relics_of_old:arrowfind_ring",
+  "source_item": "relics_of_old:emerald_shard"
+}
