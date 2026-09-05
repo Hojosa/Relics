@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "G": {
+      "item": "relics_of_old:gem_star"
+    },
+    "M": {
+      "item": "relics_of_old:starglass_lump"
+    },
+    "S": {
+      "item": "relics_of_old:infused_star_stone"
+    }
+  },
+  "pattern": [
+    " MG",
+    "MSM",
+    " M "
+  ],
+  "result": {
+    "item": "relics_of_old:wish_ring"
+  },
+  "show_notification": true
+}

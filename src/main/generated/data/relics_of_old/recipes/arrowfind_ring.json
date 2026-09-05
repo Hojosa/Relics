@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "G": {
+      "item": "relics_of_old:gem_weapon"
+    },
+    "M": {
+      "tag": "minecraft:planks"
+    },
+    "S": {
+      "item": "relics_of_old:infused_star_piece"
+    }
+  },
+  "pattern": [
+    " MG",
+    "MSM",
+    " M "
+  ],
+  "result": {
+    "item": "relics_of_old:arrowfind_ring"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "G": {
+      "item": "relics_of_old:gem_sun"
+    },
+    "M": {
+      "item": "relics_of_old:starglass_lump"
+    },
+    "S": {
+      "item": "relics_of_old:infused_star_piece"
+    }
+  },
+  "pattern": [
+    " MG",
+    "MSM",
+    " M "
+  ],
+  "result": {
+    "item": "relics_of_old:resonance_ring"
+  },
+  "show_notification": true
+}

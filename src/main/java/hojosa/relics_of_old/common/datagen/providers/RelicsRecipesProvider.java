@@ -828,6 +828,128 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.requires(RelicsItems.NUCLEUS_LIGHTNING.get())
 		.unlockedBy(hasItem, has(RelicsItems.STARGLASS_SHELL.get()))
 		.group(References.CREATIVE_TAB).save(consumer);
+		
+		// Gold band rings
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RelicsItems.SPEED_RING.get())
+        .pattern(" MG").pattern("MSM").pattern(" M ")
+        .define('M', Items.GOLD_INGOT)
+        .define('G', RelicsItems.GEM_LIGHTNING.get())
+        .define('S', RelicsItems.INFUSED_STAR_PIECE.get())
+        .group(References.CREATIVE_TAB)
+        .unlockedBy(hasItem, has(RelicsItems.GEM_LIGHTNING.get()))
+        .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RelicsItems.SOFT_FALL_RING.get())
+        .pattern(" MG").pattern("MSM").pattern(" M ")
+        .define('M', Items.GOLD_INGOT)
+        .define('G', RelicsItems.GEM_SKY.get())
+        .define('S', RelicsItems.INFUSED_STAR_PIECE.get())
+        .group(References.CREATIVE_TAB)
+        .unlockedBy(hasItem, has(RelicsItems.GEM_SKY.get()))
+        .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RelicsItems.CONVECTION_RING.get())
+        .pattern(" MG").pattern("MSM").pattern(" M ")
+        .define('M', Items.GOLD_INGOT)
+        .define('G', RelicsItems.GEM_FIRE.get())
+        .define('S', RelicsItems.INFUSED_STAR_PIECE.get())
+        .group(References.CREATIVE_TAB)
+        .unlockedBy(hasItem, has(RelicsItems.GEM_FIRE.get()))
+        .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RelicsItems.COLD_FEET_RING.get())
+        .pattern(" MG").pattern("MSM").pattern(" M ")
+        .define('M', Items.GOLD_INGOT)
+        .define('G', RelicsItems.GEM_ICE.get())
+        .define('S', RelicsItems.INFUSED_STAR_PIECE.get())
+        .group(References.CREATIVE_TAB)
+        .unlockedBy(hasItem, has(RelicsItems.GEM_ICE.get()))
+        .save(consumer);
+
+        // Plain ring: no gem
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RelicsItems.PLAIN_RING.get())
+        .pattern(" M ").pattern("MSM").pattern(" M ")
+        .define('M', Items.GOLD_INGOT)
+        .define('S', RelicsItems.INFUSED_STAR_PIECE.get())
+        .group(References.CREATIVE_TAB)
+        .unlockedBy(hasItem, has(RelicsItems.INFUSED_STAR_PIECE.get()))
+        .save(consumer);
+
+        // Starglass band rings
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RelicsItems.RESONANCE_RING.get())
+        .pattern(" MG").pattern("MSM").pattern(" M ")
+        .define('M', RelicsItems.STARGLASS_LUMP.get())
+        .define('G', RelicsItems.GEM_SUN.get())
+        .define('S', RelicsItems.INFUSED_STAR_PIECE.get())
+        .group(References.CREATIVE_TAB)
+        .unlockedBy(hasItem, has(RelicsItems.GEM_SUN.get()))
+        .save(consumer);
+
+        // Wish ring uses infused star stone instead of piece
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RelicsItems.WISH_RING.get())
+        .pattern(" MG").pattern("MSM").pattern(" M ")
+        .define('M', RelicsItems.STARGLASS_LUMP.get())
+        .define('G', RelicsItems.GEM_STAR.get())
+        .define('S', RelicsItems.INFUSED_STAR_STONE.get())
+        .group(References.CREATIVE_TAB)
+        .unlockedBy(hasItem, has(RelicsItems.GEM_STAR.get()))
+        .save(consumer);
+
+        // Iron band rings
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RelicsItems.MAGE_RING.get())
+        .pattern(" MG").pattern("MSM").pattern(" M ")
+        .define('M', Items.IRON_INGOT)
+        .define('G', RelicsItems.GEM_STAR.get())
+        .define('S', RelicsItems.INFUSED_STAR_PIECE.get())
+        .group(References.CREATIVE_TAB)
+        .unlockedBy(hasItem, has(RelicsItems.GEM_STAR.get()))
+        .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RelicsItems.WARRIOR_RING.get())
+        .pattern(" MG").pattern("MSM").pattern(" M ")
+        .define('M', Items.IRON_INGOT)
+        .define('G', RelicsItems.GEM_WEAPON.get())
+        .define('S', RelicsItems.INFUSED_STAR_PIECE.get())
+        .group(References.CREATIVE_TAB)
+        .unlockedBy(hasItem, has(RelicsItems.GEM_WEAPON.get()))
+        .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RelicsItems.THIEF_RING.get())
+        .pattern(" MG").pattern("MSM").pattern(" M ")
+        .define('M', Items.IRON_INGOT)
+        .define('G', RelicsItems.GEM_DARK.get())
+        .define('S', RelicsItems.INFUSED_STAR_PIECE.get())
+        .group(References.CREATIVE_TAB)
+        .unlockedBy(hasItem, has(RelicsItems.GEM_DARK.get()))
+        .save(consumer);
+
+        // Wood band rings (planks tag)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RelicsItems.ARROWFIND_RING.get())
+        .pattern(" MG").pattern("MSM").pattern(" M ")
+        .define('M', ItemTags.PLANKS)
+        .define('G', RelicsItems.GEM_WEAPON.get())
+        .define('S', RelicsItems.INFUSED_STAR_PIECE.get())
+        .group(References.CREATIVE_TAB)
+        .unlockedBy(hasItem, has(RelicsItems.GEM_WEAPON.get()))
+        .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RelicsItems.AZUREFIND_RING.get())
+        .pattern(" MG").pattern("MSM").pattern(" M ")
+        .define('M', ItemTags.PLANKS)
+        .define('G', RelicsItems.GEM_SKY.get())
+        .define('S', RelicsItems.INFUSED_STAR_PIECE.get())
+        .group(References.CREATIVE_TAB)
+        .unlockedBy(hasItem, has(RelicsItems.GEM_SKY.get()))
+        .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RelicsItems.FORTUNE_RING.get())
+        .pattern(" MG").pattern("MSM").pattern(" M ")
+        .define('M', ItemTags.PLANKS)
+        .define('G', RelicsItems.GEM_WEALTH.get())
+        .define('S', RelicsItems.INFUSED_STAR_PIECE.get())
+        .group(References.CREATIVE_TAB)
+        .unlockedBy(hasItem, has(RelicsItems.GEM_WEALTH.get()))
+        .save(consumer);
 
 		}
 }
