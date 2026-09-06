@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "relics_of_old:blank_spellbook"
+    },
+    {
+      "item": "relics_of_old:infused_star_piece"
+    },
+    {
+      "item": "relics_of_old:nucleus_fire"
+    },
+    {
+      "item": "relics_of_old:nucleus_sun"
+    }
+  ],
+  "result": {
+    "item": "relics_of_old:tome_rayfire"
+  }
+}

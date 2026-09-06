@@ -186,6 +186,10 @@ public class References {
 		public static final String ICE_STAFF = "ice_staff";
 		public static final String LIGHTNING_STAFF = "lightning_staff";
 		public static final String TWINKLE_STAFF = "twinkle_staff";
+		public static final String BLANK_SPELLBOOK = "blank_spellbook";
+		public static final String TOME_SCYTHEWIND = "tome_scythewind";
+		public static final String TOME_RAYFIRE = "tome_rayfire";
+		public static final String TOME_EXEUNT = "tome_exeunt";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -251,6 +255,9 @@ public class References {
 		public static final String SPELL_TWINKLE = "spell_twinkle";
 		public static final String RING_TICK = "ring_mana_tick";
 		public static final String RING_OUT = "ring_mana_out";
+		public static final String SPELL_SCYTHEWIND = "spell_scythewind";
+		public static final String SPELL_RAYFIRE = "spell_rayfire";
+		public static final String SPELL_EXIT = "spell_exit";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

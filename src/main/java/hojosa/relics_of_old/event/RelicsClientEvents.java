@@ -78,48 +78,52 @@ public class RelicsClientEvents {
 	@SubscribeEvent
 	public static void registerItemColors(RegisterColorHandlersEvent.Item event) {
 		// Nucleus colors: layer0 = color1, layer1 = color2
-		registerNucleusColor(event, RelicsItems.NUCLEUS_FIRE, 0xFF6600, 0xFFDD00);
-		registerNucleusColor(event, RelicsItems.NUCLEUS_ICE, 0x88BBFF, 0xCCEEFF);
-		registerNucleusColor(event, RelicsItems.NUCLEUS_LIGHTNING, 0x22FFEE, 0xFFFFB4);
-		registerNucleusColor(event, RelicsItems.NUCLEUS_CUT, 0xEEEEEE, 0xBBBBCC);
-		registerNucleusColor(event, RelicsItems.NUCLEUS_SKY, 0x0066FF, 0x22DDFF);
-		registerNucleusColor(event, RelicsItems.NUCLEUS_SUN, 0xFFBB00, 0xFFFFAA);
-		registerNucleusColor(event, RelicsItems.NUCLEUS_NAVIGATE, 0x888888, 0xFF5555);
-		registerNucleusColor(event, RelicsItems.NUCLEUS_DARK, 0x000011, 0x330066);
-		registerNucleusColor(event, RelicsItems.NUCLEUS_STAR, 0xFF77FF, 0xFFFFDD);
-		registerNucleusColor(event, RelicsItems.NUCLEUS_HEALTH, 0xAA0000, 0xFF4444);
-		registerNucleusColor(event, RelicsItems.NUCLEUS_WEAPON, 0xD8D8D8, 0x896B27);
-		registerNucleusColor(event, RelicsItems.NUCLEUS_WEALTH, 0x63F9AA, 0x00B038);
+		registerTintedItem(event, RelicsItems.NUCLEUS_FIRE, 0xFF6600, 0xFFDD00);
+		registerTintedItem(event, RelicsItems.NUCLEUS_ICE, 0x88BBFF, 0xCCEEFF);
+		registerTintedItem(event, RelicsItems.NUCLEUS_LIGHTNING, 0x22FFEE, 0xFFFFB4);
+		registerTintedItem(event, RelicsItems.NUCLEUS_CUT, 0xEEEEEE, 0xBBBBCC);
+		registerTintedItem(event, RelicsItems.NUCLEUS_SKY, 0x0066FF, 0x22DDFF);
+		registerTintedItem(event, RelicsItems.NUCLEUS_SUN, 0xFFBB00, 0xFFFFAA);
+		registerTintedItem(event, RelicsItems.NUCLEUS_NAVIGATE, 0x888888, 0xFF5555);
+		registerTintedItem(event, RelicsItems.NUCLEUS_DARK, 0x000011, 0x330066);
+		registerTintedItem(event, RelicsItems.NUCLEUS_STAR, 0xFF77FF, 0xFFFFDD);
+		registerTintedItem(event, RelicsItems.NUCLEUS_HEALTH, 0xAA0000, 0xFF4444);
+		registerTintedItem(event, RelicsItems.NUCLEUS_WEAPON, 0xD8D8D8, 0x896B27);
+		registerTintedItem(event, RelicsItems.NUCLEUS_WEALTH, 0x63F9AA, 0x00B038);
 
 		// Gem colors: same pairs, layer2 untinted
-		registerGemColor(event, RelicsItems.GEM_FIRE, 0xFF6600, 0xFFDD00);
-		registerGemColor(event, RelicsItems.GEM_ICE, 0x88BBFF, 0xCCEEFF);
-		registerGemColor(event, RelicsItems.GEM_LIGHTNING, 0x22FFEE, 0xFFFFB4);
-		registerGemColor(event, RelicsItems.GEM_CUT, 0xEEEEEE, 0xBBBBCC);
-		registerGemColor(event, RelicsItems.GEM_SKY, 0x0066FF, 0x22DDFF);
-		registerGemColor(event, RelicsItems.GEM_SUN, 0xFFBB00, 0xFFFFAA);
-		registerGemColor(event, RelicsItems.GEM_NAVIGATE, 0x888888, 0xFF5555);
-		registerGemColor(event, RelicsItems.GEM_DARK, 0x000011, 0x330066);
-		registerGemColor(event, RelicsItems.GEM_STAR, 0xFF77FF, 0xFFFFDD);
-		registerGemColor(event, RelicsItems.GEM_HEALTH, 0xAA0000, 0xFF4444);
-		registerGemColor(event, RelicsItems.GEM_WEAPON, 0xD8D8D8, 0x896B27);
-		registerGemColor(event, RelicsItems.GEM_WEALTH, 0x63F9AA, 0x00B038);
+		registerTintedItem(event, RelicsItems.GEM_FIRE, 0xFF6600, 0xFFDD00);
+		registerTintedItem(event, RelicsItems.GEM_ICE, 0x88BBFF, 0xCCEEFF);
+		registerTintedItem(event, RelicsItems.GEM_LIGHTNING, 0x22FFEE, 0xFFFFB4);
+		registerTintedItem(event, RelicsItems.GEM_CUT, 0xEEEEEE, 0xBBBBCC);
+		registerTintedItem(event, RelicsItems.GEM_SKY, 0x0066FF, 0x22DDFF);
+		registerTintedItem(event, RelicsItems.GEM_SUN, 0xFFBB00, 0xFFFFAA);
+		registerTintedItem(event, RelicsItems.GEM_NAVIGATE, 0x888888, 0xFF5555);
+		registerTintedItem(event, RelicsItems.GEM_DARK, 0x000011, 0x330066);
+		registerTintedItem(event, RelicsItems.GEM_STAR, 0xFF77FF, 0xFFFFDD);
+		registerTintedItem(event, RelicsItems.GEM_HEALTH, 0xAA0000, 0xFF4444);
+		registerTintedItem(event, RelicsItems.GEM_WEAPON, 0xD8D8D8, 0x896B27);
+		registerTintedItem(event, RelicsItems.GEM_WEALTH, 0x63F9AA, 0x00B038);
 
 		// Ring gem tinting — matching LG2 NucleusType colors
-		registerRingColor(event, RelicsItems.SPEED_RING, 0xFFFFFF, 0x22FFEE, 0xFFFFB4); // Gold + Lightning gem
-		registerRingColor(event, RelicsItems.CONVECTION_RING, 0xFFFFFF, 0xFF6600, 0xFFDD00); // Gold + Fire gem
-		registerRingColor(event, RelicsItems.SOFT_FALL_RING, 0xFFFFFF, 0x0066FF, 0x22DDFF); // Gold + Sky gem
-		registerRingColor(event, RelicsItems.COLD_FEET_RING, 0xFFFFFF, 0x88BBFF, 0xCCEEFF); // Gold + Ice gem
-		registerRingColor(event, RelicsItems.THIEF_RING, 0xFFFFFF, 0x000011, 0x330066); // Gold + Dark gem
-		registerRingColor(event, RelicsItems.MAGE_RING, 0xFFFFFF, 0xFF77FF, 0xFFFFDD); // Iron + Star gem
-		registerRingColor(event, RelicsItems.WARRIOR_RING, 0xFFFFFF, 0xD8D8D8, 0x896B27); // Iron + Weapon gem
-		registerRingColor(event, RelicsItems.FORTUNE_RING, 0xFFFFFF, 0x63F9AA, 0x00B038); // Wood + Wealth gem
-		registerRingColor(event, RelicsItems.ARROWFIND_RING, 0xFFFFFF, 0xD8D8D8, 0x896B27); // Wood + Weapon gem
-		registerRingColor(event, RelicsItems.AZUREFIND_RING, 0xFFFFFF, 0x0066FF, 0x22DDFF); // Wood + Sky gem
-		registerRingColor(event, RelicsItems.WISH_RING, 0x630AA9, 0xFF77FF, 0xFFFFDD); // Starglass(tinted) + Star gem
-		registerRingColor(event, RelicsItems.RESONANCE_RING, 0x630AA9, 0xFFBB00, 0xFFFFAA); // Starglass(tinted) + Sun gem
-		registerRingColor(event, RelicsItems.PHOENIX_RING, 0xFFDDDD, -1, -1); // Gold(tinted pink), no gem
+		registerTintedItem(event, RelicsItems.SPEED_RING, 0xFFFFFF, 0x22FFEE, 0xFFFFB4); // Gold + Lightning gem
+		registerTintedItem(event, RelicsItems.CONVECTION_RING, 0xFFFFFF, 0xFF6600, 0xFFDD00); // Gold + Fire gem
+		registerTintedItem(event, RelicsItems.SOFT_FALL_RING, 0xFFFFFF, 0x0066FF, 0x22DDFF); // Gold + Sky gem
+		registerTintedItem(event, RelicsItems.COLD_FEET_RING, 0xFFFFFF, 0x88BBFF, 0xCCEEFF); // Gold + Ice gem
+		registerTintedItem(event, RelicsItems.THIEF_RING, 0xFFFFFF, 0x000011, 0x330066); // Gold + Dark gem
+		registerTintedItem(event, RelicsItems.MAGE_RING, 0xFFFFFF, 0xFF77FF, 0xFFFFDD); // Iron + Star gem
+		registerTintedItem(event, RelicsItems.WARRIOR_RING, 0xFFFFFF, 0xD8D8D8, 0x896B27); // Iron + Weapon gem
+		registerTintedItem(event, RelicsItems.FORTUNE_RING, 0xFFFFFF, 0x63F9AA, 0x00B038); // Wood + Wealth gem
+		registerTintedItem(event, RelicsItems.ARROWFIND_RING, 0xFFFFFF, 0xD8D8D8, 0x896B27); // Wood + Weapon gem
+		registerTintedItem(event, RelicsItems.AZUREFIND_RING, 0xFFFFFF, 0x0066FF, 0x22DDFF); // Wood + Sky gem
+		registerTintedItem(event, RelicsItems.WISH_RING, 0x630AA9, 0xFF77FF, 0xFFFFDD); // Starglass(tinted) + Star gem
+		registerTintedItem(event, RelicsItems.RESONANCE_RING, 0x630AA9, 0xFFBB00, 0xFFFFAA); // Starglass(tinted) + Sun gem
+		registerTintedItem(event, RelicsItems.PHOENIX_RING, 0xFFDDDD, -1, -1); // Gold(tinted pink), no gem
 
+		// Tome colors (cover + symbol + untinted pages)
+		registerTintedItem(event, RelicsItems.TOME_SCYTHEWIND, 0x33AAFF, 0xEEEEEE);
+		registerTintedItem(event, RelicsItems.TOME_RAYFIRE, 0xDD0055, 0xFFFFAA);
+		registerTintedItem(event, RelicsItems.TOME_EXEUNT, 0x664411, 0x66AAFF);
 	}
 
 	@SubscribeEvent
@@ -224,24 +228,37 @@ public class RelicsClientEvents {
 		}
 	}
 
-	private static void registerNucleusColor(RegisterColorHandlersEvent.Item event, RegistryObject<? extends Item> item, int color1, int color2) {
-		event.register((stack, tintIndex) -> tintIndex == 0 ? color1 : color2, item.get());
+	private static void registerTintedItem(RegisterColorHandlersEvent.Item event, RegistryObject<? extends Item> item, int... colors) {
+		event.register((stack, tintIndex) -> tintIndex < colors.length ? colors[tintIndex] : 0xFFFFFF, item.get());
 	}
 
-	private static void registerGemColor(RegisterColorHandlersEvent.Item event, RegistryObject<? extends Item> item, int color1, int color2) {
-		event.register((stack, tintIndex) -> switch (tintIndex) {
-		case 0 -> color1;
-		case 1 -> color2;
-		default -> 0xFFFFFF; // layer2 (cover) untinted
-		}, item.get());
-	}
+//	private static void registerNucleusColor(RegisterColorHandlersEvent.Item event, RegistryObject<? extends Item> item, int color1, int color2) {
+//		event.register((stack, tintIndex) -> tintIndex == 0 ? color1 : color2, item.get());
+//	}
+//
+//	private static void registerGemColor(RegisterColorHandlersEvent.Item event, RegistryObject<? extends Item> item, int color1, int color2) {
+//		event.register((stack, tintIndex) -> switch (tintIndex) {
+//		case 0 -> color1;
+//		case 1 -> color2;
+//		default -> 0xFFFFFF; // layer2 (cover) untinted
+//		}, item.get());
+//	}
+//
+//	private static void registerRingColor(RegisterColorHandlersEvent.Item event, RegistryObject<? extends Item> item, int ringTint, int gemColor1, int gemColor2) {
+//		event.register((stack, tintIndex) -> switch (tintIndex) {
+//		case 0 -> ringTint; // ring base
+//		case 1 -> gemColor1; // orb base
+//		case 2 -> gemColor2; // orb fill
+//		default -> 0xFFFFFF; // orb overlay, untinted
+//		}, item.get());
+//	}
+//
+//	private static void registerTomeColor(RegisterColorHandlersEvent.Item event, RegistryObject<? extends Item> item, int colorBase, int colorSymbol) {
+//		event.register((stack, tintIndex) -> switch (tintIndex) {
+//		case 0 -> colorBase; // book cover
+//		case 1 -> colorSymbol; // symbol overlay
+//		default -> 0xFFFFFF; // pages, untinted
+//		}, item.get());
+//	}
 
-	private static void registerRingColor(RegisterColorHandlersEvent.Item event, RegistryObject<? extends Item> item, int ringTint, int gemColor1, int gemColor2) {
-		event.register((stack, tintIndex) -> switch (tintIndex) {
-		case 0 -> ringTint; // ring base
-		case 1 -> gemColor1; // orb base
-		case 2 -> gemColor2; // orb fill
-		default -> 0xFFFFFF; // orb overlay, untinted
-		}, item.get());
-	}
 }

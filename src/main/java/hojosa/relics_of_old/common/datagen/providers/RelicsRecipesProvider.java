@@ -1102,5 +1102,42 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.define('S', Items.STICK)
 		.unlockedBy("has_glittering_orb", has(RelicsItems.GLITTERING_ORB.get()))
 		.save(consumer);
+		
+		// blank spellbook (shapeless: book + ink sac + infused star dust + phoenix feather)
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, RelicsItems.BLANK_SPELLBOOK.get())
+		.requires(Items.BOOK)
+		.requires(Items.INK_SAC)
+		.requires(RelicsItems.INFUSED_STAR_DUST.get())
+		.requires(RelicsItems.PHOENIX_FEATHER.get())
+		.unlockedBy("has_infused_star_dust", has(RelicsItems.INFUSED_STAR_DUST.get()))
+		.save(consumer);
+
+		// tome of scythewind
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, RelicsItems.TOME_SCYTHEWIND.get())
+		.requires(RelicsItems.BLANK_SPELLBOOK.get())
+		.requires(RelicsItems.INFUSED_STAR_PIECE.get())
+		.requires(RelicsItems.NUCLEUS_SKY.get())
+		.requires(RelicsItems.NUCLEUS_CUT.get())
+		.unlockedBy("has_blank_spellbook", has(RelicsItems.BLANK_SPELLBOOK.get()))
+		.save(consumer);
+
+		// tome of rayfire
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, RelicsItems.TOME_RAYFIRE.get())
+		.requires(RelicsItems.BLANK_SPELLBOOK.get())
+		.requires(RelicsItems.INFUSED_STAR_PIECE.get())
+		.requires(RelicsItems.NUCLEUS_FIRE.get())
+		.requires(RelicsItems.NUCLEUS_SUN.get())
+		.unlockedBy("has_blank_spellbook", has(RelicsItems.BLANK_SPELLBOOK.get()))
+		.save(consumer);
+
+		// tome of exeunt
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, RelicsItems.TOME_EXEUNT.get())
+		.requires(RelicsItems.BLANK_SPELLBOOK.get())
+		.requires(RelicsItems.INFUSED_STAR_PIECE.get())
+		.requires(RelicsItems.NUCLEUS_SKY.get())
+		.requires(RelicsItems.NUCLEUS_NAVIGATE.get())
+		.unlockedBy("has_blank_spellbook", has(RelicsItems.BLANK_SPELLBOOK.get()))
+		.save(consumer);
+
 		}
 }

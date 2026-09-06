@@ -254,6 +254,12 @@
     ],
     "subtitle": "relics_of_old.subtitle.speed_boost"
   },
+  "spell_exit": {
+    "sounds": [
+      "relics_of_old:spell_exit"
+    ],
+    "subtitle": "relics_of_old.subtitle.spell_exit"
+  },
   "spell_fire": {
     "sounds": [
       "relics_of_old:spell_fire"
@@ -271,6 +277,18 @@
       "relics_of_old:spell_lightning"
     ],
     "subtitle": "relics_of_old.subtitle.spell_lightning"
+  },
+  "spell_rayfire": {
+    "sounds": [
+      "relics_of_old:spell_rayfire"
+    ],
+    "subtitle": "relics_of_old.subtitle.spell_rayfire"
+  },
+  "spell_scythewind": {
+    "sounds": [
+      "relics_of_old:spell_scythewind"
+    ],
+    "subtitle": "relics_of_old.subtitle.spell_scythewind"
   },
   "spell_twinkle": {
     "sounds": [

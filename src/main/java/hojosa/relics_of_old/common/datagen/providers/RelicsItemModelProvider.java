@@ -182,6 +182,10 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		handheldItem(RelicsItems.ICE_STAFF);
 		handheldItem(RelicsItems.LIGHTNING_STAFF);
 		handheldItem(RelicsItems.TWINKLE_STAFF);
+		basicItem(RelicsItems.BLANK_SPELLBOOK);
+		tomeItem(RelicsItems.TOME_SCYTHEWIND);
+		tomeItem(RelicsItems.TOME_RAYFIRE);
+		tomeItem(RelicsItems.TOME_EXEUNT);
 
 		// magic mirror model
 		// base model that contains the base transform settings for the model
@@ -238,6 +242,11 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 
 	private void plainRingItem(RegistryObject<? extends Item> item, String ringBase) {
 		getBuilder(item.getId().toString()).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", modLoc("item/" + ringBase));
+	}
+
+	private void tomeItem(RegistryObject<? extends Item> item) {
+		getBuilder(item.getId().toString()).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", modLoc("item/tome_base")).texture("layer1", modLoc("item/tome_symbol")).texture("layer2",
+				modLoc("item/tome_pages"));
 	}
 
 	private void gemItem(RegistryObject<? extends Item> item) {

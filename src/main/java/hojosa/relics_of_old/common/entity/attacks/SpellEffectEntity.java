@@ -9,9 +9,12 @@ import java.util.UUID;
 import hojosa.relics_of_old.client.particle.SpellCritRingParticle;
 import hojosa.relics_of_old.client.particle.SpellCrossParticle;
 import hojosa.relics_of_old.client.particle.SpellDiamondParticle;
+import hojosa.relics_of_old.client.particle.SpellExitParticle;
 import hojosa.relics_of_old.client.particle.SpellFireParticle;
 import hojosa.relics_of_old.client.particle.SpellIceParticle;
 import hojosa.relics_of_old.client.particle.SpellLightningParticle;
+import hojosa.relics_of_old.client.particle.SpellRayfireParticle;
+import hojosa.relics_of_old.client.particle.SpellScytheParticle;
 import hojosa.relics_of_old.common.block.entity.RitualLocusBlockEntity;
 import hojosa.relics_of_old.common.init.RelicsBlocks;
 import hojosa.relics_of_old.common.init.RelicsEntities;
@@ -35,6 +38,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.SnowGolem;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -392,6 +396,140 @@ public class SpellEffectEntity extends Entity implements IEntityAdditionalSpawnD
 
 						SpellDiamondParticle diamond = new SpellDiamondParticle(clientLevel, spell.getX() + gx, spell.getY() + gy, spell.getZ() + gz, 0, 0, 0, 5, hibernateTime); // no velocity for stardust
 						Minecraft.getInstance().particleEngine.add(diamond);
+					}
+				}
+			}
+		},
+		SCYTHEWIND(Element.WIND, 15, true) {
+			@Override
+			public void onSpawn(SpellEffectEntity spell) {
+				spell.level().playSound(null, spell.blockPosition(), RelicsSounds.SPELL_SCYTHEWIND.get(), SoundSource.PLAYERS, 2.5f, 1.0f);
+			}
+
+			@Override
+			public void affectBlock(SpellEffectEntity spell, BlockPos pos) {
+				BlockState state = spell.level().getBlockState(pos);
+				// Destroy zero-hardness blocks (tall grass, flowers, etc.)
+				if (state.getDestroySpeed(spell.level(), pos) == 0.0f && !state.hasBlockEntity()) {
+					spell.level().destroyBlock(pos, true);
+				}
+			}
+
+			@Override
+			public void affectLiving(SpellEffectEntity spell, LivingEntity living) {
+				// Shear shearable mobs (sheep, mooshrooms)
+				if (living instanceof net.minecraftforge.common.IForgeShearable shearable && !living.level().isClientSide) {
+					if (shearable.isShearable(ItemStack.EMPTY, living.level(), living.blockPosition())) {
+						java.util.List<ItemStack> drops = shearable.onSheared(null, ItemStack.EMPTY, living.level(), living.blockPosition(), 0);
+						for (ItemStack drop : drops) {
+							net.minecraft.world.entity.item.ItemEntity ei = new net.minecraft.world.entity.item.ItemEntity(spell.level(), living.getX(), living.getY(), living.getZ(), drop);
+							// On crit, fling drops toward spell center
+							if (spell.isCrit) {
+								double vx = (spell.getX() - living.getX()) * 0.06;
+								double vz = (spell.getZ() - living.getZ()) * 0.06;
+								ei.setDeltaMovement(vx, 0.5, vz);
+							}
+							spell.level().addFreshEntity(ei);
+						}
+						return;
+					}
+				}
+				// Non-shearable: wind damage + knockback
+				super.affectLiving(spell, living);
+			}
+
+			@Override
+			public void affectInanimate(SpellEffectEntity spell, Entity target) {
+				// On crit, fling item entities toward spell center
+				if (target instanceof net.minecraft.world.entity.item.ItemEntity && spell.isCrit) {
+					double vx = (spell.getX() - target.getX()) * 0.06;
+					double vz = (spell.getZ() - target.getZ()) * 0.06;
+					target.setDeltaMovement(vx, 0.5, vz);
+					target.hurtMarked = true;
+				}
+			}
+
+			@Override
+			public void clientTick(SpellEffectEntity spell, int lifetime) {
+				super.clientTick(spell, lifetime);
+				if (lifetime == 0) {
+					Random rand = new Random();
+					ClientLevel clientLevel = (ClientLevel) spell.level();
+					for (int i = 0; i < 50; i++) {
+						Vec3 outward = new Vec3(rand.nextGaussian(), rand.nextGaussian(), rand.nextGaussian()).normalize();
+						double dist = rand.nextDouble() * spell.radius;
+						SpellScytheParticle p = new SpellScytheParticle(clientLevel, spell.getX() + outward.x() * dist, spell.getY() + outward.y() * dist, spell.getZ() + outward.z() * dist, spell.power, 20,
+								outward.x() * dist, outward.z() * dist);
+						Minecraft.getInstance().particleEngine.add(p);
+					}
+				}
+			}
+		},
+		RAYFIRE(Element.RADIANT, 7, false) {
+			@Override
+			public void onSpawn(SpellEffectEntity spell) {
+				spell.level().playSound(null, spell.blockPosition(), RelicsSounds.SPELL_RAYFIRE.get(), SoundSource.PLAYERS, 2.5f, 1.0f);
+			}
+
+			@Override
+			public void affectLiving(SpellEffectEntity spell, LivingEntity living) {
+				// On crit, caster is immune
+				if (spell.isCrit && living.equals(spell.getCaster()))
+					return;
+				// Set undead on fire
+				if (living.isInvertedHealAndHarm()) {
+					living.setRemainingFireTicks((int) spell.power * 20);
+				}
+				super.affectLiving(spell, living);
+			}
+
+			@Override
+			public void clientTick(SpellEffectEntity spell, int lifetime) {
+				super.clientTick(spell, lifetime);
+				if (lifetime == 0) {
+					ClientLevel clientLevel = (ClientLevel) spell.level();
+					// Spiral arrangement: 25 points × 3 rotations
+					for (int i = 0; i < 25; i++) {
+						double theta = (double) i * Math.PI * 2.0 / 25.0;
+						double r = (double) i / 23.0 * spell.radius;
+						for (int j = 0; j < 3; j++) {
+							double angle = theta + j * (Math.PI * 2.0 / 3.0);
+							SpellRayfireParticle p = new SpellRayfireParticle(clientLevel, spell.getX() + Math.cos(angle) * r, spell.getY(), spell.getZ() + Math.sin(angle) * r, spell.power, 5, i / 2);
+							Minecraft.getInstance().particleEngine.add(p);
+						}
+					}
+				}
+			}
+		},
+		EXIT(Element.TELEPORT, 15, false, 10) {
+			@Override
+			public void onSpawn(SpellEffectEntity spell) {
+				spell.level().playSound(null, spell.blockPosition(), RelicsSounds.SPELL_EXIT.get(), SoundSource.PLAYERS, 2.5f, 1.0f);
+			}
+
+			@Override
+			public void affectLiving(SpellEffectEntity spell, LivingEntity living) {
+				// Teleport upward (simplified — full sky-world system not yet ported)
+				living.level().playSound(null, living.blockPosition(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 1.0f, 1.0f);
+				living.teleportTo(living.getX(), living.getY() + 3.0 + spell.power, living.getZ());
+				living.hurt(spell.damageSources().fall(), (float) spell.power);
+				// Non-crit: apply nausea
+				if (!spell.isCrit) {
+					living.addEffect(new net.minecraft.world.effect.MobEffectInstance(net.minecraft.world.effect.MobEffects.CONFUSION, 300));
+				}
+			}
+
+			@Override
+			public void clientTick(SpellEffectEntity spell, int lifetime) {
+				super.clientTick(spell, lifetime);
+				if (lifetime == 0) {
+					Random rand = new Random();
+					ClientLevel clientLevel = (ClientLevel) spell.level();
+					for (int i = 0; i < 20; i++) {
+						Vec3 outward = new Vec3(rand.nextGaussian(), rand.nextGaussian(), rand.nextGaussian()).normalize();
+						double dist = rand.nextDouble() * spell.radius;
+						SpellExitParticle p = new SpellExitParticle(clientLevel, spell.getX() + outward.x() * dist, spell.getY() + outward.y() * dist, spell.getZ() + outward.z() * dist, spell.power, 10, rand.nextInt(8));
+						Minecraft.getInstance().particleEngine.add(p);
 					}
 				}
 			}

@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_blank_spellbook": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "relics_of_old:blank_spellbook"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "relics_of_old:tome_scythewind"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_blank_spellbook",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "relics_of_old:tome_scythewind"
+    ]
+  },
+  "sends_telemetry_event": false
+}

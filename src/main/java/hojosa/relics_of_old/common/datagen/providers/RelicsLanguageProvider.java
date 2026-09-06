@@ -187,6 +187,10 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addItem(RelicsItems.ICE_STAFF, "Frost Staff");
 		addItem(RelicsItems.LIGHTNING_STAFF, "Jolt Staff");
 		addItem(RelicsItems.TWINKLE_STAFF, "Twinkle Staff");
+		addItem(RelicsItems.BLANK_SPELLBOOK, "Blank Spellbook");
+		addItem(RelicsItems.TOME_SCYTHEWIND, "Tome of Scythewind");
+		addItem(RelicsItems.TOME_RAYFIRE, "Tome of Rayfire");
+		addItem(RelicsItems.TOME_EXEUNT, "Tome of Exeunt");
 
 		// Sword augment tooltips
 		add("augment.relics_of_old.fire", "Augment: Fire");

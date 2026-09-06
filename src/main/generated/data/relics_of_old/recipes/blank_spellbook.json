@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "minecraft:book"
+    },
+    {
+      "item": "minecraft:ink_sac"
+    },
+    {
+      "item": "relics_of_old:infused_star_dust"
+    },
+    {
+      "item": "relics_of_old:phoenix_feather"
+    }
+  ],
+  "result": {
+    "item": "relics_of_old:blank_spellbook"
+  }
+}
