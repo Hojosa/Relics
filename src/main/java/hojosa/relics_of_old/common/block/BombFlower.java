@@ -77,6 +77,8 @@ public class BombFlower extends BushBlock {
 		return 1.0f;
 	}
 
+	
+
 	// valid support: stone, netherrack, or deepslate
 	@Override
 	protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
@@ -151,7 +153,7 @@ public class BombFlower extends BushBlock {
 		}
 	}
 
-	private void spawnBomb(Level level, BlockPos pos, int fuseTime) {
+	public void spawnBomb(Level level, BlockPos pos, int fuseTime) {
 		if (!level.isClientSide) {
 			BombEntity bomb = new BombEntity(level, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, fuseTime - level.random.nextInt(5));
 			bomb.setDeltaMovement(0, 0.1, 0);

@@ -2,6 +2,7 @@ package hojosa.relics_of_old.common.entity;
 
 import java.util.List;
 
+import hojosa.relics_of_old.common.block.BombFlower;
 import hojosa.relics_of_old.common.init.RelicsEntities;
 import hojosa.relics_of_old.common.init.RelicsItems;
 import hojosa.relics_of_old.common.init.RelicsSounds;
@@ -23,6 +24,7 @@ import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
@@ -102,7 +104,12 @@ public class MagicBoomerangEntity extends ThrowableItemProjectile {
 			BlockPos pos = blockPosition();
 			BlockState state = level().getBlockState(pos);
 			if (!state.isAir() && state.getDestroySpeed(level(), pos) == 0.0f && state.getCollisionShape(level(), pos).isEmpty()) {
-				level().destroyBlock(pos, true, getOwner());
+				if (state.getBlock() instanceof BombFlower bombFlower && state.getValue(BombFlower.STATE) == BombFlower.FlowerState.NORMAL) {
+					level().setBlock(pos, state.setValue(BombFlower.STATE, BombFlower.FlowerState.CUT), Block.UPDATE_ALL);
+					bombFlower.spawnBomb(level(), pos, BombEntity.LONG_FUSE_TIME);
+				} else if (!(state.getBlock() instanceof BombFlower)) {
+					level().destroyBlock(pos, true, getOwner());
+				}
 			}
 		}
 
