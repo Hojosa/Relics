@@ -182,6 +182,10 @@ public class References {
 		public static final String PHOENIX_CHARM = "phoenix_charm";
 		public static final String BLAST_CHARM = "blast_charm";
 		public static final String FEATHER_CHARM = "feather_charm";
+		public static final String FIRE_STAFF = "fire_staff";
+		public static final String ICE_STAFF = "ice_staff";
+		public static final String LIGHTNING_STAFF = "lightning_staff";
+		public static final String TWINKLE_STAFF = "twinkle_staff";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

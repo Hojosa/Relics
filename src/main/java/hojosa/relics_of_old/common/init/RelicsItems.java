@@ -1,6 +1,7 @@
 package hojosa.relics_of_old.common.init;
 
 import hojosa.relics_of_old.common.entity.ThrownOrbEntity.OrbType;
+import hojosa.relics_of_old.common.entity.attacks.SpellEffectEntity;
 import hojosa.relics_of_old.common.item.AeroAmulet;
 import hojosa.relics_of_old.common.item.BombArrowItem;
 import hojosa.relics_of_old.common.item.BombBagItem;
@@ -35,6 +36,7 @@ import hojosa.relics_of_old.common.item.RockCandyItem;
 import hojosa.relics_of_old.common.item.SlimeSword;
 import hojosa.relics_of_old.common.item.SoftFallRingItem;
 import hojosa.relics_of_old.common.item.SpeedRingItem;
+import hojosa.relics_of_old.common.item.SpellStaffItem;
 import hojosa.relics_of_old.common.item.ThiefRingItem;
 import hojosa.relics_of_old.common.item.ThrowableOrbItem;
 import hojosa.relics_of_old.common.item.TitanBand;
@@ -92,7 +94,15 @@ public class RelicsItems {
 	public static final RegistryObject<BombArrowItem> BOMB_ARROW = ITEMS.register(References.UnlocalizedName.BOMB_ARROW, BombArrowItem::new);
 	public static final RegistryObject<BombBagItem> BOMB_BAG = ITEMS.register(References.UnlocalizedName.BOMB_BAG, BombBagItem::new);
 
-	// items
+	// staffs
+	public static final RegistryObject<SpellStaffItem> FIRE_STAFF = ITEMS.register(References.UnlocalizedName.FIRE_STAFF, () -> new SpellStaffItem(SpellEffectEntity.SpellType.FIRE, 10.0, 7.0, 3.0, 0.75, 5.0f, false, 128));
+	public static final RegistryObject<SpellStaffItem> ICE_STAFF = ITEMS.register(References.UnlocalizedName.ICE_STAFF, () -> new SpellStaffItem(SpellEffectEntity.SpellType.ICE, 10.0, 7.0, 3.0, 0.75, 5.0f, true, 128));
+	public static final RegistryObject<SpellStaffItem> LIGHTNING_STAFF = ITEMS.register(References.UnlocalizedName.LIGHTNING_STAFF,
+			() -> new SpellStaffItem(SpellEffectEntity.SpellType.LIGHTNING, 10.0, 7.0, 3.0, 0.75, 5.0f, true, 128));
+	public static final RegistryObject<SpellStaffItem> TWINKLE_STAFF = ITEMS.register(References.UnlocalizedName.TWINKLE_STAFF,
+			() -> new SpellStaffItem(SpellEffectEntity.SpellType.TWINKLE, 8.0, 7.0, 3.0, 0.75d, 4.0f, false, 128));
+
+	// normal items
 	public static final RegistryObject<RelicsItem> INFUSED_STAR_PIECE = ITEMS.register(References.UnlocalizedName.INFUSED_STAR_PIECE, () -> new InfusedItem(64, Rarity.EPIC));
 	public static final RegistryObject<RelicsItem> STAR_PIECE = ITEMS.register(References.UnlocalizedName.STAR_PIECE, () -> new InfuseableItem(64, Rarity.UNCOMMON, INFUSED_STAR_PIECE));
 	public static final RegistryObject<RelicsItem> STAR_DUST = ITEMS.register(References.UnlocalizedName.STAR_DUST, () -> new RelicsItem(64, Rarity.UNCOMMON));

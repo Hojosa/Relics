@@ -178,6 +178,10 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItem(RelicsItems.PHOENIX_CHARM);
 		basicItem(RelicsItems.BLAST_CHARM);
 		basicItem(RelicsItems.FEATHER_CHARM);
+		handheldItem(RelicsItems.FIRE_STAFF);
+		handheldItem(RelicsItems.ICE_STAFF);
+		handheldItem(RelicsItems.LIGHTNING_STAFF);
+		handheldItem(RelicsItems.TWINKLE_STAFF);
 
 		// magic mirror model
 		// base model that contains the base transform settings for the model
@@ -239,6 +243,10 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 	private void gemItem(RegistryObject<? extends Item> item) {
 		getBuilder(item.getId().toString()).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", modLoc("item/gem_base")).texture("layer1", modLoc("item/gem_fill")).texture("layer2",
 				modLoc("item/gem_overlay"));
+	}
+
+	private void handheldItem(RegistryObject<? extends Item> itemRef) {
+		getBuilder(itemRef.getId().toString()).parent(new ModelFile.UncheckedModelFile("item/handheld")).texture("layer0", modLoc("item/" + itemRef.getId().getPath()));
 	}
 
 	private void withExistingParent(ItemObject<Block> itemRef) {

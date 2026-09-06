@@ -183,6 +183,10 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addItem(RelicsItems.PHOENIX_CHARM, "Phoenix Charm");
 		addItem(RelicsItems.BLAST_CHARM, "Blast Charm");
 		addItem(RelicsItems.FEATHER_CHARM, "Feather Charm");
+		addItem(RelicsItems.FIRE_STAFF, "Ember Staff");
+		addItem(RelicsItems.ICE_STAFF, "Frost Staff");
+		addItem(RelicsItems.LIGHTNING_STAFF, "Jolt Staff");
+		addItem(RelicsItems.TWINKLE_STAFF, "Twinkle Staff");
 
 		// Sword augment tooltips
 		add("augment.relics_of_old.fire", "Augment: Fire");
@@ -199,7 +203,6 @@ public class RelicsLanguageProvider extends LanguageProvider {
 
 		// Other stuff
 		addEnchantment(RelicsEnchantments.FOCUS, "Focus");
-
 	}
 
 	@Override

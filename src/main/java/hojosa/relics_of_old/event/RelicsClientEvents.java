@@ -213,7 +213,7 @@ public class RelicsClientEvents {
 		}
 	}
 
-	// hide hans while a mob gets carried
+	// hide hands while a mob gets carried
 	public static void onRenderHand(RenderHandEvent event) {
 		Player player = Minecraft.getInstance().player;
 		if (player != null && player.getFirstPassenger() != null) {

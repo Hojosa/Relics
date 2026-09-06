@@ -577,15 +577,14 @@ public class RelicsRecipesProvider extends RecipeProvider {
 
 		// Starsteel dust: infused star dust + iron dust (requires another mod to provide forge:dusts/iron)
 		ConditionalRecipe.builder()
-	      .addCondition(new NotCondition(new TagEmptyCondition(ResourceLocation.fromNamespaceAndPath("forge", "dusts/iron"))))
-	      .addRecipe(
-	          ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.STARSTEEL_DUST.get())
-	              .requires(RelicsItems.INFUSED_STAR_DUST.get())
-	              .requires(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "dusts/iron")))
-	              .unlockedBy("has_infused_star_dust", has(RelicsItems.INFUSED_STAR_DUST.get()))
-	              ::save
-	      )
-	      .build(consumer, ResourceLocation.fromNamespaceAndPath(References.MOD_ID, "starsteel_dust_from_iron_dust"));
+	    .addCondition(new NotCondition(new TagEmptyCondition(ResourceLocation.fromNamespaceAndPath("forge", "dusts/iron"))))
+	    .addRecipe(
+	    		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.STARSTEEL_DUST.get())
+	    		.requires(RelicsItems.INFUSED_STAR_DUST.get())
+	            .requires(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "dusts/iron")))
+	            .unlockedBy("has_infused_star_dust", has(RelicsItems.INFUSED_STAR_DUST.get()))
+	            ::save)
+	    .build(consumer, ResourceLocation.fromNamespaceAndPath(References.MOD_ID, "starsteel_dust_from_iron_dust"));
 
 		// Starsteel ingot: smelt starsteel dust
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(RelicsItems.STARSTEEL_DUST.get()), RecipeCategory.MISC, RelicsItems.STARSTEEL_INGOT.get(), 0.0f, 200)
@@ -1063,5 +1062,45 @@ public class RelicsRecipesProvider extends RecipeProvider {
         .group(References.CREATIVE_TAB)
         .unlockedBy(hasItem, has(RelicsItems.BOMB.get()))
         .save(consumer);
+        
+        // fire staff
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, RelicsItems.FIRE_STAFF.get())
+        .pattern("  O")
+        .pattern(" S ")
+        .pattern("S  ")
+		.define('O', RelicsItems.BURNING_ORB.get())
+		.define('S', Items.STICK)
+		.unlockedBy("has_burning_orb", has(RelicsItems.BURNING_ORB.get()))
+		.save(consumer);
+		
+		// ice staff
+		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, RelicsItems.ICE_STAFF.get())
+		.pattern("  O")
+		.pattern(" S ")
+		.pattern("S  ")
+		.define('O', RelicsItems.FREEZING_ORB.get())
+		.define('S', Items.STICK)
+		.unlockedBy("has_freezing_orb", has(RelicsItems.FREEZING_ORB.get()))
+		.save(consumer);
+		
+		// lightning staff
+		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, RelicsItems.LIGHTNING_STAFF.get())
+		.pattern("  O")
+		.pattern(" S ")
+		.pattern("S  ")
+		.define('O', RelicsItems.SHOCKING_ORB.get())
+		.define('S', Items.STICK)
+		.unlockedBy("has_shocking_orb", has(RelicsItems.SHOCKING_ORB.get()))
+		.save(consumer);
+		
+		// twinkle staff
+		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, RelicsItems.TWINKLE_STAFF.get())
+		.pattern("  O")
+		.pattern(" S ")
+		.pattern("S  ")
+		.define('O', RelicsItems.GLITTERING_ORB.get())
+		.define('S', Items.STICK)
+		.unlockedBy("has_glittering_orb", has(RelicsItems.GLITTERING_ORB.get()))
+		.save(consumer);
 		}
 }

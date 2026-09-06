@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import hojosa.relics_of_old.client.RelicsItemProperties;
+import hojosa.relics_of_old.client.render.SpellReticleRenderer;
 import hojosa.relics_of_old.common.init.RelicsBlockEntities;
 import hojosa.relics_of_old.common.init.RelicsBlocks;
 import hojosa.relics_of_old.common.init.RelicsConfig;
@@ -76,6 +77,7 @@ public class Relics {
 		event.enqueueWork(RelicsItemProperties::setupItemProperties);
 		MinecraftForge.EVENT_BUS.addListener(RelicsClientEvents::onRenderLiving);
 		MinecraftForge.EVENT_BUS.addListener(RelicsClientEvents::onRenderHand);
+		MinecraftForge.EVENT_BUS.addListener(SpellReticleRenderer::onRenderLevelStage);
 	}
 
 	private void setup(final FMLCommonSetupEvent event) {

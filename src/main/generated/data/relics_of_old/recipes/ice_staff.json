@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "O": {
+      "item": "relics_of_old:freezing_orb"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "  O",
+    " S ",
+    "S  "
+  ],
+  "result": {
+    "item": "relics_of_old:ice_staff"
+  },
+  "show_notification": true
+}

@@ -1,5 +1,6 @@
 package hojosa.relics_of_old.client.render;
 
+import java.util.OptionalDouble;
 import java.util.function.BiFunction;
 
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -21,6 +22,11 @@ public class RelicsRenderTypes extends RenderType {
 	}
 	
 	private static final ResourceLocation GLINT_TEX = RelicsUtil.modLoc("textures/glint/glint_rainbow.png");
+	// spell reticle line types — uses RENDERTYPE_LINES_SHADER for GPU quad expansion (no glLineWidth)
+	public static final RenderType RETICLE_LINE_THIN = createReticleLineStrip("reticle_thin", 1.0);
+	public static final RenderType RETICLE_LINE_MEDIUM = createReticleLineStrip("reticle_medium", 2.0);
+	public static final RenderType RETICLE_LINE_THICK = createReticleLineStrip("reticle_thick", 3.0);
+	public static final RenderType RETICLE_SEGMENT_THIN = createReticleLines("reticle_seg_thin", 1.0);
 		
 	public static final RenderType ENTITY_GLINT_RAINBOW = RenderType.create(References.MOD_ID + ":entity_glint_rainbow", DefaultVertexFormat.POSITION_TEX, VertexFormat.Mode.QUADS, 256, false, false, CompositeState.builder()
 		.setShaderState(RenderStateShard.RENDERTYPE_ENTITY_GLINT_SHADER)
@@ -98,6 +104,34 @@ public class RelicsRenderTypes extends RenderType {
 	              .createCompositeState(false);
 	      return create(References.MOD_ID + ":additive_beam", DefaultVertexFormat.BLOCK, VertexFormat.Mode.QUADS, 256, false, true, state);
 	  });
+	
+	private static RenderType createReticleLineStrip(String name, double width) {
+	      return create(References.MOD_ID + ":" + name,
+	              DefaultVertexFormat.POSITION_COLOR_NORMAL,
+	              VertexFormat.Mode.LINE_STRIP, 256, false, false,
+	              CompositeState.builder()
+	                      .setShaderState(RENDERTYPE_LINES_SHADER)
+	                      .setLineState(new RenderStateShard.LineStateShard(OptionalDouble.of(width)))
+	                      .setLayeringState(VIEW_OFFSET_Z_LAYERING)
+	                      .setTransparencyState(TRANSLUCENT_TRANSPARENCY)
+	                      .setWriteMaskState(COLOR_DEPTH_WRITE)
+	                      .setCullState(NO_CULL)
+	                      .createCompositeState(false));
+	  }
+
+	  private static RenderType createReticleLines(String name, double width) {
+	      return create(References.MOD_ID + ":" + name,
+	              DefaultVertexFormat.POSITION_COLOR_NORMAL,
+	              VertexFormat.Mode.LINES, 256, false, false,
+	              CompositeState.builder()
+	                      .setShaderState(RENDERTYPE_LINES_SHADER)
+	                      .setLineState(new RenderStateShard.LineStateShard(OptionalDouble.of(width)))
+	                      .setLayeringState(VIEW_OFFSET_Z_LAYERING)
+	                      .setTransparencyState(TRANSLUCENT_TRANSPARENCY)
+	                      .setWriteMaskState(COLOR_DEPTH_WRITE)
+	                      .setCullState(NO_CULL)
+	                      .createCompositeState(false));
+	  }
 
 	public static RenderType additiveBeam(ResourceLocation texture, boolean translucent) {
 	      return ADDITIVE_BEAM.apply(texture, translucent);
