@@ -35,7 +35,7 @@ public class SpellCrossParticle extends SpellBaseParticle {
 		Tesselator tesselator = Tesselator.getInstance();
 		BufferBuilder builder = tesselator.getBuilder();
 		builder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
-		drawCrossQuads(builder, matrix, spikes, size, 0.007, r, g, b, 1.0f);
+		drawCrossQuads(builder, matrix, spikes, size, 0.005, r, g, b, 1.0f);
 		tesselator.end();
 
 		poseStack.popPose();
