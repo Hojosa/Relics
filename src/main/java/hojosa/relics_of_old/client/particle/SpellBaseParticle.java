@@ -91,17 +91,40 @@ public abstract class SpellBaseParticle extends Particle {
 
 	// ========== Shared geometry helpers ==========
 
-	// Draws line spikes through center (billboarded), used by cross/twinkle/ice
+	// Draws line spikes through center (billboarded)
 	protected static void drawCrossLines(BufferBuilder builder, Matrix4f matrix, int spikes, double size, float r, float g, float b, float a) {
 		double dTh = Math.PI / spikes;
-		for (int i = 0; i < spikes; i++) {
-			double theta = i * dTh + Math.PI / 2.0;
-			float x = (float) (Math.cos(theta) * size);
-			float y = (float) (Math.sin(theta) * size);
-			builder.vertex(matrix, x, y, 0).color(r, g, b, a).endVertex();
-			builder.vertex(matrix, -x, -y, 0).color(r, g, b, a).endVertex();
-		}
-	}
+	      for (int i = 0; i < spikes; i++) {
+	          double theta = i * dTh + Math.PI / 2.0;
+	          float x = (float) (Math.cos(theta) * size);
+	          float y = (float) (Math.sin(theta) * size);
+	          // Normal perpendicular to this spoke (in billboard plane)
+	          float nx = (float) -Math.sin(theta);
+	          float ny = (float) Math.cos(theta);
+	          builder.vertex(matrix, x, y, 0).color(r, g, b, a).normal(nx, ny, 0).endVertex();
+	          builder.vertex(matrix, -x, -y, 0).color(r, g, b, a).normal(nx, ny, 0).endVertex();
+	      }
+	  }
+	
+	protected static void drawCrossQuads(BufferBuilder builder, Matrix4f matrix, int spikes, double size, double thickness, float r, float g, float b, float a) {
+	      double dTh = Math.PI / spikes;
+	      for (int i = 0; i < spikes; i++) {
+	          double theta = i * dTh + Math.PI / 2.0;
+	          float cx = (float) Math.cos(theta);
+	          float cy = (float) Math.sin(theta);
+	          // Perpendicular for thickness
+	          float nx = (float) (-cy * thickness);
+	          float ny = (float) (cx * thickness);
+	          float ex = (float) (cx * size);
+	          float ey = (float) (cy * size);
+
+	          builder.vertex(matrix, ex + nx, ey + ny, 0).color(r, g, b, a).endVertex();
+	          builder.vertex(matrix, ex - nx, ey - ny, 0).color(r, g, b, a).endVertex();
+	          builder.vertex(matrix, -ex - nx, -ey - ny, 0).color(r, g, b, a).endVertex();
+	          builder.vertex(matrix, -ex + nx, -ey + ny, 0).color(r, g, b, a).endVertex();
+	      }
+	  }
+
 
 	// Draws filled polygon as degenerate quads (billboarded), used by fire/ice
 	protected static void drawPolySolidQuads(BufferBuilder builder, Matrix4f matrix, int sides, double size, float rotation, float r, float g, float b, float a) {
@@ -116,16 +139,40 @@ public abstract class SpellBaseParticle extends Particle {
 		}
 	}
 
-	// Draws polygon outline as line segments (billboarded), used by ice
+	// Draws polygon outline as line segments (billboarded)
 	protected static void drawPolyOutlineLines(BufferBuilder builder, Matrix4f matrix, int sides, double size, float r, float g, float b, float a) {
-		double dTh = Math.PI * 2.0 / sides;
-		for (int i = 0; i < sides; i++) {
-			double th1 = i * dTh + Math.PI / 2.0;
-			double th2 = (i + 1) * dTh + Math.PI / 2.0;
-			builder.vertex(matrix, (float) (Math.cos(th1) * size), (float) (Math.sin(th1) * size), 0).color(r, g, b, a).endVertex();
-			builder.vertex(matrix, (float) (Math.cos(th2) * size), (float) (Math.sin(th2) * size), 0).color(r, g, b, a).endVertex();
-		}
-	}
+	      double dTh = Math.PI * 2.0 / sides;
+	      for (int i = 0; i < sides; i++) {
+	          double th1 = i * dTh + Math.PI / 2.0;
+	          double th2 = (i + 1) * dTh + Math.PI / 2.0;
+	          builder.vertex(matrix, (float) (Math.cos(th1) * size), (float) (Math.sin(th1) * size), 0).color(r, g, b, a).normal(0, 0, 1).endVertex();
+	          builder.vertex(matrix, (float) (Math.cos(th2) * size), (float) (Math.sin(th2) * size), 0).color(r, g, b, a).normal(0, 0, 1).endVertex();
+	      }
+	  }
+	
+	protected static void drawPolyOutlineQuads(BufferBuilder builder, Matrix4f matrix, int sides, double size, double thickness, float r, float g, float b, float a) {
+	      double dTh = Math.PI * 2.0 / sides;
+	      for (int i = 0; i < sides; i++) {
+	          double th1 = i * dTh + Math.PI / 2.0;
+	          double th2 = (i + 1) * dTh + Math.PI / 2.0;
+	          float x1 = (float) (Math.cos(th1) * size);
+	          float y1 = (float) (Math.sin(th1) * size);
+	          float x2 = (float) (Math.cos(th2) * size);
+	          float y2 = (float) (Math.sin(th2) * size);
+
+	          float dx = x2 - x1;
+	          float dy = y2 - y1;
+	          float len = (float) Math.sqrt(dx * dx + dy * dy);
+	          if (len < 0.001f) continue;
+	          float nx = (float) (-dy / len * thickness);
+	          float ny = (float) (dx / len * thickness);
+
+	          builder.vertex(matrix, x1 + nx, y1 + ny, 0).color(r, g, b, a).endVertex();
+	          builder.vertex(matrix, x1 - nx, y1 - ny, 0).color(r, g, b, a).endVertex();
+	          builder.vertex(matrix, x2 - nx, y2 - ny, 0).color(r, g, b, a).endVertex();
+	          builder.vertex(matrix, x2 + nx, y2 + ny, 0).color(r, g, b, a).endVertex();
+	      }
+	  }
 
 	@Override
 	public ParticleRenderType getRenderType() {

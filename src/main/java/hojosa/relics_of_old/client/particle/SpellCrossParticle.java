@@ -26,7 +26,7 @@ public class SpellCrossParticle extends SpellBaseParticle {
 		float r = 1.0f;
 		float g = Math.min(1.0f, (float) (1.5 - t));
 		float b = Math.min(1.0f, (float) (0.5 + t));
-		double size = Math.sin(t * Math.PI) * (power - 1.0) / 4.0;
+		double size = Math.sin(t * Math.PI) * (power - 1.0) / 6.0;
 
 		poseStack.pushPose();
 		poseStack.mulPose(camera.rotation());
@@ -34,8 +34,8 @@ public class SpellCrossParticle extends SpellBaseParticle {
 
 		Tesselator tesselator = Tesselator.getInstance();
 		BufferBuilder builder = tesselator.getBuilder();
-		builder.begin(VertexFormat.Mode.DEBUG_LINES, DefaultVertexFormat.POSITION_COLOR);
-		drawCrossLines(builder, matrix, spikes, size, r, g, b, 1.0f);
+		builder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
+		drawCrossQuads(builder, matrix, spikes, size, 0.007, r, g, b, 1.0f);
 		tesselator.end();
 
 		poseStack.popPose();

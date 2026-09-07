@@ -1,7 +1,6 @@
 package hojosa.relics_of_old.client.particle;
 
-import org.joml.Matrix4f;
-
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -10,6 +9,7 @@ import com.mojang.blaze3d.vertex.VertexFormat;
 
 import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.GameRenderer;
 
 public class SpellExitParticle extends SpellBaseParticle {
 
@@ -27,13 +27,14 @@ public class SpellExitParticle extends SpellBaseParticle {
 
 		poseStack.pushPose();
 		poseStack.mulPose(camera.rotation());
-		Matrix4f matrix = poseStack.last().pose();
+
+		RenderSystem.setShader(GameRenderer::getRendertypeLinesShader);
+		RenderSystem.lineWidth(5.0f);
 
 		Tesselator tesselator = Tesselator.getInstance();
 		BufferBuilder builder = tesselator.getBuilder();
-		builder.begin(VertexFormat.Mode.DEBUG_LINES, DefaultVertexFormat.POSITION_COLOR);
-		// Square outline (4 sides)
-		drawPolyOutlineLines(builder, matrix, 4, size, r, g, b, 1.0f);
+		builder.begin(VertexFormat.Mode.LINES, DefaultVertexFormat.POSITION_COLOR_NORMAL);
+		drawPolyOutlineLines(builder, poseStack.last().pose(), 4, size, r, g, b, 1.0f);
 		tesselator.end();
 
 		poseStack.popPose();

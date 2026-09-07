@@ -24,7 +24,7 @@ public class SpellIceParticle extends SpellBaseParticle {
 		float r = 0.5f + fade * 0.5f;
 		float g = 0.5f * fade + 0.5f;
 		float b = 1.0f;
-		double size = power / 4.0;
+		double size = power / 7.0;
 
 		poseStack.pushPose();
 		poseStack.mulPose(camera.rotation());
@@ -35,21 +35,20 @@ public class SpellIceParticle extends SpellBaseParticle {
 
 		if (t < 0.5) {
 			// Shrinking cross
-			builder.begin(VertexFormat.Mode.DEBUG_LINES, DefaultVertexFormat.POSITION_COLOR);
-			drawCrossLines(builder, matrix, 3, size * (1.0 - t * 2.0) * 2.0, r, g, b, 1.0f);
+			builder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
+			drawCrossQuads(builder, matrix, 3, size * (1.0 - t * 2.0) * 2.0, 0.007, r, g, b, 1.0f);
 			tesselator.end();
 		} else if (t < 0.75) {
 			// Growing solid hexagon
 			builder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
-			drawPolySolidQuads(builder, matrix, 6, size * (t - 0.5) * 4.0, 90f, r, g, b, 1.0f);
+			drawPolySolidQuads(builder, poseStack.last().pose(), 6, size * (t - 0.5) * 5.0, 90f, r, g, b, 1.0f);
 			tesselator.end();
 		} else {
 			// Static hexagon outline
-			builder.begin(VertexFormat.Mode.DEBUG_LINES, DefaultVertexFormat.POSITION_COLOR);
-			drawPolyOutlineLines(builder, matrix, 6, size, r, g, b, 1.0f);
+			builder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
+			drawPolyOutlineQuads(builder, matrix, 6, size, 0.007, r, g, b, 1.0f);
 			tesselator.end();
 		}
-
 		poseStack.popPose();
 	}
 }
