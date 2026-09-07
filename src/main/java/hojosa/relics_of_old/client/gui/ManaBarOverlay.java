@@ -37,6 +37,8 @@ public class ManaBarOverlay {
 		Player player = mc.player;
 		if (player == null)
 			return;
+		if (player.isCreative())
+			return;
 
 		player.getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(mana -> {
 			int level = mana.getManaLevel();
@@ -100,5 +102,4 @@ public class ManaBarOverlay {
 	private static GuiGraphics guiGraphics(RenderGuiOverlayEvent.Pre event) {
 		return event.getGuiGraphics();
 	}
-
 }

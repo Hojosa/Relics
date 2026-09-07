@@ -205,6 +205,10 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		add("augment.relics_of_old.forest", "Augment: Forest");
 		add("augment.relics_of_old.star", "Augment: Star");
 
+		add("item.relics_of_old.spell.power", "%s Spell Power");
+		add("item.relics_of_old.spell.range", "%s Spell Range");
+		add("item.relics_of_old.spell.radius", "%s Spell Radius");
+
 		// Other stuff
 		addEnchantment(RelicsEnchantments.FOCUS, "Focus");
 	}

@@ -36,7 +36,7 @@ import hojosa.relics_of_old.common.item.RockCandyItem;
 import hojosa.relics_of_old.common.item.SlimeSword;
 import hojosa.relics_of_old.common.item.SoftFallRingItem;
 import hojosa.relics_of_old.common.item.SpeedRingItem;
-import hojosa.relics_of_old.common.item.SpellStaffItem;
+import hojosa.relics_of_old.common.item.SpellCastingItem;
 import hojosa.relics_of_old.common.item.ThiefRingItem;
 import hojosa.relics_of_old.common.item.ThrowableOrbItem;
 import hojosa.relics_of_old.common.item.TitanBand;
@@ -95,21 +95,21 @@ public class RelicsItems {
 	public static final RegistryObject<BombBagItem> BOMB_BAG = ITEMS.register(References.UnlocalizedName.BOMB_BAG, BombBagItem::new);
 
 	// staffs
-	public static final RegistryObject<SpellStaffItem> FIRE_STAFF = ITEMS.register(References.UnlocalizedName.FIRE_STAFF,
-			() -> new SpellStaffItem(SpellEffectEntity.SpellType.FIRE, 10.0, 7.0, 3.0, 0.75, 5.0f, false, 128));
-	public static final RegistryObject<SpellStaffItem> ICE_STAFF = ITEMS.register(References.UnlocalizedName.ICE_STAFF, () -> new SpellStaffItem(SpellEffectEntity.SpellType.ICE, 10.0, 7.0, 3.0, 0.75, 5.0f, true, 128));
-	public static final RegistryObject<SpellStaffItem> LIGHTNING_STAFF = ITEMS.register(References.UnlocalizedName.LIGHTNING_STAFF,
-			() -> new SpellStaffItem(SpellEffectEntity.SpellType.LIGHTNING, 10.0, 7.0, 3.0, 0.75, 5.0f, true, 128));
-	public static final RegistryObject<SpellStaffItem> TWINKLE_STAFF = ITEMS.register(References.UnlocalizedName.TWINKLE_STAFF,
-			() -> new SpellStaffItem(SpellEffectEntity.SpellType.TWINKLE, 8.0, 7.0, 3.0, 0.75d, 4.0f, false, 128));
+	public static final RegistryObject<SpellCastingItem> FIRE_STAFF = ITEMS.register(References.UnlocalizedName.FIRE_STAFF,
+			() -> new SpellCastingItem(SpellEffectEntity.SpellType.FIRE, 10.0, 0.0, 7.0, 3.0, 0.75, 5.0f, false, 128, true));
+	public static final RegistryObject<SpellCastingItem> ICE_STAFF = ITEMS.register(References.UnlocalizedName.ICE_STAFF, () -> new SpellCastingItem(SpellEffectEntity.SpellType.ICE, 10.0, 0.0, 7.0, 3.0, 0.75, 5.0f, true, 128, true));
+	public static final RegistryObject<SpellCastingItem> LIGHTNING_STAFF = ITEMS.register(References.UnlocalizedName.LIGHTNING_STAFF,
+			() -> new SpellCastingItem(SpellEffectEntity.SpellType.LIGHTNING, 10.0, 0.0, 7.0, 3.0, 0.75, 5.0f, true, 128, true));
+	public static final RegistryObject<SpellCastingItem> TWINKLE_STAFF = ITEMS.register(References.UnlocalizedName.TWINKLE_STAFF,
+			() -> new SpellCastingItem(SpellEffectEntity.SpellType.TWINKLE, 8.0, 0.0, 7.0, 3.0, 0.75d, 4.0f, false, 128, true));
 	// tomes
 	public static final RegistryObject<RelicsItem> BLANK_SPELLBOOK = ITEMS.register(References.UnlocalizedName.BLANK_SPELLBOOK, () -> new RelicsItem(1, Rarity.UNCOMMON));
-	public static final RegistryObject<SpellStaffItem> TOME_SCYTHEWIND = ITEMS.register(References.UnlocalizedName.TOME_SCYTHEWIND,
-			() -> new SpellStaffItem(SpellEffectEntity.SpellType.SCYTHEWIND, 12.0, 9.0, 7.0, 3.0, 8.0f, false, 16));
-	public static final RegistryObject<SpellStaffItem> TOME_RAYFIRE = ITEMS.register(References.UnlocalizedName.TOME_RAYFIRE,
-			() -> new SpellStaffItem(SpellEffectEntity.SpellType.RAYFIRE, 12.0, 9.0, 7.0, 3.0, 8.0f, false, 16));
-	public static final RegistryObject<SpellStaffItem> TOME_EXEUNT = ITEMS.register(References.UnlocalizedName.TOME_EXEUNT,
-			() -> new SpellStaffItem(SpellEffectEntity.SpellType.EXIT, 5.0, 9.0, 7.0, 3.0, 8.0f, false, 16));
+	public static final RegistryObject<SpellCastingItem> TOME_SCYTHEWIND = ITEMS.register(References.UnlocalizedName.TOME_SCYTHEWIND,
+			() -> new SpellCastingItem(SpellEffectEntity.SpellType.SCYTHEWIND, 12.0, 0.0, 9.0, 7.0, 3.0, 8.0f, false, 16, false));
+	public static final RegistryObject<SpellCastingItem> TOME_RAYFIRE = ITEMS.register(References.UnlocalizedName.TOME_RAYFIRE,
+			() -> new SpellCastingItem(SpellEffectEntity.SpellType.RAYFIRE, 12.0, 0.0, 9.0, 7.0, 3.0, 8.0f, false, 16, false));
+	public static final RegistryObject<SpellCastingItem> TOME_EXEUNT = ITEMS.register(References.UnlocalizedName.TOME_EXEUNT,
+			() -> new SpellCastingItem(SpellEffectEntity.SpellType.EXIT, 5.0, 0.0, 9.0, 7.0, 3.0, 8.0f, false, 16, false));
 
 	// normal items
 	public static final RegistryObject<RelicsItem> INFUSED_STAR_PIECE = ITEMS.register(References.UnlocalizedName.INFUSED_STAR_PIECE, () -> new InfusedItem(64, Rarity.EPIC));

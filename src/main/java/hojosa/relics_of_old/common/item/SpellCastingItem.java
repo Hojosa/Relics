@@ -1,20 +1,36 @@
 package hojosa.relics_of_old.common.item;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+
 import hojosa.relics_of_old.common.entity.attacks.SpellEffectEntity;
 import hojosa.relics_of_old.common.entity.attacks.SpellEffectEntity.SpellType;
 import hojosa.relics_of_old.common.init.RelicsSounds;
+import hojosa.relics_of_old.common.mana.IMana;
 import hojosa.relics_of_old.common.player.PlayerMana;
 import hojosa.relics_of_old.common.player.PlayerSkyTracker;
 import hojosa.relics_of_old.lib.item.RelicsItem;
 import lombok.Getter;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
@@ -22,7 +38,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
-public class SpellStaffItem extends RelicsItem {
+public class SpellCastingItem extends RelicsItem implements IMana {
 
 	private static final int CRIT_WINDOW = 5;
 	@Getter
@@ -32,21 +48,43 @@ public class SpellStaffItem extends RelicsItem {
 	@Getter
 	private final double castRadius;
 	private final double basePower;
+	private final double critBonus;
+	@Getter
 	private final float manaCost;
 	private final double baseCastTime;
 	@Getter
 	private final boolean hitsWater;
+	private final boolean isMelee;
+	private final Multimap<Attribute, AttributeModifier> meleeAttributes;
 
-	public SpellStaffItem(SpellType spellType, double basePower, double castRange, double castRadius, double castTicks, float manaCost, boolean hitsWater, int durability) {
+	public SpellCastingItem(SpellType spellType, double basePower, double critBonus, double castRange, double castRadius, double castTicks, float manaCost, boolean hitsWater, int durability, boolean isMelee) {
 		super(Rarity.UNCOMMON, durability);
 		this.spellType = spellType;
 		this.basePower = basePower;
+		this.critBonus = critBonus;
 		this.castRange = castRange;
 		this.castRadius = castRadius;
 		this.baseCastTime = castTicks;
 		this.manaCost = manaCost;
 		this.hitsWater = hitsWater;
+		this.isMelee = isMelee;
+		if (isMelee) {
+			ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
+			builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", 3.0, AttributeModifier.Operation.ADDITION));
+			builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", -2.4, AttributeModifier.Operation.ADDITION));
+			this.meleeAttributes = builder.build();
+		} else {
+			this.meleeAttributes = ImmutableMultimap.of();
+		}
 	}
+	
+	@Override
+	  public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
+	      super.appendHoverText(stack, level, tooltip, flag);
+	      tooltip.add(Component.translatable("item.relics_of_old.spell.power", String.format("+%.0f", basePower)).withStyle(ChatFormatting.BLUE));
+	      tooltip.add(Component.translatable("item.relics_of_old.spell.range", String.format("+%.0f", castRange)).withStyle(ChatFormatting.BLUE));
+	      tooltip.add(Component.translatable("item.relics_of_old.spell.radius", String.format("+%.0f", castRadius)).withStyle(ChatFormatting.BLUE));
+	  }
 
 	// cast time scales with mana fatigue — fatigued 2x, exhausted 4x
 	public int getCastingTicks(Player player) {
@@ -129,7 +167,7 @@ public class SpellStaffItem extends RelicsItem {
 			castPos = far;
 		}
 
-		double power = crit ? basePower * 1.5 : basePower;
+		double power = crit ? basePower + critBonus : basePower;
 
 		// spawn spell effect
 		SpellEffectEntity spell = new SpellEffectEntity(level, spellType, player, castPos, castRadius, power, crit);
@@ -154,5 +192,26 @@ public class SpellStaffItem extends RelicsItem {
 				tracker.updateIfUnderSky(player);
 			}
 		}
+	}
+
+	@Override
+	public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+		if (isMelee && !attacker.level().isClientSide && attacker instanceof Player player) {
+			// Jump-crit: falling, not on ground, not on ladder, not in water, not blind, not riding
+			boolean jumpCrit = attacker.fallDistance > 0.0f && !attacker.onGround() && !attacker.onClimbable() && !attacker.isInWater() && !attacker.hasEffect(MobEffects.BLINDNESS) && !attacker.isPassenger();
+			if (jumpCrit) {
+				stack.hurtAndBreak(1, attacker, e -> e.broadcastBreakEvent(EquipmentSlot.MAINHAND));
+				Vec3 center = target.position().add(0, target.getBbHeight() / 2.0, 0);
+				SpellEffectEntity spell = new SpellEffectEntity(player.level(), spellType, player, center, castRadius / 2.0, basePower / 2.0, false);
+				player.level().addFreshEntity(spell);
+			}
+		}
+		stack.hurtAndBreak(2, attacker, e -> e.broadcastBreakEvent(EquipmentSlot.MAINHAND));
+		return true;
+	}
+
+	@Override
+	public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot slot) {
+		return slot == EquipmentSlot.MAINHAND && isMelee ? meleeAttributes : super.getDefaultAttributeModifiers(slot);
 	}
 }

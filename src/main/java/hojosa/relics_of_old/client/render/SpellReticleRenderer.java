@@ -8,7 +8,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 
-import hojosa.relics_of_old.common.item.SpellStaffItem;
+import hojosa.relics_of_old.common.item.SpellCastingItem;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -40,7 +40,7 @@ public class SpellReticleRenderer {
 			return;
 
 		ItemStack held = player.getMainHandItem();
-		if (!(held.getItem() instanceof SpellStaffItem staff))
+		if (!(held.getItem() instanceof SpellCastingItem staff))
 			return;
 
 		float partialTick = event.getPartialTick();
