@@ -105,6 +105,18 @@ public class RelicsRenderTypes extends RenderType {
 	      return create(References.MOD_ID + ":additive_beam", DefaultVertexFormat.BLOCK, VertexFormat.Mode.QUADS, 256, false, true, state);
 	  });
 	
+	private static final BiFunction<ResourceLocation, Boolean, RenderType> ADDITIVE_BEAM_NO_DEPTH = Util.memoize((texture, unused) -> {
+        CompositeState state = CompositeState.builder()
+                        .setShaderState(RENDERTYPE_BEACON_BEAM_SHADER)
+                        .setTextureState(new TextureStateShard(texture, false, false))
+                        .setTransparencyState(LIGHTNING_TRANSPARENCY)
+                        .setWriteMaskState(COLOR_WRITE)
+                        .setCullState(NO_CULL)
+                        .setDepthTestState(NO_DEPTH_TEST)
+                        .createCompositeState(false);
+        return create(References.MOD_ID + ":additive_beam_no_depth", DefaultVertexFormat.BLOCK, VertexFormat.Mode.QUADS, 256, false, true, state);
+	});
+	
 	private static RenderType createReticleLineStrip(String name, double width) {
 	      return create(References.MOD_ID + ":" + name,
 	              DefaultVertexFormat.POSITION_COLOR_NORMAL,
@@ -135,7 +147,11 @@ public class RelicsRenderTypes extends RenderType {
 
 	public static RenderType additiveBeam(ResourceLocation texture, boolean translucent) {
 	      return ADDITIVE_BEAM.apply(texture, translucent);
-	  }
+	}
+	
+	public static RenderType additiveBeamNoDepth(ResourceLocation texture) {
+        return ADDITIVE_BEAM_NO_DEPTH.apply(texture, false);
+	}
 	
     public static RenderType getTextureRenderColored(ResourceLocation texture) {
         return getTextureRenderColored(texture, false);

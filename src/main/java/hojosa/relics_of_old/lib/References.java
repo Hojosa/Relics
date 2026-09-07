@@ -190,6 +190,8 @@ public class References {
 		public static final String TOME_SCYTHEWIND = "tome_scythewind";
 		public static final String TOME_RAYFIRE = "tome_rayfire";
 		public static final String TOME_EXEUNT = "tome_exeunt";
+		public static final String SPOTTING_SCOPE = "spotting_scope";
+		public static final String PING = "ping_entity";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

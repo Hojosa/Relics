@@ -37,6 +37,7 @@ import hojosa.relics_of_old.common.item.SlimeSword;
 import hojosa.relics_of_old.common.item.SoftFallRingItem;
 import hojosa.relics_of_old.common.item.SpeedRingItem;
 import hojosa.relics_of_old.common.item.SpellCastingItem;
+import hojosa.relics_of_old.common.item.SpottingScopeItem;
 import hojosa.relics_of_old.common.item.ThiefRingItem;
 import hojosa.relics_of_old.common.item.ThrowableOrbItem;
 import hojosa.relics_of_old.common.item.TitanBand;
@@ -143,6 +144,7 @@ public class RelicsItems {
 	public static final RegistryObject<DimensionalCatalystItem> DIMENSIONAL_CATALYST = ITEMS.register(References.UnlocalizedName.DIMENSIONAL_CATALYST, DimensionalCatalystItem::new);
 	public static final RegistryObject<RecordItem> MUSIC_DISC_DRAGONDOT = ITEMS.register(References.UnlocalizedName.MUSIC_DISC_DRAGONDOT,
 			() -> new RecordItem(15, RelicsSounds.DRAGONDOT, new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 1720));
+	public static final RegistryObject<SpottingScopeItem> SPOTTING_SCOPE = ITEMS.register(References.UnlocalizedName.SPOTTING_SCOPE, SpottingScopeItem::new);
 
 	// lost pages
 	public static final RegistryObject<LostPage> LOST_PAGE_1 = ITEMS.register(References.UnlocalizedName.LOST_PAGE_1, () -> new LostPage(1, References.LostPagesText.LOST_PAGE_1));

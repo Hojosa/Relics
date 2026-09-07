@@ -6,6 +6,7 @@ import hojosa.relics_of_old.common.entity.CaptureEggEntity;
 import hojosa.relics_of_old.common.entity.FallingStarEntity;
 import hojosa.relics_of_old.common.entity.MagicBoomerangEntity;
 import hojosa.relics_of_old.common.entity.MedallionEntity;
+import hojosa.relics_of_old.common.entity.PingEntity;
 import hojosa.relics_of_old.common.entity.StarBeamEntity;
 import hojosa.relics_of_old.common.entity.ThrownOrbEntity;
 import hojosa.relics_of_old.common.entity.attacks.ArrowStormEntity;
@@ -69,8 +70,8 @@ public class RelicsEntities {
 
 	public static final RegistryObject<EntityType<ThrownOrbEntity>> THROWN_ORB = ENTITY_TYPES.register(References.UnlocalizedName.THROWN_ORB,
 			() -> EntityType.Builder.<ThrownOrbEntity>of(ThrownOrbEntity::new, MobCategory.MISC).sized(0.25f, 0.25f).clientTrackingRange(4).updateInterval(10).build(References.UnlocalizedName.THROWN_ORB));
-
-//	public static final RegistryObject<EntityType<SpellDecoratorEntity>> SPELL_DECORATOR = ENTITY_TYPES.register(References.UnlocalizedName.SPELL_DECORATOR,
-//			() -> EntityType.Builder.<SpellDecoratorEntity>of(SpellDecoratorEntity::new, MobCategory.MISC).sized(0.25f, 0.25f).clientTrackingRange(16).build(References.UnlocalizedName.SPELL_DECORATOR));
+	
+	public static final RegistryObject<EntityType<PingEntity>> PING = ENTITY_TYPES.register(References.UnlocalizedName.PING,
+            () -> EntityType.Builder.<PingEntity>of(PingEntity::new, MobCategory.MISC).sized(0.25f, 0.25f).clientTrackingRange(64).build(References.UnlocalizedName.PING));
 
 }

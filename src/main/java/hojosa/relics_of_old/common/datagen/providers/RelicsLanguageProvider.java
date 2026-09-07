@@ -191,6 +191,7 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addItem(RelicsItems.TOME_SCYTHEWIND, "Tome of Scythewind");
 		addItem(RelicsItems.TOME_RAYFIRE, "Tome of Rayfire");
 		addItem(RelicsItems.TOME_EXEUNT, "Tome of Exeunt");
+		addItem(RelicsItems.SPOTTING_SCOPE, "Spotting Scope");
 
 		// Sword augment tooltips
 		add("augment.relics_of_old.fire", "Augment: Fire");
