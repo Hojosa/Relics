@@ -7,7 +7,9 @@
 		"LivingEntityRendererMixin"
 	],
 	"mixins": [
-		"SwordItemMixin"
+		"SwordItemMixin",
+		"LivingEntityFallFlyingMixin",
+		"LivingEntityTravelMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

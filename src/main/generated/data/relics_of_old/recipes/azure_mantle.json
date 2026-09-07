@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "F": {
+      "item": "relics_of_old:azure_feather"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "pattern": [
+    "FGF",
+    "FFF",
+    "FFF"
+  ],
+  "result": {
+    "item": "relics_of_old:azure_mantle"
+  },
+  "show_notification": true
+}

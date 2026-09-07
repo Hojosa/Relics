@@ -30,6 +30,7 @@ public class RelicsParticleDescriptionProvider extends ParticleDescriptionProvid
 				.toList());
 		//dummy call, the actual particle fetches the block texture via terrain particle
 		sprite(RelicsParticles.SUGAR_PARTICLE.get(), ResourceLocation.withDefaultNamespace("generic_0"));
+		sprite(RelicsParticles.BOOST_RIPPLE_PARTICLE.get(), RelicsUtil.modLoc("boost_ripple"));
 	}
 	
 	@Override

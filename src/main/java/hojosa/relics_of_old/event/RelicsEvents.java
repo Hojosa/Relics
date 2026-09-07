@@ -23,6 +23,8 @@ import hojosa.relics_of_old.common.item.RelicsAmulet;
 import hojosa.relics_of_old.common.item.WhirlwindBoots;
 import hojosa.relics_of_old.common.item.entity.EmeraldShardItemEntity;
 import hojosa.relics_of_old.common.item.entity.HeartItemEntity;
+import hojosa.relics_of_old.common.player.PlayerGlideData;
+import hojosa.relics_of_old.common.player.PlayerGlideDataProvider;
 import hojosa.relics_of_old.common.player.PlayerMana;
 import hojosa.relics_of_old.common.player.PlayerManaProvider;
 import hojosa.relics_of_old.common.player.PlayerSkyTracker;
@@ -139,6 +141,7 @@ public class RelicsEvents {
 		event.register(StarFallChance.class);
 		event.register(PlayerMana.class);
 		event.register(PlayerSkyTracker.class);
+		event.register(PlayerGlideData.class);
 	}
 
 	@SubscribeEvent
@@ -152,6 +155,10 @@ public class RelicsEvents {
 		if (event.getObject() instanceof Player && !event.getObject().getCapability(PlayerSkyTrackerProvider.PLAYER_SKY_TRACKER).isPresent()) {
 			event.addCapability(ResourceLocation.fromNamespaceAndPath(References.MOD_ID, "sky_tracker"), new PlayerSkyTrackerProvider());
 		}
+		if (event.getObject() instanceof Player && !event.getObject().getCapability(PlayerGlideDataProvider.PLAYER_GLIDE_DATA).isPresent()) {
+			event.addCapability(ResourceLocation.fromNamespaceAndPath(References.MOD_ID, "glide_data"), new PlayerGlideDataProvider());
+		}
+
 	}
 
 	@SubscribeEvent
@@ -163,6 +170,8 @@ public class RelicsEvents {
 			event.getOriginal().getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(oldMana -> event.getEntity().getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(newMana -> newMana.copyFrom(oldMana)));
 			event.getOriginal().getCapability(PlayerSkyTrackerProvider.PLAYER_SKY_TRACKER)
 					.ifPresent(oldTracker -> event.getEntity().getCapability(PlayerSkyTrackerProvider.PLAYER_SKY_TRACKER).ifPresent(newTracker -> newTracker.copyFrom(oldTracker)));
+			event.getOriginal().getCapability(PlayerGlideDataProvider.PLAYER_GLIDE_DATA)
+					.ifPresent(oldGlide -> event.getEntity().getCapability(PlayerGlideDataProvider.PLAYER_GLIDE_DATA).ifPresent(newGlide -> newGlide.copyFrom(oldGlide)));
 			event.getOriginal().invalidateCaps();
 		}
 	}

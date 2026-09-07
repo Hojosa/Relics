@@ -35,7 +35,9 @@ public class RelicsItemTags extends ItemTagsProvider {
 		.add(RelicsItems.AERO_AMULET.get())
 		.add(RelicsItems.PHOENIX_CHARM.get())
 		.add(RelicsItems.BLAST_CHARM.get())
-		.add(RelicsItems.FEATHER_CHARM.get());
+		.add(RelicsItems.FEATHER_CHARM.get())
+		.add(RelicsItems.AZURE_MANTLE.get())
+		.add(RelicsItems.PHOENIX_MANTLE.get());
 		tag(RelicsTags.Items.BELT_TAG)
 		.add(RelicsItems.TITAN_BAND.get());
 		tag(ItemTags.SWORDS)

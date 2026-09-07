@@ -3,6 +3,8 @@ package hojosa.relics_of_old.common.init;
 import hojosa.relics_of_old.common.entity.ThrownOrbEntity.OrbType;
 import hojosa.relics_of_old.common.entity.attacks.SpellEffectEntity;
 import hojosa.relics_of_old.common.item.AeroAmulet;
+import hojosa.relics_of_old.common.item.AzureFeatherItem;
+import hojosa.relics_of_old.common.item.MantleItem;
 import hojosa.relics_of_old.common.item.BombArrowItem;
 import hojosa.relics_of_old.common.item.BombBagItem;
 import hojosa.relics_of_old.common.item.BombItem;
@@ -80,6 +82,8 @@ public class RelicsItems {
 	public static final RegistryObject<MagicCharmItem> PHOENIX_CHARM = ITEMS.register(References.UnlocalizedName.PHOENIX_CHARM, () -> new MagicCharmItem("Revives on death"));
 	public static final RegistryObject<MagicCharmItem> BLAST_CHARM = ITEMS.register(References.UnlocalizedName.BLAST_CHARM, () -> new MagicCharmItem("Saves from lethal explosions"));
 	public static final RegistryObject<MagicCharmItem> FEATHER_CHARM = ITEMS.register(References.UnlocalizedName.FEATHER_CHARM, () -> new MagicCharmItem("Saves from lethal falls"));
+	public static final RegistryObject<MantleItem> AZURE_MANTLE = ITEMS.register(References.UnlocalizedName.AZURE_MANTLE, () -> new MantleItem(4.0f, Rarity.RARE));
+	public static final RegistryObject<MantleItem> PHOENIX_MANTLE = ITEMS.register(References.UnlocalizedName.PHOENIX_MANTLE, () -> new MantleItem(7.0f, Rarity.EPIC));
 
 	// weapons
 	public static final RegistryObject<SwordItem> FIRE_SWORD = ITEMS.register(References.UnlocalizedName.FIRE_SWORD, FlameSword::new);
@@ -98,7 +102,8 @@ public class RelicsItems {
 	// staffs
 	public static final RegistryObject<SpellCastingItem> FIRE_STAFF = ITEMS.register(References.UnlocalizedName.FIRE_STAFF,
 			() -> new SpellCastingItem(SpellEffectEntity.SpellType.FIRE, 10.0, 0.0, 7.0, 3.0, 0.75, 5.0f, false, 128, true));
-	public static final RegistryObject<SpellCastingItem> ICE_STAFF = ITEMS.register(References.UnlocalizedName.ICE_STAFF, () -> new SpellCastingItem(SpellEffectEntity.SpellType.ICE, 10.0, 0.0, 7.0, 3.0, 0.75, 5.0f, true, 128, true));
+	public static final RegistryObject<SpellCastingItem> ICE_STAFF = ITEMS.register(References.UnlocalizedName.ICE_STAFF,
+			() -> new SpellCastingItem(SpellEffectEntity.SpellType.ICE, 10.0, 0.0, 7.0, 3.0, 0.75, 5.0f, true, 128, true));
 	public static final RegistryObject<SpellCastingItem> LIGHTNING_STAFF = ITEMS.register(References.UnlocalizedName.LIGHTNING_STAFF,
 			() -> new SpellCastingItem(SpellEffectEntity.SpellType.LIGHTNING, 10.0, 0.0, 7.0, 3.0, 0.75, 5.0f, true, 128, true));
 	public static final RegistryObject<SpellCastingItem> TWINKLE_STAFF = ITEMS.register(References.UnlocalizedName.TWINKLE_STAFF,
@@ -128,10 +133,15 @@ public class RelicsItems {
 	public static final RegistryObject<MilkChocolate> MILK_CHOCOLATE = ITEMS.register(References.UnlocalizedName.MILK_CHOCOLATE, MilkChocolate::new);
 	public static final RegistryObject<ReedPipes> REED_PIPES = ITEMS.register(References.UnlocalizedName.REED_PIPES, ReedPipes::new);
 	public static final RegistryObject<CaptureEgg> CAPTURE_EGG = ITEMS.register(References.UnlocalizedName.CAPTURE_EGG, CaptureEgg::new);
-	public static final RegistryObject<RockCandyItem> ROCK_CANDY_REDSTONE = ITEMS.register(References.UnlocalizedName.ROCK_CANDY_REDSTONE, () -> new RockCandyItem(MobEffects.DAMAGE_BOOST, 0)); // Strength I
-	public static final RegistryObject<RockCandyItem> ROCK_CANDY_LAPIS = ITEMS.register(References.UnlocalizedName.ROCK_CANDY_LAPIS, () -> new RockCandyItem(MobEffects.JUMP, 1)); // Jump Boost II
-	public static final RegistryObject<RockCandyItem> ROCK_CANDY_EMERALD = ITEMS.register(References.UnlocalizedName.ROCK_CANDY_EMERALD, () -> new RockCandyItem(MobEffects.DIG_SPEED, 3)); // Haste IV
-	public static final RegistryObject<RockCandyItem> ROCK_CANDY_DIAMOND = ITEMS.register(References.UnlocalizedName.ROCK_CANDY_DIAMOND, () -> new RockCandyItem(MobEffects.DAMAGE_RESISTANCE, 3)); // Resistance IV
+	public static final RegistryObject<RockCandyItem> ROCK_CANDY_REDSTONE = ITEMS.register(References.UnlocalizedName.ROCK_CANDY_REDSTONE, () -> new RockCandyItem(MobEffects.DAMAGE_BOOST, 0)); // Strength
+																																																	// I
+	public static final RegistryObject<RockCandyItem> ROCK_CANDY_LAPIS = ITEMS.register(References.UnlocalizedName.ROCK_CANDY_LAPIS, () -> new RockCandyItem(MobEffects.JUMP, 1)); // Jump
+																																													// Boost
+																																													// II
+	public static final RegistryObject<RockCandyItem> ROCK_CANDY_EMERALD = ITEMS.register(References.UnlocalizedName.ROCK_CANDY_EMERALD, () -> new RockCandyItem(MobEffects.DIG_SPEED, 3)); // Haste
+																																															// IV
+	public static final RegistryObject<RockCandyItem> ROCK_CANDY_DIAMOND = ITEMS.register(References.UnlocalizedName.ROCK_CANDY_DIAMOND, () -> new RockCandyItem(MobEffects.DAMAGE_RESISTANCE, 3)); // Resistance
+																																																	// IV
 	public static final RegistryObject<RelicsItem> FULGURITE = ITEMS.register(References.UnlocalizedName.FULGURITE, () -> new RelicsItem(64));
 	public static final RegistryObject<RelicsItem> TUNING_FORK = ITEMS.register(References.UnlocalizedName.TUNING_FORK, TuningForkItem::new);
 	public static final RegistryObject<RelicsItem> STARGLASS_LUMP = ITEMS.register(References.UnlocalizedName.STARGLASS_LUMP, () -> new RelicsItem(64));
@@ -145,6 +155,8 @@ public class RelicsItems {
 	public static final RegistryObject<RecordItem> MUSIC_DISC_DRAGONDOT = ITEMS.register(References.UnlocalizedName.MUSIC_DISC_DRAGONDOT,
 			() -> new RecordItem(15, RelicsSounds.DRAGONDOT, new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 1720));
 	public static final RegistryObject<SpottingScopeItem> SPOTTING_SCOPE = ITEMS.register(References.UnlocalizedName.SPOTTING_SCOPE, SpottingScopeItem::new);
+	public static final RegistryObject<AzureFeatherItem> AZURE_FEATHER = ITEMS.register(References.UnlocalizedName.AZURE_FEATHER, AzureFeatherItem::new);
+	public static final RegistryObject<RelicsItem> SUNFIRE_DIAMOND = ITEMS.register(References.UnlocalizedName.SUNFIRE_DIAMOND, () -> new InfusedItem(64, Rarity.EPIC));
 
 	// lost pages
 	public static final RegistryObject<LostPage> LOST_PAGE_1 = ITEMS.register(References.UnlocalizedName.LOST_PAGE_1, () -> new LostPage(1, References.LostPagesText.LOST_PAGE_1));

@@ -187,6 +187,10 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		tomeItem(RelicsItems.TOME_RAYFIRE);
 		tomeItem(RelicsItems.TOME_EXEUNT);
 		basicItem(RelicsItems.SPOTTING_SCOPE);
+		basicItem(RelicsItems.AZURE_FEATHER);
+		basicItem(RelicsItems.AZURE_MANTLE);
+		basicItem(RelicsItems.PHOENIX_MANTLE);
+		basicItem(RelicsItems.SUNFIRE_DIAMOND);
 
 		// magic mirror model
 		// base model that contains the base transform settings for the model

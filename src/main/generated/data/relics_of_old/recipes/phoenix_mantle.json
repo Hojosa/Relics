@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "F": {
+      "item": "relics_of_old:phoenix_feather"
+    },
+    "G": {
+      "item": "relics_of_old:sunfire_diamond"
+    }
+  },
+  "pattern": [
+    "FGF",
+    "FFF",
+    "FFF"
+  ],
+  "result": {
+    "item": "relics_of_old:phoenix_mantle"
+  },
+  "show_notification": true
+}

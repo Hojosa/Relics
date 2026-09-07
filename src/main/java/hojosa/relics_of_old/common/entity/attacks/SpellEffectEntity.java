@@ -16,6 +16,7 @@ import hojosa.relics_of_old.client.particle.SpellLightningParticle;
 import hojosa.relics_of_old.client.particle.SpellRayfireParticle;
 import hojosa.relics_of_old.client.particle.SpellScytheParticle;
 import hojosa.relics_of_old.common.block.entity.RitualLocusBlockEntity;
+import hojosa.relics_of_old.common.block.entity.StarwellBlockEntity;
 import hojosa.relics_of_old.common.init.RelicsBlocks;
 import hojosa.relics_of_old.common.init.RelicsEntities;
 import hojosa.relics_of_old.common.init.RelicsSounds;
@@ -94,8 +95,6 @@ public class SpellEffectEntity extends Entity implements IEntityAdditionalSpawnD
 		// sound on spawn
 		if (lifetime == 0 && !level().isClientSide) {
 			type.onSpawn(this);
-//			SpellDecoratorEntity decorator = new SpellDecoratorEntity(this);
-//			level().addFreshEntity(decorator);
 		}
 
 		// affect blocks at sleepTime
@@ -376,6 +375,9 @@ public class SpellEffectEntity extends Entity implements IEntityAdditionalSpawnD
 						locus.tryInvoke(caster);
 					}
 				}
+				if (level.getBlockState(pos).is(RelicsBlocks.SKY_LENS.get()) && level.getBlockEntity(pos.below()) instanceof StarwellBlockEntity starwell) {
+					starwell.activateFlightCharge();
+				}
 			}
 
 			@Override
@@ -397,8 +399,8 @@ public class SpellEffectEntity extends Entity implements IEntityAdditionalSpawnD
 						double gy = outward.y * dist;
 						double gz = outward.z * dist;
 						int hibernateTime = rand.nextInt(8);
-
-						SpellDiamondParticle diamond = new SpellDiamondParticle(clientLevel, spell.getX() + gx, spell.getY() + gy, spell.getZ() + gz, 0, 0, 0, 5, hibernateTime); // no velocity for stardust
+						// no velocity for stardust
+						SpellDiamondParticle diamond = new SpellDiamondParticle(clientLevel, spell.getX() + gx, spell.getY() + gy, spell.getZ() + gz, 0, 0, 0, 5, hibernateTime);
 						Minecraft.getInstance().particleEngine.add(diamond);
 					}
 				}

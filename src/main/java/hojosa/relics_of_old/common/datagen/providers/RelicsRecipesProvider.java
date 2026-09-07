@@ -1139,5 +1139,32 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.unlockedBy("has_blank_spellbook", has(RelicsItems.BLANK_SPELLBOOK.get()))
 		.save(consumer);
 
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.AZURE_FEATHER.get())
+		.requires(Items.FEATHER)
+		.requires(RelicsItems.AZURITE_DUST.get())
+		.requires(RelicsItems.INFUSED_STAR_DUST.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, has(RelicsItems.AZURITE_DUST.get()))
+		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RelicsItems.AZURE_MANTLE.get())
+		.pattern("FGF")
+		.pattern("FFF")
+		.pattern("FFF")
+		.define('F', RelicsItems.AZURE_FEATHER.get())
+		.define('G', Items.GOLD_INGOT)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, has(RelicsItems.AZURE_FEATHER.get()))
+		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RelicsItems.PHOENIX_MANTLE.get())
+		.pattern("FGF")
+		.pattern("FFF")
+		.pattern("FFF")
+		.define('F', RelicsItems.PHOENIX_FEATHER.get())
+		.define('G', RelicsItems.SUNFIRE_DIAMOND.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, has(RelicsItems.PHOENIX_FEATHER.get()))
+		.save(consumer);
 		}
 }

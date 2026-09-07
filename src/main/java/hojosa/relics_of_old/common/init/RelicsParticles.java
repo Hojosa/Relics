@@ -43,4 +43,5 @@ public class RelicsParticles {
 			});
 
 	public static final RegistryObject<SimpleParticleType> SUGAR_PARTICLE = PARTICLE_TYPES.register(References.UnlocalizedName.SUGAR_PARTICLE, () -> new SimpleParticleType(false));
+	public static final RegistryObject<SimpleParticleType> BOOST_RIPPLE_PARTICLE = PARTICLE_TYPES.register(References.UnlocalizedName.BOOST_RIPPLE_PARTICLE, () -> new SimpleParticleType(true));
 }

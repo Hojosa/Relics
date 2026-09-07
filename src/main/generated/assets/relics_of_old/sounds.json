@@ -50,6 +50,12 @@
     ],
     "subtitle": "relics_of_old.subtitle.escalate"
   },
+  "feather": {
+    "sounds": [
+      "relics_of_old:feather"
+    ],
+    "subtitle": "relics_of_old.subtitle.feather"
+  },
   "fire_build": {
     "sounds": [
       "relics_of_old:fire_build"

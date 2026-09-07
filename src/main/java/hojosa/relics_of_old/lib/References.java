@@ -192,6 +192,11 @@ public class References {
 		public static final String TOME_EXEUNT = "tome_exeunt";
 		public static final String SPOTTING_SCOPE = "spotting_scope";
 		public static final String PING = "ping_entity";
+		public static final String AZURE_MANTLE = "azure_mantle";
+		public static final String PHOENIX_MANTLE = "phoenix_mantle";
+		public static final String AZURE_FEATHER = "azure_feather";
+		public static final String SUNFIRE_DIAMOND = "sunfire_diamond";
+		public static final String BOOST_RIPPLE_PARTICLE = "boost_ripple_particle";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -260,6 +265,7 @@ public class References {
 		public static final String SPELL_SCYTHEWIND = "spell_scythewind";
 		public static final String SPELL_RAYFIRE = "spell_rayfire";
 		public static final String SPELL_EXIT = "spell_exit";
+		public static final String FEATHER = "feather";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

@@ -192,7 +192,11 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addItem(RelicsItems.TOME_RAYFIRE, "Tome of Rayfire");
 		addItem(RelicsItems.TOME_EXEUNT, "Tome of Exeunt");
 		addItem(RelicsItems.SPOTTING_SCOPE, "Spotting Scope");
-
+		addItem(RelicsItems.AZURE_FEATHER, "Azure Feather");
+		addItem(RelicsItems.AZURE_MANTLE, "Azure Mantle");
+		addItem(RelicsItems.PHOENIX_MANTLE, "Phoenix Mantle");
+		addItem(RelicsItems.SUNFIRE_DIAMOND, "Sunfire Diamond");
+		
 		// Sword augment tooltips
 		add("augment.relics_of_old.fire", "Augment: Fire");
 		add("augment.relics_of_old.earth", "Augment: Earth");

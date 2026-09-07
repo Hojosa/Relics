@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "tab",
+  "ingredients": [
+    {
+      "item": "minecraft:feather"
+    },
+    {
+      "item": "relics_of_old:azurite_dust"
+    },
+    {
+      "item": "relics_of_old:infused_star_dust"
+    }
+  ],
+  "result": {
+    "item": "relics_of_old:azure_feather"
+  }
+}

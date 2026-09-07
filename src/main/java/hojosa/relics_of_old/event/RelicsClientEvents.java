@@ -1,5 +1,6 @@
 package hojosa.relics_of_old.event;
 
+import hojosa.relics_of_old.client.particle.BoostRippleParticle;
 import hojosa.relics_of_old.client.particle.FlameParticle;
 import hojosa.relics_of_old.client.particle.FlareParticle;
 import hojosa.relics_of_old.client.particle.MagicScrambleParticle;
@@ -163,6 +164,7 @@ public class RelicsClientEvents {
 		event.registerSpriteSet(RelicsParticles.FLARE_PARTICLE.get(), FlareParticle.Provider::new);
 		event.registerSpriteSet(RelicsParticles.MAGIC_SCRAMBLE_PARTICLE.get(), MagicScrambleParticle.Provider::new);
 		event.registerSpriteSet(RelicsParticles.SUGAR_PARTICLE.get(), SugarParticle.Factory::new);
+		event.registerSpriteSet(RelicsParticles.BOOST_RIPPLE_PARTICLE.get(), BoostRippleParticle.Provider::new);
 	}
 
 	@SubscribeEvent
