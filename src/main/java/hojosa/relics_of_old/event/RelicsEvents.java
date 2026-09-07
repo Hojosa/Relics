@@ -25,6 +25,8 @@ import hojosa.relics_of_old.common.item.entity.EmeraldShardItemEntity;
 import hojosa.relics_of_old.common.item.entity.HeartItemEntity;
 import hojosa.relics_of_old.common.player.PlayerMana;
 import hojosa.relics_of_old.common.player.PlayerManaProvider;
+import hojosa.relics_of_old.common.player.PlayerSkyTracker;
+import hojosa.relics_of_old.common.player.PlayerSkyTrackerProvider;
 import hojosa.relics_of_old.common.player.StarFallChance;
 import hojosa.relics_of_old.common.player.StarFallChanceProvider;
 import hojosa.relics_of_old.lib.References;
@@ -136,6 +138,7 @@ public class RelicsEvents {
 	public static void onRegisterCapabilities(RegisterCapabilitiesEvent event) {
 		event.register(StarFallChance.class);
 		event.register(PlayerMana.class);
+		event.register(PlayerSkyTracker.class);
 	}
 
 	@SubscribeEvent
@@ -146,6 +149,9 @@ public class RelicsEvents {
 		if (event.getObject() instanceof Player && !event.getObject().getCapability(PlayerManaProvider.PLAYER_MANA).isPresent()) {
 			event.addCapability(ResourceLocation.fromNamespaceAndPath(References.MOD_ID, "mana"), new PlayerManaProvider());
 		}
+		if (event.getObject() instanceof Player && !event.getObject().getCapability(PlayerSkyTrackerProvider.PLAYER_SKY_TRACKER).isPresent()) {
+			event.addCapability(ResourceLocation.fromNamespaceAndPath(References.MOD_ID, "sky_tracker"), new PlayerSkyTrackerProvider());
+		}
 	}
 
 	@SubscribeEvent
@@ -155,6 +161,8 @@ public class RelicsEvents {
 			event.getOriginal().getCapability(StarFallChanceProvider.PLAYER_STAR_FALL)
 					.ifPresent(oldStore -> event.getEntity().getCapability(StarFallChanceProvider.PLAYER_STAR_FALL).ifPresent(newStore -> newStore.copyFrom(oldStore)));
 			event.getOriginal().getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(oldMana -> event.getEntity().getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(newMana -> newMana.copyFrom(oldMana)));
+			event.getOriginal().getCapability(PlayerSkyTrackerProvider.PLAYER_SKY_TRACKER)
+					.ifPresent(oldTracker -> event.getEntity().getCapability(PlayerSkyTrackerProvider.PLAYER_SKY_TRACKER).ifPresent(newTracker -> newTracker.copyFrom(oldTracker)));
 			event.getOriginal().invalidateCaps();
 		}
 	}

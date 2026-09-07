@@ -19,6 +19,7 @@ import hojosa.relics_of_old.common.block.entity.RitualLocusBlockEntity;
 import hojosa.relics_of_old.common.init.RelicsBlocks;
 import hojosa.relics_of_old.common.init.RelicsEntities;
 import hojosa.relics_of_old.common.init.RelicsSounds;
+import hojosa.relics_of_old.common.player.PlayerSkyTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
@@ -33,6 +34,8 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -42,6 +45,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.entity.IEntityAdditionalSpawnData;
@@ -509,13 +513,32 @@ public class SpellEffectEntity extends Entity implements IEntityAdditionalSpawnD
 
 			@Override
 			public void affectLiving(SpellEffectEntity spell, LivingEntity living) {
-				// Teleport upward (simplified — full sky-world system not yet ported)
-				living.level().playSound(null, living.blockPosition(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 1.0f, 1.0f);
-				living.teleportTo(living.getX(), living.getY() + 3.0 + spell.power, living.getZ());
-				living.hurt(spell.damageSources().fall(), (float) spell.power);
-				// Non-crit: apply nausea
-				if (!spell.isCrit) {
-					living.addEffect(new net.minecraft.world.effect.MobEffectInstance(net.minecraft.world.effect.MobEffects.CONFUSION, 300));
+				if (spell.getCaster() == null)
+					return;
+				PlayerSkyTracker tracker = PlayerSkyTracker.get(spell.getCaster());
+				if (tracker == null || !tracker.hasPosition())
+					return;
+				if (!living.level().dimension().equals(tracker.getLastSkyDimension()))
+					return;
+
+				if (living.level().canSeeSky(living.blockPosition().above(2))) {
+					// Already under sky — teleport upward
+					if (!spell.isCrit) {
+						living.addEffect(new MobEffectInstance(net.minecraft.world.effect.MobEffects.CONFUSION, 300));
+					}
+					living.level().playSound(null, living.blockPosition(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 1.0f, 1.0f);
+					living.teleportTo(living.getX(), living.getY() + 3.0 + spell.power, living.getZ());
+				} else {
+					// Underground — teleport to last sky position
+					double destX = tracker.getLastSkyX();
+					double destZ = tracker.getLastSkyZ();
+					int destY = living.level().getHeightmapPos(Heightmap.Types.MOTION_BLOCKING, BlockPos.containing(destX, 0, destZ)).getY();
+					living.level().playSound(null, living.blockPosition(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 1.0f, 1.0f);
+					living.teleportTo(destX, destY + 1, destZ);
+					living.hurt(spell.damageSources().fall(), (float) spell.power);
+					if (!spell.isCrit) {
+						living.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 300));
+					}
 				}
 			}
 

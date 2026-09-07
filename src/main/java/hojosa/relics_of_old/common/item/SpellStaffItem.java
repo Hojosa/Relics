@@ -4,11 +4,13 @@ import hojosa.relics_of_old.common.entity.attacks.SpellEffectEntity;
 import hojosa.relics_of_old.common.entity.attacks.SpellEffectEntity.SpellType;
 import hojosa.relics_of_old.common.init.RelicsSounds;
 import hojosa.relics_of_old.common.player.PlayerMana;
+import hojosa.relics_of_old.common.player.PlayerSkyTracker;
 import hojosa.relics_of_old.lib.item.RelicsItem;
 import lombok.Getter;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -142,5 +144,15 @@ public class SpellStaffItem extends RelicsItem {
 			}
 		}
 		player.swing(player.getUsedItemHand());
+	}
+
+	@Override
+	public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
+		if (spellType == SpellEffectEntity.SpellType.EXIT && entity instanceof Player player && !level.isClientSide) {
+			PlayerSkyTracker tracker = PlayerSkyTracker.get(player);
+			if (tracker != null) {
+				tracker.updateIfUnderSky(player);
+			}
+		}
 	}
 }
