@@ -34,7 +34,6 @@ public abstract class LivingEntityFallFlyingMixin extends Entity {
 		if (glide != null) {
 			glide.tickSkylensCharge();
 		}
-
 		// already flying (real elytra) — don't interfere
 		if (this.isFallFlying())
 			return;
@@ -46,13 +45,11 @@ public abstract class LivingEntityFallFlyingMixin extends Entity {
 			glide.stopGliding();
 			return;
 		}
-
 		// stop on ground, collision, water, or riding
 		if (player.onGround() || this.horizontalCollision || player.isInWater() || player.isPassenger()) {
 			glide.stopGliding();
 			return;
 		}
-
 		// re-enable fall flying flag — accessible via Entity inheritance
 		this.setSharedFlag(7, true);
 	}

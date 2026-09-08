@@ -9,10 +9,13 @@ import hojosa.relics_of_old.common.init.RelicsBlocks;
 import hojosa.relics_of_old.common.init.RelicsItems;
 import hojosa.relics_of_old.common.init.RelicsSounds;
 import hojosa.relics_of_old.common.player.PlayerGlideData;
+import hojosa.relics_of_old.network.GlideSyncPacket;
+import hojosa.relics_of_old.network.RelicsNetwork;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -148,7 +151,12 @@ public class StarwellBlockEntity extends MantleBlockEntity {
 				}
 				glide.setGlideCharge(newGlide);
 
-				// fresh launch only — velocity push + glide ratio setup
+				// sync boosted charge to client so travel mixin sees it
+				if (newGlide != oldGlide && player instanceof ServerPlayer sp) {
+					RelicsNetwork.getInstance().sendTo(new GlideSyncPacket(newGlide), sp);
+				}
+
+				// fresh launch only
 				if (!glide.isGliding()) {
 					float ratio = RelicsItems.PHOENIX_MANTLE.get().isEquipped(player) ? 7.0f : 4.0f;
 					glide.setGlideRatio(ratio);
@@ -158,7 +166,6 @@ public class StarwellBlockEntity extends MantleBlockEntity {
 					player.hurtMarked = true;
 				}
 			}
-
 			// Buoyancy + steering — only for non-gliding players
 			if (glide == null || !glide.isGliding()) {
 				float steer = -player.getXRot() / 90.0f + 1.0f;
