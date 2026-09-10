@@ -219,6 +219,10 @@ public class RelicsLanguageProvider extends LanguageProvider {
 
 		// Other stuff
 		addEnchantment(RelicsEnchantments.FOCUS, "Focus");
+		addEnchantment(RelicsEnchantments.SPELL_REACH, "Spell Reach");
+		addEnchantment(RelicsEnchantments.SPELL_SPREAD, "Spell Spread");
+		addEnchantment(RelicsEnchantments.SPELL_FORTITUDE, "Spell Fortitude");
+		addEnchantment(RelicsEnchantments.MAGIC_PROTECTION, "Magic Protection");
 	}
 
 	@Override
