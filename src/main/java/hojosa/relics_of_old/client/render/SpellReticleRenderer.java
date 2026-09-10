@@ -49,7 +49,7 @@ public class SpellReticleRenderer {
 		// raycast to find target position
 		Vec3 eye = player.getEyePosition(partialTick);
 		Vec3 look = player.getViewVector(partialTick);
-		double range = staff.getCastRange();
+		double range = staff.getCastRange((held));
 		Vec3 far = eye.add(look.scale(range));
 		ClipContext.Fluid fluidMode = staff.isHitsWater() ? ClipContext.Fluid.ANY : ClipContext.Fluid.NONE;
 		Level level = player.level();
@@ -63,7 +63,7 @@ public class SpellReticleRenderer {
 			targetPos = far;
 		}
 
-		double radius = staff.getCastRadius();
+		double radius = staff.getCastRadius(held);
 
 		// translate to world position relative to camera
 		Camera camera = event.getCamera();

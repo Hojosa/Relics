@@ -88,21 +88,12 @@ public class SpellCastingItem extends RelicsItem implements IMana {
 		return castRadius * (1.0 + 0.15 * spread);
 	}
 
-	// Keep no-arg versions for tooltip display
-	public double getCastRange() {
-		return castRange;
-	}
-
-	public double getCastRadius() {
-		return castRadius;
-	}
-
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
 		super.appendHoverText(stack, level, tooltip, flag);
 		tooltip.add(Component.translatable("item.relics_of_old.spell.power", String.format("+%.0f", basePower)).withStyle(ChatFormatting.BLUE));
-		tooltip.add(Component.translatable("item.relics_of_old.spell.range", String.format("+%.0f", castRange)).withStyle(ChatFormatting.BLUE));
-		tooltip.add(Component.translatable("item.relics_of_old.spell.radius", String.format("+%.0f", castRadius)).withStyle(ChatFormatting.BLUE));
+		tooltip.add(Component.translatable("item.relics_of_old.spell.range", String.format("+%.0f", getCastRange(stack))).withStyle(ChatFormatting.BLUE));
+		tooltip.add(Component.translatable("item.relics_of_old.spell.radius", String.format("+%.0f", getCastRadius(stack))).withStyle(ChatFormatting.BLUE));
 	}
 
 	// cast time scales with mana fatigue — fatigued 2x, exhausted 4x
