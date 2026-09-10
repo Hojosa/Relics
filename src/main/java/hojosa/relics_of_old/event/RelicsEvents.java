@@ -3,6 +3,8 @@ package hojosa.relics_of_old.event;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
@@ -14,6 +16,7 @@ import hojosa.relics_of_old.common.entity.attacks.QuakeEntity;
 import hojosa.relics_of_old.common.init.RelicsBlocks;
 import hojosa.relics_of_old.common.init.RelicsConfig;
 import hojosa.relics_of_old.common.init.RelicsEffects;
+import hojosa.relics_of_old.common.init.RelicsEnchantments;
 import hojosa.relics_of_old.common.init.RelicsItems;
 import hojosa.relics_of_old.common.init.RelicsSounds;
 import hojosa.relics_of_old.common.item.BombBagItem;
@@ -44,6 +47,8 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.network.protocol.game.ClientboundSoundEntityPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -222,6 +227,28 @@ public class RelicsEvents {
 	// more shards
 	@SubscribeEvent
 	public static void onLivingDropsEvent(LivingDropsEvent event) {
+		// Soul Tether: intercept tethered items on player death, save to persisted NBT
+		if (event.getEntity() instanceof Player player && !player.level().isClientSide()) {
+			List<ItemEntity> tethered = new ArrayList<>();
+			Iterator<ItemEntity> iter = event.getDrops().iterator();
+			while (iter.hasNext()) {
+				ItemEntity drop = iter.next();
+				if (drop.getItem().getEnchantmentLevel(RelicsEnchantments.SOUL_TETHER.get()) > 0) {
+					iter.remove();
+					tethered.add(drop);
+				}
+			}
+			if (!tethered.isEmpty()) {
+				// Save to PlayerPersisted — this sub-compound survives death automatically
+				CompoundTag persisted = player.getPersistentData().getCompound(Player.PERSISTED_NBT_TAG);
+				ListTag items = new ListTag();
+				for (ItemEntity ei : tethered) {
+					items.add(ei.getItem().save(new CompoundTag()));
+				}
+				persisted.put("soulboundItems", items);
+				player.getPersistentData().put(Player.PERSISTED_NBT_TAG, persisted);
+			}
+		}
 		if (event.getEntity() instanceof Enemy) {
 			if (RelicsConfig.COMMON.doHeartsDropFromMobs.get() && random.nextInt(0, RelicsConfig.COMMON.heartChance.get()) == RelicsConfig.COMMON.heartChance.get() / 2)
 				event.getDrops().add(new HeartItemEntity(event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), new ItemStack(RelicsItems.HEART.get().asItem())));
@@ -395,6 +422,19 @@ public class RelicsEvents {
 	@SubscribeEvent
 	public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
 		event.getEntity().getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(mana -> mana.forceSync(event.getEntity()));
+		// Soul Tether: restore items saved from death
+		Player player = event.getEntity();
+		CompoundTag persisted = player.getPersistentData().getCompound(Player.PERSISTED_NBT_TAG);
+		if (persisted.contains("soulboundItems")) {
+			ListTag items = persisted.getList("soulboundItems", Tag.TAG_COMPOUND);
+			for (int i = 0; i < items.size(); i++) {
+				ItemStack stack = ItemStack.of(items.getCompound(i));
+				if (!stack.isEmpty()) {
+					player.getInventory().add(stack);
+				}
+			}
+			persisted.remove("soulboundItems");
+		}
 	}
 
 	// this fires after the item has been picked up

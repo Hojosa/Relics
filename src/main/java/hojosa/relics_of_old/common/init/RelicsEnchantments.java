@@ -2,6 +2,7 @@ package hojosa.relics_of_old.common.init;
 
 import hojosa.relics_of_old.common.enchantment.FocusEnchantment;
 import hojosa.relics_of_old.common.enchantment.MagicProtectionEnchantment;
+import hojosa.relics_of_old.common.enchantment.SoulTetherEnchantment;
 import hojosa.relics_of_old.common.enchantment.SpellFortitudeEnchantment;
 import hojosa.relics_of_old.common.enchantment.SpellReachEnchantment;
 import hojosa.relics_of_old.common.enchantment.SpellSpreadEnchantment;
@@ -27,4 +28,5 @@ public class RelicsEnchantments {
     public static final RegistryObject<Enchantment> SPELL_SPREAD = ENCHANTMENTS.register("spell_spread", SpellSpreadEnchantment::new);
     public static final RegistryObject<Enchantment> SPELL_FORTITUDE = ENCHANTMENTS.register("spell_fortitude", SpellFortitudeEnchantment::new);
     public static final RegistryObject<Enchantment> MAGIC_PROTECTION = ENCHANTMENTS.register("magic_protection", MagicProtectionEnchantment::new);
+    public static final RegistryObject<Enchantment> SOUL_TETHER = ENCHANTMENTS.register("soul_tether", SoulTetherEnchantment::new);
 }
