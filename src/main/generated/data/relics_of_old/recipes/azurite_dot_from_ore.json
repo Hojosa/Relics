@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "relics_of_old:azurite_ore"
+    },
+    {
+      "item": "relics_of_old:dimensional_catalyst"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "item": "relics_of_old:azurite_dot"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#relics_of_old:has_feature/azurite_ore",
+  "features": "relics_of_old:azurite_ore_placed",
+  "step": "underground_ores"
+}
