@@ -106,6 +106,7 @@ public class RelicsBlocks {
 			BLOCK_ITEM);
 	public static final ItemObject<Block> RITUAL_LOCUS = BLOCKS.register(References.UnlocalizedName.RITUAL_LOCUS, RitualLocusBlock::new, BLOCK_ITEM);
 	public static final ItemObject<Block> PHOENIX_ALTAR = BLOCKS.register(References.UnlocalizedName.PHOENIX_ALTAR, PhoenixAltarBlock::new, BLOCK_ITEM);
+	public static final ItemObject<Block> AZURITE_ORE = BLOCKS.register(References.UnlocalizedName.AZURITE_ORE, () -> new RelicsNormalBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(3.0f).sound(SoundType.STONE)), BLOCK_ITEM);
 
 	/**
 	 * We use this builder to ensure that our blocks all have the most important properties set. This way it'll stick out if a block doesn't have a
@@ -148,6 +149,7 @@ public class RelicsBlocks {
 		output.accept(SKY_LENS.get().asItem());
 		output.accept(RITUAL_LOCUS.get().asItem());
 		output.accept(PHOENIX_ALTAR.get().asItem());
+		output.accept(AZURITE_ORE.get().asItem());
 
 		Predicate<ItemStack> variants = stack -> {
 			output.accept(stack);

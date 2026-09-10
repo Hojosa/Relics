@@ -56,6 +56,7 @@ public interface RelicsTags {
 			TagKey<Biome> MYSTIC_SHRUB = tag("mystic_shrub");
 			TagKey<Biome> BOMB_FLOWER = tag("bomb_flower");
 			TagKey<Biome> STARWELL = tag("starwell");
+			TagKey<Biome> AZURITE_ORE = tag("azurite_ore");
 
 			static TagKey<Biome> tag(String name) {
 				return TagKey.create(Registries.BIOME, RelicsUtil.modLoc("has_feature/" + name));

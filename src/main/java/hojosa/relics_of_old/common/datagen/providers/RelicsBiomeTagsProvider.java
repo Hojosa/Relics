@@ -26,6 +26,7 @@ public class RelicsBiomeTagsProvider extends BiomeTagsProvider{
 		tag(RelicsTags.Biomes.HasFeature.MYSTIC_SHRUB).addTags(BiomeTags.IS_FOREST, Tags.Biomes.IS_PLAINS);
 		tag(RelicsTags.Biomes.HasFeature.BOMB_FLOWER).addTags(BiomeTags.IS_NETHER, BiomeTags.IS_OVERWORLD);
 		tag(RelicsTags.Biomes.HasFeature.STARWELL).addTags(BiomeTags.IS_OVERWORLD);
+		tag(RelicsTags.Biomes.HasFeature.AZURITE_ORE).addTags(BiomeTags.IS_OVERWORLD);
 	}
 
 	@Override

@@ -53,6 +53,7 @@ public class RelicsBlockStateProvider extends BlockStateProvider {
 		simpleBlock(RelicsBlocks.SKY_LENS.get());
 		simpleBlock(RelicsBlocks.RITUAL_LOCUS.get());
 		phoenixAltar();
+		simpleBlock(RelicsBlocks.AZURITE_ORE.get());
 	}
 
 	private void simpleBlockInfused(Block block, Block parent) {

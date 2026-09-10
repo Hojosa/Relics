@@ -43,11 +43,12 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addBlock(RelicsBlocks.STARRY_SAND, "Starry Sand");
 		addBlock(RelicsBlocks.STRUCK_SAND, "Struck Sand");
 		addBlock(RelicsBlocks.STRUCK_DIRT, "Struck Dirt");
-		add(RelicsBlocks.STARWELL_FRAME.get(), "Starwell Frame");
-		add(RelicsBlocks.STARWELL_CORE.get(), "Starwell Core");
-		add(RelicsBlocks.SKY_LENS.get(), "Sky Lens");
-		add(RelicsBlocks.RITUAL_LOCUS.get(), "Ritual Locus");
-		add(RelicsBlocks.PHOENIX_ALTAR.get(), "Phoenix Altar");
+		addBlock(RelicsBlocks.AZURITE_ORE, "Azurite Ore");
+		addBlock(RelicsBlocks.STARWELL_FRAME, "Starwell Frame");
+		addBlock(RelicsBlocks.STARWELL_CORE, "Starwell Core");
+		addBlock(RelicsBlocks.SKY_LENS, "Sky Lens");
+		addBlock(RelicsBlocks.RITUAL_LOCUS, "Ritual Locus");
+		addBlock(RelicsBlocks.PHOENIX_ALTAR, "Phoenix Altar");
 
 		// Items
 		addItem(RelicsItems.FIRE_SWORD, "Flame Sword");

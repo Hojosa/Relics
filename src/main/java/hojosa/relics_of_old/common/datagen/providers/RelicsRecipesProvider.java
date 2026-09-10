@@ -1201,5 +1201,12 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.group(References.CREATIVE_TAB)
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.SUNFIRE_DIAMOND.get()))
 		.save(consumer);
+		
+		 // Azurite extraction: ore + dimensional catalyst → 3 azurite dots
+		 ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.AZURITE_DOT.get(), 3)
+		 .requires(RelicsBlocks.AZURITE_ORE.get())
+		 .requires(RelicsItems.DIMENSIONAL_CATALYST.get())
+		 .unlockedBy(hasItem, has(RelicsBlocks.AZURITE_ORE.get()))
+		 .save(consumer, RelicsUtil.modLoc("azurite_dot_from_ore"));
 		}
 }
