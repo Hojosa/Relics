@@ -47,6 +47,7 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		add(RelicsBlocks.STARWELL_CORE.get(), "Starwell Core");
 		add(RelicsBlocks.SKY_LENS.get(), "Sky Lens");
 		add(RelicsBlocks.RITUAL_LOCUS.get(), "Ritual Locus");
+		add(RelicsBlocks.PHOENIX_ALTAR.get(), "Phoenix Altar");
 
 		// Items
 		addItem(RelicsItems.FIRE_SWORD, "Flame Sword");
@@ -196,7 +197,9 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addItem(RelicsItems.AZURE_MANTLE, "Azure Mantle");
 		addItem(RelicsItems.PHOENIX_MANTLE, "Phoenix Mantle");
 		addItem(RelicsItems.SUNFIRE_DIAMOND, "Sunfire Diamond");
-		
+		addItem(RelicsItems.BLACK_EMBLEM, "Black Emblem");
+		addItem(RelicsItems.PHOENIX_EMBLEM, "Phoenix Emblem");
+
 		// Sword augment tooltips
 		add("augment.relics_of_old.fire", "Augment: Fire");
 		add("augment.relics_of_old.earth", "Augment: Earth");

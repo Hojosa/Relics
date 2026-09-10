@@ -1166,5 +1166,40 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.group(References.CREATIVE_TAB)
 		.unlockedBy(hasItem, has(RelicsItems.PHOENIX_FEATHER.get()))
 		.save(consumer);
+		
+		// Phoenix offering: fire+gold_block edge + starstone singleton
+		RitualRecipeBuilder.offering()
+		.pair(Blocks.FIRE, Blocks.GOLD_BLOCK)
+		.keystone(RelicsBlocks.STARSTONE_BLOCK.get())
+		.spirit("phoenix")
+		.save(consumer, "phoenix_offering");
+
+		// Phoenix altar offering: fire+fire edge, requires altar as focus
+		RitualRecipeBuilder.offering()
+		.pair(Blocks.FIRE, Blocks.FIRE)
+		.focusBlock(RelicsBlocks.PHOENIX_ALTAR.get())
+		.spirit("phoenix")
+		.save(consumer, "phoenix_altar_offering");
+
+		// Black emblem: 5 gold ingots in cross (LG2 recipe)
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RelicsItems.BLACK_EMBLEM.get())
+		.pattern(" G ")
+		.pattern("GGG")
+		.pattern(" G ")
+		.define('G', Items.GOLD_INGOT)
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(Items.GOLD_INGOT))
+		.save(consumer);
+
+		// Phoenix altar: gold_block frame + phoenix emblem + sunfire diamond
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RelicsBlocks.PHOENIX_ALTAR.get())
+		.pattern("GEG")
+		.pattern("GDG")
+		.define('G', Blocks.GOLD_BLOCK)
+		.define('E', RelicsItems.PHOENIX_EMBLEM.get())
+		.define('D', RelicsItems.SUNFIRE_DIAMOND.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.SUNFIRE_DIAMOND.get()))
+		.save(consumer);
 		}
 }

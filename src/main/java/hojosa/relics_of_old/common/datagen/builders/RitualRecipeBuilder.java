@@ -13,6 +13,7 @@ import hojosa.relics_of_old.common.recipes.RitualBlessingRecipe;
 import hojosa.relics_of_old.common.recipes.RitualConvertRecipe;
 import hojosa.relics_of_old.common.recipes.RitualCrucibleRecipe;
 import hojosa.relics_of_old.common.recipes.RitualEnchantingRecipe;
+import hojosa.relics_of_old.common.recipes.RitualOfferingRecipe;
 import hojosa.relics_of_old.common.recipes.RitualSummoningRecipe;
 import hojosa.relics_of_old.lib.RelicsUtil;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -415,5 +416,77 @@ public class RitualRecipeBuilder {
 				}
 			});
 		}
+	}
+
+	// ============ OFFERING ============
+
+	public static OfferingBuilder offering() {
+		return new OfferingBuilder();
+	}
+
+	public static class OfferingBuilder {
+	        private final List<ComponentEntry> components = new ArrayList<>();
+	        private String focusType;
+	        private ResourceLocation focusTarget;
+	        private String spirit;
+
+	        public OfferingBuilder pair(Block a, Block b) {
+	                components.add(new ComponentEntry(a, b));
+	                return this;
+	        }
+
+	        public OfferingBuilder keystone(Block block) {
+	                components.add(new ComponentEntry(block, null));
+	                return this;
+	        }
+
+	        public OfferingBuilder focusBlock(Block block) {
+	                this.focusType = "block";
+	                this.focusTarget = ForgeRegistries.BLOCKS.getKey(block);
+	                return this;
+	        }
+
+	        public OfferingBuilder spirit(String spirit) {
+	                this.spirit = spirit;
+	                return this;
+	        }
+
+	        public void save(Consumer<FinishedRecipe> consumer, String name) {
+	                consumer.accept(new FinishedRecipe() {
+	                        @Override
+	                        public void serializeRecipeData(JsonObject json) {
+	                                JsonArray comps = new JsonArray();
+	                                for (ComponentEntry c : components)
+	                                        comps.add(c.toJson());
+	                                json.add("components", comps);
+	                                if (focusType != null) {
+	                                        JsonObject focus = new JsonObject();
+	                                        focus.addProperty(focusType, focusTarget.toString());
+	                                        json.add("focus", focus);
+	                                }
+	                                json.addProperty("spirit", spirit);
+	                        }
+
+	                        @Override
+	                        public ResourceLocation getId() {
+	                                return RelicsUtil.modLoc("ritual/" + name);
+	                        }
+
+	                        @Override
+	                        public RecipeSerializer<?> getType() {
+	                                return RitualOfferingRecipe.Serializer.INSTANCE;
+	                        }
+
+	                        @Override
+	                        public @Nullable JsonObject serializeAdvancement() {
+	                                return null;
+	                        }
+
+	                        @Override
+	                        public @Nullable ResourceLocation getAdvancementId() {
+	                                return null;
+	                        }
+	                });
+	        }
 	}
 }

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "G": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "pattern": [
+    " G ",
+    "GGG",
+    " G "
+  ],
+  "result": {
+    "item": "relics_of_old:blank_emblem"
+  },
+  "show_notification": true
+}

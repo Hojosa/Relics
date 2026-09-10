@@ -11,6 +11,7 @@ import hojosa.relics_of_old.common.block.ClayJar;
 import hojosa.relics_of_old.common.block.InfusedStarstoneBlock;
 import hojosa.relics_of_old.common.block.MysticShrub;
 import hojosa.relics_of_old.common.block.NormalSwordPedestal;
+import hojosa.relics_of_old.common.block.PhoenixAltarBlock;
 import hojosa.relics_of_old.common.block.RelicRetexturedSwordPedestal;
 import hojosa.relics_of_old.common.block.RelicSwordPedestal;
 import hojosa.relics_of_old.common.block.RitualLocusBlock;
@@ -101,16 +102,15 @@ public class RelicsBlocks {
 	// starwell / ritual blocks
 	public static final ItemObject<Block> STARWELL_FRAME = BLOCKS.register(References.UnlocalizedName.STARWELL_FRAME, StarwellFrameBlock::new, BLOCK_ITEM);
 	public static final ItemObject<Block> STARWELL_CORE = BLOCKS.register(References.UnlocalizedName.STARWELL_CORE, StarwellBlock::new, BLOCK_ITEM);
-	public static final ItemObject<Block> SKY_LENS = BLOCKS.register(References.UnlocalizedName.SKY_LENS,
-			() -> new RelicsNormalBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).sound(SoundType.STONE)), BLOCK_ITEM);
+	public static final ItemObject<Block> SKY_LENS = BLOCKS.register(References.UnlocalizedName.SKY_LENS, () -> new RelicsNormalBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).sound(SoundType.STONE)),
+			BLOCK_ITEM);
 	public static final ItemObject<Block> RITUAL_LOCUS = BLOCKS.register(References.UnlocalizedName.RITUAL_LOCUS, RitualLocusBlock::new, BLOCK_ITEM);
+	public static final ItemObject<Block> PHOENIX_ALTAR = BLOCKS.register(References.UnlocalizedName.PHOENIX_ALTAR, PhoenixAltarBlock::new, BLOCK_ITEM);
 
 	/**
-	 * We use this builder to ensure that our blocks all have the most important
-	 * properties set. This way it'll stick out if a block doesn't have a sound set.
-	 * It may be a bit less clear at first, since the actual builder methods tell
-	 * you what each value means, but as long as we don't statically import the
-	 * enums it should be just as readable.
+	 * We use this builder to ensure that our blocks all have the most important properties set. This way it'll stick out if a block doesn't have a
+	 * sound set. It may be a bit less clear at first, since the actual builder methods tell you what each value means, but as long as we don't
+	 * statically import the enums it should be just as readable.
 	 */
 	protected static BlockBehaviour.Properties builder(SoundType soundType) {
 		return BlockBehaviour.Properties.of().sound(soundType);
@@ -147,6 +147,7 @@ public class RelicsBlocks {
 		output.accept(STARWELL_CORE.get().asItem());
 		output.accept(SKY_LENS.get().asItem());
 		output.accept(RITUAL_LOCUS.get().asItem());
+		output.accept(PHOENIX_ALTAR.get().asItem());
 
 		Predicate<ItemStack> variants = stack -> {
 			output.accept(stack);

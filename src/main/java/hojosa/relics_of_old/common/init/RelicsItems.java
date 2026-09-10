@@ -4,7 +4,6 @@ import hojosa.relics_of_old.common.entity.ThrownOrbEntity.OrbType;
 import hojosa.relics_of_old.common.entity.attacks.SpellEffectEntity;
 import hojosa.relics_of_old.common.item.AeroAmulet;
 import hojosa.relics_of_old.common.item.AzureFeatherItem;
-import hojosa.relics_of_old.common.item.MantleItem;
 import hojosa.relics_of_old.common.item.BombArrowItem;
 import hojosa.relics_of_old.common.item.BombBagItem;
 import hojosa.relics_of_old.common.item.BombItem;
@@ -27,10 +26,12 @@ import hojosa.relics_of_old.common.item.MagicCharmItem;
 import hojosa.relics_of_old.common.item.MagicMirror;
 import hojosa.relics_of_old.common.item.MagicPowder;
 import hojosa.relics_of_old.common.item.MagicRingItem;
+import hojosa.relics_of_old.common.item.MantleItem;
 import hojosa.relics_of_old.common.item.MasterSword;
 import hojosa.relics_of_old.common.item.Medallion;
 import hojosa.relics_of_old.common.item.MilkChocolate;
 import hojosa.relics_of_old.common.item.MysticSeed;
+import hojosa.relics_of_old.common.item.PhoenixEmblemItem;
 import hojosa.relics_of_old.common.item.PhoenixRingItem;
 import hojosa.relics_of_old.common.item.ReedPipes;
 import hojosa.relics_of_old.common.item.RelicsAmulet;
@@ -255,6 +256,10 @@ public class RelicsItems {
 	public static final RegistryObject<MagicRingItem> WISH_RING = ITEMS.register(References.UnlocalizedName.WISH_RING, WishRingItem::new);
 	public static final RegistryObject<MagicRingItem> RESONANCE_RING = ITEMS.register(References.UnlocalizedName.RESONANCE_RING, () -> new MagicRingItem("Increase efficiency of other rings"));
 	public static final RegistryObject<RelicsItem> PLAIN_RING = ITEMS.register(References.UnlocalizedName.PLAIN_RING, () -> new RelicsItem(64, "Has potential"));
+
+	// emblems
+	public static final RegistryObject<RelicsItem> BLACK_EMBLEM = ITEMS.register(References.UnlocalizedName.BLACK_EMBLEM, () -> new RelicsItem(1));
+	public static final RegistryObject<PhoenixEmblemItem> PHOENIX_EMBLEM = ITEMS.register(References.UnlocalizedName.PHOENIX_EMBLEM, PhoenixEmblemItem::new);
 
 	public static final RegistryObject<PhoenixRingItem> PHOENIX_RING = ITEMS.register(References.UnlocalizedName.PHOENIX_RING, PhoenixRingItem::new);
 

@@ -1,5 +1,7 @@
 package hojosa.relics_of_old.common.player;
 
+import javax.annotation.Nullable;
+
 import hojosa.relics_of_old.common.init.RelicsSounds;
 import hojosa.relics_of_old.network.ManaSyncPacket;
 import hojosa.relics_of_old.network.RelicsNetwork;
@@ -7,6 +9,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 
 // Mana system ported from LG2's PlayerStarstatsExtension.
 // Mana is tracked as "magic fatigue" — 0 = full mana, 20+ = exhausted.
@@ -27,7 +30,9 @@ public class PlayerMana {
 	public static final float EXHAUSTED_RECHARGE_DELAY = 20.0f;
 
 	// Ring mana constants (from LG2 MagicRing)
+	public static final float MAGE_RING_FACTOR = 0.66f;
 	public static final float RESONANCE_FACTOR = 0.5f;
+	public static final float MAGE_AND_RESONANCE_FACTOR = 0.5f;
 
 	private float fatigue = 0.0f;
 	private float rechargeDelay = 0.0f;
@@ -49,7 +54,7 @@ public class PlayerMana {
 
 	// Integer mana level for HUD rendering (0-20)
 	public int getManaLevel() {
-		return (int) (20.0f - fatigue);
+		return Math.round(20.0f - fatigue);
 	}
 
 	// Armor reduces breathing room — heavier armor = less comfortable mana pool
@@ -75,8 +80,12 @@ public class PlayerMana {
 		return 1.0f;
 	}
 
-	// Core mana spend — handles exhaustion damage and recharge delay
 	public boolean expendMana(Player player, float amount) {
+		return expendMana(player, amount, null);
+	}
+
+	// Core mana spend — handles exhaustion damage and recharge delay
+	public boolean expendMana(Player player, float amount, @Nullable ItemStack spellStack) {
 		// Taking damage when spending while exhausted
 		if (getFatigueLevel(player) == EXHAUSTED && amount > 0.25f) {
 			player.hurt(player.damageSources().magic(), amount);
@@ -96,6 +105,15 @@ public class PlayerMana {
 			}
 		} else {
 			delay = MANA_RECHARGE_DELAY;
+		}
+
+		// Fortitude enchantment reduces penalty portion of delay by level/3
+		if (spellStack != null) {
+			int fortitude = spellStack.getEnchantmentLevel(hojosa.relics_of_old.common.init.RelicsEnchantments.SPELL_FORTITUDE.get());
+			if (fortitude > 0) {
+				float penalty = delay - MANA_RECHARGE_DELAY;
+				delay -= penalty * fortitude / 3.0f;
+			}
 		}
 
 		// Only extend delay, never shorten from spending

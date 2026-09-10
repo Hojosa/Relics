@@ -1,0 +1,88 @@
+{
+  "boons": [
+    {
+      "cost": 300,
+      "request": "minecraft:feather",
+      "reward": "relics_of_old:phoenix_feather"
+    },
+    {
+      "cost": 900,
+      "reward": "relics_of_old:phoenix_feather",
+      "reward_count": 3
+    },
+    {
+      "cost": 1500,
+      "reward": "relics_of_old:phoenix_feather",
+      "reward_count": 5
+    },
+    {
+      "cost": 3000,
+      "request": "minecraft:diamond",
+      "reward": "relics_of_old:sunfire_diamond"
+    },
+    {
+      "cost": 150,
+      "enchant_level": 1,
+      "hidden": true,
+      "request_tag": "forge:tools/swords",
+      "reward_enchantment": "minecraft:fire_aspect"
+    },
+    {
+      "cost": 150,
+      "enchant_level": 1,
+      "hidden": true,
+      "request": "minecraft:bow",
+      "reward_enchantment": "minecraft:flame"
+    },
+    {
+      "cost": 150,
+      "enchant_level": 1,
+      "hidden": true,
+      "request_tag": "relics_of_old:enchantable_armor",
+      "reward_enchantment": "minecraft:fire_protection"
+    },
+    {
+      "cost": 500,
+      "hidden": true,
+      "request": "relics_of_old:plain_ring",
+      "reward": "relics_of_old:phoenix_ring"
+    },
+    {
+      "cost": 300,
+      "hidden": true,
+      "request": "minecraft:potion",
+      "request_nbt": "{Potion:\"minecraft:water\"}",
+      "reward": "minecraft:potion",
+      "reward_nbt": "{Potion:\"minecraft:fire_resistance\"}"
+    },
+    {
+      "cost": 0,
+      "hidden": true,
+      "request": "relics_of_old:blank_emblem",
+      "reward": "relics_of_old:phoenix_emblem"
+    }
+  ],
+  "donation_cooldown": 300,
+  "favor_intervention_refresh_ratio": 3.0,
+  "favor_roll_floor_ratio": 0.25,
+  "intervention_cap": 0.25,
+  "intervention_cooldown": 900,
+  "opinions": {
+    "minecraft:bone": 3,
+    "minecraft:ghast_tear": 100,
+    "minecraft:gold_block": 300,
+    "minecraft:gold_ingot": 30,
+    "minecraft:gold_nugget": 3,
+    "minecraft:grass": 3,
+    "minecraft:rotten_flesh": 3,
+    "relics_of_old:infused_star_dust": 100,
+    "relics_of_old:infused_star_piece": 150,
+    "relics_of_old:infused_star_stone": 1500,
+    "relics_of_old:infused_starstone_block": 1500,
+    "relics_of_old:star_dust": 30,
+    "relics_of_old:star_piece": 45,
+    "relics_of_old:star_stone": 1000,
+    "relics_of_old:starstone_block": 1000
+  },
+  "staleness_scaling": 0.0
+}

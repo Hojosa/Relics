@@ -17,6 +17,7 @@ import hojosa.relics_of_old.common.datagen.providers.RelicsParticleDescriptionPr
 import hojosa.relics_of_old.common.datagen.providers.RelicsRecipesProvider;
 import hojosa.relics_of_old.common.datagen.providers.RelicsSoundsProvider;
 import hojosa.relics_of_old.common.datagen.providers.RelicsWorldGenProvider;
+import hojosa.relics_of_old.common.datagen.providers.SpiritDefinitionProvider;
 import hojosa.relics_of_old.lib.References;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -58,5 +59,6 @@ public class RelicsDataGenerators {
 		generator.addProvider(event.includeServer(), new RelicsWorldGenProvider(packOutput, lookupProvider));
 		generator.addProvider(event.includeServer(), new RelicsLanguageProvider(packOutput, "en_uk"));
 		generator.addProvider(event.includeServer(), new RelicsLanguageProvider(packOutput, "en_us"));
+		generator.addProvider(event.includeServer(), new SpiritDefinitionProvider(packOutput));
 	}
 }

@@ -52,6 +52,7 @@ public class RelicsBlockStateProvider extends BlockStateProvider {
 		starwellCore();
 		simpleBlock(RelicsBlocks.SKY_LENS.get());
 		simpleBlock(RelicsBlocks.RITUAL_LOCUS.get());
+		phoenixAltar();
 	}
 
 	private void simpleBlockInfused(Block block, Block parent) {
@@ -129,25 +130,37 @@ public class RelicsBlockStateProvider extends BlockStateProvider {
 				.texture("particle", modLoc("block/clay_jar_bottom")).customLoader(RetexturedModelBuilder::new).retexture("jar_side").retexture("jar_top").retexture("jar_bottom").retexture("particle").end();
 		simpleBlock(block, model);
 	}
-	
+
 	private void starwellCore() {
-	      Block block = RelicsBlocks.STARWELL_CORE.get();
-	      String base = References.UnlocalizedName.STARWELL_CORE;
+		Block block = RelicsBlocks.STARWELL_CORE.get();
+		String base = References.UnlocalizedName.STARWELL_CORE;
 
-	      // side + bottom reuse the frame texture, top switches on active state
-	      ModelFile inert = models().cubeBottomTop(base,
-	              modLoc("block/" + References.UnlocalizedName.STARWELL_FRAME),
-	              modLoc("block/" + References.UnlocalizedName.STARWELL_FRAME),
-	              mcLoc("block/obsidian"));
-	      ModelFile active = models().cubeBottomTop(base + "_active",
-	              modLoc("block/" + References.UnlocalizedName.STARWELL_FRAME),
-	              modLoc("block/" + References.UnlocalizedName.STARWELL_FRAME),
-	              modLoc("block/" + base + "_top_active"));
+		// side + bottom reuse the frame texture, top switches on active state
+		ModelFile inert = models().cubeBottomTop(base, modLoc("block/" + References.UnlocalizedName.STARWELL_FRAME), modLoc("block/" + References.UnlocalizedName.STARWELL_FRAME), mcLoc("block/obsidian"));
+		ModelFile active = models().cubeBottomTop(base + "_active", modLoc("block/" + References.UnlocalizedName.STARWELL_FRAME), modLoc("block/" + References.UnlocalizedName.STARWELL_FRAME),
+				modLoc("block/" + base + "_top_active"));
 
-	      getVariantBuilder(block)
-	              .partialState().with(StarwellBlock.ACTIVE, false).modelForState().modelFile(inert).addModel()
-	              .partialState().with(StarwellBlock.ACTIVE, true).modelForState().modelFile(active).addModel();
-	  }
+		getVariantBuilder(block).partialState().with(StarwellBlock.ACTIVE, false).modelForState().modelFile(inert).addModel().partialState().with(StarwellBlock.ACTIVE, true).modelForState().modelFile(active).addModel();
+	}
+
+	private void phoenixAltar() {
+	      Block block = RelicsBlocks.PHOENIX_ALTAR.get();
+	      ModelFile model = models().getBuilder("phoenix_altar")
+	          .parent(new ModelFile.UncheckedModelFile(mcLoc("block/block")))
+	          .texture("side", modLoc("block/phoenix_altar_side"))
+	          .texture("top", modLoc("block/phoenix_altar_top"))
+	          .texture("particle", modLoc("block/phoenix_altar_side"))
+	          .element()
+	              .from(0, 0, 0).to(16, 12, 16)
+	              .face(Direction.NORTH).texture("#side").uvs(0, 4, 16, 16).cullface(Direction.NORTH).end()
+	              .face(Direction.SOUTH).texture("#side").uvs(0, 4, 16, 16).cullface(Direction.SOUTH).end()
+	              .face(Direction.EAST).texture("#side").uvs(0, 4, 16, 16).cullface(Direction.EAST).end()
+	              .face(Direction.WEST).texture("#side").uvs(0, 4, 16, 16).cullface(Direction.WEST).end()
+	              .face(Direction.UP).texture("#top").uvs(0, 0, 16, 16).end()
+	              .face(Direction.DOWN).texture("#top").uvs(0, 0, 16, 16).cullface(Direction.DOWN).end()
+	          .end();
+	      simpleBlock(block, model);
+	}
 
 	@Override
 	public @NotNull String getName() {

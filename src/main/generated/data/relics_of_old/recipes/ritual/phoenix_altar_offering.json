@@ -1,0 +1,13 @@
+{
+  "type": "relics_of_old:ritual_offering",
+  "components": [
+    {
+      "block_a": "minecraft:fire",
+      "block_b": "minecraft:fire"
+    }
+  ],
+  "focus": {
+    "block": "relics_of_old:phoenix_altar"
+  },
+  "spirit": "phoenix"
+}

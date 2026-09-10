@@ -29,8 +29,11 @@ import hojosa.relics_of_old.common.player.PlayerMana;
 import hojosa.relics_of_old.common.player.PlayerManaProvider;
 import hojosa.relics_of_old.common.player.PlayerSkyTracker;
 import hojosa.relics_of_old.common.player.PlayerSkyTrackerProvider;
+import hojosa.relics_of_old.common.player.SpiritFavor;
+import hojosa.relics_of_old.common.player.SpiritFavorProvider;
 import hojosa.relics_of_old.common.player.StarFallChance;
 import hojosa.relics_of_old.common.player.StarFallChanceProvider;
+import hojosa.relics_of_old.common.ritual.SpiritDefinitionLoader;
 import hojosa.relics_of_old.lib.References;
 import hojosa.relics_of_old.lib.RelicsUtil;
 import hojosa.relics_of_old.lib.RelicsUtil.ElementType;
@@ -72,6 +75,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.storage.LevelResource;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
+import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityMountEvent;
@@ -142,6 +146,7 @@ public class RelicsEvents {
 		event.register(PlayerMana.class);
 		event.register(PlayerSkyTracker.class);
 		event.register(PlayerGlideData.class);
+		event.register(SpiritFavor.class);
 	}
 
 	@SubscribeEvent
@@ -158,7 +163,9 @@ public class RelicsEvents {
 		if (event.getObject() instanceof Player && !event.getObject().getCapability(PlayerGlideDataProvider.PLAYER_GLIDE_DATA).isPresent()) {
 			event.addCapability(ResourceLocation.fromNamespaceAndPath(References.MOD_ID, "glide_data"), new PlayerGlideDataProvider());
 		}
-
+		if (event.getObject() instanceof Player && !event.getObject().getCapability(SpiritFavorProvider.SPIRIT_FAVOR).isPresent()) {
+			event.addCapability(ResourceLocation.fromNamespaceAndPath(References.MOD_ID, "spirit_favor"), new SpiritFavorProvider());
+		}
 	}
 
 	@SubscribeEvent
@@ -172,6 +179,7 @@ public class RelicsEvents {
 					.ifPresent(oldTracker -> event.getEntity().getCapability(PlayerSkyTrackerProvider.PLAYER_SKY_TRACKER).ifPresent(newTracker -> newTracker.copyFrom(oldTracker)));
 			event.getOriginal().getCapability(PlayerGlideDataProvider.PLAYER_GLIDE_DATA)
 					.ifPresent(oldGlide -> event.getEntity().getCapability(PlayerGlideDataProvider.PLAYER_GLIDE_DATA).ifPresent(newGlide -> newGlide.copyFrom(oldGlide)));
+			event.getOriginal().getCapability(SpiritFavorProvider.SPIRIT_FAVOR).ifPresent(oldFavor -> event.getEntity().getCapability(SpiritFavorProvider.SPIRIT_FAVOR).ifPresent(newFavor -> newFavor.copyFrom(oldFavor)));
 			event.getOriginal().invalidateCaps();
 		}
 	}
@@ -637,5 +645,10 @@ public class RelicsEvents {
 		if (event.getEntityLiving().hasEffect(RelicsEffects.ENDER_LOCK.get())) {
 			event.setCanceled(true);
 		}
+	}
+
+	@SubscribeEvent
+	public static void onAddReloadListeners(AddReloadListenerEvent event) {
+		event.addListener(new SpiritDefinitionLoader());
 	}
 }

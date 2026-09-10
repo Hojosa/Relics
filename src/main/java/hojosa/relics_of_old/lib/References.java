@@ -197,6 +197,9 @@ public class References {
 		public static final String AZURE_FEATHER = "azure_feather";
 		public static final String SUNFIRE_DIAMOND = "sunfire_diamond";
 		public static final String BOOST_RIPPLE_PARTICLE = "boost_ripple_particle";
+		public static final String BLACK_EMBLEM = "blank_emblem";
+		public static final String PHOENIX_EMBLEM = "phoenix_emblem";
+		public static final String PHOENIX_ALTAR = "phoenix_altar";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

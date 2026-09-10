@@ -9,6 +9,8 @@ import com.google.common.collect.Multimap;
 
 import hojosa.relics_of_old.common.entity.attacks.SpellEffectEntity;
 import hojosa.relics_of_old.common.entity.attacks.SpellEffectEntity.SpellType;
+import hojosa.relics_of_old.common.init.RelicsEnchantments;
+import hojosa.relics_of_old.common.init.RelicsItems;
 import hojosa.relics_of_old.common.init.RelicsSounds;
 import hojosa.relics_of_old.common.mana.IMana;
 import hojosa.relics_of_old.common.player.PlayerMana;
@@ -43,9 +45,7 @@ public class SpellCastingItem extends RelicsItem implements IMana {
 	private static final int CRIT_WINDOW = 5;
 	@Getter
 	private final SpellType spellType;
-	@Getter
 	private final double castRange;
-	@Getter
 	private final double castRadius;
 	private final double basePower;
 	private final double critBonus;
@@ -77,14 +77,33 @@ public class SpellCastingItem extends RelicsItem implements IMana {
 			this.meleeAttributes = ImmutableMultimap.of();
 		}
 	}
-	
+
+	public double getCastRange(ItemStack stack) {
+		int reach = stack.getEnchantmentLevel(RelicsEnchantments.SPELL_REACH.get());
+		return castRange * (1.0 + 0.15 * reach);
+	}
+
+	public double getCastRadius(ItemStack stack) {
+		int spread = stack.getEnchantmentLevel(RelicsEnchantments.SPELL_SPREAD.get());
+		return castRadius * (1.0 + 0.15 * spread);
+	}
+
+	// Keep no-arg versions for tooltip display
+	public double getCastRange() {
+		return castRange;
+	}
+
+	public double getCastRadius() {
+		return castRadius;
+	}
+
 	@Override
-	  public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-	      super.appendHoverText(stack, level, tooltip, flag);
-	      tooltip.add(Component.translatable("item.relics_of_old.spell.power", String.format("+%.0f", basePower)).withStyle(ChatFormatting.BLUE));
-	      tooltip.add(Component.translatable("item.relics_of_old.spell.range", String.format("+%.0f", castRange)).withStyle(ChatFormatting.BLUE));
-	      tooltip.add(Component.translatable("item.relics_of_old.spell.radius", String.format("+%.0f", castRadius)).withStyle(ChatFormatting.BLUE));
-	  }
+	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
+		super.appendHoverText(stack, level, tooltip, flag);
+		tooltip.add(Component.translatable("item.relics_of_old.spell.power", String.format("+%.0f", basePower)).withStyle(ChatFormatting.BLUE));
+		tooltip.add(Component.translatable("item.relics_of_old.spell.range", String.format("+%.0f", castRange)).withStyle(ChatFormatting.BLUE));
+		tooltip.add(Component.translatable("item.relics_of_old.spell.radius", String.format("+%.0f", castRadius)).withStyle(ChatFormatting.BLUE));
+	}
 
 	// cast time scales with mana fatigue — fatigued 2x, exhausted 4x
 	public int getCastingTicks(Player player) {
@@ -152,10 +171,14 @@ public class SpellCastingItem extends RelicsItem implements IMana {
 		// crit if released within CRIT_WINDOW ticks of full charge
 		boolean crit = (ticksUsed - totalTicks) <= CRIT_WINDOW;
 
+		// enchantment-aware range and radius
+		double effectiveRange = getCastRange(stack);
+		double effectiveRadius = getCastRadius(stack);
+
 		// raycast to target
 		Vec3 eye = player.getEyePosition(1.0f);
 		Vec3 look = player.getLookAngle();
-		Vec3 far = eye.add(look.scale(castRange));
+		Vec3 far = eye.add(look.scale(effectiveRange));
 		ClipContext.Fluid fluidMode = hitsWater ? ClipContext.Fluid.ANY : ClipContext.Fluid.NONE;
 		BlockHitResult hitResult = level.clip(new ClipContext(eye, far, ClipContext.Block.OUTLINE, fluidMode, player));
 
@@ -170,18 +193,23 @@ public class SpellCastingItem extends RelicsItem implements IMana {
 		double power = crit ? basePower + critBonus : basePower;
 
 		// spawn spell effect
-		SpellEffectEntity spell = new SpellEffectEntity(level, spellType, player, castPos, castRadius, power, crit);
+		SpellEffectEntity spell = new SpellEffectEntity(level, spellType, player, castPos, effectiveRadius, power, crit);
 		level.addFreshEntity(spell);
 
-		// durability and mana cost
+		// durability and mana cost — pass stack for fortitude check
 		if (!player.isCreative()) {
 			stack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(player.getUsedItemHand()));
 			PlayerMana mana = PlayerMana.get(player);
 			if (mana != null) {
-				mana.expendMana(player, manaCost);
+				float multiplier = 1.0f;
+				if (RelicsItems.MAGE_RING.get().isEquipped(player)) {
+					multiplier = RelicsItems.RESONANCE_RING.get().isEquipped(player) ? PlayerMana.MAGE_AND_RESONANCE_FACTOR : PlayerMana.MAGE_RING_FACTOR;
+				}
+				mana.expendMana(player, manaCost * multiplier, stack);
 			}
 		}
 		player.swing(player.getUsedItemHand());
+
 	}
 
 	@Override

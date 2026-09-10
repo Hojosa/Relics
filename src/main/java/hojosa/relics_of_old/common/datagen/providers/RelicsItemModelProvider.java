@@ -40,6 +40,7 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		withExistingParent(RelicsBlocks.STARWELL_CORE);
 		withExistingParent(RelicsBlocks.SKY_LENS);
 		withExistingParent(RelicsBlocks.RITUAL_LOCUS);
+		withExistingParent(RelicsBlocks.PHOENIX_ALTAR);
 
 		basicItem(RelicsItems.STAR_PIECE);
 		basicItem(RelicsItems.STAR_DUST);
@@ -191,6 +192,7 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItem(RelicsItems.AZURE_MANTLE);
 		basicItem(RelicsItems.PHOENIX_MANTLE);
 		basicItem(RelicsItems.SUNFIRE_DIAMOND);
+		basicItem(RelicsItems.BLACK_EMBLEM);
 
 		// magic mirror model
 		// base model that contains the base transform settings for the model
@@ -225,6 +227,13 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 				.model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_use_0"))).end().override().predicate(modLoc("using"), 0.5f).model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_use_1")))
 				.end().override().predicate(modLoc("using"), 0.75f).model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_use_2"))).end().override().predicate(modLoc("using"), 1.0f)
 				.model(new ModelFile.UncheckedModelFile(modLoc("item/magic_mirror_use_3"))).end();
+
+		// Phoenix emblem — active/flicker variant model
+		getBuilder("phoenix_emblem_active").parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", modLoc("item/phoenix_emblem_active"));
+
+		// Phoenix emblem base model with using override
+		getBuilder(RelicsItems.PHOENIX_EMBLEM.getId().toString()).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", modLoc("item/phoenix_emblem")).override().predicate(modLoc("using"), 1.0f)
+				.model(new ModelFile.UncheckedModelFile(modLoc("item/phoenix_emblem_active"))).end();
 	}
 
 	private ItemModelBuilder infusedItem(RegistryObject<RelicsItem> item, RegistryObject<RelicsItem> parent) {

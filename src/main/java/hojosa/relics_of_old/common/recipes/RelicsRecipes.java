@@ -4,7 +4,7 @@ import java.util.function.Supplier;
 
 import hojosa.relics_of_old.lib.References;
 import lombok.AccessLevel;
-import lombok.NoArgsConstructor; 
+import lombok.NoArgsConstructor;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -26,6 +26,7 @@ public class RelicsRecipes {
 	public static final RegistryObject<RecipeSerializer<RitualCrucibleRecipe>> RITUAL_CRUCIBLE_SERIALIZER = registerSerializer("ritual_crucible", () -> RitualCrucibleRecipe.Serializer.INSTANCE);
 	public static final RegistryObject<RecipeSerializer<RitualBlessingRecipe>> RITUAL_BLESSING_SERIALIZER = registerSerializer("ritual_blessing", () -> RitualBlessingRecipe.Serializer.INSTANCE);
 	public static final RegistryObject<RecipeSerializer<RitualEnchantingRecipe>> RITUAL_ENCHANTING_SERIALIZER = registerSerializer("ritual_enchanting", () -> RitualEnchantingRecipe.Serializer.INSTANCE);
+	public static final RegistryObject<RecipeSerializer<RitualOfferingRecipe>> RITUAL_OFFERING_SERIALIZER = registerSerializer("ritual_offering", () -> RitualOfferingRecipe.Serializer.INSTANCE);
 
 	// types
 	public static final RegistryObject<RecipeType<RitualRecipeBase>> RITUAL_TYPE = TYPES.register("ritual", () -> RitualRecipeBase.Type.INSTANCE);
