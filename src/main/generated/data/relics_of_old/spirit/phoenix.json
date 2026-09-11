@@ -24,7 +24,7 @@
       "cost": 150,
       "enchant_level": 1,
       "hidden": true,
-      "request_tag": "forge:tools/swords",
+      "request_tag": "minecraft:swords",
       "reward_enchantment": "minecraft:fire_aspect"
     },
     {
@@ -38,7 +38,7 @@
       "cost": 150,
       "enchant_level": 1,
       "hidden": true,
-      "request_tag": "relics_of_old:enchantable_armor",
+      "request_tag": "forge:armors",
       "reward_enchantment": "minecraft:fire_protection"
     },
     {

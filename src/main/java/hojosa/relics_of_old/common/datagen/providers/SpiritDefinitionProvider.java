@@ -15,9 +15,12 @@ import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class SpiritDefinitionProvider implements DataProvider {
@@ -77,11 +80,11 @@ public class SpiritDefinitionProvider implements DataProvider {
 		// Diamond → sunfire diamond (3000)
 		boons.add(itemBoon(3000, Items.DIAMOND, RelicsItems.SUNFIRE_DIAMOND.get(), 1));
 		// Sword → fire aspect (150, hidden)
-		boons.add(enchantBoon(150, "forge:tools/swords", "minecraft:fire_aspect", 1));
+		boons.add(enchantBoon(150, ItemTags.SWORDS.location().toString(), ForgeRegistries.ENCHANTMENTS.getKey(Enchantments.FIRE_ASPECT).toString(), 1));
 		// Bow → flame (150, hidden)
-		boons.add(enchantBoonItem(150, Items.BOW, "minecraft:flame", 1));
+		boons.add(enchantBoonItem(150, Items.BOW, ForgeRegistries.ENCHANTMENTS.getKey(Enchantments.FLAMING_ARROWS).toString(), 1));
 		// Armor → fire protection (150, hidden)
-		boons.add(enchantBoon(150, "relics_of_old:enchantable_armor", "minecraft:fire_protection", 1));
+		boons.add(enchantBoon(150, Tags.Items.ARMORS.location().toString(), ForgeRegistries.ENCHANTMENTS.getKey(Enchantments.FIRE_PROTECTION).toString(), 1));
 		// Plain ring → phoenix ring (500, hidden)
 		boons.add(hiddenItemBoon(500, RelicsItems.PLAIN_RING.get(), RelicsItems.PHOENIX_RING.get(), 1));
 		// Water bottle → fire resistance potion (300, hidden)

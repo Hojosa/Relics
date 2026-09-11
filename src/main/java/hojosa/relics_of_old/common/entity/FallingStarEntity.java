@@ -183,7 +183,9 @@ public class FallingStarEntity extends Entity {
 
 	@Override
 	public void remove(RemovalReason pReason) {
-		this.level().setBlockAndUpdate(this.blockPosition(), Blocks.AIR.defaultBlockState());
+		if (this.level().getBlockState(this.blockPosition()).is(Blocks.LIGHT)) {
+	          this.level().setBlockAndUpdate(this.blockPosition(), Blocks.AIR.defaultBlockState());
+	      }
 		super.remove(pReason);
 	}
 }
