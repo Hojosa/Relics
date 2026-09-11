@@ -1,0 +1,15 @@
+{
+  "type": "relics_of_old:ritual_enchanting",
+  "components": [
+    {
+      "block_a": "minecraft:soul_sand",
+      "block_b": "minecraft:tripwire"
+    },
+    {
+      "keystone_block": "minecraft:iron_block"
+    }
+  ],
+  "enchant_level": 1,
+  "enchantment": "relics_of_old:soul_tether",
+  "xp_cost": 10
+}

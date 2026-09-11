@@ -22,6 +22,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -356,8 +357,8 @@ public class RitualRecipeBuilder {
 
 	public static class EnchantingBuilder {
 		private final List<ComponentEntry> components = new ArrayList<>();
-		private String nbtTag;
-		private boolean nbtValue;
+		private ResourceLocation enchantmentId;
+		private int enchantLevel;
 		private int xpCost;
 
 		public EnchantingBuilder pair(Block a, Block b) {
@@ -370,9 +371,9 @@ public class RitualRecipeBuilder {
 			return this;
 		}
 
-		public EnchantingBuilder nbt(String tag, boolean value) {
-			this.nbtTag = tag;
-			this.nbtValue = value;
+		public EnchantingBuilder enchantment(Enchantment enchantment, int level) {
+			this.enchantmentId = ForgeRegistries.ENCHANTMENTS.getKey(enchantment);
+			this.enchantLevel = level;
 			return this;
 		}
 
@@ -390,8 +391,8 @@ public class RitualRecipeBuilder {
 						comps.add(c.toJson());
 					json.add("components", comps);
 
-					json.addProperty("nbt_tag", nbtTag);
-					json.addProperty("nbt_value", nbtValue);
+					json.addProperty("enchantment", enchantmentId.toString());
+					json.addProperty("enchant_level", enchantLevel);
 					json.addProperty("xp_cost", xpCost);
 				}
 
@@ -425,68 +426,68 @@ public class RitualRecipeBuilder {
 	}
 
 	public static class OfferingBuilder {
-	        private final List<ComponentEntry> components = new ArrayList<>();
-	        private String focusType;
-	        private ResourceLocation focusTarget;
-	        private String spirit;
+		private final List<ComponentEntry> components = new ArrayList<>();
+		private String focusType;
+		private ResourceLocation focusTarget;
+		private String spirit;
 
-	        public OfferingBuilder pair(Block a, Block b) {
-	                components.add(new ComponentEntry(a, b));
-	                return this;
-	        }
+		public OfferingBuilder pair(Block a, Block b) {
+			components.add(new ComponentEntry(a, b));
+			return this;
+		}
 
-	        public OfferingBuilder keystone(Block block) {
-	                components.add(new ComponentEntry(block, null));
-	                return this;
-	        }
+		public OfferingBuilder keystone(Block block) {
+			components.add(new ComponentEntry(block, null));
+			return this;
+		}
 
-	        public OfferingBuilder focusBlock(Block block) {
-	                this.focusType = "block";
-	                this.focusTarget = ForgeRegistries.BLOCKS.getKey(block);
-	                return this;
-	        }
+		public OfferingBuilder focusBlock(Block block) {
+			this.focusType = "block";
+			this.focusTarget = ForgeRegistries.BLOCKS.getKey(block);
+			return this;
+		}
 
-	        public OfferingBuilder spirit(String spirit) {
-	                this.spirit = spirit;
-	                return this;
-	        }
+		public OfferingBuilder spirit(String spirit) {
+			this.spirit = spirit;
+			return this;
+		}
 
-	        public void save(Consumer<FinishedRecipe> consumer, String name) {
-	                consumer.accept(new FinishedRecipe() {
-	                        @Override
-	                        public void serializeRecipeData(JsonObject json) {
-	                                JsonArray comps = new JsonArray();
-	                                for (ComponentEntry c : components)
-	                                        comps.add(c.toJson());
-	                                json.add("components", comps);
-	                                if (focusType != null) {
-	                                        JsonObject focus = new JsonObject();
-	                                        focus.addProperty(focusType, focusTarget.toString());
-	                                        json.add("focus", focus);
-	                                }
-	                                json.addProperty("spirit", spirit);
-	                        }
+		public void save(Consumer<FinishedRecipe> consumer, String name) {
+			consumer.accept(new FinishedRecipe() {
+				@Override
+				public void serializeRecipeData(JsonObject json) {
+					JsonArray comps = new JsonArray();
+					for (ComponentEntry c : components)
+						comps.add(c.toJson());
+					json.add("components", comps);
+					if (focusType != null) {
+						JsonObject focus = new JsonObject();
+						focus.addProperty(focusType, focusTarget.toString());
+						json.add("focus", focus);
+					}
+					json.addProperty("spirit", spirit);
+				}
 
-	                        @Override
-	                        public ResourceLocation getId() {
-	                                return RelicsUtil.modLoc("ritual/" + name);
-	                        }
+				@Override
+				public ResourceLocation getId() {
+					return RelicsUtil.modLoc("ritual/" + name);
+				}
 
-	                        @Override
-	                        public RecipeSerializer<?> getType() {
-	                                return RitualOfferingRecipe.Serializer.INSTANCE;
-	                        }
+				@Override
+				public RecipeSerializer<?> getType() {
+					return RitualOfferingRecipe.Serializer.INSTANCE;
+				}
 
-	                        @Override
-	                        public @Nullable JsonObject serializeAdvancement() {
-	                                return null;
-	                        }
+				@Override
+				public @Nullable JsonObject serializeAdvancement() {
+					return null;
+				}
 
-	                        @Override
-	                        public @Nullable ResourceLocation getAdvancementId() {
-	                                return null;
-	                        }
-	                });
-	        }
+				@Override
+				public @Nullable ResourceLocation getAdvancementId() {
+					return null;
+				}
+			});
+		}
 	}
 }

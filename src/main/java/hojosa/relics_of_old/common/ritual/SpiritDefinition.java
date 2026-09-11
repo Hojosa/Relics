@@ -59,19 +59,22 @@ public class SpiritDefinition {
 		public final int rewardCount;
 		@Nullable
 		public final String rewardNbt;
+		@Nullable
+		public final String requestNbt;
 
 		// Enchant reward fields
 		@Nullable
 		public final ResourceLocation enchantmentId;
 		public final int enchantLevel;
 
-		public BoonEntry(int cost, boolean hidden, RewardType rewardType, @Nullable ResourceLocation requestItem, @Nullable ResourceLocation requestTag, @Nullable ResourceLocation rewardItem, int rewardCount,
-				@Nullable String rewardNbt, @Nullable ResourceLocation enchantmentId, int enchantLevel) {
+		public BoonEntry(int cost, boolean hidden, RewardType rewardType, @Nullable ResourceLocation requestItem, @Nullable ResourceLocation requestTag, @Nullable String requestNbt, @Nullable ResourceLocation rewardItem,
+				int rewardCount, @Nullable String rewardNbt, @Nullable ResourceLocation enchantmentId, int enchantLevel) {
 			this.cost = cost;
 			this.hidden = hidden;
 			this.rewardType = rewardType;
 			this.requestItem = requestItem;
 			this.requestTag = requestTag;
+			this.requestNbt = requestNbt;
 			this.rewardItem = rewardItem;
 			this.rewardCount = rewardCount;
 			this.rewardNbt = rewardNbt;

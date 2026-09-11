@@ -5,6 +5,7 @@ import java.util.function.Consumer;
 
 import hojosa.relics_of_old.common.datagen.builders.RitualRecipeBuilder;
 import hojosa.relics_of_old.common.init.RelicsBlocks;
+import hojosa.relics_of_old.common.init.RelicsEnchantments;
 import hojosa.relics_of_old.common.init.RelicsItems;
 import hojosa.relics_of_old.common.init.RelicsTags;
 import hojosa.relics_of_old.lib.References;
@@ -562,13 +563,13 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.duration(3600, 600)
 		.save(consumer, "stoneskin");
 
-//		// Soul tether enchanting
-//		RitualRecipeBuilder.enchanting()
-//		.pair(Blocks.SOUL_SAND, Blocks.TRIPWIRE)
-//		.keystone(Blocks.IRON_BLOCK)
-//		.nbt("soulTether", true)
-//		.xpCost(10)
-//		.save(consumer, "soul_tether");
+		// Soul tether enchanting
+		RitualRecipeBuilder.enchanting()
+		.pair(Blocks.SOUL_SAND, Blocks.TRIPWIRE)
+		.keystone(Blocks.IRON_BLOCK)
+		.enchantment(RelicsEnchantments.SOUL_TETHER.get(), 1)
+		.xpCost(10)
+		.save(consumer, "soul_tether");
 		
 		// Starglass lump: smelt starry sand
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(RelicsBlocks.STARRY_SAND.get()), RecipeCategory.MISC, RelicsItems.STARGLASS_LUMP.get(), 0.0f, 200)

@@ -79,6 +79,7 @@ public class SpiritDefinitionLoader extends SimpleJsonResourceReloadListener {
 	private static SpiritDefinition.BoonEntry parseBoon(JsonObject obj) {
 		int cost = GsonHelper.getAsInt(obj, "cost");
 		boolean hidden = GsonHelper.getAsBoolean(obj, "hidden", false);
+		String requestNbt = obj.has("request_nbt") ? obj.get("request_nbt").getAsString() : null;
 
 		// Request matching
 		ResourceLocation requestItem = obj.has("request") && !obj.get("request").isJsonNull() ? ResourceLocation.parse(obj.get("request").getAsString()) : null;
@@ -102,7 +103,6 @@ public class SpiritDefinitionLoader extends SimpleJsonResourceReloadListener {
 				rewardItem = ResourceLocation.parse(obj.get("reward").getAsString());
 			}
 		}
-
-		return new SpiritDefinition.BoonEntry(cost, hidden, type, requestItem, requestTag, rewardItem, rewardCount, rewardNbt, enchantmentId, enchantLevel);
+		return new SpiritDefinition.BoonEntry(cost, hidden, type, requestItem, requestTag, requestNbt, rewardItem, rewardCount, rewardNbt, enchantmentId, enchantLevel);
 	}
 }

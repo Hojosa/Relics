@@ -6,9 +6,9 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import hojosa.relics_of_old.common.ritual.SpiritDefinition;
-import hojosa.relics_of_old.common.ritual.SpiritDefinitionLoader;
 import hojosa.relics_of_old.common.ritual.SpiritDefinition.BoonEntry;
 import hojosa.relics_of_old.common.ritual.SpiritDefinition.RewardType;
+import hojosa.relics_of_old.common.ritual.SpiritDefinitionLoader;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
@@ -259,17 +259,40 @@ public class SpiritFavor {
 		for (BoonEntry boon : def.boons) {
 			// Match by exact item ID
 			if (boon.requestItem != null && boon.requestItem.equals(itemId)) {
+				// If request has NBT requirement, check it matches
+				if (boon.requestNbt != null && !matchesNbt(offering, boon.requestNbt))
+					continue;
 				return boon;
 			}
 			// Match by item tag
 			if (boon.requestTag != null) {
 				TagKey<net.minecraft.world.item.Item> tag = TagKey.create(Registries.ITEM, boon.requestTag);
 				if (offering.is(tag)) {
+					if (boon.requestNbt != null && !matchesNbt(offering, boon.requestNbt))
+						continue;
 					return boon;
 				}
 			}
 		}
 		return null;
+	}
+
+	// Check if an item's NBT contains the expected values
+	private boolean matchesNbt(ItemStack stack, String expectedNbt) {
+		try {
+			CompoundTag expected = net.minecraft.nbt.TagParser.parseTag(expectedNbt);
+			CompoundTag actual = stack.getTag();
+			if (actual == null)
+				return expected.isEmpty();
+			// All keys in expected must match in actual
+			for (String key : expected.getAllKeys()) {
+				if (!actual.contains(key) || !actual.get(key).equals(expected.get(key)))
+					return false;
+			}
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	// --- Mood message (LG2 chat feedback on offering) ---
