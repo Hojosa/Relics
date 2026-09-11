@@ -1,6 +1,7 @@
 package hojosa.relics_of_old.common.block;
 
 import hojosa.relics_of_old.common.block.entity.PhoenixAltarBlockEntity;
+import hojosa.relics_of_old.common.init.RelicsItems;
 import hojosa.relics_of_old.lib.block.RelicsBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -42,14 +43,19 @@ public class PhoenixAltarBlock extends RelicsBlock implements EntityBlock {
 	@Override
 	public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
 		if (!pLevel.isClientSide() && pHand == InteractionHand.MAIN_HAND && pHit.getDirection() == Direction.UP) {
+			ItemStack itemInHand = pPlayer.getItemInHand(pHand);
+
+			// Let infused star dust activate its own right-click interaction
+			if (itemInHand.is(RelicsItems.INFUSED_STAR_DUST.get()))
+				return InteractionResult.PASS;
+
 			BlockEntity be = pLevel.getBlockEntity(pPos);
 			if (be instanceof PhoenixAltarBlockEntity altar) {
 				ItemStack slotStack = altar.getItem(0);
-				ItemStack itemInHand = pPlayer.getItemInHand(pHand);
 
 				if (!itemInHand.isEmpty() || !slotStack.isEmpty()) {
-					// Swap: place entire hand stack, retrieve existing slot contents
 					altar.setItem(0, itemInHand.copy());
+					altar.setItemFacing(pPlayer.getDirection());
 					itemInHand.setCount(0);
 					pPlayer.addItem(slotStack);
 					pLevel.playSound(null, pPos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1.0F, 1.0F);

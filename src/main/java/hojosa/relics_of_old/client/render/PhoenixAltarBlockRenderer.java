@@ -22,10 +22,20 @@ public class PhoenixAltarBlockRenderer implements BlockEntityRenderer<PhoenixAlt
 
 		ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
 
+		// Convert stored direction to Y rotation angle
+		float rotation = switch (pBlockEntity.getItemFacing()) {
+		case SOUTH -> 0;
+		case EAST -> 90;
+		case NORTH -> 180;
+		case WEST -> 270;
+		default -> 0;
+		};
+
 		pPoseStack.pushPose();
 		// Centered on top of the 3/4 height altar (12/16 = 0.75)
 		pPoseStack.translate(0.5, 0.765, 0.5);
 		pPoseStack.scale(0.4f, 0.4f, 0.4f);
+		pPoseStack.mulPose(Axis.YP.rotationDegrees(rotation));
 		pPoseStack.mulPose(Axis.XP.rotationDegrees(90));
 		itemRenderer.renderStatic(pBlockEntity.getItem(0), ItemDisplayContext.FIXED, 200, pPackedOverlay, pPoseStack, pBuffer, pBlockEntity.getLevel(), 1);
 		pPoseStack.popPose();
