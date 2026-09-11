@@ -67,7 +67,7 @@ public class FallingStarEntity extends Entity {
 	public void playerTouch(Player pPlayer) {
 		if (!this.level().isClientSide()) {
 			pPlayer.addItem(new ItemStack(RelicsItems.STAR_PIECE.get(), 1));
-			ExperienceOrb.award((ServerLevel) this.level(), this.position(), 3);
+			ExperienceOrb.award((ServerLevel) this.level(), this.position(), 15);
 			pPlayer.getCapability(StarFallChanceProvider.PLAYER_STAR_FALL).ifPresent(star -> star.setStarsCollected(star.getStarsCollected() + 1));
 			// add achivement maybe?
 			this.remove(RemovalReason.DISCARDED);
@@ -125,7 +125,7 @@ public class FallingStarEntity extends Entity {
 			if (this.getAliveState() == 0) {
 				if (!this.level().isClientSide()) {
 					this.spawnAtLocation(new ItemStack(RelicsItems.STAR_DUST.get(), random.nextInt(2)));
-					ExperienceOrb.award((ServerLevel) this.level(), this.position(), 1);
+					ExperienceOrb.award((ServerLevel) this.level(), this.position(), 5);
 					this.remove(RemovalReason.DISCARDED);
 				} else {
 					// particles?

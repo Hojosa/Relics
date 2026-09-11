@@ -2,6 +2,7 @@ package hojosa.relics_of_old.common.init;
 
 import hojosa.relics_of_old.common.block.entity.ClayJarBlockEntity;
 import hojosa.relics_of_old.common.block.entity.InfusedStarstoneBlockEntity;
+import hojosa.relics_of_old.common.block.entity.PhoenixAltarBlockEntity;
 import hojosa.relics_of_old.common.block.entity.RetexturedSwordPedestalEntity;
 import hojosa.relics_of_old.common.block.entity.RitualLocusBlockEntity;
 import hojosa.relics_of_old.common.block.entity.SkybeamBlockEntity;
@@ -45,4 +46,7 @@ public class RelicsBlockEntities {
 
 	public static final RegistryObject<BlockEntityType<RitualLocusBlockEntity>> RITUAL_LOCUS_BLOCK_ENTITY = BLOCK_ENTITIES.register(References.UnlocalizedName.RITUAL_LOCUS, RitualLocusBlockEntity::new,
 			builder -> builder.add(RelicsBlocks.RITUAL_LOCUS.get()));
+	
+	public static final RegistryObject<BlockEntityType<PhoenixAltarBlockEntity>> PHOENIX_ALTAR_BLOCK_ENTITY = BLOCK_ENTITIES.register(References.UnlocalizedName.PHOENIX_ALTAR,
+            PhoenixAltarBlockEntity::new, builder -> builder.add(RelicsBlocks.PHOENIX_ALTAR.get()));
 }

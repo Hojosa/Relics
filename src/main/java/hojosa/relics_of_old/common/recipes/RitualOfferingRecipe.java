@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 
 import com.google.gson.JsonObject;
 
+import hojosa.relics_of_old.common.block.entity.PhoenixAltarBlockEntity;
 import hojosa.relics_of_old.common.block.entity.RitualLocusBlockEntity;
 import hojosa.relics_of_old.common.entity.FallingStarEntity;
 import hojosa.relics_of_old.common.player.SpiritFavor;
@@ -22,6 +23,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.registries.ForgeRegistries;
 
 //Ritual offering recipe — consumes an offered item via the spirit favor system.
@@ -58,6 +60,7 @@ public class RitualOfferingRecipe extends RitualRecipeBase {
 		ItemStack offering = ItemStack.EMPTY;
 		ItemEntity offeredEntity = null;
 		boolean offeringIsBlock = false;
+		boolean offeringFromAltar = false;
 
 		if (!hasAltar) {
 			// Basic offering: check for block on top of locus first, then dropped items
@@ -66,10 +69,17 @@ public class RitualOfferingRecipe extends RitualRecipeBase {
 				offering = new ItemStack(blockAbove);
 				offeringIsBlock = true;
 			}
+		} else {
+			// Altar offering: check the altar's inventory for a placed item
+			BlockEntity altarBE = level.getBlockEntity(pos.above());
+			if (altarBE instanceof PhoenixAltarBlockEntity altar && !altar.isEmpty()) {
+				offering = altar.getItem(0);
+				offeringFromAltar = true;
+			}
 		}
 
 		if (offering.isEmpty()) {
-			// Check for dropped items above the locus
+			// Fallback: check for dropped items above the locus
 			List<ItemEntity> items = location.itemsInRitual();
 			if (items.isEmpty())
 				return false;
@@ -127,11 +137,17 @@ public class RitualOfferingRecipe extends RitualRecipeBase {
 		if (offeredEntity != null) {
 			offeredEntity.discard();
 		}
+		if (offeringFromAltar) {
+			// Clear the altar's inventory
+			BlockEntity altarBE = level.getBlockEntity(pos.above());
+			if (altarBE instanceof PhoenixAltarBlockEntity altar) {
+				altar.setItem(0, ItemStack.EMPTY);
+			}
+		}
 		if (offeringIsBlock) {
 			// Replace the focus block with fire (LG2 behavior for basic offering)
 			level.setBlockAndUpdate(pos.above(), Blocks.FIRE.defaultBlockState());
 		}
-
 		return true;
 	}
 

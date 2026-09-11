@@ -16,6 +16,7 @@ import hojosa.relics_of_old.client.render.GlintBlockRenderer;
 import hojosa.relics_of_old.client.render.InfusedStarstoneBlockRenderer;
 import hojosa.relics_of_old.client.render.MagicBoomerangRenderer;
 import hojosa.relics_of_old.client.render.MedallionEntityRenderer;
+import hojosa.relics_of_old.client.render.PhoenixAltarBlockRenderer;
 import hojosa.relics_of_old.client.render.PingEntityRenderer;
 import hojosa.relics_of_old.client.render.RitualLocusBlockRenderer;
 import hojosa.relics_of_old.client.render.SkybeamBlockRenderer;
@@ -138,6 +139,7 @@ public class RelicsClientEvents {
 		event.registerBlockEntityRenderer(RelicsBlockEntities.SKYBEAM_BLOCK_ENTITY.get(), context -> new SkybeamBlockRenderer());
 		event.registerBlockEntityRenderer(RelicsBlockEntities.STARWELL_BLOCK_ENTITY.get(), context -> new StarwellBlockRenderer());
 		event.registerBlockEntityRenderer(RelicsBlockEntities.RITUAL_LOCUS_BLOCK_ENTITY.get(), context -> new RitualLocusBlockRenderer());
+		event.registerBlockEntityRenderer(RelicsBlockEntities.PHOENIX_ALTAR_BLOCK_ENTITY.get(), PhoenixAltarBlockRenderer::new);
 
 		event.registerEntityRenderer(RelicsEntities.FALLING_STAR.get(), FallingStarRenderer::new);
 		event.registerEntityRenderer(RelicsEntities.STARBEAM.get(), StarBeamRenderer::new);
