@@ -8,11 +8,13 @@ import hojosa.relics_of_old.common.mana.IMana;
 import hojosa.relics_of_old.common.player.PlayerMana;
 import hojosa.relics_of_old.common.player.SpiritFavorProvider;
 import hojosa.relics_of_old.lib.item.RelicsItem;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -114,6 +116,17 @@ public class PhoenixEmblemItem extends RelicsItem implements IMana {
 		player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 20, 0));
 		player.setSecondsOnFire(1);
 		player.level().playSound(null, player.blockPosition(), RelicsSounds.REVIVE.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
+	}
+
+	@Override
+	public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
+		if (!level.isClientSide() && entity instanceof Player player) {
+			CompoundTag data = player.getPersistentData();
+			long currentTick = level.getGameTime();
+			if (data.getLong("phoenixObserveTick") != currentTick) {
+				data.putLong("phoenixObserveTick", currentTick);
+			}
+		}
 	}
 
 	@Override
