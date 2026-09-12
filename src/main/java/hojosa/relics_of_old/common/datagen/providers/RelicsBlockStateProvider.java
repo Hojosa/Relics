@@ -6,6 +6,7 @@ import hojosa.relics_of_old.common.block.BombFlower;
 import hojosa.relics_of_old.common.block.BoostPlate;
 import hojosa.relics_of_old.common.block.MysticShrub;
 import hojosa.relics_of_old.common.block.NormalSwordPedestal;
+import hojosa.relics_of_old.common.block.StarglassBlock;
 import hojosa.relics_of_old.common.block.StarwellBlock;
 import hojosa.relics_of_old.common.init.RelicsBlocks;
 import hojosa.relics_of_old.lib.References;
@@ -54,6 +55,8 @@ public class RelicsBlockStateProvider extends BlockStateProvider {
 		simpleBlock(RelicsBlocks.RITUAL_LOCUS.get());
 		phoenixAltar();
 		simpleBlock(RelicsBlocks.AZURITE_ORE.get());
+		starglassBlock();
+//		overlayBlock(RelicsBlocks.STARGLASS_BLOCK.get(), "translucent", "starglass_overlay", "chaos_rainbow_overlay");
 	}
 
 	private void simpleBlockInfused(Block block, Block parent) {
@@ -145,23 +148,101 @@ public class RelicsBlockStateProvider extends BlockStateProvider {
 	}
 
 	private void phoenixAltar() {
-	      Block block = RelicsBlocks.PHOENIX_ALTAR.get();
-	      ModelFile model = models().getBuilder("phoenix_altar")
-	          .parent(new ModelFile.UncheckedModelFile(mcLoc("block/block")))
-	          .texture("side", modLoc("block/phoenix_altar_side"))
-	          .texture("top", modLoc("block/phoenix_altar_top"))
-	          .texture("particle", modLoc("block/phoenix_altar_side"))
-	          .element()
-	              .from(0, 0, 0).to(16, 12, 16)
-	              .face(Direction.NORTH).texture("#side").uvs(0, 4, 16, 16).cullface(Direction.NORTH).end()
-	              .face(Direction.SOUTH).texture("#side").uvs(0, 4, 16, 16).cullface(Direction.SOUTH).end()
-	              .face(Direction.EAST).texture("#side").uvs(0, 4, 16, 16).cullface(Direction.EAST).end()
-	              .face(Direction.WEST).texture("#side").uvs(0, 4, 16, 16).cullface(Direction.WEST).end()
-	              .face(Direction.UP).texture("#top").uvs(0, 0, 16, 16).end()
-	              .face(Direction.DOWN).texture("#top").uvs(0, 0, 16, 16).cullface(Direction.DOWN).end()
-	          .end();
-	      simpleBlock(block, model);
+		Block block = RelicsBlocks.PHOENIX_ALTAR.get();
+		ModelFile model = models().getBuilder("phoenix_altar").parent(new ModelFile.UncheckedModelFile(mcLoc("block/block"))).texture("side", modLoc("block/phoenix_altar_side"))
+				.texture("top", modLoc("block/phoenix_altar_top")).texture("particle", modLoc("block/phoenix_altar_side")).element().from(0, 0, 0).to(16, 12, 16).face(Direction.NORTH).texture("#side").uvs(0, 4, 16, 16)
+				.cullface(Direction.NORTH).end().face(Direction.SOUTH).texture("#side").uvs(0, 4, 16, 16).cullface(Direction.SOUTH).end().face(Direction.EAST).texture("#side").uvs(0, 4, 16, 16).cullface(Direction.EAST)
+				.end().face(Direction.WEST).texture("#side").uvs(0, 4, 16, 16).cullface(Direction.WEST).end().face(Direction.UP).texture("#top").uvs(0, 0, 16, 16).end().face(Direction.DOWN).texture("#top")
+				.uvs(0, 0, 16, 16).cullface(Direction.DOWN).end().end();
+		simpleBlock(block, model);
 	}
+
+	private void starglassBlock() {
+	      Block block = RelicsBlocks.STARGLASS_BLOCK.get();
+	      String name = ForgeRegistries.BLOCKS.getKey(block).getPath();
+
+	      // Model with south face as glass, all others solid starglass
+	      var builder = models().getBuilder(name)
+	          .parent(new ModelFile.UncheckedModelFile(mcLoc("block/block")))
+	          .renderType("translucent")
+	          .texture("base", modLoc("block/" + name))
+	          .texture("glass", mcLoc("block/glass"))
+	          .texture("particle", modLoc("block/" + name));
+
+	   // Base cube — skip south face (overlays alone provide the glass look there)
+	      builder.element()
+	          .from(0, 0, 0).to(16, 16, 16)
+	          .face(Direction.NORTH).texture("#base").cullface(Direction.NORTH).end()
+	          .face(Direction.EAST).texture("#base").cullface(Direction.EAST).end()
+	          .face(Direction.WEST).texture("#base").cullface(Direction.WEST).end()
+	          .face(Direction.UP).texture("#base").cullface(Direction.UP).end()
+	          .face(Direction.DOWN).texture("#base").cullface(Direction.DOWN).end();
+
+	      // Sparkle overlay — all faces
+	      builder.texture("overlay0", modLoc("block/starglass_overlay"));
+	      builder.element()
+	          .from(0, 0, 0).to(16, 16, 16)
+	          .allFaces((dir, face) -> face.texture("#overlay0").cullface(dir))
+	      .end();
+
+	      // Rainbow overlay — all faces, emissive
+	      builder.texture("overlay1", modLoc("block/chaos_rainbow_overlay"));
+	      builder.element()
+	          .from(0, 0, 0).to(16, 16, 16)
+	          .allFaces((dir, face) -> {
+	              face.texture("#overlay1").cullface(dir).emissivity(15, 15);
+	          })
+	      .end();
+
+	      // Blockstate variants — rotate model so glass face aligns with opposite of FACING
+	      getVariantBuilder(block)
+	          .partialState().with(StarglassBlock.FACING, Direction.NORTH)
+	              .modelForState().modelFile(builder).addModel()
+	          .partialState().with(StarglassBlock.FACING, Direction.SOUTH)
+	              .modelForState().modelFile(builder).rotationY(180).addModel()
+	          .partialState().with(StarglassBlock.FACING, Direction.EAST)
+	              .modelForState().modelFile(builder).rotationY(90).addModel()
+	          .partialState().with(StarglassBlock.FACING, Direction.WEST)
+	              .modelForState().modelFile(builder).rotationY(270).addModel()
+	          .partialState().with(StarglassBlock.FACING, Direction.UP)
+	              .modelForState().modelFile(builder).rotationX(270).addModel()
+	          .partialState().with(StarglassBlock.FACING, Direction.DOWN)
+	              .modelForState().modelFile(builder).rotationX(90).addModel();
+	  }
+
+	// Builds a cube_all model with N overlay elements on top of the base texture
+	// includes a check for our chaos rainbow overlay to make it emissive
+	private void overlayBlock(Block block, String renderType, String... overlays) {
+	      String name = ForgeRegistries.BLOCKS.getKey(block).getPath();
+	      var builder = models().getBuilder(name)
+	          .parent(new ModelFile.UncheckedModelFile(mcLoc("block/block")))
+	          .renderType(renderType)
+	          .texture("base", modLoc("block/" + name))
+	          .texture("particle", modLoc("block/" + name));
+
+	      // base cube
+	      builder.element()
+	          .from(0, 0, 0).to(16, 16, 16)
+	          .allFaces((dir, face) -> face.texture("#base").cullface(dir))
+	      .end();
+
+	      // overlay cubes
+	      for (int i = 0; i < overlays.length; i++) {
+	            String key = "overlay" + i;
+	            builder.texture(key, modLoc("block/" + overlays[i]));
+	            String texRef = "#" + key;
+	            boolean emissive = overlays[i].contains("chaos_rainbow");
+	            builder.element()
+	                .from(0, 0, 0).to(16, 16, 16)
+	                .allFaces((dir, face) -> {
+	                    face.texture(texRef).cullface(dir);
+	                    if (emissive) face.emissivity(15, 15);
+	                })
+	            .end();
+	        }
+	        simpleBlock(block, builder);
+	  }
+
 
 	@Override
 	public @NotNull String getName() {

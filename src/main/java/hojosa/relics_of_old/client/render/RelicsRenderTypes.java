@@ -3,6 +3,7 @@ package hojosa.relics_of_old.client.render;
 import java.util.OptionalDouble;
 import java.util.function.BiFunction;
 
+import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormat;
@@ -11,6 +12,7 @@ import com.mojang.blaze3d.vertex.VertexFormat.Mode;
 import hojosa.relics_of_old.lib.References;
 import hojosa.relics_of_old.lib.RelicsUtil;
 import net.minecraft.Util;
+import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
@@ -22,6 +24,7 @@ public class RelicsRenderTypes extends RenderType {
 	}
 	
 	private static final ResourceLocation GLINT_TEX = RelicsUtil.modLoc("textures/glint/glint_rainbow.png");
+	private static final ResourceLocation CHAOS_RAINBOW_TEX = RelicsUtil.modLoc("textures/glint/chaosrainbow2.png");
 	// spell reticle line types — uses RENDERTYPE_LINES_SHADER for GPU quad expansion (no glLineWidth)
 	public static final RenderType RETICLE_LINE_THIN = createReticleLineStrip("reticle_thin", 1.0);
 	public static final RenderType RETICLE_LINE_MEDIUM = createReticleLineStrip("reticle_medium", 2.0);
@@ -72,6 +75,31 @@ public class RelicsRenderTypes extends RenderType {
 		.setTexturingState(RenderStateShard.GLINT_TEXTURING)
 		.setLayeringState(CUSTOM_POLYGON_OFFSET_LAYERING)
 		.createCompositeState(false));
+	
+	private static final RenderStateShard.TransparencyStateShard SCREEN_BLEND_TRANSPARENCY =
+		      new RenderStateShard.TransparencyStateShard("screen_blend", () -> {
+		          RenderSystem.enableBlend();
+		          RenderSystem.blendFunc(GlStateManager.SourceFactor.ONE_MINUS_DST_COLOR, GlStateManager.DestFactor.ONE);
+		      }, () -> {
+		          RenderSystem.disableBlend();
+		          RenderSystem.defaultBlendFunc();
+		      });
+	
+	public static final RenderType BLOCK_CHAOS_RAINBOW = RenderType.create(
+		      References.MOD_ID + ":block_chaos_rainbow",
+		      DefaultVertexFormat.POSITION_COLOR_TEX, VertexFormat.Mode.QUADS, 1536, false, false,
+		      CompositeState.builder()
+		          .setShaderState(new ShaderStateShard(GameRenderer::getPositionColorTexShader))
+		          .setTextureState(new TextureStateShard(CHAOS_RAINBOW_TEX, true, false))
+		          .setWriteMaskState(RenderStateShard.COLOR_WRITE)
+		          .setCullState(RenderStateShard.NO_CULL)
+		          .setDepthTestState(RenderStateShard.LEQUAL_DEPTH_TEST)
+		          .setTransparencyState(SCREEN_BLEND_TRANSPARENCY)
+		          .setLayeringState(CUSTOM_POLYGON_OFFSET_LAYERING)
+		          .createCompositeState(false));
+	
+	
+
 
     private static final BiFunction<ResourceLocation, Boolean, RenderType> TEXTURE_RENDER_COLORED = Util.memoize((rl, disableDepthTest) -> {
         RenderType.CompositeState state = RenderType.CompositeState.builder()

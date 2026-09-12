@@ -157,6 +157,7 @@ public class RelicsLootTables extends VanillaBlockLoot {
 		  dropSelf(RelicsBlocks.RITUAL_LOCUS.get());
 		  dropSelf(RelicsBlocks.PHOENIX_ALTAR.get());
 		  dropSelf(RelicsBlocks.AZURITE_ORE.get());
+		  dropSelf(RelicsBlocks.STARGLASS_BLOCK.get());
 	}
 
 	@Override

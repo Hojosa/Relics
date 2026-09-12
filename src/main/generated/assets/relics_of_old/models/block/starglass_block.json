@@ -1,0 +1,147 @@
+{
+  "parent": "minecraft:block/block",
+  "elements": [
+    {
+      "faces": {
+        "down": {
+          "cullface": "down",
+          "texture": "#base"
+        },
+        "east": {
+          "cullface": "east",
+          "texture": "#base"
+        },
+        "north": {
+          "cullface": "north",
+          "texture": "#base"
+        },
+        "up": {
+          "cullface": "up",
+          "texture": "#base"
+        },
+        "west": {
+          "cullface": "west",
+          "texture": "#base"
+        }
+      },
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ]
+    },
+    {
+      "faces": {
+        "down": {
+          "cullface": "down",
+          "texture": "#overlay0"
+        },
+        "east": {
+          "cullface": "east",
+          "texture": "#overlay0"
+        },
+        "north": {
+          "cullface": "north",
+          "texture": "#overlay0"
+        },
+        "south": {
+          "cullface": "south",
+          "texture": "#overlay0"
+        },
+        "up": {
+          "cullface": "up",
+          "texture": "#overlay0"
+        },
+        "west": {
+          "cullface": "west",
+          "texture": "#overlay0"
+        }
+      },
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ]
+    },
+    {
+      "faces": {
+        "down": {
+          "cullface": "down",
+          "forge_data": {
+            "block_light": 15,
+            "sky_light": 15
+          },
+          "texture": "#overlay1"
+        },
+        "east": {
+          "cullface": "east",
+          "forge_data": {
+            "block_light": 15,
+            "sky_light": 15
+          },
+          "texture": "#overlay1"
+        },
+        "north": {
+          "cullface": "north",
+          "forge_data": {
+            "block_light": 15,
+            "sky_light": 15
+          },
+          "texture": "#overlay1"
+        },
+        "south": {
+          "cullface": "south",
+          "forge_data": {
+            "block_light": 15,
+            "sky_light": 15
+          },
+          "texture": "#overlay1"
+        },
+        "up": {
+          "cullface": "up",
+          "forge_data": {
+            "block_light": 15,
+            "sky_light": 15
+          },
+          "texture": "#overlay1"
+        },
+        "west": {
+          "cullface": "west",
+          "forge_data": {
+            "block_light": 15,
+            "sky_light": 15
+          },
+          "texture": "#overlay1"
+        }
+      },
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ]
+    }
+  ],
+  "render_type": "minecraft:translucent",
+  "textures": {
+    "base": "relics_of_old:block/starglass_block",
+    "glass": "minecraft:block/glass",
+    "overlay0": "relics_of_old:block/starglass_overlay",
+    "overlay1": "relics_of_old:block/chaos_rainbow_overlay",
+    "particle": "relics_of_old:block/starglass_block"
+  }
+}

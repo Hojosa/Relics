@@ -40,7 +40,8 @@ public class RelicsBlockTags extends BlockTagsProvider {
 		.add(RelicsBlocks.SKY_LENS.get())
 		.add(RelicsBlocks.RITUAL_LOCUS.get())
 		.add(RelicsBlocks.PHOENIX_ALTAR.get())
-		.add(RelicsBlocks.AZURITE_ORE.get());
+		.add(RelicsBlocks.AZURITE_ORE.get())
+		.add(RelicsBlocks.STARGLASS_BLOCK.get());
 		tag(BlockTags.NEEDS_STONE_TOOL)
 		.add(RelicsBlocks.SWORD_PEDESTAL_NORMAL.get())
 		.add(RelicsBlocks.SWORD_PEDESTAL_STONE.get())
@@ -50,7 +51,8 @@ public class RelicsBlockTags extends BlockTagsProvider {
 		.add(RelicsBlocks.SWORD_PEDESTAL_TWILIGHT.get())
 		.add(RelicsBlocks.ODDISH_POT.get())
 		.add(RelicsBlocks.SKY_LENS.get())
-		.add(RelicsBlocks.RITUAL_LOCUS.get());
+		.add(RelicsBlocks.RITUAL_LOCUS.get())
+		.add(RelicsBlocks.STARGLASS_BLOCK.get());
 		tag(BlockTags.NEEDS_IRON_TOOL)
 		.add(RelicsBlocks.INFUSED_STARSTONE_BLOCK.get())
 		.add(RelicsBlocks.SKYBEAM_BLOCK.get())

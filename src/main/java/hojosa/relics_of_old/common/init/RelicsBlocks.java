@@ -17,6 +17,7 @@ import hojosa.relics_of_old.common.block.RelicSwordPedestal;
 import hojosa.relics_of_old.common.block.RitualLocusBlock;
 import hojosa.relics_of_old.common.block.SkybeamBlock;
 import hojosa.relics_of_old.common.block.StarBeamTorch;
+import hojosa.relics_of_old.common.block.StarglassBlock;
 import hojosa.relics_of_old.common.block.StarwellBlock;
 import hojosa.relics_of_old.common.block.StarwellFrameBlock;
 import hojosa.relics_of_old.common.block.StoneSwordPedestal;
@@ -106,7 +107,9 @@ public class RelicsBlocks {
 			BLOCK_ITEM);
 	public static final ItemObject<Block> RITUAL_LOCUS = BLOCKS.register(References.UnlocalizedName.RITUAL_LOCUS, RitualLocusBlock::new, BLOCK_ITEM);
 	public static final ItemObject<Block> PHOENIX_ALTAR = BLOCKS.register(References.UnlocalizedName.PHOENIX_ALTAR, PhoenixAltarBlock::new, BLOCK_ITEM);
-	public static final ItemObject<Block> AZURITE_ORE = BLOCKS.register(References.UnlocalizedName.AZURITE_ORE, () -> new RelicsNormalBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(3.0f).sound(SoundType.STONE)), BLOCK_ITEM);
+	public static final ItemObject<Block> AZURITE_ORE = BLOCKS.register(References.UnlocalizedName.AZURITE_ORE,
+			() -> new RelicsNormalBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(3.0f).sound(SoundType.STONE)), BLOCK_ITEM);
+	public static final ItemObject<Block> STARGLASS_BLOCK = BLOCKS.register(References.UnlocalizedName.STARGLASS_BLOCK, StarglassBlock::new, BLOCK_ITEM);
 
 	/**
 	 * We use this builder to ensure that our blocks all have the most important properties set. This way it'll stick out if a block doesn't have a
@@ -150,7 +153,8 @@ public class RelicsBlocks {
 		output.accept(RITUAL_LOCUS.get().asItem());
 		output.accept(PHOENIX_ALTAR.get().asItem());
 		output.accept(AZURITE_ORE.get().asItem());
-
+		output.accept(STARGLASS_BLOCK.get().asItem());
+		
 		Predicate<ItemStack> variants = stack -> {
 			output.accept(stack);
 			return false;
