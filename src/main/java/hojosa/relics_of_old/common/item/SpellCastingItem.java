@@ -55,6 +55,7 @@ public class SpellCastingItem extends RelicsItem implements IMana {
 	@Getter
 	private final boolean hitsWater;
 	private final boolean isMelee;
+	private final boolean isScroll;
 	private final Multimap<Attribute, AttributeModifier> meleeAttributes;
 
 	public SpellCastingItem(SpellType spellType, double basePower, double critBonus, double castRange, double castRadius, double castTicks, float manaCost, boolean hitsWater, int durability, boolean isMelee) {
@@ -68,6 +69,7 @@ public class SpellCastingItem extends RelicsItem implements IMana {
 		this.manaCost = manaCost;
 		this.hitsWater = hitsWater;
 		this.isMelee = isMelee;
+		this.isScroll = false;
 		if (isMelee) {
 			ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
 			builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", 3.0, AttributeModifier.Operation.ADDITION));
@@ -76,6 +78,22 @@ public class SpellCastingItem extends RelicsItem implements IMana {
 		} else {
 			this.meleeAttributes = ImmutableMultimap.of();
 		}
+	}
+
+	// scroll constructor — consumable single-use, stacks to 16, no durability, no melee
+	public SpellCastingItem(SpellType spellType, double basePower, double castRange, double castRadius, double castTicks, float manaCost) {
+		super(16, true);
+		this.spellType = spellType;
+		this.basePower = basePower;
+		this.critBonus = 0.0;
+		this.castRange = castRange;
+		this.castRadius = castRadius;
+		this.baseCastTime = castTicks;
+		this.manaCost = manaCost;
+		this.hitsWater = false;
+		this.isMelee = false;
+		this.isScroll = true;
+		this.meleeAttributes = ImmutableMultimap.of();
 	}
 
 	public double getCastRange(ItemStack stack) {
@@ -94,6 +112,9 @@ public class SpellCastingItem extends RelicsItem implements IMana {
 		tooltip.add(Component.translatable("item.relics_of_old.spell.power", String.format("+%.0f", basePower)).withStyle(ChatFormatting.BLUE));
 		tooltip.add(Component.translatable("item.relics_of_old.spell.range", String.format("+%.0f", getCastRange(stack))).withStyle(ChatFormatting.BLUE));
 		tooltip.add(Component.translatable("item.relics_of_old.spell.radius", String.format("+%.0f", getCastRadius(stack))).withStyle(ChatFormatting.BLUE));
+		if (isScroll) {
+			tooltip.add(Component.translatable("item.relics_of_old.spell.single_use").withStyle(ChatFormatting.RED));
+		}
 	}
 
 	// cast time scales with mana fatigue — fatigued 2x, exhausted 4x
@@ -189,7 +210,11 @@ public class SpellCastingItem extends RelicsItem implements IMana {
 
 		// durability and mana cost — pass stack for fortitude check
 		if (!player.isCreative()) {
-			stack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(player.getUsedItemHand()));
+			if (isScroll) {
+				stack.shrink(1);
+			} else {
+				stack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(player.getUsedItemHand()));
+			}
 			PlayerMana mana = PlayerMana.get(player);
 			if (mana != null) {
 				float multiplier = 1.0f;
@@ -200,7 +225,6 @@ public class SpellCastingItem extends RelicsItem implements IMana {
 			}
 		}
 		player.swing(player.getUsedItemHand());
-
 	}
 
 	@Override

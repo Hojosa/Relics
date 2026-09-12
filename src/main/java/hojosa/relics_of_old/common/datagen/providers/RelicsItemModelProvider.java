@@ -194,6 +194,8 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItem(RelicsItems.PHOENIX_MANTLE);
 		basicItem(RelicsItems.SUNFIRE_DIAMOND);
 		basicItem(RelicsItems.BLACK_EMBLEM);
+		scrollItem(RelicsItems.SCROLL_INFERNO);
+		scrollItem(RelicsItems.SCROLL_SCYTHEWIND);
 
 		// magic mirror model
 		// base model that contains the base transform settings for the model
@@ -262,6 +264,10 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 	private void tomeItem(RegistryObject<? extends Item> item) {
 		getBuilder(item.getId().toString()).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", modLoc("item/tome_base")).texture("layer1", modLoc("item/tome_symbol")).texture("layer2",
 				modLoc("item/tome_pages"));
+	}
+
+	private void scrollItem(RegistryObject<? extends Item> item) {
+		getBuilder(item.getId().toString()).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", modLoc("item/scroll_base")).texture("layer1", modLoc("item/scroll_overlay"));
 	}
 
 	private void gemItem(RegistryObject<? extends Item> item) {

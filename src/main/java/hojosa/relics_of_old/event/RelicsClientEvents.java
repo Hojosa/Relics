@@ -127,6 +127,9 @@ public class RelicsClientEvents {
 		registerTintedItem(event, RelicsItems.TOME_SCYTHEWIND, 0x33AAFF, 0xEEEEEE);
 		registerTintedItem(event, RelicsItems.TOME_RAYFIRE, 0xDD0055, 0xFFFFAA);
 		registerTintedItem(event, RelicsItems.TOME_EXEUNT, 0x664411, 0x66AAFF);
+		// scrolls
+		registerTintedItem(event, RelicsItems.SCROLL_INFERNO, 0xFFCC33);
+		registerTintedItem(event, RelicsItems.SCROLL_SCYTHEWIND, 0xAABBDD);
 	}
 
 	@SubscribeEvent

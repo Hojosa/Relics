@@ -201,6 +201,8 @@ public class References {
 		public static final String PHOENIX_EMBLEM = "phoenix_emblem";
 		public static final String PHOENIX_ALTAR = "phoenix_altar";
 		public static final String AZURITE_ORE = "azurite_ore";
+		public static final String SCROLL_INFERNO = "scroll_inferno";
+		public static final String SCROLL_SCYTHEWIND = "scroll_scythewind";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

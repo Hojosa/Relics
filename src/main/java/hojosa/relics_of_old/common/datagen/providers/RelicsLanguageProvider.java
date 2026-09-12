@@ -200,6 +200,8 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addItem(RelicsItems.SUNFIRE_DIAMOND, "Sunfire Diamond");
 		addItem(RelicsItems.BLACK_EMBLEM, "Black Emblem");
 		addItem(RelicsItems.PHOENIX_EMBLEM, "Phoenix Emblem");
+		addItem(RelicsItems.SCROLL_INFERNO, "Inferno Scroll");
+		addItem(RelicsItems.SCROLL_SCYTHEWIND, "Scythewind Scroll");
 
 		// Sword augment tooltips
 		add("augment.relics_of_old.fire", "Augment: Fire");
@@ -217,6 +219,7 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		add("item.relics_of_old.spell.power", "%s Spell Power");
 		add("item.relics_of_old.spell.range", "%s Spell Range");
 		add("item.relics_of_old.spell.radius", "%s Spell Radius");
+		add("item.relics_of_old.spell.single_use", "Single use");
 
 		// Other stuff
 		addEnchantment(RelicsEnchantments.FOCUS, "Focus");

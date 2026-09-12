@@ -117,6 +117,11 @@ public class RelicsItems {
 			() -> new SpellCastingItem(SpellEffectEntity.SpellType.RAYFIRE, 12.0, 0.0, 9.0, 7.0, 3.0, 8.0f, false, 16, false));
 	public static final RegistryObject<SpellCastingItem> TOME_EXEUNT = ITEMS.register(References.UnlocalizedName.TOME_EXEUNT,
 			() -> new SpellCastingItem(SpellEffectEntity.SpellType.EXIT, 5.0, 0.0, 9.0, 7.0, 3.0, 8.0f, false, 16, false));
+	// scrolls — consumable single-use spells
+	public static final RegistryObject<SpellCastingItem> SCROLL_INFERNO = ITEMS.register(References.UnlocalizedName.SCROLL_INFERNO,
+			() -> new SpellCastingItem(SpellEffectEntity.SpellType.FIRE, 15.0, 9.0, 7.0, 3.0, 6.0f));
+	public static final RegistryObject<SpellCastingItem> SCROLL_SCYTHEWIND = ITEMS.register(References.UnlocalizedName.SCROLL_SCYTHEWIND,
+			() -> new SpellCastingItem(SpellEffectEntity.SpellType.SCYTHEWIND, 6.0, 9.0, 7.0, 3.0, 6.0f));
 
 	// normal items
 	public static final RegistryObject<RelicsItem> INFUSED_STAR_PIECE = ITEMS.register(References.UnlocalizedName.INFUSED_STAR_PIECE, () -> new InfusedItem(64, Rarity.EPIC));

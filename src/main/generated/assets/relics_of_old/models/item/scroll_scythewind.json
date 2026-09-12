@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "relics_of_old:item/scroll_base",
+    "layer1": "relics_of_old:item/scroll_overlay"
+  }
+}
