@@ -4,6 +4,7 @@ import hojosa.relics_of_old.common.entity.ThrownOrbEntity.OrbType;
 import hojosa.relics_of_old.common.entity.attacks.SpellEffectEntity;
 import hojosa.relics_of_old.common.item.AeroAmulet;
 import hojosa.relics_of_old.common.item.AzureFeatherItem;
+import hojosa.relics_of_old.common.item.BadBowItem;
 import hojosa.relics_of_old.common.item.BombArrowItem;
 import hojosa.relics_of_old.common.item.BombBagItem;
 import hojosa.relics_of_old.common.item.BombItem;
@@ -165,6 +166,7 @@ public class RelicsItems {
 	public static final RegistryObject<AzureFeatherItem> AZURE_FEATHER = ITEMS.register(References.UnlocalizedName.AZURE_FEATHER, AzureFeatherItem::new);
 	public static final RegistryObject<RelicsItem> SUNFIRE_DIAMOND = ITEMS.register(References.UnlocalizedName.SUNFIRE_DIAMOND, () -> new InfusedItem(64, Rarity.EPIC));
 	public static final RegistryObject<FortuneCookieItem> FORTUNE_COOKIE = ITEMS.register(References.UnlocalizedName.FORTUNE_COOKIE, FortuneCookieItem::new);
+	public static final RegistryObject<BadBowItem> BAD_BOW = ITEMS.register(References.UnlocalizedName.BAD_BOW, BadBowItem::new);
 
 	// lost pages
 	public static final RegistryObject<LostPage> LOST_PAGE_1 = ITEMS.register(References.UnlocalizedName.LOST_PAGE_1, () -> new LostPage(1, References.LostPagesText.LOST_PAGE_1));

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/bow",
+  "textures": {
+    "layer0": "relics_of_old:item/bad_bow_pulling_1"
+  }
+}

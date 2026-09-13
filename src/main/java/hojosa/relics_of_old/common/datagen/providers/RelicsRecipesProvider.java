@@ -1222,5 +1222,23 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		 .requires(Items.SUGAR)
 		 .unlockedBy("has_paper", has(Items.PAPER))
 		 .save(consumer);
+		 
+		 ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, RelicsItems.BAD_BOW.get())
+		 .pattern(" SW")
+		 .pattern("S W")
+		 .pattern(" SW")
+		 .define('S', Items.STRING)
+		 .define('W', Items.STICK)
+		 .unlockedBy("has_string", has(Items.STRING))
+		 .save(consumer, ResourceLocation.fromNamespaceAndPath(References.MOD_ID, "bad_bow"));
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, RelicsItems.BAD_BOW.get())
+		.pattern("WS ")
+		.pattern("W S")
+		.pattern("WS ")
+		.define('S', Items.STRING)
+		.define('W', Items.STICK)
+		.unlockedBy("has_string", has(Items.STRING))
+		.save(consumer, ResourceLocation.fromNamespaceAndPath(References.MOD_ID, "bad_bow_mirror"));
 		}
 }

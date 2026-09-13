@@ -208,6 +208,7 @@ public class References {
 		public static final String FILIGREED_OBSIDIAN = "filigreed_obsidian";
 		public static final String MILK_SHELL = "milk_shell";
 		public static final String FORTUNE_COOKIE = "fortune_cookie";
+		public static final String BAD_BOW = "bad_bow";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)
