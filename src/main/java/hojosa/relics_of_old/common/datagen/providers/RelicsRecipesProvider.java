@@ -1240,5 +1240,9 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.define('W', Items.STICK)
 		.unlockedBy("has_string", has(Items.STRING))
 		.save(consumer, ResourceLocation.fromNamespaceAndPath(References.MOD_ID, "bad_bow_mirror"));
+		
+		RitualRecipeBuilder.dismantle()
+	    .pair(Blocks.GRAVEL, Blocks.GRAVEL)
+	    .save(consumer, "dismantle");
 		}
 }

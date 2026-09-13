@@ -36,6 +36,7 @@ public interface RelicsTags {
 		TagKey<Item> CLAY_JAR_VARIANTS = tag("clay_jar_variants");
 		TagKey<Item> SUGAR_CUBES = tag("sugar_cubes");
 		TagKey<Item> DUSTS_IRON = ItemTags.create(ResourceLocation.fromNamespaceAndPath("forge", "dusts/iron"));
+		TagKey<Item> GEMS = tag("gem");;
 
 		static TagKey<Item> tag(String name) {
 			return TagKey.create(Registries.ITEM, RelicsUtil.modLoc(name));

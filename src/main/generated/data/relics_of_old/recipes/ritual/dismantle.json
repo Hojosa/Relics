@@ -1,0 +1,9 @@
+{
+  "type": "relics_of_old:ritual_dismantle",
+  "components": [
+    {
+      "block_a": "minecraft:gravel",
+      "block_b": "minecraft:gravel"
+    }
+  ]
+}

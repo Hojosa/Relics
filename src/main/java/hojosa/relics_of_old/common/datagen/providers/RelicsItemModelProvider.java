@@ -202,6 +202,16 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		scrollItem(RelicsItems.SCROLL_SCYTHEWIND);
 		basicItem(RelicsItems.FORTUNE_COOKIE);
 
+		getBuilder(RelicsItems.BAD_BOW.getId().toString()).parent(new ModelFile.UncheckedModelFile("item/bow")).texture("layer0", modLoc("item/bad_bow")).override().predicate(mcLoc("pulling"), 1)
+				.model(new ModelFile.UncheckedModelFile(modLoc("item/bad_bow_pulling_0"))).end().override().predicate(mcLoc("pulling"), 1).predicate(mcLoc("pull"), 0.65f)
+				.model(new ModelFile.UncheckedModelFile(modLoc("item/bad_bow_pulling_1"))).end().override().predicate(mcLoc("pulling"), 1).predicate(mcLoc("pull"), 0.9f)
+				.model(new ModelFile.UncheckedModelFile(modLoc("item/bad_bow_pulling_2"))).end();
+
+		// Pulling state sub-models
+		getBuilder("bad_bow_pulling_0").parent(new ModelFile.UncheckedModelFile("item/bow")).texture("layer0", modLoc("item/bad_bow_pulling_0"));
+		getBuilder("bad_bow_pulling_1").parent(new ModelFile.UncheckedModelFile("item/bow")).texture("layer0", modLoc("item/bad_bow_pulling_1"));
+		getBuilder("bad_bow_pulling_2").parent(new ModelFile.UncheckedModelFile("item/bow")).texture("layer0", modLoc("item/bad_bow_pulling_2"));
+
 		// magic mirror model
 		// base model that contains the base transform settings for the model
 		ModelFile magic_mirror_base = getBuilder("magic_mirror_base").parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", modLoc("item/magic_mirror")).transforms()

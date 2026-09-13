@@ -76,6 +76,19 @@ public class RelicsItemTags extends ItemTagsProvider {
 		.add(RelicsItems.WISH_RING.get())
 		.add(RelicsItems.RESONANCE_RING.get())
 		.add(RelicsItems.PHOENIX_RING.get());
+		tag(RelicsTags.Items.GEMS)
+		.add(RelicsItems.GEM_FIRE.get())
+		.add(RelicsItems.GEM_ICE.get())
+		.add(RelicsItems.GEM_LIGHTNING.get())
+		.add(RelicsItems.GEM_CUT.get())
+		.add(RelicsItems.GEM_SKY.get())
+		.add(RelicsItems.GEM_SUN.get())
+		.add(RelicsItems.GEM_NAVIGATE.get())
+		.add(RelicsItems.GEM_DARK.get())
+		.add(RelicsItems.GEM_STAR.get())
+		.add(RelicsItems.GEM_HEALTH.get())
+		.add(RelicsItems.GEM_WEAPON.get())
+		.add(RelicsItems.GEM_WEALTH.get());
 	}
 
 	@Override

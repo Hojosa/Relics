@@ -12,6 +12,7 @@ import com.google.gson.JsonObject;
 import hojosa.relics_of_old.common.recipes.RitualBlessingRecipe;
 import hojosa.relics_of_old.common.recipes.RitualConvertRecipe;
 import hojosa.relics_of_old.common.recipes.RitualCrucibleRecipe;
+import hojosa.relics_of_old.common.recipes.RitualDismantleRecipe;
 import hojosa.relics_of_old.common.recipes.RitualEnchantingRecipe;
 import hojosa.relics_of_old.common.recipes.RitualOfferingRecipe;
 import hojosa.relics_of_old.common.recipes.RitualSummoningRecipe;
@@ -489,5 +490,57 @@ public class RitualRecipeBuilder {
 				}
 			});
 		}
+	}
+
+	// ============ DISMANTLE ============
+
+	public static DismantleBuilder dismantle() {
+		return new DismantleBuilder();
+	}
+
+	public static class DismantleBuilder {
+	    private final List<ComponentEntry> components = new ArrayList<>();
+
+	    public DismantleBuilder pair(Block a, Block b) {
+	        components.add(new ComponentEntry(a, b));
+	        return this;
+	    }
+
+	    public DismantleBuilder keystone(Block block) {
+	        components.add(new ComponentEntry(block, null));
+	        return this;
+	    }
+
+	    public void save(Consumer<FinishedRecipe> consumer, String name) {
+	        consumer.accept(new FinishedRecipe() {
+	            @Override
+	            public void serializeRecipeData(JsonObject json) {
+	                JsonArray comps = new JsonArray();
+	                for (ComponentEntry c : components)
+	                    comps.add(c.toJson());
+	                json.add("components", comps);
+	            }
+
+	            @Override
+	            public ResourceLocation getId() {
+	                return RelicsUtil.modLoc("ritual/" + name);
+	            }
+
+	            @Override
+	            public RecipeSerializer<?> getType() {
+	                return RitualDismantleRecipe.Serializer.INSTANCE;
+	            }
+
+	            @Override
+	            public @Nullable JsonObject serializeAdvancement() {
+	                return null;
+	            }
+
+	            @Override
+	            public @Nullable ResourceLocation getAdvancementId() {
+	                return null;
+	            }
+	        });
+	    }
 	}
 }

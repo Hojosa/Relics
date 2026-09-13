@@ -27,6 +27,7 @@ public class RelicsRecipes {
 	public static final RegistryObject<RecipeSerializer<RitualBlessingRecipe>> RITUAL_BLESSING_SERIALIZER = registerSerializer("ritual_blessing", () -> RitualBlessingRecipe.Serializer.INSTANCE);
 	public static final RegistryObject<RecipeSerializer<RitualEnchantingRecipe>> RITUAL_ENCHANTING_SERIALIZER = registerSerializer("ritual_enchanting", () -> RitualEnchantingRecipe.Serializer.INSTANCE);
 	public static final RegistryObject<RecipeSerializer<RitualOfferingRecipe>> RITUAL_OFFERING_SERIALIZER = registerSerializer("ritual_offering", () -> RitualOfferingRecipe.Serializer.INSTANCE);
+	public static final RegistryObject<RecipeSerializer<RitualDismantleRecipe>> RITUAL_DISMANTLE_SERIALIZER = registerSerializer("ritual_dismantle", () -> RitualDismantleRecipe.Serializer.INSTANCE);
 
 	// types
 	public static final RegistryObject<RecipeType<RitualRecipeBase>> RITUAL_TYPE = TYPES.register("ritual", () -> RitualRecipeBase.Type.INSTANCE);
