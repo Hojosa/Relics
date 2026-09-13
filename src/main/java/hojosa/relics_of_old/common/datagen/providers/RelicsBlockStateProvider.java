@@ -56,6 +56,7 @@ public class RelicsBlockStateProvider extends BlockStateProvider {
 		phoenixAltar();
 		simpleBlock(RelicsBlocks.AZURITE_ORE.get());
 		starglassBlock();
+		simpleBlock(RelicsBlocks.FRAGSTONE_BLOCK.get());
 	}
 
 	//alternative overlay method that uses another blocks texture

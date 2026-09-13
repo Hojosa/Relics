@@ -109,6 +109,8 @@ public class RelicsBlocks {
 	public static final ItemObject<Block> AZURITE_ORE = BLOCKS.register(References.UnlocalizedName.AZURITE_ORE,
 			() -> new RelicsNormalBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(3.0f).sound(SoundType.STONE)), BLOCK_ITEM);
 	public static final ItemObject<Block> STARGLASS_BLOCK = BLOCKS.register(References.UnlocalizedName.STARGLASS_BLOCK, StarglassBlock::new, BLOCK_ITEM);
+	public static final ItemObject<Block> FRAGSTONE_BLOCK = BLOCKS.register(References.UnlocalizedName.FRAGSTONE_BLOCK,
+			() -> new RelicsNormalBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE).strength(3.0f, 15.0f).requiresCorrectToolForDrops()), BLOCK_ITEM);
 
 	/**
 	 * We use this builder to ensure that our blocks all have the most important properties set. This way it'll stick out if a block doesn't have a
@@ -153,7 +155,8 @@ public class RelicsBlocks {
 		output.accept(PHOENIX_ALTAR.get().asItem());
 		output.accept(AZURITE_ORE.get().asItem());
 		output.accept(STARGLASS_BLOCK.get().asItem());
-		
+		output.accept(FRAGSTONE_BLOCK.get().asItem());
+
 		Predicate<ItemStack> variants = stack -> {
 			output.accept(stack);
 			return false;

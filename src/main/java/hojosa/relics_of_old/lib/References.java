@@ -204,6 +204,7 @@ public class References {
 		public static final String SCROLL_INFERNO = "scroll_inferno";
 		public static final String SCROLL_SCYTHEWIND = "scroll_scythewind";
 		public static final String STARGLASS_BLOCK = "starglass_block";
+		public static final String FRAGSTONE_BLOCK = "fragstone_block";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

@@ -41,6 +41,7 @@ public class RelicsBlockTags extends BlockTagsProvider {
 		.add(RelicsBlocks.RITUAL_LOCUS.get())
 		.add(RelicsBlocks.PHOENIX_ALTAR.get())
 		.add(RelicsBlocks.AZURITE_ORE.get())
+		.add(RelicsBlocks.FRAGSTONE_BLOCK.get())
 		.add(RelicsBlocks.STARGLASS_BLOCK.get());
 		tag(BlockTags.NEEDS_STONE_TOOL)
 		.add(RelicsBlocks.SWORD_PEDESTAL_NORMAL.get())

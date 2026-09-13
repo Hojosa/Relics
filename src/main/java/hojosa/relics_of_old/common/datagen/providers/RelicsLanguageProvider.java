@@ -50,6 +50,7 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addBlock(RelicsBlocks.RITUAL_LOCUS, "Ritual Locus");
 		addBlock(RelicsBlocks.PHOENIX_ALTAR, "Phoenix Altar");
 		addBlock(RelicsBlocks.STARGLASS_BLOCK, "Starglass Block");
+		addBlock(RelicsBlocks.FRAGSTONE_BLOCK, "Fragstone Block");
 
 		// Items
 		addItem(RelicsItems.FIRE_SWORD, "Flame Sword");
