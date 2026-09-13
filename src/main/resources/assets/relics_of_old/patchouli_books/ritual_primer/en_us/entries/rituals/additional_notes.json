@@ -1,0 +1,13 @@
+{
+    "name": "Additional Notes",
+    "icon": "relics_of_old:fortune_cookie",
+    "category": "relics_of_old:rituals",
+    "sortnum": 6,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "title": "Additional Notes",
+            "text": "The rituals in this book are far from a complete list!$(br2)Random experimentation would prove fruitless and costly; better to seek guidance and collaborate with your peers.$(br2)(Consult your local $(item)Fortune Cookie$() for more dubious information.)"
+        }
+    ]
+}

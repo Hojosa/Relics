@@ -1,0 +1,13 @@
+{
+    "name": "Terminology",
+    "icon": "minecraft:writable_book",
+    "category": "relics_of_old:rituals",
+    "sortnum": 2,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "title": "Terminology",
+            "text": "A $(thing)lattice$() is a set of two types of blocks linked in alternation, one type to the other.$(br2)Many rituals also require a $(thing)keystone$(), a block linked to no others.$(br2)All rituals need a $(thing)focus$(): an object or being placed at the center."
+        }
+    ]
+}

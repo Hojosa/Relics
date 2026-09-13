@@ -1,0 +1,17 @@
+{
+	"name": "Preparation",
+	"icon": "relics_of_old:starglass_lump",
+	"category": "relics_of_old:rituals",
+	"sortnum": 0,
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"title": "Preparation",
+			"text": "Build a $(item)Ritual Locus$() out of starglass: five lumps in an X shape, with gold nuggets in the interstices.$(br2)Place it into an active Starwell. You will see eight faintly glowing nodes forming a ritual circle."
+		},
+		{
+			"type": "patchouli:crafting",
+			"recipe": "relics_of_old:ritual_locus"
+		}
+	]
+}

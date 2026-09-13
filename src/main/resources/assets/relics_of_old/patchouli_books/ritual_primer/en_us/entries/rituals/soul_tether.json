@@ -1,0 +1,13 @@
+{
+    "name": "Soul Tether",
+    "icon": "minecraft:soul_sand",
+    "category": "relics_of_old:rituals",
+    "sortnum": 4,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "title": "Soul Tether",
+            "text": "A dangerous ritual for $(#090)experienced$() practitioners only!$(br2)Form a $(thing)lattice$() of $(item)Soul Sand$() and $(item)String$(), with $(item)Iron$() as your keystone.$(br2)The item you invoke this ritual upon will cling to your soul once upon death."
+        }
+    ]
+}

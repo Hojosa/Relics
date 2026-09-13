@@ -1,0 +1,13 @@
+{
+    "name": "Summon Horse",
+    "icon": "minecraft:sugar",
+    "category": "relics_of_old:rituals",
+    "sortnum": 3,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "title": "Summon Horse",
+            "text": "Set a $(thing)keystone$() of $(item)Emerald$(), and construct a $(thing)lattice$() of $(item)Hay Bales$() and grassy earth.$(br2)Place a lump of $(item)Sugar$() at the focus and invoke with $(item)Infused Stardust$()."
+        }
+    ]
+}

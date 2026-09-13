@@ -1,0 +1,13 @@
+{
+    "name": "The Basics",
+    "icon": "relics_of_old:tuning_fork",
+    "category": "relics_of_old:rituals",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "title": "The Basics",
+            "text": "When a block is placed on a node, it will form a link to another node. These links are visible under moonlight.$(br2)Each starwell has its own pattern of links, formed in a set order. Tap the locus with a $(item)Starsteel Tuning Fork$() to hear the resonance of the next link."
+        }
+    ]
+}

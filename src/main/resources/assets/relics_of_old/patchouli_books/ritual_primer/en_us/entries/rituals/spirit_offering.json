@@ -1,0 +1,13 @@
+{
+    "name": "Spirit Offering",
+    "icon": "relics_of_old:starstone_block",
+    "category": "relics_of_old:rituals",
+    "sortnum": 5,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "title": "Spirit Offering",
+            "text": "To contact an astral spirit, one requires a block of $(item)Starstone$() as a key.$(br2)To this, add a $(thing)lattice$() of the spirit's signifiers and place your offering at the center.$(br2)The standard sprinkling of $(item)Infused Stardust$() will suffice for most offerings."
+        }
+    ]
+}
