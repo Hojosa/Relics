@@ -36,7 +36,7 @@ public class RelicsBlockStateProvider extends BlockStateProvider {
 
 	@Override
 	protected void registerStatesAndModels() {
-		simpleBlockInfused(RelicsBlocks.INFUSED_STARSTONE_BLOCK.get(), RelicsBlocks.STARSTONE_BLOCK.get());
+		overlayBlock(RelicsBlocks.INFUSED_STARSTONE_BLOCK.get(), RelicsBlocks.STARSTONE_BLOCK.get(), "translucent", "chaos_rainbow_overlay");
 		simpleBlock(RelicsBlocks.STARSTONE_BLOCK.get());
 		simpleBlock(RelicsBlocks.SKYBEAM_BLOCK.get(), models().cubeBottomTop(RelicsBlocks.SKYBEAM_BLOCK.getId().getPath(), modLoc("block/" + References.UnlocalizedName.SKYBEAM_BLOCK + "_side"), mcLoc("block/obsidian"),
 				modLoc("block/" + References.UnlocalizedName.SKYBEAM_BLOCK + "_top")));
@@ -56,12 +56,41 @@ public class RelicsBlockStateProvider extends BlockStateProvider {
 		phoenixAltar();
 		simpleBlock(RelicsBlocks.AZURITE_ORE.get());
 		starglassBlock();
-//		overlayBlock(RelicsBlocks.STARGLASS_BLOCK.get(), "translucent", "starglass_overlay", "chaos_rainbow_overlay");
 	}
 
-	private void simpleBlockInfused(Block block, Block parent) {
-		simpleBlock(block, models().cubeAll(ForgeRegistries.BLOCKS.getKey(block).getPath(), blockTexture(parent)));
-	}
+	//alternative overlay method that uses another blocks texture
+	private void overlayBlock(Block block, Block baseTextureBlock, String renderType, String... overlays) {
+	      String name = ForgeRegistries.BLOCKS.getKey(block).getPath();
+	      String baseTex = ForgeRegistries.BLOCKS.getKey(baseTextureBlock).getPath();
+	      var builder = models().getBuilder(name)
+	          .parent(new ModelFile.UncheckedModelFile(mcLoc("block/block")))
+	          .renderType(renderType)
+	          .texture("base", modLoc("block/" + baseTex))
+	          .texture("particle", modLoc("block/" + baseTex));
+
+	      // base cube
+	      builder.element()
+	          .from(0, 0, 0).to(16, 16, 16)
+	          .allFaces((dir, face) -> face.texture("#base").cullface(dir))
+	      .end();
+
+	      // overlay cubes
+	      for (int i = 0; i < overlays.length; i++) {
+	          String key = "overlay" + i;
+	          builder.texture(key, modLoc("block/" + overlays[i]));
+	          String texRef = "#" + key;
+	          boolean emissive = overlays[i].contains("chaos_rainbow");
+	          builder.element()
+	              .from(0, 0, 0).to(16, 16, 16)
+	              .allFaces((dir, face) -> {
+	                  face.texture(texRef).cullface(dir);
+	                  if (emissive) face.emissivity(15, 15);
+	              })
+	          .end();
+	      }
+	      simpleBlock(block, builder);
+	  }
+
 
 	private void registerPedestal() {
 		ItemObject<SwordPedestalBaseBlock> block = RelicsBlocks.SWORD_PEDESTAL_NORMAL;

@@ -8,7 +8,6 @@ import hojosa.relics_of_old.common.block.BombFlower;
 import hojosa.relics_of_old.common.block.BoostPlate;
 import hojosa.relics_of_old.common.block.Caltrops;
 import hojosa.relics_of_old.common.block.ClayJar;
-import hojosa.relics_of_old.common.block.InfusedStarstoneBlock;
 import hojosa.relics_of_old.common.block.MysticShrub;
 import hojosa.relics_of_old.common.block.NormalSwordPedestal;
 import hojosa.relics_of_old.common.block.PhoenixAltarBlock;
@@ -82,7 +81,7 @@ public class RelicsBlocks {
 			() -> new RelicsNormalBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).lightLevel(value -> 15)), BLOCK_ITEM_UNCOMMON);
 
 	public static final ItemObject<Block> INFUSED_STARSTONE_BLOCK = BLOCKS.register(References.UnlocalizedName.INFUSED_STARSTONE_BLOCK,
-			() -> new InfusedStarstoneBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).lightLevel(value -> 15), true), BLOCK_ITEM_GLINT);
+			() -> new RelicsNormalBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).lightLevel(value -> 15)), BLOCK_ITEM_UNCOMMON);
 
 	public static final ItemObject<Block> SKYBEAM_BLOCK = BLOCKS.register(References.UnlocalizedName.SKYBEAM_BLOCK,
 			() -> new SkybeamBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).lightLevel(litBlockEmission(10))), BLOCK_ITEM);
