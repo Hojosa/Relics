@@ -17,6 +17,7 @@ import hojosa.relics_of_old.common.item.EmptyMedallion;
 import hojosa.relics_of_old.common.item.EnderSword;
 import hojosa.relics_of_old.common.item.FireTablet;
 import hojosa.relics_of_old.common.item.FlameSword;
+import hojosa.relics_of_old.common.item.FortuneCookieItem;
 import hojosa.relics_of_old.common.item.HeadbandOfValor;
 import hojosa.relics_of_old.common.item.Heart;
 import hojosa.relics_of_old.common.item.InfusedStarDustItem;
@@ -163,6 +164,7 @@ public class RelicsItems {
 	public static final RegistryObject<SpottingScopeItem> SPOTTING_SCOPE = ITEMS.register(References.UnlocalizedName.SPOTTING_SCOPE, SpottingScopeItem::new);
 	public static final RegistryObject<AzureFeatherItem> AZURE_FEATHER = ITEMS.register(References.UnlocalizedName.AZURE_FEATHER, AzureFeatherItem::new);
 	public static final RegistryObject<RelicsItem> SUNFIRE_DIAMOND = ITEMS.register(References.UnlocalizedName.SUNFIRE_DIAMOND, () -> new InfusedItem(64, Rarity.EPIC));
+	public static final RegistryObject<FortuneCookieItem> FORTUNE_COOKIE = ITEMS.register(References.UnlocalizedName.FORTUNE_COOKIE, FortuneCookieItem::new);
 
 	// lost pages
 	public static final RegistryObject<LostPage> LOST_PAGE_1 = ITEMS.register(References.UnlocalizedName.LOST_PAGE_1, () -> new LostPage(1, References.LostPagesText.LOST_PAGE_1));

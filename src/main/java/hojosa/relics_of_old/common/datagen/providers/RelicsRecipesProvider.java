@@ -1215,5 +1215,12 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		 .requires(Items.MILK_BUCKET)
 		 .unlockedBy("has_shell", has(RelicsItems.STARGLASS_SHELL.get()))
 		 .save(consumer);
+		 
+		 ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, RelicsItems.FORTUNE_COOKIE.get())
+		 .requires(Items.PAPER)
+		 .requires(Items.WHEAT)
+		 .requires(Items.SUGAR)
+		 .unlockedBy("has_paper", has(Items.PAPER))
+		 .save(consumer);
 		}
 }

@@ -200,6 +200,7 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItem(RelicsItems.BLACK_EMBLEM);
 		scrollItem(RelicsItems.SCROLL_INFERNO);
 		scrollItem(RelicsItems.SCROLL_SCYTHEWIND);
+		basicItem(RelicsItems.FORTUNE_COOKIE);
 
 		// magic mirror model
 		// base model that contains the base transform settings for the model

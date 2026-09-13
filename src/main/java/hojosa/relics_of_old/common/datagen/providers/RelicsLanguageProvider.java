@@ -206,6 +206,7 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addItem(RelicsItems.PHOENIX_EMBLEM, "Phoenix Emblem");
 		addItem(RelicsItems.SCROLL_INFERNO, "Inferno Scroll");
 		addItem(RelicsItems.SCROLL_SCYTHEWIND, "Scythewind Scroll");
+		addItem(RelicsItems.FORTUNE_COOKIE, "Fortune Cookie");
 
 		// Sword augment tooltips
 		add("augment.relics_of_old.fire", "Augment: Fire");

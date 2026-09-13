@@ -207,6 +207,7 @@ public class References {
 		public static final String FRAGSTONE_BLOCK = "fragstone_block";
 		public static final String FILIGREED_OBSIDIAN = "filigreed_obsidian";
 		public static final String MILK_SHELL = "milk_shell";
+		public static final String FORTUNE_COOKIE = "fortune_cookie";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)
