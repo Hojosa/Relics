@@ -42,6 +42,7 @@ public class RelicsBlockTags extends BlockTagsProvider {
 		.add(RelicsBlocks.PHOENIX_ALTAR.get())
 		.add(RelicsBlocks.AZURITE_ORE.get())
 		.add(RelicsBlocks.FRAGSTONE_BLOCK.get())
+		.add(RelicsBlocks.FILIGREED_OBSIDIAN.get())
 		.add(RelicsBlocks.STARGLASS_BLOCK.get());
 		tag(BlockTags.NEEDS_STONE_TOOL)
 		.add(RelicsBlocks.SWORD_PEDESTAL_NORMAL.get())
@@ -62,6 +63,7 @@ public class RelicsBlockTags extends BlockTagsProvider {
 		tag(BlockTags.NEEDS_DIAMOND_TOOL)
 		.add(RelicsBlocks.STARWELL_FRAME.get())
 		.add(RelicsBlocks.STARWELL_CORE.get())
+		.add(RelicsBlocks.FILIGREED_OBSIDIAN.get())
 		.add(RelicsBlocks.PHOENIX_ALTAR.get());
 		tag(RelicsTags.Blocks.SWORD_PEDESTAL_VARIANTS)
 		.add(Blocks.STONE, Blocks.POLISHED_GRANITE, Blocks.POLISHED_BLACKSTONE, Blocks.POLISHED_ANDESITE, Blocks.POLISHED_DIORITE, Blocks.CUT_SANDSTONE, Blocks.CUT_RED_SANDSTONE, Blocks.NETHER_BRICKS, Blocks.RED_NETHER_BRICKS, Blocks.POLISHED_BASALT, Blocks.OBSIDIAN)
