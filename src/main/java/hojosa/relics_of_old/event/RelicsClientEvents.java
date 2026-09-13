@@ -18,6 +18,7 @@ import hojosa.relics_of_old.client.render.MagicBoomerangRenderer;
 import hojosa.relics_of_old.client.render.MedallionEntityRenderer;
 import hojosa.relics_of_old.client.render.PhoenixAltarBlockRenderer;
 import hojosa.relics_of_old.client.render.PingEntityRenderer;
+import hojosa.relics_of_old.client.render.PrismaticExperienceOrbRenderer;
 import hojosa.relics_of_old.client.render.RitualLocusBlockRenderer;
 import hojosa.relics_of_old.client.render.SkybeamBlockRenderer;
 import hojosa.relics_of_old.client.render.StarBeamRenderer;
@@ -26,6 +27,7 @@ import hojosa.relics_of_old.client.render.SwordPedestalBlockRenderer;
 import hojosa.relics_of_old.client.render.SwordPedestalStoneBlockRenderer;
 import hojosa.relics_of_old.common.init.RelicsBlockEntities;
 import hojosa.relics_of_old.common.init.RelicsBlocks;
+import hojosa.relics_of_old.common.init.RelicsConfig;
 import hojosa.relics_of_old.common.init.RelicsEntities;
 import hojosa.relics_of_old.common.init.RelicsItems;
 import hojosa.relics_of_old.common.init.RelicsParticles;
@@ -39,6 +41,7 @@ import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -159,6 +162,7 @@ public class RelicsClientEvents {
 		event.registerEntityRenderer(RelicsEntities.SPELL_EFFECT.get(), EmptyEntityRenderer::new);
 		event.registerEntityRenderer(RelicsEntities.THROWN_ORB.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(RelicsEntities.PING.get(), PingEntityRenderer::new);
+	    event.registerEntityRenderer(EntityType.EXPERIENCE_ORB, PrismaticExperienceOrbRenderer::new);
 	}
 
 	@SubscribeEvent
