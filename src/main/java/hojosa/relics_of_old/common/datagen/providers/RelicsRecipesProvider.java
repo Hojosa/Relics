@@ -1209,5 +1209,11 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		 .requires(RelicsItems.DIMENSIONAL_CATALYST.get())
 		 .unlockedBy(hasItem, has(RelicsBlocks.AZURITE_ORE.get()))
 		 .save(consumer, RelicsUtil.modLoc("azurite_dot_from_ore"));
+		 
+		 ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsItems.MILK_SHELL.get())
+		 .requires(RelicsItems.STARGLASS_SHELL.get())
+		 .requires(Items.MILK_BUCKET)
+		 .unlockedBy("has_shell", has(RelicsItems.STARGLASS_SHELL.get()))
+		 .save(consumer);
 		}
 }

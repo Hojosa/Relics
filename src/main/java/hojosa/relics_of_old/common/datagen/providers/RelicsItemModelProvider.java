@@ -157,6 +157,7 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItem(RelicsItems.WATER_SHELL);
 		basicItem(RelicsItems.LAVA_SHELL);
 		basicItem(RelicsItems.BLAST_SHELL);
+		basicItem(RelicsItems.MILK_SHELL);
 		sparkleOrb(RelicsItems.GLITTERING_ORB);
 		sparkleOrb(RelicsItems.BURNING_ORB);
 		sparkleOrb(RelicsItems.FREEZING_ORB);

@@ -1,25 +1,35 @@
 package hojosa.relics_of_old.common.entity;
 
+import java.util.List;
+
 import hojosa.relics_of_old.common.entity.attacks.SpellEffectEntity;
 import hojosa.relics_of_old.common.entity.attacks.SpellEffectEntity.SpellType;
 import hojosa.relics_of_old.common.init.RelicsEntities;
 import hojosa.relics_of_old.common.init.RelicsItems;
+import hojosa.relics_of_old.common.init.RelicsParticles;
+import hojosa.relics_of_old.lib.RelicsParticleOptions;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
@@ -75,6 +85,31 @@ public class ThrownOrbEntity extends ThrowableItemProjectile {
 						level().setBlockAndUpdate(pos, fluid);
 					}
 				});
+			} else if (type == OrbType.MILK) {
+				// Cure potion effects on entities in splash radius
+				double r = type.radius + 0.25;
+				List<LivingEntity> entities = level().getEntitiesOfClass(LivingEntity.class, new AABB(hitPos.x - r, hitPos.y - r, hitPos.z - r, hitPos.x + r, hitPos.y + r, hitPos.z + r));
+				for (LivingEntity living : entities) {
+					if (living.position().distanceToSqr(hitPos) <= r * r) {
+						living.curePotionEffects(new ItemStack(Items.MILK_BUCKET));
+					}
+				}
+				// Milk splash particles — mix of white sparkles and effect spirals
+				if (level() instanceof ServerLevel serverLevel) {
+					RandomSource rand = serverLevel.getRandom();
+					for (int i = 0; i < 20; i++) {
+						double px = hitPos.x + (rand.nextDouble() - 0.5) * r * 2;
+						double py = hitPos.y + (rand.nextDouble() - 0.5) * r;
+						double pz = hitPos.z + (rand.nextDouble() - 0.5) * r * 2;
+						if (rand.nextBoolean()) {
+							// White sparkle particles
+							serverLevel.sendParticles(new RelicsParticleOptions(() -> RelicsParticles.SPARKLE_PARTICLES.get(), 15, 0.4f, 1.0f, 1.0f, 1.0f), px, py, pz, 1, 0, 0.05, 0, 0.02);
+						} else {
+							// Effect spiral particles (white)
+							serverLevel.sendParticles(ParticleTypes.EFFECT, px, py, pz, 1, 0, 0.05, 0, 0.02);
+						}
+					}
+				}
 			} else {
 				Player thrower = null;
 				if (getOwner() instanceof Player player) {
@@ -103,7 +138,7 @@ public class ThrownOrbEntity extends ThrowableItemProjectile {
 	// Maps orb variants to their spell effect parameters
 	public enum OrbType {
 		WATER(null, 1.5, 0.0, false), LAVA(null, 1.0, 0.0, false), BLAST(SpellType.ORB_EXPLOSION, 1.5, 6.0, true), TWINKLE(SpellType.TWINKLE, 6.0, 8.0, true), FIRE(SpellType.FIRE, 6.0, 10.0, true),
-		ICE(SpellType.ICE, 6.0, 10.0, true), ZAP(SpellType.LIGHTNING, 6.0, 10.0, true);
+		ICE(SpellType.ICE, 6.0, 10.0, true), ZAP(SpellType.LIGHTNING, 6.0, 10.0, true), MILK(null, 1.5, 0.0, false);
 
 		public final SpellType spellType;
 		public final double radius;

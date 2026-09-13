@@ -167,6 +167,7 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addItem(RelicsItems.WATER_SHELL, "Water Shell");
 		addItem(RelicsItems.LAVA_SHELL, "Lava Shell");
 		addItem(RelicsItems.BLAST_SHELL, "Blast Shell");
+		addItem(RelicsItems.MILK_SHELL, "Milk Shell");
 		addItem(RelicsItems.GLITTERING_ORB, "Glittering Orb");
 		addItem(RelicsItems.BURNING_ORB, "Burning Orb");
 		addItem(RelicsItems.FREEZING_ORB, "Freezing Orb");

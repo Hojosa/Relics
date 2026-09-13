@@ -241,6 +241,7 @@ public class RelicsItems {
 	public static final RegistryObject<ThrowableOrbItem> WATER_SHELL = ITEMS.register(References.UnlocalizedName.WATER_SHELL, () -> new ThrowableOrbItem(OrbType.WATER));
 	public static final RegistryObject<ThrowableOrbItem> LAVA_SHELL = ITEMS.register(References.UnlocalizedName.LAVA_SHELL, () -> new ThrowableOrbItem(OrbType.LAVA));
 	public static final RegistryObject<ThrowableOrbItem> BLAST_SHELL = ITEMS.register(References.UnlocalizedName.BLAST_SHELL, () -> new ThrowableOrbItem(OrbType.BLAST));
+	public static final RegistryObject<ThrowableOrbItem> MILK_SHELL = ITEMS.register(References.UnlocalizedName.MILK_SHELL, () -> new ThrowableOrbItem(OrbType.MILK));
 	// orbs
 	public static final RegistryObject<ThrowableOrbItem> GLITTERING_ORB = ITEMS.register(References.UnlocalizedName.GLITTERING_ORB, () -> new ThrowableOrbItem(OrbType.TWINKLE, "Usable in crafting"));
 	public static final RegistryObject<ThrowableOrbItem> BURNING_ORB = ITEMS.register(References.UnlocalizedName.BURNING_ORB, () -> new ThrowableOrbItem(OrbType.FIRE, "Usable in crafting"));
