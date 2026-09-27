@@ -8,6 +8,8 @@ import hojosa.relics_of_old.common.block.BombFlower;
 import hojosa.relics_of_old.common.block.BoostPlate;
 import hojosa.relics_of_old.common.block.Caltrops;
 import hojosa.relics_of_old.common.block.ClayJar;
+import hojosa.relics_of_old.common.block.InfusionItemHolderBlock;
+import hojosa.relics_of_old.common.block.InfusionLocusBlock;
 import hojosa.relics_of_old.common.block.MysticShrub;
 import hojosa.relics_of_old.common.block.NormalSwordPedestal;
 import hojosa.relics_of_old.common.block.PhoenixAltarBlock;
@@ -113,6 +115,8 @@ public class RelicsBlocks {
 			() -> new RelicsNormalBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE).strength(3.0f, 15.0f).requiresCorrectToolForDrops()), BLOCK_ITEM);
 	public static final ItemObject<Block> FILIGREED_OBSIDIAN = BLOCKS.register(References.UnlocalizedName.FILIGREED_OBSIDIAN,
 			() -> new RelicsNormalBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).sound(SoundType.STONE).strength(50.0f, 2000.0f).requiresCorrectToolForDrops()), BLOCK_ITEM);
+	public static final ItemObject<Block> INFUSION_LOCUS = BLOCKS.register(References.UnlocalizedName.INFUSION_LOCUS, InfusionLocusBlock::new, BLOCK_ITEM);
+	public static final ItemObject<Block> INFUSION_ITEM_HOLDER = BLOCKS.register(References.UnlocalizedName.INFUSION_ITEM_HOLDER, InfusionItemHolderBlock::new, BLOCK_ITEM);
 
 	/**
 	 * We use this builder to ensure that our blocks all have the most important properties set. This way it'll stick out if a block doesn't have a
@@ -150,10 +154,10 @@ public class RelicsBlocks {
 		output.accept(STRUCK_SAND.get().asItem());
 		output.accept(STARWELL_FRAME.get().asItem());
 		output.accept(SKY_LENS.get().asItem());
-		output.accept(STARWELL_FRAME.get().asItem());
 		output.accept(STARWELL_CORE.get().asItem());
 		output.accept(SKY_LENS.get().asItem());
 		output.accept(RITUAL_LOCUS.get().asItem());
+		output.accept(INFUSION_LOCUS.get().asItem());
 		output.accept(PHOENIX_ALTAR.get().asItem());
 		output.accept(AZURITE_ORE.get().asItem());
 		output.accept(STARGLASS_BLOCK.get().asItem());

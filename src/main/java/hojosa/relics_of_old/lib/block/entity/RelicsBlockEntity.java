@@ -119,7 +119,7 @@ public class RelicsBlockEntity extends MantleBlockEntity implements Container {
 
 	@Override
 	public ItemStack removeItem(int pSlot, int pAmount) {
-		return pSlot < getContainerSize() ? itemHandler.getStackInSlot(pSlot).split(pAmount) : ItemStack.EMPTY;
+		return pSlot < getContainerSize() ? itemHandler.extractItem(pSlot, pAmount, false) : ItemStack.EMPTY;
 	}
 
 	@Override

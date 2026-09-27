@@ -28,9 +28,11 @@ public class RelicsRecipes {
 	public static final RegistryObject<RecipeSerializer<RitualEnchantingRecipe>> RITUAL_ENCHANTING_SERIALIZER = registerSerializer("ritual_enchanting", () -> RitualEnchantingRecipe.Serializer.INSTANCE);
 	public static final RegistryObject<RecipeSerializer<RitualOfferingRecipe>> RITUAL_OFFERING_SERIALIZER = registerSerializer("ritual_offering", () -> RitualOfferingRecipe.Serializer.INSTANCE);
 	public static final RegistryObject<RecipeSerializer<RitualDismantleRecipe>> RITUAL_DISMANTLE_SERIALIZER = registerSerializer("ritual_dismantle", () -> RitualDismantleRecipe.Serializer.INSTANCE);
+	public static final RegistryObject<RecipeSerializer<InfusionRitualRecipe>> INFUSION_RITUAL_SERIALIZER = registerSerializer("infusion_ritual", () -> InfusionRitualRecipe.Serializer.INSTANCE);
 
 	// types
 	public static final RegistryObject<RecipeType<RitualRecipeBase>> RITUAL_TYPE = TYPES.register("ritual", () -> RitualRecipeBase.Type.INSTANCE);
+	public static final RegistryObject<RecipeType<InfusionRitualRecipe>> INFUSION_RITUAL_TYPE = TYPES.register("infusion_ritual", () -> InfusionRitualRecipe.Type.INSTANCE);
 
 	private static <T extends Recipe<Container>> RegistryObject<RecipeSerializer<T>> registerSerializer(String name, Supplier<RecipeSerializer<T>> type) {
 		return SERIALIZERS.register(name, type);

@@ -45,6 +45,8 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		withExistingParent(RelicsBlocks.STARGLASS_BLOCK);
 		withExistingParent(RelicsBlocks.FRAGSTONE_BLOCK);
 		withExistingParent(RelicsBlocks.FILIGREED_OBSIDIAN);
+		withExistingParent(RelicsBlocks.INFUSION_LOCUS);
+		withExistingParent(RelicsBlocks.INFUSION_ITEM_HOLDER);
 
 		basicItem(RelicsItems.STAR_PIECE);
 		basicItem(RelicsItems.STAR_DUST);

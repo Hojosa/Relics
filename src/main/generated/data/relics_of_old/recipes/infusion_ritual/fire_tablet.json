@@ -1,0 +1,23 @@
+{
+  "type": "relics_of_old:infusion_ritual",
+  "ingredients": [
+    {
+      "item": "relics_of_old:infused_star_stone"
+    },
+    {
+      "item": "relics_of_old:gem_fire"
+    },
+    {
+      "item": "minecraft:blaze_powder"
+    },
+    {
+      "item": "minecraft:netherite_ingot"
+    }
+  ],
+  "result": {
+    "item": "relics_of_old:fire_tablet"
+  },
+  "target": {
+    "item": "relics_of_old:fire_medallion"
+  }
+}

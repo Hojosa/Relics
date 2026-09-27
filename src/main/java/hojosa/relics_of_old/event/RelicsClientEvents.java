@@ -14,6 +14,8 @@ import hojosa.relics_of_old.client.render.EnderBombEntityRenderer;
 import hojosa.relics_of_old.client.render.FallingStarRenderer;
 import hojosa.relics_of_old.client.render.GlintBlockRenderer;
 import hojosa.relics_of_old.client.render.InfusedStarstoneBlockRenderer;
+import hojosa.relics_of_old.client.render.InfusionItemHolderBlockRenderer;
+import hojosa.relics_of_old.client.render.InfusionLocusBlockRenderer;
 import hojosa.relics_of_old.client.render.MagicBoomerangRenderer;
 import hojosa.relics_of_old.client.render.MedallionEntityRenderer;
 import hojosa.relics_of_old.client.render.PhoenixAltarBlockRenderer;
@@ -27,7 +29,6 @@ import hojosa.relics_of_old.client.render.SwordPedestalBlockRenderer;
 import hojosa.relics_of_old.client.render.SwordPedestalStoneBlockRenderer;
 import hojosa.relics_of_old.common.init.RelicsBlockEntities;
 import hojosa.relics_of_old.common.init.RelicsBlocks;
-import hojosa.relics_of_old.common.init.RelicsConfig;
 import hojosa.relics_of_old.common.init.RelicsEntities;
 import hojosa.relics_of_old.common.init.RelicsItems;
 import hojosa.relics_of_old.common.init.RelicsParticles;
@@ -146,6 +147,8 @@ public class RelicsClientEvents {
 		event.registerBlockEntityRenderer(RelicsBlockEntities.STARWELL_BLOCK_ENTITY.get(), context -> new StarwellBlockRenderer());
 		event.registerBlockEntityRenderer(RelicsBlockEntities.RITUAL_LOCUS_BLOCK_ENTITY.get(), context -> new RitualLocusBlockRenderer());
 		event.registerBlockEntityRenderer(RelicsBlockEntities.PHOENIX_ALTAR_BLOCK_ENTITY.get(), PhoenixAltarBlockRenderer::new);
+		event.registerBlockEntityRenderer(RelicsBlockEntities.INFUSION_LOCUS_BLOCK_ENTITY.get(), InfusionLocusBlockRenderer::new);
+		event.registerBlockEntityRenderer(RelicsBlockEntities.INFUSION_ITEM_HOLDER_BLOCK_ENTITY.get(), InfusionItemHolderBlockRenderer::new);
 
 		event.registerEntityRenderer(RelicsEntities.FALLING_STAR.get(), FallingStarRenderer::new);
 		event.registerEntityRenderer(RelicsEntities.STARBEAM.get(), StarBeamRenderer::new);
@@ -162,7 +165,7 @@ public class RelicsClientEvents {
 		event.registerEntityRenderer(RelicsEntities.SPELL_EFFECT.get(), EmptyEntityRenderer::new);
 		event.registerEntityRenderer(RelicsEntities.THROWN_ORB.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(RelicsEntities.PING.get(), PingEntityRenderer::new);
-	    event.registerEntityRenderer(EntityType.EXPERIENCE_ORB, PrismaticExperienceOrbRenderer::new);
+		event.registerEntityRenderer(EntityType.EXPERIENCE_ORB, PrismaticExperienceOrbRenderer::new);
 	}
 
 	@SubscribeEvent

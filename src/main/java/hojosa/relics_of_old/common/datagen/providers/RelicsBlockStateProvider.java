@@ -58,6 +58,8 @@ public class RelicsBlockStateProvider extends BlockStateProvider {
 		starglassBlock();
 		simpleBlock(RelicsBlocks.FRAGSTONE_BLOCK.get());
 		simpleBlock(RelicsBlocks.FILIGREED_OBSIDIAN.get());
+		simpleBlock(RelicsBlocks.INFUSION_LOCUS.get());
+		simpleBlock(RelicsBlocks.INFUSION_ITEM_HOLDER.get(), models().getBuilder(References.UnlocalizedName.INFUSION_ITEM_HOLDER));
 	}
 
 	//alternative overlay method that uses another blocks texture

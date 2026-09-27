@@ -160,6 +160,7 @@ public class RelicsLootTables extends VanillaBlockLoot {
 		  dropSelf(RelicsBlocks.STARGLASS_BLOCK.get());
 		  dropSelf(RelicsBlocks.FRAGSTONE_BLOCK.get());
 		  dropSelf(RelicsBlocks.FILIGREED_OBSIDIAN.get());
+		  dropSelf(RelicsBlocks.INFUSION_LOCUS.get());
 	}
 
 	@Override

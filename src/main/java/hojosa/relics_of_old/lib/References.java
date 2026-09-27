@@ -209,6 +209,8 @@ public class References {
 		public static final String MILK_SHELL = "milk_shell";
 		public static final String FORTUNE_COOKIE = "fortune_cookie";
 		public static final String BAD_BOW = "bad_bow";
+		public static final String INFUSION_LOCUS = "infusion_locus";
+		public static final String INFUSION_ITEM_HOLDER = "infusion_item_holder";
 	}
 
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)

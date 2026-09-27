@@ -98,6 +98,7 @@ public class SpiritDefinitionProvider implements DataProvider {
 		boons.add(potionBoon);
 		// Black emblem → phoenix emblem (0, hidden)
 		boons.add(hiddenItemBoon(0, RelicsItems.BLACK_EMBLEM.get(), RelicsItems.PHOENIX_EMBLEM.get(), 1));
+		boons.add(itemBoon(150, RelicsItems.TOTEM_DUST.get(), RelicsItems.PHOENIX_FEATHER.get(), 1));
 
 		json.add("boons", boons);
 

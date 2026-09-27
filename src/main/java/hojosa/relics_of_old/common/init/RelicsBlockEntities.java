@@ -2,6 +2,8 @@ package hojosa.relics_of_old.common.init;
 
 import hojosa.relics_of_old.common.block.entity.ClayJarBlockEntity;
 import hojosa.relics_of_old.common.block.entity.InfusedStarstoneBlockEntity;
+import hojosa.relics_of_old.common.block.entity.InfusionItemHolderBlockEntity;
+import hojosa.relics_of_old.common.block.entity.InfusionLocusBlockEntity;
 import hojosa.relics_of_old.common.block.entity.PhoenixAltarBlockEntity;
 import hojosa.relics_of_old.common.block.entity.RetexturedSwordPedestalEntity;
 import hojosa.relics_of_old.common.block.entity.RitualLocusBlockEntity;
@@ -46,7 +48,13 @@ public class RelicsBlockEntities {
 
 	public static final RegistryObject<BlockEntityType<RitualLocusBlockEntity>> RITUAL_LOCUS_BLOCK_ENTITY = BLOCK_ENTITIES.register(References.UnlocalizedName.RITUAL_LOCUS, RitualLocusBlockEntity::new,
 			builder -> builder.add(RelicsBlocks.RITUAL_LOCUS.get()));
+
+	public static final RegistryObject<BlockEntityType<PhoenixAltarBlockEntity>> PHOENIX_ALTAR_BLOCK_ENTITY = BLOCK_ENTITIES.register(References.UnlocalizedName.PHOENIX_ALTAR, PhoenixAltarBlockEntity::new,
+			builder -> builder.add(RelicsBlocks.PHOENIX_ALTAR.get()));
 	
-	public static final RegistryObject<BlockEntityType<PhoenixAltarBlockEntity>> PHOENIX_ALTAR_BLOCK_ENTITY = BLOCK_ENTITIES.register(References.UnlocalizedName.PHOENIX_ALTAR,
-            PhoenixAltarBlockEntity::new, builder -> builder.add(RelicsBlocks.PHOENIX_ALTAR.get()));
+	public static final RegistryObject<BlockEntityType<InfusionLocusBlockEntity>> INFUSION_LOCUS_BLOCK_ENTITY = BLOCK_ENTITIES.register(References.UnlocalizedName.INFUSION_LOCUS, InfusionLocusBlockEntity::new,
+			builder -> builder.add(RelicsBlocks.INFUSION_LOCUS.get()));
+	
+	public static final RegistryObject<BlockEntityType<InfusionItemHolderBlockEntity>> INFUSION_ITEM_HOLDER_BLOCK_ENTITY = BLOCK_ENTITIES.register(References.UnlocalizedName.INFUSION_ITEM_HOLDER, InfusionItemHolderBlockEntity::new,
+			builder -> builder.add(RelicsBlocks.INFUSION_ITEM_HOLDER.get()));
 }

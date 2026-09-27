@@ -15,6 +15,7 @@ import hojosa.relics_of_old.client.particle.SpellIceParticle;
 import hojosa.relics_of_old.client.particle.SpellLightningParticle;
 import hojosa.relics_of_old.client.particle.SpellRayfireParticle;
 import hojosa.relics_of_old.client.particle.SpellScytheParticle;
+import hojosa.relics_of_old.common.block.entity.InfusionLocusBlockEntity;
 import hojosa.relics_of_old.common.block.entity.RitualLocusBlockEntity;
 import hojosa.relics_of_old.common.block.entity.StarwellBlockEntity;
 import hojosa.relics_of_old.common.init.RelicsBlocks;
@@ -373,6 +374,13 @@ public class SpellEffectEntity extends Entity implements IEntityAdditionalSpawnD
 					Player caster = spell.getCaster();
 					if (caster != null) {
 						locus.tryInvoke(caster);
+					}
+				}
+				// Activate infusion locus
+				if (level.getBlockEntity(pos) instanceof InfusionLocusBlockEntity infusion) {
+					Player caster = spell.getCaster();
+					if (caster != null) {
+						infusion.tryInvoke(caster);
 					}
 				}
 				if (level.getBlockState(pos).is(RelicsBlocks.SKY_LENS.get()) && level.getBlockEntity(pos.below()) instanceof StarwellBlockEntity starwell) {

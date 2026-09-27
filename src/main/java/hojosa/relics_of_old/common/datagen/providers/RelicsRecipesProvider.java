@@ -1244,5 +1244,37 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		RitualRecipeBuilder.dismantle()
 	    .pair(Blocks.GRAVEL, Blocks.GRAVEL)
 	    .save(consumer, "dismantle");
-		}
+		
+		RitualRecipeBuilder.infusion(RelicsItems.FIRE_MEDALLION.get())
+	    .ingredient(RelicsItems.INFUSED_STAR_STONE.get())
+	    .ingredient(RelicsItems.GEM_FIRE.get())
+	    .ingredient(Items.BLAZE_POWDER)
+	    .ingredient(Items.NETHERITE_INGOT)
+	    .result(RelicsItems.FIRE_TABLET.get())
+	    .save(consumer);
+		
+		RitualRecipeBuilder.infusion(RelicsItems.WATER_MEDALLION.get())
+	    .ingredient(RelicsItems.INFUSED_STAR_STONE.get())
+	    .ingredient(RelicsItems.DIMENSIONAL_CATALYST.get())
+	    .ingredient(Items.PRISMARINE_SHARD)
+	    .ingredient(Items.HEART_OF_THE_SEA)
+	    .result(RelicsItems.WATER_TABLET.get())
+	    .save(consumer);
+		
+		RitualRecipeBuilder.infusion(Items.GLASS_BOTTLE)
+	    .ingredient(RelicsItems.STAR_DUST.get())
+	    .ingredient(RelicsItems.STAR_DUST.get())
+	    .ingredient(RelicsItems.STAR_DUST.get())
+	    .ingredient(RelicsItems.STAR_DUST.get())
+	    .result(RelicsItems.MAGIC_POWDER.get())
+	    .save(consumer);
+		
+		RitualRecipeBuilder.infusion(Items.IRON_SWORD)
+	    .ingredient(RelicsItems.INFUSED_STAR_DUST.get())
+	    .ingredient(RelicsItems.GEM_FIRE.get())
+	    .ingredient(Items.BLAZE_POWDER)
+	    .ingredient(Items.FLINT_AND_STEEL)
+	    .result(RelicsItems.FIRE_SWORD.get())
+	    .save(consumer);
+	}
 }

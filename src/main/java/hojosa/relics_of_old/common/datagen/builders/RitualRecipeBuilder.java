@@ -9,6 +9,7 @@ import javax.annotation.Nullable;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import hojosa.relics_of_old.common.recipes.InfusionRitualRecipe;
 import hojosa.relics_of_old.common.recipes.RitualBlessingRecipe;
 import hojosa.relics_of_old.common.recipes.RitualConvertRecipe;
 import hojosa.relics_of_old.common.recipes.RitualCrucibleRecipe;
@@ -19,11 +20,14 @@ import hojosa.relics_of_old.common.recipes.RitualSummoningRecipe;
 import hojosa.relics_of_old.lib.RelicsUtil;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -499,48 +503,133 @@ public class RitualRecipeBuilder {
 	}
 
 	public static class DismantleBuilder {
-	    private final List<ComponentEntry> components = new ArrayList<>();
+		private final List<ComponentEntry> components = new ArrayList<>();
 
-	    public DismantleBuilder pair(Block a, Block b) {
-	        components.add(new ComponentEntry(a, b));
-	        return this;
-	    }
+		public DismantleBuilder pair(Block a, Block b) {
+			components.add(new ComponentEntry(a, b));
+			return this;
+		}
 
-	    public DismantleBuilder keystone(Block block) {
-	        components.add(new ComponentEntry(block, null));
-	        return this;
-	    }
+		public DismantleBuilder keystone(Block block) {
+			components.add(new ComponentEntry(block, null));
+			return this;
+		}
 
-	    public void save(Consumer<FinishedRecipe> consumer, String name) {
-	        consumer.accept(new FinishedRecipe() {
-	            @Override
-	            public void serializeRecipeData(JsonObject json) {
-	                JsonArray comps = new JsonArray();
-	                for (ComponentEntry c : components)
-	                    comps.add(c.toJson());
-	                json.add("components", comps);
-	            }
+		public void save(Consumer<FinishedRecipe> consumer, String name) {
+			consumer.accept(new FinishedRecipe() {
+				@Override
+				public void serializeRecipeData(JsonObject json) {
+					JsonArray comps = new JsonArray();
+					for (ComponentEntry c : components)
+						comps.add(c.toJson());
+					json.add("components", comps);
+				}
 
-	            @Override
-	            public ResourceLocation getId() {
-	                return RelicsUtil.modLoc("ritual/" + name);
-	            }
+				@Override
+				public ResourceLocation getId() {
+					return RelicsUtil.modLoc("ritual/" + name);
+				}
 
-	            @Override
-	            public RecipeSerializer<?> getType() {
-	                return RitualDismantleRecipe.Serializer.INSTANCE;
-	            }
+				@Override
+				public RecipeSerializer<?> getType() {
+					return RitualDismantleRecipe.Serializer.INSTANCE;
+				}
 
-	            @Override
-	            public @Nullable JsonObject serializeAdvancement() {
-	                return null;
-	            }
+				@Override
+				public @Nullable JsonObject serializeAdvancement() {
+					return null;
+				}
 
-	            @Override
-	            public @Nullable ResourceLocation getAdvancementId() {
-	                return null;
-	            }
-	        });
-	    }
+				@Override
+				public @Nullable ResourceLocation getAdvancementId() {
+					return null;
+				}
+			});
+		}
+	}
+
+	// ============ INFUSION RITUAL ============
+
+	public static InfusionBuilder infusion(Item target) {
+		return new InfusionBuilder(target);
+	}
+
+	public static class InfusionBuilder {
+		private final Item target;
+		private final List<Ingredient> ingredients = new ArrayList<>();
+		private Item result;
+		private int resultCount = 1;
+
+		public InfusionBuilder(Item target) {
+			this.target = target;
+		}
+
+		public InfusionBuilder ingredient(ItemLike item) {
+			ingredients.add(Ingredient.of(item));
+			return this;
+		}
+
+		public InfusionBuilder ingredient(TagKey<Item> tag) {
+			ingredients.add(Ingredient.of(tag));
+			return this;
+		}
+
+		public InfusionBuilder result(Item item) {
+			this.result = item;
+			return this;
+		}
+
+		public InfusionBuilder result(Item item, int count) {
+			this.result = item;
+			this.resultCount = count;
+			return this;
+		}
+
+		public void save(Consumer<FinishedRecipe> consumer) {
+			this.save(consumer, ForgeRegistries.ITEMS.getKey(this.result.asItem()).getPath());
+		}
+
+		public void save(Consumer<FinishedRecipe> consumer, String name) {
+			consumer.accept(new FinishedRecipe() {
+				@Override
+				public void serializeRecipeData(JsonObject json) {
+					JsonObject targetObj = new JsonObject();
+					targetObj.addProperty("item", ForgeRegistries.ITEMS.getKey(target).toString());
+					json.add("target", targetObj);
+
+					JsonArray ingredientsArray = new JsonArray();
+					for (Ingredient ing : ingredients) {
+						ingredientsArray.add(ing.toJson());
+					}
+					json.add("ingredients", ingredientsArray);
+
+					JsonObject resultObj = new JsonObject();
+					resultObj.addProperty("item", ForgeRegistries.ITEMS.getKey(result).toString());
+					if (resultCount > 1)
+						resultObj.addProperty("count", resultCount);
+					json.add("result", resultObj);
+				}
+
+				@Override
+				public ResourceLocation getId() {
+					return RelicsUtil.modLoc("infusion_ritual/" + name);
+				}
+
+				@Override
+				public RecipeSerializer<?> getType() {
+					return InfusionRitualRecipe.Serializer.INSTANCE;
+				}
+
+				@Override
+				public @Nullable JsonObject serializeAdvancement() {
+					return null;
+				}
+
+				@Override
+				public @Nullable ResourceLocation getAdvancementId() {
+					return null;
+				}
+			});
+		}
 	}
 }

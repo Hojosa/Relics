@@ -1,0 +1,23 @@
+{
+  "type": "relics_of_old:infusion_ritual",
+  "ingredients": [
+    {
+      "item": "relics_of_old:infused_star_stone"
+    },
+    {
+      "item": "relics_of_old:dimensional_catalyst"
+    },
+    {
+      "item": "minecraft:prismarine_shard"
+    },
+    {
+      "item": "minecraft:heart_of_the_sea"
+    }
+  ],
+  "result": {
+    "item": "relics_of_old:water_tablet"
+  },
+  "target": {
+    "item": "relics_of_old:water_medallion"
+  }
+}

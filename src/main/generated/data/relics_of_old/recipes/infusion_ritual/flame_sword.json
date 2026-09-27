@@ -1,0 +1,23 @@
+{
+  "type": "relics_of_old:infusion_ritual",
+  "ingredients": [
+    {
+      "item": "relics_of_old:infused_star_dust"
+    },
+    {
+      "item": "relics_of_old:gem_fire"
+    },
+    {
+      "item": "minecraft:blaze_powder"
+    },
+    {
+      "item": "minecraft:flint_and_steel"
+    }
+  ],
+  "result": {
+    "item": "relics_of_old:flame_sword"
+  },
+  "target": {
+    "item": "minecraft:iron_sword"
+  }
+}

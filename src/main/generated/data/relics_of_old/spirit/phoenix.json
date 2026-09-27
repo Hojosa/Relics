@@ -60,6 +60,11 @@
       "hidden": true,
       "request": "relics_of_old:blank_emblem",
       "reward": "relics_of_old:phoenix_emblem"
+    },
+    {
+      "cost": 150,
+      "request": "relics_of_old:totem_dust",
+      "reward": "relics_of_old:phoenix_feather"
     }
   ],
   "donation_cooldown": 300,
