@@ -159,6 +159,19 @@ publishing {
     }
 }
 
+//needed so i can use the debugger with my fancy mods.toml file in eclipse
+eclipse {
+      classpath {
+          file {
+              whenMerged { cp ->
+                  cp.entries.findAll { it.kind == 'src' && it.path == 'src/main/resources' }.each {
+                      it.excludes += ['META-INF/mods.toml']
+                  }
+              }   
+          }           
+      }           
+  }   
+
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
