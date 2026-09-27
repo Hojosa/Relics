@@ -62,7 +62,6 @@ public class RelicsLanguageProvider extends LanguageProvider {
 //	      addItem(RelicsItems.BRICK_BLUE, "Blue Brick");
 		addItem(RelicsItems.FIRE_TABLET, "Fire Tablet");
 		addItem(RelicsItems.WATER_TABLET, "Water Tablet");
-		addItem(RelicsItems.BLANK_TABLET, "Blank Tablet");
 		addItem(RelicsItems.STAR_STONE, "Star Stone");
 		addItem(RelicsItems.STAR_DUST, "Star Dust");
 		addItem(RelicsItems.STAR_PIECE, "Star Piece");

@@ -71,7 +71,6 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		basicItem(RelicsItems.LOST_PAGE_6);
 		basicItem(RelicsItems.LOST_PAGE_7);
 		basicItem(RelicsItems.MAGIC_POWDER);
-		basicItem(RelicsItems.BLANK_TABLET);
 		itemWithOverride(RelicsItems.MYSTIC_SEED, "thundering", "charged");
 		basicItem(RelicsBlocks.CALTROPS.asItem());
 		basicItem(RelicsItems.WOODEN_BOOMERANG);

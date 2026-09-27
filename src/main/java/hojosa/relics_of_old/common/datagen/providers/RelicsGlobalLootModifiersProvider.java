@@ -22,19 +22,6 @@ public class RelicsGlobalLootModifiersProvider extends GlobalLootModifierProvide
 
 	@Override
 	protected void start() {
-		add("blank_tablet_from_loot_chest",
-				new AddItemModifier(new LootItemCondition[] { 
-						LootItemRandomChanceCondition.randomChance(0.10f).build(),
-						LootTableIdCondition.builder(BuiltInLootTables.END_CITY_TREASURE)
-						.or(LootTableIdCondition.builder(BuiltInLootTables.RUINED_PORTAL))
-						.or(LootTableIdCondition.builder(BuiltInLootTables.PIGLIN_BARTERING))
-						.or(LootTableIdCondition.builder(BuiltInLootTables.STRONGHOLD_LIBRARY))
-						.or(LootTableIdCondition.builder(BuiltInLootTables.SHIPWRECK_TREASURE))
-						.or(LootTableIdCondition.builder(BuiltInLootTables.OCEAN_RUIN_WARM_ARCHAEOLOGY))
-						.or(LootTableIdCondition.builder(BuiltInLootTables.SNIFFER_DIGGING))
-						.build()},
-						RelicsItems.BLANK_TABLET.get()));
-		
 		//todo, add supplemtaries urn
 		//forge doesnt support data conditional loading outside of recipes and advancements. so this has to wait. (or write a custom one)
 		
