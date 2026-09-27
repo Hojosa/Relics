@@ -3,8 +3,6 @@ package hojosa.relics_of_old.common.block.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jetbrains.annotations.NotNull;
-
 import hojosa.relics_of_old.client.particle.InfusionItemParticle;
 import hojosa.relics_of_old.common.block.StarwellBlock;
 import hojosa.relics_of_old.common.init.RelicsBlockEntities;
@@ -16,8 +14,6 @@ import hojosa.relics_of_old.common.ritual.RitualGrid;
 import hojosa.relics_of_old.lib.block.entity.RelicsBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.Connection;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
@@ -27,7 +23,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
-import slimeknights.mantle.block.entity.MantleBlockEntity;
 
 public class InfusionLocusBlockEntity extends RelicsBlockEntity {
 	public boolean active;

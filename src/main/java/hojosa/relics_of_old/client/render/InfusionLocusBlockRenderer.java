@@ -24,7 +24,6 @@ import net.minecraft.world.item.ItemStack;
 
 public class InfusionLocusBlockRenderer implements BlockEntityRenderer<InfusionLocusBlockEntity> {
 	private static final ResourceLocation BEAM_TEX = RelicsUtil.modLoc("textures/entity/beam.png");
-	private static final ResourceLocation SPARK_TEX = RelicsUtil.modLoc("textures/entity/spikey_spark.png");
 	private static final ResourceLocation RINGFLARE_TEX = RelicsUtil.modLoc("textures/entity/ringflare.png");
 
 	public InfusionLocusBlockRenderer(Context context) {
@@ -53,10 +52,6 @@ public class InfusionLocusBlockRenderer implements BlockEntityRenderer<InfusionL
 			float floatProgress = Math.min((float) be.getProgress() / InfusionLocusBlockEntity.FLOAT_DURATION, 1.0f);
 			float y = 1.05f + floatProgress * 1.0f;
 
-			// Spikey spark at floating item
-//			float sparkScale = 2.2f + (float) Math.sin(System.currentTimeMillis() * 0.005) * 0.2f;
-//			drawSparkle(pose, buffer, 0.5, y, 0.5, sparkScale, 1.0f, 0.95f, 0.7f, 1.0f);
-//			float flareScale = 1.2f + (float) Math.sin(System.currentTimeMillis() * 0.005) * 0.2f;
             drawRingFlare(pose, buffer, 0.5, y, 0.5, 1.2f, 1.0f, 0.95f, 0.7f, 1.0f);
 
 			if (!targetItem.isEmpty()) {
@@ -76,14 +71,6 @@ public class InfusionLocusBlockRenderer implements BlockEntityRenderer<InfusionL
 				pose.popPose();
 			}
 		}
-
-		// Spikey spark at center during crafting
-//		if (be.isCrafting()) {
-//			float floatProgress = Math.min((float) be.getProgress() / InfusionLocusBlockEntity.FLOAT_DURATION, 1.0f);
-//			float sparkY = 1.05f + floatProgress * 1.0f;
-//			float sparkScale = 1.2f + (float) Math.sin(System.currentTimeMillis() * 0.005) * 0.2f;
-//			drawSparkle(pose, buffer, 0.5, sparkY, 0.5, sparkScale, 1.0f, 0.95f, 0.7f, 1.0f);
-//		}
 
 		// Render edge beams connecting occupied helper points
 		if (!grid.edges.isEmpty()) {
@@ -147,36 +134,6 @@ public class InfusionLocusBlockRenderer implements BlockEntityRenderer<InfusionL
 	private float clerp(float input, float scale) {
 		float t = input / scale;
 		return Math.max(0, Math.min(t, 1));
-	}
-
-	// Spikey spark sparkle at a position (3 cross-planes, same as RitualLocusBlockRenderer)
-	private void drawSparkle(PoseStack pose, MultiBufferSource buffer, double x, double y, double z, float scale, float r, float g, float b, float a) {
-		VertexConsumer vc = buffer.getBuffer(RelicsRenderTypes.additiveBeam(SPARK_TEX, true));
-
-		pose.pushPose();
-		pose.translate(x, y, z);
-
-		float[] angles = { (float) (System.currentTimeMillis() * 0.05), (float) (System.currentTimeMillis() * -0.0072 + z), (float) (System.currentTimeMillis() * 0.0113 + x * 2.7) };
-		float[] scales = { scale, scale * 0.9f, scale * 0.8f };
-
-		for (int j = 0; j < 3; j++) {
-			pose.pushPose();
-			pose.scale(scales[j], scales[j], scales[j]);
-			pose.mulPose(Axis.XP.rotationDegrees(90));
-			pose.mulPose(Axis.ZP.rotationDegrees(angles[j]));
-			pose.translate(-0.5, -0.5, 0);
-
-			PoseStack.Pose last = pose.last();
-			Matrix4f m4 = last.pose();
-			Matrix3f m3 = last.normal();
-
-			vc.vertex(m4, 0, 0, 0).color(r, g, b, a).uv(0, 1).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(15728880).normal(m3, 0, 1, 0).endVertex();
-			vc.vertex(m4, 1, 0, 0).color(r, g, b, a).uv(1, 1).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(15728880).normal(m3, 0, 1, 0).endVertex();
-			vc.vertex(m4, 1, 1, 0).color(r, g, b, a).uv(1, 0).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(15728880).normal(m3, 0, 1, 0).endVertex();
-			vc.vertex(m4, 0, 1, 0).color(r, g, b, a).uv(0, 0).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(15728880).normal(m3, 0, 1, 0).endVertex();
-			pose.popPose();
-		}
-		pose.popPose();
 	}
 
 	// Camera-facing ring flare — always billboarded toward the player
