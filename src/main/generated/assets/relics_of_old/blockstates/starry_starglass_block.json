@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "relics_of_old:block/starry_starglass_block",
+      "x": 90
+    },
+    "facing=east": {
+      "model": "relics_of_old:block/starry_starglass_block",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "relics_of_old:block/starry_starglass_block"
+    },
+    "facing=south": {
+      "model": "relics_of_old:block/starry_starglass_block",
+      "y": 180
+    },
+    "facing=up": {
+      "model": "relics_of_old:block/starry_starglass_block",
+      "x": 270
+    },
+    "facing=west": {
+      "model": "relics_of_old:block/starry_starglass_block",
+      "y": 270
+    }
+  }
+}

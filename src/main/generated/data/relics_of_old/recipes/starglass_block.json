@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "S": {
+      "item": "relics_of_old:starglass_lump"
+    }
+  },
+  "pattern": [
+    "SS ",
+    "SS "
+  ],
+  "result": {
+    "item": "relics_of_old:starglass_block"
+  },
+  "show_notification": true
+}

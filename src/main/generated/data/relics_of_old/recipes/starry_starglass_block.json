@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "tab",
+  "ingredients": [
+    {
+      "item": "relics_of_old:starglass_block"
+    },
+    {
+      "item": "relics_of_old:starry_starglass"
+    },
+    {
+      "item": "relics_of_old:magic_powder"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "item": "relics_of_old:starry_starglass_block"
+  }
+}

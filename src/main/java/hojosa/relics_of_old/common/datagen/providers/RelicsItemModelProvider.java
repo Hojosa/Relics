@@ -43,6 +43,11 @@ public class RelicsItemModelProvider extends ItemModelProvider {
 		withExistingParent(RelicsBlocks.PHOENIX_ALTAR);
 		withExistingParent(RelicsBlocks.AZURITE_ORE);
 		withExistingParent(RelicsBlocks.STARGLASS_BLOCK);
+		withExistingParent(RelicsBlocks.STARRY_STARGLASS);
+		withExistingParent(RelicsBlocks.STARRY_STARGLASS_BLOCK);
+		withExistingParent(RelicsBlocks.INFUSED_STARGLASS_BLOCK);
+		withExistingParent(RelicsBlocks.INFUSED_STARRY_STARGLASS);
+		withExistingParent(RelicsBlocks.INFUSED_STARRY_STARGLASS_BLOCK);
 		withExistingParent(RelicsBlocks.FRAGSTONE_BLOCK);
 		withExistingParent(RelicsBlocks.FILIGREED_OBSIDIAN);
 		withExistingParent(RelicsBlocks.INFUSION_LOCUS);

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:blasting",
+  "category": "blocks",
+  "cookingtime": 60,
+  "experience": 0.2,
+  "ingredient": {
+    "item": "relics_of_old:starry_sand"
+  },
+  "result": "relics_of_old:starry_starglass"
+}

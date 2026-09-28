@@ -49,7 +49,12 @@ public class RelicsLanguageProvider extends LanguageProvider {
 		addBlock(RelicsBlocks.SKY_LENS, "Sky Lens");
 		addBlock(RelicsBlocks.RITUAL_LOCUS, "Ritual Locus");
 		addBlock(RelicsBlocks.PHOENIX_ALTAR, "Phoenix Altar");
-		addBlock(RelicsBlocks.STARGLASS_BLOCK, "Starglass");
+		addBlock(RelicsBlocks.STARGLASS_BLOCK, "Starglass Block");
+		addBlock(RelicsBlocks.STARRY_STARGLASS, "Starry Starglass");
+		addBlock(RelicsBlocks.STARRY_STARGLASS_BLOCK, "Starry Starglass Block");
+		addBlock(RelicsBlocks.INFUSED_STARGLASS_BLOCK, "Infused Starglass Block");
+		addBlock(RelicsBlocks.INFUSED_STARRY_STARGLASS, "Infused Starry Starglass");
+		addBlock(RelicsBlocks.INFUSED_STARRY_STARGLASS_BLOCK, "Infused Starry Starglass Block");
 		addBlock(RelicsBlocks.FRAGSTONE_BLOCK, "Fragstone");
 		addBlock(RelicsBlocks.FILIGREED_OBSIDIAN, "Filigreed Obsidian");
 		addBlock(RelicsBlocks.INFUSION_LOCUS, "Infusion Locus");

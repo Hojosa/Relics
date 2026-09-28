@@ -204,6 +204,11 @@ public class References {
 		public static final String SCROLL_INFERNO = "scroll_inferno";
 		public static final String SCROLL_SCYTHEWIND = "scroll_scythewind";
 		public static final String STARGLASS_BLOCK = "starglass_block";
+		public static final String STARRY_STARGLASS = "starry_starglass";
+		public static final String STARRY_STARGLASS_BLOCK = "starry_starglass_block";
+		public static final String INFUSED_STARGLASS_BLOCK = "infused_starglass_block";
+		public static final String INFUSED_STARRY_STARGLASS = "infused_starry_starglass";
+		public static final String INFUSED_STARRY_STARGLASS_BLOCK = "infused_starry_starglass_block";
 		public static final String FRAGSTONE_BLOCK = "fragstone_block";
 		public static final String FILIGREED_OBSIDIAN = "filigreed_obsidian";
 		public static final String MILK_SHELL = "milk_shell";

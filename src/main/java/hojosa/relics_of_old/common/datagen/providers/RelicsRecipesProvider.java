@@ -1276,5 +1276,24 @@ public class RelicsRecipesProvider extends RecipeProvider {
 	    .ingredient(Items.FLINT_AND_STEEL)
 	    .result(RelicsItems.FIRE_SWORD.get())
 	    .save(consumer);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, RelicsBlocks.STARGLASS_BLOCK.get())
+		.pattern("SS ")
+		.pattern("SS ")
+		.define('S', RelicsItems.STARGLASS_LUMP.get())
+		.unlockedBy("has_string", has(RelicsItems.STARGLASS_LUMP.get()))
+		.save(consumer);
+		
+		SimpleCookingRecipeBuilder.blasting(Ingredient.of(RelicsBlocks.STARRY_SAND), RecipeCategory.MISC, RelicsBlocks.STARRY_STARGLASS.get().asItem(), 0.2f, 60)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsBlocks.STARRY_SAND))
+		.save(consumer);
+		
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RelicsBlocks.STARRY_STARGLASS_BLOCK.get(), 2)
+		.requires(RelicsBlocks.STARGLASS_BLOCK.get())
+		.requires(RelicsBlocks.STARRY_STARGLASS.get())
+		.requires(RelicsItems.MAGIC_POWDER.get())
+		.group(References.CREATIVE_TAB)
+		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.MAGIC_POWDER.get()))
+		.save(consumer);
 	}
 }

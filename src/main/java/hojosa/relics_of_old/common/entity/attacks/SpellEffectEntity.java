@@ -2,6 +2,7 @@ package hojosa.relics_of_old.common.entity.attacks;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 import java.util.UUID;
@@ -45,6 +46,7 @@ import net.minecraft.world.entity.animal.SnowGolem;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -366,6 +368,11 @@ public class SpellEffectEntity extends Entity implements IEntityAdditionalSpawnD
 			}
 		},
 		SPRINKLE_STARDUST(Element.HARMLESS, 30, true) {
+			private static final Map<Block, Block> STARGLASS_INFUSIONS = Map.of(
+				      RelicsBlocks.STARGLASS_BLOCK.get(), RelicsBlocks.INFUSED_STARGLASS_BLOCK.get(),
+				      RelicsBlocks.STARRY_STARGLASS.get(), RelicsBlocks.INFUSED_STARRY_STARGLASS.get(),
+				      RelicsBlocks.STARRY_STARGLASS_BLOCK.get(), RelicsBlocks.INFUSED_STARRY_STARGLASS_BLOCK.get()); 
+
 			@Override
 			public void affectBlock(SpellEffectEntity spell, BlockPos pos) {
 				Level level = spell.level();
@@ -385,6 +392,11 @@ public class SpellEffectEntity extends Entity implements IEntityAdditionalSpawnD
 				}
 				if (level.getBlockState(pos).is(RelicsBlocks.SKY_LENS.get()) && level.getBlockEntity(pos.below()) instanceof StarwellBlockEntity starwell) {
 					starwell.activateFlightCharge();
+				}
+				BlockState state = level.getBlockState(pos);
+				Block infused = STARGLASS_INFUSIONS.get(state.getBlock());
+				if (infused != null) {
+					level.setBlockAndUpdate(pos, infused.withPropertiesOf(state));
 				}
 			}
 

@@ -158,6 +158,11 @@ public class RelicsLootTables extends VanillaBlockLoot {
 		  dropSelf(RelicsBlocks.PHOENIX_ALTAR.get());
 		  dropSelf(RelicsBlocks.AZURITE_ORE.get());
 		  dropSelf(RelicsBlocks.STARGLASS_BLOCK.get());
+		  dropSelf(RelicsBlocks.STARRY_STARGLASS.get());
+		  dropSelf(RelicsBlocks.STARRY_STARGLASS_BLOCK.get());
+		  dropSelf(RelicsBlocks.INFUSED_STARGLASS_BLOCK.get());
+		  dropSelf(RelicsBlocks.INFUSED_STARRY_STARGLASS.get());
+		  dropSelf(RelicsBlocks.INFUSED_STARRY_STARGLASS_BLOCK.get());
 		  dropSelf(RelicsBlocks.FRAGSTONE_BLOCK.get());
 		  dropSelf(RelicsBlocks.FILIGREED_OBSIDIAN.get());
 		  dropSelf(RelicsBlocks.INFUSION_LOCUS.get());
