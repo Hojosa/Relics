@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "N": {
+      "item": "minecraft:gold_nugget"
+    },
+    "S": {
+      "item": "relics_of_old:starglass_lump"
+    }
+  },
+  "pattern": [
+    "NSN",
+    "SNS",
+    "NSN"
+  ],
+  "result": {
+    "item": "relics_of_old:infusion_locus"
+  },
+  "show_notification": true
+}

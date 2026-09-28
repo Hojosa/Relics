@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "C": {
+      "item": "minecraft:cobblestone"
+    },
+    "S": {
+      "item": "minecraft:sand"
+    }
+  },
+  "pattern": [
+    "CS",
+    "SC"
+  ],
+  "result": {
+    "count": 4,
+    "item": "relics_of_old:fragstone_block"
+  },
+  "show_notification": true
+}

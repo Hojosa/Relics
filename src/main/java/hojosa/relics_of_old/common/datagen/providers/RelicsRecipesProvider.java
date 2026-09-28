@@ -1295,5 +1295,34 @@ public class RelicsRecipesProvider extends RecipeProvider {
 		.group(References.CREATIVE_TAB)
 		.unlockedBy(hasItem, InventoryChangeTrigger.TriggerInstance.hasItems(RelicsItems.MAGIC_POWDER.get()))
 		.save(consumer);
+		
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RelicsBlocks.INFUSION_LOCUS.get())
+        .pattern("NSN")
+        .pattern("SNS")
+        .pattern("NSN")
+        .define('S', RelicsItems.STARGLASS_LUMP.get())
+        .define('N', Items.GOLD_NUGGET)
+        .group(References.CREATIVE_TAB)
+        .unlockedBy(hasItem, has(RelicsItems.STARGLASS_LUMP.get()))
+        .save(consumer);
+        
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RelicsBlocks.FILIGREED_OBSIDIAN.get(), 5)
+        .pattern("OGO")
+        .pattern("GOG")
+        .pattern("OGO")
+        .define('O', Items.OBSIDIAN)
+        .define('G', Items.GOLD_INGOT)
+        .group(References.CREATIVE_TAB)
+        .unlockedBy(hasItem, has(Items.OBSIDIAN))
+        .save(consumer);
+        
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RelicsBlocks.FRAGSTONE_BLOCK.get(), 4)
+        .pattern("CS")
+        .pattern("SC")
+        .define('C', Blocks.COBBLESTONE)
+        .define('S', Blocks.SAND)
+        .group(References.CREATIVE_TAB)
+        .unlockedBy(hasItem, has(Blocks.SAND))
+        .save(consumer);
 	}
 }

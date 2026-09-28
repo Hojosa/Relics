@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tab",
+  "key": {
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "O": {
+      "item": "minecraft:obsidian"
+    }
+  },
+  "pattern": [
+    "OGO",
+    "GOG",
+    "OGO"
+  ],
+  "result": {
+    "count": 5,
+    "item": "relics_of_old:filigreed_obsidian"
+  },
+  "show_notification": true
+}
