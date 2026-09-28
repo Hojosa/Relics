@@ -1266,7 +1266,7 @@ public class RelicsRecipesProvider extends RecipeProvider {
 	    .ingredient(RelicsItems.STAR_DUST.get())
 	    .ingredient(RelicsItems.STAR_DUST.get())
 	    .ingredient(RelicsItems.STAR_DUST.get())
-	    .result(RelicsItems.MAGIC_POWDER.get())
+	    .result(RelicsItems.MAGIC_POWDER.get(), 4)
 	    .save(consumer);
 		
 		RitualRecipeBuilder.infusion(Items.IRON_SWORD)
