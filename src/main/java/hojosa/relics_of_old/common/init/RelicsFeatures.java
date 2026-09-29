@@ -3,7 +3,6 @@ package hojosa.relics_of_old.common.init;
 import hojosa.relics_of_old.common.worldgen.AzuriteOreFeature;
 import hojosa.relics_of_old.common.worldgen.BombFlowerFeature;
 import hojosa.relics_of_old.common.worldgen.ShrubClusterFeature;
-import hojosa.relics_of_old.common.worldgen.StarwellFeature;
 import hojosa.relics_of_old.lib.References;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -20,6 +19,5 @@ public class RelicsFeatures {
 
 	public static final RegistryObject<Feature<NoneFeatureConfiguration>> SHRUB_CLUSTER = FEATURES.register("shrub_cluster", () -> new ShrubClusterFeature(NoneFeatureConfiguration.CODEC));
 	public static final RegistryObject<Feature<NoneFeatureConfiguration>> BOMB_FLOWER_CLUSTER = FEATURES.register("bomb_flower_cluster", () -> new BombFlowerFeature(NoneFeatureConfiguration.CODEC));
-	public static final RegistryObject<StarwellFeature> STARWELL = FEATURES.register("starwell", () -> new StarwellFeature(NoneFeatureConfiguration.CODEC));
 	public static final RegistryObject<Feature<NoneFeatureConfiguration>> AZURITE_ORE = FEATURES.register("azurite_ore", () -> new AzuriteOreFeature(NoneFeatureConfiguration.CODEC));
 }

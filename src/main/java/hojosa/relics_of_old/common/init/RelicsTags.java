@@ -47,6 +47,7 @@ public interface RelicsTags {
 		interface HasStructure {
 			TagKey<Biome> PEDESTAL_TIME = tag("pedestal_of_time");
 			TagKey<Biome> PEDESTAL_TWILIGHT = tag("pedestal_of_twilight");
+			TagKey<Biome> STARWELL = tag("starwell");
 
 			static TagKey<Biome> tag(String name) {
 				return TagKey.create(Registries.BIOME, RelicsUtil.modLoc("has_structure/" + name));
@@ -56,7 +57,7 @@ public interface RelicsTags {
 		interface HasFeature {
 			TagKey<Biome> MYSTIC_SHRUB = tag("mystic_shrub");
 			TagKey<Biome> BOMB_FLOWER = tag("bomb_flower");
-			TagKey<Biome> STARWELL = tag("starwell");
+//			TagKey<Biome> STARWELL = tag("starwell");
 			TagKey<Biome> AZURITE_ORE = tag("azurite_ore");
 
 			static TagKey<Biome> tag(String name) {

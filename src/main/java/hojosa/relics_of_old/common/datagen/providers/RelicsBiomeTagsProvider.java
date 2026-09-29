@@ -13,20 +13,21 @@ import net.minecraft.tags.BiomeTags;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
-public class RelicsBiomeTagsProvider extends BiomeTagsProvider{
+public class RelicsBiomeTagsProvider extends BiomeTagsProvider {
 
 	public RelicsBiomeTagsProvider(PackOutput pOutput, CompletableFuture<Provider> pProvider, @Nullable ExistingFileHelper existingFileHelper) {
 		super(pOutput, pProvider, References.MOD_ID, existingFileHelper);
 	}
-	
-@Override
+
+	@Override
 	protected void addTags(Provider pProvider) {
 		tag(RelicsTags.Biomes.HasStructure.PEDESTAL_TIME).addTags(BiomeTags.IS_FOREST);
 		tag(RelicsTags.Biomes.HasStructure.PEDESTAL_TWILIGHT).addTags(BiomeTags.IS_FOREST);
 		tag(RelicsTags.Biomes.HasFeature.MYSTIC_SHRUB).addTags(BiomeTags.IS_FOREST, Tags.Biomes.IS_PLAINS);
 		tag(RelicsTags.Biomes.HasFeature.BOMB_FLOWER).addTags(BiomeTags.IS_NETHER, BiomeTags.IS_OVERWORLD);
-		tag(RelicsTags.Biomes.HasFeature.STARWELL).addTags(BiomeTags.IS_OVERWORLD);
+		tag(RelicsTags.Biomes.HasStructure.STARWELL).addTags(BiomeTags.IS_OVERWORLD).remove(BiomeTags.IS_OCEAN).remove(BiomeTags.IS_DEEP_OCEAN).remove(BiomeTags.IS_RIVER);
 		tag(RelicsTags.Biomes.HasFeature.AZURITE_ORE).addTags(BiomeTags.IS_OVERWORLD);
+		;
 	}
 
 	@Override

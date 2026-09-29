@@ -27,8 +27,6 @@ public class RelicsBiomeModifiers {
 		context.register(ADD_BOMB_FLOWERS, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(biomes.getOrThrow(RelicsTags.Biomes.HasFeature.BOMB_FLOWER),
 				HolderSet.direct(placedFeatures.getOrThrow(RelicsPlacedFeatures.BOMB_FLOWER_CLUSTER_PLACED)), GenerationStep.Decoration.VEGETAL_DECORATION));
 
-		context.register(ADD_STARWELLS, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(biomes.getOrThrow(RelicsTags.Biomes.HasFeature.STARWELL),
-				HolderSet.direct(placedFeatures.getOrThrow(RelicsPlacedFeatures.STARWELL_PLACED)), GenerationStep.Decoration.SURFACE_STRUCTURES));
 		context.register(ADD_AZURITE_ORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(biomes.getOrThrow(RelicsTags.Biomes.HasFeature.AZURITE_ORE),
 				HolderSet.direct(placedFeatures.getOrThrow(RelicsPlacedFeatures.AZURITE_ORE_PLACED)), GenerationStep.Decoration.UNDERGROUND_ORES));
 	}

@@ -1,0 +1,6 @@
+{
+  "type": "relics_of_old:starwell",
+  "biomes": "#relics_of_old:has_structure/starwell",
+  "spawn_overrides": {},
+  "step": "surface_structures"
+}

@@ -20,6 +20,7 @@ import hojosa.relics_of_old.common.init.RelicsParticles;
 import hojosa.relics_of_old.common.init.RelicsSounds;
 import hojosa.relics_of_old.common.loot.RelicsGlobalLootModifier;
 import hojosa.relics_of_old.common.recipes.RelicsRecipes;
+import hojosa.relics_of_old.common.worldgen.RelicsStructures;
 import hojosa.relics_of_old.event.RelicsClientEvents;
 import hojosa.relics_of_old.integration.RelicsIntegration;
 import hojosa.relics_of_old.lib.References;
@@ -69,6 +70,8 @@ public class Relics {
 		RelicsRecipes.SERIALIZERS.register(modEventBus);
 		RelicsRecipes.TYPES.register(modEventBus);
 		RelicsFeatures.FEATURES.register(modEventBus);
+		RelicsStructures.STRUCTURE_TYPES.register(modEventBus);
+		RelicsStructures.PIECE_TYPES.register(modEventBus);
 
 		MinecraftForge.EVENT_BUS.register(this);
 	}

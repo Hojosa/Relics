@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 1847592063,
+    "separation": 30,
+    "spacing": 40
+  },
+  "structures": [
+    {
+      "structure": "relics_of_old:starwell",
+      "weight": 1
+    }
+  ]
+}
