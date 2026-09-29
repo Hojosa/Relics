@@ -14,7 +14,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class RelicsBiomeModifiers {
 	public static final ResourceKey<BiomeModifier> ADD_SHRUB_CLUSTERS = registerKey("add_shrub_clusters");
 	public static final ResourceKey<BiomeModifier> ADD_BOMB_FLOWERS = registerKey("add_bomb_flowers");
-	public static final ResourceKey<BiomeModifier> ADD_STARWELLS = registerKey("add_starwells");
 	public static final ResourceKey<BiomeModifier> ADD_AZURITE_ORE = registerKey("add_azurite_ore");
 
 	public static void bootstrap(BootstapContext<BiomeModifier> context) {
