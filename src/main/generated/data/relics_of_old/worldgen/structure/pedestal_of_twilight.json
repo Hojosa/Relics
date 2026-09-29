@@ -1,0 +1,10 @@
+{
+  "type": "relics_of_old:pedestal",
+  "biomes": "#relics_of_old:has_structure/pedestal_of_twilight",
+  "depth": 19,
+  "spawn_overrides": {},
+  "step": "surface_structures",
+  "template": "relics_of_old:pedestal_of_twilight",
+  "terrain_adaptation": "beard_thin",
+  "width": 19
+}

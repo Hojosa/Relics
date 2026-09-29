@@ -1,0 +1,18 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 1694767090,
+    "separation": 200,
+    "spacing": 256
+  },
+  "structures": [
+    {
+      "structure": "relics_of_old:pedestal_of_time",
+      "weight": 1
+    },
+    {
+      "structure": "relics_of_old:pedestal_of_twilight",
+      "weight": 1
+    }
+  ]
+}
